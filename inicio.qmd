@@ -1,0 +1,11 @@
+---
+title: "Primeros pasos en R"
+---
+
+## Creación de scripts en RStudio
+
+## Guardado y organización de archivos
+
+## Introducción a los objetos en R
+
+## Tipos de objetos en R (numéricos, texto, factores, lógicos)

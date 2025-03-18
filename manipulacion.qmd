@@ -1,0 +1,9 @@
+---
+title: "Manipulación de datos"
+---
+
+## Introducción a los paquetes `dplyr` y `tidyr`
+
+## Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos
+
+## Uso de pipes (`%>%`) para mejorar la legibilidad del código

@@ -1,0 +1,9 @@
+---
+title: "Estructura de datos en R"
+---
+
+## Vectores: creación y manipulación
+
+## Data frames: creación, ventajas y manipulación
+
+## Comparación entre data frames y listas

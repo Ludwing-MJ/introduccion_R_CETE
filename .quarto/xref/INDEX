@@ -1,0 +1,56 @@
+{
+  "index.qmd": {
+    "index.html": "d39c38eb"
+  },
+  "intro.qmd": {
+    "intro.html": "c45ba53e"
+  },
+  "summary.qmd": {
+    "summary.html": "ace088f8"
+  },
+  "references.qmd": {
+    "references.html": "485512ae"
+  },
+  "teoria.qmd": {
+    "teoria.html": "7088876f"
+  },
+  "basics.qmd": {
+    "basics.html": "f66d9ec6"
+  },
+  "Entorno.qmd": {
+    "Entorno.html": "d9c87496"
+  },
+  "install.qmd": {
+    "install.html": "279f016e"
+  },
+  "inicio.qmd": {
+    "inicio.html": "f9d9aeff"
+  },
+  "datos.qmd": {
+    "datos.html": "f308bd64"
+  },
+  "importacion.qmd": {
+    "importacion.html": "1ed65a36"
+  },
+  "operadores.qmd": {
+    "operadores.html": "ed958382"
+  },
+  "manipulacion.qmd": {
+    "manipulacion.html": "004caf23"
+  },
+  "visualizacion.qmd": {
+    "visualizacion.html": "5fb2afd8"
+  },
+  "exportacion.qmd": {
+    "exportacion.html": "1ab97c31"
+  },
+  "paquetes.qmd": {
+    "paquetes.html": "c0723681"
+  },
+  "license.qmd": {
+    "license.html": "1b7db57b"
+  },
+  "about.qmd": {
+    "about.html": "a63bf36d"
+  }
+}

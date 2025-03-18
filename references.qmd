@@ -1,0 +1,27 @@
+---
+title: "Referencias"
+bibliography: references.bib
+biblio-style: "apalike"
+---
+
+::: hanging-indent
+Allaire, J. J., Xie, Y., & McPherson, J. (2022). *R Markdown: The Definitive Guide*. Chapman & Hall/CRC. <https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund>
+
+Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. *Nature, 533*(7604), 452–454. <https://doi.org/10.1038/533452a>
+
+Gentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. *Journal of Computational and Graphical Statistics, 16*(1), 1–23. <https://doi.org/10.1198/106186007X178663>
+
+Hmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). *Educational Psychologist, 42*(2), 99–107. <https://doi.org/10.1080/00461520701263368>
+
+Ihaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. *Journal of Computational and Graphical Statistics, 5*(3), 299–314.
+
+Kolb, D. A. (1984). *Experiential learning: Experience as the source of learning and development*. Prentice Hall.
+
+National Academies of Sciences, Engineering, and Medicine. (2019). *Reproducibility and replicability in science*. National Academies Press. <https://doi.org/10.17226/25303>
+
+R Core Team. (2023). *R: A Language and Environment for Statistical Computing*. R Foundation for Statistical Computing. <https://www.Rproject.org>
+
+The Turing Way Community. (2023). *The Turing Way: A handbook for reproducible, ethical and collaborative research*. <https://the-turing-way.netlify.app>
+
+Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. *Scientific Data, 3*(1), 160018. <https://doi.org/10.1038/sdata.2016.18>
+:::

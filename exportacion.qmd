@@ -1,0 +1,7 @@
+---
+title: "Exportación de resultados"
+---
+
+## Guardar gráficos con `ggsave`
+
+## Exportación de tablas en formato CSV

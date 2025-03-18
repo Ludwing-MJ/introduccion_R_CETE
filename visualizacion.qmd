@@ -1,0 +1,9 @@
+---
+title: "visualización de datos"
+---
+
+## Introducción al paquete `ggplot2`
+
+## Creación de gráficos básicos: histogramas, scatterplots, boxplots
+
+## Personalización de gráficos

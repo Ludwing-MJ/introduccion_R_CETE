@@ -1,0 +1,11 @@
+---
+title: "Instalación y configuración"
+---
+
+## Descarga de R y RStudio
+
+## Instalación de R y RStudio
+
+## Configuración inicial
+
+## Organización de proyectos

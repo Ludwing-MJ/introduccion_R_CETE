@@ -1,0 +1,81 @@
+# Conceptos básicos de R
+
+## ¿Qué es R?
+
+R es un lenguaje de programación y entorno computacional especializado en análisis estadístico y visualización científica, diseñado para investigación reproducible (Ihaka & Gentleman, 1996).
+
+![](https://miro.medium.com/v2/resize:fit:729/0*CtJIRkWvZK_8GnzM.png){fig-align="center" width="500"}
+
+### ¿Qué hace tan especial a R para el análisis estadístico?
+
+-   **Código Abierto:** Sin costos de licencia, ideal para proyectos académicos (R Core Team, 2023).
+
+-   **Extensible:** Hasta 2023 existen más de 19,000 paquetes disponibles en CRAN (Comprehensive R Archive Network) especializados en añadirle nuevas funciones para resolver necesidades especificas usando R, la funcionalidad de estos paquetes va desde hacer mejores gráficos de una manera sencilla hasta facilita procesos estadísticos (CRAN, 2023).
+
+## ¿Qué es RStudio?
+
+RStudio es un Entorno de Desarrollo Integrado (IDE) que optimiza el flujo de trabajo en R, destacándose por su sistema de proyectos y herramientas para reproducibilidad (Allaire et al., 2022).
+
+![](https://www.databricks.com/sites/default/files/2018/06/RStudio-Logo-All-Color-partners.png){fig-align="center" width="500"}
+
+## Reproducibilidad y replicabilidad en la investigación científica
+
+El 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente (Baker, 2016).
+
+**Problemática:** En herramientas como Excel o Infostat, los cálculos suelen realizarse en celdas ocultas y los gráficos se ajustan manualmente. Esto dificulta la replicación exacta de los análisis, incluso por parte del mismo autor después de un tiempo.
+
+**Solución:** el uso de R permite documentar cada paso del análisis mediante scripts, lo que garantiza que los procedimientos puedan ser replicados y reinterpretados en el futuro.
+
+!["Un script de R es como una receta: cualquiera puede seguirla paso a paso para recrear tu 'platillo' científico. Así como, cualquiera puede re interpretarla para crear su propio 'platillo' científico."](https://bibliobasella.wordpress.com/wp-content/uploads/2015/04/cc27b-freir2bun2bhuevo.jpg){fig-align="center" width="500"}
+
+### Reproducibilidad
+
+La reproducibilidad se define como la capacidad de obtener los mismos resultados utilizando los mismos datos y métodos que se emplearon en un análisis original. Este concepto es esencial en la investigación científica, ya que permite verificar y validar los resultados de un estudio. Según el informe de las *National Academies of Sciences, Engineering, and Medicine* (2019), la reproducibilidad garantiza que los resultados puedan ser replicados por otros investigadores o por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.
+
+#### Características clave de la reproducibilidad:
+
+1.  **Uso de los mismos datos**: Los datos originales deben estar disponibles y ser accesibles para que otros puedan replicar el análisis.
+
+2.  **Métodos documentados**: Es necesario que los pasos, herramientas y configuraciones utilizadas en el análisis estén claramente documentados.
+
+3.  **Resultados consistentes**: Al repetir el análisis con los mismos datos y métodos, los resultados deben ser idénticos.
+
+#### Importancia de la reproducibilidad:
+
+1.  **Transparencia**: Permite que otros investigadores comprendan cómo se obtuvieron los resultados.
+
+2.  **Verificación**: Facilita la identificación de errores o inconsistencias en el análisis original.
+
+3.  **Colaboración**: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente.
+
+En el contexto de R y RStudio, la reproducibilidad se logra mediante el uso de scripts que documentan cada paso del análisis. Estos scripts actúan como una "receta" que otros pueden seguir para obtener los mismos resultados. Además, herramientas como R Markdown y Quarto permiten combinar código, texto y resultados en un solo documento, lo que mejora aún más la transparencia y la reproducibilidad.
+
+### Replicabilidad
+
+La replicabilidad, por otro lado, se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las *National Academies of Sciences, Engineering, and Medicine* (2019), la replicabilidad es fundamental para evaluar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.
+
+#### Características clave de la replicabilidad:
+
+1.  **Nuevos datos**: Se utilizan datos diferentes a los del estudio original, pero que representan un contexto similar.
+
+2.  **Métodos adaptados**: Los métodos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.
+
+3.  **Resultados consistentes**: Los hallazgos deben ser coherentes con los del estudio original, aunque no necesariamente idénticos.
+
+#### Importancia de la replicabilidad:
+
+1.  **Generalización**: Evalúa si los resultados del estudio original son aplicables en otros contextos o poblaciones.
+
+2.  **Credibilidad científica**: Refuerza la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.
+
+3.  **Avance del conocimiento**: Permite explorar nuevas aplicaciones o extensiones de los hallazgos originales.
+
+En el contexto de R y RStudio, la replicabilidad se facilita mediante el uso de herramientas que permiten adaptar los análisis a nuevos conjuntos de datos. Por ejemplo, los scripts en R pueden ser reutilizados y ajustados para trabajar con datos diferentes, mientras que los paquetes como `dplyr` y `ggplot2` permiten realizar análisis y visualizaciones de manera flexible y adaptable.
+
+### Beneficios de la adopción de R para la Ciencia
+
+-   **Transparencia**: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).
+
+-   **Eficiencia**: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, lo que optimiza los recursos y el tiempo (Gentleman & Temple Lang, 2007).
+
+-   **Credibilidad**: El uso de R facilita el cumplimiento de los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo la gestión adecuada de los datos científicos (Wilkinson et al., 2016).

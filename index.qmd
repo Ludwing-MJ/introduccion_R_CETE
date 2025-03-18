@@ -1,0 +1,23 @@
+# Introducción {.unnumbered}
+
+## ¿En qué consiste este manual?
+
+El presente manual, tiene como objetivo proporcionar una guía práctica y estructurada para el aprendizaje y uso del lenguaje de programación R. Este se diseñó para facilitar la comprensión de conceptos fundamentales, desde la instalación de R y RStudio hasta la manipulación de datos, visualización gráfica y exportación de resultados.
+
+R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica. A lo largo de este documento, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Además, se incluyen ejemplos prácticos, recomendaciones de buenas prácticas y recursos adicionales para profundizar en el aprendizaje.
+
+Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en análisis de datos y programación estadística, con un enfoque en la claridad, la organización y la reproducibilidad.
+
+## ¿Cómo esta organizado este manual?
+
+## Pre requisitos
+
+## Colofón
+
+La versión en línea de este manual estará disponible en `[enlace de publicación] (actualizar una vez publicado)`. La fuente del manual en español se encuentra en el repositorio: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando [Quarto](https://quarto.org/), una herramienta que facilita la conversión de archivos `.qmd` en formatos publicables como HTML, PDF y EPUB. Además, Quarto permite trabajar con una interfaz visual y amigable para el desarrollador desde RStudio, optimizando la creación de contenido reproducible y accesible.
+
+Este manual fue construido con:
+
+```{r}
+devtools::session_info()
+```

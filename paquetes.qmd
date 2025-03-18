@@ -1,0 +1,9 @@
+---
+title: "Paquetes en R"
+---
+
+## ¿Qué son los paquetes en R?
+
+## Instalación y carga de paquetes
+
+## Paquetes recomendados para tareas específicas
