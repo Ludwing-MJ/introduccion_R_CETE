@@ -6,11 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="P. Agr. Ludwing Isaí Marroquín Jiménez">
-<meta name="dcterms.date" content="2025-03-18">
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
+<title>1&nbsp; Conceptos básicos de R – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -67,7 +31,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_cbasicos.html" rel="next">
+<link href="./Entorno.html" rel="next">
+<link href="./index.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_cbasicos.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -187,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
@@ -197,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_cbasicos.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_cbasicos.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span></a>
   </div>
 </li>
@@ -297,12 +262,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <li><a href="#qué-es-r" id="toc-qué-es-r" class="nav-link active" data-scroll-target="#qué-es-r"><span class="header-section-number">1.1</span> ¿Qué es R?</a>
   <ul class="collapse">
-  <li><a href="#en-qué-consiste-este-manual" id="toc-en-qué-consiste-este-manual" class="nav-link" data-scroll-target="#en-qué-consiste-este-manual">¿En qué consiste este manual?</a></li>
-  <li><a href="#cómo-esta-organizado-este-manual" id="toc-cómo-esta-organizado-este-manual" class="nav-link" data-scroll-target="#cómo-esta-organizado-este-manual">¿Cómo esta organizado este manual?</a></li>
-  <li><a href="#pre-requisitos" id="toc-pre-requisitos" class="nav-link" data-scroll-target="#pre-requisitos">Pre requisitos</a></li>
-  <li><a href="#colofón" id="toc-colofón" class="nav-link" data-scroll-target="#colofón">Colofón</a></li>
+  <li><a href="#características-principales-de-r" id="toc-características-principales-de-r" class="nav-link" data-scroll-target="#características-principales-de-r"><span class="header-section-number">1.1.1</span> Características principales de R</a></li>
+  <li><a href="#por-qué-es-especial-r" id="toc-por-qué-es-especial-r" class="nav-link" data-scroll-target="#por-qué-es-especial-r"><span class="header-section-number">1.1.2</span> ¿Por qué es especial R?</a></li>
+  </ul></li>
+  <li><a href="#qué-es-rstudio" id="toc-qué-es-rstudio" class="nav-link" data-scroll-target="#qué-es-rstudio"><span class="header-section-number">1.2</span> ¿Qué es RStudio?</a>
+  <ul class="collapse">
+  <li><a href="#características-principales-de-rstudio" id="toc-características-principales-de-rstudio" class="nav-link" data-scroll-target="#características-principales-de-rstudio"><span class="header-section-number">1.2.1</span> Características principales de RStudio</a></li>
+  <li><a href="#beneficios-de-usar-rstudio" id="toc-beneficios-de-usar-rstudio" class="nav-link" data-scroll-target="#beneficios-de-usar-rstudio"><span class="header-section-number">1.2.2</span> Beneficios de usar RStudio</a></li>
+  </ul></li>
+  <li><a href="#reproducibilidad-y-replicabilidad-en-la-investigación-científica" id="toc-reproducibilidad-y-replicabilidad-en-la-investigación-científica" class="nav-link" data-scroll-target="#reproducibilidad-y-replicabilidad-en-la-investigación-científica"><span class="header-section-number">1.3</span> Reproducibilidad y replicabilidad en la investigación científica</a>
+  <ul class="collapse">
+  <li><a href="#reproducibilidad" id="toc-reproducibilidad" class="nav-link" data-scroll-target="#reproducibilidad"><span class="header-section-number">1.3.1</span> Reproducibilidad</a></li>
+  <li><a href="#replicabilidad" id="toc-replicabilidad" class="nav-link" data-scroll-target="#replicabilidad"><span class="header-section-number">1.3.2</span> Replicabilidad</a></li>
+  <li><a href="#beneficios-de-la-adopción-de-r-para-la-ciencia" id="toc-beneficios-de-la-adopción-de-r-para-la-ciencia" class="nav-link" data-scroll-target="#beneficios-de-la-adopción-de-r-para-la-ciencia"><span class="header-section-number">1.3.3</span> Beneficios de la adopción de R para la Ciencia</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -312,31 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</h1>
+<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>P. Agr. Ludwing Isaí Marroquín Jiménez </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">18 mar 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -346,113 +303,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>La ciencia de datos, con un enfoque estadístico, permite transformar datos en bruto en información comprensible y útil para la toma de decisiones. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del texto, se abordan conceptos básicos y se presentan ejemplos prácticos que facilitan la comprensión de técnicas estadísticas esenciales. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
-<section id="en-qué-consiste-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="en-qué-consiste-este-manual">¿En qué consiste este manual?</h2>
-<p>El presente manual, tiene como objetivo proporcionar una guía práctica y estructurada para el aprendizaje y uso del lenguaje de programación R. Este se diseñó para facilitar la comprensión de conceptos fundamentales, desde la instalación de R y RStudio hasta la manipulación de datos, visualización gráfica y exportación de resultados.</p>
-<p>R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica. A lo largo de este documento, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Además, se incluyen ejemplos prácticos, recomendaciones de buenas prácticas y recursos adicionales para profundizar en el aprendizaje.</p>
-<p>Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en análisis de datos y programación estadística, con un enfoque en la claridad, la organización y la reproducibilidad.</p>
+<section id="qué-es-r" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="qué-es-r"><span class="header-section-number">1.1</span> ¿Qué es R?</h2>
+<p>R es un lenguaje de programación y un entorno computacional ampliamente utilizado en el análisis estadístico, la ciencia de datos y la visualización científica. Fue desarrollado por Ross Ihaka y Robert Gentleman en 1996 con el propósito de ofrecer una herramienta poderosa y flexible para realizar análisis reproducibles y visualizaciones de alta calidad. Desde su creación, R se ha consolidado como una de las herramientas más populares en las comunidades científica, académica y profesional (Ihaka &amp; Gentleman, 1996).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://miro.medium.com/v2/resize:fit:729/0*CtJIRkWvZK_8GnzM.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<section id="características-principales-de-r" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="características-principales-de-r"><span class="header-section-number">1.1.1</span> Características principales de R</h3>
+<p><strong>Especialización en análisis estadístico</strong>: R está diseñado para realizar análisis estadísticos complejos, desde pruebas básicas como t-tests y ANOVA hasta modelos avanzados como regresión, análisis multivariado y aprendizaje automático.</p>
+<p><strong>Visualización de datos</strong>: Incluye herramientas para crear gráficos de alta calidad y personalizables. Con paquetes como <code>ggplot2</code>, es posible generar visualizaciones avanzadas que permiten explorar y comunicar patrones en los datos de manera efectiva.</p>
+<p><strong>Lenguaje de código abierto</strong>: R es un software de código abierto, lo que lo hace gratuito y accesible para todos. Esto fomenta la colaboración y el desarrollo continuo por parte de una comunidad global de usuarios y desarrolladores.</p>
+<p><strong>Extensibilidad mediante paquetes</strong>: R cuenta con una amplia colección de paquetes (más de 19,000 disponibles en CRAN hasta 2023) que amplían sus capacidades. Estos paquetes permiten realizar tareas específicas, como análisis genómico, minería de texto, modelado espacial y más (R Core Team, 2023).</p>
+<p><strong>Reproducibilidad</strong>: R promueve la investigación reproducible al permitir que los análisis se documenten en scripts, asegurando que los resultados puedan ser replicados por otros investigadores o por el mismo usuario en el futuro.</p>
+<p><strong>Interoperabilidad</strong>: R puede integrarse con otros lenguajes de programación como Python, C++ y SQL, y es compatible con múltiples formatos de datos, como CSV, Excel, JSON y bases de datos relacionales.</p>
 </section>
-<section id="cómo-esta-organizado-este-manual" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-esta-organizado-este-manual">¿Cómo esta organizado este manual?</h2>
-<p>Este manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, con un enfoque en el análisis estadístico. Su estructura sigue un enfoque progresivo, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
-<p>El contenido se organiza en los siguientes capítulos principales:</p>
+<section id="por-qué-es-especial-r" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="por-qué-es-especial-r"><span class="header-section-number">1.1.2</span> ¿Por qué es especial R?</h3>
+<p>R no solo es una herramienta para realizar cálculos estadísticos, sino que también es un entorno completo para la manipulación de datos, la creación de gráficos y la automatización de flujos de trabajo. Su flexibilidad y capacidad de personalización lo convierten en una opción ideal para investigadores, analistas de datos y profesionales de diversas disciplinas.</p>
+<p>Además, R es altamente extensible gracias a su comunidad activa, que constantemente desarrolla nuevos paquetes y recursos. Esto lo convierte en una herramienta en constante evolución, capaz de adaptarse a las necesidades cambiantes de la ciencia y la industria.</p>
+<p>En resumen, R es mucho más que un lenguaje de programación: es una plataforma integral para el análisis de datos, la visualización y la investigación reproducible, lo que lo hace indispensable en el ámbito académico y profesional.</p>
+</section>
+</section>
+<section id="qué-es-rstudio" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="qué-es-rstudio"><span class="header-section-number">1.2</span> ¿Qué es RStudio?</h2>
+<p>RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con el lenguaje de programación R. Este entorno proporciona una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo en R, facilitando tanto el análisis estadístico como la visualización de datos. Su diseño está orientado a mejorar la productividad y la reproducibilidad en proyectos de análisis de datos, investigación científica y desarrollo de aplicaciones (Allaire et al.&nbsp;2022).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://www.databricks.com/sites/default/files/2018/06/RStudio-Logo-All-Color-partners.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="500"></p>
+</figure>
+</div>
+<section id="características-principales-de-rstudio" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="características-principales-de-rstudio"><span class="header-section-number">1.2.1</span> Características principales de RStudio</h3>
+<p><strong>Interfaz intuitiva y organizada</strong>: RStudio divide su interfaz en paneles que permiten acceder fácilmente a diferentes herramientas y funciones. Estos paneles incluyen:</p>
 <ol type="1">
-<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
-<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
-<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
-<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
-<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
-<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
+<li><p><strong>Editor de scripts</strong>: Donde se escribe y edita el código R.</p></li>
+<li><p><strong>Consola</strong>: Para ejecutar comandos y ver resultados en tiempo real.</p></li>
+<li><p><strong>Environment/History</strong>: Muestra los objetos creados en la sesión actual y el historial de comandos ejecutados.</p></li>
+<li><p><strong>Plots/Files/Packages/Help</strong>: Panel multifuncional para visualizar gráficos, gestionar archivos, instalar paquetes y acceder a documentación.</p></li>
 </ol>
-<p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
+<p><strong>Sistema de proyectos</strong>: RStudio permite organizar el trabajo en proyectos, lo que facilita la gestión de archivos, scripts y datos relacionados con un análisis específico. Cada proyecto tiene su propio directorio de trabajo, lo que mejora la organización y la reproducibilidad.</p>
+<p><strong>Compatibilidad con múltiples formatos</strong>: RStudio soporta la importación y exportación de datos en diversos formatos, como CSV, Excel, html y bases de datos SQL. Además, permite trabajar con gráficos interactivos y aplicaciones web mediante paquetes como <code>shiny</code> y <code>plotly</code>.</p>
+<p><strong>Integración con paquetes y extensiones</strong>: RStudio facilita la instalación y el uso de paquetes de R, como <code>ggplot2</code> para gráficos, <code>dplyr</code> para manipulación de datos y <code>tidyr</code> para transformación de datos. También permite gestionar dependencias y actualizar paquetes de manera sencilla.</p>
+<p><strong>Soporte multiplataforma</strong>: RStudio está disponible para sistemas operativos Windows, macOS y Linux, lo que lo hace accesible para una amplia variedad de usuarios.</p>
+<p><strong>Personalización y extensibilidad</strong>: Los usuarios pueden personalizar la apariencia y el comportamiento de RStudio, como cambiar temas, atajos de teclado y configuraciones de paneles. Además, se pueden integrar herramientas externas, como Git para control de versiones.</p>
 </section>
-<section id="pre-requisitos" class="level2">
-<h2 class="anchored" data-anchor-id="pre-requisitos">Pre requisitos</h2>
-<p>Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:</p>
-<ol type="1">
-<li><p><strong>Interés por aprender</strong>: La curiosidad y disposición para explorar un nuevo lenguaje de programación.</p></li>
-<li><p><strong>Acceso a una computadora</strong>: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.</p></li>
-<li><p><strong>Paciencia y práctica</strong>: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.</p></li>
-</ol>
-<p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
+<section id="beneficios-de-usar-rstudio" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="beneficios-de-usar-rstudio"><span class="header-section-number">1.2.2</span> Beneficios de usar RStudio</h3>
+<p><strong>Eficiencia</strong>: Su diseño permite realizar tareas de análisis de datos de manera más rápida y organizada.</p>
+<p><strong>Reproducibilidad</strong>: Las herramientas integradas, como R Markdown y el sistema de proyectos, garantizan que los análisis puedan ser replicados fácilmente.</p>
+<p><strong>Accesibilidad</strong>: Su interfaz gráfica es ideal tanto para principiantes como para usuarios avanzados.</p>
+<p><strong>Flexibilidad</strong>: Permite trabajar con datos, gráficos, modelos estadísticos y aplicaciones interactivas en un solo entorno.</p>
 </section>
-<section id="colofón" class="level2">
-<h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
-<p>La versión en línea de este manual estará disponible en <code>[enlace de publicación] (actualizar una vez publicado)</code>. La fuente del manual en español se encuentra en el repositorio: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/">Quarto</a>, una herramienta que facilita la conversión de archivos <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB. Además, Quarto permite trabajar con una interfaz visual y amigable para el desarrollador desde RStudio, optimizando la creación de contenido reproducible y accesible.</p>
-<p>Este manual fue construido con:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
-comando ejecutado '"quarto"
-TMPDIR=C:/Users/Usuario/AppData/Local/Temp/Rtmp2J9Nij/file260c7f607954 -V'
-tiene el estatus 1</code></pre>
+</section>
+<section id="reproducibilidad-y-replicabilidad-en-la-investigación-científica" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="reproducibilidad-y-replicabilidad-en-la-investigación-científica"><span class="header-section-number">1.3</span> Reproducibilidad y replicabilidad en la investigación científica</h2>
+<p>El 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente (Baker, 2016).</p>
+<p><strong>Problemática:</strong> En herramientas como Excel o Infostat, los cálculos suelen realizarse en celdas ocultas y los gráficos se ajustan manualmente. Esto dificulta la replicación exacta de los análisis, incluso por parte del mismo autor después de un tiempo.</p>
+<p><strong>Solución:</strong> el uso de R permite documentar cada paso del análisis mediante scripts, lo que garantiza que los procedimientos puedan ser replicados y reinterpretados en el futuro.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://bibliobasella.wordpress.com/wp-content/uploads/2015/04/cc27b-freir2bun2bhuevo.jpg" class="img-fluid figure-img" width="500"></p>
+<figcaption>Un script de R puede compararse con una receta, ya que permite ser seguido paso a paso para reproducir el mismo análisis. De manera similar a una receta que puede ser reinterpretada al modificar los ingredientes, un script puede adaptarse para realizar un análisis diferente utilizando nuevos datos.</figcaption>
+</figure>
 </div>
-<div class="cell-output cell-output-stdout">
-<pre><code>─ Session info ───────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.4.2 (2024-10-31 ucrt)
- os       Windows 11 x64 (build 26100)
- system   x86_64, mingw32
- ui       RTerm
- language (EN)
- collate  Spanish_Guatemala.utf8
- ctype    Spanish_Guatemala.utf8
- tz       America/Guatemala
- date     2025-03-18
- pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
- quarto   NA @ C:\\Users\\Usuario\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
-
-─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.2)
- cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.2)
- devtools      2.4.5   2022-10-11 [1] CRAN (R 4.4.3)
- digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.2)
- ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.3)
- evaluate      1.0.3   2025-01-10 [1] CRAN (R 4.4.2)
- fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.2)
- fs            1.6.5   2024-10-30 [1] CRAN (R 4.4.2)
- glue          1.8.0   2024-09-30 [1] CRAN (R 4.4.2)
- htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.2)
- htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)
- httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.3)
- jsonlite      1.8.9   2024-09-20 [1] CRAN (R 4.4.2)
- knitr         1.49    2024-11-08 [1] CRAN (R 4.4.2)
- later         1.4.1   2024-11-27 [1] CRAN (R 4.4.3)
- lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.2)
- magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.2)
- memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.2)
- mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)
- miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.3)
- pkgbuild      1.4.6   2025-01-16 [1] CRAN (R 4.4.3)
- pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.3)
- profvis       0.4.0   2024-09-20 [1] CRAN (R 4.4.3)
- promises      1.3.2   2024-11-28 [1] CRAN (R 4.4.3)
- purrr         1.0.4   2025-02-05 [1] CRAN (R 4.4.2)
- R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.2)
- Rcpp          1.0.14  2025-01-12 [1] CRAN (R 4.4.2)
- remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.3)
- rlang         1.1.5   2025-01-17 [1] CRAN (R 4.4.2)
- rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.2)
- rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.2)
- sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.4.3)
- shiny         1.10.0  2024-12-14 [1] CRAN (R 4.4.3)
- urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.3)
- usethis       3.1.0   2024-11-26 [1] CRAN (R 4.4.3)
- vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.2)
- xfun          0.50    2025-01-07 [1] CRAN (R 4.4.2)
- xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.3)
-
- [1] C:/Users/Usuario/AppData/Local/R/win-library/4.4
- [2] C:/Program Files/R/R-4.4.2/library
-
-──────────────────────────────────────────────────────────────────────────────</code></pre>
-</div>
-</div>
+<section id="reproducibilidad" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="reproducibilidad"><span class="header-section-number">1.3.1</span> Reproducibilidad</h3>
+<p>La reproducibilidad se define como la capacidad de obtener los mismos resultados utilizando los mismos datos y métodos que se emplearon en un análisis original. Este concepto es esencial en la investigación científica, ya que permite verificar y validar los resultados de un estudio. Según el informe de las <em>National Academies of Sciences, Engineering, and Medicine</em> (2019), la reproducibilidad garantiza que los resultados puedan ser replicados por otros investigadores o por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.</p>
+<section id="características-clave-de-la-reproducibilidad" class="level4" data-number="1.3.1.1">
+<h4 data-number="1.3.1.1" class="anchored" data-anchor-id="características-clave-de-la-reproducibilidad"><span class="header-section-number">1.3.1.1</span> Características clave de la reproducibilidad:</h4>
+<p><strong>Uso de los mismos datos</strong>: Los datos originales deben estar disponibles y ser accesibles para que otros puedan replicar el análisis.</p>
+<p><strong>Métodos documentados</strong>: Es necesario que los pasos, herramientas y configuraciones utilizadas en el análisis estén claramente documentados.</p>
+<p><strong>Resultados consistentes</strong>: Al repetir el análisis con los mismos datos y métodos, los resultados deben ser idénticos.</p>
+</section>
+<section id="importancia-de-la-reproducibilidad" class="level4" data-number="1.3.1.2">
+<h4 data-number="1.3.1.2" class="anchored" data-anchor-id="importancia-de-la-reproducibilidad"><span class="header-section-number">1.3.1.2</span> Importancia de la reproducibilidad:</h4>
+<p><strong>Transparencia</strong>: Permite que otros investigadores comprendan cómo se obtuvieron los resultados.</p>
+<p><strong>Verificación</strong>: Facilita la identificación de errores o inconsistencias en el análisis original.</p>
+<p><strong>Colaboración</strong>: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente.</p>
+</section>
+</section>
+<section id="replicabilidad" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="replicabilidad"><span class="header-section-number">1.3.2</span> Replicabilidad</h3>
+<p>La replicabilidad, por otro lado, se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las <em>National Academies of Sciences, Engineering, and Medicine</em> (2019), la replicabilidad es fundamental para evaluar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.</p>
+<section id="características-clave-de-la-replicabilidad" class="level4" data-number="1.3.2.1">
+<h4 data-number="1.3.2.1" class="anchored" data-anchor-id="características-clave-de-la-replicabilidad"><span class="header-section-number">1.3.2.1</span> Características clave de la replicabilidad:</h4>
+<p><strong>Nuevos datos</strong>: Se utilizan datos diferentes a los del estudio original, pero que representan un contexto similar.</p>
+<p><strong>Métodos adaptados</strong>: Los métodos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.</p>
+<p><strong>Resultados consistentes</strong>: Los hallazgos deben ser coherentes con los del estudio original, aunque no necesariamente idénticos.</p>
+</section>
+<section id="importancia-de-la-replicabilidad" class="level4" data-number="1.3.2.2">
+<h4 data-number="1.3.2.2" class="anchored" data-anchor-id="importancia-de-la-replicabilidad"><span class="header-section-number">1.3.2.2</span> Importancia de la replicabilidad:</h4>
+<p><strong>Generalización</strong>: Evalúa si los resultados del estudio original son aplicables en otros contextos o poblaciones.</p>
+<p><strong>Credibilidad científica</strong>: Refuerza la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.</p>
+<p><strong>Avance del conocimiento</strong>: Permite explorar nuevas aplicaciones o extensiones de los hallazgos originales.</p>
+</section>
+</section>
+<section id="beneficios-de-la-adopción-de-r-para-la-ciencia" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="beneficios-de-la-adopción-de-r-para-la-ciencia"><span class="header-section-number">1.3.3</span> Beneficios de la adopción de R para la Ciencia</h3>
+<p><strong>Transparencia</strong>: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).</p>
+<p><strong>Eficiencia</strong>: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, lo que optimiza los recursos y el tiempo (Gentleman &amp; Temple Lang, 2007).</p>
+<p><strong>Credibilidad</strong>: El uso de R facilita el cumplimiento de los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo la gestión adecuada de los datos científicos (Wilkinson et al., 2016).</p>
 
 
 </section>
@@ -1029,10 +982,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Introducción">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Introducción</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_cbasicos.html" class="pagination-link" aria-label="Conceptos básicos de R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Entorno.html" class="pagination-link" aria-label="Entorno de desarrollo: RStudio">
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Entorno de desarrollo: RStudio</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

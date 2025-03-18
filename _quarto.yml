@@ -31,7 +31,7 @@ book:
   chapters:
     - index.qmd
     - part: "Capítulo 1: Introducción a R y RStudio"
-    - basics.qmd
+    - 01_cbasicos.qmd
     - Entorno.qmd
     - install.qmd
     - part: "Capítulo 2: Conceptos básicos de R"

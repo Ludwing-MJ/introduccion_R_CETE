@@ -1,0 +1,125 @@
+# Conceptos básicos de R
+
+## ¿Qué es R?
+
+R es un lenguaje de programación y un entorno computacional ampliamente utilizado en el análisis estadístico, la ciencia de datos y la visualización científica. Fue desarrollado por Ross Ihaka y Robert Gentleman en 1996 con el propósito de ofrecer una herramienta poderosa y flexible para realizar análisis reproducibles y visualizaciones de alta calidad. Desde su creación, R se ha consolidado como una de las herramientas más populares en las comunidades científica, académica y profesional (Ihaka & Gentleman, 1996).
+
+![](https://miro.medium.com/v2/resize:fit:729/0*CtJIRkWvZK_8GnzM.png){fig-align="center" width="500"}
+
+### Características principales de R
+
+**Especialización en análisis estadístico**: R está diseñado para realizar análisis estadísticos complejos, desde pruebas básicas como t-tests y ANOVA hasta modelos avanzados como regresión, análisis multivariado y aprendizaje automático.
+
+**Visualización de datos**: Incluye herramientas para crear gráficos de alta calidad y personalizables. Con paquetes como `ggplot2`, es posible generar visualizaciones avanzadas que permiten explorar y comunicar patrones en los datos de manera efectiva.
+
+**Lenguaje de código abierto**: R es un software de código abierto, lo que lo hace gratuito y accesible para todos. Esto fomenta la colaboración y el desarrollo continuo por parte de una comunidad global de usuarios y desarrolladores.
+
+**Extensibilidad mediante paquetes**: R cuenta con una amplia colección de paquetes (más de 19,000 disponibles en CRAN hasta 2023) que amplían sus capacidades. Estos paquetes permiten realizar tareas específicas, como análisis genómico, minería de texto, modelado espacial y más (R Core Team, 2023).
+
+**Reproducibilidad**: R promueve la investigación reproducible al permitir que los análisis se documenten en scripts, asegurando que los resultados puedan ser replicados por otros investigadores o por el mismo usuario en el futuro.
+
+**Interoperabilidad**: R puede integrarse con otros lenguajes de programación como Python, C++ y SQL, y es compatible con múltiples formatos de datos, como CSV, Excel, JSON y bases de datos relacionales.
+
+### ¿Por qué es especial R?
+
+R no solo es una herramienta para realizar cálculos estadísticos, sino que también es un entorno completo para la manipulación de datos, la creación de gráficos y la automatización de flujos de trabajo. Su flexibilidad y capacidad de personalización lo convierten en una opción ideal para investigadores, analistas de datos y profesionales de diversas disciplinas.
+
+Además, R es altamente extensible gracias a su comunidad activa, que constantemente desarrolla nuevos paquetes y recursos. Esto lo convierte en una herramienta en constante evolución, capaz de adaptarse a las necesidades cambiantes de la ciencia y la industria.
+
+En resumen, R es mucho más que un lenguaje de programación: es una plataforma integral para el análisis de datos, la visualización y la investigación reproducible, lo que lo hace indispensable en el ámbito académico y profesional.
+
+## ¿Qué es RStudio?
+
+RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con el lenguaje de programación R. Este entorno proporciona una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo en R, facilitando tanto el análisis estadístico como la visualización de datos. Su diseño está orientado a mejorar la productividad y la reproducibilidad en proyectos de análisis de datos, investigación científica y desarrollo de aplicaciones (Allaire et al. 2022).
+
+![](https://www.databricks.com/sites/default/files/2018/06/RStudio-Logo-All-Color-partners.png){fig-align="center" width="500"}
+
+### Características principales de RStudio
+
+**Interfaz intuitiva y organizada**: RStudio divide su interfaz en paneles que permiten acceder fácilmente a diferentes herramientas y funciones. Estos paneles incluyen:
+
+1.  **Editor de scripts**: Donde se escribe y edita el código R.
+
+2.  **Consola**: Para ejecutar comandos y ver resultados en tiempo real.
+
+3.  **Environment/History**: Muestra los objetos creados en la sesión actual y el historial de comandos ejecutados.
+
+4.  **Plots/Files/Packages/Help**: Panel multifuncional para visualizar gráficos, gestionar archivos, instalar paquetes y acceder a documentación.
+
+**Sistema de proyectos**: RStudio permite organizar el trabajo en proyectos, lo que facilita la gestión de archivos, scripts y datos relacionados con un análisis específico. Cada proyecto tiene su propio directorio de trabajo, lo que mejora la organización y la reproducibilidad.
+
+**Compatibilidad con múltiples formatos**: RStudio soporta la importación y exportación de datos en diversos formatos, como CSV, Excel, html y bases de datos SQL. Además, permite trabajar con gráficos interactivos y aplicaciones web mediante paquetes como `shiny` y `plotly`.
+
+**Integración con paquetes y extensiones**: RStudio facilita la instalación y el uso de paquetes de R, como `ggplot2` para gráficos, `dplyr` para manipulación de datos y `tidyr` para transformación de datos. También permite gestionar dependencias y actualizar paquetes de manera sencilla.
+
+**Soporte multiplataforma**: RStudio está disponible para sistemas operativos Windows, macOS y Linux, lo que lo hace accesible para una amplia variedad de usuarios.
+
+**Personalización y extensibilidad**: Los usuarios pueden personalizar la apariencia y el comportamiento de RStudio, como cambiar temas, atajos de teclado y configuraciones de paneles. Además, se pueden integrar herramientas externas, como Git para control de versiones.
+
+### Beneficios de usar RStudio
+
+**Eficiencia**: Su diseño permite realizar tareas de análisis de datos de manera más rápida y organizada.
+
+**Reproducibilidad**: Las herramientas integradas, como R Markdown y el sistema de proyectos, garantizan que los análisis puedan ser replicados fácilmente.
+
+**Accesibilidad**: Su interfaz gráfica es ideal tanto para principiantes como para usuarios avanzados.
+
+**Flexibilidad**: Permite trabajar con datos, gráficos, modelos estadísticos y aplicaciones interactivas en un solo entorno.
+
+## Reproducibilidad y replicabilidad en la investigación científica
+
+El 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente (Baker, 2016).
+
+**Problemática:** En herramientas como Excel o Infostat, los cálculos suelen realizarse en celdas ocultas y los gráficos se ajustan manualmente. Esto dificulta la replicación exacta de los análisis, incluso por parte del mismo autor después de un tiempo.
+
+**Solución:** el uso de R permite documentar cada paso del análisis mediante scripts, lo que garantiza que los procedimientos puedan ser replicados y reinterpretados en el futuro.
+
+![Un script de R puede compararse con una receta, ya que permite ser seguido paso a paso para reproducir el mismo análisis. De manera similar a una receta que puede ser reinterpretada al modificar los ingredientes, un script puede adaptarse para realizar un análisis diferente utilizando nuevos datos.](https://bibliobasella.wordpress.com/wp-content/uploads/2015/04/cc27b-freir2bun2bhuevo.jpg){fig-align="center" width="500"}
+
+### Reproducibilidad
+
+La reproducibilidad se define como la capacidad de obtener los mismos resultados utilizando los mismos datos y métodos que se emplearon en un análisis original. Este concepto es esencial en la investigación científica, ya que permite verificar y validar los resultados de un estudio. Según el informe de las *National Academies of Sciences, Engineering, and Medicine* (2019), la reproducibilidad garantiza que los resultados puedan ser replicados por otros investigadores o por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.
+
+#### Características clave de la reproducibilidad:
+
+**Uso de los mismos datos**: Los datos originales deben estar disponibles y ser accesibles para que otros puedan replicar el análisis.
+
+**Métodos documentados**: Es necesario que los pasos, herramientas y configuraciones utilizadas en el análisis estén claramente documentados.
+
+**Resultados consistentes**: Al repetir el análisis con los mismos datos y métodos, los resultados deben ser idénticos.
+
+#### Importancia de la reproducibilidad:
+
+**Transparencia**: Permite que otros investigadores comprendan cómo se obtuvieron los resultados.
+
+**Verificación**: Facilita la identificación de errores o inconsistencias en el análisis original.
+
+**Colaboración**: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente.
+
+### Replicabilidad
+
+La replicabilidad, por otro lado, se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las *National Academies of Sciences, Engineering, and Medicine* (2019), la replicabilidad es fundamental para evaluar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.
+
+#### Características clave de la replicabilidad:
+
+**Nuevos datos**: Se utilizan datos diferentes a los del estudio original, pero que representan un contexto similar.
+
+**Métodos adaptados**: Los métodos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.
+
+**Resultados consistentes**: Los hallazgos deben ser coherentes con los del estudio original, aunque no necesariamente idénticos.
+
+#### Importancia de la replicabilidad:
+
+**Generalización**: Evalúa si los resultados del estudio original son aplicables en otros contextos o poblaciones.
+
+**Credibilidad científica**: Refuerza la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.
+
+**Avance del conocimiento**: Permite explorar nuevas aplicaciones o extensiones de los hallazgos originales.
+
+### Beneficios de la adopción de R para la Ciencia
+
+**Transparencia**: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).
+
+**Eficiencia**: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, lo que optimiza los recursos y el tiempo (Gentleman & Temple Lang, 2007).
+
+**Credibilidad**: El uso de R facilita el cumplimiento de los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo la gestión adecuada de los datos científicos (Wilkinson et al., 2016).
