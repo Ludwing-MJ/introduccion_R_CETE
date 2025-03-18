@@ -30,18 +30,23 @@ book:
         
   chapters:
     - index.qmd
-    - part: "Capítulo 1: Conociendo R y RStudio"
+    - part: "Capítulo 1: Introducción a R y RStudio"
     - basics.qmd
     - Entorno.qmd
     - install.qmd
+    - part: "Capítulo 2: Conceptos básicos de R"
     - inicio.qmd
     - datos.qmd
     - importacion.qmd
     - operadores.qmd
-    - manipulacion.qmd
-    - visualizacion.qmd
-    - exportacion.qmd
     - paquetes.qmd
+    - part: "Capítulo 3: Manipulación de datos"
+    - manipulacion.qmd
+    - part: "Capítulo 4: Visualización de datos"
+    - visualizacion.qmd
+    - part: "Capítulo 5: Exportación de resultados"
+    - exportacion.qmd
+    - part: "Capítulo 6: Material de apoyo y referencias"
     - references.qmd
 
 bibliography: references.bib

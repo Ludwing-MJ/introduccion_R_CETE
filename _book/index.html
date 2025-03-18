@@ -193,7 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Capítulo 1: Conociendo R y RStudio</span></span>
+ <span class="menu-text">Capítulo 1: Introducción a R y RStudio</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -213,6 +213,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Instalación y configuración</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Capítulo 2: Conceptos básicos de R</span></span>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./inicio.html" class="sidebar-item-text sidebar-link">
@@ -239,32 +243,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./manipulacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span></a>
+  <a href="./paquetes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Capítulo 3: Manipulación de datos</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./manipulacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Capítulo 4: Visualización de datos</span></span>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./visualizacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">visualización de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">visualización de datos</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Capítulo 5: Exportación de resultados</span></span>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
-  </div>
-</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Capítulo 6: Material de apoyo y referencias</span></span>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></span></a>
   </div>
 </li>
     </ul>
@@ -328,6 +348,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introducción" class="level1 unnumbered">
 <h1 class="unnumbered">Introducción</h1>
+<p>La ciencia de datos, con un enfoque estadístico, permite transformar datos en bruto en información comprensible y útil para la toma de decisiones. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del texto, se abordan conceptos básicos y se presentan ejemplos prácticos que facilitan la comprensión de técnicas estadísticas esenciales. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
 <section id="en-qué-consiste-este-manual" class="level2">
 <h2 class="anchored" data-anchor-id="en-qué-consiste-este-manual">¿En qué consiste este manual?</h2>
 <p>El presente manual, tiene como objetivo proporcionar una guía práctica y estructurada para el aprendizaje y uso del lenguaje de programación R. Este se diseñó para facilitar la comprensión de conceptos fundamentales, desde la instalación de R y RStudio hasta la manipulación de datos, visualización gráfica y exportación de resultados.</p>
@@ -336,20 +357,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="cómo-esta-organizado-este-manual" class="level2">
 <h2 class="anchored" data-anchor-id="cómo-esta-organizado-este-manual">¿Cómo esta organizado este manual?</h2>
+<p>Este manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, con un enfoque en el análisis estadístico. Su estructura sigue un enfoque progresivo, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
+<p>El contenido se organiza en los siguientes capítulos principales:</p>
+<ol type="1">
+<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
+<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
+<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
+<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
+<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
+<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
+</ol>
+<p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
 </section>
 <section id="pre-requisitos" class="level2">
 <h2 class="anchored" data-anchor-id="pre-requisitos">Pre requisitos</h2>
+<p>Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:</p>
+<ol type="1">
+<li><p><strong>Interés por aprender</strong>: La curiosidad y disposición para explorar un nuevo lenguaje de programación.</p></li>
+<li><p><strong>Acceso a una computadora</strong>: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.</p></li>
+<li><p><strong>Paciencia y práctica</strong>: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.</p></li>
+</ol>
+<p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
 </section>
 <section id="colofón" class="level2">
 <h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
-<p>La versión <em>online</em> de este manual está disponible en <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE">cambiar enlace de publicación cuando este publicado</a>. La fuente del manual en español está disponible en <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. El manual funciona con <a href="https://quarto.org/" class="uri">https://quarto.org/</a>, que hace fácil convertir archivos en quarto (.qmd) a HTML, PDF e EPUB.</p>
+<p>La versión en línea de este manual estará disponible en <code>[enlace de publicación] (actualizar una vez publicado)</code>. La fuente del manual en español se encuentra en el repositorio: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/">Quarto</a>, una herramienta que facilita la conversión de archivos <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB. Además, Quarto permite trabajar con una interfaz visual y amigable para el desarrollador desde RStudio, optimizando la creación de contenido reproducible y accesible.</p>
 <p>Este manual fue construido con:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
 comando ejecutado '"quarto"
-TMPDIR=C:/Users/Usuario/AppData/Local/Temp/RtmpiSSIBk/file434035857036 -V'
+TMPDIR=C:/Users/Usuario/AppData/Local/Temp/RtmpEPJibE/file30283074766e -V'
 tiene el estatus 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">

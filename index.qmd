@@ -12,7 +12,35 @@ Este manual está dirigido a estudiantes, investigadores y profesionales interes
 
 ## ¿Cómo esta organizado este manual?
 
+Este manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, con un enfoque en el análisis estadístico. Su estructura sigue un enfoque progresivo, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.
+
+El contenido se organiza en los siguientes capítulos principales:
+
+1.  **Introducción a R y RStudio**: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.
+
+2.  **Conceptos básicos de R**: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.
+
+3.  **Manipulación de datos**: Se introduce el uso de herramientas como `dplyr` y `tidyr` para transformar y organizar datos de manera eficiente.
+
+4.  **Visualización de datos**: Se enseña a crear gráficos básicos y personalizados utilizando el paquete `ggplot2`.
+
+5.  **Exportación de resultados**: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.
+
+6.  **Material de apoyo y referencias**: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.
+
+Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.
+
 ## Pre requisitos
+
+Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:
+
+1.  **Interés por aprender**: La curiosidad y disposición para explorar un nuevo lenguaje de programación.
+
+2.  **Acceso a una computadora**: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.
+
+3.  **Paciencia y práctica**: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.
+
+Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.
 
 ## Colofón
 
