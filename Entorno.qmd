@@ -1,9 +1,0 @@
----
-title: "Entorno de desarrollo: RStudio"
----
-
-## ¿Qué es RStudio?
-
-## Características y ventajas de RStudio
-
-## Reproducibilidad y replicabilidad en R y RStudio
