@@ -855,5 +855,45 @@
     "crumbs": [
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Estructura de datos en R</span>"
     ]
+  },
+  {
+    "objectID": "05_importacion.html",
+    "href": "05_importacion.html",
+    "title": "5  Importacion de datos",
+    "section": "",
+    "text": "5.1 Importación de archivos CSV\nLa importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. En R, los datos pueden provenir de diversas fuentes, como archivos CSV, Excel o incluso páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información sin necesidad de manipularlos manualmente. Además, establecer un directorio de trabajo adecuado facilita la organización y asegura que los scripts sean portables y reproducibles en diferentes entornos.\nEn esta sección, se explicará cómo importar datos desde archivos CSV, Excel y HTML, así como la configuración del directorio de trabajo cuando se trabaja en un script que no pertenece a ningún proyecto .Rproj.\nLos archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función read.csv(), que permite leer el contenido del archivo y almacenarlo como un data frame.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
+    ]
+  },
+  {
+    "objectID": "05_importacion.html#importación-de-archivos-csv",
+    "href": "05_importacion.html#importación-de-archivos-csv",
+    "title": "5  Importacion de datos",
+    "section": "",
+    "text": "5.1.1 Metodología para importar de un archivo CSV\n\n# Importar un archivo CSV\ndatos &lt;- read.csv(\"ruta/del/archivo/datos.csv\", header = TRUE, sep = \",\")\n\n# Visualizar los primeros registros del data frame\nhead(datos)\n\nheader = TRUE: Indica que el archivo tiene una fila de encabezado con los nombres de las columnas.\nsep = \",\": Especifica que los valores están separados por comas (el argumento de esta parte de la función puede variar si el archivo utiliza un separador distinto como por ejemplo “;”).\nNota: Es importante asegurarse de que el archivo esté en el directorio de trabajo o proporcionar la ruta completa.\n\n\n5.1.2 Ejemplo de importación de un archivo CSV\nEn el año 2002 se realizó un estudió en la Universidad de San Carlos de Guatemala donde se recopilaron distintos datos de 460 estudiantes de distintas facultades. Esta base de datos se encuentra disponible para su descarga en formato CSV en el siguiente enlace. Esta base de datos cuenta con una variedad de tipos de variables lo que la hace un excelente recurso que se utilizara a lo largo del manual para poder realizar los ejercicios donde se aplicaran las distintas herramientas que se irán desarrollando en el presente manual. Para realizar el siguiente ejemplo en el ordenador del usuario es necesario descargar el archivo y moverlo a la carpeta donde se encuentra el proyecto en curso.\n\n# Importar el archivo CSV con los datos \ndatos &lt;- read.csv(\"datos_estudiantes.csv\", header = TRUE, sep = \",\")\n\n# Visualizar los primeros registros del data frame\nhead(datos)\n\n  FACULTAD EDAD SEXO EST_CIVIL TRABAJA    JORNADA AÑO_ING PESO_lbs TALLA Fuma\n1   Admon.   21    M   soltero       2 vespertina    1998      150  1.70    2\n2   Admon.   21    M   soltero       1 vespertina    1998      150  1.72    2\n3   Admon.   31    F    casado       1   nocturna    1991      197  1.55    1\n4   Admon.   38    M     unido       1   nocturna    1992      120  1.70    2\n5   Admon.   24    M    casado       1   nocturna    1995      175  1.70    2\n6   Admon.   34    M   soltero       2   nocturna    1986      156  1.70    2\n  Alcohol\n1       2\n2       1\n3       2\n4       2\n5       2\n6       2\n\n\nLa función head() en R se utiliza para visualizar las primeras filas de un data frame, vector, matriz u otro objeto de datos. Su propósito principal es proporcionar una vista rápida de los datos, permitiendo al usuario verificar la estructura, los nombres de las columnas y los primeros valores sin tener que imprimir todo el conjunto de datos.\nNota: En el ejemplo para importar el archivo solamente se colocó el nombre del archivo (incluyendo su extensión) sin necesidad de colocar la ruta exacta del archivo y R interpretó automáticamente que debía importar el archivo con ese nombre ubicado en la misma carpeta que el script. Esto se debe a que al estar trabajando en un proyecto con un directorio de trabajo establecido no hay necesidad de colocar la ruta de los archivos que se quieran importar siempre que estos se encuentren en la misma carpeta.",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
+    ]
+  },
+  {
+    "objectID": "05_importacion.html#importación-de-archivos-excel",
+    "href": "05_importacion.html#importación-de-archivos-excel",
+    "title": "5  Importacion de datos",
+    "section": "5.2 Importación de archivos Excel",
+    "text": "5.2 Importación de archivos Excel\nhttps://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
+    ]
+  },
+  {
+    "objectID": "05_importacion.html#configuración-del-directorio-de-trabajo",
+    "href": "05_importacion.html#configuración-del-directorio-de-trabajo",
+    "title": "5  Importacion de datos",
+    "section": "5.3 Configuración del directorio de trabajo",
+    "text": "5.3 Configuración del directorio de trabajo",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
+    ]
   }
 ]

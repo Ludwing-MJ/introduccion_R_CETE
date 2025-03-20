@@ -36,7 +36,7 @@ book:
     - part: "Capítulo 2: Conceptos básicos de R"
     - 03_inicio.qmd
     - 04_datos.qmd
-    - importacion.qmd
+    - 05_importacion.qmd
     - operadores.qmd
     - paquetes.qmd
     - part: "Capítulo 3: Manipulación de datos"

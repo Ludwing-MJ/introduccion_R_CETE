@@ -1,9 +1,0 @@
----
-title: "Importacion de datos"
----
-
-## Importación de archivos CSV
-
-## Importación de archivos Excel
-
-## Configuración del directorio de trabajo

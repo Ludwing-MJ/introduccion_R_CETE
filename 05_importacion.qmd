@@ -1,0 +1,47 @@
+# Importacion de datos
+
+La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. En R, los datos pueden provenir de diversas fuentes, como archivos CSV, Excel o incluso páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información sin necesidad de manipularlos manualmente. Además, establecer un directorio de trabajo adecuado facilita la organización y asegura que los scripts sean portables y reproducibles en diferentes entornos.
+
+En esta sección, se explicará cómo importar datos desde archivos CSV, Excel y HTML, así como la configuración del directorio de trabajo cuando se trabaja en un script que no pertenece a ningún proyecto `.Rproj`.
+
+## Importación de archivos CSV
+
+Los archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función `read.csv()`, que permite leer el contenido del archivo y almacenarlo como un data frame.
+
+### Metodología para importar de un archivo CSV
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Importar un archivo CSV
+datos <- read.csv("ruta/del/archivo/datos.csv", header = TRUE, sep = ",")
+
+# Visualizar los primeros registros del data frame
+head(datos)
+```
+
+**`header = TRUE`**: Indica que el archivo tiene una fila de encabezado con los nombres de las columnas.
+
+**`sep = ","`**: Especifica que los valores están separados por comas (el argumento de esta parte de la función puede variar si el archivo utiliza un separador distinto como por ejemplo **";"**).
+
+**Nota:** Es importante asegurarse de que el archivo esté en el directorio de trabajo o proporcionar la ruta completa.
+
+### Ejemplo de importación de un archivo CSV
+
+En el año 2002 se realizó un estudió en la Universidad de San Carlos de Guatemala donde se recopilaron distintos datos de 460 estudiantes de distintas facultades. Esta base de datos se encuentra disponible para su descarga en formato CSV en el siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing). Esta base de datos cuenta con una variedad de tipos de variables lo que la hace un excelente recurso que se utilizara a lo largo del manual para poder realizar los ejercicios donde se aplicaran las distintas herramientas que se irán desarrollando en el presente manual. Para realizar el siguiente ejemplo en el ordenador del usuario es necesario descargar el archivo y moverlo a la carpeta donde se encuentra el proyecto en curso.
+
+```{r}
+# Importar el archivo CSV con los datos 
+datos <- read.csv("datos_estudiantes.csv", header = TRUE, sep = ",")
+
+# Visualizar los primeros registros del data frame
+head(datos)
+```
+
+La función `head()` en R se utiliza para visualizar las primeras filas de un data frame, vector, matriz u otro objeto de datos. Su propósito principal es proporcionar una vista rápida de los datos, permitiendo al usuario verificar la estructura, los nombres de las columnas y los primeros valores sin tener que imprimir todo el conjunto de datos.
+
+**Nota:** En el ejemplo para importar el archivo solamente se colocó el nombre del archivo (incluyendo su extensión) sin necesidad de colocar la ruta exacta del archivo y R interpretó automáticamente que debía importar el archivo con ese nombre ubicado en la misma carpeta que el script. Esto se debe a que al estar trabajando en un proyecto con un directorio de trabajo establecido no hay necesidad de colocar la ruta de los archivos que se quieran importar siempre que estos se encuentren en la misma carpeta.
+
+## Importación de archivos Excel
+
+<https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true>
+
+## Configuración del directorio de trabajo
