@@ -46,7 +46,7 @@ Una vez instalados R y RStudio, es recomendable realizar una configuración inic
 
 En RStudio, se puede elegir la versión de R que se utilizará. Esto es útil si se tienen múltiples versiones instaladas. Para configurarlo, se debe ir a *Tools \> Global Options \> General* y seleccionar la versión deseada en el apartado *R version*.
 
-### Configurar la apariencia de la interfaz de RStudio
+### Configurar la apariencia de RStudio
 
 RStudio permite personalizar su apariencia para adaptarse a las preferencias del usuario y mejorar la experiencia de trabajo. A continuación, se describen los pasos para configurar la apariencia de la interfaz:
 
