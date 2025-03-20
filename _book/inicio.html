@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -257,9 +291,18 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#creación-de-scripts-en-rstudio" id="toc-creación-de-scripts-en-rstudio" class="nav-link active" data-scroll-target="#creación-de-scripts-en-rstudio"><span class="header-section-number">3.1</span> Creación de scripts en RStudio</a></li>
-  <li><a href="#guardado-y-organización-de-archivos" id="toc-guardado-y-organización-de-archivos" class="nav-link" data-scroll-target="#guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</a></li>
+  <li><a href="#guardado-y-organización-de-archivos" id="toc-guardado-y-organización-de-archivos" class="nav-link" data-scroll-target="#guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</a>
+  <ul class="collapse">
+  <li><a href="#recomendaciones-para-la-organización-de-archivos" id="toc-recomendaciones-para-la-organización-de-archivos" class="nav-link" data-scroll-target="#recomendaciones-para-la-organización-de-archivos"><span class="header-section-number">3.2.1</span> Recomendaciones para la organización de archivos</a></li>
+  </ul></li>
   <li><a href="#introducción-a-los-objetos-en-r" id="toc-introducción-a-los-objetos-en-r" class="nav-link" data-scroll-target="#introducción-a-los-objetos-en-r"><span class="header-section-number">3.3</span> Introducción a los objetos en R</a></li>
-  <li><a href="#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos" id="toc-tipos-de-objetos-en-r-numéricos-texto-factores-lógicos" class="nav-link" data-scroll-target="#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos"><span class="header-section-number">3.4</span> Tipos de objetos en R (numéricos, texto, factores, lógicos)</a></li>
+  <li><a href="#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos" id="toc-tipos-de-objetos-en-r-numéricos-texto-factores-lógicos" class="nav-link" data-scroll-target="#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos"><span class="header-section-number">3.4</span> Tipos de objetos en R (numéricos, texto, factores, lógicos)</a>
+  <ul class="collapse">
+  <li><a href="#objetos-numéricos" id="toc-objetos-numéricos" class="nav-link" data-scroll-target="#objetos-numéricos"><span class="header-section-number">3.4.1</span> Objetos Numéricos</a></li>
+  <li><a href="#objetos-de-texto" id="toc-objetos-de-texto" class="nav-link" data-scroll-target="#objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</a></li>
+  <li><a href="#objetos-de-tipo-factor" id="toc-objetos-de-tipo-factor" class="nav-link" data-scroll-target="#objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</a></li>
+  <li><a href="#objetos-lógicos" id="toc-objetos-lógicos" class="nav-link" data-scroll-target="#objetos-lógicos"><span class="header-section-number">3.4.4</span> Objetos Lógicos</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -287,17 +330,98 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="creación-de-scripts-en-rstudio" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="creación-de-scripts-en-rstudio"><span class="header-section-number">3.1</span> Creación de scripts en RStudio</h2>
+<p>Para comenzar a trabajar en RStudio, es fundamental crear un script donde se pueda escribir y guardar el código. Un script es un archivo que contiene las instrucciones que se ejecutarán en R. Existen dos métodos principales para crear un script en RStudio:</p>
+<ol type="1">
+<li><p><strong>Manualmente:</strong> El usuario debe desplegar la pestaña ‘File’ en la barra de opciones superior, seleccionar ‘New File’ y luego elegir ‘R Script’.</p></li>
+<li><p><strong>Utilizando atajos de teclado:</strong> Se puede presionar la combinación de teclas Ctrl+Shift+N para crear un nuevo script de manera rápida.</p></li>
+</ol>
+<p>Una vez creado, el script se convierte en un espacio de trabajo donde se desarrollarán los análisis y se documentarán los pasos realizados.</p>
 </section>
 <section id="guardado-y-organización-de-archivos" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</h2>
+<p>Es importante guardar el script desde el inicio para evitar la pérdida de trabajo. Para ello, se debe seleccionar la opción “Save As…” en la pestaña “File”, lo que permitirá elegir la ubicación y el nombre del archivo. Se recomienda utilizar nombres descriptivos y consistentes para facilitar la identificación de los archivos en el futuro.</p>
+<p>Además, se sugiere organizar los archivos en carpetas específicas para cada proyecto. Esto incluye para proyectos demasiado grandes separar los scripts, datos y resultados en directorios bien definidos. Si antes de crear nuestro script creamos un proyecto de R <code>.Rproj</code> al que ya sea le asignamos una carpeta como directorio de trabajo, al guardar nuestros scripts pertenecientes a ese proyecto lo debemos hacer en la misma carpeta donde se encuentra el archivo <code>.Rproj</code>.</p>
+<p>La organización adecuada no solo ahorra tiempo, sino que también mejora la reproducibilidad del análisis, permitiendo que otros colaboradores o al propio usuario en el futuro entender y replicar el trabajo realizado.</p>
+<section id="recomendaciones-para-la-organización-de-archivos" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="recomendaciones-para-la-organización-de-archivos"><span class="header-section-number">3.2.1</span> Recomendaciones para la organización de archivos</h3>
+<p>La organización de archivos en RStudio es fundamental para garantizar un flujo de trabajo eficiente y reproducible. Así como en una cocina bien organizada se separan los utensilios, ingredientes frescos y especias en cajones etiquetados, en RStudio es necesario establecer un sistema claro para guardar scripts, datos y resultados. Un proyecto desorganizado puede compararse con una alacena caótica: se pierde tiempo buscando archivos y se corre el riesgo de cometer errores. Para evitar estos problemas, se recomienda seguir las siguientes prácticas:</p>
+<section id="utilizar-nombres-descriptivos-y-consistentes" class="level4" data-number="3.2.1.1">
+<h4 data-number="3.2.1.1" class="anchored" data-anchor-id="utilizar-nombres-descriptivos-y-consistentes"><span class="header-section-number">3.2.1.1</span> Utilizar nombres descriptivos y consistentes</h4>
+<p>Es importante asignar nombres que describan claramente el contenido del archivo y que sigan un formato uniforme. Por ejemplo:</p>
+<ol type="1">
+<li><p>Para scripts: <em>analisis1.R</em> o <em>20231015_analisis_rendimiento_maiz.R</em>.</p></li>
+<li><p>Para datos: <em>datos_finales.xlsx</em> o <em>datos_suelo_antigua_2023.csv</em>.</p></li>
+</ol>
+</section>
+<section id="evitar-espacios-y-caracteres-especiales" class="level4" data-number="3.2.1.2">
+<h4 data-number="3.2.1.2" class="anchored" data-anchor-id="evitar-espacios-y-caracteres-especiales"><span class="header-section-number">3.2.1.2</span> Evitar espacios y caracteres especiales</h4>
+<p>Los nombres de los archivos y los objetos en R no deben incluir espacios ni caracteres especiales, ya que esto puede generar problemas al trabajar con ellos en R. En su lugar, se recomienda usar guiones bajos (_) o guiones medios (-). Por ejemplo:</p>
+<p>En lugar de <em>analisis suelo.R</em>, usar <em>analisis_suelo.R</em>.</p>
+</section>
+<section id="incluir-fechas-en-un-formato-estandarizado" class="level4" data-number="3.2.1.3">
+<h4 data-number="3.2.1.3" class="anchored" data-anchor-id="incluir-fechas-en-un-formato-estandarizado"><span class="header-section-number">3.2.1.3</span> Incluir fechas en un formato estandarizado</h4>
+<p>Incorporar fechas en los nombres de los archivos es una práctica útil para identificar rápidamente versiones o actualizaciones. Se sugiere utilizar el formato estándar <em>YYYY-MM-DD</em>. Por ejemplo:</p>
+<p><em>2023-10-15_importacion_datos.R</em>.</p>
+</section>
+<section id="crear-una-carpeta-específica-para-cada-proyecto" class="level4" data-number="3.2.1.4">
+<h4 data-number="3.2.1.4" class="anchored" data-anchor-id="crear-una-carpeta-específica-para-cada-proyecto"><span class="header-section-number">3.2.1.4</span> Crear una carpeta específica para cada proyecto</h4>
+<p>Es recomendable organizar los archivos de cada proyecto en carpetas separadas. Esto facilita el acceso y asegura que todos los elementos relacionados con un proyecto estén agrupados en un solo lugar.</p>
+<p>Adoptar estas prácticas permite que cualquier colaborador, o incluso uno mismo en el futuro, pueda encontrar y comprender rápidamente los archivos necesarios. La organización no es un detalle menor, sino la base para trabajar de manera eficiente y garantizar la reproducibilidad de los análisis.</p>
+</section>
+</section>
 </section>
 <section id="introducción-a-los-objetos-en-r" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="introducción-a-los-objetos-en-r"><span class="header-section-number">3.3</span> Introducción a los objetos en R</h2>
+<p>En R, todo se maneja como un objeto. Un objeto es una estructura que almacena datos y tiene atributos como nombre y tipo. Los objetos son fundamentales para trabajar en R, ya que permiten almacenar y manipular información de manera eficiente.</p>
+<p>Para crear un objeto, se utiliza un operador de asignación, que puede ser ‘=’ o ‘&lt;-’. Sin embargo, se recomienda el uso de ‘&lt;-’ por ser el estándar en la comunidad de R. Por ejemplo, para asignar el valor 10 a un objeto llamado ‘x’, se puede escribir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación del primer objeto en R</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="tipos-de-objetos-en-r-numéricos-texto-factores-lógicos" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="tipos-de-objetos-en-r-numéricos-texto-factores-lógicos"><span class="header-section-number">3.4</span> Tipos de objetos en R (numéricos, texto, factores, lógicos)</h2>
+<section id="objetos-numéricos" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="objetos-numéricos"><span class="header-section-number">3.4.1</span> Objetos Numéricos</h3>
+<p>Los objetos numéricos almacenan datos como números enteros o decimales. Son útiles para representar variables cuantitativas como edad, altura o peso. Por ejemplo, se puede crear un objeto numérico de la siguiente manera:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos numéricos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="dv">21</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>altura_m <span class="ot">&lt;-</span> <span class="fl">1.70</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>peso_lb <span class="ot">&lt;-</span> <span class="dv">150</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="objetos-de-texto" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</h3>
+<p>Los objetos de texto, también conocidos como objetos de tipo carácter, almacenan cadenas de texto. Estos se escriben entre comillas dobles. Por ejemplo, para almacenar el nombre y color favorito de una persona, se puede escribir el siguiente codigo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos tipo carácter</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nombre <span class="ot">&lt;-</span> <span class="st">"Juan"</span> </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>color_favorito <span class="ot">&lt;-</span> <span class="st">"azul"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="objetos-de-tipo-factor" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</h3>
+<p>Los objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos, como escalas o categorías. Por ejemplo, para representar el estado civil y sexo de una persona, se puede escribir:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>) </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"masculino"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="objetos-lógicos" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="objetos-lógicos"><span class="header-section-number">3.4.4</span> Objetos Lógicos</h3>
+<p>Los objetos lógicos almacenan valores de tipo TRUE o FALSE, que resultan de comparaciones lógicas. Por ejemplo, para verificar si la persona del ejemplo que se esta desarrollando es mayor de edad, se puede resolver con el siguiente código:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mayoria_de_edad <span class="ot">&lt;-</span> edad <span class="sc">&gt;=</span> <span class="dv">18</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mayoria_de_edad</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+<p>Estos objetos son útiles para aplicar filtros y realizar análisis condicionales en los datos.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

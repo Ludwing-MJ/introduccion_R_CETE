@@ -334,7 +334,7 @@
     "href": "inicio.html",
     "title": "3  Primeros pasos en R",
     "section": "",
-    "text": "3.1 Creación de scripts en RStudio",
+    "text": "3.1 Creación de scripts en RStudio\nPara comenzar a trabajar en RStudio, es fundamental crear un script donde se pueda escribir y guardar el código. Un script es un archivo que contiene las instrucciones que se ejecutarán en R. Existen dos métodos principales para crear un script en RStudio:\nUna vez creado, el script se convierte en un espacio de trabajo donde se desarrollarán los análisis y se documentarán los pasos realizados.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
@@ -344,7 +344,7 @@
     "href": "inicio.html#guardado-y-organización-de-archivos",
     "title": "3  Primeros pasos en R",
     "section": "3.2 Guardado y organización de archivos",
-    "text": "3.2 Guardado y organización de archivos",
+    "text": "3.2 Guardado y organización de archivos\nEs importante guardar el script desde el inicio para evitar la pérdida de trabajo. Para ello, se debe seleccionar la opción “Save As…” en la pestaña “File”, lo que permitirá elegir la ubicación y el nombre del archivo. Se recomienda utilizar nombres descriptivos y consistentes para facilitar la identificación de los archivos en el futuro.\nAdemás, se sugiere organizar los archivos en carpetas específicas para cada proyecto. Esto incluye para proyectos demasiado grandes separar los scripts, datos y resultados en directorios bien definidos. Si antes de crear nuestro script creamos un proyecto de R .Rproj al que ya sea le asignamos una carpeta como directorio de trabajo, al guardar nuestros scripts pertenecientes a ese proyecto lo debemos hacer en la misma carpeta donde se encuentra el archivo .Rproj.\nLa organización adecuada no solo ahorra tiempo, sino que también mejora la reproducibilidad del análisis, permitiendo que otros colaboradores o al propio usuario en el futuro entender y replicar el trabajo realizado.\n\n3.2.1 Recomendaciones para la organización de archivos\nLa organización de archivos en RStudio es fundamental para garantizar un flujo de trabajo eficiente y reproducible. Así como en una cocina bien organizada se separan los utensilios, ingredientes frescos y especias en cajones etiquetados, en RStudio es necesario establecer un sistema claro para guardar scripts, datos y resultados. Un proyecto desorganizado puede compararse con una alacena caótica: se pierde tiempo buscando archivos y se corre el riesgo de cometer errores. Para evitar estos problemas, se recomienda seguir las siguientes prácticas:\n\n3.2.1.1 Utilizar nombres descriptivos y consistentes\nEs importante asignar nombres que describan claramente el contenido del archivo y que sigan un formato uniforme. Por ejemplo:\n\nPara scripts: analisis1.R o 20231015_analisis_rendimiento_maiz.R.\nPara datos: datos_finales.xlsx o datos_suelo_antigua_2023.csv.\n\n\n\n3.2.1.2 Evitar espacios y caracteres especiales\nLos nombres de los archivos y los objetos en R no deben incluir espacios ni caracteres especiales, ya que esto puede generar problemas al trabajar con ellos en R. En su lugar, se recomienda usar guiones bajos (_) o guiones medios (-). Por ejemplo:\nEn lugar de analisis suelo.R, usar analisis_suelo.R.\n\n\n3.2.1.3 Incluir fechas en un formato estandarizado\nIncorporar fechas en los nombres de los archivos es una práctica útil para identificar rápidamente versiones o actualizaciones. Se sugiere utilizar el formato estándar YYYY-MM-DD. Por ejemplo:\n2023-10-15_importacion_datos.R.\n\n\n3.2.1.4 Crear una carpeta específica para cada proyecto\nEs recomendable organizar los archivos de cada proyecto en carpetas separadas. Esto facilita el acceso y asegura que todos los elementos relacionados con un proyecto estén agrupados en un solo lugar.\nAdoptar estas prácticas permite que cualquier colaborador, o incluso uno mismo en el futuro, pueda encontrar y comprender rápidamente los archivos necesarios. La organización no es un detalle menor, sino la base para trabajar de manera eficiente y garantizar la reproducibilidad de los análisis.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
@@ -354,7 +354,7 @@
     "href": "inicio.html#introducción-a-los-objetos-en-r",
     "title": "3  Primeros pasos en R",
     "section": "3.3 Introducción a los objetos en R",
-    "text": "3.3 Introducción a los objetos en R",
+    "text": "3.3 Introducción a los objetos en R\nEn R, todo se maneja como un objeto. Un objeto es una estructura que almacena datos y tiene atributos como nombre y tipo. Los objetos son fundamentales para trabajar en R, ya que permiten almacenar y manipular información de manera eficiente.\nPara crear un objeto, se utiliza un operador de asignación, que puede ser ‘=’ o ‘&lt;-’. Sin embargo, se recomienda el uso de ‘&lt;-’ por ser el estándar en la comunidad de R. Por ejemplo, para asignar el valor 10 a un objeto llamado ‘x’, se puede escribir:\n\n# Creación del primer objeto en R\nx &lt;- 10",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
@@ -364,7 +364,7 @@
     "href": "inicio.html#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos",
     "title": "3  Primeros pasos en R",
     "section": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)",
-    "text": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)",
+    "text": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)\n\n3.4.1 Objetos Numéricos\nLos objetos numéricos almacenan datos como números enteros o decimales. Son útiles para representar variables cuantitativas como edad, altura o peso. Por ejemplo, se puede crear un objeto numérico de la siguiente manera:\n\n# Creación de objetos numéricos\nedad &lt;- 21 \naltura_m &lt;- 1.70 \npeso_lb &lt;- 150\n\n\n\n3.4.2 Objetos de Texto\nLos objetos de texto, también conocidos como objetos de tipo carácter, almacenan cadenas de texto. Estos se escriben entre comillas dobles. Por ejemplo, para almacenar el nombre y color favorito de una persona, se puede escribir el siguiente codigo:\n\n# Creación de objetos tipo carácter\nnombre &lt;- \"Juan\" \ncolor_favorito &lt;- \"azul\"\n\n\n\n3.4.3 Objetos de Tipo Factor\nLos objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos, como escalas o categorías. Por ejemplo, para representar el estado civil y sexo de una persona, se puede escribir:\n\nestado_civil &lt;- factor(\"soltero\") \nsexo &lt;- factor(\"masculino\")\n\n\n\n3.4.4 Objetos Lógicos\nLos objetos lógicos almacenan valores de tipo TRUE o FALSE, que resultan de comparaciones lógicas. Por ejemplo, para verificar si la persona del ejemplo que se esta desarrollando es mayor de edad, se puede resolver con el siguiente código:\n\nmayoria_de_edad &lt;- edad &gt;= 18\nmayoria_de_edad\n\n[1] TRUE\n\n\nEstos objetos son útiles para aplicar filtros y realizar análisis condicionales en los datos.",
     "crumbs": [
       "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
@@ -714,6 +714,66 @@
     "text": "2.4 Organización de proyectos\nLa organización de proyectos en RStudio es fundamental para mantener un flujo de trabajo eficiente y reproducible. A continuación, se presentan las mejores prácticas para organizar proyectos:\n\n2.4.1 Crear un proyecto en RStudio\n\nEn la barra de menú, selecciona File &gt; New Project.\nElige entre las opciones disponibles:\n\nNew Directory: Crea un proyecto desde cero en una nueva carpeta.\nExisting Directory: Convierte una carpeta existente en un proyecto de RStudio.\nVersion Control: Clona un repositorio de Git para trabajar en un proyecto versionado.\n\nConfigura el nombre y la ubicación del proyecto, y haz clic en Create Project.\n\n\n\n2.4.2 Establecer un directorio de trabajo\nEl directorio de trabajo es la carpeta donde R buscará automáticamente los archivos y guardará los resultados.\nPara establecer el directorio de trabajo, utiliza la función:\n\nsetwd(\"ruta/del/directorio\")\n\nAlternativamente, en un proyecto de RStudio, el directorio de trabajo se configura automáticamente al abrir el proyecto.\n\n\n2.4.3 Uso de archivos .Rproj\nEl archivo .Rproj es el núcleo del proyecto en RStudio. Al abrir este archivo, se cargará automáticamente el entorno de trabajo, el directorio y las configuraciones específicas del proyecto.\n\n\n2.4.4 Beneficios de la organización de proyectos\nReproducibilidad: Facilita que otros usuarios (o el propio usuario en el futuro) comprendan y reproduzcan el análisis.\nEficiencia: Reduce el tiempo perdido buscando archivos o configurando rutas manualmente.\nColaboración: Mejora la comunicación y el trabajo en equipo al mantener una estructura clara y consistente.\nPersonalizar la apariencia y organizar los proyectos en RStudio no solo mejora la comodidad visual, sino que también optimiza el flujo de trabajo, permitiendo que el usuario se enfoque en el análisis de datos de manera más eficiente y profesional.",
     "crumbs": [
       "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
+    ]
+  },
+  {
+    "objectID": "inicio.html#creación-de-scripts-en-rstudio",
+    "href": "inicio.html#creación-de-scripts-en-rstudio",
+    "title": "3  Primeros pasos en R",
+    "section": "",
+    "text": "Manualmente: El usuario debe desplegar la pestaña ‘File’ en la barra de opciones superior, seleccionar ‘New File’ y luego elegir ‘R Script’.\nUtilizando atajos de teclado: Se puede presionar la combinación de teclas Ctrl+Shift+N para crear un nuevo script de manera rápida.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+    ]
+  },
+  {
+    "objectID": "03_inicio.html",
+    "href": "03_inicio.html",
+    "title": "3  Primeros pasos en R",
+    "section": "",
+    "text": "3.1 Creación de scripts en RStudio\nIniciar el trabajo en R y RStudio puede parecer desafiante al principio, pero con una guía clara y organizada, el proceso se vuelve mucho más accesible. Esta sección está diseñada para acompañar al usuario en sus primeros pasos dentro de este entorno de programación, abordando desde la creación de scripts hasta la comprensión de los objetos básicos en R. Un script en RStudio no solo es un espacio para escribir código, sino también una herramienta esencial para documentar y reproducir análisis de datos de manera eficiente.\nAdemás, se explorarán las mejores prácticas para guardar y organizar archivos, lo que garantiza un flujo de trabajo ordenado y reproducible. También se introducirá el concepto de objetos en R, fundamentales para almacenar y manipular datos, junto con una descripción de los principales tipos de objetos (numéricos, texto, factores y lógicos). Este conocimiento inicial permitirá al usuario sentar las bases del conocimiento para utilizar R para realizar análisis estadístico y visualizaciones más adelante.\nPara comenzar a trabajar en RStudio, es fundamental crear un script donde se pueda escribir y guardar el código. Un script es un archivo que contiene las instrucciones que se ejecutarán en R. Existen dos métodos principales para crear un script en RStudio:\nUna vez creado, el script se convierte en un espacio de trabajo donde se desarrollarán los análisis y se documentarán los pasos realizados.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+    ]
+  },
+  {
+    "objectID": "03_inicio.html#creación-de-scripts-en-rstudio",
+    "href": "03_inicio.html#creación-de-scripts-en-rstudio",
+    "title": "3  Primeros pasos en R",
+    "section": "",
+    "text": "Manualmente: El usuario debe desplegar la pestaña ‘File’ en la barra de opciones superior, seleccionar ‘New File’ y luego elegir ‘R Script’.\nUtilizando atajos de teclado: Se puede presionar la combinación de teclas Ctrl+Shift+N para crear un nuevo script de manera rápida.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+    ]
+  },
+  {
+    "objectID": "03_inicio.html#guardado-y-organización-de-archivos",
+    "href": "03_inicio.html#guardado-y-organización-de-archivos",
+    "title": "3  Primeros pasos en R",
+    "section": "3.2 Guardado y organización de archivos",
+    "text": "3.2 Guardado y organización de archivos\nEs importante guardar el script desde el inicio para evitar la pérdida de trabajo. Para ello, se debe seleccionar la opción “Save As…” en la pestaña “File”, lo que permitirá elegir la ubicación y el nombre del archivo. Se recomienda utilizar nombres descriptivos y consistentes para facilitar la identificación de los archivos en el futuro.\nAdemás, se sugiere organizar los archivos en carpetas específicas para cada proyecto. Esto incluye para proyectos demasiado grandes separar los scripts, datos y resultados en directorios bien definidos. Si antes de crear nuestro script creamos un proyecto de R .Rproj al que ya sea le asignamos una carpeta como directorio de trabajo, al guardar nuestros scripts pertenecientes a ese proyecto lo debemos hacer en la misma carpeta donde se encuentra el archivo .Rproj.\nLa organización adecuada no solo ahorra tiempo, sino que también mejora la reproducibilidad del análisis, permitiendo que otros colaboradores o al propio usuario en el futuro entender y replicar el trabajo realizado.\n\n3.2.1 Recomendaciones para la organización de archivos\nLa organización de archivos en RStudio es fundamental para garantizar un flujo de trabajo eficiente y reproducible. Así como en una cocina bien organizada se separan los utensilios, ingredientes frescos y especias en cajones etiquetados, en RStudio es necesario establecer un sistema claro para guardar scripts, datos y resultados. Un proyecto desorganizado puede compararse con una alacena caótica: se pierde tiempo buscando archivos y se corre el riesgo de cometer errores. Para evitar estos problemas, se recomienda seguir las siguientes prácticas:\n\n3.2.1.1 Utilizar nombres descriptivos y consistentes\nEs importante asignar nombres que describan claramente el contenido del archivo y que sigan un formato uniforme. Por ejemplo:\nPara scripts: analisis1.R o 20231015_analisis_rendimiento_maiz.R.\nPara datos: datos_finales.xlsx o datos_suelo_antigua_2023.csv.\n\n\n3.2.1.2 Evitar espacios y caracteres especiales\nLos nombres de los archivos y los objetos en R no deben incluir espacios ni caracteres especiales, ya que esto puede generar problemas al trabajar con ellos en R. En su lugar, se recomienda usar guiones bajos (_) o guiones medios (-). Por ejemplo:\nEn lugar de analisis suelo.R, usar analisis_suelo.R.\n\n\n3.2.1.3 Incluir fechas en un formato estandarizado\nIncorporar fechas en los nombres de los archivos es una práctica útil para identificar rápidamente versiones o actualizaciones. Se sugiere utilizar el formato estándar YYYY-MM-DD. Por ejemplo:\n2023-10-15_importacion_datos.R.\n\n\n3.2.1.4 Crear una carpeta específica para cada proyecto\nEs recomendable organizar los archivos de cada proyecto en carpetas separadas. Esto facilita el acceso y asegura que todos los elementos relacionados con un proyecto estén agrupados en un solo lugar.\nAdoptar estas prácticas permite que cualquier colaborador, o incluso uno mismo en el futuro, pueda encontrar y comprender rápidamente los archivos necesarios. La organización no es un detalle menor, sino la base para trabajar de manera eficiente y garantizar la reproducibilidad de los análisis.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+    ]
+  },
+  {
+    "objectID": "03_inicio.html#introducción-a-los-objetos-en-r",
+    "href": "03_inicio.html#introducción-a-los-objetos-en-r",
+    "title": "3  Primeros pasos en R",
+    "section": "3.3 Introducción a los objetos en R",
+    "text": "3.3 Introducción a los objetos en R\nEn R, todo se maneja como un objeto. Un objeto es una estructura que almacena datos y tiene atributos como nombre y tipo. Los objetos son fundamentales para trabajar en R, ya que permiten almacenar y manipular información de manera eficiente.\nPara crear un objeto, se utiliza un operador de asignación, que puede ser ‘=’ o ‘&lt;-’. Sin embargo, se recomienda el uso de ‘&lt;-’ por ser el estándar en la comunidad de R. Por ejemplo, para asignar el valor 10 a un objeto llamado ‘x’, se puede escribir:\n\n# Creación del primer objeto en R\nx &lt;- 10",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+    ]
+  },
+  {
+    "objectID": "03_inicio.html#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos",
+    "href": "03_inicio.html#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos",
+    "title": "3  Primeros pasos en R",
+    "section": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)",
+    "text": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)\n\n3.4.1 Objetos Numéricos\nLos objetos numéricos almacenan datos como números enteros o decimales. Son útiles para representar variables cuantitativas como edad, altura o peso. Por ejemplo, se puede crear un objeto numérico de la siguiente manera:\n\n# Creación de objetos numéricos\nedad &lt;- 21 \naltura_m &lt;- 1.70 \npeso_lb &lt;- 150\n\nNota: En R, el símbolo numeral (#) se utiliza para incluir comentarios dentro del código. Las líneas que comienzan con este símbolo no son ejecutadas por el programa, ya que su propósito es servir como anotaciones que explican o documentan el código. Esto resulta especialmente útil para describir los pasos realizados, aclarar la funcionalidad de ciertas líneas o facilitar la comprensión del script a otros usuarios o al propio autor en el futuro.\n\n\n3.4.2 Objetos de Texto\nLos objetos de texto, también conocidos como objetos de tipo carácter, almacenan cadenas de texto. Estos se escriben entre comillas dobles. Por ejemplo, para almacenar el nombre y color favorito de una persona, se puede escribir el siguiente codigo:\n\n# Creación de objetos tipo carácter\nnombre &lt;- \"Juan\" \ncolor_favorito &lt;- \"azul\"\n\n\n\n3.4.3 Objetos de Tipo Factor\nLos objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos, como escalas o categorías. Por ejemplo, para representar el estado civil y sexo de una persona, se puede escribir:\n\n# Creación de objetos tipo factor\nestado_civil &lt;- factor(\"soltero\") \nsexo &lt;- factor(\"masculino\")\n\n\n\n3.4.4 Objetos Lógicos\nLos objetos lógicos almacenan valores de tipo TRUE o FALSE, que resultan de comparaciones lógicas. Por ejemplo, para verificar si la persona del ejemplo que se esta desarrollando es mayor de edad, se puede resolver con el siguiente código:\n\n# Creación de objetos lógicos\nmayoria_de_edad &lt;- edad &gt;= 18\nmayoria_de_edad\n\n[1] TRUE\n\n\nEstos objetos son útiles para aplicar filtros y realizar análisis condicionales en los datos.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
   }
 ]
