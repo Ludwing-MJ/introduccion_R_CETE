@@ -32,11 +32,11 @@
   {
     "objectID": "references.html",
     "href": "references.html",
-    "title": "12  Material de apoyo y referencias",
+    "title": "11  Material de apoyo y referencias",
     "section": "",
-    "text": "12.1 Material de apoyo",
+    "text": "11.1 Material de apoyo",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
     ]
   },
   {
@@ -332,129 +332,129 @@
   {
     "objectID": "inicio.html",
     "href": "inicio.html",
-    "title": "Primeros pasos en R",
+    "title": "3  Primeros pasos en R",
     "section": "",
-    "text": "Creación de scripts en RStudio",
+    "text": "3.1 Creación de scripts en RStudio",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
   },
   {
     "objectID": "inicio.html#guardado-y-organización-de-archivos",
     "href": "inicio.html#guardado-y-organización-de-archivos",
-    "title": "Primeros pasos en R",
-    "section": "Guardado y organización de archivos",
-    "text": "Guardado y organización de archivos",
+    "title": "3  Primeros pasos en R",
+    "section": "3.2 Guardado y organización de archivos",
+    "text": "3.2 Guardado y organización de archivos",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
   },
   {
     "objectID": "inicio.html#introducción-a-los-objetos-en-r",
     "href": "inicio.html#introducción-a-los-objetos-en-r",
-    "title": "Primeros pasos en R",
-    "section": "Introducción a los objetos en R",
-    "text": "Introducción a los objetos en R",
+    "title": "3  Primeros pasos en R",
+    "section": "3.3 Introducción a los objetos en R",
+    "text": "3.3 Introducción a los objetos en R",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
   },
   {
     "objectID": "inicio.html#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos",
     "href": "inicio.html#tipos-de-objetos-en-r-numéricos-texto-factores-lógicos",
-    "title": "Primeros pasos en R",
-    "section": "Tipos de objetos en R (numéricos, texto, factores, lógicos)",
-    "text": "Tipos de objetos en R (numéricos, texto, factores, lógicos)",
+    "title": "3  Primeros pasos en R",
+    "section": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)",
+    "text": "3.4 Tipos de objetos en R (numéricos, texto, factores, lógicos)",
     "crumbs": [
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Primeros pasos en R</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Primeros pasos en R</span>"
     ]
   },
   {
     "objectID": "datos.html",
     "href": "datos.html",
-    "title": "Estructura de datos en R",
+    "title": "4  Estructura de datos en R",
     "section": "",
-    "text": "Vectores: creación y manipulación",
+    "text": "4.1 Vectores: creación y manipulación",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Estructura de datos en R</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Estructura de datos en R</span>"
     ]
   },
   {
     "objectID": "datos.html#data-frames-creación-ventajas-y-manipulación",
     "href": "datos.html#data-frames-creación-ventajas-y-manipulación",
-    "title": "Estructura de datos en R",
-    "section": "Data frames: creación, ventajas y manipulación",
-    "text": "Data frames: creación, ventajas y manipulación",
+    "title": "4  Estructura de datos en R",
+    "section": "4.2 Data frames: creación, ventajas y manipulación",
+    "text": "4.2 Data frames: creación, ventajas y manipulación",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Estructura de datos en R</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Estructura de datos en R</span>"
     ]
   },
   {
     "objectID": "datos.html#comparación-entre-data-frames-y-listas",
     "href": "datos.html#comparación-entre-data-frames-y-listas",
-    "title": "Estructura de datos en R",
-    "section": "Comparación entre data frames y listas",
-    "text": "Comparación entre data frames y listas",
+    "title": "4  Estructura de datos en R",
+    "section": "4.3 Comparación entre data frames y listas",
+    "text": "4.3 Comparación entre data frames y listas",
     "crumbs": [
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Estructura de datos en R</span>"
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Estructura de datos en R</span>"
     ]
   },
   {
     "objectID": "importacion.html",
     "href": "importacion.html",
-    "title": "Importacion de datos",
+    "title": "5  Importacion de datos",
     "section": "",
-    "text": "Importación de archivos CSV",
+    "text": "5.1 Importación de archivos CSV",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importacion de datos</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
     ]
   },
   {
     "objectID": "importacion.html#importación-de-archivos-excel",
     "href": "importacion.html#importación-de-archivos-excel",
-    "title": "Importacion de datos",
-    "section": "Importación de archivos Excel",
-    "text": "Importación de archivos Excel",
+    "title": "5  Importacion de datos",
+    "section": "5.2 Importación de archivos Excel",
+    "text": "5.2 Importación de archivos Excel",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importacion de datos</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
     ]
   },
   {
     "objectID": "importacion.html#configuración-del-directorio-de-trabajo",
     "href": "importacion.html#configuración-del-directorio-de-trabajo",
-    "title": "Importacion de datos",
-    "section": "Configuración del directorio de trabajo",
-    "text": "Configuración del directorio de trabajo",
+    "title": "5  Importacion de datos",
+    "section": "5.3 Configuración del directorio de trabajo",
+    "text": "5.3 Configuración del directorio de trabajo",
     "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Importacion de datos</span>"
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Importacion de datos</span>"
     ]
   },
   {
     "objectID": "operadores.html",
     "href": "operadores.html",
-    "title": "Operadores en R",
+    "title": "6  Operadores en R",
     "section": "",
-    "text": "Operadores aritméticos y lógicos",
+    "text": "6.1 Operadores aritméticos y lógicos",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Operadores en R</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Operadores en R</span>"
     ]
   },
   {
     "objectID": "operadores.html#ejemplos-prácticos-de-uso-de-operadores",
     "href": "operadores.html#ejemplos-prácticos-de-uso-de-operadores",
-    "title": "Operadores en R",
-    "section": "Ejemplos prácticos de uso de operadores",
-    "text": "Ejemplos prácticos de uso de operadores",
+    "title": "6  Operadores en R",
+    "section": "6.2 Ejemplos prácticos de uso de operadores",
+    "text": "6.2 Ejemplos prácticos de uso de operadores",
     "crumbs": [
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Operadores en R</span>"
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Operadores en R</span>"
     ]
   },
   {
     "objectID": "manipulacion.html",
     "href": "manipulacion.html",
-    "title": "Manipulación de datos",
+    "title": "8  Manipulación de datos",
     "section": "",
-    "text": "Introducción a los paquetes dplyr y tidyr",
+    "text": "8.1 Introducción a los paquetes dplyr y tidyr",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Manipulación de datos</span>"
     ]
@@ -462,9 +462,9 @@
   {
     "objectID": "manipulacion.html#operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos",
     "href": "manipulacion.html#operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos",
-    "title": "Manipulación de datos",
-    "section": "Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos",
-    "text": "Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos",
+    "title": "8  Manipulación de datos",
+    "section": "8.2 Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos",
+    "text": "8.2 Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Manipulación de datos</span>"
     ]
@@ -472,9 +472,9 @@
   {
     "objectID": "manipulacion.html#uso-de-pipes-para-mejorar-la-legibilidad-del-código",
     "href": "manipulacion.html#uso-de-pipes-para-mejorar-la-legibilidad-del-código",
-    "title": "Manipulación de datos",
-    "section": "Uso de pipes (%>%) para mejorar la legibilidad del código",
-    "text": "Uso de pipes (%&gt;%) para mejorar la legibilidad del código",
+    "title": "8  Manipulación de datos",
+    "section": "8.3 Uso de pipes (%>%) para mejorar la legibilidad del código",
+    "text": "8.3 Uso de pipes (%&gt;%) para mejorar la legibilidad del código",
     "crumbs": [
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Manipulación de datos</span>"
     ]
@@ -482,9 +482,9 @@
   {
     "objectID": "visualizacion.html",
     "href": "visualizacion.html",
-    "title": "visualización de datos",
+    "title": "9  visualización de datos",
     "section": "",
-    "text": "Introducción al paquete ggplot2",
+    "text": "9.1 Introducción al paquete ggplot2",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>visualización de datos</span>"
     ]
@@ -492,9 +492,9 @@
   {
     "objectID": "visualizacion.html#creación-de-gráficos-básicos-histogramas-scatterplots-boxplots",
     "href": "visualizacion.html#creación-de-gráficos-básicos-histogramas-scatterplots-boxplots",
-    "title": "visualización de datos",
-    "section": "Creación de gráficos básicos: histogramas, scatterplots, boxplots",
-    "text": "Creación de gráficos básicos: histogramas, scatterplots, boxplots",
+    "title": "9  visualización de datos",
+    "section": "9.2 Creación de gráficos básicos: histogramas, scatterplots, boxplots",
+    "text": "9.2 Creación de gráficos básicos: histogramas, scatterplots, boxplots",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>visualización de datos</span>"
     ]
@@ -502,9 +502,9 @@
   {
     "objectID": "visualizacion.html#personalización-de-gráficos",
     "href": "visualizacion.html#personalización-de-gráficos",
-    "title": "visualización de datos",
-    "section": "Personalización de gráficos",
-    "text": "Personalización de gráficos",
+    "title": "9  visualización de datos",
+    "section": "9.3 Personalización de gráficos",
+    "text": "9.3 Personalización de gráficos",
     "crumbs": [
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>visualización de datos</span>"
     ]
@@ -512,9 +512,9 @@
   {
     "objectID": "exportacion.html",
     "href": "exportacion.html",
-    "title": "Exportación de resultados",
+    "title": "10  Exportación de resultados",
     "section": "",
-    "text": "Guardar gráficos con ggsave",
+    "text": "10.1 Guardar gráficos con ggsave",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exportación de resultados</span>"
     ]
@@ -522,9 +522,9 @@
   {
     "objectID": "exportacion.html#exportación-de-tablas-en-formato-csv",
     "href": "exportacion.html#exportación-de-tablas-en-formato-csv",
-    "title": "Exportación de resultados",
-    "section": "Exportación de tablas en formato CSV",
-    "text": "Exportación de tablas en formato CSV",
+    "title": "10  Exportación de resultados",
+    "section": "10.2 Exportación de tablas en formato CSV",
+    "text": "10.2 Exportación de tablas en formato CSV",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Exportación de resultados</span>"
     ]
@@ -532,31 +532,31 @@
   {
     "objectID": "paquetes.html",
     "href": "paquetes.html",
-    "title": "Paquetes en R",
+    "title": "7  Paquetes en R",
     "section": "",
-    "text": "¿Qué son los paquetes en R?",
+    "text": "7.1 ¿Qué son los paquetes en R?",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Paquetes en R</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Paquetes en R</span>"
     ]
   },
   {
     "objectID": "paquetes.html#instalación-y-carga-de-paquetes",
     "href": "paquetes.html#instalación-y-carga-de-paquetes",
-    "title": "Paquetes en R",
-    "section": "Instalación y carga de paquetes",
-    "text": "Instalación y carga de paquetes",
+    "title": "7  Paquetes en R",
+    "section": "7.2 Instalación y carga de paquetes",
+    "text": "7.2 Instalación y carga de paquetes",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Paquetes en R</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Paquetes en R</span>"
     ]
   },
   {
     "objectID": "paquetes.html#paquetes-recomendados-para-tareas-específicas",
     "href": "paquetes.html#paquetes-recomendados-para-tareas-específicas",
-    "title": "Paquetes en R",
-    "section": "Paquetes recomendados para tareas específicas",
-    "text": "Paquetes recomendados para tareas específicas",
+    "title": "7  Paquetes en R",
+    "section": "7.3 Paquetes recomendados para tareas específicas",
+    "text": "7.3 Paquetes recomendados para tareas específicas",
     "crumbs": [
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Paquetes en R</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Paquetes en R</span>"
     ]
   },
   {
@@ -609,21 +609,21 @@
   {
     "objectID": "references.html#material-de-apoyo",
     "href": "references.html#material-de-apoyo",
-    "title": "12  Material de apoyo y referencias",
+    "title": "11  Material de apoyo y referencias",
     "section": "",
     "text": "Tutorial en YouTube “Cómo instalar R y RStudio en menos de 2 minutos - 2024”. Elaborado por Herbert Lizama.\nR para ciencia de datos por Handley Wickham & Garrett Grolemund",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
     ]
   },
   {
     "objectID": "references.html#referencias",
     "href": "references.html#referencias",
-    "title": "12  Material de apoyo y referencias",
-    "section": "12.2 Referencias",
-    "text": "12.2 Referencias\n\nAllaire, J. J., Xie, Y., & McPherson, J. (2022). R Markdown: The Definitive Guide. Chapman & Hall/CRC. https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nGentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. Journal of Computational and Graphical Statistics, 16(1), 1–23. https://doi.org/10.1198/106186007X178663\nHmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). Educational Psychologist, 42(2), 99–107. https://doi.org/10.1080/00461520701263368\nIhaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. Journal of Computational and Graphical Statistics, 5(3), 299–314.\nKolb, D. A. (1984). Experiential learning: Experience as the source of learning and development. Prentice Hall.\nNational Academies of Sciences, Engineering, and Medicine. (2019). Reproducibility and replicability in science. National Academies Press. https://doi.org/10.17226/25303\nR Core Team. (2023). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. https://www.Rproject.org\nThe Turing Way Community. (2023). The Turing Way: A handbook for reproducible, ethical and collaborative research. https://the-turing-way.netlify.app\nWilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3(1), 160018. https://doi.org/10.1038/sdata.2016.18",
+    "title": "11  Material de apoyo y referencias",
+    "section": "11.2 Referencias",
+    "text": "11.2 Referencias\n\nAllaire, J. J., Xie, Y., & McPherson, J. (2022). R Markdown: The Definitive Guide. Chapman & Hall/CRC. https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund\nBaker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a\nGentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. Journal of Computational and Graphical Statistics, 16(1), 1–23. https://doi.org/10.1198/106186007X178663\nHmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). Educational Psychologist, 42(2), 99–107. https://doi.org/10.1080/00461520701263368\nIhaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. Journal of Computational and Graphical Statistics, 5(3), 299–314.\nKolb, D. A. (1984). Experiential learning: Experience as the source of learning and development. Prentice Hall.\nNational Academies of Sciences, Engineering, and Medicine. (2019). Reproducibility and replicability in science. National Academies Press. https://doi.org/10.17226/25303\nR Core Team. (2023). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. https://www.Rproject.org\nThe Turing Way Community. (2023). The Turing Way: A handbook for reproducible, ethical and collaborative research. https://the-turing-way.netlify.app\nWilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3(1), 160018. https://doi.org/10.1038/sdata.2016.18",
     "crumbs": [
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Material de apoyo y referencias</span>"
     ]
   },
   {
@@ -664,6 +664,56 @@
     "text": "1.3 Reproducibilidad y replicabilidad en la investigación científica\nEl 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente (Baker, 2016).\nProblemática: En herramientas como Excel o Infostat, los cálculos suelen realizarse en celdas ocultas y los gráficos se ajustan manualmente. Esto dificulta la replicación exacta de los análisis, incluso por parte del mismo autor después de un tiempo.\nSolución: el uso de R permite documentar cada paso del análisis mediante scripts, lo que garantiza que los procedimientos puedan ser replicados y reinterpretados en el futuro.\n\n\n\nUn script de R puede compararse con una receta, ya que permite ser seguido paso a paso para reproducir el mismo análisis. De manera similar a una receta que puede ser reinterpretada al modificar los ingredientes, un script puede adaptarse para realizar un análisis diferente utilizando nuevos datos.\n\n\n\n1.3.1 Reproducibilidad\nLa reproducibilidad se define como la capacidad de obtener los mismos resultados utilizando los mismos datos y métodos que se emplearon en un análisis original. Este concepto es esencial en la investigación científica, ya que permite verificar y validar los resultados de un estudio. Según el informe de las National Academies of Sciences, Engineering, and Medicine (2019), la reproducibilidad garantiza que los resultados puedan ser replicados por otros investigadores o por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.\n\n1.3.1.1 Características clave de la reproducibilidad:\nUso de los mismos datos: Los datos originales deben estar disponibles y ser accesibles para que otros puedan replicar el análisis.\nMétodos documentados: Es necesario que los pasos, herramientas y configuraciones utilizadas en el análisis estén claramente documentados.\nResultados consistentes: Al repetir el análisis con los mismos datos y métodos, los resultados deben ser idénticos.\n\n\n1.3.1.2 Importancia de la reproducibilidad:\nTransparencia: Permite que otros investigadores comprendan cómo se obtuvieron los resultados.\nVerificación: Facilita la identificación de errores o inconsistencias en el análisis original.\nColaboración: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente.\n\n\n\n1.3.2 Replicabilidad\nLa replicabilidad, por otro lado, se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las National Academies of Sciences, Engineering, and Medicine (2019), la replicabilidad es fundamental para evaluar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.\n\n1.3.2.1 Características clave de la replicabilidad:\nNuevos datos: Se utilizan datos diferentes a los del estudio original, pero que representan un contexto similar.\nMétodos adaptados: Los métodos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.\nResultados consistentes: Los hallazgos deben ser coherentes con los del estudio original, aunque no necesariamente idénticos.\n\n\n1.3.2.2 Importancia de la replicabilidad:\nGeneralización: Evalúa si los resultados del estudio original son aplicables en otros contextos o poblaciones.\nCredibilidad científica: Refuerza la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.\nAvance del conocimiento: Permite explorar nuevas aplicaciones o extensiones de los hallazgos originales.\n\n\n\n1.3.3 Beneficios de la adopción de R para la Ciencia\nTransparencia: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).\nEficiencia: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, lo que optimiza los recursos y el tiempo (Gentleman & Temple Lang, 2007).\nCredibilidad: El uso de R facilita el cumplimiento de los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo la gestión adecuada de los datos científicos (Wilkinson et al., 2016).",
     "crumbs": [
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Conceptos básicos de R</span>"
+    ]
+  },
+  {
+    "objectID": "02_instalacion_confi.html",
+    "href": "02_instalacion_confi.html",
+    "title": "2  Instalación y configuración",
+    "section": "",
+    "text": "2.1 Descarga de R y RStudio\nPara comenzar a trabajar con R y RStudio, es necesario descargar ambos programas. R es un lenguaje de programación y entorno computacional, mientras que RStudio es un Entorno de Desarrollo Integrado (IDE) que facilita el uso de R.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
+    ]
+  },
+  {
+    "objectID": "02_instalacion_confi.html#descarga-de-r-y-rstudio",
+    "href": "02_instalacion_confi.html#descarga-de-r-y-rstudio",
+    "title": "2  Instalación y configuración",
+    "section": "",
+    "text": "2.1.1 Descarga de R\nSe recomienda descargar una versión estable de R para evitar problemas de compatibilidad con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, en este curso se utiliza la versión R 4.3.1, ya que es una versión estable conocida.\nEl repositorio oficial de R se encuentra en el siguiente enlace: https://cran.r-project.org/bin/windows/base/old/.\nEn esta página, se puede acceder a un directorio con todas las versiones de R disponibles. Para descargar una versión específica, basta con hacer clic en el nombre de la versión deseada. Esto abrirá un directorio con la documentación y los archivos correspondientes. El archivo que se debe descargar tiene una terminación -win.exe, y al hacer clic en él, se descargará automáticamente el instalador.\n\n\n2.1.2 Descarga de RStudio\nPara obtener RStudio, se debe visitar la página oficial de descargas de RStudio.\nEn esta página, se puede descargar la versión más reciente de RStudio haciendo clic en el botón “Download RStudio Desktop for Windows”.\nSi el dispositivo utiliza un sistema operativo diferente a Windows, en la misma página se encuentran las versiones compatibles con otros sistemas operativos.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
+    ]
+  },
+  {
+    "objectID": "02_instalacion_confi.html#instalación-de-r-y-rstudio",
+    "href": "02_instalacion_confi.html#instalación-de-r-y-rstudio",
+    "title": "2  Instalación y configuración",
+    "section": "2.2 Instalación de R y RStudio",
+    "text": "2.2 Instalación de R y RStudio\nLa instalación de R y RStudio debe realizarse en un orden específico para evitar conflictos y errores:\n\n2.2.1 Instalación de R\n\nUna vez descargado el instalador de R, se debe ejecutar el archivo .exe y seguir las instrucciones del asistente de instalación.\nDurante el proceso, se pueden aceptar las configuraciones predeterminadas.\n\n\n\n2.2.2 Instalación de RStudio\n\nDespués de instalar R, se debe ejecutar el instalador de RStudio descargado previamente.\nAl igual que con R, se pueden aceptar las configuraciones predeterminadas durante la instalación.\n\nEs importante mencionar que en un mismo dispositivo pueden coexistir varias versiones de R. RStudio permite seleccionar cuál de estas versiones se utilizará en cada proyecto desde su configuración.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
+    ]
+  },
+  {
+    "objectID": "02_instalacion_confi.html#configuración-inicial",
+    "href": "02_instalacion_confi.html#configuración-inicial",
+    "title": "2  Instalación y configuración",
+    "section": "2.3 Configuración inicial",
+    "text": "2.3 Configuración inicial\nUna vez instalados R y RStudio, es recomendable realizar una configuración inicial para optimizar el entorno de trabajo:\n\n2.3.1 Seleccionar la versión de R\nEn RStudio, se puede elegir la versión de R que se utilizará. Esto es útil si se tienen múltiples versiones instaladas. Para configurarlo, se debe ir a Tools &gt; Global Options &gt; General y seleccionar la versión deseada en el apartado R version.\n\n\n2.3.2 Configurar la apariencia de RStudio\nRStudio permite personalizar su apariencia para adaptarse a las preferencias del usuario y mejorar la experiencia de trabajo. A continuación, se describen los pasos para configurar la apariencia de la interfaz:\n\n2.3.2.1 Cambiar el tema de la interfaz\n\nEn la barra de menú, se debe seleccionar Tools &gt; Global Options.\nEn la ventana emergente, se accede a la pestaña Appearance.\nEn esta sección, es posible elegir entre diferentes temas para la interfaz, como temas claros u oscuros. Por ejemplo, los temas oscuros como Cobalt son recomendables para reducir la fatiga visual durante sesiones prolongadas.\nTambién se pueden ajustar el tamaño y el tipo de fuente para facilitar la lectura del código, según las preferencias del usuario.\n\n\n\n2.3.2.2 Configurar el panel de trabajo\nLa interfaz de RStudio está organizada en cuatro paneles principales: el editor de scripts, la consola, el entorno/archivos y los gráficos/ayuda. Estos paneles pueden reorganizarse según las necesidades del usuario.\n\nDesde la barra de menú, se selecciona Tools &gt; Global Options &gt; Pane Layout.\nEn esta sección, se ajusta la disposición de los paneles. Por ejemplo, se puede colocar el editor de scripts en la parte superior izquierda y la consola en la parte inferior para facilitar el acceso.\nUna vez realizada la configuración, se guardan los cambios para aplicar la nueva disposición.\n\n\n\n2.3.2.3 Habilitar el número de líneas en el editor de scripts\nLa numeración de líneas en el editor de scripts facilita la navegación y depuración del código.\n\nSe accede a Tools &gt; Global Options &gt; Code &gt; Display.\nEn esta sección, se marca la casilla Show line numbers para activar la numeración de líneas.\n\n\n\n2.3.2.4 Activar el ajuste de línea (Word Wrap)\nCuando se trabaja con líneas de código largas, habilitar el ajuste de línea evita que el texto se desborde fuera del área visible.\n\nEn la barra de menú, se selecciona Tools &gt; Global Options &gt; Code &gt; Display.\nSe activa la opción Soft-wrap R source files para habilitar el ajuste de línea.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
+    ]
+  },
+  {
+    "objectID": "02_instalacion_confi.html#organización-de-proyectos",
+    "href": "02_instalacion_confi.html#organización-de-proyectos",
+    "title": "2  Instalación y configuración",
+    "section": "2.4 Organización de proyectos",
+    "text": "2.4 Organización de proyectos\nLa organización de proyectos en RStudio es fundamental para mantener un flujo de trabajo eficiente y reproducible. A continuación, se presentan las mejores prácticas para organizar proyectos:\n\n2.4.1 Crear un proyecto en RStudio\n\nEn la barra de menú, selecciona File &gt; New Project.\nElige entre las opciones disponibles:\n\nNew Directory: Crea un proyecto desde cero en una nueva carpeta.\nExisting Directory: Convierte una carpeta existente en un proyecto de RStudio.\nVersion Control: Clona un repositorio de Git para trabajar en un proyecto versionado.\n\nConfigura el nombre y la ubicación del proyecto, y haz clic en Create Project.\n\n\n\n2.4.2 Establecer un directorio de trabajo\nEl directorio de trabajo es la carpeta donde R buscará automáticamente los archivos y guardará los resultados.\nPara establecer el directorio de trabajo, utiliza la función:\n\nsetwd(\"ruta/del/directorio\")\n\nAlternativamente, en un proyecto de RStudio, el directorio de trabajo se configura automáticamente al abrir el proyecto.\n\n\n2.4.3 Uso de archivos .Rproj\nEl archivo .Rproj es el núcleo del proyecto en RStudio. Al abrir este archivo, se cargará automáticamente el entorno de trabajo, el directorio y las configuraciones específicas del proyecto.\n\n\n2.4.4 Beneficios de la organización de proyectos\nReproducibilidad: Facilita que otros usuarios (o el propio usuario en el futuro) comprendan y reproduzcan el análisis.\nEficiencia: Reduce el tiempo perdido buscando archivos o configurando rutas manualmente.\nColaboración: Mejora la comunicación y el trabajo en equipo al mantener una estructura clara y consistente.\nPersonalizar la apariencia y organizar los proyectos en RStudio no solo mejora la comodidad visual, sino que también optimiza el flujo de trabajo, permitiendo que el usuario se enfoque en el análisis de datos de manera más eficiente y profesional.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Instalación y configuración</span>"
     ]
   }
 ]

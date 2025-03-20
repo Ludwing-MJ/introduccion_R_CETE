@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos"
-  author: "P. Agr. Ludwing Isaí Marroquín Jiménez"
+  author: "Ludwing Isaí Marroquín Jiménez"
   output-file: "MANUAL"
   date: today
   date-format: medium
@@ -32,7 +32,7 @@ book:
     - index.qmd
     - part: "Capítulo 1: Introducción a R y RStudio"
     - 01_cbasicos.qmd
-    - install.qmd
+    - 02_instalacion_confi.qmd
     - part: "Capítulo 2: Conceptos básicos de R"
     - inicio.qmd
     - datos.qmd
