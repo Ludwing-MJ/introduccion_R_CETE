@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Ludwing Isaí Marroquín Jiménez">
+<meta name="dcterms.date" content="2025-03-20">
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>2&nbsp; Instalación y configuración – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
+<title>Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,8 +67,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03_inicio.html" rel="next">
-<link href="./01_cbasicos.html" rel="prev">
+<link href="./01_cbasicos.html" rel="next">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -119,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_instalacion_confi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalación y configuración</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -186,7 +187,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
@@ -202,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./02_instalacion_confi.html" class="sidebar-item-text sidebar-link active">
+  <a href="./02_instalacion_confi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalación y configuración</span></span></a>
   </div>
 </li>
@@ -290,27 +291,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#descarga-de-r-y-rstudio" id="toc-descarga-de-r-y-rstudio" class="nav-link active" data-scroll-target="#descarga-de-r-y-rstudio"><span class="header-section-number">2.1</span> Descarga de R y RStudio</a>
+  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
   <ul class="collapse">
-  <li><a href="#descarga-de-r" id="toc-descarga-de-r" class="nav-link" data-scroll-target="#descarga-de-r"><span class="header-section-number">2.1.1</span> Descarga de R</a></li>
-  <li><a href="#descarga-de-rstudio" id="toc-descarga-de-rstudio" class="nav-link" data-scroll-target="#descarga-de-rstudio"><span class="header-section-number">2.1.2</span> Descarga de RStudio</a></li>
-  </ul></li>
-  <li><a href="#instalación-de-r-y-rstudio" id="toc-instalación-de-r-y-rstudio" class="nav-link" data-scroll-target="#instalación-de-r-y-rstudio"><span class="header-section-number">2.2</span> Instalación de R y RStudio</a>
-  <ul class="collapse">
-  <li><a href="#instalación-de-r" id="toc-instalación-de-r" class="nav-link" data-scroll-target="#instalación-de-r"><span class="header-section-number">2.2.1</span> Instalación de R</a></li>
-  <li><a href="#instalación-de-rstudio" id="toc-instalación-de-rstudio" class="nav-link" data-scroll-target="#instalación-de-rstudio"><span class="header-section-number">2.2.2</span> Instalación de RStudio</a></li>
-  </ul></li>
-  <li><a href="#configuración-inicial" id="toc-configuración-inicial" class="nav-link" data-scroll-target="#configuración-inicial"><span class="header-section-number">2.3</span> Configuración inicial</a>
-  <ul class="collapse">
-  <li><a href="#seleccionar-la-versión-de-r" id="toc-seleccionar-la-versión-de-r" class="nav-link" data-scroll-target="#seleccionar-la-versión-de-r"><span class="header-section-number">2.3.1</span> Seleccionar la versión de R</a></li>
-  <li><a href="#configurar-la-apariencia-de-rstudio" id="toc-configurar-la-apariencia-de-rstudio" class="nav-link" data-scroll-target="#configurar-la-apariencia-de-rstudio"><span class="header-section-number">2.3.2</span> Configurar la apariencia de RStudio</a></li>
-  </ul></li>
-  <li><a href="#organización-de-proyectos" id="toc-organización-de-proyectos" class="nav-link" data-scroll-target="#organización-de-proyectos"><span class="header-section-number">2.4</span> Organización de proyectos</a>
-  <ul class="collapse">
-  <li><a href="#crear-un-proyecto-en-rstudio" id="toc-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#crear-un-proyecto-en-rstudio"><span class="header-section-number">2.4.1</span> Crear un proyecto en RStudio</a></li>
-  <li><a href="#establecer-un-directorio-de-trabajo" id="toc-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#establecer-un-directorio-de-trabajo"><span class="header-section-number">2.4.2</span> Establecer un directorio de trabajo</a></li>
-  <li><a href="#uso-de-archivos-.rproj" id="toc-uso-de-archivos-.rproj" class="nav-link" data-scroll-target="#uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos <code>.Rproj</code></a></li>
-  <li><a href="#beneficios-de-la-organización-de-proyectos" id="toc-beneficios-de-la-organización-de-proyectos" class="nav-link" data-scroll-target="#beneficios-de-la-organización-de-proyectos"><span class="header-section-number">2.4.4</span> Beneficios de la organización de proyectos</a></li>
+  <li><a href="#en-qué-consiste-este-manual" id="toc-en-qué-consiste-este-manual" class="nav-link" data-scroll-target="#en-qué-consiste-este-manual">¿En qué consiste este manual?</a></li>
+  <li><a href="#cómo-esta-organizado-este-manual" id="toc-cómo-esta-organizado-este-manual" class="nav-link" data-scroll-target="#cómo-esta-organizado-este-manual">¿Cómo esta organizado este manual?</a></li>
+  <li><a href="#pre-requisitos" id="toc-pre-requisitos" class="nav-link" data-scroll-target="#pre-requisitos">Pre requisitos</a></li>
+  <li><a href="#colofón" id="toc-colofón" class="nav-link" data-scroll-target="#colofón">Colofón</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -320,14 +306,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Instalación y configuración</span></h1>
+<h1 class="title">Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</h1>
 </div>
 
+<div>
+  <div class="description">
+    Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Autor/a</div>
+    <div class="quarto-title-meta-contents">
+             <p>Ludwing Isaí Marroquín Jiménez </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">20 mar 2025</p>
+    </div>
+  </div>
   
     
   </div>
@@ -337,122 +340,113 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="descarga-de-r-y-rstudio" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="descarga-de-r-y-rstudio"><span class="header-section-number">2.1</span> Descarga de R y RStudio</h2>
-<p>Para comenzar a trabajar con R y RStudio, es necesario descargar ambos programas. R es un lenguaje de programación y entorno computacional, mientras que RStudio es un Entorno de Desarrollo Integrado (IDE) que facilita el uso de R.</p>
-<section id="descarga-de-r" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="descarga-de-r"><span class="header-section-number">2.1.1</span> Descarga de R</h3>
-<p>Se recomienda descargar una versión estable de R para evitar problemas de compatibilidad con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, en este curso se utiliza la versión R 4.3.1, ya que es una versión estable conocida.</p>
-<p>El repositorio oficial de R se encuentra en el siguiente enlace: <a href="https://cran.r-project.org/bin/windows/base/old/" class="uri">https://cran.r-project.org/bin/windows/base/old/</a>.</p>
-<p>En esta página, se puede acceder a un directorio con todas las versiones de R disponibles. Para descargar una versión específica, basta con hacer clic en el nombre de la versión deseada. Esto abrirá un directorio con la documentación y los archivos correspondientes. El archivo que se debe descargar tiene una terminación <code>-win.exe</code>, y al hacer clic en él, se descargará automáticamente el instalador.</p>
+<section id="introducción" class="level1 unnumbered">
+<h1 class="unnumbered">Introducción</h1>
+<p>La ciencia de datos, con un enfoque estadístico, permite transformar datos en bruto en información comprensible y útil para la toma de decisiones. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del texto, se abordan conceptos básicos y se presentan ejemplos prácticos que facilitan la comprensión de técnicas estadísticas esenciales. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
+<section id="en-qué-consiste-este-manual" class="level2">
+<h2 class="anchored" data-anchor-id="en-qué-consiste-este-manual">¿En qué consiste este manual?</h2>
+<p>El presente manual, tiene como objetivo proporcionar una guía práctica y estructurada para el aprendizaje y uso del lenguaje de programación R. Este se diseñó para facilitar la comprensión de conceptos fundamentales, desde la instalación de R y RStudio hasta la manipulación de datos, visualización gráfica y exportación de resultados.</p>
+<p>R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica. A lo largo de este documento, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Además, se incluyen ejemplos prácticos, recomendaciones de buenas prácticas y recursos adicionales para profundizar en el aprendizaje.</p>
+<p>Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en análisis de datos y programación estadística, con un enfoque en la claridad, la organización y la reproducibilidad.</p>
 </section>
-<section id="descarga-de-rstudio" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="descarga-de-rstudio"><span class="header-section-number">2.1.2</span> Descarga de RStudio</h3>
-<p>Para obtener RStudio, se debe visitar la <a href="https://posit.co/download/rstudio-desktop/">página oficial de descargas de RStudio</a>.</p>
-<p>En esta página, se puede descargar la versión más reciente de RStudio haciendo clic en el botón <em>“Download RStudio Desktop for Windows”</em>.</p>
-<p>Si el dispositivo utiliza un sistema operativo diferente a Windows, en la misma página se encuentran las versiones compatibles con otros sistemas operativos.</p>
-</section>
-</section>
-<section id="instalación-de-r-y-rstudio" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="instalación-de-r-y-rstudio"><span class="header-section-number">2.2</span> Instalación de R y RStudio</h2>
-<p>La instalación de R y RStudio debe realizarse en un orden específico para evitar conflictos y errores:</p>
-<section id="instalación-de-r" class="level3" data-number="2.2.1">
-<h3 data-number="2.2.1" class="anchored" data-anchor-id="instalación-de-r"><span class="header-section-number">2.2.1</span> Instalación de R</h3>
+<section id="cómo-esta-organizado-este-manual" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-esta-organizado-este-manual">¿Cómo esta organizado este manual?</h2>
+<p>Este manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, con un enfoque en el análisis estadístico. Su estructura sigue un enfoque progresivo, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
+<p>El contenido se organiza en los siguientes capítulos principales:</p>
 <ol type="1">
-<li><p>Una vez descargado el instalador de R, se debe ejecutar el archivo <code>.exe</code> y seguir las instrucciones del asistente de instalación.</p></li>
-<li><p>Durante el proceso, se pueden aceptar las configuraciones predeterminadas.</p></li>
+<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
+<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
+<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
+<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
+<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
+<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
 </ol>
+<p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
 </section>
-<section id="instalación-de-rstudio" class="level3" data-number="2.2.2">
-<h3 data-number="2.2.2" class="anchored" data-anchor-id="instalación-de-rstudio"><span class="header-section-number">2.2.2</span> Instalación de RStudio</h3>
+<section id="pre-requisitos" class="level2">
+<h2 class="anchored" data-anchor-id="pre-requisitos">Pre requisitos</h2>
+<p>Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:</p>
 <ol type="1">
-<li><p>Después de instalar R, se debe ejecutar el instalador de RStudio descargado previamente.</p></li>
-<li><p>Al igual que con R, se pueden aceptar las configuraciones predeterminadas durante la instalación.</p></li>
+<li><p><strong>Interés por aprender</strong>: La curiosidad y disposición para explorar un nuevo lenguaje de programación.</p></li>
+<li><p><strong>Acceso a una computadora</strong>: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.</p></li>
+<li><p><strong>Paciencia y práctica</strong>: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.</p></li>
 </ol>
-<p>Es importante mencionar que en un mismo dispositivo pueden coexistir varias versiones de R. RStudio permite seleccionar cuál de estas versiones se utilizará en cada proyecto desde su configuración.</p>
+<p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
 </section>
-</section>
-<section id="configuración-inicial" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="configuración-inicial"><span class="header-section-number">2.3</span> Configuración inicial</h2>
-<p>Una vez instalados R y RStudio, es recomendable realizar una configuración inicial para optimizar el entorno de trabajo:</p>
-<section id="seleccionar-la-versión-de-r" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="seleccionar-la-versión-de-r"><span class="header-section-number">2.3.1</span> Seleccionar la versión de R</h3>
-<p>En RStudio, se puede elegir la versión de R que se utilizará. Esto es útil si se tienen múltiples versiones instaladas. Para configurarlo, se debe ir a <em>Tools &gt; Global Options &gt; General</em> y seleccionar la versión deseada en el apartado <em>R version</em>.</p>
-</section>
-<section id="configurar-la-apariencia-de-rstudio" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="configurar-la-apariencia-de-rstudio"><span class="header-section-number">2.3.2</span> Configurar la apariencia de RStudio</h3>
-<p>RStudio permite personalizar su apariencia para adaptarse a las preferencias del usuario y mejorar la experiencia de trabajo. A continuación, se describen los pasos para configurar la apariencia de la interfaz:</p>
-<section id="cambiar-el-tema-de-la-interfaz" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="cambiar-el-tema-de-la-interfaz"><span class="header-section-number">2.3.2.1</span> Cambiar el tema de la interfaz</h4>
-<ol type="1">
-<li><p>En la barra de menú, se debe seleccionar <strong>Tools &gt; Global Options</strong>.</p></li>
-<li><p>En la ventana emergente, se accede a la pestaña <strong>Appearance</strong>.</p></li>
-<li><p>En esta sección, es posible elegir entre diferentes temas para la interfaz, como temas claros u oscuros. Por ejemplo, los temas oscuros como <em>Cobalt</em> son recomendables para reducir la fatiga visual durante sesiones prolongadas.</p></li>
-<li><p>También se pueden ajustar el tamaño y el tipo de fuente para facilitar la lectura del código, según las preferencias del usuario.</p></li>
-</ol>
-</section>
-<section id="configurar-el-panel-de-trabajo" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="configurar-el-panel-de-trabajo"><span class="header-section-number">2.3.2.2</span> Configurar el panel de trabajo</h4>
-<p>La interfaz de RStudio está organizada en cuatro paneles principales: el editor de scripts, la consola, el entorno/archivos y los gráficos/ayuda. Estos paneles pueden reorganizarse según las necesidades del usuario.</p>
-<ol type="1">
-<li><p>Desde la barra de menú, se selecciona <strong>Tools &gt; Global Options &gt; Pane Layout</strong>.</p></li>
-<li><p>En esta sección, se ajusta la disposición de los paneles. Por ejemplo, se puede colocar el editor de scripts en la parte superior izquierda y la consola en la parte inferior para facilitar el acceso.</p></li>
-<li><p>Una vez realizada la configuración, se guardan los cambios para aplicar la nueva disposición.</p></li>
-</ol>
-</section>
-<section id="habilitar-el-número-de-líneas-en-el-editor-de-scripts" class="level4" data-number="2.3.2.3">
-<h4 data-number="2.3.2.3" class="anchored" data-anchor-id="habilitar-el-número-de-líneas-en-el-editor-de-scripts"><span class="header-section-number">2.3.2.3</span> Habilitar el número de líneas en el editor de scripts</h4>
-<p>La numeración de líneas en el editor de scripts facilita la navegación y depuración del código.</p>
-<ol type="1">
-<li><p>Se accede a <strong>Tools &gt; Global Options &gt; Code &gt; Display</strong>.</p></li>
-<li><p>En esta sección, se marca la casilla <strong>Show line numbers</strong> para activar la numeración de líneas.</p></li>
-</ol>
-</section>
-<section id="activar-el-ajuste-de-línea-word-wrap" class="level4" data-number="2.3.2.4">
-<h4 data-number="2.3.2.4" class="anchored" data-anchor-id="activar-el-ajuste-de-línea-word-wrap"><span class="header-section-number">2.3.2.4</span> Activar el ajuste de línea (Word Wrap)</h4>
-<p>Cuando se trabaja con líneas de código largas, habilitar el ajuste de línea evita que el texto se desborde fuera del área visible.</p>
-<ol type="1">
-<li><p>En la barra de menú, se selecciona <strong>Tools &gt; Global Options &gt; Code &gt; Display</strong>.</p></li>
-<li><p>Se activa la opción <strong>Soft-wrap R source files</strong> para habilitar el ajuste de línea.</p></li>
-</ol>
-</section>
-</section>
-</section>
-<section id="organización-de-proyectos" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="organización-de-proyectos"><span class="header-section-number">2.4</span> Organización de proyectos</h2>
-<p>La organización de proyectos en RStudio es fundamental para mantener un flujo de trabajo eficiente y reproducible. A continuación, se presentan las mejores prácticas para organizar proyectos:</p>
-<section id="crear-un-proyecto-en-rstudio" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="crear-un-proyecto-en-rstudio"><span class="header-section-number">2.4.1</span> Crear un proyecto en RStudio</h3>
-<ol type="1">
-<li><p>En la barra de menú, selecciona <strong>File &gt; New Project</strong>.</p></li>
-<li><p>Elige entre las opciones disponibles:</p>
-<ol type="a">
-<li><p><strong>New Directory</strong>: Crea un proyecto desde cero en una nueva carpeta.</p></li>
-<li><p><strong>Existing Directory</strong>: Convierte una carpeta existente en un proyecto de RStudio.</p></li>
-<li><p><strong>Version Control</strong>: Clona un repositorio de Git para trabajar en un proyecto versionado.</p></li>
-</ol></li>
-<li><p>Configura el nombre y la ubicación del proyecto, y haz clic en <strong>Create Project</strong>.</p></li>
-</ol>
-</section>
-<section id="establecer-un-directorio-de-trabajo" class="level3" data-number="2.4.2">
-<h3 data-number="2.4.2" class="anchored" data-anchor-id="establecer-un-directorio-de-trabajo"><span class="header-section-number">2.4.2</span> Establecer un directorio de trabajo</h3>
-<p>El directorio de trabajo es la carpeta donde R buscará automáticamente los archivos y guardará los resultados.</p>
-<p>Para establecer el directorio de trabajo, utiliza la función:</p>
+<section id="colofón" class="level2">
+<h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
+<p>La versión en línea de este manual estará disponible en <code>[enlace de publicación] (actualizar una vez publicado)</code>. La fuente del manual en español se encuentra en el repositorio: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/">Quarto</a>, una herramienta que facilita la conversión de archivos <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB. Además, Quarto permite trabajar con una interfaz visual y amigable para el desarrollador desde RStudio, optimizando la creación de contenido reproducible y accesible.</p>
+<p>Este manual fue construido con:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"ruta/del/directorio"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
+comando ejecutado '"quarto"
+TMPDIR=C:/Users/Usuario/AppData/Local/Temp/Rtmp2J9Nij/file260c7f607954 -V'
+tiene el estatus 1</code></pre>
 </div>
-<p>Alternativamente, en un proyecto de RStudio, el directorio de trabajo se configura automáticamente al abrir el proyecto.</p>
-</section>
-<section id="uso-de-archivos-.rproj" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos <code>.Rproj</code></h3>
-<p>El archivo <code>.Rproj</code> es el núcleo del proyecto en RStudio. Al abrir este archivo, se cargará automáticamente el entorno de trabajo, el directorio y las configuraciones específicas del proyecto.</p>
-</section>
-<section id="beneficios-de-la-organización-de-proyectos" class="level3" data-number="2.4.4">
-<h3 data-number="2.4.4" class="anchored" data-anchor-id="beneficios-de-la-organización-de-proyectos"><span class="header-section-number">2.4.4</span> Beneficios de la organización de proyectos</h3>
-<p><strong>Reproducibilidad</strong>: Facilita que otros usuarios (o el propio usuario en el futuro) comprendan y reproduzcan el análisis.</p>
-<p><strong>Eficiencia</strong>: Reduce el tiempo perdido buscando archivos o configurando rutas manualmente.</p>
-<p><strong>Colaboración</strong>: Mejora la comunicación y el trabajo en equipo al mantener una estructura clara y consistente.</p>
-<p>Personalizar la apariencia y organizar los proyectos en RStudio no solo mejora la comodidad visual, sino que también optimiza el flujo de trabajo, permitiendo que el usuario se enfoque en el análisis de datos de manera más eficiente y profesional.</p>
+<div class="cell-output cell-output-stdout">
+<pre><code>─ Session info ───────────────────────────────────────────────────────────────
+ setting  value
+ version  R version 4.4.2 (2024-10-31 ucrt)
+ os       Windows 11 x64 (build 26100)
+ system   x86_64, mingw32
+ ui       RTerm
+ language (EN)
+ collate  Spanish_Guatemala.utf8
+ ctype    Spanish_Guatemala.utf8
+ tz       America/Guatemala
+ date     2025-03-18
+ pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
+ quarto   NA @ C:\\Users\\Usuario\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
+
+─ Packages ───────────────────────────────────────────────────────────────────
+ package     * version date (UTC) lib source
+ cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.2)
+ cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.2)
+ devtools      2.4.5   2022-10-11 [1] CRAN (R 4.4.3)
+ digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.2)
+ ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.3)
+ evaluate      1.0.3   2025-01-10 [1] CRAN (R 4.4.2)
+ fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.2)
+ fs            1.6.5   2024-10-30 [1] CRAN (R 4.4.2)
+ glue          1.8.0   2024-09-30 [1] CRAN (R 4.4.2)
+ htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.2)
+ htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)
+ httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.3)
+ jsonlite      1.8.9   2024-09-20 [1] CRAN (R 4.4.2)
+ knitr         1.49    2024-11-08 [1] CRAN (R 4.4.2)
+ later         1.4.1   2024-11-27 [1] CRAN (R 4.4.3)
+ lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.2)
+ magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.2)
+ memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.2)
+ mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)
+ miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.3)
+ pkgbuild      1.4.6   2025-01-16 [1] CRAN (R 4.4.3)
+ pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.3)
+ profvis       0.4.0   2024-09-20 [1] CRAN (R 4.4.3)
+ promises      1.3.2   2024-11-28 [1] CRAN (R 4.4.3)
+ purrr         1.0.4   2025-02-05 [1] CRAN (R 4.4.2)
+ R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.2)
+ Rcpp          1.0.14  2025-01-12 [1] CRAN (R 4.4.2)
+ remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.3)
+ rlang         1.1.5   2025-01-17 [1] CRAN (R 4.4.2)
+ rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.2)
+ rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.2)
+ sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.4.3)
+ shiny         1.10.0  2024-12-14 [1] CRAN (R 4.4.3)
+ urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.3)
+ usethis       3.1.0   2024-11-26 [1] CRAN (R 4.4.3)
+ vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.2)
+ xfun          0.50    2025-01-07 [1] CRAN (R 4.4.2)
+ xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.3)
+
+ [1] C:/Users/Usuario/AppData/Local/R/win-library/4.4
+ [2] C:/Program Files/R/R-4.4.2/library
+
+──────────────────────────────────────────────────────────────────────────────</code></pre>
+</div>
+</div>
 
 
 </section>
@@ -1029,13 +1023,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01_cbasicos.html" class="pagination-link" aria-label="Conceptos básicos de R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span>
-      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03_inicio.html" class="pagination-link" aria-label="Primeros pasos en R">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Primeros pasos en R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./01_cbasicos.html" class="pagination-link" aria-label="Conceptos básicos de R">
+        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
