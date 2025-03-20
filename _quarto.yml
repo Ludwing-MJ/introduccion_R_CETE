@@ -35,7 +35,7 @@ book:
     - 02_instalacion_confi.qmd
     - part: "Capítulo 2: Conceptos básicos de R"
     - 03_inicio.qmd
-    - datos.qmd
+    - 04_datos.qmd
     - importacion.qmd
     - operadores.qmd
     - paquetes.qmd
