@@ -1,4 +1,9 @@
-# Importacion de datos
+# Importación de datos
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Configuración del repositorio para la descarga de los paquetes
+options(repos = c(CRAN = "https://cloud.r-project.org/"))
+```
 
 La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. En R, los datos pueden provenir de diversas fuentes, como archivos CSV, Excel o incluso páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información sin necesidad de manipularlos manualmente. Además, establecer un directorio de trabajo adecuado facilita la organización y asegura que los scripts sean portables y reproducibles en diferentes entornos.
 
@@ -8,7 +13,7 @@ En esta sección, se explicará cómo importar datos desde archivos CSV, Excel y
 
 Los archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función `read.csv()`, que permite leer el contenido del archivo y almacenarlo como un data frame.
 
-### Metodología para importar de un archivo CSV
+### Pasos para importar de un archivo CSV
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 # Importar un archivo CSV
@@ -26,9 +31,9 @@ head(datos)
 
 ### Ejemplo de importación de un archivo CSV
 
-En el año 2002 se realizó un estudió en la Universidad de San Carlos de Guatemala donde se recopilaron distintos datos de 460 estudiantes de distintas facultades. Esta base de datos se encuentra disponible para su descarga en formato CSV en el siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing). Esta base de datos cuenta con una variedad de tipos de variables lo que la hace un excelente recurso que se utilizara a lo largo del manual para poder realizar los ejercicios donde se aplicaran las distintas herramientas que se irán desarrollando en el presente manual. Para realizar el siguiente ejemplo en el ordenador del usuario es necesario descargar el archivo y moverlo a la carpeta donde se encuentra el proyecto en curso.
+En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), incluye una amplia variedad de variables, lo que la convierte en un recurso ideal para los ejercicios prácticos de este manual. A lo largo del documento, se utilizará esta base de datos para aplicar las herramientas y conceptos desarrollados. Para realizar el siguiente ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
 
-```{r}
+```{r eval=FALSE}
 # Importar el archivo CSV con los datos 
 datos <- read.csv("datos_estudiantes.csv", header = TRUE, sep = ",")
 
@@ -42,6 +47,53 @@ La función `head()` en R se utiliza para visualizar las primeras filas de un da
 
 ## Importación de archivos Excel
 
-<https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true>
+Los archivos Excel son ampliamente utilizados para almacenar datos en hojas de cálculo. En R, se puede importar este tipo de archivos utilizando el paquete `readxl`, que permite leer datos de archivos `.xlsx` sin necesidad de convertirlos previamente a otro formato.
+
+### **Pasos para importar un archivo Excel**
+
+1.  Instalar y cargar el paquete `readxl`.
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Instalar y cargar el paquete readxl
+if (!require("readxl")) install.packages("readxl")
+
+```
+
+**Explicación de la linea de codigo anterior**
+
+a.  `require("nombre del paquete")`: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve `TRUE`. Si el paquete no está instalado, devuelve `FALSE`.
+
+b.  `!require("nombre del paquete")`: El signo de exclamación (`!`) niega el resultado de la función `require()`. Por lo tanto, esta expresión será `TRUE` si el paquete no está instalado o no puede ser cargado.
+
+c.  `if (...) install.packages("nombre del paquete")`: Esta es una estructura condicional. Si la condición entre paréntesis es `TRUE` (es decir, si el paquete no está instalado o no puede ser cargado), entonces se ejecuta `install.packages("nombre del paquete")`, que descarga e instala el paquete desde el repositorio de CRAN.
+
+2.  Importar el archivo Excel
+
+```{r eval=FALSE}
+# Importar un archivo Excel
+datos_excel <- read_excel("ruta/del/archivo/datos.xlsx", sheet = "Hoja1", col_names = TRUE/FALSE)
+
+# Visualizar los primeros registros del data frame
+head(datos_excel)
+```
+
+**`sheet = "Hoja1"`**: Especifica la hoja del archivo que se desea importar.
+
+**`col_names = TRUE/FALSE`**: Indica si la primera fila contiene los nombres de las columnas
+
+### Ejemplo de importación de un archivo Excel
+
+En este ejemplo, se utilizará la misma base de datos empleada en el caso de importación de archivos CSV. Esta base de datos, ahora en formato Excel, está disponible para su descarga a través de este [enlace](https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true){.uri}. Al igual que en el ejemplo anterior para realizar este ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Instalar y cargar el paquete readxl
+if (!require("readxl")) install.packages("readxl")
+
+# Importar un archivo Excel
+datos_excel <- read_excel("datos_estudiantes_2002.xlsx", sheet = "datos", col_names = TRUE)
+
+# Visualizar los primeros registros del data frame
+head(datos_excel)
+```
 
 ## Configuración del directorio de trabajo

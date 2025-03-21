@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>5&nbsp; Importacion de datos – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
+<title>5&nbsp; Importación de datos – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -119,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_importacion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importacion de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_importacion.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importación de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -225,7 +225,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05_importacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importacion de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importación de datos</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -292,10 +292,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#importación-de-archivos-csv" id="toc-importación-de-archivos-csv" class="nav-link active" data-scroll-target="#importación-de-archivos-csv"><span class="header-section-number">5.1</span> Importación de archivos CSV</a>
   <ul class="collapse">
-  <li><a href="#metodología-para-importar-de-un-archivo-csv" id="toc-metodología-para-importar-de-un-archivo-csv" class="nav-link" data-scroll-target="#metodología-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Metodología para importar de un archivo CSV</a></li>
+  <li><a href="#pasos-para-importar-de-un-archivo-csv" id="toc-pasos-para-importar-de-un-archivo-csv" class="nav-link" data-scroll-target="#pasos-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Pasos para importar de un archivo CSV</a></li>
   <li><a href="#ejemplo-de-importación-de-un-archivo-csv" id="toc-ejemplo-de-importación-de-un-archivo-csv" class="nav-link" data-scroll-target="#ejemplo-de-importación-de-un-archivo-csv"><span class="header-section-number">5.1.2</span> Ejemplo de importación de un archivo CSV</a></li>
   </ul></li>
-  <li><a href="#importación-de-archivos-excel" id="toc-importación-de-archivos-excel" class="nav-link" data-scroll-target="#importación-de-archivos-excel"><span class="header-section-number">5.2</span> Importación de archivos Excel</a></li>
+  <li><a href="#importación-de-archivos-excel" id="toc-importación-de-archivos-excel" class="nav-link" data-scroll-target="#importación-de-archivos-excel"><span class="header-section-number">5.2</span> Importación de archivos Excel</a>
+  <ul class="collapse">
+  <li><a href="#pasos-para-importar-un-archivo-excel" id="toc-pasos-para-importar-un-archivo-excel" class="nav-link" data-scroll-target="#pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.2.1</span> <strong>Pasos para importar un archivo Excel</strong></a></li>
+  <li><a href="#ejemplo-de-importación-de-un-archivo-excel" id="toc-ejemplo-de-importación-de-un-archivo-excel" class="nav-link" data-scroll-target="#ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</a></li>
+  </ul></li>
   <li><a href="#configuración-del-directorio-de-trabajo" id="toc-configuración-del-directorio-de-trabajo" class="nav-link" data-scroll-target="#configuración-del-directorio-de-trabajo"><span class="header-section-number">5.3</span> Configuración del directorio de trabajo</a></li>
   </ul>
 </nav>
@@ -305,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importacion de datos</span></h1>
+<h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Importación de datos</span></h1>
 </div>
 
 
@@ -327,8 +331,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="importación-de-archivos-csv" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="importación-de-archivos-csv"><span class="header-section-number">5.1</span> Importación de archivos CSV</h2>
 <p>Los archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función <code>read.csv()</code>, que permite leer el contenido del archivo y almacenarlo como un data frame.</p>
-<section id="metodología-para-importar-de-un-archivo-csv" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="metodología-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Metodología para importar de un archivo CSV</h3>
+<section id="pasos-para-importar-de-un-archivo-csv" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="pasos-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Pasos para importar de un archivo CSV</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo CSV</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ruta/del/archivo/datos.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
@@ -342,29 +346,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ejemplo-de-importación-de-un-archivo-csv" class="level3" data-number="5.1.2">
 <h3 data-number="5.1.2" class="anchored" data-anchor-id="ejemplo-de-importación-de-un-archivo-csv"><span class="header-section-number">5.1.2</span> Ejemplo de importación de un archivo CSV</h3>
-<p>En el año 2002 se realizó un estudió en la Universidad de San Carlos de Guatemala donde se recopilaron distintos datos de 460 estudiantes de distintas facultades. Esta base de datos se encuentra disponible para su descarga en formato CSV en el siguiente <a href="https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing">enlace</a>. Esta base de datos cuenta con una variedad de tipos de variables lo que la hace un excelente recurso que se utilizara a lo largo del manual para poder realizar los ejercicios donde se aplicaran las distintas herramientas que se irán desarrollando en el presente manual. Para realizar el siguiente ejemplo en el ordenador del usuario es necesario descargar el archivo y moverlo a la carpeta donde se encuentra el proyecto en curso.</p>
+<p>En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos, disponible para su descarga en formato CSV a través del siguiente <a href="https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing">enlace</a>, incluye una amplia variedad de variables, lo que la convierte en un recurso ideal para los ejercicios prácticos de este manual. A lo largo del documento, se utilizará esta base de datos para aplicar las herramientas y conceptos desarrollados. Para realizar el siguiente ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar el archivo CSV con los datos </span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos_estudiantes.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  FACULTAD EDAD SEXO EST_CIVIL TRABAJA    JORNADA AÑO_ING PESO_lbs TALLA Fuma
-1   Admon.   21    M   soltero       2 vespertina    1998      150  1.70    2
-2   Admon.   21    M   soltero       1 vespertina    1998      150  1.72    2
-3   Admon.   31    F    casado       1   nocturna    1991      197  1.55    1
-4   Admon.   38    M     unido       1   nocturna    1992      120  1.70    2
-5   Admon.   24    M    casado       1   nocturna    1995      175  1.70    2
-6   Admon.   34    M   soltero       2   nocturna    1986      156  1.70    2
-  Alcohol
-1       2
-2       1
-3       2
-4       2
-5       2
-6       2</code></pre>
-</div>
 </div>
 <p>La función <code>head()</code> en R se utiliza para visualizar las primeras filas de un data frame, vector, matriz u otro objeto de datos. Su propósito principal es proporcionar una vista rápida de los datos, permitiendo al usuario verificar la estructura, los nombres de las columnas y los primeros valores sin tener que imprimir todo el conjunto de datos.</p>
 <p><strong>Nota:</strong> En el ejemplo para importar el archivo solamente se colocó el nombre del archivo (incluyendo su extensión) sin necesidad de colocar la ruta exacta del archivo y R interpretó automáticamente que debía importar el archivo con ese nombre ubicado en la misma carpeta que el script. Esto se debe a que al estar trabajando en un proyecto con un directorio de trabajo establecido no hay necesidad de colocar la ruta de los archivos que se quieran importar siempre que estos se encuentren en la misma carpeta.</p>
@@ -372,7 +360,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importación-de-archivos-excel" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="importación-de-archivos-excel"><span class="header-section-number">5.2</span> Importación de archivos Excel</h2>
-<p><a href="https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true" class="uri">https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true</a></p>
+<p>Los archivos Excel son ampliamente utilizados para almacenar datos en hojas de cálculo. En R, se puede importar este tipo de archivos utilizando el paquete <code>readxl</code>, que permite leer datos de archivos <code>.xlsx</code> sin necesidad de convertirlos previamente a otro formato.</p>
+<section id="pasos-para-importar-un-archivo-excel" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.2.1</span> <strong>Pasos para importar un archivo Excel</strong></h3>
+<ol type="1">
+<li>Instalar y cargar el paquete <code>readxl</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación de la linea de codigo anterior</strong></p>
+<ol type="a">
+<li><p><code>require("nombre del paquete")</code>: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve <code>TRUE</code>. Si el paquete no está instalado, devuelve <code>FALSE</code>.</p></li>
+<li><p><code>!require("nombre del paquete")</code>: El signo de exclamación (<code>!</code>) niega el resultado de la función <code>require()</code>. Por lo tanto, esta expresión será <code>TRUE</code> si el paquete no está instalado o no puede ser cargado.</p></li>
+<li><p><code>if (...) install.packages("nombre del paquete")</code>: Esta es una estructura condicional. Si la condición entre paréntesis es <code>TRUE</code> (es decir, si el paquete no está instalado o no puede ser cargado), entonces se ejecuta <code>install.packages("nombre del paquete")</code>, que descarga e instala el paquete desde el repositorio de CRAN.</p></li>
+</ol>
+<ol start="2" type="1">
+<li>Importar el archivo Excel</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo Excel</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"ruta/del/archivo/datos.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"Hoja1"</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span><span class="sc">/</span><span class="cn">FALSE</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_excel)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong><code>sheet = "Hoja1"</code></strong>: Especifica la hoja del archivo que se desea importar.</p>
+<p><strong><code>col_names = TRUE/FALSE</code></strong>: Indica si la primera fila contiene los nombres de las columnas</p>
+</section>
+<section id="ejemplo-de-importación-de-un-archivo-excel" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</h3>
+<p>En este ejemplo, se utilizará la misma base de datos empleada en el caso de importación de archivos CSV. Esta base de datos, ahora en formato Excel, está disponible para su descarga a través de este <a href="https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true" class="uri">enlace</a>. Al igual que en el ejemplo anterior para realizar este ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo Excel</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos_estudiantes_2002.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"datos"</span>, <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_excel)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
 </section>
 <section id="configuración-del-directorio-de-trabajo" class="level2" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="configuración-del-directorio-de-trabajo"><span class="header-section-number">5.3</span> Configuración del directorio de trabajo</h2>
