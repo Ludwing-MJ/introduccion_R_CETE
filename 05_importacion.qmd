@@ -59,7 +59,7 @@ if (!require("readxl")) install.packages("readxl")
 
 ```
 
-**Explicación de la linea de codigo anterior**
+**Explicación de la linea de código anterior**
 
 a.  `require("nombre del paquete")`: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve `TRUE`. Si el paquete no está instalado, devuelve `FALSE`.
 
@@ -77,9 +77,11 @@ datos_excel <- read_excel("ruta/del/archivo/datos.xlsx", sheet = "Hoja1", col_na
 head(datos_excel)
 ```
 
-**`sheet = "Hoja1"`**: Especifica la hoja del archivo que se desea importar.
+**Explicación de la linea de código anterior**
 
-**`col_names = TRUE/FALSE`**: Indica si la primera fila contiene los nombres de las columnas
+a.  **`sheet = "Hoja1"`**: Especifica la hoja del archivo que se desea importar.
+
+b.  **`col_names = TRUE/FALSE`**: Indica si la primera fila contiene los nombres de las columnas
 
 ### Ejemplo de importación de un archivo Excel
 
@@ -96,4 +98,51 @@ datos_excel <- read_excel("datos_estudiantes_2002.xlsx", sheet = "datos", col_na
 head(datos_excel)
 ```
 
-## Configuración del directorio de trabajo
+## Directorio de trabajo o Working Directory
+
+El directorio de trabajo en R puede considerarse como el "punto de partida" en un mapa: es la carpeta donde el software buscará automáticamente los archivos necesarios (datos, scripts) y guardará los resultados generados. Cuando se trabaja con un script que no forma parte de un proyecto en RStudio, establecer un directorio de trabajo es esencial para garantizar la organización y la reproducibilidad del análisis. Si no se define correctamente, se corre el riesgo de perder tiempo buscando rutas manualmente y de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora.
+
+### Razones para establecer un directorio de trabajo
+
+1.  **Reproducibilidad:** Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como `C:/Usuario/MiPC/...`.
+
+2.  **Organización:** Reduce errores como "archivo no encontrado" al mantener todos los elementos (datos, scripts, resultados) en una estructura clara y accesible.
+
+3.  **Eficiencia:** Facilita el acceso a los archivos, ya que no es necesario escribir rutas completas, solo los nombres de los archivos.
+
+### Configuración automática del directorio de trabajo
+
+Cuando se trabaja con scripts independientes, se puede utilizar la siguiente línea de código para establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script:
+
+```{r eval=FALSE}
+# Instalar y cargar el paquete rstudioapi
+if (!require("rstudioapi")) install.packages("rstudioapi")
+
+# Establecer el directorio de trabajo
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+```
+
+#### Explicación del código
+
+1.   **`if (...) install.packages("rstudioapi")`** **:** Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.
+
+2.  **`rstudioapi::getActiveDocumentContext()$path`:** Obtiene la ruta completa del script actual (por ejemplo, `C:/proyecto/scripts/analisis.R`).
+
+3.   **`dirname()`:** Extrae la carpeta que contiene el script (por ejemplo, `C:/proyecto/scripts/` → `C:/proyecto/`).
+
+4.   **`setwd()`:** Establece esa carpeta como el directorio de trabajo.
+
+#### Beneficios de establecer un directorio de trabajo
+
+1.  **Portabilidad:** Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes.
+
+2.   **Automatización:** No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.
+
+#### Consecuencias de no establecer un directorio de trabajo
+
+1.  **Errores frecuentes:** R buscará archivos en una ubicación predeterminada (como la carpeta "Documentos"), lo que puede generar errores si los datos no están allí.
+
+2.  **Código no reproducible:** Si otra persona ejecuta el script, será necesario modificar manualmente todas las rutas para que funcione.
+
+📌 **Recomendación:** Antes de ejecutar la línea automática, es importante guardar el script, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente. Además, se puede verificar el directorio actual utilizando la función `getwd()`.

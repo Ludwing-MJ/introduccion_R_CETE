@@ -300,7 +300,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#pasos-para-importar-un-archivo-excel" id="toc-pasos-para-importar-un-archivo-excel" class="nav-link" data-scroll-target="#pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.2.1</span> Pasos para importar un archivo Excel</a></li>
   <li><a href="#ejemplo-de-importación-de-un-archivo-excel" id="toc-ejemplo-de-importación-de-un-archivo-excel" class="nav-link" data-scroll-target="#ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</a></li>
   </ul></li>
-  <li><a href="#configuración-del-directorio-de-trabajo" id="toc-configuración-del-directorio-de-trabajo" class="nav-link" data-scroll-target="#configuración-del-directorio-de-trabajo"><span class="header-section-number">5.3</span> Configuración del directorio de trabajo</a></li>
+  <li><a href="#directorio-de-trabajo-o-working-directory" id="toc-directorio-de-trabajo-o-working-directory" class="nav-link" data-scroll-target="#directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.3</span> Directorio de trabajo o Working Directory</a>
+  <ul class="collapse">
+  <li><a href="#razones-para-establecer-un-directorio-de-trabajo" id="toc-razones-para-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.1</span> Razones para establecer un directorio de trabajo</a></li>
+  <li><a href="#configuración-automática-del-directorio-de-trabajo" id="toc-configuración-automática-del-directorio-de-trabajo" class="nav-link" data-scroll-target="#configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.3.2</span> Configuración automática del directorio de trabajo</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -370,7 +374,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Explicación de la linea de codigo anterior</strong></p>
+<p><strong>Explicación de la linea de código anterior</strong></p>
 <ol type="a">
 <li><p><code>require("nombre del paquete")</code>: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve <code>TRUE</code>. Si el paquete no está instalado, devuelve <code>FALSE</code>.</p></li>
 <li><p><code>!require("nombre del paquete")</code>: El signo de exclamación (<code>!</code>) niega el resultado de la función <code>require()</code>. Por lo tanto, esta expresión será <code>TRUE</code> si el paquete no está instalado o no puede ser cargado.</p></li>
@@ -386,8 +390,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_excel)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong><code>sheet = "Hoja1"</code></strong>: Especifica la hoja del archivo que se desea importar.</p>
-<p><strong><code>col_names = TRUE/FALSE</code></strong>: Indica si la primera fila contiene los nombres de las columnas</p>
+<p><strong>Explicación de la linea de código anterior</strong></p>
+<ol type="a">
+<li><p><strong><code>sheet = "Hoja1"</code></strong>: Especifica la hoja del archivo que se desea importar.</p></li>
+<li><p><strong><code>col_names = TRUE/FALSE</code></strong>: Indica si la primera fila contiene los nombres de las columnas</p></li>
+</ol>
 </section>
 <section id="ejemplo-de-importación-de-un-archivo-excel" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</h3>
@@ -404,10 +411,54 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="configuración-del-directorio-de-trabajo" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="configuración-del-directorio-de-trabajo"><span class="header-section-number">5.3</span> Configuración del directorio de trabajo</h2>
+<section id="directorio-de-trabajo-o-working-directory" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.3</span> Directorio de trabajo o Working Directory</h2>
+<p>El directorio de trabajo en R puede considerarse como el “punto de partida” en un mapa: es la carpeta donde el software buscará automáticamente los archivos necesarios (datos, scripts) y guardará los resultados generados. Cuando se trabaja con un script que no forma parte de un proyecto en RStudio, establecer un directorio de trabajo es esencial para garantizar la organización y la reproducibilidad del análisis. Si no se define correctamente, se corre el riesgo de perder tiempo buscando rutas manualmente y de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora.</p>
+<section id="razones-para-establecer-un-directorio-de-trabajo" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.1</span> Razones para establecer un directorio de trabajo</h3>
+<ol type="1">
+<li><p><strong>Reproducibilidad:</strong> Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como <code>C:/Usuario/MiPC/...</code>.</p></li>
+<li><p><strong>Organización:</strong> Reduce errores como “archivo no encontrado” al mantener todos los elementos (datos, scripts, resultados) en una estructura clara y accesible.</p></li>
+<li><p><strong>Eficiencia:</strong> Facilita el acceso a los archivos, ya que no es necesario escribir rutas completas, solo los nombres de los archivos.</p></li>
+</ol>
+</section>
+<section id="configuración-automática-del-directorio-de-trabajo" class="level3" data-number="5.3.2">
+<h3 data-number="5.3.2" class="anchored" data-anchor-id="configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.3.2</span> Configuración automática del directorio de trabajo</h3>
+<p>Cuando se trabaja con scripts independientes, se puede utilizar la siguiente línea de código para establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete rstudioapi</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer el directorio de trabajo</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="explicación-del-código" class="level4" data-number="5.3.2.1">
+<h4 data-number="5.3.2.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">5.3.2.1</span> Explicación del código</h4>
+<ol type="1">
+<li><p><strong><code>if (...) install.packages("rstudioapi")</code></strong> <strong>:</strong> Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.</p></li>
+<li><p><strong><code>rstudioapi::getActiveDocumentContext()$path</code>:</strong> Obtiene la ruta completa del script actual (por ejemplo, <code>C:/proyecto/scripts/analisis.R</code>).</p></li>
+<li><p><strong><code>dirname()</code>:</strong> Extrae la carpeta que contiene el script (por ejemplo, <code>C:/proyecto/scripts/</code> → <code>C:/proyecto/</code>).</p></li>
+<li><p><strong><code>setwd()</code>:</strong> Establece esa carpeta como el directorio de trabajo.</p></li>
+</ol>
+</section>
+<section id="beneficios-de-establecer-un-directorio-de-trabajo" class="level4" data-number="5.3.2.2">
+<h4 data-number="5.3.2.2" class="anchored" data-anchor-id="beneficios-de-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.2.2</span> Beneficios de establecer un directorio de trabajo</h4>
+<ol type="1">
+<li><p><strong>Portabilidad:</strong> Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes.</p></li>
+<li><p><strong>Automatización:</strong> No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.</p></li>
+</ol>
+</section>
+<section id="consecuencias-de-no-establecer-un-directorio-de-trabajo" class="level4" data-number="5.3.2.3">
+<h4 data-number="5.3.2.3" class="anchored" data-anchor-id="consecuencias-de-no-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.2.3</span> Consecuencias de no establecer un directorio de trabajo</h4>
+<ol type="1">
+<li><p><strong>Errores frecuentes:</strong> R buscará archivos en una ubicación predeterminada (como la carpeta “Documentos”), lo que puede generar errores si los datos no están allí.</p></li>
+<li><p><strong>Código no reproducible:</strong> Si otra persona ejecuta el script, será necesario modificar manualmente todas las rutas para que funcione.</p></li>
+</ol>
+<p>📌 <strong>Recomendación:</strong> Antes de ejecutar la línea automática, es importante guardar el script, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente. Además, se puede verificar el directorio actual utilizando la función <code>getwd()</code>.</p>
 
 
+</section>
+</section>
 </section>
 
 </main> <!-- /main -->
