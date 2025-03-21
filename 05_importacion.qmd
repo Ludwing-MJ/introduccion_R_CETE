@@ -49,7 +49,7 @@ La función `head()` en R se utiliza para visualizar las primeras filas de un da
 
 Los archivos Excel son ampliamente utilizados para almacenar datos en hojas de cálculo. En R, se puede importar este tipo de archivos utilizando el paquete `readxl`, que permite leer datos de archivos `.xlsx` sin necesidad de convertirlos previamente a otro formato.
 
-### **Pasos para importar un archivo Excel**
+### Pasos para importar un archivo Excel
 
 1.  Instalar y cargar el paquete `readxl`.
 
