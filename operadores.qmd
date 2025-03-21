@@ -1,7 +1,0 @@
----
-title: "Operadores en R"
----
-
-## Operadores aritméticos y lógicos
-
-## Ejemplos prácticos de uso de operadores

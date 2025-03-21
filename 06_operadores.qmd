@@ -1,0 +1,141 @@
+# Operadores en R
+
+En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, como destornilladores o martillos, que se combinan para construir soluciones más complejas. Los operadores en R se utilizan para realizar operaciones matemáticas, evaluar condiciones lógicas, manipular datos y realizar asignaciones. Su correcta comprensión es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación.
+
+En R, los operadores se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje:
+
+| **Tipo de Operador** | **Ejemplo** | **Descripción** |
+|----|----|----|
+| **Aritméticos** | `+`, `-`, `*`, `/` | Realizan operaciones matemáticas básicas como suma, resta, multiplicación, etc. |
+| **Lógicos** | `>`, `<`, `==`, `!=` | Comparan valores y devuelven un resultado lógico (`TRUE` o `FALSE`). |
+| **Asignación** | `<-`, `=` | Asignan valores a objetos. |
+| **Manipulación de datos** | `$`, `[]`, `:` | Acceden o manipulan elementos dentro de estructuras de datos. |
+
+## Operadores de Asignación
+
+Los operadores de asignación se utilizan para crear objetos y almacenar valores en ellos. En R, los operadores más comunes son `<-` y `=`. Aunque ambos cumplen la misma función, el uso de `<-` es el estándar recomendado en la comunidad de R, ya que evita conflictos con otros operadores lógicos.
+
+### Ejemplo práctico
+
+```{r}
+# Asignación de valores a objetos
+x <- 10          # Asignar el valor 10 al objeto x
+y = 20           # Asignar el valor 20 al objeto y (menos recomendado)
+
+# Uso de objetos
+suma <- x + y    # Resultado: 30
+```
+
+**Nota:** Aunque `=` puede ser utilizado para asignar valores, su uso no es recomendado en contextos profesionales debido a posibles confusiones con el operador lógico de igualdad (`==`).
+
+## Operadores aritméticos
+
+Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos.
+
+### Lista de operadores aritméticos
+
+| **Operador** | **Acción**       | **Ejemplo** | **Resultado** |
+|--------------|------------------|-------------|---------------|
+| `+`          | Suma             | `5 + 3`     | `8`           |
+| `-`          | Resta            | `10 - 4`    | `6`           |
+| `*`          | Multiplicación   | `6 * 2`     | `12`          |
+| `/`          | División         | `15 / 3`    | `5`           |
+| `^`          | Potencia         | `2 ^ 3`     | `8`           |
+| `%/%`        | División entera  | `17 %/% 5`  | `3`           |
+| `%%`         | Módulo o residuo | `17 %% 5`   | `2`           |
+
+### Ejemplo práctico
+
+En este ejemplo, se observa cómo los operadores aritméticos pueden ser utilizados tanto para cálculos simples como para operaciones más específicas, como obtener el cociente y el residuo de una división. Estas operaciones son útiles en contextos como la creación de nuevas variables derivadas o el análisis de datos numéricos.
+
+```{r}
+# Ejemplo práctico del uso de operadores aritméticos
+# Operaciones básicas
+resultado_suma <- 5 + 3        # Resultado: 8
+resultado_resta <- 10 - 4      # Resultado: 6
+resultado_mult <- 6 * 2        # Resultado: 12
+resultado_div <- 15 / 3        # Resultado: 5
+resultado_pot <- 2 ^ 3         # Resultado: 8
+
+# División entera y residuo
+cociente <- 17 %/% 5           # Resultado: 3
+residuo <- 17 %% 5             # Resultado: 2
+```
+
+## Operadores lógicos
+
+Los operadores lógicos permiten realizar comparaciones y evaluaciones condicionales. Son esenciales para la toma de decisiones en el código, como filtrar datos o establecer reglas condicionales. Estos operadores trabajan con valores lógicos (`TRUE` o `FALSE`) y se utilizan para evaluar condiciones.
+
+### Lista de operadores lógicos
+
+| **Operador** | **Acción**        | **Ejemplo**              | **Resultado** |
+|--------------|-------------------|--------------------------|---------------|
+| `>`          | Mayor que         | `5 > 3`                  | `TRUE`        |
+| `<`          | Menor que         | `5 < 3`                  | `FALSE`       |
+| `>=`         | Mayor o igual que | `5 >= 5`                 | `TRUE`        |
+| `<=`         | Menor o igual que | `5 <= 4`                 | `FALSE`       |
+| `==`         | Igualdad          | `5 == 5`                 | `TRUE`        |
+| `!=`         | Desigualdad       | `5 != 3`                 | `TRUE`        |
+| `&`          | Y lógico (AND)    | `(5 > 3) & (4 > 2)`      | `TRUE`        |
+| `` ` ``      | O lógico (OR)     | `(4 <``` 2) ` (5 > 3) `` | `TRUE`        |
+| `!`          | Negación lógica   | `!(5 > 3)`               | `FALSE`       |
+
+### Ejemplo práctico
+
+```{r}
+# Ejemplo práctico del uso de operadores lógicos
+# Comparaciones simples
+edad <- 25
+es_mayor <- edad > 18                # Resultado: TRUE
+es_menor <- edad < 30                # Resultado: TRUE
+es_igual <- edad == 25               # Resultado: TRUE
+es_diferente <- edad != 20           # Resultado: TRUE
+
+# Operaciones lógicas compuestas
+peso_Kg <- 70
+altura <- 1.75
+imc <- peso_Kg / (altura^2)
+
+sobrepeso <- imc >= 25 & imc < 30    # Evaluación de sobrepeso
+peso_normal <- imc >= 18.5 & imc < 25 # Evaluación de peso normal
+```
+
+En este ejemplo, se observa cómo los operadores lógicos pueden ser utilizados para evaluar condiciones simples y compuestas. Por ejemplo, se calcula el índice de masa corporal (IMC) y se evalúa si el valor corresponde a un rango de peso normal o sobrepeso.
+
+## Operadores de Manipulación de Datos
+
+Los operadores de manipulación de datos permiten acceder, seleccionar y modificar elementos dentro de estructuras de datos como vectores, listas o data frames. Estos operadores son esenciales para trabajar con datos organizados y realizar análisis estadísticos.
+
+### Principales operadores de manipulación de datos
+
+| **Operador** | **Acción** | **Ejemplo** | **Resultado** |
+|----|----|----|----|
+| `[]` | Acceso a elementos por posición | `vector[1]` | Primer elemento del vector |
+| `[ , ]` | Acceso a filas y columnas en un data frame | `data[1, 2]` | Elemento en la fila 1, columna 2 |
+| `$` | Acceso a una columna específica en un data frame | `data$columna` | Columna seleccionada |
+| `:` | Creación de secuencias | `1:10` | Secuencia del 1 al 10 |
+
+### Ejemplo práctico
+
+```{r}
+# Crear un vector
+vector <- c(10, 20, 30, 40, 50)
+
+# Acceder al primer elemento
+primer_elemento <- vector[1]       # Resultado: 10
+
+# Crear un data frame
+data <- data.frame(
+  nombre = c("Juan", "Ana", "Luis"),
+  edad = c(25, 30, 22),
+  peso = c(70, 65, 80)
+)
+
+# Acceder a una columna
+columna_edad <- data$edad      # Resultado: c(25, 30, 22)
+
+# Acceder a un elemento específico
+elemento <- data[2, 3]       # Resultado: 65 (peso de Ana)
+```
+
+En este ejemplo, se observa cómo los operadores de manipulación de datos permiten acceder a elementos específicos dentro de estructuras de datos. Esto es especialmente útil para filtrar, transformar y analizar datos en R.

@@ -37,7 +37,7 @@ book:
     - 03_inicio.qmd
     - 04_datos.qmd
     - 05_importacion.qmd
-    - operadores.qmd
+    - 06_operadores.qmd
     - paquetes.qmd
     - part: "Capítulo 3: Manipulación de datos"
     - manipulacion.qmd
