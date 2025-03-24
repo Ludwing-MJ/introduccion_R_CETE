@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -256,9 +290,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#qué-son-los-paquetes-en-r" id="toc-qué-son-los-paquetes-en-r" class="nav-link active" data-scroll-target="#qué-son-los-paquetes-en-r"><span class="header-section-number">7.1</span> ¿Qué son los paquetes en R?</a></li>
-  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">7.2</span> Instalación y carga de paquetes</a></li>
-  <li><a href="#paquetes-recomendados-para-tareas-específicas" id="toc-paquetes-recomendados-para-tareas-específicas" class="nav-link" data-scroll-target="#paquetes-recomendados-para-tareas-específicas"><span class="header-section-number">7.3</span> Paquetes recomendados para tareas específicas</a></li>
+  <li><a href="#qué-es-un-paquete-en-r" id="toc-qué-es-un-paquete-en-r" class="nav-link active" data-scroll-target="#qué-es-un-paquete-en-r"><span class="header-section-number">7.1</span> ¿Qué es un paquete en R?</a>
+  <ul class="collapse">
+  <li><a href="#características-principales-de-los-paquetes" id="toc-características-principales-de-los-paquetes" class="nav-link" data-scroll-target="#características-principales-de-los-paquetes"><span class="header-section-number">7.1.1</span> Características principales de los paquetes</a></li>
+  <li><a href="#por-qué-usar-paquetes-en-r" id="toc-por-qué-usar-paquetes-en-r" class="nav-link" data-scroll-target="#por-qué-usar-paquetes-en-r"><span class="header-section-number">7.1.2</span> ¿Por qué usar paquetes en R?</a></li>
+  </ul></li>
+  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">7.2</span> Instalación y carga de paquetes</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-básico-de-instalación" id="toc-ejemplo-básico-de-instalación" class="nav-link" data-scroll-target="#ejemplo-básico-de-instalación"><span class="header-section-number">7.2.1</span> Ejemplo básico de instalación</a></li>
+  <li><a href="#carga-de-paquetes" id="toc-carga-de-paquetes" class="nav-link" data-scroll-target="#carga-de-paquetes"><span class="header-section-number">7.2.2</span> Carga de paquetes</a></li>
+  <li><a href="#automatización-de-la-instalación-y-carga" id="toc-automatización-de-la-instalación-y-carga" class="nav-link" data-scroll-target="#automatización-de-la-instalación-y-carga"><span class="header-section-number">7.2.3</span> Automatización de la instalación y carga</a></li>
+  </ul></li>
+  <li><a href="#paquetes-recomendados-para-tareas-específicas" id="toc-paquetes-recomendados-para-tareas-específicas" class="nav-link" data-scroll-target="#paquetes-recomendados-para-tareas-específicas"><span class="header-section-number">7.3</span> Paquetes recomendados para tareas específicas</a>
+  <ul class="collapse">
+  <li><a href="#manipulación-de-datos" id="toc-manipulación-de-datos" class="nav-link" data-scroll-target="#manipulación-de-datos"><span class="header-section-number">7.3.1</span> Manipulación de datos</a></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">7.3.2</span> Visualización de datos</a></li>
+  <li><a href="#análisis-estadístico-básico" id="toc-análisis-estadístico-básico" class="nav-link" data-scroll-target="#análisis-estadístico-básico"><span class="header-section-number">7.3.3</span> Análisis estadístico básico</a></li>
+  <li><a href="#ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" id="toc-ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" class="nav-link" data-scroll-target="#ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales"><span class="header-section-number">7.3.4</span> Ejemplo práctico: Instalación y carga de paquetes esenciales</a></li>
+  </ul></li>
+  <li><a href="#ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" id="toc-ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" class="nav-link" data-scroll-target="#ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo"><span class="header-section-number">7.4</span> Ejemplo práctico: Uso de paquetes en un flujo de trabajo</a>
+  <ul class="collapse">
+  <li><a href="#preparación-del-área-de-trabajo" id="toc-preparación-del-área-de-trabajo" class="nav-link" data-scroll-target="#preparación-del-área-de-trabajo"><span class="header-section-number">7.4.1</span> Preparación del área de trabajo</a></li>
+  <li><a href="#importación-de-los-datos" id="toc-importación-de-los-datos" class="nav-link" data-scroll-target="#importación-de-los-datos"><span class="header-section-number">7.4.2</span> Importación de los datos</a></li>
+  <li><a href="#análisis-de-la-varianza" id="toc-análisis-de-la-varianza" class="nav-link" data-scroll-target="#análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> <strong>Análisis de la varianza</strong></a></li>
+  <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">7.4.4</span> Visualización de resultados</a></li>
+  <li><a href="#exportación-de-resultados" id="toc-exportación-de-resultados" class="nav-link" data-scroll-target="#exportación-de-resultados"><span class="header-section-number">7.4.5</span> Exportación de resultados</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -284,16 +341,192 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="qué-son-los-paquetes-en-r" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="qué-son-los-paquetes-en-r"><span class="header-section-number">7.1</span> ¿Qué son los paquetes en R?</h2>
+<p>Los paquetes en R son una de las características más poderosas del lenguaje, ya que permiten extender sus capacidades básicas para realizar tareas específicas de manera eficiente. A continuación, se desarrolla esta sección donde se amplia esta característica tan importante de R.</p>
+<section id="qué-es-un-paquete-en-r" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="qué-es-un-paquete-en-r"><span class="header-section-number">7.1</span> ¿Qué es un paquete en R?</h2>
+<p>Un paquete en R es una colección de funciones, datos y documentación que amplía las capacidades del entorno base de R. Estos paquetes son desarrollados por la comunidad de usuarios y están diseñados para resolver problemas específicos, desde la manipulación de datos hasta la visualización avanzada o el análisis estadístico especializado.</p>
+<section id="características-principales-de-los-paquetes" class="level3" data-number="7.1.1">
+<h3 data-number="7.1.1" class="anchored" data-anchor-id="características-principales-de-los-paquetes"><span class="header-section-number">7.1.1</span> Características principales de los paquetes</h3>
+<ol type="1">
+<li><p><strong>Funciones especializadas:</strong> Cada paquete incluye funciones diseñadas para tareas específicas, como crear gráficos, realizar análisis estadísticos o manipular datos.</p></li>
+<li><p><strong>Documentación:</strong> Los paquetes incluyen documentación detallada que explica cómo utilizarlos, con ejemplos prácticos.</p></li>
+<li><p><strong>Datos de ejemplo:</strong> Muchos paquetes incluyen conjuntos de datos que permiten practicar y entender su funcionalidad.</p></li>
+</ol>
+</section>
+<section id="por-qué-usar-paquetes-en-r" class="level3" data-number="7.1.2">
+<h3 data-number="7.1.2" class="anchored" data-anchor-id="por-qué-usar-paquetes-en-r"><span class="header-section-number">7.1.2</span> ¿Por qué usar paquetes en R?</h3>
+<p>Los paquetes son esenciales para aprovechar al máximo el potencial de R. Algunas de las razones para utilizarlos incluyen:</p>
+<ol type="1">
+<li><p><strong>Extensibilidad:</strong> Permiten realizar tareas que no están disponibles en el entorno base de R.</p></li>
+<li><p><strong>Eficiencia:</strong> Simplifican procesos complejos, reduciendo el tiempo necesario para realizar análisis.</p></li>
+<li><p><strong>Especialización:</strong> Existen paquetes diseñados para áreas específicas, como la agronomía (<a href="https://cran.r-project.org/web/packages/agricolae/agricolae.pdf"><em>agricolae</em></a>), la biología (<a href="https://cran.r-project.org/web/packages/vegan/vegan.pdf"><em>vegan</em></a>) o la economía (<a href="https://cran.r-project.org/web/packages/forecast/forecast.pdf"><em>forecast</em></a>).</p></li>
+<li><p><strong>Comunidad activa:</strong> La comunidad de R desarrolla y mantiene una amplia variedad de paquetes, lo que garantiza su actualización y soporte.</p></li>
+</ol>
+</section>
 </section>
 <section id="instalación-y-carga-de-paquetes" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">7.2</span> Instalación y carga de paquetes</h2>
+<p>La instalación de paquetes en R se realiza principalmente desde CRAN (Comprehensive R Archive Network), el repositorio oficial que alberga más de 19,000 paquetes. Para instalar un paquete, se utiliza la función <code>install.packages()</code>.</p>
+<section id="ejemplo-básico-de-instalación" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="ejemplo-básico-de-instalación"><span class="header-section-number">7.2.1</span> Ejemplo básico de instalación</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación del paquete ggplot2</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="carga-de-paquetes" class="level3" data-number="7.2.2">
+<h3 data-number="7.2.2" class="anchored" data-anchor-id="carga-de-paquetes"><span class="header-section-number">7.2.2</span> Carga de paquetes</h3>
+<p>Una vez instalado, un paquete debe cargarse en la sesión actual para poder utilizar sus funciones. Esto se realiza con la función <code>library()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar el paquete ggplot2</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Es importante destacar que la instalación de un paquete solo se realiza una vez, pero debe cargarse en cada nueva sesión de trabajo.</p>
+</section>
+<section id="automatización-de-la-instalación-y-carga" class="level3" data-number="7.2.3">
+<h3 data-number="7.2.3" class="anchored" data-anchor-id="automatización-de-la-instalación-y-carga"><span class="header-section-number">7.2.3</span> Automatización de la instalación y carga</h3>
+<p>Para garantizar que un paquete esté disponible en el entorno de trabajo, se puede utilizar la siguiente “receta mágica”, que verifica si el paquete está instalado y, en caso contrario, lo instala y carga al entorno de trabajo automáticamente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar e instalar automáticamente un paquete</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"ggplot2"</span>)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esta estructura es útil para mantener el código reproducible y evitar errores al compartir scripts con otros usuarios.</p>
+</section>
 </section>
 <section id="paquetes-recomendados-para-tareas-específicas" class="level2" data-number="7.3">
 <h2 data-number="7.3" class="anchored" data-anchor-id="paquetes-recomendados-para-tareas-específicas"><span class="header-section-number">7.3</span> Paquetes recomendados para tareas específicas</h2>
+<p>En el contexto del análisis estadístico, algunos paquetes son especialmente útiles. A continuación, se presenta una lista de paquetes recomendados, junto con una breve descripción de su funcionalidad:</p>
+<section id="manipulación-de-datos" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="manipulación-de-datos"><span class="header-section-number">7.3.1</span> Manipulación de datos</h3>
+<p><strong><em>dplyr</em></strong>: Simplifica la manipulación de datos mediante funciones intuitivas para filtrar, seleccionar y resumir datos.</p>
+<p><strong><em>tidyr</em></strong>: Facilita la transformación de datos entre formatos ancho y largo.</p>
+</section>
+<section id="visualización-de-datos" class="level3" data-number="7.3.2">
+<h3 data-number="7.3.2" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">7.3.2</span> Visualización de datos</h3>
+<p><strong><em>ggplot2</em></strong>: Permite crear gráficos personalizados y de alta calidad basados en la gramática de gráficos.</p>
+</section>
+<section id="análisis-estadístico-básico" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="análisis-estadístico-básico"><span class="header-section-number">7.3.3</span> Análisis estadístico básico</h3>
+<p><strong><em>stats</em></strong>: Incluye funciones base para realizar pruebas t, ANOVA y regresiones.</p>
+<p><strong>Análisis estadístico agronómico</strong></p>
+<p><strong><em>agricolae</em></strong>: Diseñado para análisis estadísticos en agronomía, como diseños experimentales y pruebas de comparación múltiple.</p>
+</section>
+<section id="ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" class="level3" data-number="7.3.4">
+<h3 data-number="7.3.4" class="anchored" data-anchor-id="ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales"><span class="header-section-number">7.3.4</span> Ejemplo práctico: Instalación y carga de paquetes esenciales</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Incluye ggplot2, dplyr, tidyr</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Diseños experimentales agrícolas</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Importación de archivos Excel</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)    </span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportación a Excel</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)    </span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Establecer directorio de trabajo automaticamente</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo"><span class="header-section-number">7.4</span> Ejemplo práctico: Uso de paquetes en un flujo de trabajo</h2>
+<p>A continuación, se presenta un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos:</p>
+<p><strong>Contexto:</strong> Un silvicultor quiso comparar los efectos de cinco tratamientos de preparación del terreno sobre el crecimiento inicial en altura de plántulas de pino maximinoii. Dispuso de 25 parcelas y aplicó cada tratamiento a cinco parcelas seleccionadas al azar. La plantación fue realizada manualmente y, al final de cinco años, se midió la altura de todos los pinos y se calculó la altura promedio de cada parcela. Las medidas de las parcelas (en pies) fueron las siguientes.</p>
+<section id="preparación-del-área-de-trabajo" class="level3" data-number="7.4.1">
+<h3 data-number="7.4.1" class="anchored" data-anchor-id="preparación-del-área-de-trabajo"><span class="header-section-number">7.4.1</span> Preparación del área de trabajo</h3>
+<p>Antes de empezar a trabajar en un nuevo análisis se debe crear un nuevo proyecto en R. Para esta tarea es recomendable seguir las recomendaciones de guardado y organización de archivos que se abordaron en la sección numero tres punto dos. Una vez ya se ha creado y guardado el proyecto y un script para desarrollar este análisis se procede a instalar y cargar los paquetes necesarios como se ve a continuación:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico uso de paquetes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: Antes de trabajar hay que crear y guardar un nuevo script.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Incluye ggplot2, dplyr, tidyr</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Diseños experimentales agrícolas</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Importación de archivos Excel</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)    </span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Exportación a Excel</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)    </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Establecer directorio de trabajo automaticamente</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="importación-de-los-datos" class="level3" data-number="7.4.2">
+<h3 data-number="7.4.2" class="anchored" data-anchor-id="importación-de-los-datos"><span class="header-section-number">7.4.2</span> Importación de los datos</h3>
+<p>Se utiliza el paquete <code>readxl</code> para importar un archivo Excel con los datos de altura de las parcelas de pino.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer directorio de trabajo</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar datos desde un archivo Excel</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>altura_pino <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos_arboles.xlsx"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="análisis-de-la-varianza" class="level3" data-number="7.4.3">
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> <strong>Análisis de la varianza</strong></h3>
+<p>Con el paquete <code>agricolae</code>, se realiza un análisis de varianza (ANOVA) para evaluar el efecto de diferentes tratamientos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análisis de varianza</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(altura_ft <span class="sc">~</span> tratamiento, <span class="at">data =</span> altura_pino)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_anova)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+tratamiento  4  34.64    8.66   5.851 0.00276 **
+Residuals   20  29.60    1.48                   
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de Tukey</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>comparacion_tukey <span class="ot">&lt;-</span> <span class="fu">HSD.test</span>(modelo_anova, <span class="st">"tratamiento"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(comparacion_tukey<span class="sc">$</span>groups)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  altura_ft groups
+B      14.4      a
+A      13.4     ab
+E      11.8      b
+C      11.6      b
+D      11.4      b</code></pre>
+</div>
+</div>
+</section>
+<section id="visualización-de-resultados" class="level3" data-number="7.4.4">
+<h3 data-number="7.4.4" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">7.4.4</span> Visualización de resultados</h3>
+<p>Se utiliza <code>ggplot2</code> para crear un gráfico de cajas que muestre la distribución del rendimiento por tratamiento.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización de resultados</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(altura_pino, <span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">y =</span> altura_ft, <span class="at">fill =</span> tratamiento)) <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Altura por Tratamiento"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Tratamiento"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Altura en pies"</span>)<span class="sc">+</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span> <span class="co"># Establece el tema del gráfico </span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)  <span class="co"># Remueve la leyenda redundante</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="07_paquetes_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exportación-de-resultados" class="level3" data-number="7.4.5">
+<h3 data-number="7.4.5" class="anchored" data-anchor-id="exportación-de-resultados"><span class="header-section-number">7.4.5</span> Exportación de resultados</h3>
+<p>Finalmente, se exportan los resultados de la prueba de tukey a un archivo Excel utilizando el paquete <code>writexl</code>. Y el gráfico generado usando la función <code>ggsave</code>.<br>
+</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar resultados a Excel</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(comparacion_tukey<span class="sc">$</span>groups, <span class="st">"resultados_tukey.xlsx"</span>, <span class="at">col_names =</span> T, <span class="at">format_headers =</span> T, <span class="at">use_zip64 =</span> F)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar gráficos</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"ggplot_pino.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
