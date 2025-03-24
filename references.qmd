@@ -1,8 +1,9 @@
 ---
-title: "Material de apoyo y referencias"
 bibliography: references.bib
 biblio-style: "apalike"
 ---
+
+# Material de apoyo y referencias
 
 ## Material de apoyo
 

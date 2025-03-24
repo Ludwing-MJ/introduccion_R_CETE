@@ -70,5 +70,17 @@
   },
   "06_operadores.qmd": {
     "06_operadores.html": "15c33ca4"
+  },
+  "07_paquetes.qmd": {
+    "07_paquetes.html": "1745a16f"
+  },
+  "08_manipulacion.qmd": {
+    "08_manipulacion.html": "6d2aceae"
+  },
+  "09_visualizacion.qmd": {
+    "09_visualizacion.html": "845e10be"
+  },
+  "10_exportacion.qmd": {
+    "10_exportacion.html": "7bf5fd8a"
   }
 }

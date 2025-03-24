@@ -1,6 +1,4 @@
----
-title: "Manipulación de datos"
----
+# Manipulación de datos
 
 ## Introducción a los paquetes `dplyr` y `tidyr`
 

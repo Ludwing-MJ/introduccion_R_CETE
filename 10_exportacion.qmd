@@ -1,6 +1,4 @@
----
-title: "Exportación de resultados"
----
+# Exportación de resultados
 
 ## Guardar gráficos con `ggsave`
 

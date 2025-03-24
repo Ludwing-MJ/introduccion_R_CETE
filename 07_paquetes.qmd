@@ -1,6 +1,4 @@
----
-title: "Paquetes en R"
----
+# Paquetes en R
 
 ## ¿Qué son los paquetes en R?
 

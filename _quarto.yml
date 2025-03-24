@@ -38,13 +38,13 @@ book:
     - 04_datos.qmd
     - 05_importacion.qmd
     - 06_operadores.qmd
-    - paquetes.qmd
+    - 07_paquetes.qmd
     - part: "Capítulo 3: Manipulación de datos"
-    - manipulacion.qmd
+    - 08_manipulacion.qmd
     - part: "Capítulo 4: Visualización de datos"
-    - visualizacion.qmd
+    - 09_visualizacion.qmd
     - part: "Capítulo 5: Exportación de resultados"
-    - exportacion.qmd
+    - 10_exportacion.qmd
     - part: "Capítulo 6: Material de apoyo y referencias"
     - references.qmd
 

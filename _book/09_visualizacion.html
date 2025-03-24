@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>11&nbsp; Material de apoyo y referencias – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
+<title>9&nbsp; Visualización de datos – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./10_exportacion.html" rel="prev">
+<link href="./10_exportacion.html" rel="next">
+<link href="./08_manipulacion.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -84,7 +85,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09_visualizacion.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualización de datos</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -221,7 +222,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_visualizacion.html" class="sidebar-item-text sidebar-link">
+  <a href="./09_visualizacion.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
   </div>
 </li>
@@ -241,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></span></a>
   </div>
 </li>
@@ -255,8 +256,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#material-de-apoyo" id="toc-material-de-apoyo" class="nav-link active" data-scroll-target="#material-de-apoyo"><span class="header-section-number">11.1</span> Material de apoyo</a></li>
-  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">11.2</span> Referencias</a></li>
+  <li><a href="#introducción-al-paquete-ggplot2" id="toc-introducción-al-paquete-ggplot2" class="nav-link active" data-scroll-target="#introducción-al-paquete-ggplot2"><span class="header-section-number">9.1</span> Introducción al paquete <code>ggplot2</code></a></li>
+  <li><a href="#creación-de-gráficos-básicos" id="toc-creación-de-gráficos-básicos" class="nav-link" data-scroll-target="#creación-de-gráficos-básicos"><span class="header-section-number">9.2</span> Creación de gráficos básicos</a></li>
+  <li><a href="#personalización-de-gráficos" id="toc-personalización-de-gráficos" class="nav-link" data-scroll-target="#personalización-de-gráficos"><span class="header-section-number">9.3</span> Personalización de gráficos</a></li>
   </ul>
 </nav>
     </div>
@@ -265,7 +267,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Visualización de datos</span></h1>
 </div>
 
 
@@ -282,27 +284,14 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="material-de-apoyo" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="material-de-apoyo"><span class="header-section-number">11.1</span> Material de apoyo</h2>
-<ol type="1">
-<li><p><a href="https://www.youtube.com/watch?v=hbgzW3Cvda4">Tutorial en YouTube “Cómo instalar R y RStudio en menos de 2 minutos - 2024”. Elaborado por Herbert Lizama.</a></p></li>
-<li><p><a href="https://es.r4ds.hadley.nz/03-visualize.html">R para ciencia de datos por Handley Wickham &amp; Garrett Grolemund</a></p></li>
-</ol>
+<section id="introducción-al-paquete-ggplot2" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="introducción-al-paquete-ggplot2"><span class="header-section-number">9.1</span> Introducción al paquete <code>ggplot2</code></h2>
 </section>
-<section id="referencias" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="referencias"><span class="header-section-number">11.2</span> Referencias</h2>
-<div class="hanging-indent">
-<p>Allaire, J. J., Xie, Y., &amp; McPherson, J. (2022). <em>R Markdown: The Definitive Guide</em>. Chapman &amp; Hall/CRC. <a href="https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund" class="uri">https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund</a></p>
-<p>Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. <em>Nature, 533</em>(7604), 452–454. <a href="https://doi.org/10.1038/533452a" class="uri">https://doi.org/10.1038/533452a</a></p>
-<p>Gentleman, R., &amp; Temple Lang, D. (2007). Statistical analyses and reproducible research. <em>Journal of Computational and Graphical Statistics, 16</em>(1), 1–23. <a href="https://doi.org/10.1198/106186007X178663" class="uri">https://doi.org/10.1198/106186007X178663</a></p>
-<p>Hmelo-Silver, C. E., Duncan, R. G., &amp; Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). <em>Educational Psychologist, 42</em>(2), 99–107. <a href="https://doi.org/10.1080/00461520701263368" class="uri">https://doi.org/10.1080/00461520701263368</a></p>
-<p>Ihaka, R., &amp; Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. <em>Journal of Computational and Graphical Statistics, 5</em>(3), 299–314.</p>
-<p>Kolb, D. A. (1984). <em>Experiential learning: Experience as the source of learning and development</em>. Prentice Hall.</p>
-<p>National Academies of Sciences, Engineering, and Medicine. (2019). <em>Reproducibility and replicability in science</em>. National Academies Press. <a href="https://doi.org/10.17226/25303" class="uri">https://doi.org/10.17226/25303</a></p>
-<p>R Core Team. (2023). <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://www.Rproject.org" class="uri">https://www.Rproject.org</a></p>
-<p>The Turing Way Community. (2023). <em>The Turing Way: A handbook for reproducible, ethical and collaborative research</em>. <a href="https://the-turing-way.netlify.app" class="uri">https://the-turing-way.netlify.app</a></p>
-<p>Wilkinson, M. D. et al.&nbsp;(2016). The FAIR Guiding Principles for scientific data management and stewardship. <em>Scientific Data, 3</em>(1), 160018. <a href="https://doi.org/10.1038/sdata.2016.18" class="uri">https://doi.org/10.1038/sdata.2016.18</a></p>
-</div>
+<section id="creación-de-gráficos-básicos" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="creación-de-gráficos-básicos"><span class="header-section-number">9.2</span> Creación de gráficos básicos</h2>
+</section>
+<section id="personalización-de-gráficos" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="personalización-de-gráficos"><span class="header-section-number">9.3</span> Personalización de gráficos</h2>
 
 
 </section>
@@ -878,11 +867,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./10_exportacion.html" class="pagination-link" aria-label="Exportación de resultados">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span>
+      <a href="./08_manipulacion.html" class="pagination-link" aria-label="Manipulación de datos">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./10_exportacion.html" class="pagination-link" aria-label="Exportación de resultados">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
