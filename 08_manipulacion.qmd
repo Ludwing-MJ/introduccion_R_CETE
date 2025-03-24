@@ -135,11 +135,11 @@ resultado <- datos %>%   group_by(grupo_edad) %>%   summarize(peso_promedio = me
 
 ### Ventajas del uso de pipes
 
-1.  Mejora la legibilidad del código.
+El uso de pipes (`%>%`) en R, introducido por el paquete **magrittr** y ampliamente adoptado en el ecosistema **tidyverse**, ofrece múltiples ventajas que mejoran significativamente la experiencia de programación y análisis de datos. En primer lugar, los pipes mejoran la legibilidad del código al permitir que las operaciones se encadenen de manera secuencial y lógica. Esto elimina la necesidad de anidar funciones, lo que puede resultar confuso y difícil de interpretar, especialmente en flujos de trabajo complejos. En lugar de leer el código de adentro hacia afuera, los pipes permiten que las instrucciones se lean de arriba hacia abajo, siguiendo un orden natural que refleja el proceso de análisis.
 
-2.  Facilita la depuración y el seguimiento de cada paso del análisis.
+Además, los pipes facilitan la depuración y el seguimiento de cada paso del análisis. Al dividir el flujo de trabajo en pasos claros y separados, es más sencillo identificar dónde ocurre un error o verificar los resultados intermedios. Esto es especialmente útil cuando se trabaja con grandes conjuntos de datos o procesos que involucran múltiples transformaciones, ya que cada paso puede ser evaluado de forma independiente.
 
-3.  Permite construir flujos de trabajo complejos de manera modular.
+Por último, los pipes permiten construir flujos de trabajo complejos de manera modular. Cada operación puede considerarse como un "bloque" que se conecta al siguiente, lo que fomenta un enfoque estructurado y organizado. Esto no solo facilita la comprensión del código por parte de otros colaboradores, sino que también permite realizar modificaciones o ajustes en pasos específicos sin afectar el resto del análisis. En resumen, el uso de pipes no solo optimiza la escritura del código, sino que también mejora la claridad, la eficiencia y la reproducibilidad del análisis de datos en R.
 
 ## Transformación de datos con tidyr
 
