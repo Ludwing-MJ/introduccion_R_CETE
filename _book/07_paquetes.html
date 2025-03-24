@@ -312,7 +312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#preparación-del-área-de-trabajo" id="toc-preparación-del-área-de-trabajo" class="nav-link" data-scroll-target="#preparación-del-área-de-trabajo"><span class="header-section-number">7.4.1</span> Preparación del área de trabajo</a></li>
   <li><a href="#importación-de-los-datos" id="toc-importación-de-los-datos" class="nav-link" data-scroll-target="#importación-de-los-datos"><span class="header-section-number">7.4.2</span> Importación de los datos</a></li>
-  <li><a href="#análisis-de-la-varianza" id="toc-análisis-de-la-varianza" class="nav-link" data-scroll-target="#análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> <strong>Análisis de la varianza</strong></a></li>
+  <li><a href="#análisis-de-la-varianza" id="toc-análisis-de-la-varianza" class="nav-link" data-scroll-target="#análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> Análisis de la varianza</a></li>
   <li><a href="#visualización-de-resultados" id="toc-visualización-de-resultados" class="nav-link" data-scroll-target="#visualización-de-resultados"><span class="header-section-number">7.4.4</span> Visualización de resultados</a></li>
   <li><a href="#exportación-de-resultados" id="toc-exportación-de-resultados" class="nav-link" data-scroll-target="#exportación-de-resultados"><span class="header-section-number">7.4.5</span> Exportación de resultados</a></li>
   </ul></li>
@@ -431,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo"><span class="header-section-number">7.4</span> Ejemplo práctico: Uso de paquetes en un flujo de trabajo</h2>
-<p>A continuación, se presenta un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos:</p>
+<p>A continuación, se desarrolla un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos. Para acceder al repositorio con el script de este ejemplo se pude seguir el siguiente enlace: <a href="https://github.com/Ludwing-MJ/Paquetes_Ej" class="uri">https://github.com/Ludwing-MJ/Paquetes_Ej</a></p>
 <p><strong>Contexto:</strong> Un silvicultor quiso comparar los efectos de cinco tratamientos de preparación del terreno sobre el crecimiento inicial en altura de plántulas de pino maximinoii. Dispuso de 25 parcelas y aplicó cada tratamiento a cinco parcelas seleccionadas al azar. La plantación fue realizada manualmente y, al final de cinco años, se midió la altura de todos los pinos y se calculó la altura promedio de cada parcela. Las medidas de las parcelas (en pies) fueron las siguientes.</p>
 <section id="preparación-del-área-de-trabajo" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="preparación-del-área-de-trabajo"><span class="header-section-number">7.4.1</span> Preparación del área de trabajo</h3>
@@ -455,7 +455,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importación-de-los-datos" class="level3" data-number="7.4.2">
 <h3 data-number="7.4.2" class="anchored" data-anchor-id="importación-de-los-datos"><span class="header-section-number">7.4.2</span> Importación de los datos</h3>
-<p>Se utiliza el paquete <code>readxl</code> para importar un archivo Excel con los datos de altura de las parcelas de pino.</p>
+<p>Se utiliza el paquete <code>readxl</code> para importar un archivo Excel con los <a href="https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">datos de altura de las parcelas de pino</a>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer directorio de trabajo</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 <section id="análisis-de-la-varianza" class="level3" data-number="7.4.3">
-<h3 data-number="7.4.3" class="anchored" data-anchor-id="análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> <strong>Análisis de la varianza</strong></h3>
+<h3 data-number="7.4.3" class="anchored" data-anchor-id="análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> Análisis de la varianza</h3>
 <p>Con el paquete <code>agricolae</code>, se realiza un análisis de varianza (ANOVA) para evaluar el efecto de diferentes tratamientos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análisis de varianza</span></span>

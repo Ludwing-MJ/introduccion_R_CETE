@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>8&nbsp; Manipulación de datos – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
+<title>8&nbsp; Manipulación de datos con dplyr y tidyr – Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -85,7 +119,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_manipulacion.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_manipulacion.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instalar y cargar el tidyverse</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -213,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_manipulacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instalar y cargar el tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -257,8 +291,22 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#introducción-a-los-paquetes-dplyr-y-tidyr" id="toc-introducción-a-los-paquetes-dplyr-y-tidyr" class="nav-link active" data-scroll-target="#introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">8.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></a></li>
-  <li><a href="#operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos" id="toc-operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos" class="nav-link" data-scroll-target="#operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos"><span class="header-section-number">8.2</span> Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos</a></li>
-  <li><a href="#uso-de-pipes-para-mejorar-la-legibilidad-del-código" id="toc-uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="nav-link" data-scroll-target="#uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">8.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</a></li>
+  <li><a href="#operaciones-básicas-con-dplyr" id="toc-operaciones-básicas-con-dplyr" class="nav-link" data-scroll-target="#operaciones-básicas-con-dplyr"><span class="header-section-number">8.2</span> Operaciones básicas con dplyr</a>
+  <ul class="collapse">
+  <li><a href="#filtrar-filas-con-filter" id="toc-filtrar-filas-con-filter" class="nav-link" data-scroll-target="#filtrar-filas-con-filter"><span class="header-section-number">8.2.1</span> Filtrar filas con <code>filter()</code></a></li>
+  <li><a href="#seleccionar-columnas" id="toc-seleccionar-columnas" class="nav-link" data-scroll-target="#seleccionar-columnas"><span class="header-section-number">8.2.2</span> Seleccionar columnas</a></li>
+  <li><a href="#crear-nuevas-columnas" id="toc-crear-nuevas-columnas" class="nav-link" data-scroll-target="#crear-nuevas-columnas"><span class="header-section-number">8.2.3</span> Crear nuevas columnas</a></li>
+  <li><a href="#agrupar-y-resumir-datos" id="toc-agrupar-y-resumir-datos" class="nav-link" data-scroll-target="#agrupar-y-resumir-datos"><span class="header-section-number">8.2.4</span> Agrupar y resumir datos</a></li>
+  </ul></li>
+  <li><a href="#uso-de-pipes-para-mejorar-la-legibilidad-del-código" id="toc-uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="nav-link" data-scroll-target="#uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">8.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</a>
+  <ul class="collapse">
+  <li><a href="#ventajas-del-uso-de-pipes" id="toc-ventajas-del-uso-de-pipes" class="nav-link" data-scroll-target="#ventajas-del-uso-de-pipes"><span class="header-section-number">8.3.1</span> Ventajas del uso de pipes</a></li>
+  </ul></li>
+  <li><a href="#transformación-de-datos-con-tidyr" id="toc-transformación-de-datos-con-tidyr" class="nav-link" data-scroll-target="#transformación-de-datos-con-tidyr"><span class="header-section-number">8.4</span> Transformación de datos con tidyr</a>
+  <ul class="collapse">
+  <li><a href="#transformar-datos-con-pivot_longer-y-pivot_wider" id="toc-transformar-datos-con-pivot_longer-y-pivot_wider" class="nav-link" data-scroll-target="#transformar-datos-con-pivot_longer-y-pivot_wider"><span class="header-section-number">8.4.1</span> Transformar datos con <code>pivot_longer()</code> y <code>pivot_wider()</code></a></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">8.4.2</span> Ejemplo práctico</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -267,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></h1>
+<h1 class="title"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></h1>
 </div>
 
 
@@ -284,16 +332,176 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>Los paquetes <strong>dplyr</strong> y <strong>tidyr</strong> son componentes fundamentales del ecosistema tidyverse, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva.</p>
 <section id="introducción-a-los-paquetes-dplyr-y-tidyr" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">8.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></h2>
+<p>El paquete <strong>dplyr</strong> está especializado en la manipulación de datos tabulares, ofreciendo funciones específicas para realizar operaciones como filtrar filas, seleccionar columnas, crear nuevas variables y resumir datos. Su diseño está optimizado para trabajar con estructuras como data frames y tibbles, proporcionando un rendimiento superior y una sintaxis más legible en comparación con las funciones base de R.</p>
+<p>Por otro lado, el paquete <strong>tidyr</strong> se centra en la reorganización de datos, facilitando la transformación entre formatos “ancho” y “largo”. Estas transformaciones son esenciales para preparar los datos de manera adecuada antes de su análisis o visualización, asegurando que estén en el formato más conveniente para las herramientas de análisis.</p>
+<p>Para ilustrar el uso de estas herramientas, en esta sección se desarrollará un ejemplo práctico que permitirá explorar las principales funciones de manipulación de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Manipulacion_Ej">Repositorio de ejemplo - Manipulación de datos</a>.</p>
 </section>
-<section id="operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos" class="level2" data-number="8.2">
-<h2 data-number="8.2" class="anchored" data-anchor-id="operaciones-básicas-filtrar-seleccionar-agrupar-y-resumir-datos"><span class="header-section-number">8.2</span> Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos</h2>
+<section id="operaciones-básicas-con-dplyr" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="operaciones-básicas-con-dplyr"><span class="header-section-number">8.2</span> Operaciones básicas con dplyr</h2>
+<section id="filtrar-filas-con-filter" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="filtrar-filas-con-filter"><span class="header-section-number">8.2.1</span> Filtrar filas con <code>filter()</code></h3>
+<p>La función <code>filter()</code> permite seleccionar filas de un data frame que cumplen con una o más condiciones lógicas.</p>
+<p><strong>Sintaxis básica:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(data, condición)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejemplo práctico:</strong> Filtrar estudiantes con un peso mayor a 65 kg.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el tidyverse</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame de ejemplo</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>, <span class="st">"Luis"</span>, <span class="st">"María"</span>),</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">22</span>, <span class="dv">20</span>, <span class="dv">19</span>),</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">55</span>, <span class="dv">80</span>, <span class="dv">60</span>),</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura =</span> <span class="fu">c</span>(<span class="fl">1.75</span>, <span class="fl">1.60</span>, <span class="fl">1.80</span>, <span class="fl">1.65</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar estudiantes con peso mayor a 65 kg</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>estudiantes_pesados <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span> </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(peso <span class="sc">&gt;</span> <span class="dv">65</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación</strong>: El resultado es un data frame que incluye únicamente las filas donde la variable <code>peso</code> es mayor a 65.</p>
+</section>
+<section id="seleccionar-columnas" class="level3" data-number="8.2.2">
+<h3 data-number="8.2.2" class="anchored" data-anchor-id="seleccionar-columnas"><span class="header-section-number">8.2.2</span> Seleccionar columnas</h3>
+<p>La función <code>select()</code> se utiliza para extraer columnas específicas de un data frame.</p>
+<p><strong>Sintaxis básica:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(data, columnas)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejemplo práctico:</strong> Seleccionar las columnas <code>nombre</code> y <code>edad</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar columnas específicas</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>datos_reducidos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(nombre, edad)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación</strong>: El resultado es un data frame con solo las columnas <code>nombre</code> y <code>edad</code>, lo que puede ser útil para reducir la cantidad de datos visibles o exportar información específica.</p>
+</section>
+<section id="crear-nuevas-columnas" class="level3" data-number="8.2.3">
+<h3 data-number="8.2.3" class="anchored" data-anchor-id="crear-nuevas-columnas"><span class="header-section-number">8.2.3</span> Crear nuevas columnas</h3>
+<p>La función <code>mutate()</code> permite añadir nuevas columnas calculadas a un data frame.</p>
+<p><strong>Sintaxis básica:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(data, <span class="at">nueva_columna =</span> expresión)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejemplo práctico:</strong> Calcular el índice de masa corporal (IMC) de los estudiantes.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el IMC</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">IMC =</span> peso <span class="sc">/</span> (altura<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación</strong>: Se añade una nueva columna llamada <code>IMC</code> al data frame, calculada como el peso dividido por el cuadrado de la altura.</p>
+</section>
+<section id="agrupar-y-resumir-datos" class="level3" data-number="8.2.4">
+<h3 data-number="8.2.4" class="anchored" data-anchor-id="agrupar-y-resumir-datos"><span class="header-section-number">8.2.4</span> Agrupar y resumir datos</h3>
+<p>La combinación de <code>group_by()</code> y <code>summarize()</code> permite calcular estadísticas por grupo.</p>
+<p><strong>Sintaxis básica</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  data <span class="sc">%&gt;%</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo) <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">resumen =</span> función(variable))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejemplo práctico</strong>: Calcular el peso promedio por grupo de edad (mayores y menores de 20 años).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular peso promedio por grupo de edad</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>peso_promedio <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, <span class="st">"Mayor o igual a 20"</span>, <span class="st">"Menor a 20"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación</strong>: Se crea una nueva variable <code>grupo_edad</code> para clasificar a los estudiantes, y luego se calcula el peso promedio para cada grupo.</p>
+</section>
 </section>
 <section id="uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">8.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</h2>
+<p>El operador pipe (<code>%&gt;%</code>) es una herramienta clave en el tidyverse que permite encadenar funciones de manera legible. En lugar de anidar funciones, el pipe pasa el resultado de una función como entrada a la siguiente.</p>
+<p><strong>Ejemplo sin pipes</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear columna grupo_edad usando mutate</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, <span class="st">"Mayor o igual a 20"</span>, <span class="st">"Menor a 20"</span>)) </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar y resumir los datos sin pipes</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summarize</span>(<span class="fu">group_by</span>(datos, grupo_edad), <span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Ejemplo con pipes</strong>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar y resumir los datos con pipes</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span>   <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span>   <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="ventajas-del-uso-de-pipes" class="level3" data-number="8.3.1">
+<h3 data-number="8.3.1" class="anchored" data-anchor-id="ventajas-del-uso-de-pipes"><span class="header-section-number">8.3.1</span> Ventajas del uso de pipes</h3>
+<ol type="1">
+<li><p>Mejora la legibilidad del código.</p></li>
+<li><p>Facilita la depuración y el seguimiento de cada paso del análisis.</p></li>
+<li><p>Permite construir flujos de trabajo complejos de manera modular.</p></li>
+</ol>
+</section>
+</section>
+<section id="transformación-de-datos-con-tidyr" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="transformación-de-datos-con-tidyr"><span class="header-section-number">8.4</span> Transformación de datos con tidyr</h2>
+<p>El paquete <strong>tidyr</strong> se utiliza para reorganizar datos entre formatos “ancho” y “largo”, lo que es esencial para ciertos tipos de análisis y visualización.</p>
+<section id="transformar-datos-con-pivot_longer-y-pivot_wider" class="level3" data-number="8.4.1">
+<h3 data-number="8.4.1" class="anchored" data-anchor-id="transformar-datos-con-pivot_longer-y-pivot_wider"><span class="header-section-number">8.4.1</span> Transformar datos con <code>pivot_longer()</code> y <code>pivot_wider()</code></h3>
+<p><strong><code>pivot_longer()</code></strong>: Convierte columnas en filas, útil para transformar datos de formato ancho a largo.</p>
+<p><strong><code>pivot_wider()</code></strong>: Convierte filas en columnas, útil para transformar datos de formato largo a ancho.</p>
+</section>
+<section id="ejemplo-práctico" class="level3" data-number="8.4.2">
+<h3 data-number="8.4.2" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">8.4.2</span> Ejemplo práctico</h3>
+<p>Supongamos que se tiene un data frame con las calificaciones de estudiantes en diferentes materias:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data frame de ejemplo</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>calificaciones <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>, <span class="st">"Luis"</span>),</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">matematicas =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">90</span>, <span class="dv">78</span>),</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ciencias =</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">92</span>, <span class="dv">80</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Transformar de formato ancho a largo con <code>pivot_longer()</code>:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar a formato largo</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>calificaciones_largo <span class="ot">&lt;-</span> calificaciones <span class="sc">%&gt;%</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(matematicas, ciencias), </span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">names_to =</span> <span class="st">"materia"</span>, </span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">"calificacion"</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>calificaciones_largo</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 3
+  nombre materia     calificacion
+  &lt;chr&gt;  &lt;chr&gt;              &lt;dbl&gt;
+1 Juan   matematicas           85
+2 Juan   ciencias              88
+3 Ana    matematicas           90
+4 Ana    ciencias              92
+5 Luis   matematicas           78
+6 Luis   ciencias              80</code></pre>
+</div>
+</div>
+<p><strong>Resultado</strong>: El data frame ahora tiene una fila por cada combinación de estudiante y materia.</p>
+<p><strong>Transformar de formato largo a ancho con <code>pivot_wider()</code>:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar de vuelta a formato ancho</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>calificaciones_ancho <span class="ot">&lt;-</span> calificaciones_largo <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> <span class="st">"materia"</span>, <span class="at">values_from =</span> <span class="st">"calificacion"</span>)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>calificaciones_ancho</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3 × 3
+  nombre matematicas ciencias
+  &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt;
+1 Juan            85       88
+2 Ana             90       92
+3 Luis            78       80</code></pre>
+</div>
+</div>
+<p><strong>Explicación</strong>: Estas funciones permiten reorganizar los datos según las necesidades del análisis o la visualización.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

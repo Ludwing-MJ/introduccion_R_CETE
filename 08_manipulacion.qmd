@@ -1,7 +1,191 @@
-# Manipulación de datos
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Instalar y cargar el tidyverse
+if (!require("tidyverse")) install.packages("tidyverse")
+```
+
+# Manipulación de datos con dplyr y tidyr
+
+Los paquetes **dplyr** y **tidyr** son componentes fundamentales del ecosistema tidyverse, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva.
 
 ## Introducción a los paquetes `dplyr` y `tidyr`
 
-## Operaciones básicas: filtrar, seleccionar, agrupar y resumir datos
+El paquete **dplyr** está especializado en la manipulación de datos tabulares, ofreciendo funciones específicas para realizar operaciones como filtrar filas, seleccionar columnas, crear nuevas variables y resumir datos. Su diseño está optimizado para trabajar con estructuras como data frames y tibbles, proporcionando un rendimiento superior y una sintaxis más legible en comparación con las funciones base de R.
+
+Por otro lado, el paquete **tidyr** se centra en la reorganización de datos, facilitando la transformación entre formatos "ancho" y "largo". Estas transformaciones son esenciales para preparar los datos de manera adecuada antes de su análisis o visualización, asegurando que estén en el formato más conveniente para las herramientas de análisis.
+
+Para ilustrar el uso de estas herramientas, en esta sección se desarrollará un ejemplo práctico que permitirá explorar las principales funciones de manipulación de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: [Repositorio de ejemplo - Manipulación de datos](https://github.com/Ludwing-MJ/Manipulacion_Ej).
+
+## Operaciones básicas con dplyr
+
+### Filtrar filas con `filter()`
+
+La función `filter()` permite seleccionar filas de un data frame que cumplen con una o más condiciones lógicas.
+
+**Sintaxis básica:**
+
+```{r eval=FALSE}
+filter(data, condición)
+```
+
+**Ejemplo práctico:** Filtrar estudiantes con un peso mayor a 65 kg.
+
+```{r message=FALSE, warning=FALSE}
+# Instalar y cargar el tidyverse
+if (!require("tidyverse")) install.packages("tidyverse")
+
+# Crear un data frame de ejemplo
+datos <- data.frame(
+  nombre = c("Juan", "Ana", "Luis", "María"),
+  edad = c(18, 22, 20, 19),
+  peso = c(70, 55, 80, 60),
+  altura = c(1.75, 1.60, 1.80, 1.65)
+)
+
+# Filtrar estudiantes con peso mayor a 65 kg
+estudiantes_pesados <- datos %>% 
+  filter(peso > 65)
+```
+
+**Explicación**: El resultado es un data frame que incluye únicamente las filas donde la variable `peso` es mayor a 65.
+
+### Seleccionar columnas
+
+La función `select()` se utiliza para extraer columnas específicas de un data frame.
+
+**Sintaxis básica:**
+
+```{r eval=FALSE}
+select(data, columnas)
+```
+
+**Ejemplo práctico:** Seleccionar las columnas `nombre` y `edad`.
+
+```{r}
+# Seleccionar columnas específicas
+datos_reducidos <- datos %>%
+  select(nombre, edad)
+```
+
+**Explicación**: El resultado es un data frame con solo las columnas `nombre` y `edad`, lo que puede ser útil para reducir la cantidad de datos visibles o exportar información específica.
+
+### Crear nuevas columnas 
+
+La función `mutate()` permite añadir nuevas columnas calculadas a un data frame.
+
+**Sintaxis básica:**
+
+```{r eval=FALSE}
+mutate(data, nueva_columna = expresión)
+```
+
+**Ejemplo práctico:** Calcular el índice de masa corporal (IMC) de los estudiantes.
+
+```{r}
+# Calcular el IMC
+datos <- datos %>%
+  mutate(IMC = peso / (altura^2))
+```
+
+**Explicación**: Se añade una nueva columna llamada `IMC` al data frame, calculada como el peso dividido por el cuadrado de la altura.
+
+### Agrupar y resumir datos
+
+La combinación de `group_by()` y `summarize()` permite calcular estadísticas por grupo.
+
+**Sintaxis básica**:
+
+```{r eval=FALSE}
+  data %>%
+  group_by(grupo) %>%
+  summarize(resumen = función(variable))
+```
+
+**Ejemplo práctico**: Calcular el peso promedio por grupo de edad (mayores y menores de 20 años).
+
+```{r}
+# Calcular peso promedio por grupo de edad
+peso_promedio <- datos %>%
+  mutate(grupo_edad = ifelse(edad >= 20, "Mayor o igual a 20", "Menor a 20")) %>%
+  group_by(grupo_edad) %>%
+  summarize(peso_promedio = mean(peso))
+```
+
+**Explicación**: Se crea una nueva variable `grupo_edad` para clasificar a los estudiantes, y luego se calcula el peso promedio para cada grupo.
 
 ## Uso de pipes (`%>%`) para mejorar la legibilidad del código
+
+El operador pipe (`%>%`) es una herramienta clave en el tidyverse que permite encadenar funciones de manera legible. En lugar de anidar funciones, el pipe pasa el resultado de una función como entrada a la siguiente.
+
+**Ejemplo sin pipes**:
+
+```{r}
+# Crear columna grupo_edad usando mutate
+datos <- datos %>%
+  mutate(grupo_edad = ifelse(edad >= 20, "Mayor o igual a 20", "Menor a 20")) 
+# Agrupar y resumir los datos sin pipes
+resultado <- summarize(group_by(datos, grupo_edad), peso_promedio = mean(peso))
+```
+
+**Ejemplo con pipes**:
+
+```{r}
+# Agrupar y resumir los datos con pipes
+resultado <- datos %>%   group_by(grupo_edad) %>%   summarize(peso_promedio = mean(peso))
+```
+
+### Ventajas del uso de pipes
+
+1.  Mejora la legibilidad del código.
+
+2.  Facilita la depuración y el seguimiento de cada paso del análisis.
+
+3.  Permite construir flujos de trabajo complejos de manera modular.
+
+## Transformación de datos con tidyr
+
+El paquete **tidyr** se utiliza para reorganizar datos entre formatos "ancho" y "largo", lo que es esencial para ciertos tipos de análisis y visualización.
+
+### Transformar datos con `pivot_longer()` y `pivot_wider()`
+
+**`pivot_longer()`**: Convierte columnas en filas, útil para transformar datos de formato ancho a largo.
+
+**`pivot_wider()`**: Convierte filas en columnas, útil para transformar datos de formato largo a ancho.
+
+### Ejemplo práctico
+
+Supongamos que se tiene un data frame con las calificaciones de estudiantes en diferentes materias:
+
+```{r}
+# Data frame de ejemplo
+calificaciones <- data.frame(
+  nombre = c("Juan", "Ana", "Luis"),
+  matematicas = c(85, 90, 78),
+  ciencias = c(88, 92, 80)
+)
+
+```
+
+**Transformar de formato ancho a largo con `pivot_longer()`:**
+
+```{r}
+# Transformar a formato largo
+library(tidyr)
+calificaciones_largo <- calificaciones %>%
+  pivot_longer(cols = c(matematicas, ciencias), 
+               names_to = "materia", 
+               values_to = "calificacion")
+calificaciones_largo
+```
+
+**Resultado**: El data frame ahora tiene una fila por cada combinación de estudiante y materia.
+
+**Transformar de formato largo a ancho con `pivot_wider()`:**
+
+```{r}
+# Transformar de vuelta a formato ancho
+calificaciones_ancho <- calificaciones_largo %>%
+  pivot_wider(names_from = "materia", values_from = "calificacion")
+calificaciones_ancho
+```
+
+**Explicación**: Estas funciones permiten reorganizar los datos según las necesidades del análisis o la visualización.
