@@ -101,7 +101,7 @@ if (!require("rstudioapi")) install.packages("rstudioapi")
 
 ## Ejemplo práctico: Uso de paquetes en un flujo de trabajo
 
-A continuación, se presenta un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos:
+A continuación, se desarrolla un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos. Para acceder al repositorio con el script de este ejemplo se pude seguir el siguiente enlace: <https://github.com/Ludwing-MJ/Paquetes_Ej>
 
 **Contexto:** Un silvicultor quiso comparar los efectos de cinco tratamientos de preparación del terreno sobre el crecimiento inicial en altura de plántulas de pino maximinoii. Dispuso de 25 parcelas y aplicó cada tratamiento a cinco parcelas seleccionadas al azar. La plantación fue realizada manualmente y, al final de cinco años, se midió la altura de todos los pinos y se calculó la altura promedio de cada parcela. Las medidas de las parcelas (en pies) fueron las siguientes.
 
@@ -129,7 +129,7 @@ if (!require("rstudioapi")) install.packages("rstudioapi")
 
 ###  Importación de los datos
 
-Se utiliza el paquete `readxl` para importar un archivo Excel con los datos de altura de las parcelas de pino.
+Se utiliza el paquete `readxl` para importar un archivo Excel con los [datos de altura de las parcelas de pino](https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true).
 
 ```{r eval=FALSE}
 # Establecer directorio de trabajo
@@ -141,7 +141,7 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 altura_pino <- read_excel("datos_arboles.xlsx")
 ```
 
-### **Análisis de la varianza**
+### Análisis de la varianza
 
 Con el paquete `agricolae`, se realiza un análisis de varianza (ANOVA) para evaluar el efecto de diferentes tratamientos.
 
