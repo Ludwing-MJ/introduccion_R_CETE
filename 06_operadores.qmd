@@ -68,16 +68,17 @@ Los operadores lógicos permiten realizar comparaciones y evaluaciones condicion
 
 ### Lista de operadores lógicos
 
-| **Operador** | **Acción** | **Ejemplo** | **Resultado** |
-|----------------|-----------------|-----------------------|----------------|
-| `>` | Mayor que | `5 > 3` | `TRUE` |
-| `<` | Menor que | `5 < 3` | `FALSE` |
-| `>=` | Mayor o igual que | `5 >= 5` | `TRUE` |
-| `<=` | Menor o igual que | `5 <= 4` | `FALSE` |
-| `==` | Igualdad | `5 == 5` | `TRUE` |
-| `!=` | Desigualdad | `5 != 3` | `TRUE` |
-| `&` | Y lógico (AND) | `(5 > 3) & (4 > 2)` | `TRUE` |
-| `` ` `` | O lógico (OR) | ```` (4 <``` 2) ```` (5 \> 3) \``|`TRUE`| |`!`| Negación lógica   |`!(5 \> 3)`|`FALSE\` |  |
+| **Operador** | **Acción**        | **Ejemplo**               | **Resultado** |
+|--------------|-------------------|---------------------------|---------------|
+| `>`          | Mayor que         | `5 > 3`                   | `TRUE`        |
+| `<`          | Menor que         | `5 < 3`                   | `FALSE`       |
+| `>=`         | Mayor o igual que | `5 >= 5`                  | `TRUE`        |
+| `<=`         | Menor o igual que | `5 <= 4`                  | `FALSE`       |
+| `==`         | Igualdad          | `5 == 5`                  | `TRUE`        |
+| `!=`         | Desigualdad       | `5 != 3`                  | `TRUE`        |
+| `&`          | Y lógico (AND)    | `(5 > 3) & (4 > 2)`       | `TRUE`        |
+| `` ` ``      | O lógico (OR)     | `` (4 < 2)  ` (5 > 3) ``  | `TRUE`        |
+| `!`          | Negación lógica   | `!(5 > 3)`                | `FALSE`       |
 
 ### Ejemplo práctico
 
