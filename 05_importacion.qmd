@@ -67,6 +67,8 @@ b.  `!require("nombre del paquete")`: El signo de exclamación (`!`) niega el re
 
 c.  `if (...) install.packages("nombre del paquete")`: Esta es una estructura condicional. Si la condición entre paréntesis es `TRUE` (es decir, si el paquete no está instalado o no puede ser cargado), entonces se ejecuta `install.packages("nombre del paquete")`, que descarga e instala el paquete desde el repositorio de CRAN.
 
+<!-- -->
+
 2.  Importar el archivo Excel
 
 ```{r eval=FALSE}
@@ -125,19 +127,19 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 #### Explicación del código
 
-1.   **`if (...) install.packages("rstudioapi")`** **:** Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.
+1.  **`if (...) install.packages("rstudioapi")`** **:** Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.
 
 2.  **`rstudioapi::getActiveDocumentContext()$path`:** Obtiene la ruta completa del script actual (por ejemplo, `C:/proyecto/scripts/analisis.R`).
 
-3.   **`dirname()`:** Extrae la carpeta que contiene el script (por ejemplo, `C:/proyecto/scripts/` → `C:/proyecto/`).
+3.  **`dirname()`:** Extrae la carpeta que contiene el script (por ejemplo, `C:/proyecto/scripts/` → `C:/proyecto/`).
 
-4.   **`setwd()`:** Establece esa carpeta como el directorio de trabajo.
+4.  **`setwd()`:** Establece esa carpeta como el directorio de trabajo.
 
 #### Beneficios de establecer un directorio de trabajo
 
 1.  **Portabilidad:** Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes.
 
-2.   **Automatización:** No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.
+2.  **Automatización:** No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.
 
 #### Consecuencias de no establecer un directorio de trabajo
 
