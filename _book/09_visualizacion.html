@@ -310,8 +310,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#etiquetas-y-títulos" id="toc-etiquetas-y-títulos" class="nav-link" data-scroll-target="#etiquetas-y-títulos"><span class="header-section-number">9.4.2</span> Etiquetas y títulos</a></li>
   <li><a href="#temas" id="toc-temas" class="nav-link" data-scroll-target="#temas"><span class="header-section-number">9.4.3</span> Temas</a></li>
   <li><a href="#facetas" id="toc-facetas" class="nav-link" data-scroll-target="#facetas"><span class="header-section-number">9.4.4</span> Facetas</a></li>
-  <li><a href="#escalas" id="toc-escalas" class="nav-link" data-scroll-target="#escalas"><span class="header-section-number">9.4.5</span> Escalas</a></li>
-  <li><a href="#ejemplo-avanzado-de-personalización" id="toc-ejemplo-avanzado-de-personalización" class="nav-link" data-scroll-target="#ejemplo-avanzado-de-personalización"><span class="header-section-number">9.4.6</span> Ejemplo avanzado de personalización</a></li>
+  <li><a href="#ejemplo-avanzado-de-personalización" id="toc-ejemplo-avanzado-de-personalización" class="nav-link" data-scroll-target="#ejemplo-avanzado-de-personalización"><span class="header-section-number">9.4.5</span> Ejemplo avanzado de personalización</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -432,24 +431,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="explicación-del-código" class="level4" data-number="9.3.1.1">
 <h4 data-number="9.3.1.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">9.3.1.1</span> Explicación del código</h4>
-</section>
-<section id="instalación-y-carga-de-paquetes" class="level4" data-number="9.3.1.2">
-<h4 data-number="9.3.1.2" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">9.3.1.2</span> <strong>Instalación y carga de paquetes</strong>:</h4>
+<p><strong>Instalación y carga de paquetes</strong>:</p>
 <ol type="1">
 <li><p>Se utiliza la función <code>require()</code> para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con <code>install.packages()</code>. Automaticamente, se cargan.</p></li>
 <li><p>El paquete <strong>tidyverse</strong> incluye herramientas esenciales para la manipulación y visualización de datos, como <strong>ggplot2</strong>, <strong>dplyr</strong> y <strong>tidyr</strong>.</p></li>
 <li><p>El paquete <strong>rstudioapi</strong> permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.</p></li>
 </ol>
-<p><strong>Establecimiento del directorio de trabajo</strong>:</p>
-<p>La función <code>setwd()</code> establece el directorio de trabajo en la ubicación del script actual, utilizando <code>rstudioapi::getActiveDocumentContext()$path</code>. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.</p>
+<p><strong>Establecimiento del directorio de trabajo</strong>: La función <code>setwd()</code> establece el directorio de trabajo en la ubicación del script actual, utilizando <code>rstudioapi::getActiveDocumentContext()$path</code>. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.</p>
 <p><strong>Importación de datos</strong>:</p>
 <ol type="1">
 <li><p>La función <code>read_csv()</code> del paquete <strong>readr</strong> se utiliza para leer archivos CSV.</p></li>
 <li><p>La función <code>head()</code> permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.</p></li>
 </ol>
 </section>
-<section id="notas-importantes" class="level4" data-number="9.3.1.3">
-<h4 data-number="9.3.1.3" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">9.3.1.3</span> Notas importantes</h4>
+<section id="notas-importantes" class="level4" data-number="9.3.1.2">
+<h4 data-number="9.3.1.2" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">9.3.1.2</span> Notas importantes</h4>
 <ol type="1">
 <li><p>Es fundamental asegurarse de que el archivo <code>datos_estudiantes.csv</code> esté ubicado en el directorio de trabajo establecido.</p></li>
 <li><p>Si el archivo no se encuentra en el directorio especificado, se generará un error. En ese caso, se puede verificar la ubicación del archivo con <code>getwd()</code> o establecer manualmente el directorio con <code>setwd("ruta/del/directorio")</code>.</p></li>
@@ -477,23 +473,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Explicación del código</strong></p>
-<p><strong><code>ggplot(data = datos, aes(x = PESO_lbs))</code></strong>:</p>
-<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable numérica que se desea analizar (<code>PESO_lbs</code>) dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el histograma representa la frecuencia de los valores en este eje.</p>
-<p><strong><code>geom_histogram()</code></strong>:</p>
-<p>Esta función geométrica es la encargada de crear el histograma. Cada barra representa la frecuencia de los valores que caen dentro de un intervalo específico.</p>
-<p><strong>Argumento <code>binwidth</code></strong>:</p>
-<p>El parámetro <code>binwidth</code> define el ancho de los intervalos (o “bins”) en los que se agrupan los datos. En este caso, se establece un ancho de 5 unidades, lo que significa que cada barra del histograma abarca un rango de 5 libras.</p>
-<p>Un valor más pequeño de <code>binwidth</code> genera más barras, proporcionando mayor detalle, mientras que un valor más grande agrupa los datos en menos barras, mostrando una visión más general.</p>
-<p><strong>Argumentos <code>fill</code> y <code>color</code></strong>:</p>
-<p><code>fill</code>: Define el color de relleno de las barras. En este ejemplo, se utiliza el color “skyblue” para un diseño visualmente atractivo.</p>
-<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a diferenciar claramente las barras entre sí.</p>
-<p><strong><code>labs()</code></strong>:</p>
-<p>La función <code>labs()</code> se utiliza para añadir etiquetas descriptivas al gráfico:</p>
+<p><strong>Explicación del código:</strong></p>
 <ol type="1">
-<li><p><code>title</code>: Título principal del gráfico, que describe el propósito del histograma.</p></li>
-<li><p><code>x</code>: Etiqueta del eje X, que indica la variable representada (en este caso, el peso en libras).</p></li>
-<li><p><code>y</code>: Etiqueta del eje Y, que muestra la frecuencia de los valores.</p></li>
+<li><p><strong>ggplot(data = datos, aes(x = PESO_lbs)):</strong> Se define el conjunto de datos (<code>datos</code>) y se especifica la variable numérica que se desea analizar (<code>PESO_lbs</code>) dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el histograma representa la frecuencia de los valores en este eje.</p></li>
+<li><p><strong>geom_histogram():</strong> Esta función geométrica es la encargada de crear el histograma. Cada barra representa la frecuencia de los valores que caen dentro de un intervalo específico.</p></li>
+<li><p><strong>Argumento binwidth:</strong> El parámetro <code>binwidth</code> define el ancho de los intervalos (o “bins”) en los que se agrupan los datos. En este caso, se establece un ancho de 5 unidades, lo que significa que cada barra del histograma abarca un rango de 5 libras.</p>
+<p>Un valor más pequeño de <code>binwidth</code> genera más barras, proporcionando mayor detalle, mientras que un valor más grande agrupa los datos en menos barras, mostrando una visión más general.</p></li>
+<li><p><strong>Argumentos fill y color:</strong></p>
+<p><code>fill</code>: Define el color de relleno de las barras. En este ejemplo, se utiliza el color “skyblue” para un diseño visualmente atractivo.</p>
+<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a diferenciar claramente las barras entre sí.</p></li>
+<li><p><strong>labs():</strong> La función <code>labs()</code> se utiliza para añadir etiquetas descriptivas al gráfico:</p>
+<p><code>title</code>: Título principal del gráfico, que describe el propósito del histograma.</p>
+<p><code>x</code>: Etiqueta del eje X, que indica la variable representada (en este caso, el peso en libras).</p>
+<p><code>y</code>: Etiqueta del eje Y, que muestra la frecuencia de los valores.</p></li>
 </ol>
 </section>
 </section>
@@ -517,14 +509,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Explicación del código</strong></p>
-<p><strong><code>ggplot(data = datos, aes(x = JORNADA))</code></strong>:</p>
-<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable categórica <code>JORNADA</code> dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el gráfico de barras representa las categorías en este eje.</p>
-<p><strong><code>geom_bar()</code></strong>:</p>
-<p>Esta función geométrica genera el gráfico de barras. Por defecto, <strong><code>geom_bar()</code></strong> cuenta automáticamente las observaciones en cada categoría de la variable especificada en el eje X.</p>
-<p><strong>Argumentos <code>fill</code> y <code>color</code></strong>:</p>
+<p><strong>Explicación del código:</strong></p>
+<ol type="1">
+<li><p><strong>ggplot(data = datos, aes(x = JORNADA))</strong>: Se define el conjunto de datos (<code>datos</code>) y se especifica la variable categórica <code>JORNADA</code> dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el gráfico de barras representa las categorías en este eje.</p></li>
+<li><p><strong>geom_bar():</strong> Esta función geométrica genera el gráfico de barras. Por defecto, <strong><code>geom_bar()</code></strong> cuenta automáticamente las observaciones en cada categoría de la variable especificada en el eje X.</p></li>
+<li><p><strong>Argumentos fill y color</strong>:</p>
 <p><code>fill</code>: Define el color de relleno de las barras. En este ejemplo, se utiliza el color “orange” para un diseño llamativo.</p>
-<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a resaltar las barras y separarlas visualmente.</p>
+<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a resaltar las barras y separarlas visualmente.</p></li>
+</ol>
 </section>
 </section>
 <section id="gráficos-de-dispersión-scatterplots" class="level3" data-number="9.3.4">
@@ -547,17 +539,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong><code>ggplot(data = datos, aes(x = TALLA, y = PESO_lbs))</code></strong>:</p>
-<p>Se define el conjunto de datos (<code>datos</code>) y se especifican las variables numéricas que se desean analizar:</p>
 <ol type="1">
-<li><p><code>TALLA</code>: Variable asignada al eje X (talla en metros).</p></li>
-<li><p><code>PESO_lbs</code>: Variable asignada al eje Y (peso en libras).</p></li>
-</ol>
-<p><strong><code>geom_point()</code></strong>:</p>
-<p>Esta función geométrica dibuja los puntos en el gráfico, representando cada observación del conjunto de datos.</p>
-<p><strong>Argumentos <code>color</code> y <code>size</code></strong>:</p>
+<li><p><strong>ggplot(data = datos, aes(x = TALLA, y = PESO_lbs))</strong>: Se define el conjunto de datos (<code>datos</code>) y se especifican las variables numéricas que se desean analizar:</p>
+<p><code>TALLA</code>: Variable asignada al eje X (talla en metros).</p>
+<p><code>PESO_lbs</code>: Variable asignada al eje Y (peso en libras).</p></li>
+<li><p><strong>geom_point()</strong>: Esta función geométrica dibuja los puntos en el gráfico, representando cada observación del conjunto de datos.</p></li>
+<li><p><strong>Argumentos color y size</strong>:</p>
 <p><code>color</code>: Define el color de los puntos. En este ejemplo, los puntos se dibujan en rojo (“red”).</p>
-<p><code>size</code>: Define el tamaño de los puntos. Aquí se establece un tamaño de 2 para que los puntos sean más visibles.</p>
+<p><code>size</code>: Define el tamaño de los puntos. Aquí se establece un tamaño de 2 para que los puntos sean más visibles.</p></li>
+</ol>
 </section>
 </section>
 <section id="boxplots" class="level3" data-number="9.3.5">
@@ -581,15 +571,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Explicación del código</strong></p>
-<p><strong><code>ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO))</code></strong>:</p>
-<p>Se define el conjunto de datos (<code>datos</code>) y se especifican las variables:</p>
 <ol type="1">
-<li><p><code>SEXO</code>: Variable categórica asignada al eje X, que define los grupos a comparar.</p></li>
-<li><p><code>PESO_lbs</code>: Variable numérica asignada al eje Y, cuya distribución se analiza dentro de cada grupo.</p></li>
-<li><p><code>fill</code>: Argumento opcional que asigna un color de relleno diferente a cada grupo basado en la variable <code>SEXO</code>.</p></li>
+<li><p><strong>ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO))</strong>: Se define el conjunto de datos (<code>datos</code>) y se especifican las variables:</p>
+<p><code>SEXO</code>: Variable categórica asignada al eje X, que define los grupos a comparar.</p>
+<p><code>PESO_lbs</code>: Variable numérica asignada al eje Y, cuya distribución se analiza dentro de cada grupo.</p>
+<p><code>fill</code>: Argumento opcional que asigna un color de relleno diferente a cada grupo basado en la variable <code>SEXO</code>.</p></li>
+<li><p><strong>geom_boxplot()</strong>: Esta función geométrica genera el <em>boxplot</em>. Cada caja representa la distribución de la variable numérica dentro de un grupo categórico.</p></li>
 </ol>
-<p><strong><code>geom_boxplot()</code></strong>:</p>
-<p>Esta función geométrica genera el <em>boxplot</em>. Cada caja representa la distribución de la variable numérica dentro de un grupo categórico.</p>
 </section>
 <section id="elementos-clave-de-un-boxplot" class="level4" data-number="9.3.5.2">
 <h4 data-number="9.3.5.2" class="anchored" data-anchor-id="elementos-clave-de-un-boxplot"><span class="header-section-number">9.3.5.2</span> Elementos clave de un boxplot</h4>
@@ -626,19 +614,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p><strong>Explicación del código</strong></p>
-<p><strong><code>ggplot(data = datos, aes(x = AÑO_ING))</code></strong>:</p>
-<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable <code>AÑO_ING</code> como el eje X, que representa los años de ingreso de los estudiantes.</p>
-<p>En este caso, no se especifica una variable para el eje Y, ya que el conteo de estudiantes por año se calcula automáticamente con <code>stat = "count"</code>.</p>
-<p><strong><code>geom_line(stat = "count", color = "darkblue", linewidth = 1.2)</code></strong>:</p>
-<p>La función <code>geom_line()</code> genera la línea que conecta los puntos correspondientes al conteo de estudiantes por año.</p>
+<ol type="1">
+<li><p><strong>ggplot(data = datos, aes(x = AÑO_ING))</strong>: Se define el conjunto de datos (<code>datos</code>) y se especifica la variable <code>AÑO_ING</code> como el eje X, que representa los años de ingreso de los estudiantes. En este caso, no se especifica una variable para el eje Y, ya que el conteo de estudiantes por año se calcula automáticamente con <code>stat = "count"</code>.</p></li>
+<li><p><strong>geom_line(stat = “count”, color = “darkblue”, linewidth = 1.2)</strong>: La función <code>geom_line()</code> genera la línea que conecta los puntos correspondientes al conteo de estudiantes por año.</p>
 <p><code>stat = "count"</code> indica que se debe contar automáticamente el número de observaciones en cada categoría del eje X.</p>
 <p><code>color</code>: Define el color de la línea (en este caso, azul oscuro).</p>
-<p><code>linewidth</code>: Ajusta el grosor de la línea (1.2 en este ejemplo).</p>
-<p><strong><code>geom_point(stat = "count", color = "darkred", size = 3)</code></strong>:</p>
-<p>La función <code>geom_point()</code> añade puntos en cada categoría del eje X, representando el conteo de estudiantes.</p>
+<p><code>linewidth</code>: Ajusta el grosor de la línea (1.2 en este ejemplo).</p></li>
+<li><p><strong>geom_point(stat = “count”, color = “darkred”, size = 3)</strong>: La función <code>geom_point()</code> añade puntos en cada categoría del eje X, representando el conteo de estudiantes.</p>
 <p><code>stat = "count"</code> asegura que los puntos correspondan al conteo calculado.</p>
 <p><code>color</code>: Define el color de los puntos (en este caso, rojo oscuro).</p>
-<p><code>size</code>: Ajusta el tamaño de los puntos (3 en este ejemplo).</p>
+<p><code>size</code>: Ajusta el tamaño de los puntos (3 en este ejemplo).</p></li>
+</ol>
 </section>
 </section>
 </section>
@@ -689,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>En este caso:</p>
+<p>En este ejemplo:</p>
 <ol type="1">
 <li><p>Los puntos se colorean automáticamente según los valores de la variable <code>SEXO</code>.</p></li>
 <li><p>La leyenda se genera de forma automática para indicar el significado de los colores.</p></li>
@@ -734,7 +720,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>En este caso, se asignan colores específicos a cada categoría de la variable <code>SEXO</code>, R realiza la realiza de colores en orden alfabético de las variables categóricas.</p>
+<p>En este ejemplo, se asignan colores específicos a cada categoría de la variable <code>SEXO</code>, R realiza la realiza la asignación de los colores de la escala en orden alfabético de las variables categóricas.</p>
 </section>
 </section>
 <section id="etiquetas-y-títulos" class="level3" data-number="9.4.2">
@@ -798,7 +784,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>En este caso:</p>
+<p>En este ejemplo:</p>
 <ol type="1">
 <li><p><code>hjust = 0.5</code> centra el título y el subtítulo.</p></li>
 <li><p><code>size</code> ajusta el tamaño del texto.</p></li>
@@ -828,9 +814,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="temas" class="level3" data-number="9.4.3">
 <h3 data-number="9.4.3" class="anchored" data-anchor-id="temas"><span class="header-section-number">9.4.3</span> Temas</h3>
-<p>Los temas permiten cambiar el estilo general del gráfico, como los colores de fondo, las líneas de los ejes y las fuentes.</p>
-<section id="ejemplo-aplicar-un-tema-minimalista" class="level4" data-number="9.4.3.1">
-<h4 data-number="9.4.3.1" class="anchored" data-anchor-id="ejemplo-aplicar-un-tema-minimalista"><span class="header-section-number">9.4.3.1</span> Ejemplo: aplicar un tema minimalista</h4>
+<p>En <strong>ggplot2</strong>, los temas permiten modificar el estilo general de un gráfico, ajustando elementos como el fondo, las líneas de los ejes, las fuentes y la disposición de los textos. Esto facilita la creación de gráficos con un diseño coherente y adaptado a diferentes propósitos, como presentaciones, informes o publicaciones.</p>
+<section id="aplicación-de-temas-predefinidos" class="level4" data-number="9.4.3.1">
+<h4 data-number="9.4.3.1" class="anchored" data-anchor-id="aplicación-de-temas-predefinidos"><span class="header-section-number">9.4.3.1</span> Aplicación de temas predefinidos</h4>
+<p><strong>ggplot2</strong> incluye varios temas predefinidos que se pueden aplicar directamente para cambiar el estilo del gráfico. Algunos de los más comunes son:</p>
+<ol type="1">
+<li><p><strong><code>theme_minimal()</code></strong>: Un diseño limpio y moderno, con un fondo blanco y líneas simples.</p></li>
+<li><p><strong><code>theme_classic()</code></strong>: Un estilo clásico con líneas de ejes visibles y sin cuadrícula.</p></li>
+<li><p><strong><code>theme_light()</code></strong>: Similar a <code>theme_minimal()</code>, pero con cuadrículas más visibles.</p></li>
+<li><p><strong><code>theme_dark()</code></strong>: Un diseño con fondo oscuro, ideal para presentaciones.</p></li>
+<li><p><strong><code>theme_void()</code></strong>: Un gráfico sin ejes ni cuadrículas, útil para gráficos personalizados.</p></li>
+</ol>
+</section>
+<section id="ejemplo-aplicar-un-tema-minimalista" class="level4" data-number="9.4.3.2">
+<h4 data-number="9.4.3.2" class="anchored" data-anchor-id="ejemplo-aplicar-un-tema-minimalista"><span class="header-section-number">9.4.3.2</span> Ejemplo: Aplicar un tema minimalista</h4>
+<p>El siguiente código muestra cómo aplicar el tema <code>theme_minimal()</code> a un gráfico de dispersión:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
@@ -843,18 +841,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>En este ejemplo: <code>theme_minimal()</code> elimina elementos innecesarios, como bordes y fondos grises, dejando un diseño limpio y profesional.</p>
 </section>
-</section>
-<section id="facetas" class="level3" data-number="9.4.4">
-<h3 data-number="9.4.4" class="anchored" data-anchor-id="facetas"><span class="header-section-number">9.4.4</span> Facetas</h3>
-<p>Las facetas dividen un gráfico en subgráficos según una variable categórica.</p>
-<section id="ejemplo-relación-entre-talla-y-peso-por-facultad" class="level4" data-number="9.4.4.1">
-<h4 data-number="9.4.4.1" class="anchored" data-anchor-id="ejemplo-relación-entre-talla-y-peso-por-facultad"><span class="header-section-number">9.4.4.1</span> Ejemplo: relación entre talla y peso por facultad</h4>
+<section id="personalización-de-temas" class="level4" data-number="9.4.3.3">
+<h4 data-number="9.4.3.3" class="anchored" data-anchor-id="personalización-de-temas"><span class="header-section-number">9.4.3.3</span> Personalización de temas</h4>
+<p>Además de los temas predefinidos, es posible personalizar elementos específicos del gráfico utilizando la función <code>theme()</code>. Por ejemplo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACULTAD) <span class="sc">+</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso por facultad"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"italic"</span>),</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major =</span> <span class="fu">element_line</span>(<span class="at">color =</span> <span class="st">"gray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>)</span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -863,18 +867,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>plot.title</code> centra el título y ajusta su tamaño y estilo.</p></li>
+<li><p><code>axis.text</code> y <code>axis.title</code> modifican el tamaño y estilo de las etiquetas de los ejes.</p></li>
+<li><p><code>panel.grid.major</code> personaliza las líneas de la cuadrícula principal, cambiando su color y estilo.</p></li>
+</ol>
 </section>
 </section>
-<section id="escalas" class="level3" data-number="9.4.5">
-<h3 data-number="9.4.5" class="anchored" data-anchor-id="escalas"><span class="header-section-number">9.4.5</span> Escalas</h3>
-<p>Las escalas permiten modificar los ejes y las leyendas del gráfico.</p>
-<section id="ejemplo" class="level4" data-number="9.4.5.1">
-<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">9.4.5.1</span> Ejemplo</h4>
+<section id="facetas" class="level3" data-number="9.4.4">
+<h3 data-number="9.4.4" class="anchored" data-anchor-id="facetas"><span class="header-section-number">9.4.4</span> Facetas</h3>
+<p>Las facetas en <strong>ggplot2</strong> permiten dividir un gráfico en múltiples subgráficos basados en los valores de una variable categórica. Esto es especialmente útil para comparar patrones o relaciones entre diferentes grupos dentro de un conjunto de datos, manteniendo la coherencia visual.</p>
+<section id="ejemplo-relación-entre-talla-y-peso-por-facultad" class="level4" data-number="9.4.4.1">
+<h4 data-number="9.4.4.1" class="anchored" data-anchor-id="ejemplo-relación-entre-talla-y-peso-por-facultad"><span class="header-section-number">9.4.4.1</span> Ejemplo: relación entre talla y peso por facultad</h4>
+<p>El siguiente código muestra cómo utilizar facetas para analizar la relación entre talla y peso, separando los datos por facultad:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs, <span class="at">color =</span> <span class="fu">factor</span>(JORNADA))) <span class="sc">+</span></span>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>,<span class="st">"orange"</span>,<span class="st">"green"</span>))<span class="sc">+</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"JORNADA"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACULTAD) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso por facultad"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -883,11 +894,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>facet_wrap(~ FACULTAD)</code> divide el gráfico en subgráficos, uno para cada valor único de la variable <code>FACULTAD</code>.</p></li>
+<li><p>Cada subgráfico muestra la relación entre <code>TALLA</code> y <code>PESO_lbs</code> para una facultad específica.</p></li>
+</ol>
 </section>
 </section>
-<section id="ejemplo-avanzado-de-personalización" class="level3" data-number="9.4.6">
-<h3 data-number="9.4.6" class="anchored" data-anchor-id="ejemplo-avanzado-de-personalización"><span class="header-section-number">9.4.6</span> Ejemplo avanzado de personalización</h3>
-<p>La gran cantidad de funciones para personalizar y la logica de capas que utiliza ggplot2 que se explicaron anteriormente permite crear resultados con un grado de complejidad mucho mayor como se ve a continuacion:</p>
+<section id="ejemplo-avanzado-de-personalización" class="level3" data-number="9.4.5">
+<h3 data-number="9.4.5" class="anchored" data-anchor-id="ejemplo-avanzado-de-personalización"><span class="header-section-number">9.4.5</span> Ejemplo avanzado de personalización</h3>
+<p>La flexibilidad y la lógica de capas de <strong>ggplot2</strong> permiten crear gráficos con un alto grado de personalización, adaptados a necesidades específicas y con un diseño profesional. A continuación, se presenta un ejemplo de un gráfico de barras con personalización detallada:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un gráfico de barras con personalización profesional</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> FACULTAD)) <span class="sc">+</span></span>
@@ -917,20 +933,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="explicación-del-código-1" class="level4" data-number="9.4.6.1">
-<h4 data-number="9.4.6.1" class="anchored" data-anchor-id="explicación-del-código-1"><span class="header-section-number">9.4.6.1</span> Explicación del código</h4>
-<p><strong>Datos y mapeo estético</strong>:</p>
-<p><code>aes(x = FACULTAD)</code>: Se utiliza la variable <code>FACULTAD</code> directamente desde la base de datos para el eje X.</p>
-<p><strong>Gráfico de barras</strong>:</p>
-<p><code>geom_bar()</code>: Genera automáticamente las barras basándose en la frecuencia de cada categoría.</p>
-<p><code>fill</code> y <code>color</code>: Personalizan el color de las barras y sus bordes.</p>
-<p><code>alpha</code>: Ajusta la transparencia de las barras.</p>
-<p><strong>Etiquetas y títulos</strong>:</p>
-<p><code>labs()</code>: Añade un título principal, subtítulo, etiquetas para los ejes y una nota al pie con la fuente de los datos.</p>
-<p><strong>Tema profesional</strong>:</p>
-<p><code>theme_minimal()</code>: Aplica un diseño limpio y moderno.</p>
-<p><code>theme()</code>: Personaliza elementos como el título, subtítulo, etiquetas de los ejes y elimina líneas de cuadrícula innecesarias.</p>
-<p><code>axis.text.x</code>: Rota las etiquetas del eje X para mejorar la legibilidad.</p>
+<section id="explicación-del-código-1" class="level4" data-number="9.4.5.1">
+<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="explicación-del-código-1"><span class="header-section-number">9.4.5.1</span> Explicación del código</h4>
+<ol type="1">
+<li><p><strong>Datos y mapeo estético</strong>: <code>aes(x = FACULTAD)</code>: Se utiliza la variable <code>FACULTAD</code> directamente desde la base de datos para el eje X.</p></li>
+<li><p><strong>Gráfico de barras</strong>: <code>geom_bar()</code>: Genera automáticamente las barras basándose en la frecuencia de cada categoría. En el ejemplo se utilizaron los siguientes argumentos:</p>
+<p><code>fill = "steelblue"</code>: Define el color de relleno de las barras como azul acero.</p>
+<p><code>color = "black"</code>: Establece el color de los bordes de las barras en negro.</p>
+<p><code>alpha = 0.8</code>: Ajusta la transparencia de las barras, permitiendo un diseño más suave.</p></li>
+<li><p><strong>Etiquetas y títulos</strong>: <code>labs()</code>: Añade un título principal, subtítulo, etiquetas para los ejes y una nota al pie con la fuente de los datos.</p></li>
+<li><p><strong>Tema profesional</strong>: <code>theme_minimal()</code>: Aplica un diseño limpio y moderno.</p></li>
+<li><p><strong>Personalización específica:</strong> <code>theme()</code>: Personaliza elementos específicos del gráfico empleando los siguiente argumentos:</p>
+<p><code>plot.title</code>: Ajusta el tamaño, estilo (negrita) y posición (centrado) del título.</p>
+<p><code>plot.subtitle</code>: Cambia el tamaño, posición y color del subtítulo.</p>
+<p><code>axis.title</code>: Modifica el tamaño y estilo de las etiquetas de los ejes.</p>
+<p><code>axis.text.x</code>: Rota las etiquetas del eje X 45 grados para mejorar la legibilidad, especialmente si las categorías tienen nombres largos.</p>
+<p><code>panel.grid.major.x</code> y <code>panel.grid.minor</code>: Elimina las líneas de cuadrícula verticales y menores para un diseño más limpio.</p>
+<p><code>plot.caption</code>: Ajusta el tamaño, posición y color de la nota al pie.</p></li>
+</ol>
 
 
 </section>

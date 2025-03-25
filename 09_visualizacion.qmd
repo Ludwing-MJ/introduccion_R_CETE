@@ -133,7 +133,7 @@ datos <- read_csv("datos_estudiantes.csv")
 
 #### Explicación del código
 
-#### **Instalación y carga de paquetes**:
+**Instalación y carga de paquetes**:
 
 1.  Se utiliza la función `require()` para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con `install.packages()`. Automaticamente, se cargan.
 
@@ -141,9 +141,7 @@ datos <- read_csv("datos_estudiantes.csv")
 
 3.  El paquete **rstudioapi** permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.
 
-**Establecimiento del directorio de trabajo**:
-
-La función `setwd()` establece el directorio de trabajo en la ubicación del script actual, utilizando `rstudioapi::getActiveDocumentContext()$path`. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.
+**Establecimiento del directorio de trabajo**: La función `setwd()` establece el directorio de trabajo en la ubicación del script actual, utilizando `rstudioapi::getActiveDocumentContext()$path`. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.
 
 **Importación de datos**:
 
@@ -175,37 +173,29 @@ ggplot(data = datos, aes(x = PESO_lbs)) +
        y = "Frecuencia")
 ```
 
-**Explicación del código**
+**Explicación del código:**
 
-**`ggplot(data = datos, aes(x = PESO_lbs))`**:
+1.  **ggplot(data = datos, aes(x = PESO_lbs)):** Se define el conjunto de datos (`datos`) y se especifica la variable numérica que se desea analizar (`PESO_lbs`) dentro de la función `aes()`. Esta variable se asigna al eje X, ya que el histograma representa la frecuencia de los valores en este eje.
 
-Se define el conjunto de datos (`datos`) y se especifica la variable numérica que se desea analizar (`PESO_lbs`) dentro de la función `aes()`. Esta variable se asigna al eje X, ya que el histograma representa la frecuencia de los valores en este eje.
+2.  **geom_histogram():** Esta función geométrica es la encargada de crear el histograma. Cada barra representa la frecuencia de los valores que caen dentro de un intervalo específico.
 
-**`geom_histogram()`**:
+3.  **Argumento binwidth:** El parámetro `binwidth` define el ancho de los intervalos (o "bins") en los que se agrupan los datos. En este caso, se establece un ancho de 5 unidades, lo que significa que cada barra del histograma abarca un rango de 5 libras.
 
-Esta función geométrica es la encargada de crear el histograma. Cada barra representa la frecuencia de los valores que caen dentro de un intervalo específico.
+    Un valor más pequeño de `binwidth` genera más barras, proporcionando mayor detalle, mientras que un valor más grande agrupa los datos en menos barras, mostrando una visión más general.
 
-**Argumento `binwidth`**:
+4.  **Argumentos fill y color:**
 
-El parámetro `binwidth` define el ancho de los intervalos (o "bins") en los que se agrupan los datos. En este caso, se establece un ancho de 5 unidades, lo que significa que cada barra del histograma abarca un rango de 5 libras.
+    `fill`: Define el color de relleno de las barras. En este ejemplo, se utiliza el color "skyblue" para un diseño visualmente atractivo.
 
-Un valor más pequeño de `binwidth` genera más barras, proporcionando mayor detalle, mientras que un valor más grande agrupa los datos en menos barras, mostrando una visión más general.
+    `color`: Define el color del borde de las barras, que en este caso es negro ("black"). Esto ayuda a diferenciar claramente las barras entre sí.
 
-**Argumentos `fill` y `color`**:
+5.  **labs():** La función `labs()` se utiliza para añadir etiquetas descriptivas al gráfico:
 
-`fill`: Define el color de relleno de las barras. En este ejemplo, se utiliza el color "skyblue" para un diseño visualmente atractivo.
+    `title`: Título principal del gráfico, que describe el propósito del histograma.
 
-`color`: Define el color del borde de las barras, que en este caso es negro ("black"). Esto ayuda a diferenciar claramente las barras entre sí.
+    `x`: Etiqueta del eje X, que indica la variable representada (en este caso, el peso en libras).
 
-**`labs()`**:
-
-La función `labs()` se utiliza para añadir etiquetas descriptivas al gráfico:
-
-1.  `title`: Título principal del gráfico, que describe el propósito del histograma.
-
-2.  `x`: Etiqueta del eje X, que indica la variable representada (en este caso, el peso en libras).
-
-3.  `y`: Etiqueta del eje Y, que muestra la frecuencia de los valores.
+    `y`: Etiqueta del eje Y, que muestra la frecuencia de los valores.
 
 ### Gráficos de barras
 
@@ -223,21 +213,17 @@ ggplot(data = datos, aes(x = JORNADA)) +
        y = "Frecuencia")
 ```
 
-**Explicación del código**
+**Explicación del código:**
 
-**`ggplot(data = datos, aes(x = JORNADA))`**:
+1.  **ggplot(data = datos, aes(x = JORNADA))**: Se define el conjunto de datos (`datos`) y se especifica la variable categórica `JORNADA` dentro de la función `aes()`. Esta variable se asigna al eje X, ya que el gráfico de barras representa las categorías en este eje.
 
-Se define el conjunto de datos (`datos`) y se especifica la variable categórica `JORNADA` dentro de la función `aes()`. Esta variable se asigna al eje X, ya que el gráfico de barras representa las categorías en este eje.
+2.  **geom_bar():** Esta función geométrica genera el gráfico de barras. Por defecto, **`geom_bar()`** cuenta automáticamente las observaciones en cada categoría de la variable especificada en el eje X.
 
-**`geom_bar()`**:
+3.  **Argumentos fill y color**:
 
-Esta función geométrica genera el gráfico de barras. Por defecto, **`geom_bar()`** cuenta automáticamente las observaciones en cada categoría de la variable especificada en el eje X.
+    `fill`: Define el color de relleno de las barras. En este ejemplo, se utiliza el color "orange" para un diseño llamativo.
 
-**Argumentos `fill` y `color`**:
-
-`fill`: Define el color de relleno de las barras. En este ejemplo, se utiliza el color "orange" para un diseño llamativo.
-
-`color`: Define el color del borde de las barras, que en este caso es negro ("black"). Esto ayuda a resaltar las barras y separarlas visualmente.
+    `color`: Define el color del borde de las barras, que en este caso es negro ("black"). Esto ayuda a resaltar las barras y separarlas visualmente.
 
 ### Gráficos de dispersión (scatterplots)
 
@@ -255,23 +241,19 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
        y = "Peso (libras)")
 ```
 
-**`ggplot(data = datos, aes(x = TALLA, y = PESO_lbs))`**:
+1.  **ggplot(data = datos, aes(x = TALLA, y = PESO_lbs))**: Se define el conjunto de datos (`datos`) y se especifican las variables numéricas que se desean analizar:
 
-Se define el conjunto de datos (`datos`) y se especifican las variables numéricas que se desean analizar:
+    `TALLA`: Variable asignada al eje X (talla en metros).
 
-1.  `TALLA`: Variable asignada al eje X (talla en metros).
+    `PESO_lbs`: Variable asignada al eje Y (peso en libras).
 
-2.  `PESO_lbs`: Variable asignada al eje Y (peso en libras).
+2.  **geom_point()**: Esta función geométrica dibuja los puntos en el gráfico, representando cada observación del conjunto de datos.
 
-**`geom_point()`**:
+3.  **Argumentos color y size**:
 
-Esta función geométrica dibuja los puntos en el gráfico, representando cada observación del conjunto de datos.
+    `color`: Define el color de los puntos. En este ejemplo, los puntos se dibujan en rojo ("red").
 
-**Argumentos `color` y `size`**:
-
-`color`: Define el color de los puntos. En este ejemplo, los puntos se dibujan en rojo ("red").
-
-`size`: Define el tamaño de los puntos. Aquí se establece un tamaño de 2 para que los puntos sean más visibles.
+    `size`: Define el tamaño de los puntos. Aquí se establece un tamaño de 2 para que los puntos sean más visibles.
 
 ### Boxplots
 
@@ -291,19 +273,15 @@ ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO)) +
 
 **Explicación del código**
 
-**`ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO))`**:
+1.  **ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO))**: Se define el conjunto de datos (`datos`) y se especifican las variables:
 
-Se define el conjunto de datos (`datos`) y se especifican las variables:
+    `SEXO`: Variable categórica asignada al eje X, que define los grupos a comparar.
 
-1.  `SEXO`: Variable categórica asignada al eje X, que define los grupos a comparar.
+    `PESO_lbs`: Variable numérica asignada al eje Y, cuya distribución se analiza dentro de cada grupo.
 
-2.  `PESO_lbs`: Variable numérica asignada al eje Y, cuya distribución se analiza dentro de cada grupo.
+    `fill`: Argumento opcional que asigna un color de relleno diferente a cada grupo basado en la variable `SEXO`.
 
-3.  `fill`: Argumento opcional que asigna un color de relleno diferente a cada grupo basado en la variable `SEXO`.
-
-**`geom_boxplot()`**:
-
-Esta función geométrica genera el *boxplot*. Cada caja representa la distribución de la variable numérica dentro de un grupo categórico.
+2.  **geom_boxplot()**: Esta función geométrica genera el *boxplot*. Cada caja representa la distribución de la variable numérica dentro de un grupo categórico.
 
 #### Elementos clave de un boxplot
 
@@ -338,31 +316,23 @@ ggplot(data = datos, aes(x = AÑO_ING)) +
 
 **Explicación del código**
 
-**`ggplot(data = datos, aes(x = AÑO_ING))`**:
+1.  **ggplot(data = datos, aes(x = AÑO_ING))**: Se define el conjunto de datos (`datos`) y se especifica la variable `AÑO_ING` como el eje X, que representa los años de ingreso de los estudiantes. En este caso, no se especifica una variable para el eje Y, ya que el conteo de estudiantes por año se calcula automáticamente con `stat = "count"`.
 
-Se define el conjunto de datos (`datos`) y se especifica la variable `AÑO_ING` como el eje X, que representa los años de ingreso de los estudiantes.
+2.  **geom_line(stat = "count", color = "darkblue", linewidth = 1.2)**: La función `geom_line()` genera la línea que conecta los puntos correspondientes al conteo de estudiantes por año.
 
-En este caso, no se especifica una variable para el eje Y, ya que el conteo de estudiantes por año se calcula automáticamente con `stat = "count"`.
+    `stat = "count"` indica que se debe contar automáticamente el número de observaciones en cada categoría del eje X.
 
-**`geom_line(stat = "count", color = "darkblue", linewidth = 1.2)`**:
+    `color`: Define el color de la línea (en este caso, azul oscuro).
 
-La función `geom_line()` genera la línea que conecta los puntos correspondientes al conteo de estudiantes por año.
+    `linewidth`: Ajusta el grosor de la línea (1.2 en este ejemplo).
 
-`stat = "count"` indica que se debe contar automáticamente el número de observaciones en cada categoría del eje X.
+3.  **geom_point(stat = "count", color = "darkred", size = 3)**: La función `geom_point()` añade puntos en cada categoría del eje X, representando el conteo de estudiantes.
 
-`color`: Define el color de la línea (en este caso, azul oscuro).
+    `stat = "count"` asegura que los puntos correspondan al conteo calculado.
 
-`linewidth`: Ajusta el grosor de la línea (1.2 en este ejemplo).
+    `color`: Define el color de los puntos (en este caso, rojo oscuro).
 
-**`geom_point(stat = "count", color = "darkred", size = 3)`**:
-
-La función `geom_point()` añade puntos en cada categoría del eje X, representando el conteo de estudiantes.
-
-`stat = "count"` asegura que los puntos correspondan al conteo calculado.
-
-`color`: Define el color de los puntos (en este caso, rojo oscuro).
-
-`size`: Ajusta el tamaño de los puntos (3 en este ejemplo).
+    `size`: Ajusta el tamaño de los puntos (3 en este ejemplo).
 
 ## Personalización de gráficos
 
@@ -403,7 +373,7 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs, color = SEXO)) +
        color = "Sexo")
 ```
 
-En este caso:
+En este ejemplo:
 
 1.  Los puntos se colorean automáticamente según los valores de la variable `SEXO`.
 
@@ -438,7 +408,7 @@ ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO)) +
        fill = "Sexo")
 ```
 
-En este caso, se asignan colores específicos a cada categoría de la variable `SEXO`, R realiza la realiza de colores en orden alfabético de las variables categóricas.
+En este ejemplo, se asignan colores específicos a cada categoría de la variable `SEXO`, R realiza la realiza la asignación de los colores de la escala en orden alfabético de las variables categóricas.
 
 ### Etiquetas y títulos
 
@@ -497,7 +467,7 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
         plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"))
 ```
 
-En este caso:
+En este ejemplo:
 
 1.  `hjust = 0.5` centra el título y el subtítulo.
 
@@ -522,9 +492,25 @@ En este ejemplo, las etiquetas del eje Y se rotan 90 grados.
 
 ### Temas
 
-Los temas permiten cambiar el estilo general del gráfico, como los colores de fondo, las líneas de los ejes y las fuentes.
+En **ggplot2**, los temas permiten modificar el estilo general de un gráfico, ajustando elementos como el fondo, las líneas de los ejes, las fuentes y la disposición de los textos. Esto facilita la creación de gráficos con un diseño coherente y adaptado a diferentes propósitos, como presentaciones, informes o publicaciones.
 
-#### Ejemplo: aplicar un tema minimalista
+#### Aplicación de temas predefinidos
+
+**ggplot2** incluye varios temas predefinidos que se pueden aplicar directamente para cambiar el estilo del gráfico. Algunos de los más comunes son:
+
+1.  **`theme_minimal()`**: Un diseño limpio y moderno, con un fondo blanco y líneas simples.
+
+2.  **`theme_classic()`**: Un estilo clásico con líneas de ejes visibles y sin cuadrícula.
+
+3.  **`theme_light()`**: Similar a `theme_minimal()`, pero con cuadrículas más visibles.
+
+4.  **`theme_dark()`**: Un diseño con fondo oscuro, ideal para presentaciones.
+
+5.  **`theme_void()`**: Un gráfico sin ejes ni cuadrículas, útil para gráficos personalizados.
+
+#### Ejemplo: Aplicar un tema minimalista
+
+El siguiente código muestra cómo aplicar el tema `theme_minimal()` a un gráfico de dispersión:
 
 ```{r}
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
@@ -532,11 +518,42 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   theme_minimal()
 ```
 
+En este ejemplo: `theme_minimal()` elimina elementos innecesarios, como bordes y fondos grises, dejando un diseño limpio y profesional.
+
+#### Personalización de temas
+
+Además de los temas predefinidos, es posible personalizar elementos específicos del gráfico utilizando la función `theme()`. Por ejemplo:
+
+```{r}
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point() +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
+    axis.text = element_text(size = 12),
+    axis.title = element_text(size = 14, face = "italic"),
+    panel.grid.major = element_line(color = "gray", linetype = "dashed")
+  ) +
+  labs(title = "Relación entre talla y peso",
+       x = "Talla (metros)",
+       y = "Peso (libras)")
+```
+
+En este ejemplo:
+
+1.  `plot.title` centra el título y ajusta su tamaño y estilo.
+
+2.  `axis.text` y `axis.title` modifican el tamaño y estilo de las etiquetas de los ejes.
+
+3.  `panel.grid.major` personaliza las líneas de la cuadrícula principal, cambiando su color y estilo.
+
 ### Facetas
 
-Las facetas dividen un gráfico en subgráficos según una variable categórica.
+Las facetas en **ggplot2** permiten dividir un gráfico en múltiples subgráficos basados en los valores de una variable categórica. Esto es especialmente útil para comparar patrones o relaciones entre diferentes grupos dentro de un conjunto de datos, manteniendo la coherencia visual.
 
 #### Ejemplo: relación entre talla y peso por facultad
+
+El siguiente código muestra cómo utilizar facetas para analizar la relación entre talla y peso, separando los datos por facultad:
 
 ```{r}
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
@@ -545,23 +562,15 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   labs(title = "Relación entre talla y peso por facultad")
 ```
 
-### Escalas
+En este ejemplo:
 
-Las escalas permiten modificar los ejes y las leyendas del gráfico.
+1.  `facet_wrap(~ FACULTAD)` divide el gráfico en subgráficos, uno para cada valor único de la variable `FACULTAD`.
 
-#### Ejemplo
-
-```{r}
-
-ggplot(data = datos, aes(x = TALLA, y = PESO_lbs, color = factor(JORNADA))) +
-  geom_point() +
-  scale_color_manual(values = c("red", "blue", "purple","orange","green"))+
-  labs(color = "JORNADA")
-```
+2.  Cada subgráfico muestra la relación entre `TALLA` y `PESO_lbs` para una facultad específica.
 
 ### Ejemplo avanzado de personalización
 
-La gran cantidad de funciones para personalizar y la logica de capas que utiliza ggplot2 que se explicaron anteriormente permite crear resultados con un grado de complejidad mucho mayor como se ve a continuacion:
+La flexibilidad y la lógica de capas de **ggplot2** permiten crear gráficos con un alto grado de personalización, adaptados a necesidades específicas y con un diseño profesional. A continuación, se presenta un ejemplo de un gráfico de barras con personalización detallada:
 
 ```{r}
 # Crear un gráfico de barras con personalización profesional
@@ -588,26 +597,30 @@ ggplot(data = datos, aes(x = FACULTAD)) +
 
 #### Explicación del código
 
-**Datos y mapeo estético**:
+1.  **Datos y mapeo estético**: `aes(x = FACULTAD)`: Se utiliza la variable `FACULTAD` directamente desde la base de datos para el eje X.
 
-`aes(x = FACULTAD)`: Se utiliza la variable `FACULTAD` directamente desde la base de datos para el eje X.
+2.  **Gráfico de barras**: `geom_bar()`: Genera automáticamente las barras basándose en la frecuencia de cada categoría. En el ejemplo se utilizaron los siguientes argumentos:
 
-**Gráfico de barras**:
+    `fill = "steelblue"`: Define el color de relleno de las barras como azul acero.
 
-`geom_bar()`: Genera automáticamente las barras basándose en la frecuencia de cada categoría.
+    `color = "black"`: Establece el color de los bordes de las barras en negro.
 
-`fill` y `color`: Personalizan el color de las barras y sus bordes.
+    `alpha = 0.8`: Ajusta la transparencia de las barras, permitiendo un diseño más suave.
 
-`alpha`: Ajusta la transparencia de las barras.
+3.  **Etiquetas y títulos**: `labs()`: Añade un título principal, subtítulo, etiquetas para los ejes y una nota al pie con la fuente de los datos.
 
-**Etiquetas y títulos**:
+4.  **Tema profesional**: `theme_minimal()`: Aplica un diseño limpio y moderno.
 
-`labs()`: Añade un título principal, subtítulo, etiquetas para los ejes y una nota al pie con la fuente de los datos.
+5.  **Personalización específica:** `theme()`: Personaliza elementos específicos del gráfico empleando los siguiente argumentos:
 
-**Tema profesional**:
+    `plot.title`: Ajusta el tamaño, estilo (negrita) y posición (centrado) del título.
 
-`theme_minimal()`: Aplica un diseño limpio y moderno.
+    `plot.subtitle`: Cambia el tamaño, posición y color del subtítulo.
 
-`theme()`: Personaliza elementos como el título, subtítulo, etiquetas de los ejes y elimina líneas de cuadrícula innecesarias.
+    `axis.title`: Modifica el tamaño y estilo de las etiquetas de los ejes.
 
-`axis.text.x`: Rota las etiquetas del eje X para mejorar la legibilidad.
+    `axis.text.x`: Rota las etiquetas del eje X 45 grados para mejorar la legibilidad, especialmente si las categorías tienen nombres largos.
+
+    `panel.grid.major.x` y `panel.grid.minor`: Elimina las líneas de cuadrícula verticales y menores para un diseño más limpio.
+
+    `plot.caption`: Ajusta el tamaño, posición y color de la nota al pie.
