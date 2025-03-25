@@ -1,5 +1,184 @@
 # Exportación de resultados
 
-## Guardar gráficos con `ggsave`
+La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. Este capítulo detalla cómo guardar gráficos en formatos PNG y PDF utilizando la función `ggsave()` del paquete `ggplot2`, y cómo exportar tablas en formatos CSV y Excel utilizando las funciones `write.csv()` y `write_xlsx()` del paquete `writexl`.
 
-## Exportación de tablas en formato CSV
+## Guardar gráficos con `ggsave()`
+
+### Sintaxis General de la Función `ggsave()`
+
+La función `ggsave()` pertenece al paquete `ggplot2` y se utiliza para guardar gráficos en diferentes formatos de archivo, como PNG, PDF, JPEG, entre otros. Es una herramienta versátil que permite personalizar aspectos como el tamaño, la resolución y el formato del archivo de salida.
+
+La sintaxis general de la función es la siguiente:
+
+```{r eval=FALSE}
+ggsave(
+  filename,
+  plot = last_plot(),
+  device = NULL,
+  path = NULL,
+  scale = 1,
+  width = NA,
+  height = NA,
+  units = c("in", "cm", "mm"),
+  dpi = 300,
+  limitsize = TRUE)
+```
+
+A continuación, se explican los argumentos principales de la función:
+
+1\. **filename:** Este argumento es obligatorio y define el nombre del archivo de salida, incluyendo su extensión (por ejemplo, `"grafico.png"` o `"grafico.pdf"`). La extensión del archivo determina automáticamente el formato en el que se guardará el gráfico, a menos que se especifique explícitamente con el argumento `device`. Es importante asegurarse de que el nombre del archivo sea válido para el sistema operativo utilizado.
+
+2\. **plot:** Este argumento opcional permite especificar el gráfico que se desea guardar. Si no se proporciona, `ggsave()` guardará automáticamente el último gráfico creado en la sesión de R, utilizando la función `last_plot()`. Esto es útil para flujos de trabajo interactivos, pero en proyectos más complejos se recomienda asignar los gráficos a objetos para evitar confusiones.
+
+3\. **device:** El argumento `device` define el tipo de dispositivo o formato del archivo de salida, como `"png"`, `"pdf"`, `"jpeg"`, entre otros. Si no se especifica, el formato se deduce automáticamente a partir de la extensión del archivo en `filename`. Este argumento es útil cuando se desea guardar un archivo con un formato específico, independientemente de la extensión.
+
+4\. **path:** Este argumento opcional permite especificar el directorio donde se guardará el archivo. Si no se proporciona, el archivo se guardará en el directorio de trabajo actual. Es especialmente útil para organizar los gráficos en carpetas específicas dentro de un proyecto.
+
+5\. **scale:** El argumento `scale` ajusta el tamaño del gráfico multiplicando las dimensiones especificadas en `width` y `height` por el valor proporcionado. Por defecto, su valor es `1`, lo que significa que no se aplica escalado. Un valor mayor que `1` aumenta el tamaño del gráfico, mientras que un valor menor lo reduce.
+
+6\. **width y height:** Estos argumentos definen el ancho y la altura del gráfico en las unidades especificadas por el argumento `units`. Si no se proporcionan, se utilizan las dimensiones predeterminadas del gráfico. Es importante ajustar estas dimensiones para garantizar que el gráfico se adapte correctamente al formato de salida.
+
+7\. **units:** El argumento `units` especifica las unidades de medida para `width` y `height`. Los valores posibles son `"in"` (pulgadas), `"cm"` (centímetros) y `"mm"` (milímetros). Por defecto, se utilizan pulgadas (`"in"`), pero se pueden cambiar según las necesidades del proyecto.
+
+8\. **dpi:** El argumento `dpi` (dots per inch) define la resolución del gráfico, siendo relevante para formatos rasterizados como PNG, JPEG o TIFF. Su valor predeterminado es `300`, adecuado para impresión. Para gráficos destinados a la web, se puede utilizar un valor menor, como `72`.
+
+9\. **limitsize:** Este argumento controla si se permite guardar gráficos con dimensiones excesivamente grandes (mayores a 50 pulgadas). Si se establece en `TRUE` (valor predeterminado), se genera un error al intentar guardar gráficos grandes. Para desactivar esta restricción, se debe establecer en `FALSE`.
+
+### Guardar en formatos PDF y PNG
+
+Si no se especifica el argumento `plot`, la función `ggsave()` guardará automáticamente el último gráfico creado en la sesión de R. Esto es útil cuando se trabaja de manera interactiva y se desea guardar rápidamente un gráfico sin asignarlo a un objeto. A continuación, se describen los pasos para exportar gráficos en formatos PNG y PDF, junto con ejemplos prácticos.
+
+**Crear un gráfico con `ggplot2`**
+
+Antes de guardar un gráfico, es necesario crearlo. A continuación, se presenta el ultimo gráfico realizado en el capitulo anterior:
+
+```{r message=FALSE, warning=FALSE}
+# Instalación y carga de paquetes esenciales
+
+# Paquete que incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+
+# Importar la base de datos
+datos <- read_csv("datos_estudiantes.csv")
+
+# Ejemplo avanzado de personalización de un gráfico
+plot<- ggplot(data = datos, aes(x = FACULTAD)) +
+  geom_bar(fill = "steelblue", color = "black", alpha = 0.8) +
+  labs(
+    title = "Distribución de estudiantes por facultad",
+    subtitle = "Datos del estudio de 2002, 
+    Universidad de San Carlos de Guatemala",
+    x = "Facultad",
+    y = "Cantidad de estudiantes",
+    caption = "Fuente: Estudio realizado en 2002"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "gray50"),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
+  )
+
+```
+
+**Guardar el gráfico en formato PNG:** Una vez creado el gráfico, se puede guardar utilizando `ggsave()`:
+
+```{r eval=FALSE}
+# Guardar el gráfico en formato PNG
+ggsave("grafico.png", width = 8, height = 6, dpi = 300)
+
+```
+
+**Parámetros importantes**:
+
+`filename`: Nombre del archivo de salida (en este caso, `"grafico.png"`).
+
+`plot`: Objeto del gráfico que se desea guardar.
+
+`width` y `height`: Dimensiones del gráfico en pulgadas.
+
+`dpi`: Resolución del archivo en puntos por pulgada (300 dpi es adecuado para impresión).
+
+**Resultado**: El archivo `grafico.png` se guardará en el directorio de trabajo actual con las dimensiones y resolución especificadas.
+
+**Guardar en Formato PDF:** El formato PDF es ideal para gráficos que requieren escalado sin pérdida de calidad, como en publicaciones científicas o informes.
+
+```{r eval=FALSE}
+# Guardar el gráfico en formato PDF
+ggsave("grafico.pdf", width = 8, height = 6)
+```
+
+**Diferencias con PNG**: No es necesario especificar la resolución (`dpi`), ya que el formato PDF es vectorial y no depende de la resolución.
+
+**Resultado**: El archivo `grafico.pdf` se guardará en el directorio de trabajo actual, listo para ser escalado o utilizado en documentos de alta calidad.
+
+## Guardar Tablas en CSV y Excel
+
+La exportación de tablas es esencial para compartir datos o realizar análisis adicionales en otras herramientas. A continuación, se detalla cómo guardar tablas en formatos CSV y Excel.
+
+### Crear un data frame de ejemplo
+
+Se puede utilizar un data frame de ejemplo para ilustrar el proceso:
+
+```{r}
+# Crear un data frame de ejemplo
+ejemplo <- data.frame(
+  Nombre = c("Ana", "Luis", "María"),
+  Edad = c(25, 30, 22),
+  Ciudad = c("Madrid", "Barcelona", "Valencia")
+)
+```
+
+### Guardar la tabla en formato CSV
+
+Utilizando la función `write.csv()`, se puede exportar el data frame:
+
+```{r}
+# Guardar la tabla en formato CSV
+write.csv(ejemplo, "ejemplo.csv", row.names = FALSE)
+```
+
+**Parámetros importantes**:
+
+`file`: Nombre del archivo de salida (en este caso, `"tabla.csv"`).
+
+`row.names`: Si se establece en `FALSE`, no se incluirán los índices de las filas como una columna adicional.
+
+**Resultado**: El archivo `ejemplo.csv` se guardará en el directorio de trabajo actual, listo para ser abierto en cualquier editor de texto o software como Excel.
+
+### Guardar en Formato Excel
+
+El formato Excel es útil para compartir datos en un archivo más estructurado y compatible con herramientas como Microsoft Excel.
+
+#### Instalar y cargar el paquete `writexl`
+
+```{r message=FALSE, warning=FALSE}
+# Paquete para la exportación de datos a Excel
+if (!require("writexl")) install.packages("writexl")
+```
+
+#### Guardar la tabla en formato Excel
+
+Utilizando la función `write_xlsx()`, se puede exportar el data frame:
+
+```{r}
+# Guardar la tabla en formato Excel
+write_xlsx(ejemplo, "ejemplo.xlsx")
+```
+
+**Parámetros importantes**: `path`: Nombre del archivo de salida (en este caso, `"ejemplo.xlsx"`).
+
+**Resultado**: El archivo `ejemplo.xlsx` se guardará en el directorio de trabajo actual, listo para ser abierto en Microsoft Excel o software similar.
+
+## Comparación de Formatos
+
+| **Formato** | **Uso Principal** | **Ventajas** | **Desventajas** |
+|----|----|----|----|
+| PNG | Presentaciones y documentos digitales | Alta calidad, ampliamente compatible | No escalable sin pérdida de calidad |
+| PDF | Publicaciones científicas e informes | Escalable, ideal para impresión | Menos compatible con editores básicos |
+| CSV | Análisis de datos en herramientas simples | Ligero, compatible con múltiples plataformas | No admite formatos complejos |
+| Excel | Compartir datos estructurados | Compatible con herramientas avanzadas | Requiere software específico |
