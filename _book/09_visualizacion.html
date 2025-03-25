@@ -346,10 +346,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="introducción-al-paquete-ggplot2" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="introducción-al-paquete-ggplot2"><span class="header-section-number">9.2</span> Introducción al paquete <code>ggplot2</code></h2>
-<p>El paquete <code>ggplot2</code> forma parte del ecosistema <em>tidyverse</em> y está diseñado para crear gráficos mediante una lógica de capas. Cada capa representa un componente del gráfico, como los datos, las geometrías (tipos de gráficos), las etiquetas y los temas. Este enfoque modular permite construir gráficos complejos de manera progresiva y reproducible.</p>
+<p><strong>ggplot2</strong> es una herramienta poderosa y versátil para la visualización de datos en R, que permite crear gráficos de calidad profesional con un alto nivel de personalización. Su diseño modular basado en capas facilita la adición de elementos como líneas, etiquetas y temas, adaptándose tanto a gráficos simples como a visualizaciones complejas. Además, su integración con el ecosistema <strong>tidyverse</strong> simplifica los flujos de trabajo al combinarse fácilmente con paquetes como <strong>dplyr</strong> y <strong>tidyr</strong> para la manipulación de datos. Es compatible con una amplia variedad de tipos de gráficos y puede extenderse mediante paquetes adicionales como <strong>ggthemes</strong> o <strong>plotly</strong> para gráficos interactivos. Finalmente, su comunidad activa y extensa documentación lo convierten en una herramienta accesible y ampliamente utilizada en análisis de datos.</p>
 <section id="estructura-básica-de-un-gráfico-en-ggplot2" class="level3" data-number="9.2.1">
 <h3 data-number="9.2.1" class="anchored" data-anchor-id="estructura-básica-de-un-gráfico-en-ggplot2"><span class="header-section-number">9.2.1</span> Estructura básica de un gráfico en ggplot2</h3>
-<p>La estructura general de un gráfico en <code>ggplot2</code> sigue la siguiente sintaxis:</p>
+<p>La creación de gráficos en <strong>ggplot2</strong> se basa en una estructura modular que permite construir visualizaciones de manera flexible y escalable. La sintaxis general para crear un gráfico en <strong>ggplot2</strong> es la siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> DATOS, <span class="fu">aes</span>(<span class="at">x =</span> VARIABLE_X, <span class="at">y =</span> VARIABLE_Y)) <span class="sc">+</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">GEOM_FUNCION</span>() <span class="sc">+</span></span>
@@ -357,26 +357,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Etiqueta eje X"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Etiqueta eje Y"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>A continuación, se describen los componentes principales de esta estructura:</p>
+<section id="data" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="data"><span class="header-section-number">9.2.1.1</span> <code>data</code></h4>
+<p>Este argumento define el conjunto de datos que se utilizará para construir el gráfico. Debe ser un <em>data frame</em> o un objeto compatible con este formato. Es el punto de partida para cualquier visualización, ya que contiene las variables que se representarán gráficamente.</p>
+</section>
+<section id="aes" class="level4" data-number="9.2.1.2">
+<h4 data-number="9.2.1.2" class="anchored" data-anchor-id="aes"><span class="header-section-number">9.2.1.2</span> <code>aes()</code></h4>
+<p>La función <code>aes()</code> (abreviatura de <em>aesthetics</em>) especifica el mapeo estético, es decir, cómo las variables del conjunto de datos se asignan a los elementos visuales del gráfico. Algunos de los mapeos más comunes incluyen:</p>
 <ol type="1">
-<li><p><code>data</code>: Define el conjunto de datos que se utilizará.</p></li>
-<li><p><code>aes()</code>: Especifica el mapeo estético, es decir, cómo las variables se asignan a los ejes, colores, tamaños, etc.</p></li>
-<li><p><code>GEOM_FUNCION()</code>: Indica el tipo de gráfico que se desea crear (e.g., puntos, barras, líneas).</p></li>
-<li><p><code>labs()</code>: Añade etiquetas y títulos al gráfico.</p></li>
+<li><p><code>x</code>: Variable asignada al eje horizontal.</p></li>
+<li><p><code>y</code>: Variable asignada al eje vertical.</p></li>
+<li><p><code>color</code>: Variable que define el color de los elementos.</p></li>
+<li><p><code>size</code>: Variable que define el tamaño de los elementos.</p></li>
+<li><p><code>shape</code>: Variable que define la forma de los puntos (en gráficos de dispersión, por ejemplo).</p></li>
+<li><p><code>fill</code>: Variable que define el color de relleno (en gráficos como barras o áreas).</p></li>
 </ol>
-<p><strong>Ventajas de ggplot2:</strong></p>
+</section>
+<section id="geom_funcion" class="level4" data-number="9.2.1.3">
+<h4 data-number="9.2.1.3" class="anchored" data-anchor-id="geom_funcion"><span class="header-section-number">9.2.1.3</span> <code>GEOM_FUNCION()</code></h4>
+<p>La función geométrica (<code>geom_</code>) define el tipo de gráfico que se desea crear. Cada tipo de gráfico tiene su propia función en <strong>ggplot2</strong>, como:</p>
 <ol type="1">
-<li><p>Permite personalizar gráficos de manera detallada.</p></li>
-<li><p>Produce gráficos de calidad profesional.</p></li>
-<li><p>Es compatible con otros paquetes del <em>tidyverse</em>, facilitando la integración en flujos de trabajo.</p></li>
+<li><p><code>geom_point()</code>: Gráfico de puntos (dispersión).</p></li>
+<li><p><code>geom_bar()</code>: Gráfico de barras.</p></li>
+<li><p><code>geom_line()</code>: Gráfico de líneas.</p></li>
+<li><p><code>geom_histogram()</code>: Histograma.</p></li>
+<li><p><code>geom_boxplot()</code>: Diagrama de cajas (<em>boxplot</em>).</p></li>
 </ol>
+</section>
+<section id="labs" class="level4" data-number="9.2.1.4">
+<h4 data-number="9.2.1.4" class="anchored" data-anchor-id="labs"><span class="header-section-number">9.2.1.4</span> <code>labs()</code></h4>
+<p>La función <code>labs()</code> se utiliza para añadir etiquetas y títulos al gráfico. Esto incluye:</p>
+<ol type="1">
+<li><p><code>title</code>: Título principal del gráfico.</p></li>
+<li><p><code>x</code>: Etiqueta del eje X.</p></li>
+<li><p><code>y</code>: Etiqueta del eje Y.</p></li>
+<li><p><code>subtitle</code>: Subtítulo del gráfico.</p></li>
+<li><p><code>caption</code>: Texto adicional, como la fuente de los datos.</p></li>
+</ol>
+</section>
+<section id="operador" class="level4" data-number="9.2.1.5">
+<h4 data-number="9.2.1.5" class="anchored" data-anchor-id="operador"><span class="header-section-number">9.2.1.5</span> Operador <code>+</code></h4>
+<p>El operador <code>+</code> es fundamental en <strong>ggplot2</strong>, ya que permite combinar diferentes capas (<em>layers</em>) en un gráfico. Cada capa puede añadir elementos adicionales, como líneas de tendencia, etiquetas o temas personalizados.</p>
+</section>
+<section id="personalización-adicional" class="level4" data-number="9.2.1.6">
+<h4 data-number="9.2.1.6" class="anchored" data-anchor-id="personalización-adicional"><span class="header-section-number">9.2.1.6</span> Personalización adicional</h4>
+<p>Además de los elementos básicos, <strong>ggplot2</strong> permite personalizar los gráficos mediante temas (<code>theme()</code>) y escalas (<code>scale_</code>). Por ejemplo, se puede cambiar el esquema de colores o ajustar el diseño general del gráfico:</p>
+</section>
 </section>
 </section>
 <section id="creación-de-gráficos-básicos" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="creación-de-gráficos-básicos"><span class="header-section-number">9.3</span> Creación de gráficos básicos</h2>
-<p>A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con <code>ggplot2</code>, junto con su sintaxis y explicación.</p>
+<p>A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con <strong>ggplot2</strong>, junto con su sintaxis y una explicación detallada. Antes de proceder con la creación de gráficos, es fundamental importar la base de datos y cargar los paquetes necesarios.</p>
 <section id="importación-de-la-base-de-datos" class="level3" data-number="9.3.1">
 <h3 data-number="9.3.1" class="anchored" data-anchor-id="importación-de-la-base-de-datos"><span class="header-section-number">9.3.1</span> Importación de la base de datos</h3>
-<p>Antes de comenzar, es necesario importar la base de datos en formato CSV y cargar los paquetes que se van a utilizar. Para ello, se utiliza el siguiente código:</p>
+<p>Para trabajar con <strong>ggplot2</strong> y otros paquetes relacionados, es necesario instalar y cargar los paquetes requeridos, así como importar el conjunto de datos en formato CSV. El siguiente código muestra cómo realizar estos pasos de manera eficiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico: Uso de paquetes para visualización</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: Antes de trabajar, es necesario crear y guardar un nuevo script.</span></span>
@@ -394,57 +429,46 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver las primeras filas del conjunto de datos</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 11
-  FACULTAD  EDAD SEXO  EST_CIVIL TRABAJA JORNADA    AÑO_ING PESO_lbs TALLA Fuma 
-  &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;chr&gt;        &lt;dbl&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;
-1 Admon.      21 M     soltero         2 vespertina    1998      150  1.7  2    
-2 Admon.      21 M     soltero         1 vespertina    1998      150  1.72 2    
-3 Admon.      31 F     casado          1 nocturna      1991      197  1.55 1    
-4 Admon.      38 M     unido           1 nocturna      1992      120  1.7  2    
-5 Admon.      24 M     casado          1 nocturna      1995      175  1.7  2    
-6 Admon.      34 M     soltero         2 nocturna      1986      156  1.7  2    
-# ℹ 1 more variable: Alcohol &lt;dbl&gt;</code></pre>
 </div>
-</div>
+<section id="explicación-del-código" class="level4" data-number="9.3.1.1">
+<h4 data-number="9.3.1.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">9.3.1.1</span> Explicación del código</h4>
+</section>
+<section id="instalación-y-carga-de-paquetes" class="level4" data-number="9.3.1.2">
+<h4 data-number="9.3.1.2" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">9.3.1.2</span> <strong>Instalación y carga de paquetes</strong>:</h4>
+<ol type="1">
+<li><p>Se utiliza la función <code>require()</code> para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con <code>install.packages()</code>. Automaticamente, se cargan.</p></li>
+<li><p>El paquete <strong>tidyverse</strong> incluye herramientas esenciales para la manipulación y visualización de datos, como <strong>ggplot2</strong>, <strong>dplyr</strong> y <strong>tidyr</strong>.</p></li>
+<li><p>El paquete <strong>rstudioapi</strong> permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.</p></li>
+</ol>
+<p><strong>Establecimiento del directorio de trabajo</strong>:</p>
+<p>La función <code>setwd()</code> establece el directorio de trabajo en la ubicación del script actual, utilizando <code>rstudioapi::getActiveDocumentContext()$path</code>. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.</p>
+<p><strong>Importación de datos</strong>:</p>
+<ol type="1">
+<li><p>La función <code>read_csv()</code> del paquete <strong>readr</strong> se utiliza para leer archivos CSV.</p></li>
+<li><p>La función <code>head()</code> permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.</p></li>
+</ol>
+</section>
+<section id="notas-importantes" class="level4" data-number="9.3.1.3">
+<h4 data-number="9.3.1.3" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">9.3.1.3</span> Notas importantes</h4>
+<ol type="1">
+<li><p>Es fundamental asegurarse de que el archivo <code>datos_estudiantes.csv</code> esté ubicado en el directorio de trabajo establecido.</p></li>
+<li><p>Si el archivo no se encuentra en el directorio especificado, se generará un error. En ese caso, se puede verificar la ubicación del archivo con <code>getwd()</code> o establecer manualmente el directorio con <code>setwd("ruta/del/directorio")</code>.</p></li>
+</ol>
+<p>Con esta configuración inicial, se puede proceder a la creación de gráficos básicos utilizando <strong>ggplot2</strong>.</p>
+</section>
 </section>
 <section id="histogramas" class="level3" data-number="9.3.2">
 <h3 data-number="9.3.2" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">9.3.2</span> Histogramas</h3>
-<p>Los histogramas son útiles para explorar la distribución de una variable numérica.</p>
-<section id="ejemplo" class="level4" data-number="9.3.2.1">
-<h4 data-number="9.3.2.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">9.3.2.1</span> Ejemplo</h4>
+<p>Los histogramas son gráficos que permiten visualizar la distribución de una variable numérica, mostrando cómo se agrupan los valores en intervalos específicos. Son útiles para identificar patrones, como la simetría, la dispersión, la presencia de valores atípicos o la forma general de la distribución (e.g., normal, sesgada, etc.).</p>
+<section id="ejemplo-práctico-creación-de-un-histograma" class="level4" data-number="9.3.2.1">
+<h4 data-number="9.3.2.1" class="anchored" data-anchor-id="ejemplo-práctico-creación-de-un-histograma"><span class="header-section-number">9.3.2.1</span> Ejemplo práctico: Creación de un histograma</h4>
+<p>El siguiente código muestra cómo crear un histograma utilizando <strong>ggplot2</strong> para explorar la distribución del peso de los estudiantes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso de los estudiantes"</span>,</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Peso (libras)"</span>,</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<ol type="1">
-<li><p><code>geom_histogram()</code>: Crea el histograma.</p></li>
-<li><p><code>binwidth</code>: Define el ancho de las barras.</p></li>
-<li><p><code>fill</code> y <code>color</code>: Personalizan el color de las barras y sus bordes.</p></li>
-</ol>
-</section>
-</section>
-<section id="gráficos-de-barras" class="level3" data-number="9.3.3">
-<h3 data-number="9.3.3" class="anchored" data-anchor-id="gráficos-de-barras"><span class="header-section-number">9.3.3</span> Gráficos de barras</h3>
-<p>Los gráficos de barras se utilizan para representar datos categóricos.</p>
-<section id="ejemplo-1" class="level4" data-number="9.3.3.1">
-<h4 data-number="9.3.3.1" class="anchored" data-anchor-id="ejemplo-1"><span class="header-section-number">9.3.3.1</span> Ejemplo</h4>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> JORNADA)) <span class="sc">+</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de estudiantes por jornada"</span>,</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Jornada"</span>,</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso de los estudiantes"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Peso (libras)"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -453,23 +477,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p><strong>Explicación del código</strong></p>
+<p><strong><code>ggplot(data = datos, aes(x = PESO_lbs))</code></strong>:</p>
+<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable numérica que se desea analizar (<code>PESO_lbs</code>) dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el histograma representa la frecuencia de los valores en este eje.</p>
+<p><strong><code>geom_histogram()</code></strong>:</p>
+<p>Esta función geométrica es la encargada de crear el histograma. Cada barra representa la frecuencia de los valores que caen dentro de un intervalo específico.</p>
+<p><strong>Argumento <code>binwidth</code></strong>:</p>
+<p>El parámetro <code>binwidth</code> define el ancho de los intervalos (o “bins”) en los que se agrupan los datos. En este caso, se establece un ancho de 5 unidades, lo que significa que cada barra del histograma abarca un rango de 5 libras.</p>
+<p>Un valor más pequeño de <code>binwidth</code> genera más barras, proporcionando mayor detalle, mientras que un valor más grande agrupa los datos en menos barras, mostrando una visión más general.</p>
+<p><strong>Argumentos <code>fill</code> y <code>color</code></strong>:</p>
+<p><code>fill</code>: Define el color de relleno de las barras. En este ejemplo, se utiliza el color “skyblue” para un diseño visualmente atractivo.</p>
+<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a diferenciar claramente las barras entre sí.</p>
+<p><strong><code>labs()</code></strong>:</p>
+<p>La función <code>labs()</code> se utiliza para añadir etiquetas descriptivas al gráfico:</p>
 <ol type="1">
-<li><p><code>factor(cyl)</code>: Convierte la variable numérica <code>cyl</code> en una variable categórica.</p></li>
-<li><p><code>geom_bar()</code>: Genera el gráfico de barras.</p></li>
+<li><p><code>title</code>: Título principal del gráfico, que describe el propósito del histograma.</p></li>
+<li><p><code>x</code>: Etiqueta del eje X, que indica la variable representada (en este caso, el peso en libras).</p></li>
+<li><p><code>y</code>: Etiqueta del eje Y, que muestra la frecuencia de los valores.</p></li>
 </ol>
 </section>
 </section>
-<section id="gráficos-de-dispersión-scatterplots" class="level3" data-number="9.3.4">
-<h3 data-number="9.3.4" class="anchored" data-anchor-id="gráficos-de-dispersión-scatterplots"><span class="header-section-number">9.3.4</span> Gráficos de dispersión (scatterplots)</h3>
-<p>Los gráficos de dispersión permiten explorar relaciones entre dos variables numéricas.</p>
-<section id="ejemplo-2" class="level4" data-number="9.3.4.1">
-<h4 data-number="9.3.4.1" class="anchored" data-anchor-id="ejemplo-2"><span class="header-section-number">9.3.4.1</span> Ejemplo</h4>
+<section id="gráficos-de-barras" class="level3" data-number="9.3.3">
+<h3 data-number="9.3.3" class="anchored" data-anchor-id="gráficos-de-barras"><span class="header-section-number">9.3.3</span> Gráficos de barras</h3>
+<p>Los gráficos de barras son ideales para representar datos categóricos, mostrando la frecuencia o el conteo de observaciones en cada categoría. Este tipo de gráfico es útil para comparar grupos o categorías de manera visual y sencilla.</p>
+<section id="ejemplo-práctico-creación-de-un-gráfico-de-barras" class="level4" data-number="9.3.3.1">
+<h4 data-number="9.3.3.1" class="anchored" data-anchor-id="ejemplo-práctico-creación-de-un-gráfico-de-barras"><span class="header-section-number">9.3.3.1</span> Ejemplo práctico: Creación de un gráfico de barras</h4>
+<p>El siguiente código muestra cómo crear un gráfico de barras utilizando <strong>ggplot2</strong> para analizar la distribución de estudiantes según su jornada:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> JORNADA)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de estudiantes por jornada"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Jornada"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -478,23 +517,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<ol type="1">
-<li><p><code>geom_point()</code>: Dibuja los puntos en el gráfico.</p></li>
-<li><p><code>color</code> y <code>size</code>: Personalizan el color y el tamaño de los puntos.</p></li>
-</ol>
+<p><strong>Explicación del código</strong></p>
+<p><strong><code>ggplot(data = datos, aes(x = JORNADA))</code></strong>:</p>
+<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable categórica <code>JORNADA</code> dentro de la función <code>aes()</code>. Esta variable se asigna al eje X, ya que el gráfico de barras representa las categorías en este eje.</p>
+<p><strong><code>geom_bar()</code></strong>:</p>
+<p>Esta función geométrica genera el gráfico de barras. Por defecto, <strong><code>geom_bar()</code></strong> cuenta automáticamente las observaciones en cada categoría de la variable especificada en el eje X.</p>
+<p><strong>Argumentos <code>fill</code> y <code>color</code></strong>:</p>
+<p><code>fill</code>: Define el color de relleno de las barras. En este ejemplo, se utiliza el color “orange” para un diseño llamativo.</p>
+<p><code>color</code>: Define el color del borde de las barras, que en este caso es negro (“black”). Esto ayuda a resaltar las barras y separarlas visualmente.</p>
 </section>
 </section>
-<section id="boxplots" class="level3" data-number="9.3.5">
-<h3 data-number="9.3.5" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">9.3.5</span> Boxplots</h3>
-<p>Los boxplots son útiles para comparar la distribución de una variable numérica entre diferentes grupos.</p>
-<section id="ejemplo-3" class="level4" data-number="9.3.5.1">
-<h4 data-number="9.3.5.1" class="anchored" data-anchor-id="ejemplo-3"><span class="header-section-number">9.3.5.1</span> Ejemplo</h4>
+<section id="gráficos-de-dispersión-scatterplots" class="level3" data-number="9.3.4">
+<h3 data-number="9.3.4" class="anchored" data-anchor-id="gráficos-de-dispersión-scatterplots"><span class="header-section-number">9.3.4</span> Gráficos de dispersión (scatterplots)</h3>
+<p>Los gráficos de dispersión son herramientas visuales que permiten analizar la relación entre dos variables numéricas. Cada punto en el gráfico representa una observación, donde la posición en el eje X corresponde al valor de una variable y la posición en el eje Y al valor de la otra. Este tipo de gráfico es útil para identificar patrones, tendencias, correlaciones y posibles valores atípicos.</p>
+<section id="ejemplo-práctico-creación-de-un-gráfico-de-dispersión" class="level4" data-number="9.3.4.1">
+<h4 data-number="9.3.4.1" class="anchored" data-anchor-id="ejemplo-práctico-creación-de-un-gráfico-de-dispersión"><span class="header-section-number">9.3.4.1</span> Ejemplo práctico: Creación de un gráfico de dispersión</h4>
+<p>El siguiente código muestra cómo crear un gráfico de dispersión utilizando <strong>ggplot2</strong> para explorar la relación entre la talla y el peso de los estudiantes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> SEXO, <span class="at">y =</span> PESO_lbs, <span class="at">fill =</span> SEXO)) <span class="sc">+</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso por sexo"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -503,23 +547,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p><strong><code>ggplot(data = datos, aes(x = TALLA, y = PESO_lbs))</code></strong>:</p>
+<p>Se define el conjunto de datos (<code>datos</code>) y se especifican las variables numéricas que se desean analizar:</p>
+<ol type="1">
+<li><p><code>TALLA</code>: Variable asignada al eje X (talla en metros).</p></li>
+<li><p><code>PESO_lbs</code>: Variable asignada al eje Y (peso en libras).</p></li>
+</ol>
+<p><strong><code>geom_point()</code></strong>:</p>
+<p>Esta función geométrica dibuja los puntos en el gráfico, representando cada observación del conjunto de datos.</p>
+<p><strong>Argumentos <code>color</code> y <code>size</code></strong>:</p>
+<p><code>color</code>: Define el color de los puntos. En este ejemplo, los puntos se dibujan en rojo (“red”).</p>
+<p><code>size</code>: Define el tamaño de los puntos. Aquí se establece un tamaño de 2 para que los puntos sean más visibles.</p>
 </section>
 </section>
-<section id="gráfico-de-líneas" class="level3" data-number="9.3.6">
-<h3 data-number="9.3.6" class="anchored" data-anchor-id="gráfico-de-líneas"><span class="header-section-number">9.3.6</span> Gráfico de líneas</h3>
-<p>Los gráficos de líneas son especialmente útiles para visualizar tendencias temporales o secuencias de datos. En este ejemplo, se visualizará la distribución de estudiantes por año de ingreso.</p>
-<section id="ejemplo-4" class="level4" data-number="9.3.6.1">
-<h4 data-number="9.3.6.1" class="anchored" data-anchor-id="ejemplo-4"><span class="header-section-number">9.3.6.1</span> Ejemplo</h4>
+<section id="boxplots" class="level3" data-number="9.3.5">
+<h3 data-number="9.3.5" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">9.3.5</span> Boxplots</h3>
+<p>Los <em>boxplots</em> (o diagramas de caja y bigotes) son gráficos que permiten visualizar la distribución de una variable numérica y compararla entre diferentes grupos categóricos. Este tipo de gráfico es útil para identificar la mediana, la dispersión, los valores atípicos y la simetría de los datos dentro de cada grupo.</p>
+<section id="ejemplo-práctico-creación-de-un-boxplot" class="level4" data-number="9.3.5.1">
+<h4 data-number="9.3.5.1" class="anchored" data-anchor-id="ejemplo-práctico-creación-de-un-boxplot"><span class="header-section-number">9.3.5.1</span> Ejemplo práctico: Creación de un boxplot</h4>
+<p>El siguiente código muestra cómo crear un <em>boxplot</em> utilizando <strong>ggplot2</strong> para analizar la distribución del peso de los estudiantes según su sexo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un gráfico de líneas de estudiantes por año de ingreso</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> AÑO_ING)) <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Estudiantes encuestados por año de ingres"</span>,</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Universidad de San Carlos de Guatemala (2002)"</span>,</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Año de ingreso"</span>,</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Número de estudiantes"</span>) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> SEXO, <span class="at">y =</span> PESO_lbs, <span class="at">fill =</span> SEXO)) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso por sexo"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -528,20 +580,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p><strong>Explicación del código</strong></p>
+<p><strong><code>ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO))</code></strong>:</p>
+<p>Se define el conjunto de datos (<code>datos</code>) y se especifican las variables:</p>
+<ol type="1">
+<li><p><code>SEXO</code>: Variable categórica asignada al eje X, que define los grupos a comparar.</p></li>
+<li><p><code>PESO_lbs</code>: Variable numérica asignada al eje Y, cuya distribución se analiza dentro de cada grupo.</p></li>
+<li><p><code>fill</code>: Argumento opcional que asigna un color de relleno diferente a cada grupo basado en la variable <code>SEXO</code>.</p></li>
+</ol>
+<p><strong><code>geom_boxplot()</code></strong>:</p>
+<p>Esta función geométrica genera el <em>boxplot</em>. Cada caja representa la distribución de la variable numérica dentro de un grupo categórico.</p>
+</section>
+<section id="elementos-clave-de-un-boxplot" class="level4" data-number="9.3.5.2">
+<h4 data-number="9.3.5.2" class="anchored" data-anchor-id="elementos-clave-de-un-boxplot"><span class="header-section-number">9.3.5.2</span> Elementos clave de un boxplot</h4>
+<p>Un <em>boxplot</em> incluye los siguientes elementos visuales:</p>
+<ol type="1">
+<li><p><strong>Caja (box)</strong>: Representa el rango intercuartílico (IQR), que abarca del primer cuartil (Q1) al tercer cuartil (Q3).</p></li>
+<li><p><strong>Línea dentro de la caja</strong>: Indica la mediana de los datos.</p></li>
+<li><p><strong>Bigotes (whiskers)</strong>: Extienden los valores hasta 1.5 veces el IQR desde los cuartiles Q1 y Q3.</p></li>
+<li><p><strong>Puntos fuera de los bigotes</strong>: Representan valores atípicos (<em>outliers</em>), que están fuera del rango esperado.</p></li>
+</ol>
 </section>
 </section>
-</section>
-<section id="personalización-de-gráficos" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="personalización-de-gráficos"><span class="header-section-number">9.4</span> Personalización de gráficos</h2>
-<p>La personalización de gráficos en <code>ggplot2</code> permite adaptarlos a diferentes necesidades y mejorar su presentación. A continuación, se describen las opciones más comunes.</p>
-<section id="personalización-de-colores" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="personalización-de-colores"><span class="header-section-number">9.4.1</span> Personalización de colores</h3>
-<p>Es posible cambiar los colores de los elementos del gráfico, como puntos, barras o líneas.</p>
-<section id="ejemplo-personalización-de-colores-en-un-scatterplot" class="level4" data-number="9.4.1.1">
-<h4 data-number="9.4.1.1" class="anchored" data-anchor-id="ejemplo-personalización-de-colores-en-un-scatterplot"><span class="header-section-number">9.4.1.1</span> Ejemplo: personalización de colores en un scatterplot</h4>
+<section id="gráfico-de-líneas" class="level3" data-number="9.3.6">
+<h3 data-number="9.3.6" class="anchored" data-anchor-id="gráfico-de-líneas"><span class="header-section-number">9.3.6</span> Gráfico de líneas</h3>
+<p>Los gráficos de líneas son ideales para visualizar tendencias a lo largo del tiempo o en secuencias de datos ordenados. Este tipo de gráfico es especialmente útil para identificar patrones, como aumentos, disminuciones o fluctuaciones en los datos.</p>
+<section id="ejemplo-práctico-creación-de-un-gráfico-de-líneas" class="level4" data-number="9.3.6.1">
+<h4 data-number="9.3.6.1" class="anchored" data-anchor-id="ejemplo-práctico-creación-de-un-gráfico-de-líneas"><span class="header-section-number">9.3.6.1</span> <strong>Ejemplo práctico: Creación de un gráfico de líneas</strong></h4>
+<p>El siguiente código muestra cómo crear un gráfico de líneas utilizando <strong>ggplot2</strong> para visualizar la cantidad de estudiantes encuestados por año de ingreso:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">size =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un gráfico de líneas de estudiantes por año de ingreso</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> AÑO_ING)) <span class="sc">+</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">color =</span> <span class="st">"darkblue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">stat =</span> <span class="st">"count"</span>, <span class="at">color =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Estudiantes encuestados por año de ingreso"</span>,</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Universidad de San Carlos de Guatemala (2002)"</span>,</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Año de ingreso"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Número de estudiantes"</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -550,20 +625,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p><strong>Explicación del código</strong></p>
+<p><strong><code>ggplot(data = datos, aes(x = AÑO_ING))</code></strong>:</p>
+<p>Se define el conjunto de datos (<code>datos</code>) y se especifica la variable <code>AÑO_ING</code> como el eje X, que representa los años de ingreso de los estudiantes.</p>
+<p>En este caso, no se especifica una variable para el eje Y, ya que el conteo de estudiantes por año se calcula automáticamente con <code>stat = "count"</code>.</p>
+<p><strong><code>geom_line(stat = "count", color = "darkblue", linewidth = 1.2)</code></strong>:</p>
+<p>La función <code>geom_line()</code> genera la línea que conecta los puntos correspondientes al conteo de estudiantes por año.</p>
+<p><code>stat = "count"</code> indica que se debe contar automáticamente el número de observaciones en cada categoría del eje X.</p>
+<p><code>color</code>: Define el color de la línea (en este caso, azul oscuro).</p>
+<p><code>linewidth</code>: Ajusta el grosor de la línea (1.2 en este ejemplo).</p>
+<p><strong><code>geom_point(stat = "count", color = "darkred", size = 3)</code></strong>:</p>
+<p>La función <code>geom_point()</code> añade puntos en cada categoría del eje X, representando el conteo de estudiantes.</p>
+<p><code>stat = "count"</code> asegura que los puntos correspondan al conteo calculado.</p>
+<p><code>color</code>: Define el color de los puntos (en este caso, rojo oscuro).</p>
+<p><code>size</code>: Ajusta el tamaño de los puntos (3 en este ejemplo).</p>
 </section>
 </section>
-<section id="etiquetas-y-títulos" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="etiquetas-y-títulos"><span class="header-section-number">9.4.2</span> Etiquetas y títulos</h3>
-<p>Se pueden añadir y personalizar títulos, subtítulos y etiquetas de los ejes.</p>
-<section id="ejemplo-añadir-subtítulos-y-etiquetas-personalizadas" class="level4" data-number="9.4.2.1">
-<h4 data-number="9.4.2.1" class="anchored" data-anchor-id="ejemplo-añadir-subtítulos-y-etiquetas-personalizadas"><span class="header-section-number">9.4.2.1</span> Ejemplo: añadir subtítulos y etiquetas personalizadas</h4>
+</section>
+<section id="personalización-de-gráficos" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="personalización-de-gráficos"><span class="header-section-number">9.4</span> Personalización de gráficos</h2>
+<p>La personalización de gráficos en <strong>ggplot2</strong> permite adaptarlos a diferentes necesidades, mejorando tanto su presentación como su capacidad para comunicar información de manera efectiva. A continuación, se describen algunas de las opciones más comunes, comenzando con la personalización de colores.</p>
+<section id="personalización-de-colores" class="level3" data-number="9.4.1">
+<h3 data-number="9.4.1" class="anchored" data-anchor-id="personalización-de-colores"><span class="header-section-number">9.4.1</span> Personalización de colores</h3>
+<p>En <strong>ggplot2</strong>, es posible modificar los colores de los elementos del gráfico, como puntos, barras o líneas, para destacar información clave o mejorar la estética general. Esto se puede lograr utilizando argumentos como <code>color</code> (para bordes o contornos) y <code>fill</code> (para colores de relleno).</p>
+<section id="personalización-de-colores-en-un-gráfico-de-dispersión" class="level4" data-number="9.4.1.1">
+<h4 data-number="9.4.1.1" class="anchored" data-anchor-id="personalización-de-colores-en-un-gráfico-de-dispersión"><span class="header-section-number">9.4.1.1</span> Personalización de colores en un gráfico de dispersión</h4>
+<p>El siguiente código muestra cómo personalizar el color de los puntos en un gráfico de dispersión:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Datos del estudio de 2002"</span>,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -572,6 +665,165 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>color = "darkgreen"</code> define el color de los puntos como verde oscuro.</p></li>
+<li><p><code>size = 2</code> ajusta el tamaño de los puntos para mejorar su visibilidad.</p></li>
+</ol>
+</section>
+<section id="personalización-de-colores-por-grupo" class="level4" data-number="9.4.1.2">
+<h4 data-number="9.4.1.2" class="anchored" data-anchor-id="personalización-de-colores-por-grupo"><span class="header-section-number">9.4.1.2</span> Personalización de colores por grupo</h4>
+<p>Si se desea asignar colores diferentes a los puntos según una variable categórica, se puede incluir el argumento <code>color</code> dentro de <code>aes()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs, <span class="at">color =</span> SEXO)) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso por sexo"</span>,</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>,</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Sexo"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este caso:</p>
+<ol type="1">
+<li><p>Los puntos se colorean automáticamente según los valores de la variable <code>SEXO</code>.</p></li>
+<li><p>La leyenda se genera de forma automática para indicar el significado de los colores.</p></li>
+</ol>
+</section>
+<section id="personalización-de-colores-en-gráficos-con-relleno" class="level4" data-number="9.4.1.3">
+<h4 data-number="9.4.1.3" class="anchored" data-anchor-id="personalización-de-colores-en-gráficos-con-relleno"><span class="header-section-number">9.4.1.3</span> Personalización de colores en gráficos con relleno</h4>
+<p>En gráficos como barras o <em>boxplots</em>, se utiliza el argumento <code>fill</code> para personalizar el color de relleno:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> SEXO, <span class="at">y =</span> PESO_lbs, <span class="at">fill =</span> SEXO)) <span class="sc">+</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso por sexo"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>,</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Sexo"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este ejemplo, las cajas del <em>boxplot</em> se rellenan con colores diferentes según la variable <code>SEXO</code>.</p>
+</section>
+<section id="escalas-de-color-personalizadas" class="level4" data-number="9.4.1.4">
+<h4 data-number="9.4.1.4" class="anchored" data-anchor-id="escalas-de-color-personalizadas"><span class="header-section-number">9.4.1.4</span> Escalas de color personalizadas</h4>
+<p>Para un mayor control sobre los colores, se pueden definir escalas personalizadas utilizando funciones como <code>scale_color_manual()</code> o <code>scale_fill_manual()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> SEXO, <span class="at">y =</span> PESO_lbs, <span class="at">fill =</span> SEXO)) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(  <span class="st">"pink"</span>, <span class="st">"lightblue"</span>)) <span class="sc">+</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución del peso por sexo"</span>,</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Sexo"</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">fill =</span> <span class="st">"Sexo"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este caso, se asignan colores específicos a cada categoría de la variable <code>SEXO</code>, R realiza la realiza de colores en orden alfabético de las variables categóricas.</p>
+</section>
+</section>
+<section id="etiquetas-y-títulos" class="level3" data-number="9.4.2">
+<h3 data-number="9.4.2" class="anchored" data-anchor-id="etiquetas-y-títulos"><span class="header-section-number">9.4.2</span> Etiquetas y títulos</h3>
+<p>En <strong>ggplot2</strong>, es posible añadir y personalizar títulos, subtítulos y etiquetas de los ejes para mejorar la claridad y presentación de los gráficos. Estas etiquetas ayudan a contextualizar la información y a facilitar su interpretación.</p>
+<section id="personalización-de-títulos-y-etiquetas" class="level4" data-number="9.4.2.1">
+<h4 data-number="9.4.2.1" class="anchored" data-anchor-id="personalización-de-títulos-y-etiquetas"><span class="header-section-number">9.4.2.1</span> Personalización de títulos y etiquetas</h4>
+<p>La función <code>labs()</code> se utiliza para añadir y personalizar los siguientes elementos:</p>
+<ol type="1">
+<li><p><strong><code>title</code></strong>: Título principal del gráfico, que describe su propósito o contenido.</p></li>
+<li><p><strong><code>subtitle</code></strong>: Subtítulo que proporciona información adicional o contexto.</p></li>
+<li><p><strong><code>x</code></strong>: Etiqueta del eje X, que describe la variable representada en este eje.</p></li>
+<li><p><strong><code>y</code></strong>: Etiqueta del eje Y, que describe la variable representada en este eje.</p></li>
+<li><p><strong><code>caption</code></strong> (opcional): Texto adicional, como la fuente de los datos o notas aclaratorias.</p></li>
+</ol>
+</section>
+<section id="añadir-subtítulos-y-etiquetas-personalizadas" class="level4" data-number="9.4.2.2">
+<h4 data-number="9.4.2.2" class="anchored" data-anchor-id="añadir-subtítulos-y-etiquetas-personalizadas"><span class="header-section-number">9.4.2.2</span> Añadir subtítulos y etiquetas personalizadas</h4>
+<p>El siguiente código muestra cómo personalizar títulos, subtítulos y etiquetas de los ejes en un gráfico de dispersión:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Datos del estudio de 2002"</span>,</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>,</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Fuente: Base de datos de estudiantes"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>title</code> añade un título descriptivo al gráfico.</p></li>
+<li><p><code>subtitle</code> proporciona contexto adicional, como el año del estudio.</p></li>
+<li><p><code>x</code> y <code>y</code> personalizan las etiquetas de los ejes, indicando las unidades de medida.</p></li>
+<li><p><code>caption</code> incluye una nota al pie con la fuente de los datos.</p></li>
+</ol>
+</section>
+<section id="ajuste-de-la-posición-y-estilo-de-los-títulos" class="level4" data-number="9.4.2.3">
+<h4 data-number="9.4.2.3" class="anchored" data-anchor-id="ajuste-de-la-posición-y-estilo-de-los-títulos"><span class="header-section-number">9.4.2.3</span> Ajuste de la posición y estilo de los títulos</h4>
+<p>Se puede personalizar la posición, tamaño y estilo de los títulos utilizando la función <code>theme()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Datos del estudio de 2002"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"italic"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este caso:</p>
+<ol type="1">
+<li><p><code>hjust = 0.5</code> centra el título y el subtítulo.</p></li>
+<li><p><code>size</code> ajusta el tamaño del texto.</p></li>
+<li><p><code>face</code> define el estilo del texto (<code>"bold"</code> para negrita, <code>"italic"</code> para cursiva).</p></li>
+</ol>
+</section>
+<section id="rotación-de-etiquetas-en-los-ejes" class="level4" data-number="9.4.2.4">
+<h4 data-number="9.4.2.4" class="anchored" data-anchor-id="rotación-de-etiquetas-en-los-ejes"><span class="header-section-number">9.4.2.4</span> Rotación de etiquetas en los ejes</h4>
+<p>Si las etiquetas del eje X son largas o numerosas, se pueden rotar para mejorar la legibilidad:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Talla (metros)"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Peso (libras)"</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>En este ejemplo, las etiquetas del eje Y se rotan 90 grados.</p>
 </section>
 </section>
 <section id="temas" class="level3" data-number="9.4.3">
@@ -580,13 +832,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejemplo-aplicar-un-tema-minimalista" class="level4" data-number="9.4.3.1">
 <h4 data-number="9.4.3.1" class="anchored" data-anchor-id="ejemplo-aplicar-un-tema-minimalista"><span class="header-section-number">9.4.3.1</span> Ejemplo: aplicar un tema minimalista</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -599,14 +851,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="ejemplo-relación-entre-talla-y-peso-por-facultad" class="level4" data-number="9.4.4.1">
 <h4 data-number="9.4.4.1" class="anchored" data-anchor-id="ejemplo-relación-entre-talla-y-peso-por-facultad"><span class="header-section-number">9.4.4.1</span> Ejemplo: relación entre talla y peso por facultad</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACULTAD) <span class="sc">+</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso por facultad"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs)) <span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> FACULTAD) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre talla y peso por facultad"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -616,17 +868,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="escalas" class="level3" data-number="9.4.5">
 <h3 data-number="9.4.5" class="anchored" data-anchor-id="escalas"><span class="header-section-number">9.4.5</span> Escalas</h3>
 <p>Las escalas permiten modificar los ejes y las leyendas del gráfico.</p>
-<section id="ejemplo-5" class="level4" data-number="9.4.5.1">
-<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="ejemplo-5"><span class="header-section-number">9.4.5.1</span> Ejemplo</h4>
+<section id="ejemplo" class="level4" data-number="9.4.5.1">
+<h4 data-number="9.4.5.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">9.4.5.1</span> Ejemplo</h4>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs, <span class="at">color =</span> <span class="fu">factor</span>(JORNADA))) <span class="sc">+</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>,<span class="st">"orange"</span>,<span class="st">"green"</span>))<span class="sc">+</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"JORNADA"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> TALLA, <span class="at">y =</span> PESO_lbs, <span class="at">color =</span> <span class="fu">factor</span>(JORNADA))) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"red"</span>, <span class="st">"blue"</span>, <span class="st">"purple"</span>,<span class="st">"orange"</span>,<span class="st">"green"</span>))<span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">color =</span> <span class="st">"JORNADA"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -637,36 +889,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="9.4.6" class="anchored" data-anchor-id="ejemplo-avanzado-de-personalización"><span class="header-section-number">9.4.6</span> Ejemplo avanzado de personalización</h3>
 <p>La gran cantidad de funciones para personalizar y la logica de capas que utiliza ggplot2 que se explicaron anteriormente permite crear resultados con un grado de complejidad mucho mayor como se ve a continuacion:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un gráfico de barras con personalización profesional</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> FACULTAD)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de estudiantes por facultad"</span>,</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Datos del estudio de 2002, Universidad de San Carlos de Guatemala"</span>,</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Facultad"</span>,</span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Cantidad de estudiantes"</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Fuente: Estudio realizado en 2002"</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"gray50"</span>)</span>
-<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un gráfico de barras con personalización profesional</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> datos, <span class="fu">aes</span>(<span class="at">x =</span> FACULTAD)) <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Distribución de estudiantes por facultad"</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Datos del estudio de 2002, Universidad de San Carlos de Guatemala"</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Facultad"</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Cantidad de estudiantes"</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Fuente: Estudio realizado en 2002"</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">16</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span> <span class="st">"gray50"</span>),</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.major.x =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"gray50"</span>)</span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<section id="explicación-del-código" class="level4" data-number="9.4.6.1">
-<h4 data-number="9.4.6.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">9.4.6.1</span> Explicación del código</h4>
+<section id="explicación-del-código-1" class="level4" data-number="9.4.6.1">
+<h4 data-number="9.4.6.1" class="anchored" data-anchor-id="explicación-del-código-1"><span class="header-section-number">9.4.6.1</span> Explicación del código</h4>
 <p><strong>Datos y mapeo estético</strong>:</p>
 <p><code>aes(x = FACULTAD)</code>: Se utiliza la variable <code>FACULTAD</code> directamente desde la base de datos para el eje X.</p>
 <p><strong>Gráfico de barras</strong>:</p>
