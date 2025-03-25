@@ -10,7 +10,7 @@ La visualización de datos es una herramienta fundamental en el análisis estad�
 
 ## Contexto de la base de datos utilizada
 
-En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos incluye una amplia variedad de variables, como facultad, edad, sexo, estado civil, si trabajan o no, jornada de estudio, año de ingreso, peso en libras, talla, y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), será utilizado a lo largo de esta sección para aplicar las herramientas y conceptos desarrollados.
+En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos incluye una amplia variedad de variables, como facultad, edad, sexo, estado civil, si trabajan o no, jornada de estudio, año de ingreso, peso en libras, talla, y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), será utilizado a lo largo de esta sección para aplicar las herramientas y conceptos desarrollados. El script con los ejemplos correspondientes se encuentra alojado en el siguiente repositorio: [https://github.com/Ludwing-MJ/Visualiz](https://github.com/Ludwing-MJ/Visualizacion_Ej)
 
 **Nota:** Para realizar los ejemplos, es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso.
 
@@ -32,61 +32,49 @@ ggplot(data = DATOS, aes(x = VARIABLE_X, y = VARIABLE_Y)) +
 
 A continuación, se describen los componentes principales de esta estructura:
 
-#### `data`
+1.  **data:** Este argumento define el conjunto de datos que se utilizará para construir el gráfico. Debe ser un *data frame* o un objeto compatible con este formato. Es el punto de partida para cualquier visualización, ya que contiene las variables que se representarán gráficamente.
 
-Este argumento define el conjunto de datos que se utilizará para construir el gráfico. Debe ser un *data frame* o un objeto compatible con este formato. Es el punto de partida para cualquier visualización, ya que contiene las variables que se representarán gráficamente.
+2.  **aes():** La función `aes()` (abreviatura de *aesthetics*) especifica el mapeo estético, es decir, cómo las variables del conjunto de datos se asignan a los elementos visuales del gráfico. Algunos de los mapeos más comunes incluyen:
 
-#### `aes()`
+    `x`: Variable asignada al eje horizontal.
 
-La función `aes()` (abreviatura de *aesthetics*) especifica el mapeo estético, es decir, cómo las variables del conjunto de datos se asignan a los elementos visuales del gráfico. Algunos de los mapeos más comunes incluyen:
+    `y`: Variable asignada al eje vertical.
 
-1.  `x`: Variable asignada al eje horizontal.
+    `color`: Variable que define el color de los elementos.
 
-2.  `y`: Variable asignada al eje vertical.
+    `size`: Variable que define el tamaño de los elementos.
 
-3.  `color`: Variable que define el color de los elementos.
+    `shape`: Variable que define la forma de los puntos (en gráficos de dispersión, por ejemplo).
 
-4.  `size`: Variable que define el tamaño de los elementos.
+    `fill`: Variable que define el color de relleno (en gráficos como barras o áreas).
 
-5.  `shape`: Variable que define la forma de los puntos (en gráficos de dispersión, por ejemplo).
+3.  **GEOM_FUNCION():** La función geométrica (`geom_`) define el tipo de gráfico que se desea crear. Cada tipo de gráfico tiene su propia función en **ggplot2**, como:
 
-6.  `fill`: Variable que define el color de relleno (en gráficos como barras o áreas).
+    `geom_point()`: Gráfico de puntos (dispersión).
 
-#### `GEOM_FUNCION()`
+    `geom_bar()`: Gráfico de barras.
 
-La función geométrica (`geom_`) define el tipo de gráfico que se desea crear. Cada tipo de gráfico tiene su propia función en **ggplot2**, como:
+    `geom_line()`: Gráfico de líneas.
 
-1.  `geom_point()`: Gráfico de puntos (dispersión).
+    `geom_histogram()`: Histograma.
 
-2.  `geom_bar()`: Gráfico de barras.
+    `geom_boxplot()`: Diagrama de cajas (*boxplot*).
 
-3.  `geom_line()`: Gráfico de líneas.
+4.  **labs():** La función `labs()` se utiliza para añadir etiquetas y títulos al gráfico. Esto incluye:
 
-4.  `geom_histogram()`: Histograma.
+    `title`: Título principal del gráfico.
 
-5.  `geom_boxplot()`: Diagrama de cajas (*boxplot*).
+    `x`: Etiqueta del eje X.
 
-#### `labs()`
+    `y`: Etiqueta del eje Y.
 
-La función `labs()` se utiliza para añadir etiquetas y títulos al gráfico. Esto incluye:
+    `subtitle`: Subtítulo del gráfico.
 
-1.  `title`: Título principal del gráfico.
+    `caption`: Texto adicional, como la fuente de los datos.
 
-2.  `x`: Etiqueta del eje X.
+5.  **Operador +:** El operador `+` es fundamental en **ggplot2**, ya que permite combinar diferentes capas (*layers*) en un gráfico. Cada capa puede añadir elementos adicionales, como líneas de tendencia, etiquetas o temas personalizados.
 
-3.  `y`: Etiqueta del eje Y.
-
-4.  `subtitle`: Subtítulo del gráfico.
-
-5.  `caption`: Texto adicional, como la fuente de los datos.
-
-#### Operador `+`
-
-El operador `+` es fundamental en **ggplot2**, ya que permite combinar diferentes capas (*layers*) en un gráfico. Cada capa puede añadir elementos adicionales, como líneas de tendencia, etiquetas o temas personalizados.
-
-#### Personalización adicional
-
-Además de los elementos básicos, **ggplot2** permite personalizar los gráficos mediante temas (`theme()`) y escalas (`scale_`). Por ejemplo, se puede cambiar el esquema de colores o ajustar el diseño general del gráfico:
+6.  **Personalización adicional:** Además de los elementos básicos, **ggplot2** permite personalizar los gráficos mediante temas (`theme()`) y escalas (`scale_`). Por ejemplo, se puede cambiar el esquema de colores o ajustar el diseño general del gráfico:
 
 ## Creación de gráficos básicos
 
@@ -133,21 +121,11 @@ datos <- read_csv("datos_estudiantes.csv")
 
 #### Explicación del código
 
-**Instalación y carga de paquetes**:
-
-1.  Se utiliza la función `require()` para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con `install.packages()`. Automaticamente, se cargan.
-
-2.  El paquete **tidyverse** incluye herramientas esenciales para la manipulación y visualización de datos, como **ggplot2**, **dplyr** y **tidyr**.
-
-3.  El paquete **rstudioapi** permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.
+**Instalación y carga de paquetes**: Se utiliza la función `if (!require (...))` para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con `install.packages()`. Automáticamente, se cargan. El paquete **tidyverse** incluye herramientas esenciales para la manipulación y visualización de datos, como **ggplot2**, **dplyr** y **tidyr**. El paquete **rstudioapi** permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.
 
 **Establecimiento del directorio de trabajo**: La función `setwd()` establece el directorio de trabajo en la ubicación del script actual, utilizando `rstudioapi::getActiveDocumentContext()$path`. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.
 
-**Importación de datos**:
-
-1.  La función `read_csv()` del paquete **readr** se utiliza para leer archivos CSV.
-
-2.  La función `head()` permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.
+**Importación de datos**: La función `read_csv()` del paquete **readr** se utiliza para leer archivos CSV. La función `head()` permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.
 
 #### Notas importantes
 
@@ -166,6 +144,7 @@ Los histogramas son gráficos que permiten visualizar la distribución de una va
 El siguiente código muestra cómo crear un histograma utilizando **ggplot2** para explorar la distribución del peso de los estudiantes:
 
 ```{r}
+# Ejemplo práctico: Creación de un histograma
 ggplot(data = datos, aes(x = PESO_lbs)) +
   geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
   labs(title = "Distribución del peso de los estudiantes",
@@ -206,6 +185,7 @@ Los gráficos de barras son ideales para representar datos categóricos, mostran
 El siguiente código muestra cómo crear un gráfico de barras utilizando **ggplot2** para analizar la distribución de estudiantes según su jornada:
 
 ```{r}
+# Ejemplo práctico: Creación de un gráfico de barras
 ggplot(data = datos, aes(x = JORNADA)) +
   geom_bar(fill = "orange", color = "black") +
   labs(title = "Distribución de estudiantes por jornada",
@@ -234,6 +214,7 @@ Los gráficos de dispersión son herramientas visuales que permiten analizar la 
 El siguiente código muestra cómo crear un gráfico de dispersión utilizando **ggplot2** para explorar la relación entre la talla y el peso de los estudiantes:
 
 ```{r}
+# Ejemplo práctico: Creación de un gráfico de dispersión
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point(color = "red", size = 2) +
   labs(title = "Relación entre talla y peso",
@@ -347,6 +328,7 @@ En **ggplot2**, es posible modificar los colores de los elementos del gráfico, 
 El siguiente código muestra cómo personalizar el color de los puntos en un gráfico de dispersión:
 
 ```{r}
+# Personalización de colores en un gráfico de dispersión
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point(color = "darkgreen", size = 2) +
   labs(title = "Relación entre talla y peso",
@@ -365,6 +347,7 @@ En este ejemplo:
 Si se desea asignar colores diferentes a los puntos según una variable categórica, se puede incluir el argumento `color` dentro de `aes()`:
 
 ```{r}
+# Personalización de colores por grupo
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs, color = SEXO)) +
   geom_point(size = 2) +
   labs(title = "Relación entre talla y peso por sexo",
@@ -384,6 +367,7 @@ En este ejemplo:
 En gráficos como barras o *boxplots*, se utiliza el argumento `fill` para personalizar el color de relleno:
 
 ```{r}
+# Personalización de colores en gráficos con relleno
 ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO)) +
   geom_boxplot() +
   labs(title = "Distribución del peso por sexo",
@@ -399,6 +383,7 @@ En este ejemplo, las cajas del *boxplot* se rellenan con colores diferentes seg�
 Para un mayor control sobre los colores, se pueden definir escalas personalizadas utilizando funciones como `scale_color_manual()` o `scale_fill_manual()`:
 
 ```{r}
+# Escalas de color personalizadas
 ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO)) +
   geom_boxplot() +
   scale_fill_manual(values = c(  "pink", "lightblue")) +
@@ -433,6 +418,7 @@ La función `labs()` se utiliza para añadir y personalizar los siguientes eleme
 El siguiente código muestra cómo personalizar títulos, subtítulos y etiquetas de los ejes en un gráfico de dispersión:
 
 ```{r}
+# Añadir subtítulos y etiquetas personalizadas
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   labs(title = "Relación entre talla y peso",
@@ -457,6 +443,7 @@ En este ejemplo:
 Se puede personalizar la posición, tamaño y estilo de los títulos utilizando la función `theme()`:
 
 ```{r}
+# Ajuste de la posición y estilo de los títulos
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   labs(title = "Relación entre talla y peso",
@@ -480,6 +467,7 @@ En este ejemplo:
 Si las etiquetas del eje X son largas o numerosas, se pueden rotar para mejorar la legibilidad:
 
 ```{r}
+# Rotación de etiquetas en los ejes
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   labs(title = "Relación entre talla y peso",
@@ -513,6 +501,7 @@ En **ggplot2**, los temas permiten modificar el estilo general de un gráfico, a
 El siguiente código muestra cómo aplicar el tema `theme_minimal()` a un gráfico de dispersión:
 
 ```{r}
+# Ejemplo: Aplicar un tema minimalista
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   theme_minimal()
@@ -520,11 +509,12 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
 
 En este ejemplo: `theme_minimal()` elimina elementos innecesarios, como bordes y fondos grises, dejando un diseño limpio y profesional.
 
-#### Personalización de temas
+#### Ejemplo: personalización de temas
 
 Además de los temas predefinidos, es posible personalizar elementos específicos del gráfico utilizando la función `theme()`. Por ejemplo:
 
 ```{r}
+# Personalización de temas
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   theme_minimal() +
@@ -556,6 +546,7 @@ Las facetas en **ggplot2** permiten dividir un gráfico en múltiples subgráfic
 El siguiente código muestra cómo utilizar facetas para analizar la relación entre talla y peso, separando los datos por facultad:
 
 ```{r}
+# Ejemplo: relación entre talla y peso por facultad
 ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
   geom_point() +
   facet_wrap(~ FACULTAD) +
@@ -573,7 +564,7 @@ En este ejemplo:
 La flexibilidad y la lógica de capas de **ggplot2** permiten crear gráficos con un alto grado de personalización, adaptados a necesidades específicas y con un diseño profesional. A continuación, se presenta un ejemplo de un gráfico de barras con personalización detallada:
 
 ```{r}
-# Crear un gráfico de barras con personalización profesional
+# Ejemplo avanzado de personalización
 ggplot(data = datos, aes(x = FACULTAD)) +
   geom_bar(fill = "steelblue", color = "black", alpha = 0.8) +
   labs(
