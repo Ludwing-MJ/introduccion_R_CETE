@@ -8,6 +8,12 @@ if (!require("tidyverse")) install.packages("tidyverse")
 
 La visualización de datos es una herramienta fundamental en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete `ggplot2` es ampliamente utilizado debido a su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo detalla los conceptos básicos de `ggplot2`, la creación de gráficos comunes y las opciones de personalización disponibles.
 
+## Contexto de la base de datos utilizada
+
+En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos incluye una amplia variedad de variables, como facultad, edad, sexo, estado civil, si trabajan o no, jornada de estudio, año de ingreso, peso en libras, talla, y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), será utilizado a lo largo de esta sección para aplicar las herramientas y conceptos desarrollados.
+
+**Nota:** Para realizar los ejemplos, es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso.
+
 ## Introducción al paquete `ggplot2`
 
 El paquete `ggplot2` forma parte del ecosistema *tidyverse* y está diseñado para crear gráficos mediante una lógica de capas. Cada capa representa un componente del gráfico, como los datos, las geometrías (tipos de gráficos), las etiquetas y los temas. Este enfoque modular permite construir gráficos complejos de manera progresiva y reproducible.
@@ -44,6 +50,29 @@ ggplot(data = DATOS, aes(x = VARIABLE_X, y = VARIABLE_Y)) +
 
 A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con `ggplot2`, junto con su sintaxis y explicación.
 
+### Importación de la base de datos 
+
+Antes de comenzar, es necesario importar la base de datos en formato CSV y cargar los paquetes que se van a utilizar. Para ello, se utiliza el siguiente código:
+
+```{r message=FALSE, warning=FALSE}
+# Ejemplo práctico: Uso de paquetes para visualización
+# NOTA: Antes de trabajar, es necesario crear y guardar un nuevo script.
+
+# Instalación y carga de paquetes esenciales
+
+# Paquete que incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+
+# Paquete para establecer el directorio de trabajo automáticamente
+if (!require("rstudioapi")) install.packages("rstudioapi")
+
+# Importar la base de datos
+datos <- read_csv("datos_estudiantes.csv")
+
+# Ver las primeras filas del conjunto de datos
+head(datos)
+```
+
 ### Histogramas
 
 Los histogramas son útiles para explorar la distribución de una variable numérica.
@@ -51,10 +80,10 @@ Los histogramas son útiles para explorar la distribución de una variable numé
 #### Ejemplo
 
 ```{r}
-ggplot(data = mtcars, aes(x = mpg)) +
-  geom_histogram(binwidth = 2, fill = "skyblue", color = "black") +
-  labs(title = "Distribución de millas por galón",
-       x = "Millas por galón",
+ggplot(data = datos, aes(x = PESO_lbs)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(title = "Distribución del peso de los estudiantes",
+       x = "Peso (libras)",
        y = "Frecuencia")
 ```
 
@@ -71,10 +100,10 @@ Los gráficos de barras se utilizan para representar datos categóricos.
 #### Ejemplo
 
 ```{r}
-ggplot(data = mtcars, aes(x = factor(cyl))) +
+ggplot(data = datos, aes(x = JORNADA)) +
   geom_bar(fill = "orange", color = "black") +
-  labs(title = "Número de cilindros en los autos",
-       x = "Cilindros",
+  labs(title = "Distribución de estudiantes por jornada",
+       x = "Jornada",
        y = "Frecuencia")
 ```
 
@@ -89,11 +118,11 @@ Los gráficos de dispersión permiten explorar relaciones entre dos variables nu
 #### Ejemplo
 
 ```{r}
-ggplot(data = mtcars, aes(x = wt, y = mpg)) +
-  geom_point(color = "red", size = 3) +
-  labs(title = "Relación entre peso y millas por galón",
-       x = "Peso (1000 lbs)",
-       y = "Millas por galón")
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point(color = "red", size = 2) +
+  labs(title = "Relación entre talla y peso",
+       x = "Talla (metros)",
+       y = "Peso (libras)")
 ```
 
 1.  `geom_point()`: Dibuja los puntos en el gráfico.
@@ -107,12 +136,149 @@ Los boxplots son útiles para comparar la distribución de una variable numéric
 #### Ejemplo
 
 ```{r}
-
-ggplot(data = mtcars, aes(x = factor(cyl), y = mpg, fill = factor(cyl))) +
+ggplot(data = datos, aes(x = SEXO, y = PESO_lbs, fill = SEXO)) +
   geom_boxplot() +
-  labs(title = "Distribución de millas por galón por cilindros",
-       x = "Cilindros",
-       y = "Millas por galón")
+  labs(title = "Distribución del peso por sexo",
+       x = "Sexo",
+       y = "Peso (libras)")
+```
+
+### Gráfico de líneas
+
+Los gráficos de líneas son especialmente útiles para visualizar tendencias temporales o secuencias de datos. En este ejemplo, se visualizará la distribución de estudiantes por año de ingreso.
+
+#### Ejemplo
+
+```{r}
+# Crear un gráfico de líneas de estudiantes por año de ingreso
+ggplot(data = datos, aes(x = AÑO_ING)) +
+  geom_line(stat = "count", color = "darkblue", linewidth = 1.2) +
+  geom_point(stat = "count", color = "darkred", size = 3) +
+  labs(title = "Estudiantes encuestados por año de ingres",
+       subtitle = "Universidad de San Carlos de Guatemala (2002)",
+       x = "Año de ingreso",
+       y = "Número de estudiantes") +
+  theme_minimal()
 ```
 
 ## Personalización de gráficos
+
+La personalización de gráficos en `ggplot2` permite adaptarlos a diferentes necesidades y mejorar su presentación. A continuación, se describen las opciones más comunes.
+
+### Personalización de colores
+
+Es posible cambiar los colores de los elementos del gráfico, como puntos, barras o líneas.
+
+#### Ejemplo: personalización de colores en un scatterplot
+
+```{r}
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point(color = "darkgreen", size = 2)
+```
+
+### Etiquetas y títulos
+
+Se pueden añadir y personalizar títulos, subtítulos y etiquetas de los ejes.
+
+#### Ejemplo: añadir subtítulos y etiquetas personalizadas
+
+```{r}
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point() +
+  labs(title = "Relación entre talla y peso",
+       subtitle = "Datos del estudio de 2002",
+       x = "Talla (metros)",
+       y = "Peso (libras)")
+```
+
+### Temas
+
+Los temas permiten cambiar el estilo general del gráfico, como los colores de fondo, las líneas de los ejes y las fuentes.
+
+#### Ejemplo: aplicar un tema minimalista
+
+```{r}
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point() +
+  theme_minimal()
+```
+
+### Facetas
+
+Las facetas dividen un gráfico en subgráficos según una variable categórica.
+
+#### Ejemplo: relación entre talla y peso por facultad
+
+```{r}
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
+  geom_point() +
+  facet_wrap(~ FACULTAD) +
+  labs(title = "Relación entre talla y peso por facultad")
+```
+
+### Escalas
+
+Las escalas permiten modificar los ejes y las leyendas del gráfico.
+
+#### Ejemplo
+
+```{r}
+
+ggplot(data = datos, aes(x = TALLA, y = PESO_lbs, color = factor(JORNADA))) +
+  geom_point() +
+  scale_color_manual(values = c("red", "blue", "purple","orange","green"))+
+  labs(color = "JORNADA")
+```
+
+### Ejemplo avanzado de personalización
+
+La gran cantidad de funciones para personalizar y la logica de capas que utiliza ggplot2 que se explicaron anteriormente permite crear resultados con un grado de complejidad mucho mayor como se ve a continuacion:
+
+```{r}
+# Crear un gráfico de barras con personalización profesional
+ggplot(data = datos, aes(x = FACULTAD)) +
+  geom_bar(fill = "steelblue", color = "black", alpha = 0.8) +
+  labs(
+    title = "Distribución de estudiantes por facultad",
+    subtitle = "Datos del estudio de 2002, Universidad de San Carlos de Guatemala",
+    x = "Facultad",
+    y = "Cantidad de estudiantes",
+    caption = "Fuente: Estudio realizado en 2002"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(size = 12, hjust = 0.5, color = "gray50"),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 10),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
+  )
+```
+
+#### Explicación del código
+
+**Datos y mapeo estético**:
+
+`aes(x = FACULTAD)`: Se utiliza la variable `FACULTAD` directamente desde la base de datos para el eje X.
+
+**Gráfico de barras**:
+
+`geom_bar()`: Genera automáticamente las barras basándose en la frecuencia de cada categoría.
+
+`fill` y `color`: Personalizan el color de las barras y sus bordes.
+
+`alpha`: Ajusta la transparencia de las barras.
+
+**Etiquetas y títulos**:
+
+`labs()`: Añade un título principal, subtítulo, etiquetas para los ejes y una nota al pie con la fuente de los datos.
+
+**Tema profesional**:
+
+`theme_minimal()`: Aplica un diseño limpio y moderno.
+
+`theme()`: Personaliza elementos como el título, subtítulo, etiquetas de los ejes y elimina líneas de cuadrícula innecesarias.
+
+`axis.text.x`: Rota las etiquetas del eje X para mejorar la legibilidad.
