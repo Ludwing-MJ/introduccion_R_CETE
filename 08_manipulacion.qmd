@@ -1,9 +1,9 @@
+# Manipulación de datos con dplyr y tidyr
+
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
 # Instalar y cargar el tidyverse
 if (!require("tidyverse")) install.packages("tidyverse")
 ```
-
-# Manipulación de datos con dplyr y tidyr
 
 Los paquetes **dplyr** y **tidyr** son componentes fundamentales del ecosistema tidyverse, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva.
 

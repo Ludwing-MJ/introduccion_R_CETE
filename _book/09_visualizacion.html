@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -213,7 +247,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_manipulacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -256,8 +290,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción-al-paquete-ggplot2" id="toc-introducción-al-paquete-ggplot2" class="nav-link active" data-scroll-target="#introducción-al-paquete-ggplot2"><span class="header-section-number">9.1</span> Introducción al paquete <code>ggplot2</code></a></li>
-  <li><a href="#creación-de-gráficos-básicos" id="toc-creación-de-gráficos-básicos" class="nav-link" data-scroll-target="#creación-de-gráficos-básicos"><span class="header-section-number">9.2</span> Creación de gráficos básicos</a></li>
+  <li><a href="#introducción-al-paquete-ggplot2" id="toc-introducción-al-paquete-ggplot2" class="nav-link active" data-scroll-target="#introducción-al-paquete-ggplot2"><span class="header-section-number">9.1</span> Introducción al paquete <code>ggplot2</code></a>
+  <ul class="collapse">
+  <li><a href="#estructura-básica-de-un-gráfico-en-ggplot2" id="toc-estructura-básica-de-un-gráfico-en-ggplot2" class="nav-link" data-scroll-target="#estructura-básica-de-un-gráfico-en-ggplot2"><span class="header-section-number">9.1.1</span> Estructura básica de un gráfico en ggplot2</a></li>
+  </ul></li>
+  <li><a href="#creación-de-gráficos-básicos" id="toc-creación-de-gráficos-básicos" class="nav-link" data-scroll-target="#creación-de-gráficos-básicos"><span class="header-section-number">9.2</span> Creación de gráficos básicos</a>
+  <ul class="collapse">
+  <li><a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="header-section-number">9.2.1</span> Histogramas</a></li>
+  <li><a href="#gráficos-de-barras" id="toc-gráficos-de-barras" class="nav-link" data-scroll-target="#gráficos-de-barras"><span class="header-section-number">9.2.2</span> Gráficos de barras</a></li>
+  <li><a href="#gráficos-de-dispersión-scatterplots" id="toc-gráficos-de-dispersión-scatterplots" class="nav-link" data-scroll-target="#gráficos-de-dispersión-scatterplots"><span class="header-section-number">9.2.3</span> Gráficos de dispersión (scatterplots)</a></li>
+  <li><a href="#boxplots" id="toc-boxplots" class="nav-link" data-scroll-target="#boxplots"><span class="header-section-number">9.2.4</span> Boxplots</a></li>
+  </ul></li>
   <li><a href="#personalización-de-gráficos" id="toc-personalización-de-gráficos" class="nav-link" data-scroll-target="#personalización-de-gráficos"><span class="header-section-number">9.3</span> Personalización de gráficos</a></li>
   </ul>
 </nav>
@@ -284,11 +327,134 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>La visualización de datos es una herramienta fundamental en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete <code>ggplot2</code> es ampliamente utilizado debido a su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo detalla los conceptos básicos de <code>ggplot2</code>, la creación de gráficos comunes y las opciones de personalización disponibles.</p>
 <section id="introducción-al-paquete-ggplot2" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="introducción-al-paquete-ggplot2"><span class="header-section-number">9.1</span> Introducción al paquete <code>ggplot2</code></h2>
+<p>El paquete <code>ggplot2</code> forma parte del ecosistema <em>tidyverse</em> y está diseñado para crear gráficos mediante una lógica de capas. Cada capa representa un componente del gráfico, como los datos, las geometrías (tipos de gráficos), las etiquetas y los temas. Este enfoque modular permite construir gráficos complejos de manera progresiva y reproducible.</p>
+<section id="estructura-básica-de-un-gráfico-en-ggplot2" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="estructura-básica-de-un-gráfico-en-ggplot2"><span class="header-section-number">9.1.1</span> Estructura básica de un gráfico en ggplot2</h3>
+<p>La estructura general de un gráfico en <code>ggplot2</code> sigue la siguiente sintaxis:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> DATOS, <span class="fu">aes</span>(<span class="at">x =</span> VARIABLE_X, <span class="at">y =</span> VARIABLE_Y)) <span class="sc">+</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">GEOM_FUNCION</span>() <span class="sc">+</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Título del gráfico"</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Etiqueta eje X"</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Etiqueta eje Y"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p><code>data</code>: Define el conjunto de datos que se utilizará.</p></li>
+<li><p><code>aes()</code>: Especifica el mapeo estético, es decir, cómo las variables se asignan a los ejes, colores, tamaños, etc.</p></li>
+<li><p><code>GEOM_FUNCION()</code>: Indica el tipo de gráfico que se desea crear (e.g., puntos, barras, líneas).</p></li>
+<li><p><code>labs()</code>: Añade etiquetas y títulos al gráfico.</p></li>
+</ol>
+<p><strong>Ventajas de ggplot2:</strong></p>
+<ol type="1">
+<li><p>Permite personalizar gráficos de manera detallada.</p></li>
+<li><p>Produce gráficos de calidad profesional.</p></li>
+<li><p>Es compatible con otros paquetes del <em>tidyverse</em>, facilitando la integración en flujos de trabajo.</p></li>
+</ol>
+</section>
 </section>
 <section id="creación-de-gráficos-básicos" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="creación-de-gráficos-básicos"><span class="header-section-number">9.2</span> Creación de gráficos básicos</h2>
+<p>A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con <code>ggplot2</code>, junto con su sintaxis y explicación.</p>
+<section id="histogramas" class="level3" data-number="9.2.1">
+<h3 data-number="9.2.1" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">9.2.1</span> Histogramas</h3>
+<p>Los histogramas son útiles para explorar la distribución de una variable numérica.</p>
+<section id="ejemplo" class="level4" data-number="9.2.1.1">
+<h4 data-number="9.2.1.1" class="anchored" data-anchor-id="ejemplo"><span class="header-section-number">9.2.1.1</span> Ejemplo</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">2</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de millas por galón"</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Millas por galón"</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p><code>geom_histogram()</code>: Crea el histograma.</p></li>
+<li><p><code>binwidth</code>: Define el ancho de las barras.</p></li>
+<li><p><code>fill</code> y <code>color</code>: Personalizan el color de las barras y sus bordes.</p></li>
+</ol>
+</section>
+</section>
+<section id="gráficos-de-barras" class="level3" data-number="9.2.2">
+<h3 data-number="9.2.2" class="anchored" data-anchor-id="gráficos-de-barras"><span class="header-section-number">9.2.2</span> Gráficos de barras</h3>
+<p>Los gráficos de barras se utilizan para representar datos categóricos.</p>
+<section id="ejemplo-1" class="level4" data-number="9.2.2.1">
+<h4 data-number="9.2.2.1" class="anchored" data-anchor-id="ejemplo-1"><span class="header-section-number">9.2.2.1</span> Ejemplo</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"orange"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Número de cilindros en los autos"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cilindros"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p><code>factor(cyl)</code>: Convierte la variable numérica <code>cyl</code> en una variable categórica.</p></li>
+<li><p><code>geom_bar()</code>: Genera el gráfico de barras.</p></li>
+</ol>
+</section>
+</section>
+<section id="gráficos-de-dispersión-scatterplots" class="level3" data-number="9.2.3">
+<h3 data-number="9.2.3" class="anchored" data-anchor-id="gráficos-de-dispersión-scatterplots"><span class="header-section-number">9.2.3</span> Gráficos de dispersión (scatterplots)</h3>
+<p>Los gráficos de dispersión permiten explorar relaciones entre dos variables numéricas.</p>
+<section id="ejemplo-2" class="level4" data-number="9.2.3.1">
+<h4 data-number="9.2.3.1" class="anchored" data-anchor-id="ejemplo-2"><span class="header-section-number">9.2.3.1</span> Ejemplo</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> wt, <span class="at">y =</span> mpg)) <span class="sc">+</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Relación entre peso y millas por galón"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Peso (1000 lbs)"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Millas por galón"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<ol type="1">
+<li><p><code>geom_point()</code>: Dibuja los puntos en el gráfico.</p></li>
+<li><p><code>color</code> y <code>size</code>: Personalizan el color y el tamaño de los puntos.</p></li>
+</ol>
+</section>
+</section>
+<section id="boxplots" class="level3" data-number="9.2.4">
+<h3 data-number="9.2.4" class="anchored" data-anchor-id="boxplots"><span class="header-section-number">9.2.4</span> Boxplots</h3>
+<p>Los boxplots son útiles para comparar la distribución de una variable numérica entre diferentes grupos.</p>
+<section id="ejemplo-3" class="level4" data-number="9.2.4.1">
+<h4 data-number="9.2.4.1" class="anchored" data-anchor-id="ejemplo-3"><span class="header-section-number">9.2.4.1</span> Ejemplo</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> mtcars, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">factor</span>(cyl), <span class="at">y =</span> mpg, <span class="at">fill =</span> <span class="fu">factor</span>(cyl))) <span class="sc">+</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de millas por galón por cilindros"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cilindros"</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Millas por galón"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09_visualizacion_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
 </section>
 <section id="personalización-de-gráficos" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="personalización-de-gráficos"><span class="header-section-number">9.3</span> Personalización de gráficos</h2>
@@ -867,8 +1033,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./08_manipulacion.html" class="pagination-link" aria-label="Manipulación de datos">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span>
+      <a href="./08_manipulacion.html" class="pagination-link" aria-label="Manipulación de datos con dplyr y tidyr">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">

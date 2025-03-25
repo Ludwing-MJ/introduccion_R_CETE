@@ -1,7 +1,118 @@
 # Visualización de datos
 
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Instalar y cargar el tidyverse
+if (!require("tidyverse")) install.packages("tidyverse")
+
+```
+
+La visualización de datos es una herramienta fundamental en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete `ggplot2` es ampliamente utilizado debido a su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo detalla los conceptos básicos de `ggplot2`, la creación de gráficos comunes y las opciones de personalización disponibles.
+
 ## Introducción al paquete `ggplot2`
 
+El paquete `ggplot2` forma parte del ecosistema *tidyverse* y está diseñado para crear gráficos mediante una lógica de capas. Cada capa representa un componente del gráfico, como los datos, las geometrías (tipos de gráficos), las etiquetas y los temas. Este enfoque modular permite construir gráficos complejos de manera progresiva y reproducible.
+
+### Estructura básica de un gráfico en ggplot2
+
+La estructura general de un gráfico en `ggplot2` sigue la siguiente sintaxis:
+
+```{r eval=FALSE}
+ggplot(data = DATOS, aes(x = VARIABLE_X, y = VARIABLE_Y)) +
+  GEOM_FUNCION() +
+  labs(title = "Título del gráfico",
+       x = "Etiqueta eje X",
+       y = "Etiqueta eje Y")
+```
+
+1.  `data`: Define el conjunto de datos que se utilizará.
+
+2.  `aes()`: Especifica el mapeo estético, es decir, cómo las variables se asignan a los ejes, colores, tamaños, etc.
+
+3.  `GEOM_FUNCION()`: Indica el tipo de gráfico que se desea crear (e.g., puntos, barras, líneas).
+
+4.  `labs()`: Añade etiquetas y títulos al gráfico.
+
+**Ventajas de ggplot2:**
+
+1.  Permite personalizar gráficos de manera detallada.
+
+2.  Produce gráficos de calidad profesional.
+
+3.  Es compatible con otros paquetes del *tidyverse*, facilitando la integración en flujos de trabajo.
+
 ## Creación de gráficos básicos
+
+A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con `ggplot2`, junto con su sintaxis y explicación.
+
+### Histogramas
+
+Los histogramas son útiles para explorar la distribución de una variable numérica.
+
+#### Ejemplo
+
+```{r}
+ggplot(data = mtcars, aes(x = mpg)) +
+  geom_histogram(binwidth = 2, fill = "skyblue", color = "black") +
+  labs(title = "Distribución de millas por galón",
+       x = "Millas por galón",
+       y = "Frecuencia")
+```
+
+1.  `geom_histogram()`: Crea el histograma.
+
+2.  `binwidth`: Define el ancho de las barras.
+
+3.  `fill` y `color`: Personalizan el color de las barras y sus bordes.
+
+### Gráficos de barras
+
+Los gráficos de barras se utilizan para representar datos categóricos.
+
+#### Ejemplo
+
+```{r}
+ggplot(data = mtcars, aes(x = factor(cyl))) +
+  geom_bar(fill = "orange", color = "black") +
+  labs(title = "Número de cilindros en los autos",
+       x = "Cilindros",
+       y = "Frecuencia")
+```
+
+1.  `factor(cyl)`: Convierte la variable numérica `cyl` en una variable categórica.
+
+2.  `geom_bar()`: Genera el gráfico de barras.
+
+### Gráficos de dispersión (scatterplots)
+
+Los gráficos de dispersión permiten explorar relaciones entre dos variables numéricas.
+
+#### Ejemplo
+
+```{r}
+ggplot(data = mtcars, aes(x = wt, y = mpg)) +
+  geom_point(color = "red", size = 3) +
+  labs(title = "Relación entre peso y millas por galón",
+       x = "Peso (1000 lbs)",
+       y = "Millas por galón")
+```
+
+1.  `geom_point()`: Dibuja los puntos en el gráfico.
+
+2.  `color` y `size`: Personalizan el color y el tamaño de los puntos.
+
+### Boxplots
+
+Los boxplots son útiles para comparar la distribución de una variable numérica entre diferentes grupos.
+
+#### Ejemplo
+
+```{r}
+
+ggplot(data = mtcars, aes(x = factor(cyl), y = mpg, fill = factor(cyl))) +
+  geom_boxplot() +
+  labs(title = "Distribución de millas por galón por cilindros",
+       x = "Cilindros",
+       y = "Millas por galón")
+```
 
 ## Personalización de gráficos
