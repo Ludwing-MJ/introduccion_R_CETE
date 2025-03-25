@@ -101,35 +101,39 @@ if (!require("rstudioapi")) install.packages("rstudioapi")
 
 ## Ejemplo práctico: Uso de paquetes en un flujo de trabajo
 
-A continuación, se desarrolla un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos. Para acceder al repositorio con el script de este ejemplo se pude seguir el siguiente enlace: <https://github.com/Ludwing-MJ/Paquetes_Ej>
+A continuación, se presenta un ejemplo práctico que integra diversos paquetes de R para realizar un análisis estadístico de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: <https://github.com/Ludwing-MJ/Paquetes_Ej>. Este ejercicio se basa en el ejemplo 2.2.8 del libro *Diseños y análisis de experimentos* de López y González (2016).
 
 **Contexto:** Un silvicultor quiso comparar los efectos de cinco tratamientos de preparación del terreno sobre el crecimiento inicial en altura de plántulas de pino maximinoii. Dispuso de 25 parcelas y aplicó cada tratamiento a cinco parcelas seleccionadas al azar. La plantación fue realizada manualmente y, al final de cinco años, se midió la altura de todos los pinos y se calculó la altura promedio de cada parcela. Las medidas de las parcelas (en pies) fueron las siguientes.
 
 ### Preparación del área de trabajo
 
-Antes de empezar a trabajar en un nuevo análisis se debe crear un nuevo proyecto en R. Para esta tarea es recomendable seguir las recomendaciones de guardado y organización de archivos que se abordaron en la sección numero tres punto dos. Una vez ya se ha creado y guardado el proyecto y un script para desarrollar este análisis se procede a instalar y cargar los paquetes necesarios como se ve a continuación:
+Antes de iniciar un nuevo análisis, es fundamental crear un proyecto en R para garantizar una adecuada organización y reproducibilidad del trabajo. Se recomienda seguir las pautas de guardado y organización de archivos descritas en la sección 3.2. Una vez creado y guardado el proyecto, así como el script donde se desarrollará el análisis, se procede a instalar y cargar los paquetes necesarios. A continuación, se presenta un ejemplo práctico del código correspondiente:
 
 ```{r message=FALSE, warning=FALSE}
-# Ejemplo práctico uso de paquetes
-# NOTA: Antes de trabajar hay que crear y guardar un nuevo script.
+# Ejemplo práctico: Uso de paquetes
+# NOTA: Antes de trabajar, es necesario crear y guardar un nuevo script.
+
 # Instalación y carga de paquetes esenciales
 
-  ## Incluye ggplot2, dplyr, tidyr
+# Paquete que incluye ggplot2, dplyr, tidyr
 if (!require("tidyverse")) install.packages("tidyverse")
-  ## Diseños experimentales agrícolas
-if (!require("agricolae")) install.packages("agricolae")
-  ## Importación de archivos Excel
-if (!require("readxl")) install.packages("readxl")    
-  ## Exportación a Excel
-if (!require("writexl")) install.packages("writexl")    
-  ## Establecer directorio de trabajo automaticamente
-if (!require("rstudioapi")) install.packages("rstudioapi")
 
+# Paquete para diseños experimentales agrícolas
+if (!require("agricolae")) install.packages("agricolae")
+
+# Paquete para la importación de archivos Excel
+if (!require("readxl")) install.packages("readxl")
+
+# Paquete para la exportación de datos a Excel
+if (!require("writexl")) install.packages("writexl")
+
+# Paquete para establecer el directorio de trabajo automáticamente
+if (!require("rstudioapi")) install.packages("rstudioapi")
 ```
 
-###  Importación de los datos
+### Importación de los datos
 
-Se utiliza el paquete `readxl` para importar un archivo Excel con los [datos de altura de las parcelas de pino](https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true).
+Para importar un archivo Excel con los [datos de altura de las parcelas de pino](https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true), se utiliza el paquete readxl. Antes de realizar la importación, se establece el directorio de trabajo de manera automática utilizando el paquete rstudioapi. Esto asegura que los archivos se encuentren en la ubicación correcta para su procesamiento.
 
 ```{r eval=FALSE}
 # Establecer directorio de trabajo
@@ -143,7 +147,7 @@ altura_pino <- read_excel("datos_arboles.xlsx")
 
 ### Análisis de la varianza
 
-Con el paquete `agricolae`, se realiza un análisis de varianza (ANOVA) para evaluar el efecto de diferentes tratamientos.
+El análisis de varianza (ANOVA) se realiza con el paquete `agricolae` para evaluar el efecto de diferentes tratamientos sobre la altura promedio de las parcelas. Además, se aplica la prueba de Tukey para realizar comparaciones múltiples entre los tratamientos.
 
 ```{r}
 # Análisis de varianza
@@ -157,7 +161,7 @@ print(comparacion_tukey$groups)
 
 ### Visualización de resultados
 
-Se utiliza `ggplot2` para crear un gráfico de cajas que muestre la distribución del rendimiento por tratamiento.
+Para visualizar los resultados, se utiliza el paquete `ggplot2`, que permite crear un gráfico de cajas (boxplot) que muestra la distribución de la altura promedio por tratamiento. Este gráfico incluye un diseño minimalista y elimina la leyenda redundante.
 
 ```{r}
 # Visualización de resultados
@@ -173,11 +177,15 @@ ggplot(altura_pino, aes(x = tratamiento, y = altura_ft, fill = tratamiento)) +
 
 ### Exportación de resultados
 
-Finalmente, se exportan los resultados de la prueba de tukey a un archivo Excel utilizando el paquete `writexl`. Y el gráfico generado usando la función `ggsave`.\
+Finalmente, los resultados de la prueba de Tukey se exportan a un archivo Excel utilizando el paquete `writexl`. Además, el gráfico generado se guarda en formato PNG con la función `ggsave`.\
 
 ```{r message=FALSE, warning=FALSE}
 # Exportar resultados a Excel
-write_xlsx(comparacion_tukey$groups, "resultados_tukey.xlsx", col_names = T, format_headers = T, use_zip64 = F)
+write_xlsx(comparacion_tukey$groups, 
+           "resultados_tukey.xlsx", 
+           col_names = TRUE, 
+           format_headers = TRUE, 
+           use_zip64 = FALSE)
 
 # Exportar gráficos
 ggsave("ggplot_pino.png")

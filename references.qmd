@@ -26,6 +26,8 @@ Ihaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics.
 
 Kolb, D. A. (1984). *Experiential learning: Experience as the source of learning and development*. Prentice Hall.
 
+López E. & González, B. (2016). *Diseño y análisis de experimentos*. Internet Archive. <https://archive.org/details/DiseoYAnlisisDeExperimentos2016>
+
 National Academies of Sciences, Engineering, and Medicine. (2019). *Reproducibility and replicability in science*. National Academies Press. <https://doi.org/10.17226/25303>
 
 R Core Team. (2023). *R: A Language and Environment for Statistical Computing*. R Foundation for Statistical Computing. <https://www.Rproject.org>

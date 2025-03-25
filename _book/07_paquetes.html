@@ -247,7 +247,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./08_manipulacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instalar y cargar el tidyverse</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -431,31 +431,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo"><span class="header-section-number">7.4</span> Ejemplo práctico: Uso de paquetes en un flujo de trabajo</h2>
-<p>A continuación, se desarrolla un ejemplo práctico que combina varios paquetes para realizar un análisis de estadístico de datos. Para acceder al repositorio con el script de este ejemplo se pude seguir el siguiente enlace: <a href="https://github.com/Ludwing-MJ/Paquetes_Ej" class="uri">https://github.com/Ludwing-MJ/Paquetes_Ej</a></p>
+<p>A continuación, se presenta un ejemplo práctico que integra diversos paquetes de R para realizar un análisis estadístico de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Paquetes_Ej" class="uri">https://github.com/Ludwing-MJ/Paquetes_Ej</a>. Este ejercicio se basa en el ejemplo 2.2.8 del libro <em>Diseños y análisis de experimentos</em> de López y González (2016).</p>
 <p><strong>Contexto:</strong> Un silvicultor quiso comparar los efectos de cinco tratamientos de preparación del terreno sobre el crecimiento inicial en altura de plántulas de pino maximinoii. Dispuso de 25 parcelas y aplicó cada tratamiento a cinco parcelas seleccionadas al azar. La plantación fue realizada manualmente y, al final de cinco años, se midió la altura de todos los pinos y se calculó la altura promedio de cada parcela. Las medidas de las parcelas (en pies) fueron las siguientes.</p>
 <section id="preparación-del-área-de-trabajo" class="level3" data-number="7.4.1">
 <h3 data-number="7.4.1" class="anchored" data-anchor-id="preparación-del-área-de-trabajo"><span class="header-section-number">7.4.1</span> Preparación del área de trabajo</h3>
-<p>Antes de empezar a trabajar en un nuevo análisis se debe crear un nuevo proyecto en R. Para esta tarea es recomendable seguir las recomendaciones de guardado y organización de archivos que se abordaron en la sección numero tres punto dos. Una vez ya se ha creado y guardado el proyecto y un script para desarrollar este análisis se procede a instalar y cargar los paquetes necesarios como se ve a continuación:</p>
+<p>Antes de iniciar un nuevo análisis, es fundamental crear un proyecto en R para garantizar una adecuada organización y reproducibilidad del trabajo. Se recomienda seguir las pautas de guardado y organización de archivos descritas en la sección 3.2. Una vez creado y guardado el proyecto, así como el script donde se desarrollará el análisis, se procede a instalar y cargar los paquetes necesarios. A continuación, se presenta un ejemplo práctico del código correspondiente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico uso de paquetes</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: Antes de trabajar hay que crear y guardar un nuevo script.</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Incluye ggplot2, dplyr, tidyr</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Diseños experimentales agrícolas</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Importación de archivos Excel</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)    </span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Exportación a Excel</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)    </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="do">## Establecer directorio de trabajo automaticamente</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico: Uso de paquetes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: Antes de trabajar, es necesario crear y guardar un nuevo script.</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete que incluye ggplot2, dplyr, tidyr</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete para diseños experimentales agrícolas</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete para la importación de archivos Excel</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete para la exportación de datos a Excel</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete para establecer el directorio de trabajo automáticamente</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="importación-de-los-datos" class="level3" data-number="7.4.2">
 <h3 data-number="7.4.2" class="anchored" data-anchor-id="importación-de-los-datos"><span class="header-section-number">7.4.2</span> Importación de los datos</h3>
-<p>Se utiliza el paquete <code>readxl</code> para importar un archivo Excel con los <a href="https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">datos de altura de las parcelas de pino</a>.</p>
+<p>Para importar un archivo Excel con los <a href="https://docs.google.com/spreadsheets/d/15Mgtutuaa-KYjiGgSZw95oyx0mkfp2Pd/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">datos de altura de las parcelas de pino</a>, se utiliza el paquete readxl. Antes de realizar la importación, se establece el directorio de trabajo de manera automática utilizando el paquete rstudioapi. Esto asegura que los archivos se encuentren en la ubicación correcta para su procesamiento.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer directorio de trabajo</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -467,7 +472,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="análisis-de-la-varianza" class="level3" data-number="7.4.3">
 <h3 data-number="7.4.3" class="anchored" data-anchor-id="análisis-de-la-varianza"><span class="header-section-number">7.4.3</span> Análisis de la varianza</h3>
-<p>Con el paquete <code>agricolae</code>, se realiza un análisis de varianza (ANOVA) para evaluar el efecto de diferentes tratamientos.</p>
+<p>El análisis de varianza (ANOVA) se realiza con el paquete <code>agricolae</code> para evaluar el efecto de diferentes tratamientos sobre la altura promedio de las parcelas. Además, se aplica la prueba de Tukey para realizar comparaciones múltiples entre los tratamientos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Análisis de varianza</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo_anova <span class="ot">&lt;-</span> <span class="fu">aov</span>(altura_ft <span class="sc">~</span> tratamiento, <span class="at">data =</span> altura_pino)</span>
@@ -494,7 +499,7 @@ D      11.4      b</code></pre>
 </section>
 <section id="visualización-de-resultados" class="level3" data-number="7.4.4">
 <h3 data-number="7.4.4" class="anchored" data-anchor-id="visualización-de-resultados"><span class="header-section-number">7.4.4</span> Visualización de resultados</h3>
-<p>Se utiliza <code>ggplot2</code> para crear un gráfico de cajas que muestre la distribución del rendimiento por tratamiento.</p>
+<p>Para visualizar los resultados, se utiliza el paquete <code>ggplot2</code>, que permite crear un gráfico de cajas (boxplot) que muestra la distribución de la altura promedio por tratamiento. Este gráfico incluye un diseño minimalista y elimina la leyenda redundante.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización de resultados</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(altura_pino, <span class="fu">aes</span>(<span class="at">x =</span> tratamiento, <span class="at">y =</span> altura_ft, <span class="at">fill =</span> tratamiento)) <span class="sc">+</span></span>
@@ -515,14 +520,18 @@ D      11.4      b</code></pre>
 </section>
 <section id="exportación-de-resultados" class="level3" data-number="7.4.5">
 <h3 data-number="7.4.5" class="anchored" data-anchor-id="exportación-de-resultados"><span class="header-section-number">7.4.5</span> Exportación de resultados</h3>
-<p>Finalmente, se exportan los resultados de la prueba de tukey a un archivo Excel utilizando el paquete <code>writexl</code>. Y el gráfico generado usando la función <code>ggsave</code>.<br>
+<p>Finalmente, los resultados de la prueba de Tukey se exportan a un archivo Excel utilizando el paquete <code>writexl</code>. Además, el gráfico generado se guarda en formato PNG con la función <code>ggsave</code>.<br>
 </p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar resultados a Excel</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(comparacion_tukey<span class="sc">$</span>groups, <span class="st">"resultados_tukey.xlsx"</span>, <span class="at">col_names =</span> T, <span class="at">format_headers =</span> T, <span class="at">use_zip64 =</span> F)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar gráficos</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"ggplot_pino.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(comparacion_tukey<span class="sc">$</span>groups, </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"resultados_tukey.xlsx"</span>, </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">col_names =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">format_headers =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">use_zip64 =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar gráficos</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"ggplot_pino.png"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
@@ -1105,8 +1114,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./08_manipulacion.html" class="pagination-link" aria-label="Manipulación de datos">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Manipulación de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08_manipulacion.html" class="pagination-link" aria-label="Instalar y cargar el tidyverse">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Instalar y cargar el tidyverse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

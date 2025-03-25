@@ -68,7 +68,7 @@ datos_reducidos <- datos %>%
 
 **Explicación**: El resultado es un data frame con solo las columnas `nombre` y `edad`, lo que puede ser útil para reducir la cantidad de datos visibles o exportar información específica.
 
-### Crear nuevas columnas 
+### Crear nuevas columnas
 
 La función `mutate()` permite añadir nuevas columnas calculadas a un data frame.
 
