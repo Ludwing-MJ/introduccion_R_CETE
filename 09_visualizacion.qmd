@@ -450,8 +450,12 @@ ggplot(data = datos, aes(x = TALLA, y = PESO_lbs)) +
        subtitle = "Datos del estudio de 2002",
        x = "Talla (metros)",
        y = "Peso (libras)") +
-  theme(plot.title = element_text(hjust = 0.5, size = 16, face = "bold"),
-        plot.subtitle = element_text(hjust = 0.5, size = 12, face = "italic"))
+  theme(plot.title = element_text(hjust = 0.5, 
+                                  size = 16, 
+                                  face = "bold"),
+        plot.subtitle = element_text(hjust = 0.5, 
+                                     size = 12, 
+                                     face = "italic"))
 ```
 
 En este ejemplo:
@@ -569,7 +573,7 @@ ggplot(data = datos, aes(x = FACULTAD)) +
   geom_bar(fill = "steelblue", color = "black", alpha = 0.8) +
   labs(
     title = "Distribución de estudiantes por facultad",
-    subtitle = "Datos del estudio de 2002, Universidad de San Carlos de Guatemala",
+    subtitle = "Datos del estudio de 2002, USAC",
     x = "Facultad",
     y = "Cantidad de estudiantes",
     caption = "Fuente: Estudio realizado en 2002"

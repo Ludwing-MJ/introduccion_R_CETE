@@ -410,9 +410,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular peso promedio por grupo de edad</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>peso_promedio <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, <span class="st">"Mayor o igual a 20"</span>, <span class="st">"Menor a 20"</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Mayor o igual a 20"</span>, </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Menor a 20"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Explicación</strong>: Se crea una nueva variable <code>grupo_edad</code> para clasificar a los estudiantes, y luego se calcula el peso promedio para cada grupo.</p>
 </section>
@@ -424,14 +426,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear columna grupo_edad usando mutate</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, <span class="st">"Mayor o igual a 20"</span>, <span class="st">"Menor a 20"</span>)) </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar y resumir los datos sin pipes</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summarize</span>(<span class="fu">group_by</span>(datos, grupo_edad), <span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grupo_edad =</span> <span class="fu">ifelse</span>(edad <span class="sc">&gt;=</span> <span class="dv">20</span>, </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Mayor o igual a 20"</span>, </span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>                             <span class="st">"Menor a 20"</span>)) </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar y resumir los datos sin pipes</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">summarize</span>(<span class="fu">group_by</span>(datos, grupo_edad),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Ejemplo con pipes</strong>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar y resumir los datos con pipes</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span>   <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span>   <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span>   </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grupo_edad) <span class="sc">%&gt;%</span>   </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="ventajas-del-uso-de-pipes" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="ventajas-del-uso-de-pipes"><span class="header-section-number">8.3.1</span> Ventajas del uso de pipes</h3>

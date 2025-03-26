@@ -165,7 +165,9 @@ Para visualizar los resultados, se utiliza el paquete `ggplot2`, que permite cre
 
 ```{r}
 # Visualización de resultados
-ggplot(altura_pino, aes(x = tratamiento, y = altura_ft, fill = tratamiento)) +
+ggplot(altura_pino, aes(x = tratamiento, 
+                        y = altura_ft, 
+                        fill = tratamiento)) +
   geom_boxplot() +
   labs(title = "Altura por Tratamiento",
        x = "Tratamiento",

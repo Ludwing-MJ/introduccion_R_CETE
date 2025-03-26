@@ -105,7 +105,9 @@ La combinación de `group_by()` y `summarize()` permite calcular estadísticas p
 ```{r}
 # Calcular peso promedio por grupo de edad
 peso_promedio <- datos %>%
-  mutate(grupo_edad = ifelse(edad >= 20, "Mayor o igual a 20", "Menor a 20")) %>%
+  mutate(grupo_edad = ifelse(edad >= 20, 
+                             "Mayor o igual a 20", 
+                             "Menor a 20")) %>%
   group_by(grupo_edad) %>%
   summarize(peso_promedio = mean(peso))
 ```
@@ -121,16 +123,21 @@ El operador pipe (`%>%`) es una herramienta clave en el tidyverse que permite en
 ```{r}
 # Crear columna grupo_edad usando mutate
 datos <- datos %>%
-  mutate(grupo_edad = ifelse(edad >= 20, "Mayor o igual a 20", "Menor a 20")) 
+  mutate(grupo_edad = ifelse(edad >= 20, 
+                             "Mayor o igual a 20", 
+                             "Menor a 20")) 
 # Agrupar y resumir los datos sin pipes
-resultado <- summarize(group_by(datos, grupo_edad), peso_promedio = mean(peso))
+resultado <- summarize(group_by(datos, grupo_edad),
+                       peso_promedio = mean(peso))
 ```
 
 **Ejemplo con pipes**:
 
 ```{r}
 # Agrupar y resumir los datos con pipes
-resultado <- datos %>%   group_by(grupo_edad) %>%   summarize(peso_promedio = mean(peso))
+resultado <- datos %>%   
+  group_by(grupo_edad) %>%   
+  summarize(peso_promedio = mean(peso))
 ```
 
 ### Ventajas del uso de pipes

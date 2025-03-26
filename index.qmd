@@ -44,7 +44,7 @@ Con este enfoque, cualquier persona, independientemente de su experiencia previa
 
 ## Colofón
 
-La versión en línea de este manual estará disponible en <https://introduccion-r-cete.vercel.app/>. La fuente del manual en español se encuentra en el repositorio: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando [Quarto](https://quarto.org/), una herramienta que facilita la conversión de archivos `.qmd` en formatos publicables como HTML, PDF y EPUB. Además, Quarto permite trabajar con una interfaz visual y amigable para el desarrollador desde RStudio, optimizando la creación de contenido reproducible y accesible.
+La versión en línea de este manual se encuentra disponible en <https://introduccion-r-cete.vercel.app/>. La fuente del manual en español está alojada en el repositorio de GitHub: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando *Quarto*, una herramienta diseñada para convertir archivos con extensión `.qmd` en formatos publicables como HTML, PDF y EPUB. Además, [*Quarto*](https://quarto.org/) ofrece una interfaz visual intuitiva y amigable para el desarrollador, especialmente cuando se utiliza desde RStudio, lo que facilita la creación de contenido reproducible, accesible y de alta calidad.
 
 Este manual fue construido con:
 

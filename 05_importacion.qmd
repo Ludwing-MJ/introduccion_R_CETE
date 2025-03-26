@@ -73,7 +73,9 @@ c.  `if (...) install.packages("nombre del paquete")`: Esta es una estructura co
 
 ```{r eval=FALSE}
 # Importar un archivo Excel
-datos_excel <- read_excel("ruta/del/archivo/datos.xlsx", sheet = "Hoja1", col_names = TRUE/FALSE)
+datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
+                          sheet = "Hoja1", 
+                          col_names = TRUE/FALSE)
 
 # Visualizar los primeros registros del data frame
 head(datos_excel)
@@ -94,7 +96,9 @@ En este ejemplo, se utilizará la misma base de datos empleada en el caso de imp
 if (!require("readxl")) install.packages("readxl")
 
 # Importar un archivo Excel
-datos_excel <- read_excel("datos_estudiantes_2002.xlsx", sheet = "datos", col_names = TRUE)
+datos_excel <- read_excel("datos_estudiantes_2002.xlsx",
+                          sheet = "datos", 
+                          col_names = TRUE)
 
 # Visualizar los primeros registros del data frame
 head(datos_excel)
