@@ -4,7 +4,7 @@ project:
 
 book:
   title: "Introducción al entorno de programacón R y su aplicacion en el análisis estadístico de datos"
-  author: "Ludwing Isaí Marroquín Jiménez"
+  author: "P. Agr. Ludwing Isaí Marroquín Jiménez"
   output-file: "MANUAL"
   date: today
   date-format: medium
@@ -56,11 +56,11 @@ format:
     lang: es
     number-sections: true
     theme: 
-      dark:  solar #slate #solar, darkly, superhero, vapor, light: cosmo
+      dark: solar #slate #solar, darkly, superhero, vapor, light: cosmo
     number-depth: 4
     link-external-icon: true
     link-external-newwindow: true
-
+    
   pdf:
     lang: es
     documentclass: scrreprt
@@ -76,11 +76,12 @@ format:
       - bottom=30mm
       - right=30mm
       - left=30mm
+
   epub: 
     lang: es
     belongs-to-collection: "Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos"
     group-position: 0
-    creator: "Ludwing Isaí Marroquín Jiménez"
+    creator: "P. Agr. Ludwing Isaí Marroquín Jiménez"
     rights: "© Ludwing | 2025"
     fig-responsive: true
     number-sections: true
