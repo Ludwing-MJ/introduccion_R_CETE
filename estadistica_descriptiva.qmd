@@ -47,7 +47,7 @@ datos_moda <- c(10, 20, 20, 30, 40)
 print(moda_ej(datos_moda))  # Resultado: 
 ```
 
-### **Medidas de dispersión**
+### Medidas de dispersión
 
 Las medidas de dispersión describen la variabilidad o el grado de dispersión de los datos en torno a la media. Estas medidas son esenciales para entender la distribución de los datos.
 
@@ -97,7 +97,7 @@ iqr <- IQR(datos)
 print(iqr)  # Resultado: 
 ```
 
-### **Medidas de forma**
+### Medidas de forma
 
 Las medidas de forma describen la distribución de los datos en términos de su simetría y concentración en torno a la media.
 
