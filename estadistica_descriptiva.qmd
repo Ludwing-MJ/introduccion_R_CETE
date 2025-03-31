@@ -1,0 +1,534 @@
+# Estadística descriptiva usando funciones en R
+
+La estadística descriptiva es una rama esencial de la estadística que se ocupa de resumir y describir las características principales de un conjunto de datos. Su propósito es proporcionar una visión clara y comprensible de los datos, permitiendo identificar patrones, tendencias y comportamientos generales sin realizar inferencias o predicciones. Este tipo de análisis es el primer paso en cualquier estudio estadístico, ya que organiza y presenta la información de manera que sea fácil de interpretar.
+
+En R, la estadística descriptiva se puede realizar de manera eficiente gracias a una amplia variedad de herramientas y funciones predefinidas, así como paquetes especializados que amplían las capacidades del análisis. Estas herramientas permiten calcular medidas clave que se agrupan en tres categorías principales: medidas de tendencia central, medidas de dispersión y medidas de forma.
+
+## Medidas principales en estadística descriptiva
+
+### Medidas de tendencia central
+
+Las medidas de tendencia central describen el valor típico o central de un conjunto de datos. Estas medidas son fundamentales para resumir los datos en un solo valor representativo.
+
+**Media aritmética**: Es el promedio aritmético de los datos. Se calcula sumando todos los valores y dividiendo entre el número total de observaciones. Es sensible a valores extremos (outliers).
+
+Fórmula:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 112229.png){fig-align="center"}
+
+Ejemplo en R:
+
+```{r}
+datos <- c(10, 20, 30, 40, 50)
+media <- mean(datos)
+print(media)  # Resultado: 
+```
+
+**Mediana**: Es el valor que divide el conjunto de datos en dos partes iguales, de modo que el 50% de los valores son menores o iguales a la mediana y el otro 50% son mayores o iguales. Es menos sensible a valores extremos que la media.
+
+Ejemplo en R:
+
+```{r}
+mediana <- median(datos)
+print(mediana)  # Resultado: 
+```
+
+**Moda**: Es el valor o los valores que ocurren con mayor frecuencia en un conjunto de datos. En R base, no existe una función predefinida para calcular la moda, pero se puede implementar fácilmente.
+
+Ejemplo de función para calcular la moda:
+
+```{r}
+moda_ej <- function(x) {
+  tabla <- table(x)
+  moda <- names(tabla[tabla == max(tabla)])
+  return(moda)
+}
+datos_moda <- c(10, 20, 20, 30, 40)
+print(moda_ej(datos_moda))  # Resultado: 
+```
+
+### **Medidas de dispersión**
+
+Las medidas de dispersión describen la variabilidad o el grado de dispersión de los datos en torno a la media. Estas medidas son esenciales para entender la distribución de los datos.
+
+**Varianza**: Mide la dispersión de los datos respecto a la media. Es el promedio de las diferencias al cuadrado entre cada valor y la media. Una varianza alta indica que los datos están muy dispersos.
+
+Fórmula de la varianza muestral:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 112528.png){fig-align="center"}
+
+```{r}
+varianza <- var(datos)
+print(varianza)  # Resultado: 
+```
+
+**Desviación estándar**: Es la raíz cuadrada de la varianza. Proporciona una medida de dispersión en las mismas unidades que los datos originales.
+
+Fórmula:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 112744.png){fig-align="center"}
+
+Ejemplo en R:
+
+```{r}
+desviacion <- sd(datos)
+print(desviacion)  # Resultado:
+```
+
+**Rango**: Es la diferencia entre el valor máximo y el valor mínimo de los datos. Es una medida simple pero útil para entender la amplitud de los datos.
+
+Ejemplo en R:
+
+```{r}
+rango <- range(datos)
+print(rango)  # Resultado: 
+```
+
+**Rango intercuartílico (IQR)**: Es la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). Representa la dispersión de la mitad central de los datos y es menos sensible a valores extremos.
+
+Fórmula:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 112915.png){fig-align="center"}
+
+Ejemplo en R:
+
+```{r}
+iqr <- IQR(datos)
+print(iqr)  # Resultado: 
+```
+
+### **Medidas de forma**
+
+Las medidas de forma describen la distribución de los datos en términos de su simetría y concentración en torno a la media.
+
+**Asimetría (skewness)**: Mide el grado de simetría de la distribución de los datos. Una asimetría positiva indica que la cola derecha es más larga, mientras que una asimetría negativa indica que la cola izquierda es más larga.
+
+Guía gráfica para interpretar asimetría:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 113841.png){fig-align="center"}
+
+Fórmula:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 113031.png){fig-align="center"}
+
+Ejemplo en R (usando el paquete `psych`):
+
+```{r message=FALSE, warning=FALSE}
+# Instalación y carga del paquete psych
+if (!require("psych")) install.packages("psych")
+
+# Análisis de asimetria
+datos <- c(10, 20, 30, 40, 50)
+asimetria <- skew(datos)
+print(asimetria)  # Resultado: 0 (distribución simétrica)
+```
+
+**Curtosis (kurtosis)**: Mide la concentración de los datos en torno a la media. Una curtosis alta indica una distribución con colas más pesadas (leptocúrtica), mientras que una curtosis baja indica colas más ligeras (platicúrtica).
+
+Guía gráfica para interpretar curtosis:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 113648.png){fig-align="center"}
+
+Fórmula:
+
+![](_06.1_images/Captura de pantalla 2025-03-31 113127.png){fig-align="center"}
+
+Ejemplo en R (usando el paquete `psych`):
+
+```{r}
+curtosis <- kurtosi(datos)
+print(curtosis)  # Resultado: -1.912 (distribución platicúrtica)
+```
+
+## Base de datos para los ejemplos
+
+En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades, generando una base de datos que incluye una amplia variedad de variables como: *FACULTAD, EDAD, SEXO, EST_CIVIL, PESO_lbs, TALLA, entre otras*. Esta base de datos, disponible para su descarga en [formato CSV](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), se utilizará a lo largo de esta sección del manual para ilustrar diferentes métodos de análisis descriptivo de datos, adaptando las herramientas y conceptos desarrollados a las características de las variables incluidas. Para seguir los ejemplos prácticos, se recomienda que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
+
+### Preparación del área de trabajo
+
+Antes de comenzar con el análisis, es necesario preparar el entorno de trabajo instalando y cargando los paquetes necesarios, estableciendo el directorio de trabajo y revisando la estructura de los datos.
+
+```{r message=FALSE, warning=FALSE}
+
+# Instalación y carga de paquetes  
+ # Incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+
+ # Exportación a Excel
+if (!require("writexl")) install.packages("writexl")  
+
+ # Realiza analisis de estaística descriptiva completos
+if (!require("psych")) install.packages("psych")
+
+ # Se utiliza para establecer el directorio de trabajo 
+if (!require("rstudioapi")) install.packages("rstudioapi")
+
+```
+
+### Establecer directorio de trabajo
+
+Es importante asegurarse de que el archivo de datos esté en el directorio de trabajo correcto. Esto se puede hacer con el siguiente código una vez ya se ha guardado el script:
+
+```{r eval=FALSE}
+# Establecer y verificar directorio de trabajo
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+getwd()
+```
+
+### Importar la base de datos
+
+Una vez establecido el directorio de trabajo, se puede importar la base de datos en formato CSV:
+
+```{r message=FALSE, warning=FALSE}
+# Importar la base de datos
+estudiantes<- read_csv("datos_estudiantes.csv")
+```
+
+### Revisar de la estructura de los datos
+
+Es fundamental revisar la estructura de los datos para entender el tipo de variables y su formato:
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Codigo que se ejecuta pero no se presenta por secuencia para el usuario
+# Convertir todos los nombres de las columnas a minúsculas
+names(estudiantes)<- tolower(names(estudiantes))
+
+# Tener todas las variables en minúsculas facilita su manipulación
+
+# Revisar los valores de las variables categoricas 
+categoricas<-list(facultad = c(unique(estudiantes$facultad)),
+           sexo = c(unique(estudiantes$sexo)), 
+           est_civil = c(unique(estudiantes$est_civil)),
+           trabaja = c(unique(estudiantes$trabaja)),
+           jornada = c(unique(estudiantes$jornada)),
+           fuma = c(unique(estudiantes$fuma)),
+           alcohol = c(unique(estudiantes$alcohol)))
+
+```
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Revisar la estructura de los datos
+sapply(estudiantes, class)
+
+# Convertir todos los nombres de las columnas a minúsculas
+names(estudiantes)<- tolower(names(estudiantes))
+
+# Tener todas las variables en minúsculas facilita su manipulación
+
+# Revisar los valores de las variables categoricas 
+categoricas<-list(facultad = c(unique(estudiantes$facultad)),
+           sexo = c(unique(estudiantes$sexo)), 
+           est_civil = c(unique(estudiantes$est_civil)),
+           trabaja = c(unique(estudiantes$trabaja)),
+           jornada = c(unique(estudiantes$jornada)),
+           fuma = c(unique(estudiantes$fuma)),
+           alcohol = c(unique(estudiantes$alcohol)))
+```
+
+### Limpieza de la base de datos
+
+Antes de realizar el análisis, es necesario limpiar los datos para corregir valores inconsistentes y asegurarse de que las variables estén en el formato adecuado:
+
+```{r message=FALSE, warning=FALSE}
+# Corregir los valores incorrectos de la variable "fuma"
+estudiantes$fuma <- ifelse(tolower(estudiantes$fuma) == "sí", 1, estudiantes$fuma)
+unique(estudiantes$fuma)
+
+# Establecer como varibales tipo factor a las variables categoricas de la base de datos
+estudiantes <- estudiantes %>%
+  mutate(across(
+    c(facultad, sexo, est_civil, trabaja, jornada, fuma, alcohol), 
+    as.factor))
+
+```
+
+## Funciones por defecto en R para estadística descriptiva
+
+R base proporciona varias funciones útiles para realizar análisis descriptivos básicos. A continuación, se presentan ejemplos utilizando la base de datos de estudiantes.
+
+### Medidas de tendencia central
+
+Las medidas de tendencia central describen el valor típico o central de un conjunto de datos.
+
+**Media**: Promedio de los valores.
+
+**Mediana**: Valor que divide los datos en dos partes iguales.
+
+**Moda**: Valor más frecuente (no existe una función por defecto en R para calcular la moda).
+
+```{r}
+# Calcular medidas de tendencia central para la variable "edad"
+media_edad <- mean(estudiantes$edad, na.rm = TRUE)
+mediana_edad <- median(estudiantes$edad, na.rm = TRUE)
+
+# Resultados
+print(paste("Media:", media_edad))
+print(paste("Mediana:", mediana_edad))
+
+```
+
+### Medidas de dispersión
+
+Las medidas de dispersión describen la variabilidad de los datos.
+
+**Varianza**: Dispersión respecto a la media.
+
+**Desviación estándar**: Raíz cuadrada de la varianza.
+
+**Rango**: Diferencia entre el valor máximo y mínimo.
+
+**Rango intercuartílico (IQR)**: Diferencia entre el tercer y primer cuartil.
+
+```{r}
+# Calcular medidas de dispersión para la variable "peso_lbs"
+varianza_peso <- var(estudiantes$peso_lbs, na.rm = TRUE)
+desviacion_peso <- sd(estudiantes$peso_lbs, na.rm = TRUE)
+rango_peso <- range(estudiantes$peso_lbs, na.rm = TRUE)
+iqr_peso <- IQR(estudiantes$peso_lbs, na.rm = TRUE)
+
+# Resultados
+print(paste("Varianza:", varianza_peso))
+print(paste("Desviación estándar:", desviacion_peso))
+print(paste("Rango:", paste(rango_peso, collapse = " - ")))
+print(paste("IQR:", iqr_peso))
+```
+
+### Medidas de forma
+
+Las medidas de forma describen la distribución de los datos en términos de simetría y concentración.
+
+**Asimetría**: Grado de simetría de la distribución.
+
+**Curtosis**: Concentración de los datos en torno a la media.
+
+La asimetría y curtosis no se pueden calcular con la funciones base de R para ello se debe emplear el paquete `psych`, con este las medidas de forma se calculan fácilmente:
+
+```{r}
+# Calcular asimetría y curtosis para la variable "talla"
+asimetria_talla <- skew(estudiantes$talla, na.rm = TRUE)
+curtosis_talla <- kurtosi(estudiantes$talla, na.rm = TRUE)
+
+# Resultados
+print(paste("Asimetría:", asimetria_talla))
+print(paste("Curtosis:", curtosis_talla))
+```
+
+### Resumen general con `summary()`
+
+La función `summary()` proporciona un resumen estadístico básico para variables numéricas y categóricas:
+
+```{r}
+# Resumen general de la variable talla
+resumen_general <- summary(estudiantes$talla)
+print(resumen_general)
+```
+
+## Paquetes especializados para estadística descriptiva (el paquete `psych`)
+
+El paquete `psych` es una herramienta poderosa y versátil para realizar análisis estadísticos descriptivos avanzados en R. Este paquete es especialmente útil cuando se trabaja con variables categóricas y numéricas simultáneamente, ya que permite calcular estadísticas detalladas, realizar análisis por grupos y obtener medidas de forma como asimetría y curtosis. Además, incluye opciones para calcular errores estándar e intervalos de confianza, lo que lo convierte en una excelente opción para análisis más completos.
+
+### Instalación y carga del paquete
+
+```{r message=FALSE, warning=FALSE}
+# Instalación y carga del paquete
+if (!require("psych")) install.packages("psych")
+```
+
+### Análisis descriptivo general
+
+A continuación, se utilizará la base de datos de estudiantes para realizar un análisis descriptivo detallado. Este análisis incluirá medidas de tendencia central, dispersión y forma.
+
+La función `describe()` del paquete `psych` permite calcular estadísticas descriptivas detalladas para variables numéricas. Estas estadísticas incluyen: Media, Desviación estándar, Mediana, Rango, Asimetría, Curtosis, Errores estándar.
+
+```{r}
+# Análisis descriptivo general para variables numéricas
+resultado_general <- describe(estudiantes[, c("edad", "peso_lbs", "talla")])
+
+# Mostrar resultados
+print(resultado_general)
+```
+
+**Salida esperada:** El resultado incluye un resumen detallado de cada variable numérica, con estadísticas como la media, desviación estándar, asimetría y curtosis.
+
+### Análisis descriptivo categorizado
+
+La función `describeBy()` permite realizar un análisis descriptivo agrupado por una o más variables categóricas. Esto es útil para comparar estadísticas entre diferentes grupos.
+
+```{r}
+# Análisis descriptivo agrupado por sexo y trabaja
+resultado_agrupado <- describeBy(
+  estudiantes[, c("edad", "peso_lbs", "talla")], 
+  group = list(estudiantes$sexo, estudiantes$trabaja)
+)
+
+# Mostrar resultados
+print(resultado_agrupado)
+```
+
+**Nota importante:** Cuando se utiliza `describeBy()`, el paquete `psych` genera una tabla separada para cada combinación de las variables categóricas. Esto puede ser útil para análisis simples, pero puede volverse limitante en casos donde se necesite consolidar los resultados en un solo dataframe o realizar análisis más complejos.
+
+### Exportación de resultados
+
+Los resultados del análisis descriptivo pueden exportarse fácilmente a un archivo Excel para su revisión o presentación:
+
+```{r}
+# Exportar resultados agrupados a Excel
+write_xlsx(resultado_agrupado, "analisis_descriptivo_psych.xlsx")
+```
+
+### Ventajas del paquete `psych`
+
+El paquete `psych` ofrece varias ventajas para el análisis descriptivo:
+
+1.  **Estadísticas más detalladas**: Incluye medidas avanzadas como asimetría, curtosis, errores estándar e intervalos de confianza.
+
+2.  **Análisis por grupos**: Permite calcular estadísticas descriptivas para diferentes combinaciones de variables categóricas.
+
+3.  **Flexibilidad**: Facilita la categorización de variables numéricas en rangos personalizados.
+
+4.  **Exportación de resultados**: Los resultados pueden exportarse fácilmente a formatos como Excel para su análisis posterior.
+
+### Limitaciones del paquete `psych`
+
+Aunque el paquete `psych` es muy útil, presenta algunas limitaciones:
+
+1.  **Resultados separados por combinación de categorías**: La función `describeBy()` genera una tabla separada para cada combinación de las variables categóricas, lo que puede dificultar la consolidación de los resultados en un solo archivo o dataframe.
+
+2.  **Falta de personalización**: No permite agregar estadísticas personalizadas, como percentiles específicos o medidas adicionales que no estén incluidas en las funciones predefinidas.
+
+3.  **Manejo de valores faltantes**: Aunque maneja valores faltantes de manera básica, no ofrece opciones avanzadas para imputación o análisis detallado de datos incompletos.
+
+4.  **Exportación limitada**: Los resultados no están listos para exportarse directamente en un formato tabular consolidado, lo que requiere pasos adicionales para su preparación.
+
+## Función personalizada para análisis descriptivo completo
+
+Para superar las limitaciones del paquete `psych`, se puede utilizar una función personalizada que ofrezca mayor flexibilidad y personalización. A continuación, se presenta una solución que incluye funciones auxiliares para calcular medidas avanzadas como la moda, asimetría y curtosis.
+
+### Establecer funciones auxiliares
+
+#### Moda
+
+```{r}
+# Función de la moda
+moda <- function(x) {
+  if (all(is.na(x))) return(NA_character_)
+  tabla <- table(x)
+  moda <- names(tabla)[tabla == max(tabla)]
+  paste(moda, collapse = ", ")
+}
+```
+
+#### Asimetría
+
+```{r}
+# Función Asimentría
+calcular_asimetria <- function(x) {
+  x <- x[!is.na(x)]
+  if (length(x) < 3) return(NA_real_)
+  n <- length(x)
+  m <- mean(x)
+  s <- sd(x)
+  sum((x - m)^3) / (n * s^3)
+}
+```
+
+#### **Curtosis**
+
+```{r}
+# Función Curtosis
+calcular_curtosis <- function(x) {
+  x <- x[!is.na(x)]
+  if (length(x) < 4) return(NA_real_)
+  n <- length(x)
+  m <- mean(x)
+  s <- sd(x)
+  sum((x - m)^4) / (n * s^4) - 3
+}
+```
+
+### Función principal: análisis por categorías
+
+La función principal realiza el análisis descriptivo agrupando los datos según las variables categóricas especificadas. Calcula estadísticas clave como la media, mediana, moda, desviación estándar, varianza, rango, cuartiles, asimetría y curtosis.
+
+```{r}
+analisis_por_categoria <- function(datos, columna_numerica, columnas_categoricas) {
+  datos %>%
+    group_by(across(all_of(columnas_categoricas))) %>%
+    summarise(
+      Variable = columna_numerica,
+      N_validos = sum(!is.na(.data[[columna_numerica]])),
+      N_missing = sum(is.na(.data[[columna_numerica]])),
+      Media = mean(.data[[columna_numerica]], na.rm = TRUE),
+      Mediana = median(.data[[columna_numerica]], na.rm = TRUE),
+      Moda = moda(.data[[columna_numerica]]),
+      Desviacion_estandar = sd(.data[[columna_numerica]], na.rm = TRUE),
+      Varianza = var(.data[[columna_numerica]], na.rm = TRUE),
+      Rango_min = min(.data[[columna_numerica]], na.rm = TRUE),
+      Rango_max = max(.data[[columna_numerica]], na.rm = TRUE),
+      IQR = IQR(.data[[columna_numerica]], na.rm = TRUE),
+      Q1 = quantile(.data[[columna_numerica]], probs = 0.25, na.rm = TRUE),
+      Q2 = quantile(.data[[columna_numerica]], probs = 0.50, na.rm = TRUE),
+      Q3 = quantile(.data[[columna_numerica]], probs = 0.75, na.rm = TRUE),
+      Asimetria = calcular_asimetria(.data[[columna_numerica]]),
+      Curtosis = calcular_curtosis(.data[[columna_numerica]]),
+      .groups = 'drop'
+    )
+}
+```
+
+### Función para análisis de múltiples variables numéricas
+
+Para analizar varias columnas numéricas simultáneamente, se puede usar la siguiente función, que aplica `analisis_por_categoria` a cada columna numérica especificada:
+
+```{r }
+analisis_multiple <- function(datos, columnas_numericas, columnas_categoricas) {
+  resultados <- list()
+  for (col in columnas_numericas) {
+    resultados[[col]] <- analisis_por_categoria(
+      datos = datos,
+      columna_numerica = col,
+      columnas_categoricas = columnas_categoricas
+    )
+  }
+  bind_rows(resultados)  # Combina todos los resultados en un solo dataframe
+}
+```
+
+### Ejemplo de uso
+
+A continuación, se muestra un ejemplo práctico de cómo utilizar estas funciones para realizar un análisis descriptivo completo:
+
+```{r}
+# Definir las columnas a analizar
+columnas_numericas <- c("talla", "peso_lbs", "edad")
+columnas_categoricas <- c("sexo", "trabaja")
+
+# Ejecutar el análisis
+resultados_finales <- analisis_multiple(
+  datos = estudiantes,
+  columnas_numericas = columnas_numericas,
+  columnas_categoricas = columnas_categoricas
+)
+
+# Mostrar resultados
+print(resultados_finales)
+```
+
+## Resumen Comparativo: Funciones Base de R, Paquete `psych` y Función Personalizada
+
+A continuación, se presenta una comparación entre el paquete `psych` y la función personalizada para realizar análisis descriptivos, destacando las fortalezas y limitaciones de cada enfoque. Esta comparación permite identificar cuál es la mejor opción según las necesidades específicas del análisis.
+
+| **Característica** | **Funciones Base de R** | **Paquete `psych`** | **Función Personalizada** |
+|------------------|------------------|------------------|------------------|
+| **Estadísticas avanzadas** | Calcula medidas básicas como media, mediana, desviación estándar, varianza y rango. | Incluye medidas como asimetría y curtosis. | Incluye asimetría, curtosis, moda y más estadísticas avanzadas. |
+| **Análisis por grupos** | Requiere pasos adicionales para agrupar y calcular estadísticas por categorías. | Genera tablas separadas para cada combinación de categorías, lo que puede dificultar la consolidación. | Consolida todos los resultados en un único dataframe, facilitando su manejo y análisis. |
+| **Flexibilidad** | Limitada a las funciones predefinidas, sin opciones para personalización avanzada. | Limitada a las funciones predefinidas del paquete. | Totalmente personalizable, permitiendo agregar o modificar estadísticas según las necesidades. |
+| **Exportación** | Requiere pasos adicionales para preparar los resultados antes de exportarlos. | Requiere pasos adicionales para preparar los resultados antes de exportarlos. | Los resultados están listos para exportarse directamente en un formato tabular. |
+| **Facilidad de uso** | Muy fácil de usar para cálculos básicos, pero limitada en análisis avanzados. | Fácil de usar para análisis avanzados estándar. | Requiere más configuración inicial, pero ofrece mayor control y personalización. |
+| **Manejo de valores faltantes** | Manejo básico con argumentos como `na.rm = TRUE`. | Manejo básico de valores faltantes. | Permite un manejo avanzado y personalizado de valores faltantes. |
+
+Las **funciones base de R** son ideales para cálculos rápidos y sencillos, como la media (`mean()`), mediana (`median()`), desviación estándar (`sd()`), varianza (`var()`), rango (`range()`), y el resumen general (`summary()`). Estas funciones son fáciles de usar y están disponibles de forma predeterminada, lo que las convierte en una excelente opción para análisis básicos. Sin embargo, su alcance es limitado cuando se requiere un análisis más detallado o agrupado, ya que no incluyen medidas avanzadas como asimetría o curtosis, ni permiten un análisis categorizado sin pasos adicionales.
+
+El **paquete `psych`** es una herramienta poderosa y fácil de usar para realizar análisis descriptivos avanzados, especialmente cuando se busca rapidez y simplicidad en el cálculo de estadísticas estándar. Ofrece medidas avanzadas como asimetría y curtosis, y permite realizar análisis agrupados con la función `describeBy()`. Sin embargo, su enfoque en generar tablas separadas para cada combinación de categorías puede ser una limitación en proyectos que requieren consolidar resultados o realizar análisis más complejos. Además, la personalización de las estadísticas calculadas es limitada, ya que depende de las funciones predefinidas del paquete.
+
+Por otro lado, la **función personalizada** destaca por su flexibilidad y capacidad de adaptación. Permite incluir estadísticas adicionales, como la moda, y consolidar resultados en un único dataframe, lo que facilita su manejo y exportación en un formato listo para su uso. Además, ofrece un control total sobre el análisis, permitiendo adaptarlo a necesidades específicas, como el manejo avanzado de valores faltantes o la categorización de variables numéricas. Esto la convierte en una opción ideal para proyectos que demandan un mayor nivel de personalización y control.

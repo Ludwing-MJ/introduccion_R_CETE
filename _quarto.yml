@@ -16,7 +16,7 @@ book:
   sidebar: 
     logo: logo_cete_vector.png
     search: true
-    collapse-level: 1
+    collapse-level: 2
 
   repo-subdir: book
   sharing: [twitter, linkedin]
@@ -30,23 +30,26 @@ book:
         
   chapters:
     - index.qmd
-    - part: "Capítulo 1: Introducción a R y RStudio"
+    - part: "Introducción a R y RStudio"
     - 01_cbasicos.qmd
     - 02_instalacion_confi.qmd
-    - part: "Capítulo 2: Conceptos básicos de R"
+    - part: "Conceptos básicos de R"
     - 03_inicio.qmd
     - 04_datos.qmd
     - 05_importacion.qmd
     - 06_operadores.qmd
+    - 06.1_funciones.qmd
     - 07_paquetes.qmd
-    - part: "Capítulo 3: Manipulación de datos"
+    - part: "Manipulación de datos"
     - 08_manipulacion.qmd
-    - part: "Capítulo 4: Visualización de datos"
+    - part: "Visualización de datos"
     - 09_visualizacion.qmd
-    - part: "Capítulo 5: Exportación de resultados"
+    - part: "Exportación de resultados"
     - 10_exportacion.qmd
-    - part: "Capítulo 6: Material de apoyo y referencias"
+    - part: "Material de apoyo y referencias"
     - references.qmd
+    - part: "Ejemplos de Análisis Estadístico con R"
+    - estadistica_descriptiva.qmd
 
 bibliography: references.bib
 biblio-style: "apalike"
