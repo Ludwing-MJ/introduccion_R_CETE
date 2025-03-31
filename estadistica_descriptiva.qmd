@@ -459,6 +459,7 @@ calcular_asimetria <- function(x) {
 #### **Curtosis**
 
 ```{r}
+# Función Curtosis 
 calcular_curtosis <- function(x) {
   # Eliminar valores NA
   x <- na.omit(x)
@@ -484,6 +485,7 @@ calcular_curtosis <- function(x) {
 La función principal realiza el análisis descriptivo agrupando los datos según las variables categóricas especificadas. Calcula estadísticas clave como la media, mediana, moda, desviación estándar, varianza, rango, cuartiles, asimetría y curtosis.
 
 ```{r}
+# Función Análisis por Categoría
 analisis_por_categoria <- function(datos, columna_numerica, columnas_categoricas) {
   datos %>%
     group_by(across(all_of(columnas_categoricas))) %>%
@@ -515,6 +517,7 @@ analisis_por_categoria <- function(datos, columna_numerica, columnas_categoricas
 Para analizar varias columnas numéricas simultáneamente, se puede usar la siguiente función, que aplica `analisis_por_categoria` a cada columna numérica especificada:
 
 ```{r }
+# Función para anlisar multiples variables numericas simultaneamente 
 analisis_multiple <- function(datos, columnas_numericas, columnas_categoricas) {
   resultados <- list()
   for (col in columnas_numericas) {
