@@ -1,0 +1,1 @@
+# Análisis de regresión lineal simple usando R
