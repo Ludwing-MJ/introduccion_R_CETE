@@ -1,1 +1,206 @@
 # Análisis de regresión lineal simple usando R
+
+La regresión lineal es una técnica estadística utilizada para modelar la relación entre una variable dependiente (*respuesta*) y una o más variables independientes (*predictoras*). Este análisis permite predecir valores, evaluar relaciones y entender cómo las variables están conectadas.
+
+En esta sección, se exploran dos tipos de regresión:
+
+1.  **Regresión lineal simple**: Relación entre una variable dependiente y una sola variable independiente.
+
+2.  **Regresión lineal múltiple**: Relación entre una variable dependiente y múltiples variables independientes.
+
+## Preparación del área de trabajo
+
+Instalación y carga de los paquetes necesarios para desarrollar esta sección
+
+```{r message=FALSE, warning=FALSE}
+# Instalación y carga de paquetes  
+ # Incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+
+ # Se utiliza para establecer el directorio de trabajo 
+if (!require("car")) install.packages("car")
+```
+
+## Carga de datos
+
+Para este análisis, se emplea un conjunto de datos de medidas corporales disponible en el siguiente enlace:\
+[Datos de medidas corporales - GitHub](https://raw.githubusercontent.com/fhernanb/datos/master/medidas_cuerpo).
+
+El código para cargar los datos es el siguiente:
+
+```{r}
+url <- 'https://raw.githubusercontent.com/fhernanb/datos/master/medidas_cuerpo'
+datos <- read.table(file=url, header=TRUE)  # Carga datos con encabezado
+```
+
+Posteriormente, se realiza una exploración inicial de los datos para comprender su estructura y contenido:
+
+Para visualizar las primeras filas:
+
+```{r}
+head(datos)
+```
+
+Para verificar la estructura de los datos:
+
+```{r}
+str(datos)
+```
+
+Las variables principales del conjunto de datos son:
+
+1.  `altura`: Altura de las personas (en cm).
+
+2.  `peso`: Peso de las personas (en kg).
+
+3.  `sexo`: Género de las personas (Hombre/Mujer).
+
+4.  `edad`: Edad de las personas (en años).
+
+## **Exploración inicial de los datos**
+
+Antes de ajustar un modelo de regresión, se realiza un análisis descriptivo para identificar patrones iniciales en las variables.
+
+### **Gráfico de dispersión entre altura y peso**
+
+```{r}
+# Elaboración de un gráfico de dispersión entre altura y peso
+ggplot(data = datos, aes(x = altura, y = peso)) +
+  geom_point(color = "black", size = 2) +
+  labs(title = "Relación altura - peso",
+       x = "Altura (cm)",
+       y = "Peso (Kg)")+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text( hjust = 1, size = 10),
+    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
+  )
+
+```
+
+Este gráfico permite observar una relación positiva entre altura y peso, donde a mayor altura, el peso tiende a ser mayor.
+
+## **Regresión lineal simple**
+
+La regresión lineal simple se utiliza para modelar la relación entre una variable dependiente (`peso`) y una variable independiente (`altura`).
+
+### **Ajuste del modelo**
+
+```{r}
+reg1 <- lm(peso ~ altura, data=datos)
+summary(reg1)
+```
+
+### **Interpretación de los resultados**
+
+1.  Los coeficientes del modelo (β0 y β1​) indican, respectivamente, el valor promedio de `peso` cuando `altura` es 0 y el cambio promedio en `peso` por cada unidad adicional de `altura`.
+
+2.  El valor de R\^2 muestra el porcentaje de variabilidad en `peso` explicado por `altura`.
+
+3.  El p-valor asociado a los coeficientes permite evaluar la significancia estadística de la relación entre las variables.
+
+### **Análisis de varianza (ANOVA)**
+
+```{r}
+anova(reg1)
+```
+
+El análisis de varianza permite evaluar la significancia global del modelo. Un p-valor menor a 0.05 indica que el modelo es estadísticamente significativo.
+
+### **Predicciones**
+
+Se generan predicciones para nuevos valores de altura utilizando el modelo ajustado:
+
+```{r}
+nuevas_alturas <- data.frame(altura=seq(145, 195, 1.5))  # Secuencia de alturas
+predicciones <- predict(reg1, nuevas_alturas)
+round(predicciones, 2)  # Resultados con 2 decimales
+```
+
+### **Visualización de la línea de regresión**
+
+```{r message=FALSE, warning=FALSE}
+ggplot(data = datos, aes(x = altura, y = peso)) +
+  geom_point(color = "black", size = 2) +
+  # Línea de tendencia con intervalo de confianza
+  geom_smooth(method = "lm", color = "darkgreen", linewidth = 1.2, se = TRUE) +  
+  labs(title = "Regresión lineal peso vs altura",
+       x = "Altura (cm)",
+       y = "Peso (Kg)") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text(hjust = 1, size = 10),
+    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
+  )
+
+```
+
+### **Verificación de supuestos del modelo**
+
+La regresión lineal simple asume:
+
+1.  Linealidad entre las variables.
+
+2.  Normalidad de los residuos.
+
+3.  Homocedasticidad (varianza constante de los residuos).
+
+#### **Gráficos diagnósticos**
+
+```{r}
+par(mfrow=c(2,2))  # Divide la ventana gráfica en 2x2
+plot(reg1)         # Genera gráficos diagnósticos
+par(mfrow=c(1,1))  # Restaura la configuración gráfica
+```
+
+#### **Pruebas estadísticas**
+
+Para evaluar la normalidad de los residuos:
+
+```{r}
+shapiro.test(resid(reg1))
+```
+
+Para evaluar la homocedasticidad:
+
+```{r message=FALSE, warning=FALSE}
+library(car)
+ncvTest(reg1)
+```
+
+## **Regresión lineal múltiple**
+
+La regresión lineal múltiple permite modelar la relación entre una variable dependiente y múltiples variables independientes. En este caso, se incluye la variable `edad` como predictor adicional.
+
+### **Ajuste del modelo**
+
+```{r}
+reg2 <- lm(peso ~ altura + edad, data=datos)
+summary(reg2)
+```
+
+#### **Interpretación de los resultados**
+
+Los coeficientes del modelo (β0​,β1​,β2​) indican el efecto de cada predictor en `peso`, manteniendo las demás variables constantes.
+
+El R2 ajustado refleja el porcentaje de variabilidad explicado por el modelo, considerando el número de predictores.
+
+#### **Comparación de modelos (ANOVA)**
+
+```{r}
+anova(reg1, reg2)
+```
+
+Este análisis permite comparar la calidad de los modelos simple y múltiple. Un p-valor significativo indica que el modelo múltiple mejora la explicación de la variabilidad en `peso`.
+
+#### **Diagnóstico de multicolinealidad**
+
+```{r}
+vif(reg2)  # Factor de Inflación de Varianza
+```
+
+Valores mayores a 4 sugieren problemas de multicolinealidad entre las variables predictoras.

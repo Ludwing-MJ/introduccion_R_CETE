@@ -14,7 +14,7 @@ Las medidas de tendencia central describen el valor típico o central de un conj
 
 Fórmula:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 112229.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112229.png){fig-align="center"}
 
 Ejemplo en R:
 
@@ -55,7 +55,7 @@ Las medidas de dispersión describen la variabilidad o el grado de dispersión d
 
 Fórmula de la varianza muestral:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 112528.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112528.png){fig-align="center"}
 
 ```{r}
 varianza <- var(datos)
@@ -66,7 +66,7 @@ print(varianza)  # Resultado:
 
 Fórmula:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 112744.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112744.png){fig-align="center"}
 
 Ejemplo en R:
 
@@ -88,7 +88,7 @@ print(rango)  # Resultado:
 
 Fórmula:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 112915.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112915.png){fig-align="center"}
 
 Ejemplo en R:
 
@@ -105,11 +105,11 @@ Las medidas de forma describen la distribución de los datos en términos de su 
 
 Guía gráfica para interpretar asimetría:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 113841.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113841.png){fig-align="center"}
 
 Fórmula:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 113031.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113031.png){fig-align="center"}
 
 Ejemplo en R (usando el paquete `psych`):
 
@@ -127,11 +127,11 @@ print(asimetria)  # Resultado: 0 (distribución simétrica)
 
 Guía gráfica para interpretar curtosis:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 113648.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113648.png){fig-align="center"}
 
 Fórmula:
 
-![](_06.1_images/Captura de pantalla 2025-03-31 113127.png){fig-align="center"}
+![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113127.png){fig-align="center"}
 
 Ejemplo en R (usando el paquete `psych`):
 
@@ -594,7 +594,7 @@ Este ejemplo demuestra cómo utilizar la función personalizada para realizar un
 A continuación, se presenta una comparación entre el paquete `psych` y la función personalizada para realizar análisis descriptivos, destacando las fortalezas y limitaciones de cada enfoque. Esta comparación permite identificar cuál es la mejor opción según las necesidades específicas del análisis.
 
 | **Característica** | **Funciones Base de R** | **Paquete `psych`** | **Función Personalizada** |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | **Estadísticas avanzadas** | Calcula medidas básicas como media, mediana, desviación estándar, varianza y rango. | Incluye medidas como asimetría y curtosis. | Incluye asimetría, curtosis, moda y más estadísticas avanzadas. |
 | **Análisis por grupos** | Requiere pasos adicionales para agrupar y calcular estadísticas por categorías. | Genera tablas separadas para cada combinación de categorías, lo que puede dificultar la consolidación. | Consolida todos los resultados en un único dataframe, facilitando su manejo y análisis. |
 | **Flexibilidad** | Limitada a las funciones predefinidas, sin opciones para personalización avanzada. | Limitada a las funciones predefinidas del paquete. | Totalmente personalizable, permitiendo agregar o modificar estadísticas según las necesidades. |
