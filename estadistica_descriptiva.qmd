@@ -231,10 +231,11 @@ Antes de realizar el análisis, es necesario limpiar los datos para corregir val
 
 ```{r message=FALSE, warning=FALSE}
 # Corregir los valores incorrectos de la variable "fuma"
-estudiantes$fuma <- ifelse(tolower(estudiantes$fuma) == "sí", 1, estudiantes$fuma)
+estudiantes$fuma <- ifelse(tolower(estudiantes$fuma) == "sí",
+                           1, estudiantes$fuma)
 unique(estudiantes$fuma)
 
-# Establecer como varibales tipo factor a las variables categoricas de la base de datos
+# Establecer como varibales tipo factor a las variables categoricas
 estudiantes <- estudiantes %>%
   mutate(across(
     c(facultad, sexo, est_civil, trabaja, jornada, fuma, alcohol), 
@@ -486,7 +487,9 @@ La función principal realiza el análisis descriptivo agrupando los datos segú
 
 ```{r}
 # Función Análisis por Categoría
-analisis_por_categoria <- function(datos, columna_numerica, columnas_categoricas) {
+analisis_por_categoria <- function(datos, 
+                                   columna_numerica,
+                                   columnas_categoricas) {
   datos %>%
     group_by(across(all_of(columnas_categoricas))) %>%
     summarise(
@@ -518,7 +521,9 @@ Para analizar varias columnas numéricas simultáneamente, se puede usar la sigu
 
 ```{r }
 # Función para anlisar multiples variables numericas simultaneamente 
-analisis_multiple <- function(datos, columnas_numericas, columnas_categoricas) {
+analisis_multiple <- function(datos, 
+                              columnas_numericas,
+                              columnas_categoricas) {
   resultados <- list()
   for (col in columnas_numericas) {
     resultados[[col]] <- analisis_por_categoria(
@@ -527,7 +532,7 @@ analisis_multiple <- function(datos, columnas_numericas, columnas_categoricas) {
       columnas_categoricas = columnas_categoricas
     )
   }
-  bind_rows(resultados)  # Combina todos los resultados en un solo dataframe
+  bind_rows(resultados)  # Combina todos los resultados en un dataframe
 }
 ```
 
@@ -541,8 +546,11 @@ Antes de ejecutar el análisis, es necesario definir las columnas numéricas y c
 
 ```{r}
 # Definir las columnas numéricas y categóricas
-columnas_numericas <- c("talla", "peso_lbs", "edad")  # Variables cuantitativas
-columnas_categoricas <- c("sexo", "trabaja")         # Variables cualitativas
+# Variables cuantitativas
+columnas_numericas <- c("talla", "peso_lbs", "edad")  
+
+# Variables cualitativas
+columnas_categoricas <- c("sexo", "trabaja")         
 
 
 ```

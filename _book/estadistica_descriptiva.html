@@ -589,12 +589,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Antes de realizar el análisis, es necesario limpiar los datos para corregir valores inconsistentes y asegurarse de que las variables estén en el formato adecuado:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Corregir los valores incorrectos de la variable "fuma"</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>estudiantes<span class="sc">$</span>fuma <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">tolower</span>(estudiantes<span class="sc">$</span>fuma) <span class="sc">==</span> <span class="st">"sí"</span>, <span class="dv">1</span>, estudiantes<span class="sc">$</span>fuma)</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(estudiantes<span class="sc">$</span>fuma)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>estudiantes<span class="sc">$</span>fuma <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(<span class="fu">tolower</span>(estudiantes<span class="sc">$</span>fuma) <span class="sc">==</span> <span class="st">"sí"</span>,</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>                           <span class="dv">1</span>, estudiantes<span class="sc">$</span>fuma)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unique</span>(estudiantes<span class="sc">$</span>fuma)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "2" "1"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer como varibales tipo factor a las variables categoricas de la base de datos</span></span>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer como varibales tipo factor a las variables categoricas</span></span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>estudiantes <span class="ot">&lt;-</span> estudiantes <span class="sc">%&gt;%</span></span>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(</span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">c</span>(facultad, sexo, est_civil, trabaja, jornada, fuma, alcohol), </span>
@@ -905,30 +906,32 @@ talla       -0.05 0.01</code></pre>
 <p>La función principal realiza el análisis descriptivo agrupando los datos según las variables categóricas especificadas. Calcula estadísticas clave como la media, mediana, moda, desviación estándar, varianza, rango, cuartiles, asimetría y curtosis.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función Análisis por Categoría</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>analisis_por_categoria <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, columna_numerica, columnas_categoricas) {</span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>  datos <span class="sc">%&gt;%</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columnas_categoricas))) <span class="sc">%&gt;%</span></span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> columna_numerica,</span>
-<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">N_validos =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(.data[[columna_numerica]])),</span>
-<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">N_missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.data[[columna_numerica]])),</span>
-<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">Media =</span> <span class="fu">mean</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mediana =</span> <span class="fu">median</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">Moda =</span> <span class="fu">moda</span>(.data[[columna_numerica]]),</span>
-<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">Desviacion_estandar =</span> <span class="fu">sd</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">Varianza =</span> <span class="fu">var</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango_min =</span> <span class="fu">min</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango_max =</span> <span class="fu">max</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango =</span> Rango_max <span class="sc">-</span> Rango_min,</span>
-<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">IQR =</span> <span class="fu">IQR</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q1 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q2 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.50</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q3 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">Asimetria =</span> <span class="fu">calcular_asimetria</span>(.data[[columna_numerica]]),</span>
-<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Curtosis =</span> <span class="fu">calcular_curtosis</span>(.data[[columna_numerica]]),</span>
-<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">'drop'</span></span>
-<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>analisis_por_categoria <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, </span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>                                   columna_numerica,</span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>                                   columnas_categoricas) {</span>
+<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>  datos <span class="sc">%&gt;%</span></span>
+<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(columnas_categoricas))) <span class="sc">%&gt;%</span></span>
+<span id="cb53-7"><a href="#cb53-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarise</span>(</span>
+<span id="cb53-8"><a href="#cb53-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">Variable =</span> columna_numerica,</span>
+<span id="cb53-9"><a href="#cb53-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">N_validos =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(.data[[columna_numerica]])),</span>
+<span id="cb53-10"><a href="#cb53-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">N_missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(.data[[columna_numerica]])),</span>
+<span id="cb53-11"><a href="#cb53-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">Media =</span> <span class="fu">mean</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-12"><a href="#cb53-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">Mediana =</span> <span class="fu">median</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-13"><a href="#cb53-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">Moda =</span> <span class="fu">moda</span>(.data[[columna_numerica]]),</span>
+<span id="cb53-14"><a href="#cb53-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">Desviacion_estandar =</span> <span class="fu">sd</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-15"><a href="#cb53-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">Varianza =</span> <span class="fu">var</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-16"><a href="#cb53-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango_min =</span> <span class="fu">min</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-17"><a href="#cb53-17" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango_max =</span> <span class="fu">max</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-18"><a href="#cb53-18" aria-hidden="true" tabindex="-1"></a>      <span class="at">Rango =</span> Rango_max <span class="sc">-</span> Rango_min,</span>
+<span id="cb53-19"><a href="#cb53-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">IQR =</span> <span class="fu">IQR</span>(.data[[columna_numerica]], <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-20"><a href="#cb53-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q1 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.25</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-21"><a href="#cb53-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q2 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.50</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-22"><a href="#cb53-22" aria-hidden="true" tabindex="-1"></a>      <span class="at">Q3 =</span> <span class="fu">quantile</span>(.data[[columna_numerica]], <span class="at">probs =</span> <span class="fl">0.75</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb53-23"><a href="#cb53-23" aria-hidden="true" tabindex="-1"></a>      <span class="at">Asimetria =</span> <span class="fu">calcular_asimetria</span>(.data[[columna_numerica]]),</span>
+<span id="cb53-24"><a href="#cb53-24" aria-hidden="true" tabindex="-1"></a>      <span class="at">Curtosis =</span> <span class="fu">calcular_curtosis</span>(.data[[columna_numerica]]),</span>
+<span id="cb53-25"><a href="#cb53-25" aria-hidden="true" tabindex="-1"></a>      <span class="at">.groups =</span> <span class="st">'drop'</span></span>
+<span id="cb53-26"><a href="#cb53-26" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb53-27"><a href="#cb53-27" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="función-para-análisis-de-múltiples-variables-numéricas" class="level3" data-number="13.5.3">
@@ -936,17 +939,19 @@ talla       -0.05 0.01</code></pre>
 <p>Para analizar varias columnas numéricas simultáneamente, se puede usar la siguiente función, que aplica <code>analisis_por_categoria</code> a cada columna numérica especificada:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para anlisar multiples variables numericas simultaneamente </span></span>
-<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>analisis_multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, columnas_numericas, columnas_categoricas) {</span>
-<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>  resultados <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
-<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (col <span class="cf">in</span> columnas_numericas) {</span>
-<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>    resultados[[col]] <span class="ot">&lt;-</span> <span class="fu">analisis_por_categoria</span>(</span>
-<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">datos =</span> datos,</span>
-<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">columna_numerica =</span> col,</span>
-<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">columnas_categoricas =</span> columnas_categoricas</span>
-<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(resultados)  <span class="co"># Combina todos los resultados en un solo dataframe</span></span>
-<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>analisis_multiple <span class="ot">&lt;-</span> <span class="cf">function</span>(datos, </span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                              columnas_numericas,</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a>                              columnas_categoricas) {</span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>  resultados <span class="ot">&lt;-</span> <span class="fu">list</span>()</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (col <span class="cf">in</span> columnas_numericas) {</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>    resultados[[col]] <span class="ot">&lt;-</span> <span class="fu">analisis_por_categoria</span>(</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">datos =</span> datos,</span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">columna_numerica =</span> col,</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">columnas_categoricas =</span> columnas_categoricas</span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bind_rows</span>(resultados)  <span class="co"># Combina todos los resultados en un dataframe</span></span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="ejemplo-de-uso" class="level3" data-number="13.5.4">
@@ -957,8 +962,11 @@ talla       -0.05 0.01</code></pre>
 <p>Antes de ejecutar el análisis, es necesario definir las columnas numéricas y categóricas que se incluirán en el estudio. Las columnas numéricas representan las variables cuantitativas que se analizarán, mientras que las columnas categóricas se utilizarán para agrupar los datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir las columnas numéricas y categóricas</span></span>
-<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>columnas_numericas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"talla"</span>, <span class="st">"peso_lbs"</span>, <span class="st">"edad"</span>)  <span class="co"># Variables cuantitativas</span></span>
-<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>columnas_categoricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sexo"</span>, <span class="st">"trabaja"</span>)         <span class="co"># Variables cualitativas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables cuantitativas</span></span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>columnas_numericas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"talla"</span>, <span class="st">"peso_lbs"</span>, <span class="st">"edad"</span>)  </span>
+<span id="cb55-4"><a href="#cb55-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb55-5"><a href="#cb55-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables cualitativas</span></span>
+<span id="cb55-6"><a href="#cb55-6" aria-hidden="true" tabindex="-1"></a>columnas_categoricas <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sexo"</span>, <span class="st">"trabaja"</span>)         </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>A continuación, se ejecuta la función <code>analisis_multiple</code>, que aplica el análisis descriptivo a cada variable numérica, agrupando los resultados según las categorías especificadas.</p>
 <div class="cell">
