@@ -283,13 +283,13 @@ Las medidas de dispersión describen la variabilidad de los datos.
 # Calcular medidas de dispersión para la variable "peso_lbs"
 varianza_peso <- var(estudiantes$peso_lbs, na.rm = TRUE)
 desviacion_peso <- sd(estudiantes$peso_lbs, na.rm = TRUE)
-rango_peso <- range(estudiantes$peso_lbs, na.rm = TRUE)
+rango_peso <- max(estudiantes$peso_lbs)-min(estudiantes$peso_lbs)
 iqr_peso <- IQR(estudiantes$peso_lbs, na.rm = TRUE)
 
 # Resultados
 print(paste("Varianza:", varianza_peso))
 print(paste("Desviación estándar:", desviacion_peso))
-print(paste("Rango:", paste(rango_peso, collapse = " - ")))
+print(paste("Rango:", paste(rango_peso)))
 print(paste("IQR:", iqr_peso))
 ```
 
@@ -369,7 +369,7 @@ print(resultado_agrupado)
 
 ### Exportación de resultados
 
-Los resultados del análisis descriptivo pueden exportarse fácilmente a un archivo Excel para su revisión o presentación:
+Los resultados del análisis descriptivo pueden exportarse fácilmente a un [archivo Excel](https://docs.google.com/spreadsheets/d/1hKCKIBayjskA1LBN2avyqf4OtQZnALBC/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true) para su revisión o presentación:
 
 ```{r}
 # Exportar resultados agrupados a Excel
@@ -411,10 +411,24 @@ Para superar las limitaciones del paquete `psych`, se puede utilizar una funció
 ```{r}
 # Función de la moda
 moda <- function(x) {
-  if (all(is.na(x))) return(NA_character_)
+  # Eliminar valores NA
+  x <- na.omit(x)
+  
+  # Verificar si el vector está vacío
+  if (length(x) == 0) return(NA_character_)
+  
+  # Calcular la frecuencia de cada valor
   tabla <- table(x)
-  moda <- names(tabla)[tabla == max(tabla)]
-  paste(moda, collapse = ", ")
+  
+  # Identificar el/los valores con mayor frecuencia
+  max_frecuencia <- max(tabla)
+  modas <- names(tabla[tabla == max_frecuencia])
+  
+  # Verificar si todos los valores son únicos (sin moda)
+  if (max_frecuencia == 1) return(NA_character_)
+  
+  # Retornar la moda como un string separado por comas
+  return(paste(modas, collapse = ", "))
 }
 ```
 
@@ -423,26 +437,45 @@ moda <- function(x) {
 ```{r}
 # Función Asimentría
 calcular_asimetria <- function(x) {
-  x <- x[!is.na(x)]
+  # Eliminar valores NA
+  x <- na.omit(x)
+  
+  # Verificar que haya suficientes datos
   if (length(x) < 3) return(NA_real_)
-  n <- length(x)
+  
+  # Calcular media y desviación estándar
   m <- mean(x)
   s <- sd(x)
-  sum((x - m)^3) / (n * s^3)
+  
+  # Manejar el caso de desviación estándar cero
+  if (s == 0) return(0)
+  
+  # Calcular asimetría
+  asimetria <- sum((x - m)^3) / (length(x) * s^3)
+  return(asimetria)
 }
 ```
 
 #### **Curtosis**
 
 ```{r}
-# Función Curtosis
 calcular_curtosis <- function(x) {
-  x <- x[!is.na(x)]
+  # Eliminar valores NA
+  x <- na.omit(x)
+  
+  # Verificar que haya suficientes datos
   if (length(x) < 4) return(NA_real_)
-  n <- length(x)
+  
+  # Calcular media y desviación estándar
   m <- mean(x)
   s <- sd(x)
-  sum((x - m)^4) / (n * s^4) - 3
+  
+  # Manejar el caso de desviación estándar cero
+  if (s == 0) return(0)
+  
+  # Calcular curtosis
+  curtosis <- sum((x - m)^4) / (length(x) * s^4) - 3
+  return(curtosis)
 }
 ```
 
@@ -465,6 +498,7 @@ analisis_por_categoria <- function(datos, columna_numerica, columnas_categoricas
       Varianza = var(.data[[columna_numerica]], na.rm = TRUE),
       Rango_min = min(.data[[columna_numerica]], na.rm = TRUE),
       Rango_max = max(.data[[columna_numerica]], na.rm = TRUE),
+      Rango = Rango_max - Rango_min,
       IQR = IQR(.data[[columna_numerica]], na.rm = TRUE),
       Q1 = quantile(.data[[columna_numerica]], probs = 0.25, na.rm = TRUE),
       Q2 = quantile(.data[[columna_numerica]], probs = 0.50, na.rm = TRUE),
@@ -496,23 +530,53 @@ analisis_multiple <- function(datos, columnas_numericas, columnas_categoricas) {
 
 ### Ejemplo de uso
 
-A continuación, se muestra un ejemplo práctico de cómo utilizar estas funciones para realizar un análisis descriptivo completo:
+Para ilustrar el uso de la función personalizada, se realizará un análisis descriptivo completo utilizando la base de datos de estudiantes de la Universidad de San Carlos de Guatemala. Este ejemplo mostrará cómo analizar múltiples variables numéricas categorizadas por diferentes variables cualitativas.
+
+#### Preparación del análisis
+
+Antes de ejecutar el análisis, es necesario definir las columnas numéricas y categóricas que se incluirán en el estudio. Las columnas numéricas representan las variables cuantitativas que se analizarán, mientras que las columnas categóricas se utilizarán para agrupar los datos.
 
 ```{r}
-# Definir las columnas a analizar
-columnas_numericas <- c("talla", "peso_lbs", "edad")
-columnas_categoricas <- c("sexo", "trabaja")
+# Definir las columnas numéricas y categóricas
+columnas_numericas <- c("talla", "peso_lbs", "edad")  # Variables cuantitativas
+columnas_categoricas <- c("sexo", "trabaja")         # Variables cualitativas
 
-# Ejecutar el análisis
+
+```
+
+A continuación, se ejecuta la función `analisis_multiple`, que aplica el análisis descriptivo a cada variable numérica, agrupando los resultados según las categorías especificadas.
+
+```{r}
+# Ejecutar el análisis descriptivo completo
 resultados_finales <- analisis_multiple(
   datos = estudiantes,
   columnas_numericas = columnas_numericas,
   columnas_categoricas = columnas_categoricas
 )
+```
+
+#### Visualización de resultados
+
+Los resultados del análisis se almacenan en un objeto llamado `resultados_finales`, que contiene un resumen estadístico detallado para cada combinación de las variables categóricas. Este resumen incluye medidas como la media, mediana, moda, desviación estándar, varianza, rango, asimetría y curtosis, entre otras.
+
+Para visualizar los resultados directamente en la consola, se utiliza la función `print()`. El resultado es una tabla organizada que muestra las estadísticas descriptivas para cada combinación de las categorías `sexo` y `trabaja`.
+
+```{r}
 
 # Mostrar resultados
 print(resultados_finales)
+
+
 ```
+
+Además de visualizar los resultados en la consola, es posible exportarlos a un archivo Excel para facilitar su revisión o presentación:
+
+```{r}
+# Exportar resultados a Excel para mejor visualización
+write_xlsx(resultados_finales, "analisis_descriptivo_estudiantes.xlsx")
+```
+
+Este ejemplo demuestra cómo utilizar la función personalizada para realizar un análisis descriptivo completo y categorizado. La tabla resultante proporciona una visión detallada de las características de las variables numéricas, agrupadas por categorías cualitativas. Además, la posibilidad de exportar los [resultados a Excel](https://docs.google.com/spreadsheets/d/1MIa8Un9jvrJru_kzcQfgFx2hiAfQaD3Z/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true) permite compartir y analizar los datos de manera más eficiente.
 
 ## Resumen Comparativo: Funciones Base de R, Paquete `psych` y Función Personalizada
 
