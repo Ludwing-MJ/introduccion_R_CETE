@@ -80,7 +80,7 @@ print(desviacion)  # Resultado:
 Ejemplo en R:
 
 ```{r}
-rango <- range(datos)
+rango <- max(datos)-min(datos)
 print(rango)  # Resultado: 
 ```
 
