@@ -321,11 +321,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#regresión-lineal-simple" id="toc-regresión-lineal-simple" class="nav-link" data-scroll-target="#regresión-lineal-simple"><span class="header-section-number">14.4</span> Regresión lineal simple</a>
   <ul class="collapse">
   <li><a href="#ajuste-del-modelo" id="toc-ajuste-del-modelo" class="nav-link" data-scroll-target="#ajuste-del-modelo"><span class="header-section-number">14.4.1</span> Ajuste del modelo</a></li>
-  <li><a href="#interpretación-de-los-resultados" id="toc-interpretación-de-los-resultados" class="nav-link" data-scroll-target="#interpretación-de-los-resultados"><span class="header-section-number">14.4.2</span> Interpretación de los resultados</a></li>
-  <li><a href="#visualización-de-la-línea-de-regresión" id="toc-visualización-de-la-línea-de-regresión" class="nav-link" data-scroll-target="#visualización-de-la-línea-de-regresión"><span class="header-section-number">14.4.3</span> Visualización de la línea de regresión</a></li>
-  <li><a href="#verificación-de-supuestos-del-modelo" id="toc-verificación-de-supuestos-del-modelo" class="nav-link" data-scroll-target="#verificación-de-supuestos-del-modelo"><span class="header-section-number">14.4.4</span> Verificación de supuestos del modelo</a></li>
-  <li><a href="#transformación-de-variables" id="toc-transformación-de-variables" class="nav-link" data-scroll-target="#transformación-de-variables"><span class="header-section-number">14.4.5</span> Transformación de variables</a></li>
-  <li><a href="#calcular-un-modelo-con-log-en-y-e-x" id="toc-calcular-un-modelo-con-log-en-y-e-x" class="nav-link" data-scroll-target="#calcular-un-modelo-con-log-en-y-e-x"><span class="header-section-number">14.4.6</span> Calcular un modelo con log en Y e X</a></li>
+  <li><a href="#visualización-de-la-línea-de-regresión" id="toc-visualización-de-la-línea-de-regresión" class="nav-link" data-scroll-target="#visualización-de-la-línea-de-regresión"><span class="header-section-number">14.4.2</span> Visualización de la línea de regresión</a></li>
+  <li><a href="#verificación-de-supuestos-del-modelo" id="toc-verificación-de-supuestos-del-modelo" class="nav-link" data-scroll-target="#verificación-de-supuestos-del-modelo"><span class="header-section-number">14.4.3</span> Verificación de supuestos del modelo</a></li>
+  </ul></li>
+  <li><a href="#transformación-de-variables" id="toc-transformación-de-variables" class="nav-link" data-scroll-target="#transformación-de-variables"><span class="header-section-number">14.5</span> Transformación de variables</a>
+  <ul class="collapse">
+  <li><a href="#calcular-un-modelo-con-log-en-y-e-x" id="toc-calcular-un-modelo-con-log-en-y-e-x" class="nav-link" data-scroll-target="#calcular-un-modelo-con-log-en-y-e-x"><span class="header-section-number">14.5.1</span> Calcular un modelo con log en Y e X</a></li>
+  <li><a href="#revisión-de-supuestos" id="toc-revisión-de-supuestos" class="nav-link" data-scroll-target="#revisión-de-supuestos"><span class="header-section-number">14.5.2</span> Revisión de supuestos</a></li>
+  <li><a href="#línea-de-regresión" id="toc-línea-de-regresión" class="nav-link" data-scroll-target="#línea-de-regresión"><span class="header-section-number">14.5.3</span> Línea de regresión</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -469,12 +472,13 @@ Multiple R-squared:  0.855, Adjusted R-squared:  0.8548
 F-statistic:  3756 on 1 and 637 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
+<section id="interpretación-de-los-resultados" class="level4" data-number="14.4.1.1">
+<h4 data-number="14.4.1.1" class="anchored" data-anchor-id="interpretación-de-los-resultados"><span class="header-section-number">14.4.1.1</span> Interpretación de los resultados</h4>
+<p>Discutir los resultados del modelo de regresion</p>
 </section>
-<section id="interpretación-de-los-resultados" class="level3" data-number="14.4.2">
-<h3 data-number="14.4.2" class="anchored" data-anchor-id="interpretación-de-los-resultados"><span class="header-section-number">14.4.2</span> Interpretación de los resultados</h3>
 </section>
-<section id="visualización-de-la-línea-de-regresión" class="level3" data-number="14.4.3">
-<h3 data-number="14.4.3" class="anchored" data-anchor-id="visualización-de-la-línea-de-regresión"><span class="header-section-number">14.4.3</span> Visualización de la línea de regresión</h3>
+<section id="visualización-de-la-línea-de-regresión" class="level3" data-number="14.4.2">
+<h3 data-number="14.4.2" class="anchored" data-anchor-id="visualización-de-la-línea-de-regresión"><span class="header-section-number">14.4.2</span> Visualización de la línea de regresión</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(cipres<span class="sc">$</span>diametro,cipres<span class="sc">$</span>volumen)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(regsimple, <span class="at">fitted.values=</span>cipres<span class="sc">$</span>volumen, <span class="at">col=</span><span class="st">"blue"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -487,16 +491,16 @@ F-statistic:  3756 on 1 and 637 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
 </section>
-<section id="verificación-de-supuestos-del-modelo" class="level3" data-number="14.4.4">
-<h3 data-number="14.4.4" class="anchored" data-anchor-id="verificación-de-supuestos-del-modelo"><span class="header-section-number">14.4.4</span> Verificación de supuestos del modelo</h3>
+<section id="verificación-de-supuestos-del-modelo" class="level3" data-number="14.4.3">
+<h3 data-number="14.4.3" class="anchored" data-anchor-id="verificación-de-supuestos-del-modelo"><span class="header-section-number">14.4.3</span> Verificación de supuestos del modelo</h3>
 <p>La regresión lineal simple asume:</p>
 <ol type="1">
 <li><p>Linealidad entre las variables.</p></li>
 <li><p>Normalidad de los residuos.</p></li>
 <li><p>Homocedasticidad (varianza constante de los residuos).</p></li>
 </ol>
-<section id="gráficos-diagnósticos" class="level4" data-number="14.4.4.1">
-<h4 data-number="14.4.4.1" class="anchored" data-anchor-id="gráficos-diagnósticos"><span class="header-section-number">14.4.4.1</span> Gráficos diagnósticos</h4>
+<section id="gráficos-diagnósticos" class="level4" data-number="14.4.3.1">
+<h4 data-number="14.4.3.1" class="anchored" data-anchor-id="gráficos-diagnósticos"><span class="header-section-number">14.4.3.1</span> Gráficos diagnósticos</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regsimple,<span class="at">which=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -510,8 +514,8 @@ F-statistic:  3756 on 1 and 637 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  <span class="co"># Restaura la configuración gráfica</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pruebas-estadísticas" class="level4" data-number="14.4.4.2">
-<h4 data-number="14.4.4.2" class="anchored" data-anchor-id="pruebas-estadísticas"><span class="header-section-number">14.4.4.2</span> Pruebas estadísticas</h4>
+<section id="pruebas-estadísticas" class="level4" data-number="14.4.3.2">
+<h4 data-number="14.4.3.2" class="anchored" data-anchor-id="pruebas-estadísticas"><span class="header-section-number">14.4.3.2</span> Pruebas estadísticas</h4>
 <p>Para evaluar la normalidad de los residuos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(regsimple))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -536,8 +540,9 @@ Chisquare = 847.2514, Df = 1, p = &lt; 2.22e-16</code></pre>
 <p>Interpretacion: no cumple con el supuesto de homocedasticidad</p>
 </section>
 </section>
-<section id="transformación-de-variables" class="level3" data-number="14.4.5">
-<h3 data-number="14.4.5" class="anchored" data-anchor-id="transformación-de-variables"><span class="header-section-number">14.4.5</span> Transformación de variables</h3>
+</section>
+<section id="transformación-de-variables" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="transformación-de-variables"><span class="header-section-number">14.5</span> Transformación de variables</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># grafico de dispersion datos transformados</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(cipres<span class="sc">$</span>diametro),<span class="fu">log</span>(cipres<span class="sc">$</span>volumen))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -549,9 +554,8 @@ Chisquare = 847.2514, Df = 1, p = &lt; 2.22e-16</code></pre>
 </div>
 </div>
 </div>
-</section>
-<section id="calcular-un-modelo-con-log-en-y-e-x" class="level3" data-number="14.4.6">
-<h3 data-number="14.4.6" class="anchored" data-anchor-id="calcular-un-modelo-con-log-en-y-e-x"><span class="header-section-number">14.4.6</span> Calcular un modelo con log en Y e X</h3>
+<section id="calcular-un-modelo-con-log-en-y-e-x" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="calcular-un-modelo-con-log-en-y-e-x"><span class="header-section-number">14.5.1</span> Calcular un modelo con log en Y e X</h3>
 <p>log(volumen)= a + b*Log(diametro) + e</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Regresion usando logaritmos</span></span>
@@ -578,17 +582,17 @@ Multiple R-squared:  0.9231,    Adjusted R-squared:  0.923
 F-statistic:  7645 on 1 and 637 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<section id="revisión-de-supuestos" class="level4" data-number="14.4.6.1">
-<h4 data-number="14.4.6.1" class="anchored" data-anchor-id="revisión-de-supuestos"><span class="header-section-number">14.4.6.1</span> Revisión de supuestos</h4>
+</section>
+<section id="revisión-de-supuestos" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="revisión-de-supuestos"><span class="header-section-number">14.5.2</span> Revisión de supuestos</h3>
 <p>La regresión lineal simple asume:</p>
 <ol type="1">
 <li><p>Linealidad entre las variables.</p></li>
 <li><p>Normalidad de los residuos.</p></li>
 <li><p>Homocedasticidad (varianza constante de los residuos).</p></li>
 </ol>
-</section>
-<section id="gráficos-diagnósticos-1" class="level4" data-number="14.4.6.2">
-<h4 data-number="14.4.6.2" class="anchored" data-anchor-id="gráficos-diagnósticos-1"><span class="header-section-number">14.4.6.2</span> <strong>Gráficos diagnósticos</strong></h4>
+<section id="gráficos-diagnósticos-1" class="level4" data-number="14.5.2.1">
+<h4 data-number="14.5.2.1" class="anchored" data-anchor-id="gráficos-diagnósticos-1"><span class="header-section-number">14.5.2.1</span> <strong>Gráficos diagnósticos</strong></h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(reg,<span class="at">which=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -602,8 +606,8 @@ F-statistic:  7645 on 1 and 637 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))  <span class="co"># Restaura la configuración gráfica </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="pruebas-estadísticas-1" class="level4" data-number="14.4.6.3">
-<h4 data-number="14.4.6.3" class="anchored" data-anchor-id="pruebas-estadísticas-1"><span class="header-section-number">14.4.6.3</span> <strong>Pruebas estadísticas</strong></h4>
+<section id="pruebas-estadísticas-1" class="level4" data-number="14.5.2.2">
+<h4 data-number="14.5.2.2" class="anchored" data-anchor-id="pruebas-estadísticas-1"><span class="header-section-number">14.5.2.2</span> Pruebas estadísticas</h4>
 <p>Para evaluar la normalidad de los residuos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">resid</span>(reg))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -627,8 +631,9 @@ Chisquare = 687.2057, Df = 1, p = &lt; 2.22e-16</code></pre>
 </div>
 <p>Interpretacion: no cumple con el supuesto de homocedasticidad</p>
 </section>
-<section id="línea-de-regresión" class="level4" data-number="14.4.6.4">
-<h4 data-number="14.4.6.4" class="anchored" data-anchor-id="línea-de-regresión"><span class="header-section-number">14.4.6.4</span> Línea de regresión</h4>
+</section>
+<section id="línea-de-regresión" class="level3" data-number="14.5.3">
+<h3 data-number="14.5.3" class="anchored" data-anchor-id="línea-de-regresión"><span class="header-section-number">14.5.3</span> Línea de regresión</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">log</span>(cipres<span class="sc">$</span>diametro),<span class="fu">log</span>(cipres<span class="sc">$</span>volumen)) </span>
 <span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(reg, cipres<span class="sc">$</span>volumen, <span class="at">col=</span><span class="st">"red"</span>, <span class="at">lwd=</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -642,7 +647,6 @@ Chisquare = 687.2057, Df = 1, p = &lt; 2.22e-16</code></pre>
 </div>
 
 
-</section>
 </section>
 </section>
 

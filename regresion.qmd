@@ -92,7 +92,9 @@ regsimple<-lm(cipres$volumen~cipres$diametro)
 summary(regsimple)
 ```
 
-### Interpretación de los resultados
+#### Interpretación de los resultados
+
+Discutir los resultados del modelo de regresion
 
 ### Visualización de la línea de regresión
 
@@ -140,7 +142,7 @@ ncvTest(regsimple)
 
 Interpretacion: no cumple con el supuesto de homocedasticidad
 
-### Transformación de variables
+## Transformación de variables
 
 ```{r}
 # grafico de dispersion datos transformados
@@ -158,7 +160,7 @@ reg<-lm(log(cipres$volumen)~log(cipres$diametro))
 summary(reg)
 ```
 
-#### Revisión de supuestos
+### Revisión de supuestos
 
 La regresión lineal simple asume:
 
@@ -176,7 +178,7 @@ plot(reg,which=1:2)
 par(mfrow=c(1,1))  # Restaura la configuración gráfica 
 ```
 
-#### **Pruebas estadísticas**
+#### Pruebas estadísticas
 
 Para evaluar la normalidad de los residuos:
 
@@ -194,7 +196,7 @@ ncvTest(reg)
 
 Interpretacion: no cumple con el supuesto de homocedasticidad
 
-#### Línea de regresión 
+### Línea de regresión 
 
 ```{r}
 plot(log(cipres$diametro),log(cipres$volumen)) 
