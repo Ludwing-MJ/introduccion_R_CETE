@@ -17,20 +17,26 @@ Instalación y carga de los paquetes necesarios para desarrollar esta sección
  # Incluye ggplot2, dplyr, tidyr
 if (!require("tidyverse")) install.packages("tidyverse")
 
- # Se utiliza para establecer el directorio de trabajo 
+ # Se utiliza para leer archivos excel
+if (!require("readxl")) install.packages("readxl")
+
+ # Se utiliza para evaluar el supuesto de homosedasticidad
 if (!require("car")) install.packages("car")
+
 ```
 
 ## Carga de datos
 
-Para este análisis, se emplea un conjunto de datos de medidas corporales disponible en el siguiente enlace:\
-[Datos de medidas corporales - GitHub](https://raw.githubusercontent.com/fhernanb/datos/master/medidas_cuerpo).
+[Datos ciprés](https://docs.google.com/spreadsheets/d/1ko4CJC8AiSz5W5XYDsWx2xZgPIU3QXyU/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true)
 
 El código para cargar los datos es el siguiente:
 
 ```{r}
-url <- 'https://raw.githubusercontent.com/fhernanb/datos/master/medidas_cuerpo'
-datos <- read.table(file=url, header=TRUE)  # Carga datos con encabezado
+# Importar un archivo Excel
+cipres <- read_excel("cipres.co.xlsx",
+                          sheet = "Hoja1", 
+                          col_names = TRUE)
+
 ```
 
 Posteriormente, se realiza una exploración inicial de los datos para comprender su estructura y contenido:
@@ -38,38 +44,32 @@ Posteriormente, se realiza una exploración inicial de los datos para comprender
 Para visualizar las primeras filas:
 
 ```{r}
-head(datos)
-```
 
-Para verificar la estructura de los datos:
-
-```{r}
-str(datos)
+# Visualizar los primeros registros del data frame
+head(cipres)
 ```
 
 Las variables principales del conjunto de datos son:
 
-1.  `altura`: Altura de las personas (en cm).
+1.  `altura`: Altura de los arboles en pies.
 
-2.  `peso`: Peso de las personas (en kg).
+2.  `diametro`: Diámetro de los arboles en cm
 
-3.  `sexo`: Género de las personas (Hombre/Mujer).
-
-4.  `edad`: Edad de las personas (en años).
+3.  `volumen`: Volumen de los arboles en metros cúbicos. (revisar unidades de medida)
 
 ## **Exploración inicial de los datos**
 
 Antes de ajustar un modelo de regresión, se realiza un análisis descriptivo para identificar patrones iniciales en las variables.
 
-### **Gráfico de dispersión entre altura y peso**
+### **Gráfico de dispersión entre altura y volumen**
 
 ```{r}
-# Elaboración de un gráfico de dispersión entre altura y peso
-ggplot(data = datos, aes(x = altura, y = peso)) +
+# Elaboración de un gráfico de dispersión entre altura y volumen
+ggplot(data = cipres, aes(x = altura, y = volumen)) +
   geom_point(color = "black", size = 2) +
-  labs(title = "Relación altura - peso",
-       x = "Altura (cm)",
-       y = "Peso (Kg)")+
+  labs(title = "Relación altura - volumen",
+       x = "Altura (pies)",
+       y = "Volumen (m^3)")+
   theme_minimal()+
   theme(
     plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
@@ -82,6 +82,25 @@ ggplot(data = datos, aes(x = altura, y = peso)) +
 
 Este gráfico permite observar una relación positiva entre altura y peso, donde a mayor altura, el peso tiende a ser mayor.
 
+### **Gráfico de dispersión entre diámetro y volumen**
+
+```{r}
+# Elaboración de un gráfico de dispersión entre diámetro y volumen
+ggplot(data = cipres, aes(x = diametro, y = volumen)) +
+  geom_point(color = "black", size = 2) +
+  labs(title = "Relación altura - volumen",
+       x = "Altura (pies)",
+       y = "Volumen (m^3)")+
+  theme_minimal()+
+  theme(
+    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text.x = element_text( hjust = 1, size = 10),
+    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
+  )
+
+```
+
 ## **Regresión lineal simple**
 
 La regresión lineal simple se utiliza para modelar la relación entre una variable dependiente (`peso`) y una variable independiente (`altura`).
@@ -89,53 +108,17 @@ La regresión lineal simple se utiliza para modelar la relación entre una varia
 ### **Ajuste del modelo**
 
 ```{r}
-reg1 <- lm(peso ~ altura, data=datos)
-summary(reg1)
+regsimple<-lm(cipres$volumen~cipres$diametro)
+summary(regsimple)
 ```
 
 ### **Interpretación de los resultados**
 
-1.  Los coeficientes del modelo (β0 y β1​) indican, respectivamente, el valor promedio de `peso` cuando `altura` es 0 y el cambio promedio en `peso` por cada unidad adicional de `altura`.
-
-2.  El valor de R\^2 muestra el porcentaje de variabilidad en `peso` explicado por `altura`.
-
-3.  El p-valor asociado a los coeficientes permite evaluar la significancia estadística de la relación entre las variables.
-
-### **Análisis de varianza (ANOVA)**
-
-```{r}
-anova(reg1)
-```
-
-El análisis de varianza permite evaluar la significancia global del modelo. Un p-valor menor a 0.05 indica que el modelo es estadísticamente significativo.
-
-### **Predicciones**
-
-Se generan predicciones para nuevos valores de altura utilizando el modelo ajustado:
-
-```{r}
-nuevas_alturas <- data.frame(altura=seq(145, 195, 1.5))  # Secuencia de alturas
-predicciones <- predict(reg1, nuevas_alturas)
-round(predicciones, 2)  # Resultados con 2 decimales
-```
-
 ### **Visualización de la línea de regresión**
 
 ```{r message=FALSE, warning=FALSE}
-ggplot(data = datos, aes(x = altura, y = peso)) +
-  geom_point(color = "black", size = 2) +
-  # Línea de tendencia con intervalo de confianza
-  geom_smooth(method = "lm", color = "darkgreen", linewidth = 1.2, se = TRUE) +  
-  labs(title = "Regresión lineal peso vs altura",
-       x = "Altura (cm)",
-       y = "Peso (Kg)") +
-  theme_minimal() +
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text(hjust = 1, size = 10),
-    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
-  )
+plot(cipres$diametro,cipres$volumen)
+abline(regsimple, fitted.values=cipres$volumen, col="blue", lwd=2)
 
 ```
 
@@ -152,9 +135,10 @@ La regresión lineal simple asume:
 #### **Gráficos diagnósticos**
 
 ```{r}
-par(mfrow=c(2,2))  # Divide la ventana gráfica en 2x2
-plot(reg1)         # Genera gráficos diagnósticos
+par(mfrow=c(1,2))
+plot(regsimple,which=1:2)
 par(mfrow=c(1,1))  # Restaura la configuración gráfica
+
 ```
 
 #### **Pruebas estadísticas**
@@ -162,45 +146,79 @@ par(mfrow=c(1,1))  # Restaura la configuración gráfica
 Para evaluar la normalidad de los residuos:
 
 ```{r}
-shapiro.test(resid(reg1))
+shapiro.test(resid(regsimple))
 ```
+
+Interpretacion: no cumple con el supuesto de normalidad
 
 Para evaluar la homocedasticidad:
 
 ```{r message=FALSE, warning=FALSE}
-library(car)
-ncvTest(reg1)
+
+ncvTest(regsimple)
 ```
 
-## **Regresión lineal múltiple**
+Interpretacion: no cumple con el supuesto de homocedasticidad
 
-La regresión lineal múltiple permite modelar la relación entre una variable dependiente y múltiples variables independientes. En este caso, se incluye la variable `edad` como predictor adicional.
-
-### **Ajuste del modelo**
+### Transformacion de variables
 
 ```{r}
-reg2 <- lm(peso ~ altura + edad, data=datos)
-summary(reg2)
+# grafico de dispersion datos transformados
+plot(log(cipres$diametro),log(cipres$volumen))
+
 ```
 
-#### **Interpretación de los resultados**
+### Calcular un modelo con log en Y e X
 
-Los coeficientes del modelo (β0​,β1​,β2​) indican el efecto de cada predictor en `peso`, manteniendo las demás variables constantes.
-
-El R2 ajustado refleja el porcentaje de variabilidad explicado por el modelo, considerando el número de predictores.
-
-#### **Comparación de modelos (ANOVA)**
+log(volumen)= a + b\*Log(diametro) + e
 
 ```{r}
-anova(reg1, reg2)
+# Regresion usando logaritmos
+reg<-lm(log(cipres$volumen)~log(cipres$diametro))
+summary(reg)
 ```
 
-Este análisis permite comparar la calidad de los modelos simple y múltiple. Un p-valor significativo indica que el modelo múltiple mejora la explicación de la variabilidad en `peso`.
+#### Revisión de supuestos
 
-#### **Diagnóstico de multicolinealidad**
+La regresión lineal simple asume:
+
+1.  Linealidad entre las variables.
+
+2.  Normalidad de los residuos.
+
+3.  Homocedasticidad (varianza constante de los residuos).
+
+#### **Gráficos diagnósticos**
 
 ```{r}
-vif(reg2)  # Factor de Inflación de Varianza
+par(mfrow=c(1,2)) 
+plot(reg,which=1:2) 
+par(mfrow=c(1,1))  # Restaura la configuración gráfica 
 ```
 
-Valores mayores a 4 sugieren problemas de multicolinealidad entre las variables predictoras.
+#### **Pruebas estadísticas**
+
+Para evaluar la normalidad de los residuos:
+
+```{r}
+shapiro.test(resid(reg))
+```
+
+Interpretacion: no cumple con el supuesto de normalidad
+
+Para evaluar la homocedasticidad:
+
+```{r message=FALSE, warning=FALSE}
+ncvTest(reg)
+```
+
+Interpretacion: no cumple con el supuesto de homocedasticidad
+
+#### Línea de regresión 
+
+```{r}
+plot(log(cipres$diametro),log(cipres$volumen)) 
+abline(reg, cipres$volumen, col="red", lwd=2)
+
+
+```
