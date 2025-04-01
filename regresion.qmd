@@ -57,64 +57,44 @@ Las variables principales del conjunto de datos son:
 
 3.  `volumen`: Volumen de los arboles en metros cúbicos. (revisar unidades de medida)
 
-## **Exploración inicial de los datos**
+## Exploración inicial de los datos
 
 Antes de ajustar un modelo de regresión, se realiza un análisis descriptivo para identificar patrones iniciales en las variables.
 
-### **Gráfico de dispersión entre altura y volumen**
+### Gráfico de dispersión entre altura y volumen
 
 ```{r}
 # Elaboración de un gráfico de dispersión entre altura y volumen
-ggplot(data = cipres, aes(x = altura, y = volumen)) +
-  geom_point(color = "black", size = 2) +
-  labs(title = "Relación altura - volumen",
-       x = "Altura (pies)",
-       y = "Volumen (m^3)")+
-  theme_minimal()+
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text( hjust = 1, size = 10),
-    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
-  )
+plot(cipres$altura,cipres$volumen)
+
+
 
 ```
 
 Este gráfico permite observar una relación positiva entre altura y peso, donde a mayor altura, el peso tiende a ser mayor.
 
-### **Gráfico de dispersión entre diámetro y volumen**
+### Gráfico de dispersión entre diámetro y volumen
 
 ```{r}
 # Elaboración de un gráfico de dispersión entre diámetro y volumen
-ggplot(data = cipres, aes(x = diametro, y = volumen)) +
-  geom_point(color = "black", size = 2) +
-  labs(title = "Relación altura - volumen",
-       x = "Altura (pies)",
-       y = "Volumen (m^3)")+
-  theme_minimal()+
-  theme(
-    plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
-    axis.title = element_text(size = 12, face = "bold"),
-    axis.text.x = element_text( hjust = 1, size = 10),
-    plot.caption = element_text(hjust = 0, size = 8, color = "gray50")
-  )
+plot(cipres$diametro,cipres$volumen)
 
 ```
 
-## **Regresión lineal simple**
+## Regresión lineal simple
 
-La regresión lineal simple se utiliza para modelar la relación entre una variable dependiente (`peso`) y una variable independiente (`altura`).
+La regresión lineal simple se utiliza para modelar la relación entre una variable dependiente (`volumen`) y una variable independiente (`diametro`).
 
-### **Ajuste del modelo**
+### Ajuste del modelo
 
 ```{r}
 regsimple<-lm(cipres$volumen~cipres$diametro)
 summary(regsimple)
 ```
 
-### **Interpretación de los resultados**
+### Interpretación de los resultados
 
-### **Visualización de la línea de regresión**
+### Visualización de la línea de regresión
 
 ```{r message=FALSE, warning=FALSE}
 plot(cipres$diametro,cipres$volumen)
@@ -122,7 +102,7 @@ abline(regsimple, fitted.values=cipres$volumen, col="blue", lwd=2)
 
 ```
 
-### **Verificación de supuestos del modelo**
+### Verificación de supuestos del modelo
 
 La regresión lineal simple asume:
 
@@ -132,7 +112,7 @@ La regresión lineal simple asume:
 
 3.  Homocedasticidad (varianza constante de los residuos).
 
-#### **Gráficos diagnósticos**
+#### Gráficos diagnósticos
 
 ```{r}
 par(mfrow=c(1,2))
@@ -141,7 +121,7 @@ par(mfrow=c(1,1))  # Restaura la configuración gráfica
 
 ```
 
-#### **Pruebas estadísticas**
+#### Pruebas estadísticas
 
 Para evaluar la normalidad de los residuos:
 
@@ -160,7 +140,7 @@ ncvTest(regsimple)
 
 Interpretacion: no cumple con el supuesto de homocedasticidad
 
-### Transformacion de variables
+### Transformación de variables
 
 ```{r}
 # grafico de dispersion datos transformados
