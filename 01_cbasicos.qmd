@@ -2,13 +2,13 @@
 
 ## ¿Qué es R?
 
-R es un lenguaje de programación y un entorno computacional ampliamente utilizado en el análisis estadístico, la ciencia de datos y la visualización científica. Fue desarrollado por Ross Ihaka y Robert Gentleman en 1996 con el propósito de ofrecer una herramienta poderosa y flexible para realizar análisis reproducibles y visualizaciones de alta calidad. Desde su creación, R se ha consolidado como una de las herramientas más populares en las comunidades científica, académica y profesional (Ihaka & Gentleman, 1996).
+R es un lenguaje de programación y un entorno computacional ampliamente utilizado en el análisis estadístico, la visualización de datos y la investigación científica. Fue desarrollado por Ross Ihaka y Robert Gentleman en 1996 con el propósito de ofrecer una herramienta poderosa y flexible para realizar análisis reproducibles y visualizaciones de alta calidad (Ihaka & Gentleman, 1996). Desde su creación, R se ha consolidado como una de las herramientas más populares en las comunidades científica, académica y profesional.
 
 ![](https://miro.medium.com/v2/resize:fit:729/0*CtJIRkWvZK_8GnzM.png){fig-align="center" width="500"}
 
 ### Características principales de R
 
-**Especialización en análisis estadístico**: R está diseñado para realizar análisis estadísticos complejos, desde pruebas básicas como t-tests y ANOVA hasta modelos avanzados como regresión, análisis multivariado y aprendizaje automático.
+**Especialización en análisis estadístico**: R está diseñado para realizar análisis estadísticos complejos, desde pruebas básicas como t-tests y ANOVA hasta modelos avanzados como regresión y análisis multivariado.
 
 **Visualización de datos**: Incluye herramientas para crear gráficos de alta calidad y personalizables. Con paquetes como `ggplot2`, es posible generar visualizaciones avanzadas que permiten explorar y comunicar patrones en los datos de manera efectiva.
 
@@ -22,59 +22,45 @@ R es un lenguaje de programación y un entorno computacional ampliamente utiliza
 
 ### ¿Por qué es especial R?
 
-R no solo es una herramienta para realizar cálculos estadísticos, sino que también es un entorno completo para la manipulación de datos, la creación de gráficos y la automatización de flujos de trabajo. Su flexibilidad y capacidad de personalización lo convierten en una opción ideal para investigadores, analistas de datos y profesionales de diversas disciplinas.
-
-Además, R es altamente extensible gracias a su comunidad activa, que constantemente desarrolla nuevos paquetes y recursos. Esto lo convierte en una herramienta en constante evolución, capaz de adaptarse a las necesidades cambiantes de la ciencia y la industria.
-
-En resumen, R es mucho más que un lenguaje de programación: es una plataforma integral para el análisis de datos, la visualización y la investigación reproducible, lo que lo hace indispensable en el ámbito académico y profesional.
+R no solo es una herramienta para realizar cálculos estadísticos, sino que también es un entorno completo para la manipulación de datos, la creación de gráficos y la automatización de flujos de trabajo. Su flexibilidad y capacidad de personalización lo convierten en una opción ideal para investigadores, analistas de datos y profesionales de diversas disciplinas. Además, su comunidad activa desarrolla constantemente nuevos paquetes y recursos, manteniéndolo en constante evolución.
 
 ## ¿Qué es RStudio?
 
-RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con el lenguaje de programación R. Este entorno proporciona una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo en R, facilitando tanto el análisis estadístico como la visualización de datos. Su diseño está orientado a mejorar la productividad y la reproducibilidad en proyectos de análisis de datos, investigación científica y desarrollo de aplicaciones (Allaire et al. 2022).
+RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con el lenguaje de programación R. Este entorno proporciona una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo en R, facilitando tanto el análisis estadístico como la visualización de datos (Allaire et al., 2022).
 
 ![](https://www.databricks.com/sites/default/files/2018/06/RStudio-Logo-All-Color-partners.png){fig-align="center" width="500"}
 
 ### Características principales de RStudio
 
-**Interfaz intuitiva y organizada**: RStudio divide su interfaz en paneles que permiten acceder fácilmente a diferentes herramientas y funciones. Estos paneles incluyen:
+1.  **Interfaz intuitiva y organizada**: RStudio divide su interfaz en paneles que permiten acceder fácilmente a diferentes herramientas y funciones.
 
-1.  **Editor de scripts**: Donde se escribe y edita el código R.
+2.  **Sistema de proyectos**: RStudio permite organizar el trabajo en proyectos, lo que facilita la gestión de archivos, scripts y datos relacionados con un análisis específico. Cada proyecto tiene su propio directorio de trabajo, lo que mejora la organización y la reproducibilidad.
 
-2.  **Consola**: Para ejecutar comandos y ver resultados en tiempo real.
+3.  **Compatibilidad con múltiples formatos**: RStudio soporta la importación y exportación de datos en diversos formatos, como CSV, Excel, html y bases de datos SQL. Además, permite trabajar con gráficos interactivos y aplicaciones web mediante paquetes como `shiny` y `plotly`.
 
-3.  **Environment/History**: Muestra los objetos creados en la sesión actual y el historial de comandos ejecutados.
+4.  **Integración con paquetes y extensiones**: RStudio facilita la instalación y el uso de paquetes de R, como `ggplot2` para gráficos, `dplyr` para manipulación de datos y `tidyr` para transformación de datos. También permite gestionar dependencias y actualizar paquetes de manera sencilla.
 
-4.  **Plots/Files/Packages/Help**: Panel multifuncional para visualizar gráficos, gestionar archivos, instalar paquetes y acceder a documentación.
+5.  **Soporte multiplataforma**: RStudio está disponible para sistemas operativos Windows, macOS y Linux, lo que lo hace accesible para una amplia variedad de usuarios.
 
-**Sistema de proyectos**: RStudio permite organizar el trabajo en proyectos, lo que facilita la gestión de archivos, scripts y datos relacionados con un análisis específico. Cada proyecto tiene su propio directorio de trabajo, lo que mejora la organización y la reproducibilidad.
-
-**Compatibilidad con múltiples formatos**: RStudio soporta la importación y exportación de datos en diversos formatos, como CSV, Excel, html y bases de datos SQL. Además, permite trabajar con gráficos interactivos y aplicaciones web mediante paquetes como `shiny` y `plotly`.
-
-**Integración con paquetes y extensiones**: RStudio facilita la instalación y el uso de paquetes de R, como `ggplot2` para gráficos, `dplyr` para manipulación de datos y `tidyr` para transformación de datos. También permite gestionar dependencias y actualizar paquetes de manera sencilla.
-
-**Soporte multiplataforma**: RStudio está disponible para sistemas operativos Windows, macOS y Linux, lo que lo hace accesible para una amplia variedad de usuarios.
-
-**Personalización y extensibilidad**: Los usuarios pueden personalizar la apariencia y el comportamiento de RStudio, como cambiar temas, atajos de teclado y configuraciones de paneles. Además, se pueden integrar herramientas externas, como Git para control de versiones.
+6.  **Personalización y extensibilidad**: Los usuarios pueden personalizar la apariencia y el comportamiento de RStudio, como cambiar temas, atajos de teclado y configuraciones de paneles. Además, se pueden integrar herramientas externas, como Git para control de versiones.
 
 ### Beneficios de usar RStudio
 
-**Eficiencia**: Su diseño permite realizar tareas de análisis de datos de manera más rápida y organizada.
+1.  **Eficiencia**: Su diseño permite realizar tareas de análisis de datos de manera más rápida y organizada.
 
-**Reproducibilidad**: Las herramientas integradas, como R Markdown y el sistema de proyectos, garantizan que los análisis puedan ser replicados fácilmente.
+2.  **Reproducibilidad**: Las herramientas integradas, como R Markdown y el sistema de proyectos, garantizan que los análisis puedan ser replicados fácilmente.
 
-**Accesibilidad**: Su interfaz gráfica es ideal tanto para principiantes como para usuarios avanzados.
+3.  **Accesibilidad**: Su interfaz gráfica es ideal tanto para principiantes como para usuarios avanzados.
 
-**Flexibilidad**: Permite trabajar con datos, gráficos, modelos estadísticos y aplicaciones interactivas en un solo entorno.
+4.  **Flexibilidad**: Permite trabajar con datos, gráficos, modelos estadísticos y aplicaciones interactivas en un solo entorno.
 
 ## Reproducibilidad y replicabilidad en la investigación científica
 
-El 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente (Baker, 2016).
+La reproducibilidad y replicabilidad son pilares fundamentales de la investigación científica. Según Baker (2016), el 64% de los investigadores enfrenta dificultades para replicar estudios previos debido a una documentación insuficiente. Herramientas como Excel o Infostat suelen realizar cálculos en celdas ocultas y gráficos ajustados manualmente, lo que dificulta la replicación exacta de los análisis.
 
-**Problemática:** En herramientas como Excel o Infostat, los cálculos suelen realizarse en celdas ocultas y los gráficos se ajustan manualmente. Esto dificulta la replicación exacta de los análisis, incluso por parte del mismo autor después de un tiempo.
+R permite documentar cada paso del análisis mediante scripts, asegurando que los procedimientos puedan ser replicados y reinterpretados en el futuro. Esto no solo mejora la transparencia y la credibilidad científica, sino que también optimiza el tiempo y los recursos al facilitar la reutilización de métodos en nuevos estudios.
 
-**Solución:** el uso de R permite documentar cada paso del análisis mediante scripts, lo que garantiza que los procedimientos puedan ser replicados y reinterpretados en el futuro.
-
-![Un script de R puede compararse con una receta, ya que permite ser seguido paso a paso para reproducir el mismo análisis. De manera similar a una receta que puede ser reinterpretada al modificar los ingredientes, un script puede adaptarse para realizar un análisis diferente utilizando nuevos datos.](https://bibliobasella.wordpress.com/wp-content/uploads/2015/04/cc27b-freir2bun2bhuevo.jpg){fig-align="center" width="500"}
+![Un script en R es comparable a una receta, ya que permite seguir cada paso de manera estructurada para reproducir un análisis específico. Al igual que una receta puede ajustarse al cambiar los ingredientes, un script puede adaptarse para llevar a cabo un análisis distinto utilizando nuevos conjuntos de datos.](Captura de pantalla 2025-04-03 170742.png){fig-align="center" width="500"}
 
 ### Reproducibilidad
 
