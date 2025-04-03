@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _book
+  output-dir: _docs
 
 book:
   title: "Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos"
@@ -50,7 +50,6 @@ book:
     - references.qmd
     - part: "Ejemplos de Análisis Estadístico con R"
     - estadistica_descriptiva.qmd
-    - regresion.qmd
 
 bibliography: references.bib
 biblio-style: "apalike"
