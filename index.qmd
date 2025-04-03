@@ -1,20 +1,18 @@
 # Introducción {.unnumbered}
 
-La ciencia de datos, con un enfoque estadístico, permite transformar datos en bruto en información comprensible y útil para la toma de decisiones. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del texto, se abordan conceptos básicos y se presentan ejemplos prácticos que facilitan la comprensión de técnicas estadísticas esenciales. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.
+La estadística clásica es una disciplina fundamental en la investigación científica y en la toma de decisiones basada en datos. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del manual, se abordan conceptos básicos acompañados de ejemplos prácticos que facilitan su comprensión y aplicación en diversos contextos. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.
 
-## ¿En qué consiste este manual?
+## Propósito del manual
 
-El presente manual, tiene como objetivo proporcionar una guía práctica y estructurada para el aprendizaje y uso del lenguaje de programación R. Este se diseñó para facilitar la comprensión de conceptos fundamentales, desde la instalación de R y RStudio hasta la manipulación de datos, visualización gráfica y exportación de resultados.
+El presente manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, desde su instalación y configuración hasta la aplicación de técnicas estadísticas clásicas. Se abordan temas como la manipulación de datos, la creación de gráficos y la realización de análisis estadísticos básicos. Además, se incluyen ejemplos prácticos que permiten aplicar los conceptos aprendidos en contextos reales.
 
-R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica. A lo largo de este documento, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Además, se incluyen ejemplos prácticos, recomendaciones de buenas prácticas y recursos adicionales para profundizar en el aprendizaje.
+R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica (Ihaka & Gentleman, 1996; R Core Team, 2023). A lo largo de este texto, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en programación estadística, con un enfoque en la claridad, organización y reproducibilidad.
 
-Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en análisis de datos y programación estadística, con un enfoque en la claridad, la organización y la reproducibilidad.
+## Organización del manual
 
-## ¿Cómo esta organizado este manual?
+El contenido del manual está estructurado de manera progresiva, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas estadísticas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.
 
-Este manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, con un enfoque en el análisis estadístico. Su estructura sigue un enfoque progresivo, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.
-
-El contenido se organiza en los siguientes capítulos principales:
+El manual se organiza en los siguientes capítulos principales:
 
 1.  **Introducción a R y RStudio**: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.
 
@@ -27,6 +25,8 @@ El contenido se organiza en los siguientes capítulos principales:
 5.  **Exportación de resultados**: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.
 
 6.  **Material de apoyo y referencias**: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.
+
+7.  **Ejemplos de análisis estadístico con R**: Se desarrollan de manera detallada ejemplos del uso de R para desarrollar análisis estadístico de datos.
 
 Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.
 
@@ -44,7 +44,7 @@ Con este enfoque, cualquier persona, independientemente de su experiencia previa
 
 ## Colofón
 
-La versión en línea de este manual se encuentra disponible en <https://introduccion-r-cete.vercel.app/>. La fuente del manual en español está alojada en el repositorio de GitHub: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando *Quarto*, una herramienta diseñada para convertir archivos con extensión `.qmd` en formatos publicables como HTML, PDF y EPUB. Además, [*Quarto*](https://quarto.org/) ofrece una interfaz visual intuitiva y amigable para el desarrollador, especialmente cuando se utiliza desde RStudio, lo que facilita la creación de contenido reproducible, accesible y de alta calidad.
+La versión en línea de este manual se encuentra disponible en <https://introduccion-r-cete.vercel.app/>. La fuente del manual en español está alojada en el repositorio de GitHub: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando [*Quarto*](https://quarto.org/), una herramienta diseñada para convertir archivos con extensión `.qmd` en formatos publicables como HTML, PDF y EPUB.
 
 Este manual fue construido con:
 

@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _docs
+  output-dir: _book
 
 book:
   title: "Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos"
