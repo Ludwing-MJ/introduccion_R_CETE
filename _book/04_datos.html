@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77205cbbef6a5b90ba72edc25dea2156.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-23cb75b8abeab2f8ee81319b9c29001b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e52668a91f5ec55536531c4088279e75.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -317,8 +318,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#ventajas-de-un-data-frame" id="toc-ventajas-de-un-data-frame" class="nav-link" data-scroll-target="#ventajas-de-un-data-frame"><span class="header-section-number">4.2.2</span> Ventajas de un data frame</a></li>
   <li><a href="#manipulación-de-data-frames" id="toc-manipulación-de-data-frames" class="nav-link" data-scroll-target="#manipulación-de-data-frames"><span class="header-section-number">4.2.3</span> Manipulación de data frames</a></li>
   </ul></li>
-  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">4.3</span> Listas</a></li>
-  <li><a href="#comparación-entre-data-frames-y-listas" id="toc-comparación-entre-data-frames-y-listas" class="nav-link" data-scroll-target="#comparación-entre-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación entre data frames y listas</a></li>
+  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">4.3</span> Listas</a>
+  <ul class="collapse">
+  <li><a href="#creación-de-listas" id="toc-creación-de-listas" class="nav-link" data-scroll-target="#creación-de-listas"><span class="header-section-number">4.3.1</span> <strong>Creación de listas</strong></a></li>
+  <li><a href="#acceso-a-elementos-de-una-lista" id="toc-acceso-a-elementos-de-una-lista" class="nav-link" data-scroll-target="#acceso-a-elementos-de-una-lista"><span class="header-section-number">4.3.2</span> <strong>Acceso a elementos de una lista</strong></a></li>
+  </ul></li>
+  <li><a href="#comparación-y-conclusiones-data-frames-y-listas" id="toc-comparación-y-conclusiones-data-frames-y-listas" class="nav-link" data-scroll-target="#comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación y conclusiones: Data Frames y Listas</a></li>
   </ul>
 </nav>
     </div>
@@ -344,31 +349,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En R, las estructuras de datos son fundamentales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización. Entre las principales estructuras de datos en R se encuentran los vectores, data frames y listas, cada una con características específicas que las hacen adecuadas para distintas tareas.</p>
+<p>En R, las estructuras de datos son esenciales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización de datos. Entre las principales estructuras de datos en R se encuentran los <em>vectores</em>, <em>data frames</em> y <em>listas</em>, cada una con características específicas que las hacen adecuadas para distintas tareas (R Core Team, 2023).</p>
 <section id="vectores" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="vectores"><span class="header-section-number">4.1</span> Vectores</h2>
-<p>Un vector es la estructura de datos más básica y fundamental en R. Es una colección ordenada de elementos del mismo tipo, como números, texto o valores lógicos. Los vectores son unidimensionales, lo que significa que los datos se almacenan en una sola fila o columna. Por ejemplo, un vector puede representar una lista de edades, nombres o resultados de un experimento.</p>
-<p>En R, los vectores son esenciales porque muchas otras estructuras de datos, como los data frames, están construidas a partir de ellos. Todos los elementos de un vector deben ser del mismo tipo de dato, lo que garantiza consistencia en las operaciones realizadas sobre ellos.</p>
+<p>Un vector es la estructura de datos más básica y fundamental en R. Es una colección ordenada de elementos del mismo tipo, como números, texto o valores lógicos. Los vectores son unidimensionales, lo que significa que los datos se almacenan en una sola fila o columna. Por ejemplo, un vector puede representar una lista de edades, nombres o resultados de un experimento (Ihaka &amp; Gentleman, 1996).</p>
+<p>Los vectores son esenciales en R porque muchas otras estructuras de datos, como los <em>data frames</em> y las <em>matrices</em>, están construidas a partir de ellos. Una característica clave de los vectores es que todos sus elementos deben ser del mismo tipo de dato, lo que garantiza consistencia en las operaciones realizadas sobre ellos.</p>
 <section id="creación-de-vectores" class="level3" data-number="4.1.1">
 <h3 data-number="4.1.1" class="anchored" data-anchor-id="creación-de-vectores"><span class="header-section-number">4.1.1</span> Creación de vectores</h3>
-<p>Para crear un vector, se utiliza la función <code>c()</code>, donde los elementos se separan por comas. Por ejemplo:</p>
+<p>Para crear un vector en R, se utiliza la función <code>c()</code>, que permite combinar elementos separados por comas. A continuación, se presentan ejemplos de creación de vectores de diferentes tipos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un vector numérico</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Creación de un vector numérico</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>edades <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="dv">20</span>, <span class="dv">18</span>, <span class="dv">25</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un vector de texto</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Creación de un vector de texto</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>nombres <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>, <span class="st">"Luis"</span>, <span class="st">"María"</span>)</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un vector lógico</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Creación de un vector lógico</span></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mayores_de_edad <span class="ot">&lt;-</span> edades <span class="sc">&gt;=</span> <span class="dv">18</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>En estos ejemplos:</p>
+<ol type="1">
+<li><p>El vector <code>edades</code> almacena valores numéricos.</p></li>
+<li><p>El vector <code>nombres</code> contiene cadenas de texto.</p></li>
+<li><p>El vector <code>mayores_de_edad</code> almacena valores lógicos (<code>TRUE</code> o <code>FALSE</code>) que resultan de una comparación lógica.</p></li>
+</ol>
 </section>
 <section id="manipulación-de-vectores" class="level3" data-number="4.1.2">
 <h3 data-number="4.1.2" class="anchored" data-anchor-id="manipulación-de-vectores"><span class="header-section-number">4.1.2</span> Manipulación de vectores</h3>
-<p>Los vectores permiten realizar operaciones matemáticas, lógicas y de manipulación de datos. Por ejemplo, se pueden filtrar elementos, realizar cálculos o combinar vectores. Algunas operaciones comunes incluyen:</p>
-<ol type="1">
-<li><strong>Acceso a elementos específicos:</strong> Utilizando índices entre corchetes <code>[]</code></li>
-</ol>
+<p>Los vectores en R permiten realizar una amplia variedad de operaciones matemáticas, lógicas y de manipulación de datos. Estas operaciones son fundamentales para el análisis estadístico y la transformación de datos. A continuación, se describen algunas de las operaciones más comunes:</p>
+<section id="acceso-a-elementos-específicos" class="level4" data-number="4.1.2.1">
+<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="acceso-a-elementos-específicos"><span class="header-section-number">4.1.2.1</span> <strong>Acceso a elementos específicos</strong></h4>
+<p>Se pueden acceder a elementos individuales de un vector utilizando índices entre corchetes (<code>[]</code>). Los índices en R comienzan en 1.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al primer elemento del vector</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>edades[<span class="dv">1</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -376,9 +387,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 17</code></pre>
 </div>
 </div>
-<ol start="2" type="1">
-<li><strong>Filtrado de elementos:</strong> Aplicando condiciones lógicas.</li>
-</ol>
+<p>En este ejemplo, <code>edades[1]</code> devuelve el primer elemento del vector <code>edades</code>, que es <code>17</code>.</p>
+</section>
+<section id="filtrado-de-elementos" class="level4" data-number="4.1.2.2">
+<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="filtrado-de-elementos"><span class="header-section-number">4.1.2.2</span> <strong>Filtrado de elementos</strong></h4>
+<p>Es posible filtrar elementos de un vector aplicando condiciones lógicas. Esto resulta útil para seleccionar subconjuntos de datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar edades mayores a 20</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>edades[edades <span class="sc">&gt;</span> <span class="dv">20</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -386,9 +399,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 25</code></pre>
 </div>
 </div>
-<ol start="3" type="1">
-<li><strong>Combinación de vectores:</strong></li>
-</ol>
+<p>En este caso, la condición <code>edades &gt; 20</code> devuelve un vector con los valores que cumplen la condición, es decir, las edades mayores a 20.</p>
+</section>
+<section id="combinación-de-vectores" class="level4" data-number="4.1.2.3">
+<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="combinación-de-vectores"><span class="header-section-number">4.1.2.3</span> <strong>Combinación de vectores</strong></h4>
+<p>Los vectores pueden combinarse para crear nuevos vectores utilizando la función <code>c()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar dos vectores</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>nuevo_vector <span class="ot">&lt;-</span> <span class="fu">c</span>(edades, <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">21</span>))</span>
@@ -397,15 +412,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 17 20 18 25 22 21</code></pre>
 </div>
 </div>
+<p>Aquí, el vector <code>nuevo_vector</code> combina los elementos del vector <code>edades</code> con los valores <code>22</code> y <code>21</code>, generando un nuevo vector.</p>
+</section>
 </section>
 </section>
 <section id="data-frames" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4.2</span> Data frames</h2>
-<p>Un data frame es una estructura de datos tabular en R, similar a una hoja de cálculo o una tabla de base de datos. Organiza los datos en filas y columnas, donde cada columna es un vector y puede contener un tipo de dato diferente (por ejemplo, números, texto o factores). Cada fila representa una observación, y cada columna representa una variable.</p>
-<p>Los data frames son ideales para trabajar con datos estructurados, como encuestas, experimentos o bases de datos, ya que permiten realizar análisis estadísticos y visualizaciones de manera eficiente. Además, son compatibles con muchas funciones y paquetes en R, lo que los convierte en una de las estructuras más utilizadas.</p>
+<p>Un <em>data frame</em> es una estructura de datos tabular en R, similar a una hoja de cálculo o una tabla en una base de datos. Organiza los datos en filas y columnas, donde cada columna es un vector que puede contener un tipo de dato diferente (por ejemplo, números, texto o factores). Cada fila representa una observación, mientras que cada columna corresponde a una variable (R Core Team, 2023).</p>
+<p>Los <em>data frames</em> son ideales para trabajar con datos estructurados, como encuestas, experimentos o bases de datos, ya que permiten realizar análisis estadísticos y visualizaciones de manera eficiente. Además, son compatibles con una amplia variedad de funciones y paquetes en R, lo que los convierte en una de las estructuras más utilizadas en este lenguaje (Wickham &amp; Grolemund, 2017).</p>
 <section id="creación-de-data-frames" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="creación-de-data-frames"><span class="header-section-number">4.2.1</span> Creación de data frames</h3>
-<p>Para crear un data frame, se utiliza la función <code>data.frame()</code>, combinando vectores de igual longitud separados por comas. Por ejemplo:</p>
+<p>Para crear un <em>data frame</em>, se utiliza la función <code>data.frame()</code>, combinando vectores de igual longitud separados por comas. A continuación, se presenta un ejemplo usando los vectores creados en la sección anterior:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un data frame con vectores</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(nombres,  edades,  mayores_de_edad)</span>
@@ -420,24 +437,40 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4   María     25            TRUE</code></pre>
 </div>
 </div>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p>La columna <code>nombres</code> contiene texto.</p></li>
+<li><p>La columna <code>edades</code> almacena valores numéricos.</p></li>
+<li><p>La columna <code>mayores_de_edad</code> contiene valores lógicos (<code>TRUE</code> o <code>FALSE</code>).</p></li>
+</ol>
 </section>
 <section id="ventajas-de-un-data-frame" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="ventajas-de-un-data-frame"><span class="header-section-number">4.2.2</span> Ventajas de un data frame</h3>
+<p>Los <em>data frames</em> ofrecen múltiples ventajas que los hacen indispensables para el análisis de datos en R:</p>
 <ol type="1">
-<li><p><strong>Estructura clara:</strong> Cada fila representa una observación y cada columna una variable.</p></li>
-<li><p><strong>Compatibilidad:</strong> Es compatible con funciones estadísticas y de visualización.</p></li>
-<li><p><strong>Flexibilidad:</strong> Permite almacenar diferentes tipos de datos en columnas.</p></li>
+<li><p><strong>Estructura clara</strong>: Cada fila representa una observación y cada columna una variable, lo que facilita la interpretación de los datos.</p></li>
+<li><p><strong>Compatibilidad</strong>: Son compatibles con funciones estadísticas y de visualización, así como con paquetes populares como <code>ggplot2</code> y <code>dplyr</code>.</p></li>
+<li><p><strong>Flexibilidad</strong>: Permiten almacenar diferentes tipos de datos en columnas, como números, texto y factores.</p></li>
 </ol>
 </section>
 <section id="manipulación-de-data-frames" class="level3" data-number="4.2.3">
 <h3 data-number="4.2.3" class="anchored" data-anchor-id="manipulación-de-data-frames"><span class="header-section-number">4.2.3</span> Manipulación de data frames</h3>
-<p>Los data frames pueden manipularse fácilmente utilizando funciones como <code>filter()</code>, <code>select()</code> o <code>mutate()</code> del paquete <code>dplyr</code>. También se puede acceder a columnas específicas utilizando el operador <code>$</code>. Por ejemplo:</p>
+<p>Los <em>data frames</em> pueden manipularse fácilmente utilizando funciones básicas de R o herramientas avanzadas de paquetes como <code>dplyr</code>. A continuación, se describen algunas operaciones comunes:</p>
+<section id="acceso-a-columnas" class="level4" data-number="4.2.3.1">
+<h4 data-number="4.2.3.1" class="anchored" data-anchor-id="acceso-a-columnas"><span class="header-section-number">4.2.3.1</span> <strong>Acceso a columnas</strong></h4>
+<p>Se puede acceder a una columna específica utilizando el operador <code>$</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a una columna</span></span>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a la columna 'nombres'</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan"  "Ana"   "Luis"  "María"</code></pre>
 </div>
+</div>
+</section>
+<section id="filtrado-de-filas" class="level4" data-number="4.2.3.2">
+<h4 data-number="4.2.3.2" class="anchored" data-anchor-id="filtrado-de-filas"><span class="header-section-number">4.2.3.2</span> <strong>Filtrado de filas</strong></h4>
+<p>Es posible filtrar filas aplicando condiciones lógicas. Por ejemplo, para seleccionar las filas donde la edad sea mayor a 20:</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar filas donde la edad sea mayor a 20</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos[datos<span class="sc">$</span>edades <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>datos_filtrados</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -446,12 +479,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4   María     25            TRUE</code></pre>
 </div>
 </div>
-<p>Los data frames son una herramienta poderosa para organizar y analizar datos, y su versatilidad los hace indispensables en el trabajo con R.</p>
+</section>
 </section>
 </section>
 <section id="listas" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="listas"><span class="header-section-number">4.3</span> Listas</h2>
-<p>Las listas son estructuras de datos más flexibles que los data frames, ya que pueden contener elementos de diferentes tipos y longitudes, como vectores, data frames, matrices o incluso funciones. Para crear una lista, se utiliza la función <code>list()</code>:</p>
+<p>Las listas son estructuras de datos más flexibles que los <em>data frames</em>, ya que pueden contener elementos de diferentes tipos y longitudes, como vectores, <em>data frames</em>, matrices o incluso funciones. A diferencia de los <em>data frames</em>, las listas no requieren que los elementos tengan la misma longitud o tipo de dato, lo que las hace ideales para almacenar resultados complejos o datos heterogéneos (R Core Team, 2023).</p>
+<section id="creación-de-listas" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="creación-de-listas"><span class="header-section-number">4.3.1</span> <strong>Creación de listas</strong></h3>
+<p>Para crear una lista, se utiliza la función <code>list()</code>. A continuación, se presenta un ejemplo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de una lista</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mi_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
@@ -460,22 +496,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">datos_completos =</span> datos</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Las listas son útiles para almacenar resultados complejos o datos heterogéneos. Los elementos de una lista pueden accederse mediante índices o nombres:</p>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p>El elemento <code>nombres</code> es un vector de texto.</p></li>
+<li><p>El elemento <code>edades</code> es un vector numérico.</p></li>
+<li><p>El elemento <code>datos_completos</code> es un <em>data frame</em>.</p></li>
+</ol>
+</section>
+<section id="acceso-a-elementos-de-una-lista" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="acceso-a-elementos-de-una-lista"><span class="header-section-number">4.3.2</span> <strong>Acceso a elementos de una lista</strong></h3>
+<p>Los elementos de una lista pueden accederse mediante su nombre o índice:</p>
+<p><strong>Por nombre</strong>: Utilizando el operador <code>$</code> o corchetes dobles <code>[[ ]]</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a un elemento por nombre</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento 'nombres' por nombre</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mi_lista<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a un elemento por índice</span></span>
+</div>
+<p><strong>Por índice</strong>: Utilizando corchetes dobles <code>[[ ]]</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al primer elemento de la lista</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mi_lista[[<span class="dv">1</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
 </section>
-<section id="comparación-entre-data-frames-y-listas" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="comparación-entre-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación entre data frames y listas</h2>
+</section>
+<section id="comparación-y-conclusiones-data-frames-y-listas" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación y conclusiones: Data Frames y Listas</h2>
+<p>Los <em>data frames</em> y las listas son estructuras de datos fundamentales en R, cada una con características específicas que las hacen adecuadas para diferentes tareas. Mientras que los <em>data frames</em> son ideales para trabajar con datos tabulares estructurados, las listas ofrecen una mayor flexibilidad para almacenar y manipular datos heterogéneos. A continuación, se presenta una comparación detallada entre ambas estructuras:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -512,7 +563,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Ambas estructuras son fundamentales en R, y su elección depende del tipo de datos y del análisis que se desee realizar. En análisis estadístico habitualmente se emplean los data frames para almacenar datos y las listas se emplean para almacenar los resultados de pruebas y análisis.</p>
+<p>Ambas estructuras son esenciales en R, y su elección depende del tipo de datos y del análisis que se desee realizar. En el contexto del análisis estadístico, los <em>data frames</em> se utilizan habitualmente para almacenar datos tabulares, como encuestas o resultados experimentales, mientras que las listas son más adecuadas para almacenar resultados complejos, como salidas de modelos estadísticos, pruebas o análisis que combinan diferentes tipos de datos.</p>
+<p>Por ejemplo:</p>
+<ol type="1">
+<li><p>Un <em>data frame</em> puede contener las respuestas de una encuesta, con columnas que representan variables como edad, género y puntuaciones.</p></li>
+<li><p>Una lista puede almacenar los resultados de un análisis estadístico, como coeficientes de regresión, valores p y gráficos generados.</p></li>
+</ol>
+<p>Comprender las diferencias y aplicaciones de estas estructuras permite aprovechar al máximo las capacidades de R en el análisis de datos. La elección adecuada entre un <em>data frame</em> y una lista no solo facilita el manejo de los datos, sino que también optimiza el flujo de trabajo y la reproducibilidad del análisis (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
 
 
 </section>
@@ -654,7 +711,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = true;
+  const darkModeDefault = false;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
