@@ -5,112 +5,26 @@
 options(repos = c(CRAN = "https://cloud.r-project.org/"))
 ```
 
-La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. En R, los datos pueden provenir de diversas fuentes, como archivos CSV, Excel o incluso páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información sin necesidad de manipularlos manualmente. Además, establecer un directorio de trabajo adecuado facilita la organización y asegura que los scripts sean portables y reproducibles en diferentes entornos.
+La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. R ofrece diversas herramientas y funciones para importar datos desde diferentes fuentes, como archivos CSV, Excel o páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información de forma sistemática (R Core Team, 2023).
 
-En esta sección, se explicará cómo importar datos desde archivos CSV, Excel y HTML, así como la configuración del directorio de trabajo cuando se trabaja en un script que no pertenece a ningún proyecto `.Rproj`.
+## Configuración inicial
 
-## Importación de archivos CSV
-
-Los archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función `read.csv()`, que permite leer el contenido del archivo y almacenarlo como un data frame.
-
-### Pasos para importar de un archivo CSV
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Importar un archivo CSV
-datos <- read.csv("ruta/del/archivo/datos.csv", header = TRUE, sep = ",")
-
-# Visualizar los primeros registros del data frame
-head(datos)
-```
-
-**`header = TRUE`**: Indica que el archivo tiene una fila de encabezado con los nombres de las columnas.
-
-**`sep = ","`**: Especifica que los valores están separados por comas (el argumento de esta parte de la función puede variar si el archivo utiliza un separador distinto como por ejemplo **";"**).
-
-**Nota:** Es importante asegurarse de que el archivo esté en el directorio de trabajo o proporcionar la ruta completa.
-
-### Ejemplo de importación de un archivo CSV
-
-En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), incluye una amplia variedad de variables, lo que la convierte en un recurso ideal para los ejercicios prácticos de este manual. A lo largo del documento, se utilizará esta base de datos para aplicar las herramientas y conceptos desarrollados. Para realizar el siguiente ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
+Antes de importar datos, es importante asegurarse de que el directorio de trabajo esté correctamente configurado. Cuando se trabaja con proyectos de RStudio (`.Rproj`), el directorio se configura automáticamente. Sin embargo, para scripts independientes, se puede establecer el directorio usando la función `setwd()`:
 
 ```{r eval=FALSE}
-# Importar el archivo CSV con los datos 
-datos <- read.csv("datos_estudiantes.csv", header = TRUE, sep = ",")
-
-# Visualizar los primeros registros del data frame
-head(datos)
+# Establecer directorio de trabajo
+setwd("ruta/del/directorio")
 ```
 
-La función `head()` en R se utiliza para visualizar las primeras filas de un data frame, vector, matriz u otro objeto de datos. Su propósito principal es proporcionar una vista rápida de los datos, permitiendo al usuario verificar la estructura, los nombres de las columnas y los primeros valores sin tener que imprimir todo el conjunto de datos.
+## Directorio de trabajo o *Working Directory*
 
-**Nota:** En el ejemplo para importar el archivo solamente se colocó el nombre del archivo (incluyendo su extensión) sin necesidad de colocar la ruta exacta del archivo y R interpretó automáticamente que debía importar el archivo con ese nombre ubicado en la misma carpeta que el script. Esto se debe a que al estar trabajando en un proyecto con un directorio de trabajo establecido no hay necesidad de colocar la ruta de los archivos que se quieran importar siempre que estos se encuentren en la misma carpeta.
-
-## Importación de archivos Excel
-
-Los archivos Excel son ampliamente utilizados para almacenar datos en hojas de cálculo. En R, se puede importar este tipo de archivos utilizando el paquete `readxl`, que permite leer datos de archivos `.xlsx` sin necesidad de convertirlos previamente a otro formato.
-
-### Pasos para importar un archivo Excel
-
-1.  Instalar y cargar el paquete `readxl`.
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Instalar y cargar el paquete readxl
-if (!require("readxl")) install.packages("readxl")
-
-```
-
-**Explicación de la linea de código anterior**
-
-a.  `require("nombre del paquete")`: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve `TRUE`. Si el paquete no está instalado, devuelve `FALSE`.
-
-b.  `!require("nombre del paquete")`: El signo de exclamación (`!`) niega el resultado de la función `require()`. Por lo tanto, esta expresión será `TRUE` si el paquete no está instalado o no puede ser cargado.
-
-c.  `if (...) install.packages("nombre del paquete")`: Esta es una estructura condicional. Si la condición entre paréntesis es `TRUE` (es decir, si el paquete no está instalado o no puede ser cargado), entonces se ejecuta `install.packages("nombre del paquete")`, que descarga e instala el paquete desde el repositorio de CRAN.
-
-<!-- -->
-
-2.  Importar el archivo Excel
-
-```{r eval=FALSE}
-# Importar un archivo Excel
-datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
-                          sheet = "Hoja1", 
-                          col_names = TRUE/FALSE)
-
-# Visualizar los primeros registros del data frame
-head(datos_excel)
-```
-
-**Explicación de la linea de código anterior**
-
-a.  **`sheet = "Hoja1"`**: Especifica la hoja del archivo que se desea importar.
-
-b.  **`col_names = TRUE/FALSE`**: Indica si la primera fila contiene los nombres de las columnas
-
-### Ejemplo de importación de un archivo Excel
-
-En este ejemplo, se utilizará la misma base de datos empleada en el caso de importación de archivos CSV. Esta base de datos, ahora en formato Excel, está disponible para su descarga a través de este [enlace](https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true){.uri}. Al igual que en el ejemplo anterior para realizar este ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Instalar y cargar el paquete readxl
-if (!require("readxl")) install.packages("readxl")
-
-# Importar un archivo Excel
-datos_excel <- read_excel("datos_estudiantes_2002.xlsx",
-                          sheet = "datos", 
-                          col_names = TRUE)
-
-# Visualizar los primeros registros del data frame
-head(datos_excel)
-```
-
-## Directorio de trabajo o Working Directory
-
-El directorio de trabajo en R puede considerarse como el "punto de partida" en un mapa: es la carpeta donde el software buscará automáticamente los archivos necesarios (datos, scripts) y guardará los resultados generados. Cuando se trabaja con un script que no forma parte de un proyecto en RStudio, establecer un directorio de trabajo es esencial para garantizar la organización y la reproducibilidad del análisis. Si no se define correctamente, se corre el riesgo de perder tiempo buscando rutas manualmente y de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora.
+El directorio de trabajo en R es el "punto de partida" desde donde el software buscará automáticamente los archivos necesarios (como datos y scripts) y guardará los resultados generados. Establecer correctamente el directorio de trabajo es esencial para garantizar la organización, la reproducibilidad y la eficiencia del análisis, especialmente cuando se trabaja con scripts independientes que no forman parte de un proyecto en RStudio. Si no se configura adecuadamente, se corre el riesgo de enfrentar errores como "archivo no encontrado" o de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora (R Core Team, 2023).
 
 ### Razones para establecer un directorio de trabajo
 
-1.  **Reproducibilidad:** Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como `C:/Usuario/MiPC/...`.
+Configurar un directorio de trabajo adecuado ofrece múltiples beneficios:
+
+1.  **Reproducibilidad:** Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como `C:/Usuario/MiPC/...`. Esto asegura que el análisis sea portable y replicable.
 
 2.  **Organización:** Reduce errores como "archivo no encontrado" al mantener todos los elementos (datos, scripts, resultados) en una estructura clara y accesible.
 
@@ -118,7 +32,7 @@ El directorio de trabajo en R puede considerarse como el "punto de partida" en u
 
 ### Configuración automática del directorio de trabajo
 
-Cuando se trabaja con scripts independientes, se puede utilizar la siguiente línea de código para establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script:
+Cuando se trabaja con scripts independientes, se puede establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script. Esto se logra utilizando el paquete `rstudioapi`:
 
 ```{r eval=FALSE}
 # Instalar y cargar el paquete rstudioapi
@@ -131,24 +45,132 @@ setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 
 #### Explicación del código
 
-1.  **`if (...) install.packages("rstudioapi")`** **:** Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.
+1.  **`if (!require("rstudioapi")) install.packages("rstudioapi")`**: Esta estructura condicional verifica si el paquete `rstudioapi` está instalado. Si no lo está, lo instala automáticamente desde CRAN.
 
-2.  **`rstudioapi::getActiveDocumentContext()$path`:** Obtiene la ruta completa del script actual (por ejemplo, `C:/proyecto/scripts/analisis.R`).
+2.  **`rstudioapi::getActiveDocumentContext()$path`**: Obtiene la ruta completa del script actual. Por ejemplo, si el script está ubicado en `C:/proyecto/scripts/analisis.R`, esta función devuelve esa ruta completa.
 
-3.  **`dirname()`:** Extrae la carpeta que contiene el script (por ejemplo, `C:/proyecto/scripts/` → `C:/proyecto/`).
+3.  **`dirname()`**: Extrae la carpeta que contiene el script. Siguiendo el ejemplo anterior, convierte `C:/proyecto/scripts/analisis.R` en `C:/proyecto/scripts/`.
 
-4.  **`setwd()`:** Establece esa carpeta como el directorio de trabajo.
+4.  **`setwd()`**: Establece la carpeta extraída como el directorio de trabajo. Esto asegura que cualquier archivo en esa carpeta pueda ser accedido directamente sin necesidad de especificar rutas completas.
 
-#### Beneficios de establecer un directorio de trabajo
+### Beneficios de establecer un directorio de trabajo
 
-1.  **Portabilidad:** Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes.
+1.  **Portabilidad**: Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes adicionales.
 
-2.  **Automatización:** No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.
+2.  **Automatización**: No es necesario modificar manualmente las rutas al compartir el script con otros usuarios, lo que facilita la colaboración.
 
-#### Consecuencias de no establecer un directorio de trabajo
+3.  **Reproducibilidad**: Garantiza que el análisis pueda ser replicado en diferentes entornos sin problemas de rutas.
+
+### Consecuencias de no establecer un directorio de trabajo
 
 1.  **Errores frecuentes:** R buscará archivos en una ubicación predeterminada (como la carpeta "Documentos"), lo que puede generar errores si los datos no están allí.
 
 2.  **Código no reproducible:** Si otra persona ejecuta el script, será necesario modificar manualmente todas las rutas para que funcione.
 
-📌 **Recomendación:** Antes de ejecutar la línea automática, es importante guardar el script, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente. Además, se puede verificar el directorio actual utilizando la función `getwd()`.
+### Recomendaciones prácticas
+
+1.  **Guardar el script antes de configurar el directorio**: Es importante guardar el script antes de ejecutar la línea de configuración automática, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente.
+
+2.  **Verificar el directorio actual**: Antes de importar datos o guardar resultados, se puede verificar el directorio de trabajo actual utilizando la función `getwd()`:
+
+```{r eval=FALSE}
+# Verificar el directorio de trabajo actual
+getwd()
+```
+
+3.  **Usar proyectos en RStudio**: Siempre que sea posible, se recomienda trabajar dentro de un proyecto de RStudio (`.Rproj`), ya que este configura automáticamente el directorio de trabajo y facilita la organización.
+
+## Importación de archivos CSV 
+
+Los archivos CSV (Comma-Separated Values) son uno de los formatos más comunes para almacenar datos tabulares. Según Wickham (2016), estos archivos son preferidos por su simplicidad y portabilidad. Para importar un archivo CSV, se utiliza la función `read.csv()`:
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Importar un archivo CSV
+datos <- read.csv("ruta/del/archivo/datos.csv", 
+                  header = TRUE, 
+                  sep = ",")
+
+```
+
+**Parámetros importantes**:
+
+1.  **`header =`** : Indica si el archivo tiene una fila de encabezado (TRUE) o no (FALSE).
+
+2.  **`sep =`** : Especifica el separador entre valores (`,`, `;`, `\t`, etc.).
+
+## Importación de archivos Excel
+
+Para importar archivos Excel (`.xlsx`), se utiliza el paquete `readxl` (Wickham & Bryan, 2023). Este paquete ofrece funciones especializadas para leer datos de hojas de cálculo de Excel sin necesidad de conversiones previas.
+
+### Pasos para importar un archivo Excel
+
+1.  Instalar y cargar el paquete `readxl`.
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Instalar y cargar el paquete readxl
+if (!require("readxl")) install.packages("readxl")
+
+```
+
+2.  Importar el archivo Excel
+
+```{r eval=FALSE}
+# Importar un archivo Excel
+datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
+                          sheet = "Hoja1",  #Nombre de la hoja
+                          col_names = TRUE/FALSE) #Primera fila como encabezado
+
+```
+
+**Parámetros importantes**:
+
+1.  **`sheet =`** : Especifica la hoja del archivo que se desea importar.
+
+2.  **`col_names =`** : Indica si el archivo tiene una fila de encabezado (TRUE) o no (FALSE).
+
+## Ejemplo práctico: Base de datos de estudiantes USAC
+
+Para ilustrar estos conceptos, utilizaremos una base de datos recopilada en 2002 en la Universidad de San Carlos de Guatemala, que contiene información de 460 estudiantes de diversas facultades. Esta base de datos está disponible en ambos formatos ([CSV](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=drive_link) y [Excel](https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true)) y será utilizada a lo largo del manual.
+
+```{r message=FALSE, warning=FALSE}
+# Instalar y cargar el paquete readxl
+if (!require("readxl")) install.packages("readxl")
+
+# Importar datos en formato CSV
+datos_csv <- read.csv("datos_estudiantes.csv", 
+                     header = TRUE, 
+                     sep = ",")
+
+# Importar datos en formato Excel
+datos_excel <- read_excel("datos_estudiantes_2002.xlsx",
+                         sheet = "datos",
+                         col_names = TRUE)
+
+# Visualizar los primeros registros
+head(datos_csv)  # Muestra las primeras 6 filas
+```
+
+### Verificación de datos importados
+
+Después de importar los datos, es importante verificar que la importación se realizó correctamente. R ofrece varias funciones para este propósito:
+
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+# Estructura del data frame
+str(datos_csv)
+
+# Resumen estadístico básico
+summary(datos_csv)
+
+# Dimensiones del data frame
+dim(datos_csv)
+```
+
+### Notas importantes
+
+1.  **Ubicación de archivos**: Cuando se trabaja con proyectos de RStudio, los archivos deben estar en el directorio del proyecto para facilitar su acceso.
+
+2.  **Codificación de caracteres**: En caso de problemas con caracteres especiales (ñ, tildes), se puede especificar la codificación:
+
+    ```{r eval=FALSE}
+    datos <- read.csv("archivo.csv", encoding = "UTF-8")
+    ```

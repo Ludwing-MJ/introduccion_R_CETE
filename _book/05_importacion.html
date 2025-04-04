@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77205cbbef6a5b90ba72edc25dea2156.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-23cb75b8abeab2f8ee81319b9c29001b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e52668a91f5ec55536531c4088279e75.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -306,20 +307,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#importación-de-archivos-csv" id="toc-importación-de-archivos-csv" class="nav-link active" data-scroll-target="#importación-de-archivos-csv"><span class="header-section-number">5.1</span> Importación de archivos CSV</a>
+  <li><a href="#configuración-inicial" id="toc-configuración-inicial" class="nav-link active" data-scroll-target="#configuración-inicial"><span class="header-section-number">5.1</span> Configuración inicial</a></li>
+  <li><a href="#directorio-de-trabajo-o-working-directory" id="toc-directorio-de-trabajo-o-working-directory" class="nav-link" data-scroll-target="#directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.2</span> Directorio de trabajo o <em>Working Directory</em></a>
   <ul class="collapse">
-  <li><a href="#pasos-para-importar-de-un-archivo-csv" id="toc-pasos-para-importar-de-un-archivo-csv" class="nav-link" data-scroll-target="#pasos-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Pasos para importar de un archivo CSV</a></li>
-  <li><a href="#ejemplo-de-importación-de-un-archivo-csv" id="toc-ejemplo-de-importación-de-un-archivo-csv" class="nav-link" data-scroll-target="#ejemplo-de-importación-de-un-archivo-csv"><span class="header-section-number">5.1.2</span> Ejemplo de importación de un archivo CSV</a></li>
+  <li><a href="#razones-para-establecer-un-directorio-de-trabajo" id="toc-razones-para-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.1</span> Razones para establecer un directorio de trabajo</a></li>
+  <li><a href="#configuración-automática-del-directorio-de-trabajo" id="toc-configuración-automática-del-directorio-de-trabajo" class="nav-link" data-scroll-target="#configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.2.2</span> Configuración automática del directorio de trabajo</a></li>
+  <li><a href="#beneficios-de-establecer-un-directorio-de-trabajo" id="toc-beneficios-de-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#beneficios-de-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.3</span> Beneficios de establecer un directorio de trabajo</a></li>
+  <li><a href="#consecuencias-de-no-establecer-un-directorio-de-trabajo" id="toc-consecuencias-de-no-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#consecuencias-de-no-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.4</span> Consecuencias de no establecer un directorio de trabajo</a></li>
+  <li><a href="#recomendaciones-prácticas" id="toc-recomendaciones-prácticas" class="nav-link" data-scroll-target="#recomendaciones-prácticas"><span class="header-section-number">5.2.5</span> Recomendaciones prácticas</a></li>
   </ul></li>
-  <li><a href="#importación-de-archivos-excel" id="toc-importación-de-archivos-excel" class="nav-link" data-scroll-target="#importación-de-archivos-excel"><span class="header-section-number">5.2</span> Importación de archivos Excel</a>
+  <li><a href="#importación-de-archivos-csv" id="toc-importación-de-archivos-csv" class="nav-link" data-scroll-target="#importación-de-archivos-csv"><span class="header-section-number">5.3</span> Importación de archivos CSV</a></li>
+  <li><a href="#importación-de-archivos-excel" id="toc-importación-de-archivos-excel" class="nav-link" data-scroll-target="#importación-de-archivos-excel"><span class="header-section-number">5.4</span> Importación de archivos Excel</a>
   <ul class="collapse">
-  <li><a href="#pasos-para-importar-un-archivo-excel" id="toc-pasos-para-importar-un-archivo-excel" class="nav-link" data-scroll-target="#pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.2.1</span> Pasos para importar un archivo Excel</a></li>
-  <li><a href="#ejemplo-de-importación-de-un-archivo-excel" id="toc-ejemplo-de-importación-de-un-archivo-excel" class="nav-link" data-scroll-target="#ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</a></li>
+  <li><a href="#pasos-para-importar-un-archivo-excel" id="toc-pasos-para-importar-un-archivo-excel" class="nav-link" data-scroll-target="#pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.4.1</span> Pasos para importar un archivo Excel</a></li>
   </ul></li>
-  <li><a href="#directorio-de-trabajo-o-working-directory" id="toc-directorio-de-trabajo-o-working-directory" class="nav-link" data-scroll-target="#directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.3</span> Directorio de trabajo o Working Directory</a>
+  <li><a href="#ejemplo-práctico-base-de-datos-de-estudiantes-usac" id="toc-ejemplo-práctico-base-de-datos-de-estudiantes-usac" class="nav-link" data-scroll-target="#ejemplo-práctico-base-de-datos-de-estudiantes-usac"><span class="header-section-number">5.5</span> Ejemplo práctico: Base de datos de estudiantes USAC</a>
   <ul class="collapse">
-  <li><a href="#razones-para-establecer-un-directorio-de-trabajo" id="toc-razones-para-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.1</span> Razones para establecer un directorio de trabajo</a></li>
-  <li><a href="#configuración-automática-del-directorio-de-trabajo" id="toc-configuración-automática-del-directorio-de-trabajo" class="nav-link" data-scroll-target="#configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.3.2</span> Configuración automática del directorio de trabajo</a></li>
+  <li><a href="#verificación-de-datos-importados" id="toc-verificación-de-datos-importados" class="nav-link" data-scroll-target="#verificación-de-datos-importados"><span class="header-section-number">5.5.1</span> Verificación de datos importados</a></li>
+  <li><a href="#notas-importantes" id="toc-notas-importantes" class="nav-link" data-scroll-target="#notas-importantes"><span class="header-section-number">5.5.2</span> Notas importantes</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -346,139 +351,181 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. En R, los datos pueden provenir de diversas fuentes, como archivos CSV, Excel o incluso páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información sin necesidad de manipularlos manualmente. Además, establecer un directorio de trabajo adecuado facilita la organización y asegura que los scripts sean portables y reproducibles en diferentes entornos.</p>
-<p>En esta sección, se explicará cómo importar datos desde archivos CSV, Excel y HTML, así como la configuración del directorio de trabajo cuando se trabaja en un script que no pertenece a ningún proyecto <code>.Rproj</code>.</p>
-<section id="importación-de-archivos-csv" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="importación-de-archivos-csv"><span class="header-section-number">5.1</span> Importación de archivos CSV</h2>
-<p>Los archivos CSV (Comma-Separated Values) son una de las formas más comunes de almacenar datos tabulares. Estos archivos son ligeros, universales y fáciles de manejar en R. Para importar un archivo CSV, se utiliza la función <code>read.csv()</code>, que permite leer el contenido del archivo y almacenarlo como un data frame.</p>
-<section id="pasos-para-importar-de-un-archivo-csv" class="level3" data-number="5.1.1">
-<h3 data-number="5.1.1" class="anchored" data-anchor-id="pasos-para-importar-de-un-archivo-csv"><span class="header-section-number">5.1.1</span> Pasos para importar de un archivo CSV</h3>
+<p>La importación de datos es uno de los primeros pasos esenciales en cualquier análisis estadístico. R ofrece diversas herramientas y funciones para importar datos desde diferentes fuentes, como archivos CSV, Excel o páginas web en formato HTML. La capacidad de importar datos de manera eficiente y reproducible permite trabajar con grandes volúmenes de información de forma sistemática (R Core Team, 2023).</p>
+<section id="configuración-inicial" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="configuración-inicial"><span class="header-section-number">5.1</span> Configuración inicial</h2>
+<p>Antes de importar datos, es importante asegurarse de que el directorio de trabajo esté correctamente configurado. Cuando se trabaja con proyectos de RStudio (<code>.Rproj</code>), el directorio se configura automáticamente. Sin embargo, para scripts independientes, se puede establecer el directorio usando la función <code>setwd()</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo CSV</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ruta/del/archivo/datos.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer directorio de trabajo</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"ruta/del/directorio"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong><code>header = TRUE</code></strong>: Indica que el archivo tiene una fila de encabezado con los nombres de las columnas.</p>
-<p><strong><code>sep = ","</code></strong>: Especifica que los valores están separados por comas (el argumento de esta parte de la función puede variar si el archivo utiliza un separador distinto como por ejemplo <strong>“;”</strong>).</p>
-<p><strong>Nota:</strong> Es importante asegurarse de que el archivo esté en el directorio de trabajo o proporcionar la ruta completa.</p>
 </section>
-<section id="ejemplo-de-importación-de-un-archivo-csv" class="level3" data-number="5.1.2">
-<h3 data-number="5.1.2" class="anchored" data-anchor-id="ejemplo-de-importación-de-un-archivo-csv"><span class="header-section-number">5.1.2</span> Ejemplo de importación de un archivo CSV</h3>
-<p>En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos, disponible para su descarga en formato CSV a través del siguiente <a href="https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing">enlace</a>, incluye una amplia variedad de variables, lo que la convierte en un recurso ideal para los ejercicios prácticos de este manual. A lo largo del documento, se utilizará esta base de datos para aplicar las herramientas y conceptos desarrollados. Para realizar el siguiente ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar el archivo CSV con los datos </span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos_estudiantes.csv"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">sep =</span> <span class="st">","</span>)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>La función <code>head()</code> en R se utiliza para visualizar las primeras filas de un data frame, vector, matriz u otro objeto de datos. Su propósito principal es proporcionar una vista rápida de los datos, permitiendo al usuario verificar la estructura, los nombres de las columnas y los primeros valores sin tener que imprimir todo el conjunto de datos.</p>
-<p><strong>Nota:</strong> En el ejemplo para importar el archivo solamente se colocó el nombre del archivo (incluyendo su extensión) sin necesidad de colocar la ruta exacta del archivo y R interpretó automáticamente que debía importar el archivo con ese nombre ubicado en la misma carpeta que el script. Esto se debe a que al estar trabajando en un proyecto con un directorio de trabajo establecido no hay necesidad de colocar la ruta de los archivos que se quieran importar siempre que estos se encuentren en la misma carpeta.</p>
-</section>
-</section>
-<section id="importación-de-archivos-excel" class="level2" data-number="5.2">
-<h2 data-number="5.2" class="anchored" data-anchor-id="importación-de-archivos-excel"><span class="header-section-number">5.2</span> Importación de archivos Excel</h2>
-<p>Los archivos Excel son ampliamente utilizados para almacenar datos en hojas de cálculo. En R, se puede importar este tipo de archivos utilizando el paquete <code>readxl</code>, que permite leer datos de archivos <code>.xlsx</code> sin necesidad de convertirlos previamente a otro formato.</p>
-<section id="pasos-para-importar-un-archivo-excel" class="level3" data-number="5.2.1">
-<h3 data-number="5.2.1" class="anchored" data-anchor-id="pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.2.1</span> Pasos para importar un archivo Excel</h3>
+<section id="directorio-de-trabajo-o-working-directory" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.2</span> Directorio de trabajo o <em>Working Directory</em></h2>
+<p>El directorio de trabajo en R es el “punto de partida” desde donde el software buscará automáticamente los archivos necesarios (como datos y scripts) y guardará los resultados generados. Establecer correctamente el directorio de trabajo es esencial para garantizar la organización, la reproducibilidad y la eficiencia del análisis, especialmente cuando se trabaja con scripts independientes que no forman parte de un proyecto en RStudio. Si no se configura adecuadamente, se corre el riesgo de enfrentar errores como “archivo no encontrado” o de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora (R Core Team, 2023).</p>
+<section id="razones-para-establecer-un-directorio-de-trabajo" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.1</span> Razones para establecer un directorio de trabajo</h3>
+<p>Configurar un directorio de trabajo adecuado ofrece múltiples beneficios:</p>
 <ol type="1">
-<li>Instalar y cargar el paquete <code>readxl</code>.</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Explicación de la linea de código anterior</strong></p>
-<ol type="a">
-<li><p><code>require("nombre del paquete")</code>: Esta función intenta cargar el paquete especificado. Si el paquete está instalado, lo carga en la sesión actual y devuelve <code>TRUE</code>. Si el paquete no está instalado, devuelve <code>FALSE</code>.</p></li>
-<li><p><code>!require("nombre del paquete")</code>: El signo de exclamación (<code>!</code>) niega el resultado de la función <code>require()</code>. Por lo tanto, esta expresión será <code>TRUE</code> si el paquete no está instalado o no puede ser cargado.</p></li>
-<li><p><code>if (...) install.packages("nombre del paquete")</code>: Esta es una estructura condicional. Si la condición entre paréntesis es <code>TRUE</code> (es decir, si el paquete no está instalado o no puede ser cargado), entonces se ejecuta <code>install.packages("nombre del paquete")</code>, que descarga e instala el paquete desde el repositorio de CRAN.</p></li>
-</ol>
-<!-- -->
-<ol start="2" type="1">
-<li>Importar el archivo Excel</li>
-</ol>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo Excel</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"ruta/del/archivo/datos.xlsx"</span>,</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"Hoja1"</span>, </span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">col_names =</span> <span class="cn">TRUE</span><span class="sc">/</span><span class="cn">FALSE</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_excel)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Explicación de la linea de código anterior</strong></p>
-<ol type="a">
-<li><p><strong><code>sheet = "Hoja1"</code></strong>: Especifica la hoja del archivo que se desea importar.</p></li>
-<li><p><strong><code>col_names = TRUE/FALSE</code></strong>: Indica si la primera fila contiene los nombres de las columnas</p></li>
-</ol>
-</section>
-<section id="ejemplo-de-importación-de-un-archivo-excel" class="level3" data-number="5.2.2">
-<h3 data-number="5.2.2" class="anchored" data-anchor-id="ejemplo-de-importación-de-un-archivo-excel"><span class="header-section-number">5.2.2</span> Ejemplo de importación de un archivo Excel</h3>
-<p>En este ejemplo, se utilizará la misma base de datos empleada en el caso de importación de archivos CSV. Esta base de datos, ahora en formato Excel, está disponible para su descarga a través de este <a href="https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true" class="uri">enlace</a>. Al igual que en el ejemplo anterior para realizar este ejemplo, es necesario que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo Excel</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos_estudiantes_2002.xlsx"</span>,</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"datos"</span>, </span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>                          <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_excel)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-</section>
-<section id="directorio-de-trabajo-o-working-directory" class="level2" data-number="5.3">
-<h2 data-number="5.3" class="anchored" data-anchor-id="directorio-de-trabajo-o-working-directory"><span class="header-section-number">5.3</span> Directorio de trabajo o Working Directory</h2>
-<p>El directorio de trabajo en R puede considerarse como el “punto de partida” en un mapa: es la carpeta donde el software buscará automáticamente los archivos necesarios (datos, scripts) y guardará los resultados generados. Cuando se trabaja con un script que no forma parte de un proyecto en RStudio, establecer un directorio de trabajo es esencial para garantizar la organización y la reproducibilidad del análisis. Si no se define correctamente, se corre el riesgo de perder tiempo buscando rutas manualmente y de que el código deje de funcionar al mover el proyecto a otra ubicación o computadora.</p>
-<section id="razones-para-establecer-un-directorio-de-trabajo" class="level3" data-number="5.3.1">
-<h3 data-number="5.3.1" class="anchored" data-anchor-id="razones-para-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.1</span> Razones para establecer un directorio de trabajo</h3>
-<ol type="1">
-<li><p><strong>Reproducibilidad:</strong> Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como <code>C:/Usuario/MiPC/...</code>.</p></li>
+<li><p><strong>Reproducibilidad:</strong> Permite que el código funcione en cualquier computadora sin depender de rutas absolutas como <code>C:/Usuario/MiPC/...</code>. Esto asegura que el análisis sea portable y replicable.</p></li>
 <li><p><strong>Organización:</strong> Reduce errores como “archivo no encontrado” al mantener todos los elementos (datos, scripts, resultados) en una estructura clara y accesible.</p></li>
 <li><p><strong>Eficiencia:</strong> Facilita el acceso a los archivos, ya que no es necesario escribir rutas completas, solo los nombres de los archivos.</p></li>
 </ol>
 </section>
-<section id="configuración-automática-del-directorio-de-trabajo" class="level3" data-number="5.3.2">
-<h3 data-number="5.3.2" class="anchored" data-anchor-id="configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.3.2</span> Configuración automática del directorio de trabajo</h3>
-<p>Cuando se trabaja con scripts independientes, se puede utilizar la siguiente línea de código para establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script:</p>
+<section id="configuración-automática-del-directorio-de-trabajo" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="configuración-automática-del-directorio-de-trabajo"><span class="header-section-number">5.2.2</span> Configuración automática del directorio de trabajo</h3>
+<p>Cuando se trabaja con scripts independientes, se puede establecer automáticamente el directorio de trabajo como la carpeta donde está guardado el script. Esto se logra utilizando el paquete <code>rstudioapi</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete rstudioapi</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer el directorio de trabajo</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete rstudioapi</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer el directorio de trabajo</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="fu">dirname</span>(rstudioapi<span class="sc">::</span><span class="fu">getActiveDocumentContext</span>()<span class="sc">$</span>path))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="explicación-del-código" class="level4" data-number="5.3.2.1">
-<h4 data-number="5.3.2.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">5.3.2.1</span> Explicación del código</h4>
+<section id="explicación-del-código" class="level4" data-number="5.2.2.1">
+<h4 data-number="5.2.2.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">5.2.2.1</span> Explicación del código</h4>
 <ol type="1">
-<li><p><strong><code>if (...) install.packages("rstudioapi")</code></strong> <strong>:</strong> Esta estructura condicional instala y carga el paquete rstudioapi necesario para que la linea de código que estable el directorio de trabajo pueda funcionar.</p></li>
-<li><p><strong><code>rstudioapi::getActiveDocumentContext()$path</code>:</strong> Obtiene la ruta completa del script actual (por ejemplo, <code>C:/proyecto/scripts/analisis.R</code>).</p></li>
-<li><p><strong><code>dirname()</code>:</strong> Extrae la carpeta que contiene el script (por ejemplo, <code>C:/proyecto/scripts/</code> → <code>C:/proyecto/</code>).</p></li>
-<li><p><strong><code>setwd()</code>:</strong> Establece esa carpeta como el directorio de trabajo.</p></li>
+<li><p><strong><code>if (!require("rstudioapi")) install.packages("rstudioapi")</code></strong>: Esta estructura condicional verifica si el paquete <code>rstudioapi</code> está instalado. Si no lo está, lo instala automáticamente desde CRAN.</p></li>
+<li><p><strong><code>rstudioapi::getActiveDocumentContext()$path</code></strong>: Obtiene la ruta completa del script actual. Por ejemplo, si el script está ubicado en <code>C:/proyecto/scripts/analisis.R</code>, esta función devuelve esa ruta completa.</p></li>
+<li><p><strong><code>dirname()</code></strong>: Extrae la carpeta que contiene el script. Siguiendo el ejemplo anterior, convierte <code>C:/proyecto/scripts/analisis.R</code> en <code>C:/proyecto/scripts/</code>.</p></li>
+<li><p><strong><code>setwd()</code></strong>: Establece la carpeta extraída como el directorio de trabajo. Esto asegura que cualquier archivo en esa carpeta pueda ser accedido directamente sin necesidad de especificar rutas completas.</p></li>
 </ol>
 </section>
-<section id="beneficios-de-establecer-un-directorio-de-trabajo" class="level4" data-number="5.3.2.2">
-<h4 data-number="5.3.2.2" class="anchored" data-anchor-id="beneficios-de-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.2.2</span> Beneficios de establecer un directorio de trabajo</h4>
+</section>
+<section id="beneficios-de-establecer-un-directorio-de-trabajo" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="beneficios-de-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.3</span> Beneficios de establecer un directorio de trabajo</h3>
 <ol type="1">
-<li><p><strong>Portabilidad:</strong> Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes.</p></li>
-<li><p><strong>Automatización:</strong> No es necesario modificar manualmente las rutas al compartir el script con otros usuarios.</p></li>
+<li><p><strong>Portabilidad</strong>: Si se mueve toda la carpeta del proyecto a otra ubicación, el código seguirá funcionando sin necesidad de ajustes adicionales.</p></li>
+<li><p><strong>Automatización</strong>: No es necesario modificar manualmente las rutas al compartir el script con otros usuarios, lo que facilita la colaboración.</p></li>
+<li><p><strong>Reproducibilidad</strong>: Garantiza que el análisis pueda ser replicado en diferentes entornos sin problemas de rutas.</p></li>
 </ol>
 </section>
-<section id="consecuencias-de-no-establecer-un-directorio-de-trabajo" class="level4" data-number="5.3.2.3">
-<h4 data-number="5.3.2.3" class="anchored" data-anchor-id="consecuencias-de-no-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.3.2.3</span> Consecuencias de no establecer un directorio de trabajo</h4>
+<section id="consecuencias-de-no-establecer-un-directorio-de-trabajo" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="consecuencias-de-no-establecer-un-directorio-de-trabajo"><span class="header-section-number">5.2.4</span> Consecuencias de no establecer un directorio de trabajo</h3>
 <ol type="1">
 <li><p><strong>Errores frecuentes:</strong> R buscará archivos en una ubicación predeterminada (como la carpeta “Documentos”), lo que puede generar errores si los datos no están allí.</p></li>
 <li><p><strong>Código no reproducible:</strong> Si otra persona ejecuta el script, será necesario modificar manualmente todas las rutas para que funcione.</p></li>
 </ol>
-<p>📌 <strong>Recomendación:</strong> Antes de ejecutar la línea automática, es importante guardar el script, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente. Además, se puede verificar el directorio actual utilizando la función <code>getwd()</code>.</p>
-
-
 </section>
+<section id="recomendaciones-prácticas" class="level3" data-number="5.2.5">
+<h3 data-number="5.2.5" class="anchored" data-anchor-id="recomendaciones-prácticas"><span class="header-section-number">5.2.5</span> Recomendaciones prácticas</h3>
+<ol type="1">
+<li><p><strong>Guardar el script antes de configurar el directorio</strong>: Es importante guardar el script antes de ejecutar la línea de configuración automática, ya que R necesita conocer su ubicación para establecer el directorio de trabajo correctamente.</p></li>
+<li><p><strong>Verificar el directorio actual</strong>: Antes de importar datos o guardar resultados, se puede verificar el directorio de trabajo actual utilizando la función <code>getwd()</code>:</p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar el directorio de trabajo actual</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">getwd</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="3" type="1">
+<li><strong>Usar proyectos en RStudio</strong>: Siempre que sea posible, se recomienda trabajar dentro de un proyecto de RStudio (<code>.Rproj</code>), ya que este configura automáticamente el directorio de trabajo y facilita la organización.</li>
+</ol>
+</section>
+</section>
+<section id="importación-de-archivos-csv" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="importación-de-archivos-csv"><span class="header-section-number">5.3</span> Importación de archivos CSV</h2>
+<p>Los archivos CSV (Comma-Separated Values) son uno de los formatos más comunes para almacenar datos tabulares. Según Wickham (2016), estos archivos son preferidos por su simplicidad y portabilidad. Para importar un archivo CSV, se utiliza la función <code>read.csv()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo CSV</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"ruta/del/archivo/datos.csv"</span>, </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">sep =</span> <span class="st">","</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Parámetros importantes</strong>:</p>
+<ol type="1">
+<li><p><strong><code>header =</code></strong> : Indica si el archivo tiene una fila de encabezado (TRUE) o no (FALSE).</p></li>
+<li><p><strong><code>sep =</code></strong> : Especifica el separador entre valores (<code>,</code>, <code>;</code>, <code>\t</code>, etc.).</p></li>
+</ol>
+</section>
+<section id="importación-de-archivos-excel" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="importación-de-archivos-excel"><span class="header-section-number">5.4</span> Importación de archivos Excel</h2>
+<p>Para importar archivos Excel (<code>.xlsx</code>), se utiliza el paquete <code>readxl</code> (Wickham &amp; Bryan, 2023). Este paquete ofrece funciones especializadas para leer datos de hojas de cálculo de Excel sin necesidad de conversiones previas.</p>
+<section id="pasos-para-importar-un-archivo-excel" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="pasos-para-importar-un-archivo-excel"><span class="header-section-number">5.4.1</span> Pasos para importar un archivo Excel</h3>
+<ol type="1">
+<li>Instalar y cargar el paquete <code>readxl</code>.</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Importar el archivo Excel</li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo Excel</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"ruta/del/archivo/datos.xlsx"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                          <span class="at">sheet =</span> <span class="st">"Hoja1"</span>,  <span class="co">#Nombre de la hoja</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">col_names =</span> <span class="cn">TRUE</span><span class="sc">/</span><span class="cn">FALSE</span>) <span class="co">#Primera fila como encabezado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Parámetros importantes</strong>:</p>
+<ol type="1">
+<li><p><strong><code>sheet =</code></strong> : Especifica la hoja del archivo que se desea importar.</p></li>
+<li><p><strong><code>col_names =</code></strong> : Indica si el archivo tiene una fila de encabezado (TRUE) o no (FALSE).</p></li>
+</ol>
+</section>
+</section>
+<section id="ejemplo-práctico-base-de-datos-de-estudiantes-usac" class="level2" data-number="5.5">
+<h2 data-number="5.5" class="anchored" data-anchor-id="ejemplo-práctico-base-de-datos-de-estudiantes-usac"><span class="header-section-number">5.5</span> Ejemplo práctico: Base de datos de estudiantes USAC</h2>
+<p>Para ilustrar estos conceptos, utilizaremos una base de datos recopilada en 2002 en la Universidad de San Carlos de Guatemala, que contiene información de 460 estudiantes de diversas facultades. Esta base de datos está disponible en ambos formatos (<a href="https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=drive_link">CSV</a> y <a href="https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">Excel</a>) y será utilizada a lo largo del manual.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar datos en formato CSV</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>datos_csv <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"datos_estudiantes.csv"</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">header =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">sep =</span> <span class="st">","</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar datos en formato Excel</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>datos_excel <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"datos_estudiantes_2002.xlsx"</span>,</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>                         <span class="at">sheet =</span> <span class="st">"datos"</span>,</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>                         <span class="at">col_names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_csv)  <span class="co"># Muestra las primeras 6 filas</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  FACULTAD EDAD SEXO EST_CIVIL TRABAJA    JORNADA AÑO_ING PESO_lbs TALLA Fuma
+1   Admon.   21    M   soltero       2 vespertina    1998      150  1.70    2
+2   Admon.   21    M   soltero       1 vespertina    1998      150  1.72    2
+3   Admon.   31    F    casado       1   nocturna    1991      197  1.55    1
+4   Admon.   38    M     unido       1   nocturna    1992      120  1.70    2
+5   Admon.   24    M    casado       1   nocturna    1995      175  1.70    2
+6   Admon.   34    M   soltero       2   nocturna    1986      156  1.70    2
+  Alcohol
+1       2
+2       1
+3       2
+4       2
+5       2
+6       2</code></pre>
+</div>
+</div>
+<section id="verificación-de-datos-importados" class="level3" data-number="5.5.1">
+<h3 data-number="5.5.1" class="anchored" data-anchor-id="verificación-de-datos-importados"><span class="header-section-number">5.5.1</span> Verificación de datos importados</h3>
+<p>Después de importar los datos, es importante verificar que la importación se realizó correctamente. R ofrece varias funciones para este propósito:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estructura del data frame</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_csv)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen estadístico básico</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_csv)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Dimensiones del data frame</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(datos_csv)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="notas-importantes" class="level3" data-number="5.5.2">
+<h3 data-number="5.5.2" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">5.5.2</span> Notas importantes</h3>
+<ol type="1">
+<li><p><strong>Ubicación de archivos</strong>: Cuando se trabaja con proyectos de RStudio, los archivos deben estar en el directorio del proyecto para facilitar su acceso.</p></li>
+<li><p><strong>Codificación de caracteres</strong>: En caso de problemas con caracteres especiales (ñ, tildes), se puede especificar la codificación:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"archivo.csv"</span>, <span class="at">encoding =</span> <span class="st">"UTF-8"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></li>
+</ol>
+
+
 </section>
 </section>
 
@@ -619,7 +666,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = true;
+  const darkModeDefault = false;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {
