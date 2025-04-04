@@ -80,7 +80,7 @@ getwd()
 
 3.  **Usar proyectos en RStudio**: Siempre que sea posible, se recomienda trabajar dentro de un proyecto de RStudio (`.Rproj`), ya que este configura automáticamente el directorio de trabajo y facilita la organización.
 
-## Importación de archivos CSV 
+## Importación de archivos CSV
 
 Los archivos CSV (Comma-Separated Values) son uno de los formatos más comunes para almacenar datos tabulares. Según Wickham (2016), estos archivos son preferidos por su simplicidad y portabilidad. Para importar un archivo CSV, se utiliza la función `read.csv()`:
 
@@ -132,7 +132,7 @@ datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
 
 Para ilustrar estos conceptos, utilizaremos una base de datos recopilada en 2002 en la Universidad de San Carlos de Guatemala, que contiene información de 460 estudiantes de diversas facultades. Esta base de datos está disponible en ambos formatos ([CSV](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=drive_link) y [Excel](https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true)) y será utilizada a lo largo del manual.
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, eval=FALSE}
 # Instalar y cargar el paquete readxl
 if (!require("readxl")) install.packages("readxl")
 
