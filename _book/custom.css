@@ -79,3 +79,13 @@ table td code, table th code {
   font-family: "Fira Code", monospace; /* Fuente monoespaciada */
   border: 1px solid var(--quarto-border-color); /* Borde sutil */
 }
+/* Código en listas numeradas y con viñetas */
+ol li code, ul li code {
+  background-color: var(--quarto-code-bg); /* Fondo del código según el tema */
+  color: #3498db; /* Color del texto del código según el tema */
+  padding: 2px 4px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 0.95em; /* Tamaño de fuente */
+  font-family: "Fira Code", monospace; /* Fuente monoespaciada */
+  border: 1px solid var(--quarto-border-color); /* Borde sutil */
+}
