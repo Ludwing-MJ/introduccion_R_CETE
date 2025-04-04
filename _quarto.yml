@@ -59,7 +59,9 @@ format:
     lang: es
     number-sections: true
     theme: 
-      dark: solar #slate #solar, darkly, superhero, vapor, light: cosmo
+      light: flatly
+      dark: cyborg
+    css: custom.css
     number-depth: 4
     link-external-icon: true
     link-external-newwindow: true
