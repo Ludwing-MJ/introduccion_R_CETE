@@ -6,21 +6,31 @@ if (!require("tidyverse")) install.packages("tidyverse")
 
 ```
 
-La visualización de datos es una herramienta fundamental en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete `ggplot2` es ampliamente utilizado debido a su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo detalla los conceptos básicos de `ggplot2`, la creación de gráficos comunes y las opciones de personalización disponibles.
+La visualización de datos es una herramienta esencial en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete **`ggplot2`** es ampliamente reconocido por su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo aborda los conceptos básicos de **`ggplot2`**, la creación de gráficos comunes y las opciones de personalización disponibles, utilizando como ejemplo un conjunto de datos recopilado en un estudio realizado en la Universidad de San Carlos de Guatemala en 2002.
 
 ## Contexto de la base de datos utilizada
 
-En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos incluye una amplia variedad de variables, como facultad, edad, sexo, estado civil, si trabajan o no, jornada de estudio, año de ingreso, peso en libras, talla, y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible para su descarga en formato CSV a través del siguiente [enlace](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), será utilizado a lo largo de esta sección para aplicar las herramientas y conceptos desarrollados. El script con los ejemplos correspondientes se encuentra alojado en el siguiente repositorio: [https://github.com/Ludwing-MJ/Visualiz](https://github.com/Ludwing-MJ/Visualizacion_Ej)
+El estudio mencionado recopiló información de 460 estudiantes de diversas facultades, incluyendo variables como facultad, edad, sexo, estado civil, jornada de estudio, año de ingreso, peso, talla y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible en formato CSV, será utilizado para ilustrar las herramientas y conceptos desarrollados en esta sección. El archivo puede descargarse desde el siguiente repositorio: [GitHub - Visualización de datos](https://github.com/Ludwing-MJ/Visualiz).
 
-**Nota:** Para realizar los ejemplos, es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso.
+**Nota**: Es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso para ejecutar los ejemplos.
 
 ## Introducción al paquete `ggplot2`
 
-**ggplot2** es una herramienta poderosa y versátil para la visualización de datos en R, que permite crear gráficos de calidad profesional con un alto nivel de personalización. Su diseño modular basado en capas facilita la adición de elementos como líneas, etiquetas y temas, adaptándose tanto a gráficos simples como a visualizaciones complejas. Además, su integración con el ecosistema **tidyverse** simplifica los flujos de trabajo al combinarse fácilmente con paquetes como **dplyr** y **tidyr** para la manipulación de datos. Es compatible con una amplia variedad de tipos de gráficos y puede extenderse mediante paquetes adicionales como **ggthemes** o **plotly** para gráficos interactivos. Finalmente, su comunidad activa y extensa documentación lo convierten en una herramienta accesible y ampliamente utilizada en análisis de datos.
+El paquete **`ggplot2`** es una herramienta versátil y poderosa para la visualización de datos en R. Su diseño modular basado en capas permite construir gráficos de calidad profesional, adaptándose tanto a visualizaciones simples como a gráficos complejos. Además, su integración con el ecosistema **tidyverse** facilita los flujos de trabajo al combinarse con herramientas como **`dplyr`** y **`tidyr`** para la manipulación de datos (Wickham, 2016).
+
+Entre las principales características de **`ggplot2`** se encuentran:
+
+1.  **Flexibilidad**: Compatible con una amplia variedad de tipos de gráficos, como gráficos de barras, líneas, puntos, histogramas y diagramas de cajas.
+
+2.  **Personalización**: Permite ajustar elementos como colores, etiquetas, temas y escalas.
+
+3.  **Extensibilidad**: Puede ampliarse mediante paquetes adicionales, como **`ggthemes`** para temas personalizados o **`plotly`** para gráficos interactivos.
+
+4.  **Comunidad activa**: Su extensa documentación y comunidad de usuarios facilitan el aprendizaje y la resolución de problemas.
 
 ### Estructura básica de un gráfico en ggplot2
 
-La creación de gráficos en **ggplot2** se basa en una estructura modular que permite construir visualizaciones de manera flexible y escalable. La sintaxis general para crear un gráfico en **ggplot2** es la siguiente:
+La creación de gráficos en **`ggplot2`** sigue una estructura modular que permite construir visualizaciones de manera flexible y escalable. La sintaxis general es la siguiente:
 
 ```{r eval=FALSE}
 ggplot(data = DATOS, aes(x = VARIABLE_X, y = VARIABLE_Y)) +
@@ -30,7 +40,7 @@ ggplot(data = DATOS, aes(x = VARIABLE_X, y = VARIABLE_Y)) +
        y = "Etiqueta eje Y")
 ```
 
-A continuación, se describen los componentes principales de esta estructura:
+**Componentes principales:**
 
 1.  **data:** Este argumento define el conjunto de datos que se utilizará para construir el gráfico. Debe ser un *data frame* o un objeto compatible con este formato. Es el punto de partida para cualquier visualización, ya que contiene las variables que se representarán gráficamente.
 
@@ -74,15 +84,19 @@ A continuación, se describen los componentes principales de esta estructura:
 
 5.  **Operador +:** El operador `+` es fundamental en **ggplot2**, ya que permite combinar diferentes capas (*layers*) en un gráfico. Cada capa puede añadir elementos adicionales, como líneas de tendencia, etiquetas o temas personalizados.
 
-6.  **Personalización adicional:** Además de los elementos básicos, **ggplot2** permite personalizar los gráficos mediante temas (`theme()`) y escalas (`scale_`). Por ejemplo, se puede cambiar el esquema de colores o ajustar el diseño general del gráfico:
+**Personalización adicional:**
+
+Además de los elementos básicos, **`ggplot2`** permite personalizar los gráficos mediante:
+
+1.  **Temas**: La función `theme()` ajusta el diseño general del gráfico, como el tamaño de las fuentes, los colores de fondo y la posición de las leyendas.
+
+2.  **Escalas**: Las funciones `scale_` permiten modificar los colores, tamaños y formas de los elementos gráficos.
 
 ## Creación de gráficos básicos
 
-A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con **ggplot2**, junto con su sintaxis y una explicación detallada. Antes de proceder con la creación de gráficos, es fundamental importar la base de datos y cargar los paquetes necesarios.
+A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con **ggplot2**, junto con su sintaxis y una explicación detallada. Antes de proceder con la creación de gráficos, es fundamental importar la base de datos y cargar los paquetes necesarios. A continuación, se muestra cómo realizar estos pasos:
 
 ### Importación de la base de datos
-
-Para trabajar con **ggplot2** y otros paquetes relacionados, es necesario instalar y cargar los paquetes requeridos, así como importar el conjunto de datos en formato CSV. El siguiente código muestra cómo realizar estos pasos de manera eficiente:
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 # Ejemplo práctico: Uso de paquetes para visualización
@@ -119,21 +133,19 @@ if (!require("rstudioapi")) install.packages("rstudioapi")
 datos <- read_csv("datos_estudiantes.csv")
 ```
 
-#### Explicación del código
+**Explicación del código:**
 
-**Instalación y carga de paquetes**: Se utiliza la función `if (!require (...))` para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con `install.packages()`. Automáticamente, se cargan. El paquete **tidyverse** incluye herramientas esenciales para la manipulación y visualización de datos, como **ggplot2**, **dplyr** y **tidyr**. El paquete **rstudioapi** permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.
+1.  **Instalación y carga de paquetes**: Se utiliza la función `if (!require (...))` para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con `install.packages()`. Automáticamente, se cargan. El paquete **tidyverse** incluye herramientas esenciales para la manipulación y visualización de datos, como **ggplot2**, **dplyr** y **tidyr**. El paquete **rstudioapi** permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.
 
-**Establecimiento del directorio de trabajo**: La función `setwd()` establece el directorio de trabajo en la ubicación del script actual, utilizando `rstudioapi::getActiveDocumentContext()$path`. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.
+2.  **Establecimiento del directorio de trabajo**: La función `setwd()` establece el directorio de trabajo en la ubicación del script actual, utilizando `rstudioapi::getActiveDocumentContext()$path`. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.
 
-**Importación de datos**: La función `read_csv()` del paquete **readr** se utiliza para leer archivos CSV. La función `head()` permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.
+3.  **Importación de datos**: La función `read_csv()` del paquete **readr** se utiliza para leer archivos CSV. La función `head()` permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.
 
 #### Notas importantes
 
 1.  Es fundamental asegurarse de que el archivo `datos_estudiantes.csv` esté ubicado en el directorio de trabajo establecido.
 
 2.  Si el archivo no se encuentra en el directorio especificado, se generará un error. En ese caso, se puede verificar la ubicación del archivo con `getwd()` o establecer manualmente el directorio con `setwd("ruta/del/directorio")`.
-
-Con esta configuración inicial, se puede proceder a la creación de gráficos básicos utilizando **ggplot2**.
 
 ### Histogramas
 

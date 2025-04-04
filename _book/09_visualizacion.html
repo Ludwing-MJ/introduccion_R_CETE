@@ -354,18 +354,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>La visualización de datos es una herramienta fundamental en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete <code>ggplot2</code> es ampliamente utilizado debido a su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo detalla los conceptos básicos de <code>ggplot2</code>, la creación de gráficos comunes y las opciones de personalización disponibles.</p>
+<p>La visualización de datos es una herramienta esencial en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete <strong><code>ggplot2</code></strong> es ampliamente reconocido por su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo aborda los conceptos básicos de <strong><code>ggplot2</code></strong>, la creación de gráficos comunes y las opciones de personalización disponibles, utilizando como ejemplo un conjunto de datos recopilado en un estudio realizado en la Universidad de San Carlos de Guatemala en 2002.</p>
 <section id="contexto-de-la-base-de-datos-utilizada" class="level2" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="contexto-de-la-base-de-datos-utilizada"><span class="header-section-number">10.1</span> Contexto de la base de datos utilizada</h2>
-<p>En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades. Esta base de datos incluye una amplia variedad de variables, como facultad, edad, sexo, estado civil, si trabajan o no, jornada de estudio, año de ingreso, peso en libras, talla, y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible para su descarga en formato CSV a través del siguiente <a href="https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing">enlace</a>, será utilizado a lo largo de esta sección para aplicar las herramientas y conceptos desarrollados. El script con los ejemplos correspondientes se encuentra alojado en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Visualizacion_Ej">https://github.com/Ludwing-MJ/Visualiz</a></p>
-<p><strong>Nota:</strong> Para realizar los ejemplos, es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso.</p>
+<p>El estudio mencionado recopiló información de 460 estudiantes de diversas facultades, incluyendo variables como facultad, edad, sexo, estado civil, jornada de estudio, año de ingreso, peso, talla y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible en formato CSV, será utilizado para ilustrar las herramientas y conceptos desarrollados en esta sección. El archivo puede descargarse desde el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Visualiz">GitHub - Visualización de datos</a>.</p>
+<p><strong>Nota</strong>: Es necesario descargar el archivo y guardarlo en la carpeta correspondiente al proyecto en curso para ejecutar los ejemplos.</p>
 </section>
 <section id="introducción-al-paquete-ggplot2" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="introducción-al-paquete-ggplot2"><span class="header-section-number">10.2</span> Introducción al paquete <code>ggplot2</code></h2>
-<p><strong>ggplot2</strong> es una herramienta poderosa y versátil para la visualización de datos en R, que permite crear gráficos de calidad profesional con un alto nivel de personalización. Su diseño modular basado en capas facilita la adición de elementos como líneas, etiquetas y temas, adaptándose tanto a gráficos simples como a visualizaciones complejas. Además, su integración con el ecosistema <strong>tidyverse</strong> simplifica los flujos de trabajo al combinarse fácilmente con paquetes como <strong>dplyr</strong> y <strong>tidyr</strong> para la manipulación de datos. Es compatible con una amplia variedad de tipos de gráficos y puede extenderse mediante paquetes adicionales como <strong>ggthemes</strong> o <strong>plotly</strong> para gráficos interactivos. Finalmente, su comunidad activa y extensa documentación lo convierten en una herramienta accesible y ampliamente utilizada en análisis de datos.</p>
+<p>El paquete <strong><code>ggplot2</code></strong> es una herramienta versátil y poderosa para la visualización de datos en R. Su diseño modular basado en capas permite construir gráficos de calidad profesional, adaptándose tanto a visualizaciones simples como a gráficos complejos. Además, su integración con el ecosistema <strong>tidyverse</strong> facilita los flujos de trabajo al combinarse con herramientas como <strong><code>dplyr</code></strong> y <strong><code>tidyr</code></strong> para la manipulación de datos (Wickham, 2016).</p>
+<p>Entre las principales características de <strong><code>ggplot2</code></strong> se encuentran:</p>
+<ol type="1">
+<li><p><strong>Flexibilidad</strong>: Compatible con una amplia variedad de tipos de gráficos, como gráficos de barras, líneas, puntos, histogramas y diagramas de cajas.</p></li>
+<li><p><strong>Personalización</strong>: Permite ajustar elementos como colores, etiquetas, temas y escalas.</p></li>
+<li><p><strong>Extensibilidad</strong>: Puede ampliarse mediante paquetes adicionales, como <strong><code>ggthemes</code></strong> para temas personalizados o <strong><code>plotly</code></strong> para gráficos interactivos.</p></li>
+<li><p><strong>Comunidad activa</strong>: Su extensa documentación y comunidad de usuarios facilitan el aprendizaje y la resolución de problemas.</p></li>
+</ol>
 <section id="estructura-básica-de-un-gráfico-en-ggplot2" class="level3" data-number="10.2.1">
 <h3 data-number="10.2.1" class="anchored" data-anchor-id="estructura-básica-de-un-gráfico-en-ggplot2"><span class="header-section-number">10.2.1</span> Estructura básica de un gráfico en ggplot2</h3>
-<p>La creación de gráficos en <strong>ggplot2</strong> se basa en una estructura modular que permite construir visualizaciones de manera flexible y escalable. La sintaxis general para crear un gráfico en <strong>ggplot2</strong> es la siguiente:</p>
+<p>La creación de gráficos en <strong><code>ggplot2</code></strong> sigue una estructura modular que permite construir visualizaciones de manera flexible y escalable. La sintaxis general es la siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> DATOS, <span class="fu">aes</span>(<span class="at">x =</span> VARIABLE_X, <span class="at">y =</span> VARIABLE_Y)) <span class="sc">+</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">GEOM_FUNCION</span>() <span class="sc">+</span></span>
@@ -373,7 +380,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Etiqueta eje X"</span>,</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Etiqueta eje Y"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A continuación, se describen los componentes principales de esta estructura:</p>
+<p><strong>Componentes principales:</strong></p>
 <ol type="1">
 <li><p><strong>data:</strong> Este argumento define el conjunto de datos que se utilizará para construir el gráfico. Debe ser un <em>data frame</em> o un objeto compatible con este formato. Es el punto de partida para cualquier visualización, ya que contiene las variables que se representarán gráficamente.</p></li>
 <li><p><strong>aes():</strong> La función <code>aes()</code> (abreviatura de <em>aesthetics</em>) especifica el mapeo estético, es decir, cómo las variables del conjunto de datos se asignan a los elementos visuales del gráfico. Algunos de los mapeos más comunes incluyen:</p>
@@ -396,16 +403,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>subtitle</code>: Subtítulo del gráfico.</p>
 <p><code>caption</code>: Texto adicional, como la fuente de los datos.</p></li>
 <li><p><strong>Operador +:</strong> El operador <code>+</code> es fundamental en <strong>ggplot2</strong>, ya que permite combinar diferentes capas (<em>layers</em>) en un gráfico. Cada capa puede añadir elementos adicionales, como líneas de tendencia, etiquetas o temas personalizados.</p></li>
-<li><p><strong>Personalización adicional:</strong> Además de los elementos básicos, <strong>ggplot2</strong> permite personalizar los gráficos mediante temas (<code>theme()</code>) y escalas (<code>scale_</code>). Por ejemplo, se puede cambiar el esquema de colores o ajustar el diseño general del gráfico:</p></li>
+</ol>
+<p><strong>Personalización adicional:</strong></p>
+<p>Además de los elementos básicos, <strong><code>ggplot2</code></strong> permite personalizar los gráficos mediante:</p>
+<ol type="1">
+<li><p><strong>Temas</strong>: La función <code>theme()</code> ajusta el diseño general del gráfico, como el tamaño de las fuentes, los colores de fondo y la posición de las leyendas.</p></li>
+<li><p><strong>Escalas</strong>: Las funciones <code>scale_</code> permiten modificar los colores, tamaños y formas de los elementos gráficos.</p></li>
 </ol>
 </section>
 </section>
 <section id="creación-de-gráficos-básicos" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="creación-de-gráficos-básicos"><span class="header-section-number">10.3</span> Creación de gráficos básicos</h2>
-<p>A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con <strong>ggplot2</strong>, junto con su sintaxis y una explicación detallada. Antes de proceder con la creación de gráficos, es fundamental importar la base de datos y cargar los paquetes necesarios.</p>
+<p>A continuación, se presentan ejemplos de gráficos comunes que se pueden crear con <strong>ggplot2</strong>, junto con su sintaxis y una explicación detallada. Antes de proceder con la creación de gráficos, es fundamental importar la base de datos y cargar los paquetes necesarios. A continuación, se muestra cómo realizar estos pasos:</p>
 <section id="importación-de-la-base-de-datos" class="level3" data-number="10.3.1">
 <h3 data-number="10.3.1" class="anchored" data-anchor-id="importación-de-la-base-de-datos"><span class="header-section-number">10.3.1</span> Importación de la base de datos</h3>
-<p>Para trabajar con <strong>ggplot2</strong> y otros paquetes relacionados, es necesario instalar y cargar los paquetes requeridos, así como importar el conjunto de datos en formato CSV. El siguiente código muestra cómo realizar estos pasos de manera eficiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico: Uso de paquetes para visualización</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># NOTA: Antes de trabajar, es necesario crear y guardar un nuevo script.</span></span>
@@ -424,19 +435,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver las primeras filas del conjunto de datos</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<section id="explicación-del-código" class="level4" data-number="10.3.1.1">
-<h4 data-number="10.3.1.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">10.3.1.1</span> Explicación del código</h4>
-<p><strong>Instalación y carga de paquetes</strong>: Se utiliza la función <code>if (!require (...))</code> para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con <code>install.packages()</code>. Automáticamente, se cargan. El paquete <strong>tidyverse</strong> incluye herramientas esenciales para la manipulación y visualización de datos, como <strong>ggplot2</strong>, <strong>dplyr</strong> y <strong>tidyr</strong>. El paquete <strong>rstudioapi</strong> permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.</p>
-<p><strong>Establecimiento del directorio de trabajo</strong>: La función <code>setwd()</code> establece el directorio de trabajo en la ubicación del script actual, utilizando <code>rstudioapi::getActiveDocumentContext()$path</code>. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.</p>
-<p><strong>Importación de datos</strong>: La función <code>read_csv()</code> del paquete <strong>readr</strong> se utiliza para leer archivos CSV. La función <code>head()</code> permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.</p>
-</section>
-<section id="notas-importantes" class="level4" data-number="10.3.1.2">
-<h4 data-number="10.3.1.2" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">10.3.1.2</span> Notas importantes</h4>
+<p><strong>Explicación del código:</strong></p>
+<ol type="1">
+<li><p><strong>Instalación y carga de paquetes</strong>: Se utiliza la función <code>if (!require (...))</code> para verificar si los paquetes están instalados. Si no lo están, se instalan automáticamente con <code>install.packages()</code>. Automáticamente, se cargan. El paquete <strong>tidyverse</strong> incluye herramientas esenciales para la manipulación y visualización de datos, como <strong>ggplot2</strong>, <strong>dplyr</strong> y <strong>tidyr</strong>. El paquete <strong>rstudioapi</strong> permite establecer el directorio de trabajo automáticamente, lo que facilita la organización de los archivos.</p></li>
+<li><p><strong>Establecimiento del directorio de trabajo</strong>: La función <code>setwd()</code> establece el directorio de trabajo en la ubicación del script actual, utilizando <code>rstudioapi::getActiveDocumentContext()$path</code>. Esto asegura que los archivos se encuentren en la misma carpeta que el script, mejorando la reproducibilidad.</p></li>
+<li><p><strong>Importación de datos</strong>: La función <code>read_csv()</code> del paquete <strong>readr</strong> se utiliza para leer archivos CSV. La función <code>head()</code> permite visualizar las primeras filas del conjunto de datos, proporcionando una vista previa de su estructura.</p></li>
+</ol>
+<section id="notas-importantes" class="level4" data-number="10.3.1.1">
+<h4 data-number="10.3.1.1" class="anchored" data-anchor-id="notas-importantes"><span class="header-section-number">10.3.1.1</span> Notas importantes</h4>
 <ol type="1">
 <li><p>Es fundamental asegurarse de que el archivo <code>datos_estudiantes.csv</code> esté ubicado en el directorio de trabajo establecido.</p></li>
 <li><p>Si el archivo no se encuentra en el directorio especificado, se generará un error. En ese caso, se puede verificar la ubicación del archivo con <code>getwd()</code> o establecer manualmente el directorio con <code>setwd("ruta/del/directorio")</code>.</p></li>
 </ol>
-<p>Con esta configuración inicial, se puede proceder a la creación de gráficos básicos utilizando <strong>ggplot2</strong>.</p>
 </section>
 </section>
 <section id="histogramas" class="level3" data-number="10.3.2">
@@ -936,8 +946,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<section id="explicación-del-código-1" class="level4" data-number="10.4.5.1">
-<h4 data-number="10.4.5.1" class="anchored" data-anchor-id="explicación-del-código-1"><span class="header-section-number">10.4.5.1</span> Explicación del código</h4>
+<section id="explicación-del-código" class="level4" data-number="10.4.5.1">
+<h4 data-number="10.4.5.1" class="anchored" data-anchor-id="explicación-del-código"><span class="header-section-number">10.4.5.1</span> Explicación del código</h4>
 <ol type="1">
 <li><p><strong>Datos y mapeo estético</strong>: <code>aes(x = FACULTAD)</code>: Se utiliza la variable <code>FACULTAD</code> directamente desde la base de datos para el eje X.</p></li>
 <li><p><strong>Gráfico de barras</strong>: <code>geom_bar()</code>: Genera automáticamente las barras basándose en la frecuencia de cada categoría. En el ejemplo se utilizaron los siguientes argumentos:</p>
