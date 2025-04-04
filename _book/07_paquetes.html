@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77205cbbef6a5b90ba72edc25dea2156.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-23cb75b8abeab2f8ee81319b9c29001b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e52668a91f5ec55536531c4088279e75.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -313,7 +314,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">8.2</span> Instalación y carga de paquetes</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-básico-de-instalación" id="toc-ejemplo-básico-de-instalación" class="nav-link" data-scroll-target="#ejemplo-básico-de-instalación"><span class="header-section-number">8.2.1</span> Ejemplo básico de instalación</a></li>
+  <li><a href="#proceso-de-instalación" id="toc-proceso-de-instalación" class="nav-link" data-scroll-target="#proceso-de-instalación"><span class="header-section-number">8.2.1</span> <strong>Proceso de instalación</strong></a></li>
   <li><a href="#carga-de-paquetes" id="toc-carga-de-paquetes" class="nav-link" data-scroll-target="#carga-de-paquetes"><span class="header-section-number">8.2.2</span> Carga de paquetes</a></li>
   <li><a href="#automatización-de-la-instalación-y-carga" id="toc-automatización-de-la-instalación-y-carga" class="nav-link" data-scroll-target="#automatización-de-la-instalación-y-carga"><span class="header-section-number">8.2.3</span> Automatización de la instalación y carga</a></li>
   </ul></li>
@@ -321,7 +322,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#manipulación-de-datos" id="toc-manipulación-de-datos" class="nav-link" data-scroll-target="#manipulación-de-datos"><span class="header-section-number">8.3.1</span> Manipulación de datos</a></li>
   <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">8.3.2</span> Visualización de datos</a></li>
-  <li><a href="#análisis-estadístico-básico" id="toc-análisis-estadístico-básico" class="nav-link" data-scroll-target="#análisis-estadístico-básico"><span class="header-section-number">8.3.3</span> Análisis estadístico básico</a></li>
+  <li><a href="#análisis-estadístico" id="toc-análisis-estadístico" class="nav-link" data-scroll-target="#análisis-estadístico"><span class="header-section-number">8.3.3</span> Análisis estadístico</a></li>
   <li><a href="#ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" id="toc-ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" class="nav-link" data-scroll-target="#ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales"><span class="header-section-number">8.3.4</span> Ejemplo práctico: Instalación y carga de paquetes esenciales</a></li>
   </ul></li>
   <li><a href="#ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" id="toc-ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo" class="nav-link" data-scroll-target="#ejemplo-práctico-uso-de-paquetes-en-un-flujo-de-trabajo"><span class="header-section-number">8.4</span> Ejemplo práctico: Uso de paquetes en un flujo de trabajo</a>
@@ -357,10 +358,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Los paquetes en R son una de las características más poderosas del lenguaje, ya que permiten extender sus capacidades básicas para realizar tareas específicas de manera eficiente. A continuación, se desarrolla esta sección donde se amplia esta característica tan importante de R.</p>
+<p>Los paquetes en R son una de las características más poderosas del lenguaje, ya que permiten extender sus capacidades básicas para realizar tareas específicas de manera eficiente. Estos paquetes son fundamentales para el análisis estadístico y la manipulación de datos, ya que proporcionan herramientas especializadas desarrolladas por expertos en diferentes campos (R Core Team, 2023).</p>
 <section id="qué-es-un-paquete-en-r" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="qué-es-un-paquete-en-r"><span class="header-section-number">8.1</span> ¿Qué es un paquete en R?</h2>
-<p>Un paquete en R es una colección de funciones, datos y documentación que amplía las capacidades del entorno base de R. Estos paquetes son desarrollados por la comunidad de usuarios y están diseñados para resolver problemas específicos, desde la manipulación de datos hasta la visualización avanzada o el análisis estadístico especializado.</p>
+<p>Un paquete en R es una colección organizada de funciones, datos y documentación que amplía las capacidades del entorno base de R. Estos paquetes son desarrollados por la comunidad de usuarios y están diseñados para resolver problemas específicos, desde la manipulación de datos hasta la visualización avanzada o el análisis estadístico especializado (Wickham &amp; Bryan, 2023).</p>
 <section id="características-principales-de-los-paquetes" class="level3" data-number="8.1.1">
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="características-principales-de-los-paquetes"><span class="header-section-number">8.1.1</span> Características principales de los paquetes</h3>
 <ol type="1">
@@ -371,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="por-qué-usar-paquetes-en-r" class="level3" data-number="8.1.2">
 <h3 data-number="8.1.2" class="anchored" data-anchor-id="por-qué-usar-paquetes-en-r"><span class="header-section-number">8.1.2</span> ¿Por qué usar paquetes en R?</h3>
-<p>Los paquetes son esenciales para aprovechar al máximo el potencial de R. Algunas de las razones para utilizarlos incluyen:</p>
+<p>Los paquetes son esenciales para aprovechar al máximo el potencial de R por varias razones (Wickham &amp; Grolemund, 2017):</p>
 <ol type="1">
 <li><p><strong>Extensibilidad:</strong> Permiten realizar tareas que no están disponibles en el entorno base de R.</p></li>
 <li><p><strong>Eficiencia:</strong> Simplifican procesos complejos, reduciendo el tiempo necesario para realizar análisis.</p></li>
@@ -383,8 +384,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="instalación-y-carga-de-paquetes" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">8.2</span> Instalación y carga de paquetes</h2>
 <p>La instalación de paquetes en R se realiza principalmente desde CRAN (Comprehensive R Archive Network), el repositorio oficial que alberga más de 19,000 paquetes. Para instalar un paquete, se utiliza la función <code>install.packages()</code>.</p>
-<section id="ejemplo-básico-de-instalación" class="level3" data-number="8.2.1">
-<h3 data-number="8.2.1" class="anchored" data-anchor-id="ejemplo-básico-de-instalación"><span class="header-section-number">8.2.1</span> Ejemplo básico de instalación</h3>
+<section id="proceso-de-instalación" class="level3" data-number="8.2.1">
+<h3 data-number="8.2.1" class="anchored" data-anchor-id="proceso-de-instalación"><span class="header-section-number">8.2.1</span> <strong>Proceso de instalación</strong></h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación del paquete ggplot2</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -414,34 +415,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En el contexto del análisis estadístico, algunos paquetes son especialmente útiles. A continuación, se presenta una lista de paquetes recomendados, junto con una breve descripción de su funcionalidad:</p>
 <section id="manipulación-de-datos" class="level3" data-number="8.3.1">
 <h3 data-number="8.3.1" class="anchored" data-anchor-id="manipulación-de-datos"><span class="header-section-number">8.3.1</span> Manipulación de datos</h3>
-<p><strong><em>dplyr</em></strong>: Simplifica la manipulación de datos mediante funciones intuitivas para filtrar, seleccionar y resumir datos.</p>
-<p><strong><em>tidyr</em></strong>: Facilita la transformación de datos entre formatos ancho y largo.</p>
+<ol type="1">
+<li><p><strong><em>dplyr</em></strong>: Simplifica la manipulación de datos mediante funciones intuitivas para filtrar, seleccionar y resumir datos.</p></li>
+<li><p><strong><em>tidyr</em></strong>: Facilita la transformación de datos entre formatos ancho y largo.</p></li>
+</ol>
 </section>
 <section id="visualización-de-datos" class="level3" data-number="8.3.2">
 <h3 data-number="8.3.2" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">8.3.2</span> Visualización de datos</h3>
-<p><strong><em>ggplot2</em></strong>: Permite crear gráficos personalizados y de alta calidad basados en la gramática de gráficos.</p>
+<ol type="1">
+<li><strong><em>ggplot2</em></strong>: Permite crear gráficos personalizados y de alta calidad basados en la gramática de gráficos.</li>
+</ol>
 </section>
-<section id="análisis-estadístico-básico" class="level3" data-number="8.3.3">
-<h3 data-number="8.3.3" class="anchored" data-anchor-id="análisis-estadístico-básico"><span class="header-section-number">8.3.3</span> Análisis estadístico básico</h3>
-<p><strong><em>stats</em></strong>: Incluye funciones base para realizar pruebas t, ANOVA y regresiones.</p>
-<p><strong>Análisis estadístico agronómico</strong></p>
-<p><strong><em>agricolae</em></strong>: Diseñado para análisis estadísticos en agronomía, como diseños experimentales y pruebas de comparación múltiple.</p>
+<section id="análisis-estadístico" class="level3" data-number="8.3.3">
+<h3 data-number="8.3.3" class="anchored" data-anchor-id="análisis-estadístico"><span class="header-section-number">8.3.3</span> Análisis estadístico</h3>
+<ol type="1">
+<li><p><strong><em>stats</em></strong>: Incluye funciones base para realizar pruebas t, ANOVA y regresiones.</p></li>
+<li><p><strong><em>agricolae</em></strong>: Diseñado para análisis estadísticos en agronomía, como diseños experimentales y pruebas de comparación múltiple.</p></li>
+</ol>
 </section>
 <section id="ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales" class="level3" data-number="8.3.4">
 <h3 data-number="8.3.4" class="anchored" data-anchor-id="ejemplo-práctico-instalación-y-carga-de-paquetes-esenciales"><span class="header-section-number">8.3.4</span> Ejemplo práctico: Instalación y carga de paquetes esenciales</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Incluye ggplot2, dplyr, tidyr</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># tidyverse (incluye ggplot2, dplyr, tidyr)</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Diseños experimentales agrícolas</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Importación de archivos Excel</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)    </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Exportación a Excel</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)    </span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Establecer directorio de trabajo automaticamente</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Diseños experimentales agrícolas</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"agricolae"</span>)) <span class="fu">install.packages</span>(<span class="st">"agricolae"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Manejo de archivos Excel</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilidades de RStudio/ Establecer directorio de trabajo</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"rstudioapi"</span>)) <span class="fu">install.packages</span>(<span class="st">"rstudioapi"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -693,7 +701,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = true;
+  const darkModeDefault = false;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

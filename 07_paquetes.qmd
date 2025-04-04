@@ -1,10 +1,10 @@
 # Paquetes en R
 
-Los paquetes en R son una de las características más poderosas del lenguaje, ya que permiten extender sus capacidades básicas para realizar tareas específicas de manera eficiente. A continuación, se desarrolla esta sección donde se amplia esta característica tan importante de R.
+Los paquetes en R son una de las características más poderosas del lenguaje, ya que permiten extender sus capacidades básicas para realizar tareas específicas de manera eficiente. Estos paquetes son fundamentales para el análisis estadístico y la manipulación de datos, ya que proporcionan herramientas especializadas desarrolladas por expertos en diferentes campos (R Core Team, 2023).
 
 ## ¿Qué es un paquete en R?
 
-Un paquete en R es una colección de funciones, datos y documentación que amplía las capacidades del entorno base de R. Estos paquetes son desarrollados por la comunidad de usuarios y están diseñados para resolver problemas específicos, desde la manipulación de datos hasta la visualización avanzada o el análisis estadístico especializado.
+Un paquete en R es una colección organizada de funciones, datos y documentación que amplía las capacidades del entorno base de R. Estos paquetes son desarrollados por la comunidad de usuarios y están diseñados para resolver problemas específicos, desde la manipulación de datos hasta la visualización avanzada o el análisis estadístico especializado (Wickham & Bryan, 2023).
 
 ### Características principales de los paquetes
 
@@ -16,7 +16,7 @@ Un paquete en R es una colección de funciones, datos y documentación que ampl�
 
 ### ¿Por qué usar paquetes en R?
 
-Los paquetes son esenciales para aprovechar al máximo el potencial de R. Algunas de las razones para utilizarlos incluyen:
+Los paquetes son esenciales para aprovechar al máximo el potencial de R por varias razones (Wickham & Grolemund, 2017):
 
 1.  **Extensibilidad:** Permiten realizar tareas que no están disponibles en el entorno base de R.
 
@@ -30,7 +30,7 @@ Los paquetes son esenciales para aprovechar al máximo el potencial de R. Alguna
 
 La instalación de paquetes en R se realiza principalmente desde CRAN (Comprehensive R Archive Network), el repositorio oficial que alberga más de 19,000 paquetes. Para instalar un paquete, se utiliza la función `install.packages()`.
 
-### Ejemplo básico de instalación
+### **Proceso de instalación**
 
 ```{r eval=FALSE}
 # Instalación del paquete ggplot2
@@ -65,38 +65,37 @@ En el contexto del análisis estadístico, algunos paquetes son especialmente ú
 
 ### Manipulación de datos
 
-***dplyr***: Simplifica la manipulación de datos mediante funciones intuitivas para filtrar, seleccionar y resumir datos.
+1.  ***dplyr***: Simplifica la manipulación de datos mediante funciones intuitivas para filtrar, seleccionar y resumir datos.
 
-***tidyr***: Facilita la transformación de datos entre formatos ancho y largo.
+2.  ***tidyr***: Facilita la transformación de datos entre formatos ancho y largo.
 
 ### Visualización de datos
 
-***ggplot2***: Permite crear gráficos personalizados y de alta calidad basados en la gramática de gráficos.
+1.  ***ggplot2***: Permite crear gráficos personalizados y de alta calidad basados en la gramática de gráficos.
 
-### Análisis estadístico básico
+### Análisis estadístico 
 
-***stats***: Incluye funciones base para realizar pruebas t, ANOVA y regresiones.
+1.  ***stats***: Incluye funciones base para realizar pruebas t, ANOVA y regresiones.
 
-**Análisis estadístico agronómico**
-
-***agricolae***: Diseñado para análisis estadísticos en agronomía, como diseños experimentales y pruebas de comparación múltiple.
+2.  ***agricolae***: Diseñado para análisis estadísticos en agronomía, como diseños experimentales y pruebas de comparación múltiple.
 
 ### Ejemplo práctico: Instalación y carga de paquetes esenciales
 
 ```{r eval=FALSE}
 # Instalación y carga de paquetes esenciales
 
-  # Incluye ggplot2, dplyr, tidyr
+# tidyverse (incluye ggplot2, dplyr, tidyr)
 if (!require("tidyverse")) install.packages("tidyverse")
-  # Diseños experimentales agrícolas
-if (!require("agricolae")) install.packages("agricolae")
-  # Importación de archivos Excel
-if (!require("readxl")) install.packages("readxl")    
-  # Exportación a Excel
-if (!require("writexl")) install.packages("writexl")    
-  # Establecer directorio de trabajo automaticamente
-if (!require("rstudioapi")) install.packages("rstudioapi")
 
+# Diseños experimentales agrícolas
+if (!require("agricolae")) install.packages("agricolae")
+
+# Manejo de archivos Excel
+if (!require("readxl")) install.packages("readxl")
+if (!require("writexl")) install.packages("writexl")
+
+# Utilidades de RStudio/ Establecer directorio de trabajo
+if (!require("rstudioapi")) install.packages("rstudioapi")
 ```
 
 ## Ejemplo práctico: Uso de paquetes en un flujo de trabajo
