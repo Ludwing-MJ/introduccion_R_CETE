@@ -1,12 +1,10 @@
 # Exportación de resultados
 
-La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. Este capítulo detalla cómo guardar gráficos en formatos PNG y PDF utilizando la función `ggsave()` del paquete `ggplot2`, y cómo exportar tablas en formatos CSV y Excel utilizando las funciones `write.csv()` y `write_xlsx()` del paquete `writexl`.
+La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. En esta sección, se detalla cómo guardar gráficos en formatos **PNG** y **PDF** utilizando la función `ggsave()` del paquete `ggplot2`, y cómo exportar tablas en formatos **CSV** y **Excel** utilizando las funciones `write.csv()` y `write_xlsx()` del paquete `writexl`. Estas herramientas son esenciales para garantizar que los resultados del análisis sean accesibles y reutilizables (R Core Team, 2023; Wickham, 2016).
 
-## Guardar gráficos con `ggsave()`
+## La función `ggsave()`
 
-### Sintaxis General de la Función `ggsave()`
-
-La función `ggsave()` pertenece al paquete `ggplot2` y se utiliza para guardar gráficos en diferentes formatos de archivo, como PNG, PDF, JPEG, entre otros. Es una herramienta versátil que permite personalizar aspectos como el tamaño, la resolución y el formato del archivo de salida.
+La función `ggsave()` pertenece al paquete `ggplot2` y se utiliza para guardar gráficos en diferentes formatos de archivo, como **PNG**, **PDF**, **JPEG**, entre otros. Es una herramienta versátil que permite personalizar aspectos como el tamaño, la resolución y el formato del archivo de salida (Wickham, 2016).
 
 La sintaxis general de la función es la siguiente:
 
@@ -24,7 +22,7 @@ ggsave(
   limitsize = TRUE)
 ```
 
-A continuación, se explican los argumentos principales de la función:
+**Descripción de los argumentos principales:**
 
 1\. **filename:** Este argumento es obligatorio y define el nombre del archivo de salida, incluyendo su extensión (por ejemplo, `"grafico.png"` o `"grafico.pdf"`). La extensión del archivo determina automáticamente el formato en el que se guardará el gráfico, a menos que se especifique explícitamente con el argumento `device`. Es importante asegurarse de que el nombre del archivo sea válido para el sistema operativo utilizado.
 
@@ -44,13 +42,13 @@ A continuación, se explican los argumentos principales de la función:
 
 9\. **limitsize:** Este argumento controla si se permite guardar gráficos con dimensiones excesivamente grandes (mayores a 50 pulgadas). Si se establece en `TRUE` (valor predeterminado), se genera un error al intentar guardar gráficos grandes. Para desactivar esta restricción, se debe establecer en `FALSE`.
 
-### Guardar en formatos PDF y PNG
+## Guardar en formatos PDF y PNG
 
-Si no se especifica el argumento `plot`, la función `ggsave()` guardará automáticamente el último gráfico creado en la sesión de R. Esto es útil cuando se trabaja de manera interactiva y se desea guardar rápidamente un gráfico sin asignarlo a un objeto. A continuación, se describen los pasos para exportar gráficos en formatos PNG y PDF, junto con ejemplos prácticos.
+Si no se especifica el argumento `plot`, la función `ggsave()` guardará automáticamente el último gráfico creado en la sesión de R. Esto es útil cuando se trabaja de manera interactiva y se desea guardar rápidamente un gráfico sin asignarlo a un objeto. A continuación, se describen los pasos para exportar gráficos en formatos PNG y PDF, junto con un ejemplo.
 
-**Crear un gráfico con `ggplot2`**
+### **Crear un gráfico con `ggplot2`**
 
-Antes de guardar un gráfico, es necesario crearlo. A continuación, se presenta el ultimo gráfico realizado en el capitulo anterior:
+Antes de guardar un gráfico, es necesario crearlo. A continuación, se presenta un ejemplo de un gráfico creado con `ggplot2`:
 
 ```{r message=FALSE, warning=FALSE}
 # Instalación y carga de paquetes esenciales
@@ -85,7 +83,9 @@ plot<- ggplot(data = datos, aes(x = FACULTAD)) +
 
 ```
 
-**Guardar el gráfico en formato PNG:** Una vez creado el gráfico, se puede guardar utilizando `ggsave()`:
+### **Guardar el gráfico en formato PNG**
+
+Una vez creado el gráfico, se puede guardar utilizando `ggsave()`:
 
 ```{r eval=FALSE}
 # Guardar el gráfico en formato PNG
@@ -93,19 +93,17 @@ ggsave("grafico.png", width = 8, height = 6, dpi = 300)
 
 ```
 
-**Parámetros importantes**:
+1.  `filename`: Nombre del archivo de salida (en este caso, `"grafico.png"`).
 
-`filename`: Nombre del archivo de salida (en este caso, `"grafico.png"`).
+2.  `plot`: Objeto del gráfico que se desea guardar.
 
-`plot`: Objeto del gráfico que se desea guardar.
+3.  `width` y `height`: Dimensiones del gráfico en pulgadas.
 
-`width` y `height`: Dimensiones del gráfico en pulgadas.
+4.  `dpi`: Resolución del archivo en puntos por pulgada (300 dpi es adecuado para impresión).
 
-`dpi`: Resolución del archivo en puntos por pulgada (300 dpi es adecuado para impresión).
+### **Guardar en Formato PDF**
 
-**Resultado**: El archivo `grafico.png` se guardará en el directorio de trabajo actual con las dimensiones y resolución especificadas.
-
-**Guardar en Formato PDF:** El formato PDF es ideal para gráficos que requieren escalado sin pérdida de calidad, como en publicaciones científicas o informes.
+El formato PDF es ideal para gráficos que requieren escalado sin pérdida de calidad, como en publicaciones científicas o informes.
 
 ```{r eval=FALSE}
 # Guardar el gráfico en formato PDF
@@ -113,8 +111,6 @@ ggsave("grafico.pdf", width = 8, height = 6)
 ```
 
 **Diferencias con PNG**: No es necesario especificar la resolución (`dpi`), ya que el formato PDF es vectorial y no depende de la resolución.
-
-**Resultado**: El archivo `grafico.pdf` se guardará en el directorio de trabajo actual, listo para ser escalado o utilizado en documentos de alta calidad.
 
 ## Guardar Tablas en CSV y Excel
 
@@ -148,36 +144,34 @@ write.csv(ejemplo, "ejemplo.csv", row.names = FALSE)
 
 `row.names`: Si se establece en `FALSE`, no se incluirán los índices de las filas como una columna adicional.
 
-**Resultado**: El archivo `ejemplo.csv` se guardará en el directorio de trabajo actual, listo para ser abierto en cualquier editor de texto o software como Excel.
-
 ### Guardar en Formato Excel
 
-El formato Excel es útil para compartir datos en un archivo más estructurado y compatible con herramientas como Microsoft Excel.
-
-#### Instalar y cargar el paquete `writexl`
+Para exportar datos a Excel, se utiliza el paquete `writexl`, por lo que primero hay que instalar y cargar el paquete:
 
 ```{r message=FALSE, warning=FALSE}
 # Paquete para la exportación de datos a Excel
 if (!require("writexl")) install.packages("writexl")
 ```
 
-#### Guardar la tabla en formato Excel
-
-Utilizando la función `write_xlsx()`, se puede exportar el data frame:
+Despues de haber cargado el paquete utilizando la función `write_xlsx()`, se puede exportar el data frame:
 
 ```{r}
 # Guardar la tabla en formato Excel
 write_xlsx(ejemplo, "ejemplo.xlsx")
 ```
 
-**Parámetros importantes**: `path`: Nombre del archivo de salida (en este caso, `"ejemplo.xlsx"`).
+**Parámetros importantes**:
+
+1.  `objeto:` Nombre del dataframe o lista que se quiere exportar en formato Excel.
+
+2.  `path`: Nombre del archivo de salida (en este caso, `"ejemplo.xlsx"`).
 
 **Resultado**: El archivo `ejemplo.xlsx` se guardará en el directorio de trabajo actual, listo para ser abierto en Microsoft Excel o software similar.
 
 ## Comparación de Formatos
 
 | **Formato** | **Uso Principal** | **Ventajas** | **Desventajas** |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | PNG | Presentaciones y documentos digitales | Alta calidad, ampliamente compatible | No escalable sin pérdida de calidad |
 | PDF | Publicaciones científicas e informes | Escalable, ideal para impresión | Menos compatible con editores básicos |
 | CSV | Análisis de datos en herramientas simples | Ligero, compatible con múltiples plataformas | No admite formatos complejos |

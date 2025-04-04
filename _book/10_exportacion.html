@@ -307,18 +307,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#guardar-gráficos-con-ggsave" id="toc-guardar-gráficos-con-ggsave" class="nav-link active" data-scroll-target="#guardar-gráficos-con-ggsave"><span class="header-section-number">11.1</span> Guardar gráficos con <code>ggsave()</code></a>
+  <li><a href="#la-función-ggsave" id="toc-la-función-ggsave" class="nav-link active" data-scroll-target="#la-función-ggsave"><span class="header-section-number">11.1</span> La función <code>ggsave()</code></a></li>
+  <li><a href="#guardar-en-formatos-pdf-y-png" id="toc-guardar-en-formatos-pdf-y-png" class="nav-link" data-scroll-target="#guardar-en-formatos-pdf-y-png"><span class="header-section-number">11.2</span> Guardar en formatos PDF y PNG</a>
   <ul class="collapse">
-  <li><a href="#sintaxis-general-de-la-función-ggsave" id="toc-sintaxis-general-de-la-función-ggsave" class="nav-link" data-scroll-target="#sintaxis-general-de-la-función-ggsave"><span class="header-section-number">11.1.1</span> Sintaxis General de la Función <code>ggsave()</code></a></li>
-  <li><a href="#guardar-en-formatos-pdf-y-png" id="toc-guardar-en-formatos-pdf-y-png" class="nav-link" data-scroll-target="#guardar-en-formatos-pdf-y-png"><span class="header-section-number">11.1.2</span> Guardar en formatos PDF y PNG</a></li>
+  <li><a href="#crear-un-gráfico-con-ggplot2" id="toc-crear-un-gráfico-con-ggplot2" class="nav-link" data-scroll-target="#crear-un-gráfico-con-ggplot2"><span class="header-section-number">11.2.1</span> <strong>Crear un gráfico con <code>ggplot2</code></strong></a></li>
+  <li><a href="#guardar-el-gráfico-en-formato-png" id="toc-guardar-el-gráfico-en-formato-png" class="nav-link" data-scroll-target="#guardar-el-gráfico-en-formato-png"><span class="header-section-number">11.2.2</span> <strong>Guardar el gráfico en formato PNG</strong></a></li>
+  <li><a href="#guardar-en-formato-pdf" id="toc-guardar-en-formato-pdf" class="nav-link" data-scroll-target="#guardar-en-formato-pdf"><span class="header-section-number">11.2.3</span> <strong>Guardar en Formato PDF</strong></a></li>
   </ul></li>
-  <li><a href="#guardar-tablas-en-csv-y-excel" id="toc-guardar-tablas-en-csv-y-excel" class="nav-link" data-scroll-target="#guardar-tablas-en-csv-y-excel"><span class="header-section-number">11.2</span> Guardar Tablas en CSV y Excel</a>
+  <li><a href="#guardar-tablas-en-csv-y-excel" id="toc-guardar-tablas-en-csv-y-excel" class="nav-link" data-scroll-target="#guardar-tablas-en-csv-y-excel"><span class="header-section-number">11.3</span> Guardar Tablas en CSV y Excel</a>
   <ul class="collapse">
-  <li><a href="#crear-un-data-frame-de-ejemplo" id="toc-crear-un-data-frame-de-ejemplo" class="nav-link" data-scroll-target="#crear-un-data-frame-de-ejemplo"><span class="header-section-number">11.2.1</span> Crear un data frame de ejemplo</a></li>
-  <li><a href="#guardar-la-tabla-en-formato-csv" id="toc-guardar-la-tabla-en-formato-csv" class="nav-link" data-scroll-target="#guardar-la-tabla-en-formato-csv"><span class="header-section-number">11.2.2</span> Guardar la tabla en formato CSV</a></li>
-  <li><a href="#guardar-en-formato-excel" id="toc-guardar-en-formato-excel" class="nav-link" data-scroll-target="#guardar-en-formato-excel"><span class="header-section-number">11.2.3</span> Guardar en Formato Excel</a></li>
+  <li><a href="#crear-un-data-frame-de-ejemplo" id="toc-crear-un-data-frame-de-ejemplo" class="nav-link" data-scroll-target="#crear-un-data-frame-de-ejemplo"><span class="header-section-number">11.3.1</span> Crear un data frame de ejemplo</a></li>
+  <li><a href="#guardar-la-tabla-en-formato-csv" id="toc-guardar-la-tabla-en-formato-csv" class="nav-link" data-scroll-target="#guardar-la-tabla-en-formato-csv"><span class="header-section-number">11.3.2</span> Guardar la tabla en formato CSV</a></li>
+  <li><a href="#guardar-en-formato-excel" id="toc-guardar-en-formato-excel" class="nav-link" data-scroll-target="#guardar-en-formato-excel"><span class="header-section-number">11.3.3</span> Guardar en Formato Excel</a></li>
   </ul></li>
-  <li><a href="#comparación-de-formatos" id="toc-comparación-de-formatos" class="nav-link" data-scroll-target="#comparación-de-formatos"><span class="header-section-number">11.3</span> Comparación de Formatos</a></li>
+  <li><a href="#comparación-de-formatos" id="toc-comparación-de-formatos" class="nav-link" data-scroll-target="#comparación-de-formatos"><span class="header-section-number">11.4</span> Comparación de Formatos</a></li>
   </ul>
 </nav>
     </div>
@@ -344,12 +346,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. Este capítulo detalla cómo guardar gráficos en formatos PNG y PDF utilizando la función <code>ggsave()</code> del paquete <code>ggplot2</code>, y cómo exportar tablas en formatos CSV y Excel utilizando las funciones <code>write.csv()</code> y <code>write_xlsx()</code> del paquete <code>writexl</code>.</p>
-<section id="guardar-gráficos-con-ggsave" class="level2" data-number="11.1">
-<h2 data-number="11.1" class="anchored" data-anchor-id="guardar-gráficos-con-ggsave"><span class="header-section-number">11.1</span> Guardar gráficos con <code>ggsave()</code></h2>
-<section id="sintaxis-general-de-la-función-ggsave" class="level3" data-number="11.1.1">
-<h3 data-number="11.1.1" class="anchored" data-anchor-id="sintaxis-general-de-la-función-ggsave"><span class="header-section-number">11.1.1</span> Sintaxis General de la Función <code>ggsave()</code></h3>
-<p>La función <code>ggsave()</code> pertenece al paquete <code>ggplot2</code> y se utiliza para guardar gráficos en diferentes formatos de archivo, como PNG, PDF, JPEG, entre otros. Es una herramienta versátil que permite personalizar aspectos como el tamaño, la resolución y el formato del archivo de salida.</p>
+<p>La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. En esta sección, se detalla cómo guardar gráficos en formatos <strong>PNG</strong> y <strong>PDF</strong> utilizando la función <code>ggsave()</code> del paquete <code>ggplot2</code>, y cómo exportar tablas en formatos <strong>CSV</strong> y <strong>Excel</strong> utilizando las funciones <code>write.csv()</code> y <code>write_xlsx()</code> del paquete <code>writexl</code>. Estas herramientas son esenciales para garantizar que los resultados del análisis sean accesibles y reutilizables (R Core Team, 2023; Wickham, 2016).</p>
+<section id="la-función-ggsave" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="la-función-ggsave"><span class="header-section-number">11.1</span> La función <code>ggsave()</code></h2>
+<p>La función <code>ggsave()</code> pertenece al paquete <code>ggplot2</code> y se utiliza para guardar gráficos en diferentes formatos de archivo, como <strong>PNG</strong>, <strong>PDF</strong>, <strong>JPEG</strong>, entre otros. Es una herramienta versátil que permite personalizar aspectos como el tamaño, la resolución y el formato del archivo de salida (Wickham, 2016).</p>
 <p>La sintaxis general de la función es la siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(</span>
@@ -364,7 +364,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">dpi =</span> <span class="dv">300</span>,</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">limitsize =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>A continuación, se explican los argumentos principales de la función:</p>
+<p><strong>Descripción de los argumentos principales:</strong></p>
 <p>1. <strong>filename:</strong> Este argumento es obligatorio y define el nombre del archivo de salida, incluyendo su extensión (por ejemplo, <code>"grafico.png"</code> o <code>"grafico.pdf"</code>). La extensión del archivo determina automáticamente el formato en el que se guardará el gráfico, a menos que se especifique explícitamente con el argumento <code>device</code>. Es importante asegurarse de que el nombre del archivo sea válido para el sistema operativo utilizado.</p>
 <p>2. <strong>plot:</strong> Este argumento opcional permite especificar el gráfico que se desea guardar. Si no se proporciona, <code>ggsave()</code> guardará automáticamente el último gráfico creado en la sesión de R, utilizando la función <code>last_plot()</code>. Esto es útil para flujos de trabajo interactivos, pero en proyectos más complejos se recomienda asignar los gráficos a objetos para evitar confusiones.</p>
 <p>3. <strong>device:</strong> El argumento <code>device</code> define el tipo de dispositivo o formato del archivo de salida, como <code>"png"</code>, <code>"pdf"</code>, <code>"jpeg"</code>, entre otros. Si no se especifica, el formato se deduce automáticamente a partir de la extensión del archivo en <code>filename</code>. Este argumento es útil cuando se desea guardar un archivo con un formato específico, independientemente de la extensión.</p>
@@ -375,11 +375,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>8. <strong>dpi:</strong> El argumento <code>dpi</code> (dots per inch) define la resolución del gráfico, siendo relevante para formatos rasterizados como PNG, JPEG o TIFF. Su valor predeterminado es <code>300</code>, adecuado para impresión. Para gráficos destinados a la web, se puede utilizar un valor menor, como <code>72</code>.</p>
 <p>9. <strong>limitsize:</strong> Este argumento controla si se permite guardar gráficos con dimensiones excesivamente grandes (mayores a 50 pulgadas). Si se establece en <code>TRUE</code> (valor predeterminado), se genera un error al intentar guardar gráficos grandes. Para desactivar esta restricción, se debe establecer en <code>FALSE</code>.</p>
 </section>
-<section id="guardar-en-formatos-pdf-y-png" class="level3" data-number="11.1.2">
-<h3 data-number="11.1.2" class="anchored" data-anchor-id="guardar-en-formatos-pdf-y-png"><span class="header-section-number">11.1.2</span> Guardar en formatos PDF y PNG</h3>
-<p>Si no se especifica el argumento <code>plot</code>, la función <code>ggsave()</code> guardará automáticamente el último gráfico creado en la sesión de R. Esto es útil cuando se trabaja de manera interactiva y se desea guardar rápidamente un gráfico sin asignarlo a un objeto. A continuación, se describen los pasos para exportar gráficos en formatos PNG y PDF, junto con ejemplos prácticos.</p>
-<p><strong>Crear un gráfico con <code>ggplot2</code></strong></p>
-<p>Antes de guardar un gráfico, es necesario crearlo. A continuación, se presenta el ultimo gráfico realizado en el capitulo anterior:</p>
+<section id="guardar-en-formatos-pdf-y-png" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="guardar-en-formatos-pdf-y-png"><span class="header-section-number">11.2</span> Guardar en formatos PDF y PNG</h2>
+<p>Si no se especifica el argumento <code>plot</code>, la función <code>ggsave()</code> guardará automáticamente el último gráfico creado en la sesión de R. Esto es útil cuando se trabaja de manera interactiva y se desea guardar rápidamente un gráfico sin asignarlo a un objeto. A continuación, se describen los pasos para exportar gráficos en formatos PNG y PDF, junto con un ejemplo.</p>
+<section id="crear-un-gráfico-con-ggplot2" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="crear-un-gráfico-con-ggplot2"><span class="header-section-number">11.2.1</span> <strong>Crear un gráfico con <code>ggplot2</code></strong></h3>
+<p>Antes de guardar un gráfico, es necesario crearlo. A continuación, se presenta un ejemplo de un gráfico creado con <code>ggplot2</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes esenciales</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -411,31 +412,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">size =</span> <span class="dv">8</span>, <span class="at">color =</span> <span class="st">"gray50"</span>)</span>
 <span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Guardar el gráfico en formato PNG:</strong> Una vez creado el gráfico, se puede guardar utilizando <code>ggsave()</code>:</p>
+</section>
+<section id="guardar-el-gráfico-en-formato-png" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="guardar-el-gráfico-en-formato-png"><span class="header-section-number">11.2.2</span> <strong>Guardar el gráfico en formato PNG</strong></h3>
+<p>Una vez creado el gráfico, se puede guardar utilizando <code>ggsave()</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar el gráfico en formato PNG</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"grafico.png"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Parámetros importantes</strong>:</p>
-<p><code>filename</code>: Nombre del archivo de salida (en este caso, <code>"grafico.png"</code>).</p>
-<p><code>plot</code>: Objeto del gráfico que se desea guardar.</p>
-<p><code>width</code> y <code>height</code>: Dimensiones del gráfico en pulgadas.</p>
-<p><code>dpi</code>: Resolución del archivo en puntos por pulgada (300 dpi es adecuado para impresión).</p>
-<p><strong>Resultado</strong>: El archivo <code>grafico.png</code> se guardará en el directorio de trabajo actual con las dimensiones y resolución especificadas.</p>
-<p><strong>Guardar en Formato PDF:</strong> El formato PDF es ideal para gráficos que requieren escalado sin pérdida de calidad, como en publicaciones científicas o informes.</p>
+<ol type="1">
+<li><p><code>filename</code>: Nombre del archivo de salida (en este caso, <code>"grafico.png"</code>).</p></li>
+<li><p><code>plot</code>: Objeto del gráfico que se desea guardar.</p></li>
+<li><p><code>width</code> y <code>height</code>: Dimensiones del gráfico en pulgadas.</p></li>
+<li><p><code>dpi</code>: Resolución del archivo en puntos por pulgada (300 dpi es adecuado para impresión).</p></li>
+</ol>
+</section>
+<section id="guardar-en-formato-pdf" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="guardar-en-formato-pdf"><span class="header-section-number">11.2.3</span> <strong>Guardar en Formato PDF</strong></h3>
+<p>El formato PDF es ideal para gráficos que requieren escalado sin pérdida de calidad, como en publicaciones científicas o informes.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar el gráfico en formato PDF</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"grafico.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Diferencias con PNG</strong>: No es necesario especificar la resolución (<code>dpi</code>), ya que el formato PDF es vectorial y no depende de la resolución.</p>
-<p><strong>Resultado</strong>: El archivo <code>grafico.pdf</code> se guardará en el directorio de trabajo actual, listo para ser escalado o utilizado en documentos de alta calidad.</p>
 </section>
 </section>
-<section id="guardar-tablas-en-csv-y-excel" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="guardar-tablas-en-csv-y-excel"><span class="header-section-number">11.2</span> Guardar Tablas en CSV y Excel</h2>
+<section id="guardar-tablas-en-csv-y-excel" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="guardar-tablas-en-csv-y-excel"><span class="header-section-number">11.3</span> Guardar Tablas en CSV y Excel</h2>
 <p>La exportación de tablas es esencial para compartir datos o realizar análisis adicionales en otras herramientas. A continuación, se detalla cómo guardar tablas en formatos CSV y Excel.</p>
-<section id="crear-un-data-frame-de-ejemplo" class="level3" data-number="11.2.1">
-<h3 data-number="11.2.1" class="anchored" data-anchor-id="crear-un-data-frame-de-ejemplo"><span class="header-section-number">11.2.1</span> Crear un data frame de ejemplo</h3>
+<section id="crear-un-data-frame-de-ejemplo" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="crear-un-data-frame-de-ejemplo"><span class="header-section-number">11.3.1</span> Crear un data frame de ejemplo</h3>
 <p>Se puede utilizar un data frame de ejemplo para ilustrar el proceso:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame de ejemplo</span></span>
@@ -446,8 +452,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="guardar-la-tabla-en-formato-csv" class="level3" data-number="11.2.2">
-<h3 data-number="11.2.2" class="anchored" data-anchor-id="guardar-la-tabla-en-formato-csv"><span class="header-section-number">11.2.2</span> Guardar la tabla en formato CSV</h3>
+<section id="guardar-la-tabla-en-formato-csv" class="level3" data-number="11.3.2">
+<h3 data-number="11.3.2" class="anchored" data-anchor-id="guardar-la-tabla-en-formato-csv"><span class="header-section-number">11.3.2</span> Guardar la tabla en formato CSV</h3>
 <p>Utilizando la función <code>write.csv()</code>, se puede exportar el data frame:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar la tabla en formato CSV</span></span>
@@ -456,32 +462,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Parámetros importantes</strong>:</p>
 <p><code>file</code>: Nombre del archivo de salida (en este caso, <code>"tabla.csv"</code>).</p>
 <p><code>row.names</code>: Si se establece en <code>FALSE</code>, no se incluirán los índices de las filas como una columna adicional.</p>
-<p><strong>Resultado</strong>: El archivo <code>ejemplo.csv</code> se guardará en el directorio de trabajo actual, listo para ser abierto en cualquier editor de texto o software como Excel.</p>
 </section>
-<section id="guardar-en-formato-excel" class="level3" data-number="11.2.3">
-<h3 data-number="11.2.3" class="anchored" data-anchor-id="guardar-en-formato-excel"><span class="header-section-number">11.2.3</span> Guardar en Formato Excel</h3>
-<p>El formato Excel es útil para compartir datos en un archivo más estructurado y compatible con herramientas como Microsoft Excel.</p>
-<section id="instalar-y-cargar-el-paquete-writexl" class="level4" data-number="11.2.3.1">
-<h4 data-number="11.2.3.1" class="anchored" data-anchor-id="instalar-y-cargar-el-paquete-writexl"><span class="header-section-number">11.2.3.1</span> Instalar y cargar el paquete <code>writexl</code></h4>
+<section id="guardar-en-formato-excel" class="level3" data-number="11.3.3">
+<h3 data-number="11.3.3" class="anchored" data-anchor-id="guardar-en-formato-excel"><span class="header-section-number">11.3.3</span> Guardar en Formato Excel</h3>
+<p>Para exportar datos a Excel, se utiliza el paquete <code>writexl</code>, por lo que primero hay que instalar y cargar el paquete:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paquete para la exportación de datos a Excel</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"writexl"</span>)) <span class="fu">install.packages</span>(<span class="st">"writexl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="guardar-la-tabla-en-formato-excel" class="level4" data-number="11.2.3.2">
-<h4 data-number="11.2.3.2" class="anchored" data-anchor-id="guardar-la-tabla-en-formato-excel"><span class="header-section-number">11.2.3.2</span> Guardar la tabla en formato Excel</h4>
-<p>Utilizando la función <code>write_xlsx()</code>, se puede exportar el data frame:</p>
+<p>Despues de haber cargado el paquete utilizando la función <code>write_xlsx()</code>, se puede exportar el data frame:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Guardar la tabla en formato Excel</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(ejemplo, <span class="st">"ejemplo.xlsx"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Parámetros importantes</strong>: <code>path</code>: Nombre del archivo de salida (en este caso, <code>"ejemplo.xlsx"</code>).</p>
+<p><strong>Parámetros importantes</strong>:</p>
+<ol type="1">
+<li><p><code>objeto:</code> Nombre del dataframe o lista que se quiere exportar en formato Excel.</p></li>
+<li><p><code>path</code>: Nombre del archivo de salida (en este caso, <code>"ejemplo.xlsx"</code>).</p></li>
+</ol>
 <p><strong>Resultado</strong>: El archivo <code>ejemplo.xlsx</code> se guardará en el directorio de trabajo actual, listo para ser abierto en Microsoft Excel o software similar.</p>
 </section>
 </section>
-</section>
-<section id="comparación-de-formatos" class="level2" data-number="11.3">
-<h2 data-number="11.3" class="anchored" data-anchor-id="comparación-de-formatos"><span class="header-section-number">11.3</span> Comparación de Formatos</h2>
+<section id="comparación-de-formatos" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="comparación-de-formatos"><span class="header-section-number">11.4</span> Comparación de Formatos</h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
