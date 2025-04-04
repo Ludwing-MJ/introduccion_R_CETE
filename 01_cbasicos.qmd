@@ -60,52 +60,54 @@ La reproducibilidad y replicabilidad son pilares fundamentales de la investigaci
 
 R permite documentar cada paso del análisis mediante scripts, asegurando que los procedimientos puedan ser replicados y reinterpretados en el futuro. Esto no solo mejora la transparencia y la credibilidad científica, sino que también optimiza el tiempo y los recursos al facilitar la reutilización de métodos en nuevos estudios.
 
-![Un script en R es comparable a una receta, ya que permite seguir cada paso de manera estructurada para reproducir un análisis específico. Al igual que una receta puede ajustarse al cambiar los ingredientes, un script puede adaptarse para llevar a cabo un análisis distinto utilizando nuevos conjuntos de datos.](Captura de pantalla 2025-04-03 170742.png){fig-align="center" width="500"}
+![Un script en R es comparable a una receta, ya que permite seguir cada paso de manera estructurada para reproducir un análisis específico. Al igual que una receta puede ajustarse al cambiar los ingredientes, un script puede adaptarse para llevar a cabo un análisis distinto utilizando nuevos conjuntos de datos.](Captura%20de%20pantalla%202025-04-03%20170742.png){fig-align="center" width="500" height="160"}
 
 ### Reproducibilidad
 
-La reproducibilidad se define como la capacidad de obtener los mismos resultados utilizando los mismos datos y métodos que se emplearon en un análisis original. Este concepto es esencial en la investigación científica, ya que permite verificar y validar los resultados de un estudio. Según el informe de las *National Academies of Sciences, Engineering, and Medicine* (2019), la reproducibilidad garantiza que los resultados puedan ser replicados por otros investigadores o por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.
+La reproducibilidad se define como la capacidad de obtener los mismos resultados al emplear los mismos datos y métodos utilizados en un análisis original. Este concepto constituye un pilar fundamental en la investigación científica, ya que permite verificar y validar los hallazgos de un estudio. Según el informe de las National Academies of Sciences, Engineering, and Medicine (2019), la reproducibilidad asegura que los resultados puedan ser replicados por otros investigadores o incluso por el mismo autor en el futuro, siempre que se disponga de los datos y métodos originales.
 
-#### Características clave de la reproducibilidad:
+Entre las principales características de la reproducibilidad se encuentran:
 
-**Uso de los mismos datos**: Los datos originales deben estar disponibles y ser accesibles para que otros puedan replicar el análisis.
+1.  **Disponibilidad de los datos originales**: Es imprescindible que los datos empleados en el análisis estén accesibles para que otros puedan replicar el estudio.
 
-**Métodos documentados**: Es necesario que los pasos, herramientas y configuraciones utilizadas en el análisis estén claramente documentados.
+2.  **Documentación detallada de los métodos**: Los pasos, herramientas y configuraciones utilizadas deben estar claramente descritos para garantizar la repetición exacta del análisis.
 
-**Resultados consistentes**: Al repetir el análisis con los mismos datos y métodos, los resultados deben ser idénticos.
+3.  **Resultados consistentes**: Al repetir el análisis con los mismos datos y procedimientos, los resultados obtenidos deben ser idénticos.
 
-#### Importancia de la reproducibilidad:
+La reproducibilidad es esencial por varias razones:
 
-**Transparencia**: Permite que otros investigadores comprendan cómo se obtuvieron los resultados.
+1.  **Fomenta la transparencia**: Permite que otros investigadores comprendan con precisión cómo se obtuvieron los resultados.
 
-**Verificación**: Facilita la identificación de errores o inconsistencias en el análisis original.
+2.  **Facilita la verificación**: Ayuda a identificar posibles errores o inconsistencias en el análisis original.
 
-**Colaboración**: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente.
+3.  **Promueve la colaboración científica**: Proporciona una base sólida para que otros investigadores puedan construir sobre el trabajo existente, ampliando su alcance y aplicabilidad.
 
 ### Replicabilidad
 
-La replicabilidad, por otro lado, se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las *National Academies of Sciences, Engineering, and Medicine* (2019), la replicabilidad es fundamental para evaluar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.
+Por otro lado, la replicabilidad se refiere a la capacidad de obtener resultados consistentes al realizar un estudio similar en un contexto diferente, utilizando nuevos datos o métodos ligeramente modificados. Este concepto evalúa la generalización de los hallazgos y su aplicabilidad en diferentes escenarios. De acuerdo con las National Academies of Sciences, Engineering, and Medicine (2019), la replicabilidad es crucial para determinar la robustez y la aplicabilidad de los resultados científicos en nuevos contextos.
 
-#### Características clave de la replicabilidad:
+Las características clave de la replicabilidad incluyen:
 
-**Nuevos datos**: Se utilizan datos diferentes a los del estudio original, pero que representan un contexto similar.
+1.  **Uso de nuevos datos**: Los datos empleados en el nuevo estudio deben ser diferentes a los del análisis original, pero representar un contexto similar.
 
-**Métodos adaptados**: Los métodos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.
+2.  **Adaptación de los métodos**: Los procedimientos pueden ser ajustados o modificados para adaptarse a las características de los nuevos datos.
 
-**Resultados consistentes**: Los hallazgos deben ser coherentes con los del estudio original, aunque no necesariamente idénticos.
+3.  **Coherencia en los hallazgos**: Aunque los resultados no sean idénticos, deben ser consistentes con los obtenidos en el estudio original.
 
-#### Importancia de la replicabilidad:
+La replicabilidad aporta beneficios significativos, tales como:
 
-**Generalización**: Evalúa si los resultados del estudio original son aplicables en otros contextos o poblaciones.
+1.  **Evaluación de la generalización**: Permite determinar si los resultados del estudio original son aplicables en otros contextos o poblaciones.
 
-**Credibilidad científica**: Refuerza la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.
+2.  **Refuerzo de la credibilidad científica**: Incrementa la confianza en los hallazgos al demostrar que no son producto de circunstancias específicas.
 
-**Avance del conocimiento**: Permite explorar nuevas aplicaciones o extensiones de los hallazgos originales.
+3.  **Impulso al avance del conocimiento**: Facilita la exploración de nuevas aplicaciones o extensiones de los hallazgos originales, ampliando su impacto en la comunidad científica.
 
 ### Beneficios de la adopción de R para la Ciencia
 
-**Transparencia**: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).
+El uso de R en la investigación científica ofrece múltiples ventajas que contribuyen a la reproducibilidad y replicabilidad de los estudios:
 
-**Eficiencia**: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, lo que optimiza los recursos y el tiempo (Gentleman & Temple Lang, 2007).
+1.  **Transparencia**: El código generado en R es accesible para revisión por pares, lo que fomenta la transparencia en los análisis (The Turing Way Community, 2023).
 
-**Credibilidad**: El uso de R facilita el cumplimiento de los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo la gestión adecuada de los datos científicos (Wilkinson et al., 2016).
+2.  **Eficiencia**: Los métodos desarrollados en R pueden ser reutilizados en nuevos estudios, optimizando recursos y tiempo (Gentleman & Temple Lang, 2007).
+
+3.  **Cumplimiento de principios FAIR**: El uso de R facilita la adherencia a los principios FAIR (Findable, Accessible, Interoperable, Reusable), promoviendo una gestión adecuada de los datos científicos (Wilkinson et al., 2016).
