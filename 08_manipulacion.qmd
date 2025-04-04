@@ -5,7 +5,7 @@
 if (!require("tidyverse")) install.packages("tidyverse")
 ```
 
-Los paquetes **dplyr** y **tidyr** son componentes fundamentales del ecosistema tidyverse, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva.
+Los paquetes **dplyr** y **tidyr** son componentes fundamentales del ecosistema **tidyverse**, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva (Wickham et al., 2023). En esta sección, se explorarán las principales funciones de estos paquetes, junto con ejemplos prácticos que ilustran su uso.
 
 ## Introducción a los paquetes `dplyr` y `tidyr`
 
@@ -19,7 +19,7 @@ Para ilustrar el uso de estas herramientas, en esta sección se desarrollará un
 
 ### Filtrar filas con `filter()`
 
-La función `filter()` permite seleccionar filas de un data frame que cumplen con una o más condiciones lógicas.
+La función **`filter()`** se utiliza para seleccionar filas de un *data frame* que cumplen con una o más condiciones lógicas. Esta operación es útil para extraer subconjuntos de datos relevantes para un análisis específico.
 
 **Sintaxis básica:**
 
@@ -30,8 +30,6 @@ filter(data, condición)
 **Ejemplo práctico:** Filtrar estudiantes con un peso mayor a 65 kg.
 
 ```{r message=FALSE, warning=FALSE}
-# Instalar y cargar el tidyverse
-if (!require("tidyverse")) install.packages("tidyverse")
 
 # Crear un data frame de ejemplo
 datos <- data.frame(
@@ -44,13 +42,16 @@ datos <- data.frame(
 # Filtrar estudiantes con peso mayor a 65 kg
 estudiantes_pesados <- datos %>% 
   filter(peso > 65)
+
+# Visualizar el resultado
+estudiantes_pesados
 ```
 
-**Explicación**: El resultado es un data frame que incluye únicamente las filas donde la variable `peso` es mayor a 65.
+**Explicación**: El resultado es un *data frame* que incluye únicamente las filas donde la variable `peso` es mayor a 65. Esta operación permite enfocar el análisis en un subconjunto específico de datos, lo que resulta útil en estudios que requieren segmentación de información.
 
-### Seleccionar columnas
+### Seleccionar columnas con `select()`
 
-La función `select()` se utiliza para extraer columnas específicas de un data frame.
+La función **`select()`** permite extraer columnas específicas de un *data frame*. Esto es útil para reducir la cantidad de datos visibles o para trabajar únicamente con las variables necesarias.
 
 **Sintaxis básica:**
 
@@ -64,13 +65,16 @@ select(data, columnas)
 # Seleccionar columnas específicas
 datos_reducidos <- datos %>%
   select(nombre, edad)
+
+# Visualizar el resultado
+datos_reducidos
 ```
 
-**Explicación**: El resultado es un data frame con solo las columnas `nombre` y `edad`, lo que puede ser útil para reducir la cantidad de datos visibles o exportar información específica.
+**Explicación**: El resultado es un *data frame* que contiene únicamente las columnas `nombre` y `edad`. Esto es especialmente útil cuando se desea exportar información específica o simplificar la visualización de los datos.
 
-### Crear nuevas columnas
+### **Crear nuevas columnas con `mutate()`**
 
-La función `mutate()` permite añadir nuevas columnas calculadas a un data frame.
+La función **`mutate()`** permite añadir nuevas columnas calculadas a un *data frame*. Esta operación es esencial para realizar cálculos derivados de las variables existentes.
 
 **Sintaxis básica:**
 
@@ -84,13 +88,16 @@ mutate(data, nueva_columna = expresión)
 # Calcular el IMC
 datos <- datos %>%
   mutate(IMC = peso / (altura^2))
+
+# Visualizar el resultado
+datos
 ```
 
-**Explicación**: Se añade una nueva columna llamada `IMC` al data frame, calculada como el peso dividido por el cuadrado de la altura.
+**Explicación**: Se añade una nueva columna llamada `IMC` al *data frame*, calculada como el peso dividido por el cuadrado de la altura. Esta operación permite enriquecer los datos con información derivada, facilitando análisis más detallados.
 
-### Agrupar y resumir datos
+### Agrupar y resumir datos con `group_by()` y `summarize()`
 
-La combinación de `group_by()` y `summarize()` permite calcular estadísticas por grupo.
+La combinación de **`group_by()`** y **`summarize()`** permite calcular estadísticas por grupo. Esto es útil para obtener resúmenes de datos categorizados, como promedios, sumas o conteos.
 
 **Sintaxis básica**:
 
@@ -110,15 +117,18 @@ peso_promedio <- datos %>%
                              "Menor a 20")) %>%
   group_by(grupo_edad) %>%
   summarize(peso_promedio = mean(peso))
+
+# Visualizar el resultado
+peso_promedio
 ```
 
-**Explicación**: Se crea una nueva variable `grupo_edad` para clasificar a los estudiantes, y luego se calcula el peso promedio para cada grupo.
+**Explicación**: Se crea una nueva variable `grupo_edad` que clasifica a los estudiantes en dos categorías: "Mayor o igual a 20" y "Menor a 20". Luego, se calcula el peso promedio para cada grupo. Este tipo de operación es útil para realizar análisis comparativos entre categorías, como estudios demográficos o segmentación de datos.
 
 ## Uso de pipes (`%>%`) para mejorar la legibilidad del código
 
-El operador pipe (`%>%`) es una herramienta clave en el tidyverse que permite encadenar funciones de manera legible. En lugar de anidar funciones, el pipe pasa el resultado de una función como entrada a la siguiente.
+El operador **pipe** (`%>%`), introducido por el paquete `magrittr` y ampliamente adoptado en el ecosistema tidyverse, permite encadenar funciones de manera legible. En lugar de anidar funciones, el pipe pasa el resultado de una función como entrada a la siguiente.
 
-**Ejemplo sin pipes**:
+**Ejemplo sin pipes**: Cuando no se utiliza el operador pipe, las funciones deben anidarse o ejecutarse en pasos separados, lo que puede dificultar la lectura y comprensión del código:
 
 ```{r}
 # Crear columna grupo_edad usando mutate
@@ -131,7 +141,7 @@ resultado <- summarize(group_by(datos, grupo_edad),
                        peso_promedio = mean(peso))
 ```
 
-**Ejemplo con pipes**:
+**Ejemplo con pipes**: El uso de pipes permite encadenar las operaciones de manera más clara y natural, eliminando la necesidad de anidar funciones:
 
 ```{r}
 # Agrupar y resumir los datos con pipes
@@ -140,59 +150,84 @@ resultado <- datos %>%
   summarize(peso_promedio = mean(peso))
 ```
 
+**Diferencia clave**: Con pipes, el flujo de trabajo se lee de arriba hacia abajo, siguiendo un orden lógico que refleja el proceso de análisis.
+
 ### Ventajas del uso de pipes
 
-El uso de pipes (`%>%`) en R, introducido por el paquete **magrittr** y ampliamente adoptado en el ecosistema **tidyverse**, ofrece múltiples ventajas que mejoran significativamente la experiencia de programación y análisis de datos. En primer lugar, los pipes mejoran la legibilidad del código al permitir que las operaciones se encadenen de manera secuencial y lógica. Esto elimina la necesidad de anidar funciones, lo que puede resultar confuso y difícil de interpretar, especialmente en flujos de trabajo complejos. En lugar de leer el código de adentro hacia afuera, los pipes permiten que las instrucciones se lean de arriba hacia abajo, siguiendo un orden natural que refleja el proceso de análisis.
+El uso de pipes (`%>%`) en R mejora significativamente la **legibilidad** del código al permitir que las operaciones se encadenen de manera secuencial y lógica, eliminando la necesidad de anidar funciones. Esto facilita la comprensión del flujo de trabajo, especialmente en análisis complejos. Además, los pipes simplifican la **depuración**, ya que dividen el análisis en pasos claros, lo que permite identificar errores y verificar resultados intermedios con mayor facilidad.
 
-Además, los pipes facilitan la depuración y el seguimiento de cada paso del análisis. Al dividir el flujo de trabajo en pasos claros y separados, es más sencillo identificar dónde ocurre un error o verificar los resultados intermedios. Esto es especialmente útil cuando se trabaja con grandes conjuntos de datos o procesos que involucran múltiples transformaciones, ya que cada paso puede ser evaluado de forma independiente.
-
-Por último, los pipes permiten construir flujos de trabajo complejos de manera modular. Cada operación puede considerarse como un "bloque" que se conecta al siguiente, lo que fomenta un enfoque estructurado y organizado. Esto no solo facilita la comprensión del código por parte de otros colaboradores, sino que también permite realizar modificaciones o ajustes en pasos específicos sin afectar el resto del análisis. En resumen, el uso de pipes no solo optimiza la escritura del código, sino que también mejora la claridad, la eficiencia y la reproducibilidad del análisis de datos en R.
+Otra ventaja clave es la **modularidad**, ya que cada operación se organiza como un bloque independiente, lo que facilita realizar ajustes sin afectar el resto del análisis. Finalmente, los pipes promueven la **reproducibilidad**, al estructurar el código de forma clara y reutilizable, mejorando la colaboración y asegurando resultados consistentes.
 
 ## Transformación de datos con tidyr
 
-El paquete **tidyr** se utiliza para reorganizar datos entre formatos "ancho" y "largo", lo que es esencial para ciertos tipos de análisis y visualización.
+El paquete **`tidyr`** es una herramienta fundamental para la reorganización de datos en R, especialmente cuando se necesita cambiar entre formatos "ancho" y "largo". Esta transformación es esencial para adaptar los datos a diferentes tipos de análisis estadísticos y visualizaciones (Wickham & Grolemund, 2017).
 
-### Transformar datos con `pivot_longer()` y `pivot_wider()`
+### ¿Qué son los formatos ancho y largo?
 
-**`pivot_longer()`**: Convierte columnas en filas, útil para transformar datos de formato ancho a largo.
+**Formato ancho**: Cada variable tiene su propia columna, y cada observación está en una sola fila.
 
-**`pivot_wider()`**: Convierte filas en columnas, útil para transformar datos de formato largo a ancho.
+**Formato largo**: Las variables están organizadas en pares de columnas (nombre de variable y valor), con múltiples filas por observación.
+
+### Funciones principales de transformación
+
+1.  **`pivot_longer()`**: se utiliza para transformar datos de formato ancho a largo. Este tipo de transformación es especialmente útil cuando se necesita trabajar con datos en los que cada observación debe ocupar una fila, mientras que las variables se representan en columnas separadas. Por ejemplo, es ideal para crear gráficos con múltiples series, ya que facilita la comparación entre diferentes variables en un mismo análisis. Además, este formato es requerido en muchos análisis estadísticos que trabajan con datos agrupados, como ANOVA o modelos de regresión, donde las variables deben estar organizadas en un formato más estructurado.
+
+2.  **`pivot_wider()`**: realiza la transformación inversa, es decir, convierte datos de formato largo a ancho. Este tipo de transformación es útil cuando se necesita crear tablas resumen que presenten los datos de manera más compacta y legible. También es esencial para análisis que requieren que las variables estén en columnas separadas, como cálculos de correlación o regresiones específicas. Además, el formato ancho es más adecuado para la presentación de resultados en reportes o tablas, ya que permite visualizar de forma clara las relaciones entre las variables y las observaciones.
 
 ### Ejemplo práctico
 
-Supongamos que se tiene un data frame con las calificaciones de estudiantes en diferentes materias:
+Para ilustrar el uso de las funciones de transformación de datos, consideremos un ejemplo práctico con calificaciones de estudiantes. Inicialmente, crearemos un conjunto de datos que contiene las calificaciones de tres estudiantes en dos materias diferentes:
 
 ```{r}
-# Data frame de ejemplo
+# Crear data frame de calificaciones
 calificaciones <- data.frame(
   nombre = c("Juan", "Ana", "Luis"),
   matematicas = c(85, 90, 78),
   ciencias = c(88, 92, 80)
 )
 
+# Visualizar el data frame original
+print("Datos originales en formato ancho:")
+calificaciones
+
 ```
 
-**Transformar de formato ancho a largo con `pivot_longer()`:**
+En este formato, cada fila representa a un estudiante y las calificaciones de las materias están organizadas en columnas. Sin embargo, para ciertos análisis estadísticos o visualizaciones, es necesario transformar los datos a un formato largo.
+
+#### **Transformar de formato ancho a largo**
+
+La función `pivot_longer()` permite reorganizar los datos para que cada combinación de estudiante y materia ocupe una fila independiente. Este formato es útil para análisis que requieren datos agrupados o para la creación de gráficos comparativos:
 
 ```{r}
 # Transformar a formato largo
-library(tidyr)
 calificaciones_largo <- calificaciones %>%
-  pivot_longer(cols = c(matematicas, ciencias), 
-               names_to = "materia", 
-               values_to = "calificacion")
+  pivot_longer(
+    cols = c(matematicas, ciencias),    # Columnas a transformar
+    names_to = "materia",               # Nueva columna para nombres de materias
+    values_to = "calificacion"          # Nueva columna para calificaciones
+  )
+
+print("Datos en formato largo:")
 calificaciones_largo
 ```
 
-**Resultado**: El data frame ahora tiene una fila por cada combinación de estudiante y materia.
+En este formato, cada fila representa una observación única de estudiante y materia, lo que facilita la comparación entre variables, el cálculo de estadísticas por grupo y la preparación de datos para visualizaciones.
 
-**Transformar de formato largo a ancho con `pivot_wider()`:**
+#### Transformar de formato largo a ancho
+
+Cuando se requiere regresar al formato original, por ejemplo, para presentar los datos en una tabla resumen, se utiliza la función `pivot_wider()`. Esta función reorganiza los datos para que las materias vuelvan a ocupar columnas separadas:
 
 ```{r}
 # Transformar de vuelta a formato ancho
 calificaciones_ancho <- calificaciones_largo %>%
-  pivot_wider(names_from = "materia", values_from = "calificacion")
+  pivot_wider(
+    names_from = "materia",            # Columna que se convertirá en nombres de columnas
+    values_from = "calificacion"       # Columna que contiene los valores
+  )
+
+print("Datos restaurados en formato ancho:")
 calificaciones_ancho
+
 ```
 
-**Explicación**: Estas funciones permiten reorganizar los datos según las necesidades del análisis o la visualización.
+Esta transformación permite restaurar el formato original, donde cada estudiante ocupa una fila y las materias están organizadas en columnas. Este formato es adecuado para reportes, análisis que requieren variables en columnas independientes o para la presentación de datos de manera más legible.
