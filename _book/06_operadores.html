@@ -77,8 +77,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-77205cbbef6a5b90ba72edc25dea2156.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-23cb75b8abeab2f8ee81319b9c29001b.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-e52668a91f5ec55536531c4088279e75.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -108,6 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-sidebar floating">
@@ -306,24 +307,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link active" data-scroll-target="#operadores-de-asignación"><span class="header-section-number">6.1</span> Operadores de Asignación</a>
+  <li><a href="#tipos-de-operadores-en-r" id="toc-tipos-de-operadores-en-r" class="nav-link active" data-scroll-target="#tipos-de-operadores-en-r"><span class="header-section-number">6.1</span> <strong>Tipos de operadores en R</strong></a></li>
+  <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link" data-scroll-target="#operadores-de-asignación"><span class="header-section-number">6.2</span> Operadores de Asignación</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">6.1.1</span> Ejemplo práctico</a></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">6.2.1</span> Ejemplo práctico</a></li>
   </ul></li>
-  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos"><span class="header-section-number">6.2</span> Operadores aritméticos</a>
+  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos"><span class="header-section-number">6.3</span> Operadores aritméticos</a>
   <ul class="collapse">
-  <li><a href="#lista-de-operadores-aritméticos" id="toc-lista-de-operadores-aritméticos" class="nav-link" data-scroll-target="#lista-de-operadores-aritméticos"><span class="header-section-number">6.2.1</span> Lista de operadores aritméticos</a></li>
-  <li><a href="#ejemplo-práctico-1" id="toc-ejemplo-práctico-1" class="nav-link" data-scroll-target="#ejemplo-práctico-1"><span class="header-section-number">6.2.2</span> Ejemplo práctico</a></li>
+  <li><a href="#ejemplo-práctico-1" id="toc-ejemplo-práctico-1" class="nav-link" data-scroll-target="#ejemplo-práctico-1"><span class="header-section-number">6.3.1</span> Ejemplo práctico</a></li>
   </ul></li>
-  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="header-section-number">6.3</span> Operadores lógicos</a>
+  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="header-section-number">6.4</span> Operadores lógicos</a>
   <ul class="collapse">
-  <li><a href="#lista-de-operadores-lógicos" id="toc-lista-de-operadores-lógicos" class="nav-link" data-scroll-target="#lista-de-operadores-lógicos"><span class="header-section-number">6.3.1</span> Lista de operadores lógicos</a></li>
-  <li><a href="#ejemplo-práctico-2" id="toc-ejemplo-práctico-2" class="nav-link" data-scroll-target="#ejemplo-práctico-2"><span class="header-section-number">6.3.2</span> Ejemplo práctico</a></li>
+  <li><a href="#ejemplo-práctico-2" id="toc-ejemplo-práctico-2" class="nav-link" data-scroll-target="#ejemplo-práctico-2"><span class="header-section-number">6.4.1</span> Ejemplo práctico</a></li>
   </ul></li>
-  <li><a href="#operadores-de-manipulación-de-datos" id="toc-operadores-de-manipulación-de-datos" class="nav-link" data-scroll-target="#operadores-de-manipulación-de-datos"><span class="header-section-number">6.4</span> Operadores de Manipulación de Datos</a>
+  <li><a href="#operadores-de-manipulación-de-datos" id="toc-operadores-de-manipulación-de-datos" class="nav-link" data-scroll-target="#operadores-de-manipulación-de-datos"><span class="header-section-number">6.5</span> Operadores de Manipulación de Datos</a>
   <ul class="collapse">
-  <li><a href="#principales-operadores-de-manipulación-de-datos" id="toc-principales-operadores-de-manipulación-de-datos" class="nav-link" data-scroll-target="#principales-operadores-de-manipulación-de-datos"><span class="header-section-number">6.4.1</span> Principales operadores de manipulación de datos</a></li>
-  <li><a href="#ejemplo-práctico-3" id="toc-ejemplo-práctico-3" class="nav-link" data-scroll-target="#ejemplo-práctico-3"><span class="header-section-number">6.4.2</span> Ejemplo práctico</a></li>
+  <li><a href="#ejemplo-práctico-3" id="toc-ejemplo-práctico-3" class="nav-link" data-scroll-target="#ejemplo-práctico-3"><span class="header-section-number">6.5.1</span> Ejemplo práctico</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -350,8 +349,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, como destornilladores o martillos, que se combinan para construir soluciones más complejas. Los operadores en R se utilizan para realizar operaciones matemáticas, evaluar condiciones lógicas, manipular datos y realizar asignaciones. Su correcta comprensión es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación.</p>
-<p>En R, los operadores se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje:</p>
+<p>En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones, asignaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, que se combinan para construir soluciones más complejas. Comprender su funcionamiento es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación (R Core Team, 2023).</p>
+<p>Los operadores en R se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje, junto con ejemplos prácticos para ilustrar su uso.</p>
+<section id="tipos-de-operadores-en-r" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="tipos-de-operadores-en-r"><span class="header-section-number">6.1</span> <strong>Tipos de operadores en R</strong></h2>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -388,11 +389,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<section id="operadores-de-asignación" class="level2" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="operadores-de-asignación"><span class="header-section-number">6.1</span> Operadores de Asignación</h2>
-<p>Los operadores de asignación se utilizan para crear objetos y almacenar valores en ellos. En R, los operadores más comunes son <code>&lt;-</code> y <code>=</code>. Aunque ambos cumplen la misma función, el uso de <code>&lt;-</code> es el estándar recomendado en la comunidad de R, ya que evita conflictos con otros operadores lógicos.</p>
-<section id="ejemplo-práctico" class="level3" data-number="6.1.1">
-<h3 data-number="6.1.1" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">6.1.1</span> Ejemplo práctico</h3>
+</section>
+<section id="operadores-de-asignación" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="operadores-de-asignación"><span class="header-section-number">6.2</span> Operadores de Asignación</h2>
+<p>Los operadores de asignación se utilizan para crear objetos y almacenar valores en ellos. En R, los operadores más comunes son <code>&lt;-</code> y <code>=</code>. Aunque ambos cumplen la misma función, el uso de <code>&lt;-</code> es el estándar recomendado en la comunidad de R, ya que evita conflictos con otros operadores lógicos (Ihaka &amp; Gentleman, 1996).</p>
+<section id="ejemplo-práctico" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">6.2.1</span> Ejemplo práctico</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Asignación de valores a objetos</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span>          <span class="co"># Asignar el valor 10 al objeto x</span></span>
@@ -404,11 +406,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Nota:</strong> Aunque <code>=</code> puede ser utilizado para asignar valores, su uso no es recomendado en contextos profesionales debido a posibles confusiones con el operador lógico de igualdad (<code>==</code>).</p>
 </section>
 </section>
-<section id="operadores-aritméticos" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="operadores-aritméticos"><span class="header-section-number">6.2</span> Operadores aritméticos</h2>
+<section id="operadores-aritméticos" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="operadores-aritméticos"><span class="header-section-number">6.3</span> Operadores aritméticos</h2>
 <p>Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos.</p>
-<section id="lista-de-operadores-aritméticos" class="level3" data-number="6.2.1">
-<h3 data-number="6.2.1" class="anchored" data-anchor-id="lista-de-operadores-aritméticos"><span class="header-section-number">6.2.1</span> Lista de operadores aritméticos</h3>
+<p>Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -463,9 +464,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ejemplo-práctico-1" class="level3" data-number="6.2.2">
-<h3 data-number="6.2.2" class="anchored" data-anchor-id="ejemplo-práctico-1"><span class="header-section-number">6.2.2</span> Ejemplo práctico</h3>
+<section id="ejemplo-práctico-1" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="ejemplo-práctico-1"><span class="header-section-number">6.3.1</span> Ejemplo práctico</h3>
 <p>En este ejemplo, se observa cómo los operadores aritméticos pueden ser utilizados tanto para cálculos simples como para operaciones más específicas, como obtener el cociente y el residuo de una división. Estas operaciones son útiles en contextos como la creación de nuevas variables derivadas o el análisis de datos numéricos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico del uso de operadores aritméticos</span></span>
@@ -482,11 +482,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="operadores-lógicos" class="level2" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">6.3</span> Operadores lógicos</h2>
+<section id="operadores-lógicos" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">6.4</span> Operadores lógicos</h2>
 <p>Los operadores lógicos permiten realizar comparaciones y evaluaciones condicionales. Son esenciales para la toma de decisiones en el código, como filtrar datos o establecer reglas condicionales. Estos operadores trabajan con valores lógicos (<code>TRUE</code> o <code>FALSE</code>) y se utilizan para evaluar condiciones.</p>
-<section id="lista-de-operadores-lógicos" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="lista-de-operadores-lógicos"><span class="header-section-number">6.3.1</span> Lista de operadores lógicos</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 18%">
@@ -559,9 +557,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ejemplo-práctico-2" class="level3" data-number="6.3.2">
-<h3 data-number="6.3.2" class="anchored" data-anchor-id="ejemplo-práctico-2"><span class="header-section-number">6.3.2</span> Ejemplo práctico</h3>
+<section id="ejemplo-práctico-2" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="ejemplo-práctico-2"><span class="header-section-number">6.4.1</span> Ejemplo práctico</h3>
+<p>Los operadores lógicos son especialmente útiles en tareas como la selección de datos, la creación de condiciones en bucles y la evaluación de reglas en análisis estadísticos (R Core Team, 2023).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo práctico del uso de operadores lógicos</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparaciones simples</span></span>
@@ -582,11 +580,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>En este ejemplo, se observa cómo los operadores lógicos pueden ser utilizados para evaluar condiciones simples y compuestas. Por ejemplo, se calcula el índice de masa corporal (IMC) y se evalúa si el valor corresponde a un rango de peso normal o sobrepeso.</p>
 </section>
 </section>
-<section id="operadores-de-manipulación-de-datos" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="operadores-de-manipulación-de-datos"><span class="header-section-number">6.4</span> Operadores de Manipulación de Datos</h2>
+<section id="operadores-de-manipulación-de-datos" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="operadores-de-manipulación-de-datos"><span class="header-section-number">6.5</span> Operadores de Manipulación de Datos</h2>
 <p>Los operadores de manipulación de datos permiten acceder, seleccionar y modificar elementos dentro de estructuras de datos como vectores, listas o data frames. Estos operadores son esenciales para trabajar con datos organizados y realizar análisis estadísticos.</p>
-<section id="principales-operadores-de-manipulación-de-datos" class="level3" data-number="6.4.1">
-<h3 data-number="6.4.1" class="anchored" data-anchor-id="principales-operadores-de-manipulación-de-datos"><span class="header-section-number">6.4.1</span> Principales operadores de manipulación de datos</h3>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 25%">
@@ -629,9 +625,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-</section>
-<section id="ejemplo-práctico-3" class="level3" data-number="6.4.2">
-<h3 data-number="6.4.2" class="anchored" data-anchor-id="ejemplo-práctico-3"><span class="header-section-number">6.4.2</span> Ejemplo práctico</h3>
+<section id="ejemplo-práctico-3" class="level3" data-number="6.5.1">
+<h3 data-number="6.5.1" class="anchored" data-anchor-id="ejemplo-práctico-3"><span class="header-section-number">6.5.1</span> Ejemplo práctico</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un vector</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
@@ -795,7 +790,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       return localAlternateSentinel;
     }
   }
-  const darkModeDefault = true;
+  const darkModeDefault = false;
   let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
   // Dark / light mode switch
   window.quartoToggleColorScheme = () => {

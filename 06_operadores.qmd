@@ -1,11 +1,13 @@
 # Operadores en R
 
-En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, como destornilladores o martillos, que se combinan para construir soluciones más complejas. Los operadores en R se utilizan para realizar operaciones matemáticas, evaluar condiciones lógicas, manipular datos y realizar asignaciones. Su correcta comprensión es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación.
+En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones, asignaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, que se combinan para construir soluciones más complejas. Comprender su funcionamiento es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación (R Core Team, 2023).
 
-En R, los operadores se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje:
+Los operadores en R se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje, junto con ejemplos prácticos para ilustrar su uso.
+
+## **Tipos de operadores en R**
 
 | **Tipo de Operador** | **Ejemplo** | **Descripción** |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | **Aritméticos** | `+`, `-`, `*`, `/` | Realizan operaciones matemáticas básicas como suma, resta, multiplicación, etc. |
 | **Lógicos** | `>`, `<`, `==`, `!=` | Comparan valores y devuelven un resultado lógico (`TRUE` o `FALSE`). |
 | **Asignación** | `<-`, `=` | Asignan valores a objetos. |
@@ -13,7 +15,7 @@ En R, los operadores se clasifican en diferentes categorías según su función.
 
 ## Operadores de Asignación
 
-Los operadores de asignación se utilizan para crear objetos y almacenar valores en ellos. En R, los operadores más comunes son `<-` y `=`. Aunque ambos cumplen la misma función, el uso de `<-` es el estándar recomendado en la comunidad de R, ya que evita conflictos con otros operadores lógicos.
+Los operadores de asignación se utilizan para crear objetos y almacenar valores en ellos. En R, los operadores más comunes son `<-` y `=`. Aunque ambos cumplen la misma función, el uso de `<-` es el estándar recomendado en la comunidad de R, ya que evita conflictos con otros operadores lógicos (Ihaka & Gentleman, 1996).
 
 ### Ejemplo práctico
 
@@ -32,7 +34,7 @@ suma <- x + y    # Resultado: 30
 
 Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos.
 
-### Lista de operadores aritméticos
+Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos.
 
 | **Operador** | **Acción**       | **Ejemplo** | **Resultado** |
 |--------------|------------------|-------------|---------------|
@@ -66,8 +68,6 @@ residuo <- 17 %% 5             # Resultado: 2
 
 Los operadores lógicos permiten realizar comparaciones y evaluaciones condicionales. Son esenciales para la toma de decisiones en el código, como filtrar datos o establecer reglas condicionales. Estos operadores trabajan con valores lógicos (`TRUE` o `FALSE`) y se utilizan para evaluar condiciones.
 
-### Lista de operadores lógicos
-
 | **Operador** | **Acción**        | **Ejemplo**              | **Resultado** |
 |--------------|-------------------|--------------------------|---------------|
 | `>`          | Mayor que         | `5 > 3`                  | `TRUE`        |
@@ -81,6 +81,8 @@ Los operadores lógicos permiten realizar comparaciones y evaluaciones condicion
 | `!`          | Negación lógica   | `!(5 > 3)`               | `FALSE`       |
 
 ### Ejemplo práctico
+
+Los operadores lógicos son especialmente útiles en tareas como la selección de datos, la creación de condiciones en bucles y la evaluación de reglas en análisis estadísticos (R Core Team, 2023).
 
 ```{r}
 # Ejemplo práctico del uso de operadores lógicos
@@ -106,10 +108,8 @@ En este ejemplo, se observa cómo los operadores lógicos pueden ser utilizados 
 
 Los operadores de manipulación de datos permiten acceder, seleccionar y modificar elementos dentro de estructuras de datos como vectores, listas o data frames. Estos operadores son esenciales para trabajar con datos organizados y realizar análisis estadísticos.
 
-### Principales operadores de manipulación de datos
-
 | **Operador** | **Acción** | **Ejemplo** | **Resultado** |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | `[]` | Acceso a elementos por posición | `vector[1]` | Primer elemento del vector |
 | `[ , ]` | Acceso a filas y columnas en un data frame | `data[1, 2]` | Elemento en la fila 1, columna 2 |
 | `$` | Acceso a una columna específica en un data frame | `data$columna` | Columna seleccionada |

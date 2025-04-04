@@ -42,3 +42,40 @@ pre {
 code, pre {
   font-family: "Fira Code", "Courier New", monospace;
 }
+
+/* Estilo general para tablas */
+table {
+  border-collapse: collapse; /* Bordes colapsados */
+  width: 100%; /* Ancho completo */
+  margin: 20px 0; /* Espaciado superior e inferior */
+  font-size: 1em; /* Tamaño de fuente */
+  font-family: Arial, sans-serif; /* Fuente general */
+  color: var(--quarto-fg); /* Color del texto según el tema */
+  background-color: var(--quarto-bg); /* Fondo de la tabla según el tema */
+  border: 1px solid var(--quarto-border-color); /* Bordes según el tema */
+}
+
+/* Bordes de las celdas */
+table th, table td {
+  border: 1px solid var(--quarto-border-color); /* Bordes según el tema */
+  padding: 8px; /* Espaciado interno */
+  text-align: left; /* Alineación del texto */
+}
+
+/* Encabezados de tabla */
+table th {
+  background-color: var(--quarto-table-header-bg); /* Fondo del encabezado según el tema */
+  color: var(--quarto-table-header-fg); /* Color del texto del encabezado según el tema */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* Código dentro de tablas */
+table td code, table th code {
+  background-color: var(--quarto-code-bg); /* Fondo del código según el tema */
+  color: #3498db; /* Color del texto del código según el tema */
+  padding: 2px 4px; /* Espaciado interno */
+  border-radius: 4px; /* Bordes redondeados */
+  font-size: 0.9em; /* Tamaño de fuente */
+  font-family: "Fira Code", monospace; /* Fuente monoespaciada */
+  border: 1px solid var(--quarto-border-color); /* Borde sutil */
+}
