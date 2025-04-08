@@ -82,11 +82,7 @@ datos <- read_excel("esporofitos.xlsx")
 head(datos)
 ```
 
-**Explicación**:
-
-1.  **`read_excel("esporofitos.xlsx")`**: Carga el archivo de Excel que contiene los datos sobre esporofitos.
-
-2.  **`head(datos)`**: Muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.
+Este código carga el archivo de Excel que contiene los datos sobre esporofitos y muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.
 
 ### Visualización de Datos
 
@@ -94,12 +90,10 @@ Se elabora un gráfico de dispersión para observar la relación entre las varia
 
 ```{r}
 # Elaboración de un gráfico de dispersión entre altura y cantidad
-plot(datos$cantidad_de_esporofitos, datos$altura_mm)
+plot( datos$altura_mm, datos$cantidad_de_esporofitos)
 ```
 
-**Explicación**:
-
-Este gráfico permite visualizar la relación inversamente proporcional entre la cantidad de esporofitos y la altura en milímetros. Una relación lineal puede ser observada visualmente.
+Este gráfico permite visualizar la relación entre la cantidad de esporofitos y la altura en milímetros, facilitando la identificación de patrones. Como se puede apreciar en el gráfico anterior hay una relación inversamente proporcional entre la altura de los esporofitos y la cantidad de esporofitos.
 
 ### Ajuste del Modelo de Regresión
 
@@ -107,11 +101,13 @@ Se ajusta el modelo de regresión lineal simple utilizando la función `lm()`.
 
 ```{r}
 # Ajuste del modelo
-regsimple <- lm(datos$cantidad_de_esporofitos ~ datos$altura_mm)
+regsimple <- lm(datos$altura_mm ~ datos $cantidad_de_esporofitos)
 summary(regsimple)
 ```
 
-**Explicación**:
+El resumen del modelo ajustado proporciona información sobre los coeficientes, errores estándar y estadísticas de ajuste, permitiendo evaluar la calidad del modelo.
+
+**Explicación del código**:
 
 1.  **`lm()`**: Esta función ajusta un modelo de regresión lineal donde la cantidad de esporofitos es la variable dependiente y la altura es la variable independiente.
 
@@ -128,11 +124,11 @@ plot(regsimple, which=1:2)
 par(mfrow=c(1,1)) # Devuelve a su estado normal el área de gráficos
 ```
 
-**Explicación**:
+Estos gráficos ayudan a verificar la linealidad y la homocedasticidad, asegurando que los supuestos del modelo se cumplan.
 
-1.  **`par(mfrow=c(1,2))`**: Configura el área de gráficos para mostrar dos gráficos en una fila.
+**Explicación del código**:
 
-2.  **`plot(regsimple, which=1:2)`**: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.
+**`plot(regsimple, which=1:2)`**: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.
 
 ### Prueba de Normalidad de los Residuos
 
@@ -145,7 +141,7 @@ shapiro.test(residuals(regsimple))
 
 **Explicación**:
 
-**`shapiro.test(residuals(regsimple))`**: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo (generalmente \< 0.05) indica que los residuos no son normales.
+**`shapiro.test(residuals(regsimple))`**: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo ( \< 0.05) indica que los residuos no son normales. Para el ejemplo en cuestión el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indica que los residuos no son norales.
 
 ### Prueba de Homocedasticidad de la varianza
 
@@ -158,4 +154,4 @@ ncvTest(regsimple)
 
 **Explicación**:
 
-**`ncvTest(regsimple)`**: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo sugiere que hay heterocedasticidad, lo que puede invalidar el modelo.
+**`ncvTest(regsimple)`**: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo (\<0.05) sugiere que hay heterocedasticidad, lo que puede invalidar el modelo. Para este ejemplo el valor de p es 0.78166 por lo que no hay evidencia estadística suficiente para indicar que la varianza de los residuos no es contante.

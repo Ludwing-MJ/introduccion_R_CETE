@@ -433,18 +433,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6      6                      40      21.7</code></pre>
 </div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<ol type="1">
-<li><p><strong><code>read_excel("esporofitos.xlsx")</code></strong>: Carga el archivo de Excel que contiene los datos sobre esporofitos.</p></li>
-<li><p><strong><code>head(datos)</code></strong>: Muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.</p></li>
-</ol>
+<p>Este código carga el archivo de Excel que contiene los datos sobre esporofitos y muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.</p>
 </section>
 <section id="visualización-de-datos" class="level3" data-number="14.5.3">
 <h3 data-number="14.5.3" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">14.5.3</span> Visualización de Datos</h3>
 <p>Se elabora un gráfico de dispersión para observar la relación entre las variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaboración de un gráfico de dispersión entre altura y cantidad</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(datos<span class="sc">$</span>cantidad_de_esporofitos, datos<span class="sc">$</span>altura_mm)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( datos<span class="sc">$</span>altura_mm, datos<span class="sc">$</span>cantidad_de_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -453,38 +449,38 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<p>Este gráfico permite visualizar la relación inversamente proporcional entre la cantidad de esporofitos y la altura en milímetros. Una relación lineal puede ser observada visualmente.</p>
+<p>Este gráfico permite visualizar la relación entre la cantidad de esporofitos y la altura en milímetros, facilitando la identificación de patrones. Como se puede apreciar en el gráfico anterior hay una relación inversamente proporcional entre la altura de los esporofitos y la cantidad de esporofitos.</p>
 </section>
 <section id="ajuste-del-modelo-de-regresión" class="level3" data-number="14.5.4">
 <h3 data-number="14.5.4" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">14.5.4</span> Ajuste del Modelo de Regresión</h3>
 <p>Se ajusta el modelo de regresión lineal simple utilizando la función <code>lm()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>regsimple <span class="ot">&lt;-</span> <span class="fu">lm</span>(datos<span class="sc">$</span>cantidad_de_esporofitos <span class="sc">~</span> datos<span class="sc">$</span>altura_mm)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>regsimple <span class="ot">&lt;-</span> <span class="fu">lm</span>(datos<span class="sc">$</span>altura_mm <span class="sc">~</span> datos <span class="sc">$</span>cantidad_de_esporofitos)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regsimple)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
-lm(formula = datos$cantidad_de_esporofitos ~ datos$altura_mm)
+lm(formula = datos$altura_mm ~ datos$cantidad_de_esporofitos)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--20.3681  -3.7261  -0.4503   6.4108  15.8646 
+-0.78523 -0.15056  0.01664  0.22403  0.62850 
 
 Coefficients:
-                Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)     564.8555     9.4053   60.06   &lt;2e-16 ***
-datos$altura_mm -24.5891     0.5409  -45.46   &lt;2e-16 ***
+                                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)                   22.8933399  0.1446248  158.29   &lt;2e-16 ***
+datos$cantidad_de_esporofitos -0.0401248  0.0008826  -45.46   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 9.29 on 28 degrees of freedom
+Residual standard error: 0.3753 on 28 degrees of freedom
 Multiple R-squared:  0.9866,    Adjusted R-squared:  0.9862 
 F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 </div>
-<p><strong>Explicación</strong>:</p>
+<p>El resumen del modelo ajustado proporciona información sobre los coeficientes, errores estándar y estadísticas de ajuste, permitiendo evaluar la calidad del modelo.</p>
+<p><strong>Explicación del código</strong>:</p>
 <ol type="1">
 <li><p><strong><code>lm()</code></strong>: Esta función ajusta un modelo de regresión lineal donde la cantidad de esporofitos es la variable dependiente y la altura es la variable independiente.</p></li>
 <li><p><strong><code>summary(regsimple)</code></strong>: Proporciona un resumen del modelo ajustado, incluyendo coeficientes, errores estándar y estadísticas de ajuste.</p></li>
@@ -506,11 +502,9 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># Devuelve a su estado normal el área de gráficos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<ol type="1">
-<li><p><strong><code>par(mfrow=c(1,2))</code></strong>: Configura el área de gráficos para mostrar dos gráficos en una fila.</p></li>
-<li><p><strong><code>plot(regsimple, which=1:2)</code></strong>: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.</p></li>
-</ol>
+<p>Estos gráficos ayudan a verificar la linealidad y la homocedasticidad, asegurando que los supuestos del modelo se cumplan.</p>
+<p><strong>Explicación del código</strong>:</p>
+<p><strong><code>plot(regsimple, which=1:2)</code></strong>: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.</p>
 </section>
 <section id="prueba-de-normalidad-de-los-residuos" class="level3" data-number="14.5.6">
 <h3 data-number="14.5.6" class="anchored" data-anchor-id="prueba-de-normalidad-de-los-residuos"><span class="header-section-number">14.5.6</span> Prueba de Normalidad de los Residuos</h3>
@@ -523,11 +517,11 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
     Shapiro-Wilk normality test
 
 data:  residuals(regsimple)
-W = 0.96712, p-value = 0.4636</code></pre>
+W = 0.95651, p-value = 0.2516</code></pre>
 </div>
 </div>
 <p><strong>Explicación</strong>:</p>
-<p><strong><code>shapiro.test(residuals(regsimple))</code></strong>: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo (generalmente &lt; 0.05) indica que los residuos no son normales.</p>
+<p><strong><code>shapiro.test(residuals(regsimple))</code></strong>: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo ( &lt; 0.05) indica que los residuos no son normales. Para el ejemplo en cuestión el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indica que los residuos no son norales.</p>
 </section>
 <section id="prueba-de-homocedasticidad-de-la-varianza" class="level3" data-number="14.5.7">
 <h3 data-number="14.5.7" class="anchored" data-anchor-id="prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">14.5.7</span> Prueba de Homocedasticidad de la varianza</h3>
@@ -538,11 +532,11 @@ W = 0.96712, p-value = 0.4636</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>Non-constant Variance Score Test 
 Variance formula: ~ fitted.values 
-Chisquare = 0.2273293, Df = 1, p = 0.63351</code></pre>
+Chisquare = 0.07681442, Df = 1, p = 0.78166</code></pre>
 </div>
 </div>
 <p><strong>Explicación</strong>:</p>
-<p><strong><code>ncvTest(regsimple)</code></strong>: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo sugiere que hay heterocedasticidad, lo que puede invalidar el modelo.</p>
+<p><strong><code>ncvTest(regsimple)</code></strong>: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo (&lt;0.05) sugiere que hay heterocedasticidad, lo que puede invalidar el modelo. Para este ejemplo el valor de p es 0.78166 por lo que no hay evidencia estadística suficiente para indicar que la varianza de los residuos no es contante.</p>
 
 
 </section>
