@@ -1,0 +1,161 @@
+# Regresión lineal simple usando R
+
+La regresión lineal simple es una técnica estadística utilizada para modelar la relación entre una variable dependiente y una variable independiente. Su propósito principal es predecir el valor de la variable dependiente a partir de la variable independiente, lo que permite entender cómo varía una en función de la otra. Esta técnica es fundamental en el análisis estadístico, ya que proporciona una base para la inferencia y la toma de decisiones en diversos campos (Montgomery, Peck, & Vining, 2012).
+
+Por ejemplo, en economía, la regresión lineal simple puede utilizarse para predecir el consumo en función del ingreso. En biología, se aplica para analizar la relación entre la dosis de un fármaco y la respuesta de un organismo. En ciencias sociales, se utiliza para estudiar cómo factores como la educación influyen en los ingresos de una población (Field, 2013).
+
+## Conceptos fundamentales
+
+Las **variables dependientes** son aquellas que se desean predecir o explicar, mientras que las **variables independientes** son las que se utilizan para realizar dicha predicción. La diferencia radica en que la variable dependiente es el resultado que se estudia, mientras que la variable independiente es el factor que se manipula o se observa (Cohen, Cohen, West, & Aiken, 2003).
+
+La **relación lineal** implica que existe una conexión directa entre las variables, de tal manera que un cambio en la variable independiente produce un cambio proporcional en la variable dependiente.
+
+## Modelo de Regresión Lineal Simple
+
+El modelo de regresión lineal simple se expresa mediante la siguiente ecuación:
+
+![](images/clipboard-1828248141.png){fig-align="center" width="400"}
+
+En esta ecuación, ***Y*** representa la variable dependiente, ***X*** es la variable independiente, ***ß0*** es la intersección (el valor de ***Y***) cuando ***X***) es cero) y ***ß1*** es la pendiente (que indica el cambio en ***Y***) por cada unidad de cambio en ***X***. El término epilson (***ε***) representa el error del modelo, que captura la variabilidad en ***Y*** que no se explica por ***X*** (Kutner, Nachtsheim, Neter, & Li, 2005).
+
+## Supuestos de la Regresión Lineal
+
+Para que el modelo de regresión lineal sea válido, es fundamental que se cumplan ciertos supuestos:
+
+1.  **Linealidad**: La relación entre las variables debe ser lineal.
+
+2.  **Independencia**: Las observaciones deben ser independientes entre sí.
+
+3.  **Homoscedasticidad**: La varianza de los errores debe ser constante a lo largo de todos los niveles de ***X.***
+
+4.  **Normalidad**: Los errores deben seguir una distribución normal (Tabachnick & Fidell, 2013).
+
+## Evaluación del Modelo
+
+La calidad del modelo de regresión lineal simple se evalúa a través de varias métricas:
+
+1.  **R-cuadrado**: Indica la proporción de la variabilidad en la variable dependiente que es explicada por la variable independiente. Un valor cercano a 1 sugiere un buen ajuste del modelo.
+
+2.  **Análisis de residuos**: Es crucial analizar los residuos para verificar los supuestos del modelo, asegurando que no haya patrones sistemáticos que indiquen un mal ajuste (Belsley, Kuh, & Welsch, 1980).
+
+## Ejemplo Práctico
+
+Este ejemplo práctico ilustra cómo realizar un análisis de regresión lineal simple utilizando un conjunto de datos sobre esporofitos. Los datos provienen de un estudio realizado en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala. En este estudio, se llevó a cabo la reproducción del helecho conocido como calahuala (*Phlebodium pseudoaureum* (Cav.) Lellinger).
+
+Se midió la altura de cada esporofito y se cuantificó la cantidad de esporofitos germinados en 30 frascos que contenían medio de cultivo Murashige y Skoog. Los resultados obtenidos se presentan en el [siguiente archivo](https://docs.google.com/spreadsheets/d/1HTODUlwTvRYYEiTsP7rQRUvlOgll4n6R/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true). Este análisis se basa en la investigación de Rosales Castillo (2005), quien realizó una micropropagación de *Calahuala* utilizando tres tipos de explantes en diferentes medios de cultivo in vitro.
+
+El objetivo de este análisis es evaluar la relación entre la altura de los esporofitos y la cantidad de esporofitos germinados, utilizando la regresión lineal simple como herramienta estadística. A través de este proceso, se busca no solo ajustar un modelo que explique esta relación, sino también verificar los supuestos que sustentan la validez del modelo.
+
+### Instalación y Carga de Paquetes
+
+Para comenzar, es necesario instalar y cargar los paquetes requeridos. Estos paquetes proporcionan funciones útiles para la manipulación de datos y la visualización.
+
+```{r message=FALSE, warning=FALSE}
+# Instalación y carga de paquetes  
+# Incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+
+# Se utiliza para evaluar el supuesto de homocedasticidad
+if (!require("car")) install.packages("car")
+
+# Se utiliza para importar archivos de Excel
+if (!require("readxl")) install.packages("readxl")
+```
+
+**Explicación**:
+
+1.  **`tidyverse`**: Este paquete incluye varias herramientas para la manipulación y visualización de datos, como `ggplot2`, `dplyr` y `tidyr`.
+
+2.  **`car`**: Proporciona funciones para realizar pruebas de hipótesis y diagnósticos de modelos, incluyendo la evaluación de homocedasticidad.
+
+3.  **`readxl`**: Permite importar datos desde archivos de Excel, facilitando la carga de conjuntos de datos.
+
+### Importación de Datos
+
+A continuación, se importan los datos desde un archivo Excel.
+
+```{r}
+# Importar un archivo csv
+datos <- read_excel("esporofitos.xlsx")
+
+# Visualizar los primeros registros del data frame
+head(datos)
+```
+
+**Explicación**:
+
+1.  **`read_excel("esporofitos.xlsx")`**: Carga el archivo de Excel que contiene los datos sobre esporofitos.
+
+2.  **`head(datos)`**: Muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.
+
+### Visualización de Datos
+
+Se elabora un gráfico de dispersión para observar la relación entre las variables.
+
+```{r}
+# Elaboración de un gráfico de dispersión entre altura y cantidad
+plot(datos$cantidad_de_esporofitos, datos$altura_mm)
+```
+
+**Explicación**:
+
+Este gráfico permite visualizar la relación inversamente proporcional entre la cantidad de esporofitos y la altura en milímetros. Una relación lineal puede ser observada visualmente.
+
+### Ajuste del Modelo de Regresión
+
+Se ajusta el modelo de regresión lineal simple utilizando la función `lm()`.
+
+```{r}
+# Ajuste del modelo
+regsimple <- lm(datos$cantidad_de_esporofitos ~ datos$altura_mm)
+summary(regsimple)
+```
+
+**Explicación**:
+
+1.  **`lm()`**: Esta función ajusta un modelo de regresión lineal donde la cantidad de esporofitos es la variable dependiente y la altura es la variable independiente.
+
+2.  **`summary(regsimple)`**: Proporciona un resumen del modelo ajustado, incluyendo coeficientes, errores estándar y estadísticas de ajuste.
+
+### Gráficos de Diagnóstico para evaluar los supuestos del modelo
+
+Se generan gráficos de diagnóstico para evaluar los supuestos del modelo.
+
+```{r}
+# Gráficos de diagnóstico de los supuestos
+par(mfrow=c(1,2)) # Crea una matriz de dos gráficos
+plot(regsimple, which=1:2)
+par(mfrow=c(1,1)) # Devuelve a su estado normal el área de gráficos
+```
+
+**Explicación**:
+
+1.  **`par(mfrow=c(1,2))`**: Configura el área de gráficos para mostrar dos gráficos en una fila.
+
+2.  **`plot(regsimple, which=1:2)`**: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.
+
+### Prueba de Normalidad de los Residuos
+
+Se realiza la prueba de Shapiro-Wilk para evaluar la normalidad de los residuos.
+
+```{r}
+# Realizar la prueba de Shapiro-Wilk en los residuos
+shapiro.test(residuals(regsimple))
+```
+
+**Explicación**:
+
+**`shapiro.test(residuals(regsimple))`**: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo (generalmente \< 0.05) indica que los residuos no son normales.
+
+### Prueba de Homocedasticidad de la varianza
+
+Finalmente, se evalúa el supuesto de homocedasticidad utilizando la prueba de heterocedasticidad.
+
+```{r}
+# Realizar prueba para el supuesto de homocedasticidad
+ncvTest(regsimple)
+```
+
+**Explicación**:
+
+**`ncvTest(regsimple)`**: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo sugiere que hay heterocedasticidad, lo que puede invalidar el modelo.

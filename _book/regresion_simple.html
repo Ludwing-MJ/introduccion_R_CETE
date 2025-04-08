@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="P. Agr. Ludwing Isaí Marroquín Jiménez">
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>14&nbsp; Regresión lineal simple usando R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_cbasicos.html" rel="next">
+<link href="./estadistica_descriptiva.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +119,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regresion_simple.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -187,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
@@ -299,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link">
+  <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
   </div>
 </li>
@@ -313,12 +312,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
+  <li><a href="#conceptos-fundamentales" id="toc-conceptos-fundamentales" class="nav-link active" data-scroll-target="#conceptos-fundamentales"><span class="header-section-number">14.1</span> Conceptos fundamentales</a></li>
+  <li><a href="#modelo-de-regresión-lineal-simple" id="toc-modelo-de-regresión-lineal-simple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-simple"><span class="header-section-number">14.2</span> Modelo de Regresión Lineal Simple</a></li>
+  <li><a href="#supuestos-de-la-regresión-lineal" id="toc-supuestos-de-la-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-de-la-regresión-lineal"><span class="header-section-number">14.3</span> Supuestos de la Regresión Lineal</a></li>
+  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo"><span class="header-section-number">14.4</span> Evaluación del Modelo</a></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">14.5</span> Ejemplo Práctico</a>
   <ul class="collapse">
-  <li><a href="#propósito-del-manual" id="toc-propósito-del-manual" class="nav-link" data-scroll-target="#propósito-del-manual">Propósito del manual</a></li>
-  <li><a href="#organización-del-manual" id="toc-organización-del-manual" class="nav-link" data-scroll-target="#organización-del-manual">Organización del manual</a></li>
-  <li><a href="#pre-requisitos" id="toc-pre-requisitos" class="nav-link" data-scroll-target="#pre-requisitos">Pre requisitos</a></li>
-  <li><a href="#colofón" id="toc-colofón" class="nav-link" data-scroll-target="#colofón">Colofón</a></li>
+  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">14.5.1</span> Instalación y Carga de Paquetes</a></li>
+  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos"><span class="header-section-number">14.5.2</span> Importación de Datos</a></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">14.5.3</span> Visualización de Datos</a></li>
+  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">14.5.4</span> Ajuste del Modelo de Regresión</a></li>
+  <li><a href="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" id="toc-gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="nav-link" data-scroll-target="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">14.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</a></li>
+  <li><a href="#prueba-de-normalidad-de-los-residuos" id="toc-prueba-de-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#prueba-de-normalidad-de-los-residuos"><span class="header-section-number">14.5.6</span> Prueba de Normalidad de los Residuos</a></li>
+  <li><a href="#prueba-de-homocedasticidad-de-la-varianza" id="toc-prueba-de-homocedasticidad-de-la-varianza" class="nav-link" data-scroll-target="#prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">14.5.7</span> Prueba de Homocedasticidad de la varianza</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -328,31 +334,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>P. Agr. Ludwing Isaí Marroquín Jiménez </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">8 abr 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -362,113 +351,198 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>La estadística clásica es una disciplina fundamental en la investigación científica y en la toma de decisiones basada en datos. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del manual, se abordan conceptos básicos acompañados de ejemplos prácticos que facilitan su comprensión y aplicación en diversos contextos. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
-<section id="propósito-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-del-manual">Propósito del manual</h2>
-<p>El presente manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, desde su instalación y configuración hasta la aplicación de técnicas estadísticas clásicas. Se abordan temas como la manipulación de datos, la creación de gráficos y la realización de análisis estadísticos básicos. Además, se incluyen ejemplos prácticos que permiten aplicar los conceptos aprendidos en contextos reales.</p>
-<p>R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica (Ihaka &amp; Gentleman, 1996; R Core Team, 2023). A lo largo de este texto, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en programación estadística, con un enfoque en la claridad, organización y reproducibilidad.</p>
+<p>La regresión lineal simple es una técnica estadística utilizada para modelar la relación entre una variable dependiente y una variable independiente. Su propósito principal es predecir el valor de la variable dependiente a partir de la variable independiente, lo que permite entender cómo varía una en función de la otra. Esta técnica es fundamental en el análisis estadístico, ya que proporciona una base para la inferencia y la toma de decisiones en diversos campos (Montgomery, Peck, &amp; Vining, 2012).</p>
+<p>Por ejemplo, en economía, la regresión lineal simple puede utilizarse para predecir el consumo en función del ingreso. En biología, se aplica para analizar la relación entre la dosis de un fármaco y la respuesta de un organismo. En ciencias sociales, se utiliza para estudiar cómo factores como la educación influyen en los ingresos de una población (Field, 2013).</p>
+<section id="conceptos-fundamentales" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="conceptos-fundamentales"><span class="header-section-number">14.1</span> Conceptos fundamentales</h2>
+<p>Las <strong>variables dependientes</strong> son aquellas que se desean predecir o explicar, mientras que las <strong>variables independientes</strong> son las que se utilizan para realizar dicha predicción. La diferencia radica en que la variable dependiente es el resultado que se estudia, mientras que la variable independiente es el factor que se manipula o se observa (Cohen, Cohen, West, &amp; Aiken, 2003).</p>
+<p>La <strong>relación lineal</strong> implica que existe una conexión directa entre las variables, de tal manera que un cambio en la variable independiente produce un cambio proporcional en la variable dependiente.</p>
 </section>
-<section id="organización-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="organización-del-manual">Organización del manual</h2>
-<p>El contenido del manual está estructurado de manera progresiva, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas estadísticas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
-<p>El manual se organiza en los siguientes capítulos principales:</p>
+<section id="modelo-de-regresión-lineal-simple" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="modelo-de-regresión-lineal-simple"><span class="header-section-number">14.2</span> Modelo de Regresión Lineal Simple</h2>
+<p>El modelo de regresión lineal simple se expresa mediante la siguiente ecuación:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/clipboard-1828248141.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+<p>En esta ecuación, <strong><em>Y</em></strong> representa la variable dependiente, <strong><em>X</em></strong> es la variable independiente, <strong><em>ß0</em></strong> es la intersección (el valor de <strong><em>Y</em></strong>) cuando <strong><em>X</em></strong>) es cero) y <strong><em>ß1</em></strong> es la pendiente (que indica el cambio en <strong><em>Y</em></strong>) por cada unidad de cambio en <strong><em>X</em></strong>. El término epilson (<strong><em>ε</em></strong>) representa el error del modelo, que captura la variabilidad en <strong><em>Y</em></strong> que no se explica por <strong><em>X</em></strong> (Kutner, Nachtsheim, Neter, &amp; Li, 2005).</p>
+</section>
+<section id="supuestos-de-la-regresión-lineal" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="supuestos-de-la-regresión-lineal"><span class="header-section-number">14.3</span> Supuestos de la Regresión Lineal</h2>
+<p>Para que el modelo de regresión lineal sea válido, es fundamental que se cumplan ciertos supuestos:</p>
 <ol type="1">
-<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
-<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
-<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
-<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
-<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
-<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
-<li><p><strong>Ejemplos de análisis estadístico con R</strong>: Se desarrollan de manera detallada ejemplos del uso de R para desarrollar análisis estadístico de datos.</p></li>
+<li><p><strong>Linealidad</strong>: La relación entre las variables debe ser lineal.</p></li>
+<li><p><strong>Independencia</strong>: Las observaciones deben ser independientes entre sí.</p></li>
+<li><p><strong>Homoscedasticidad</strong>: La varianza de los errores debe ser constante a lo largo de todos los niveles de <strong><em>X.</em></strong></p></li>
+<li><p><strong>Normalidad</strong>: Los errores deben seguir una distribución normal (Tabachnick &amp; Fidell, 2013).</p></li>
 </ol>
-<p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
 </section>
-<section id="pre-requisitos" class="level2">
-<h2 class="anchored" data-anchor-id="pre-requisitos">Pre requisitos</h2>
-<p>Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:</p>
+<section id="evaluación-del-modelo" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="evaluación-del-modelo"><span class="header-section-number">14.4</span> Evaluación del Modelo</h2>
+<p>La calidad del modelo de regresión lineal simple se evalúa a través de varias métricas:</p>
 <ol type="1">
-<li><p><strong>Interés por aprender</strong>: La curiosidad y disposición para explorar un nuevo lenguaje de programación.</p></li>
-<li><p><strong>Acceso a una computadora</strong>: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.</p></li>
-<li><p><strong>Paciencia y práctica</strong>: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.</p></li>
+<li><p><strong>R-cuadrado</strong>: Indica la proporción de la variabilidad en la variable dependiente que es explicada por la variable independiente. Un valor cercano a 1 sugiere un buen ajuste del modelo.</p></li>
+<li><p><strong>Análisis de residuos</strong>: Es crucial analizar los residuos para verificar los supuestos del modelo, asegurando que no haya patrones sistemáticos que indiquen un mal ajuste (Belsley, Kuh, &amp; Welsch, 1980).</p></li>
 </ol>
-<p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
 </section>
-<section id="colofón" class="level2">
-<h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
-<p>La versión en línea de este manual se encuentra disponible en <a href="https://introduccion-r-cete.vercel.app/" class="uri">https://introduccion-r-cete.vercel.app/</a>. La fuente del manual en español está alojada en el repositorio de GitHub: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/"><em>Quarto</em></a>, una herramienta diseñada para convertir archivos con extensión <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB.</p>
-<p>Este manual fue construido con:</p>
+<section id="ejemplo-práctico" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">14.5</span> Ejemplo Práctico</h2>
+<p>Este ejemplo práctico ilustra cómo realizar un análisis de regresión lineal simple utilizando un conjunto de datos sobre esporofitos. Los datos provienen de un estudio realizado en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala. En este estudio, se llevó a cabo la reproducción del helecho conocido como calahuala (<em>Phlebodium pseudoaureum</em> (Cav.) Lellinger).</p>
+<p>Se midió la altura de cada esporofito y se cuantificó la cantidad de esporofitos germinados en 30 frascos que contenían medio de cultivo Murashige y Skoog. Los resultados obtenidos se presentan en el <a href="https://docs.google.com/spreadsheets/d/1HTODUlwTvRYYEiTsP7rQRUvlOgll4n6R/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">siguiente archivo</a>. Este análisis se basa en la investigación de Rosales Castillo (2005), quien realizó una micropropagación de <em>Calahuala</em> utilizando tres tipos de explantes en diferentes medios de cultivo in vitro.</p>
+<p>El objetivo de este análisis es evaluar la relación entre la altura de los esporofitos y la cantidad de esporofitos germinados, utilizando la regresión lineal simple como herramienta estadística. A través de este proceso, se busca no solo ajustar un modelo que explique esta relación, sino también verificar los supuestos que sustentan la validez del modelo.</p>
+<section id="instalación-y-carga-de-paquetes" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">14.5.1</span> Instalación y Carga de Paquetes</h3>
+<p>Para comenzar, es necesario instalar y cargar los paquetes requeridos. Estos paquetes proporcionan funciones útiles para la manipulación de datos y la visualización.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
-comando ejecutado '"quarto"
-TMPDIR=C:/Users/Usuario/AppData/Local/Temp/RtmpWAaqYh/file3e3c52231d9 -V' tiene
-el estatus 1</code></pre>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes  </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Incluye ggplot2, dplyr, tidyr</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Se utiliza para evaluar el supuesto de homocedasticidad</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"car"</span>)) <span class="fu">install.packages</span>(<span class="st">"car"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Se utiliza para importar archivos de Excel</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p><strong>Explicación</strong>:</p>
+<ol type="1">
+<li><p><strong><code>tidyverse</code></strong>: Este paquete incluye varias herramientas para la manipulación y visualización de datos, como <code>ggplot2</code>, <code>dplyr</code> y <code>tidyr</code>.</p></li>
+<li><p><strong><code>car</code></strong>: Proporciona funciones para realizar pruebas de hipótesis y diagnósticos de modelos, incluyendo la evaluación de homocedasticidad.</p></li>
+<li><p><strong><code>readxl</code></strong>: Permite importar datos desde archivos de Excel, facilitando la carga de conjuntos de datos.</p></li>
+</ol>
+</section>
+<section id="importación-de-datos" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="importación-de-datos"><span class="header-section-number">14.5.2</span> Importación de Datos</h3>
+<p>A continuación, se importan los datos desde un archivo Excel.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo csv</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"esporofitos.xlsx"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>─ Session info ───────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.4.2 (2024-10-31 ucrt)
- os       Windows 11 x64 (build 26100)
- system   x86_64, mingw32
- ui       RTerm
- language (EN)
- collate  Spanish_Guatemala.utf8
- ctype    Spanish_Guatemala.utf8
- tz       America/Guatemala
- date     2025-04-08
- pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
- quarto   NA @ C:\\Users\\Usuario\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
-
-─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.2)
- cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.2)
- devtools      2.4.5   2022-10-11 [1] CRAN (R 4.4.3)
- digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.2)
- ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.3)
- evaluate      1.0.3   2025-01-10 [1] CRAN (R 4.4.2)
- fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.2)
- fs            1.6.5   2024-10-30 [1] CRAN (R 4.4.2)
- glue          1.8.0   2024-09-30 [1] CRAN (R 4.4.2)
- htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.2)
- htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)
- httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.3)
- jsonlite      1.8.9   2024-09-20 [1] CRAN (R 4.4.2)
- knitr         1.49    2024-11-08 [1] CRAN (R 4.4.2)
- later         1.4.1   2024-11-27 [1] CRAN (R 4.4.3)
- lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.2)
- magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.2)
- memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.2)
- mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)
- miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.3)
- pkgbuild      1.4.6   2025-01-16 [1] CRAN (R 4.4.3)
- pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.3)
- profvis       0.4.0   2024-09-20 [1] CRAN (R 4.4.3)
- promises      1.3.2   2024-11-28 [1] CRAN (R 4.4.3)
- purrr         1.0.4   2025-02-05 [1] CRAN (R 4.4.2)
- R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.2)
- Rcpp          1.0.14  2025-01-12 [1] CRAN (R 4.4.2)
- remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.3)
- rlang         1.1.5   2025-01-17 [1] CRAN (R 4.4.2)
- rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.2)
- rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.2)
- sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.4.3)
- shiny         1.10.0  2024-12-14 [1] CRAN (R 4.4.3)
- urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.3)
- usethis       3.1.0   2024-11-26 [1] CRAN (R 4.4.3)
- vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.2)
- xfun          0.50    2025-01-07 [1] CRAN (R 4.4.2)
- xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.3)
-
- [1] C:/Users/Usuario/AppData/Local/R/win-library/4.4
- [2] C:/Program Files/R/R-4.4.2/library
-
-──────────────────────────────────────────────────────────────────────────────</code></pre>
+<pre><code># A tibble: 6 × 3
+  frasco cantidad_de_esporofitos altura_mm
+   &lt;dbl&gt;                   &lt;dbl&gt;     &lt;dbl&gt;
+1      1                      40      21.4
+2      2                      45      21  
+3      3                      60      20.5
+4      4                      55      20  
+5      5                      58      21  
+6      6                      40      21.7</code></pre>
 </div>
 </div>
+<p><strong>Explicación</strong>:</p>
+<ol type="1">
+<li><p><strong><code>read_excel("esporofitos.xlsx")</code></strong>: Carga el archivo de Excel que contiene los datos sobre esporofitos.</p></li>
+<li><p><strong><code>head(datos)</code></strong>: Muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.</p></li>
+</ol>
+</section>
+<section id="visualización-de-datos" class="level3" data-number="14.5.3">
+<h3 data-number="14.5.3" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">14.5.3</span> Visualización de Datos</h3>
+<p>Se elabora un gráfico de dispersión para observar la relación entre las variables.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaboración de un gráfico de dispersión entre altura y cantidad</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(datos<span class="sc">$</span>cantidad_de_esporofitos, datos<span class="sc">$</span>altura_mm)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Explicación</strong>:</p>
+<p>Este gráfico permite visualizar la relación inversamente proporcional entre la cantidad de esporofitos y la altura en milímetros. Una relación lineal puede ser observada visualmente.</p>
+</section>
+<section id="ajuste-del-modelo-de-regresión" class="level3" data-number="14.5.4">
+<h3 data-number="14.5.4" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">14.5.4</span> Ajuste del Modelo de Regresión</h3>
+<p>Se ajusta el modelo de regresión lineal simple utilizando la función <code>lm()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>regsimple <span class="ot">&lt;-</span> <span class="fu">lm</span>(datos<span class="sc">$</span>cantidad_de_esporofitos <span class="sc">~</span> datos<span class="sc">$</span>altura_mm)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regsimple)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = datos$cantidad_de_esporofitos ~ datos$altura_mm)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.3681  -3.7261  -0.4503   6.4108  15.8646 
+
+Coefficients:
+                Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)     564.8555     9.4053   60.06   &lt;2e-16 ***
+datos$altura_mm -24.5891     0.5409  -45.46   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 9.29 on 28 degrees of freedom
+Multiple R-squared:  0.9866,    Adjusted R-squared:  0.9862 
+F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p><strong>Explicación</strong>:</p>
+<ol type="1">
+<li><p><strong><code>lm()</code></strong>: Esta función ajusta un modelo de regresión lineal donde la cantidad de esporofitos es la variable dependiente y la altura es la variable independiente.</p></li>
+<li><p><strong><code>summary(regsimple)</code></strong>: Proporciona un resumen del modelo ajustado, incluyendo coeficientes, errores estándar y estadísticas de ajuste.</p></li>
+</ol>
+</section>
+<section id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="level3" data-number="14.5.5">
+<h3 data-number="14.5.5" class="anchored" data-anchor-id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">14.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</h3>
+<p>Se generan gráficos de diagnóstico para evaluar los supuestos del modelo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráficos de diagnóstico de los supuestos</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># Crea una matriz de dos gráficos</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regsimple, <span class="at">which=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># Devuelve a su estado normal el área de gráficos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación</strong>:</p>
+<ol type="1">
+<li><p><strong><code>par(mfrow=c(1,2))</code></strong>: Configura el área de gráficos para mostrar dos gráficos en una fila.</p></li>
+<li><p><strong><code>plot(regsimple, which=1:2)</code></strong>: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.</p></li>
+</ol>
+</section>
+<section id="prueba-de-normalidad-de-los-residuos" class="level3" data-number="14.5.6">
+<h3 data-number="14.5.6" class="anchored" data-anchor-id="prueba-de-normalidad-de-los-residuos"><span class="header-section-number">14.5.6</span> Prueba de Normalidad de los Residuos</h3>
+<p>Se realiza la prueba de Shapiro-Wilk para evaluar la normalidad de los residuos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar la prueba de Shapiro-Wilk en los residuos</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(regsimple))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuals(regsimple)
+W = 0.96712, p-value = 0.4636</code></pre>
+</div>
+</div>
+<p><strong>Explicación</strong>:</p>
+<p><strong><code>shapiro.test(residuals(regsimple))</code></strong>: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo (generalmente &lt; 0.05) indica que los residuos no son normales.</p>
+</section>
+<section id="prueba-de-homocedasticidad-de-la-varianza" class="level3" data-number="14.5.7">
+<h3 data-number="14.5.7" class="anchored" data-anchor-id="prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">14.5.7</span> Prueba de Homocedasticidad de la varianza</h3>
+<p>Finalmente, se evalúa el supuesto de homocedasticidad utilizando la prueba de heterocedasticidad.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar prueba para el supuesto de homocedasticidad</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(regsimple)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Non-constant Variance Score Test 
+Variance formula: ~ fitted.values 
+Chisquare = 0.2273293, Df = 1, p = 0.63351</code></pre>
+</div>
+</div>
+<p><strong>Explicación</strong>:</p>
+<p><strong><code>ncvTest(regsimple)</code></strong>: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo sugiere que hay heterocedasticidad, lo que puede invalidar el modelo.</p>
 
 
 </section>
@@ -1045,11 +1119,11 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./estadistica_descriptiva.html" class="pagination-link" aria-label="Estadística descriptiva usando funciones en R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_cbasicos.html" class="pagination-link" aria-label="Conceptos básicos de R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span> <i class="bi bi-arrow-right-short"></i>
-      </a>
   </div>
 </nav>
 </div> <!-- /content -->

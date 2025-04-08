@@ -1,4 +1,4 @@
-# Visualización de datos
+# Visualización de datos con ggplot2
 
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
 # Instalar y cargar el tidyverse
