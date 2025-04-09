@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="P. Agr. Ludwing Isaí Marroquín Jiménez">
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>9&nbsp; Introducción a la manipulación de datos en R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,40 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -66,7 +31,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01_cbasicos.html" rel="next">
+<link href="./08.2_manipulacion.html" rel="next">
+<link href="./07_paquetes.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +86,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Introducción</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08.1_manipulacion.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introducción a la manipulación de datos en R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -187,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introducción</span></a>
   </div>
 </li>
@@ -253,7 +219,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08.1_manipulacion.html" class="sidebar-item-text sidebar-link">
+  <a href="./08.1_manipulacion.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introducción a la manipulación de datos en R</span></span></a>
   </div>
 </li>
@@ -320,51 +286,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Tabla de contenidos</h2>
-   
-  <ul>
-  <li><a href="#introducción" id="toc-introducción" class="nav-link active" data-scroll-target="#introducción">Introducción</a>
-  <ul class="collapse">
-  <li><a href="#propósito-del-manual" id="toc-propósito-del-manual" class="nav-link" data-scroll-target="#propósito-del-manual">Propósito del manual</a></li>
-  <li><a href="#organización-del-manual" id="toc-organización-del-manual" class="nav-link" data-scroll-target="#organización-del-manual">Organización del manual</a></li>
-  <li><a href="#pre-requisitos" id="toc-pre-requisitos" class="nav-link" data-scroll-target="#pre-requisitos">Pre requisitos</a></li>
-  <li><a href="#colofón" id="toc-colofón" class="nav-link" data-scroll-target="#colofón">Colofón</a></li>
-  </ul></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</h1>
+<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introducción a la manipulación de datos en R</span></h1>
 </div>
 
-<div>
-  <div class="description">
-    Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor/a</div>
-    <div class="quarto-title-meta-contents">
-             <p>P. Agr. Ludwing Isaí Marroquín Jiménez </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">9 abr 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -374,117 +311,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="introducción" class="level1 unnumbered">
-<h1 class="unnumbered">Introducción</h1>
-<p>La estadística clásica es una disciplina fundamental en la investigación científica y en la toma de decisiones basada en datos. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del manual, se abordan conceptos básicos acompañados de ejemplos prácticos que facilitan su comprensión y aplicación en diversos contextos. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
-<section id="propósito-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="propósito-del-manual">Propósito del manual</h2>
-<p>El presente manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, desde su instalación y configuración hasta la aplicación de técnicas estadísticas clásicas. Se abordan temas como la manipulación de datos, la creación de gráficos y la realización de análisis estadísticos básicos. Además, se incluyen ejemplos prácticos que permiten aplicar los conceptos aprendidos en contextos reales.</p>
-<p>R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica (Ihaka &amp; Gentleman, 1996; R Core Team, 2023). A lo largo de este texto, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en programación estadística, con un enfoque en la claridad, organización y reproducibilidad.</p>
-</section>
-<section id="organización-del-manual" class="level2">
-<h2 class="anchored" data-anchor-id="organización-del-manual">Organización del manual</h2>
-<p>El contenido del manual está estructurado de manera progresiva, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas estadísticas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
-<p>El manual se organiza en los siguientes capítulos principales:</p>
-<ol type="1">
-<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
-<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
-<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
-<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
-<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
-<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
-<li><p><strong>Ejemplos de análisis estadístico con R</strong>: Se desarrollan de manera detallada ejemplos del uso de R para desarrollar análisis estadístico de datos.</p></li>
-</ol>
-<p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
-</section>
-<section id="pre-requisitos" class="level2">
-<h2 class="anchored" data-anchor-id="pre-requisitos">Pre requisitos</h2>
-<p>Este manual no requiere conocimientos previos en programación ni en análisis estadístico. Está diseñado específicamente para principiantes, por lo que se parte desde cero, explicando cada concepto de manera clara y detallada. Todo lo que se necesita es:</p>
-<ol type="1">
-<li><p><strong>Interés por aprender</strong>: La curiosidad y disposición para explorar un nuevo lenguaje de programación.</p></li>
-<li><p><strong>Acceso a una computadora</strong>: Con capacidad para instalar R y RStudio, herramientas que se explican paso a paso en el manual.</p></li>
-<li><p><strong>Paciencia y práctica</strong>: Como cualquier habilidad nueva, aprender R requiere tiempo y dedicación. Los ejemplos y ejercicios incluidos están diseñados para facilitar este proceso.</p></li>
-</ol>
-<p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
-</section>
-<section id="colofón" class="level2">
-<h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
-<p>La versión en línea de este manual se encuentra disponible en <a href="https://introduccion-r-cete.vercel.app/" class="uri">https://introduccion-r-cete.vercel.app/</a>. La fuente del manual en español está alojada en el repositorio de GitHub: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/"><em>Quarto</em></a>, una herramienta diseñada para convertir archivos con extensión <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB.</p>
-<p>Este manual fue construido con:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
-comando ejecutado '"quarto"
-TMPDIR=C:/Users/Usuario/AppData/Local/Temp/RtmpQxeEci/file26bc67f111a3 -V'
-tiene el estatus 1</code></pre>
-</div>
-<div class="cell-output cell-output-stdout">
-<pre><code>─ Session info ───────────────────────────────────────────────────────────────
- setting  value
- version  R version 4.4.2 (2024-10-31 ucrt)
- os       Windows 11 x64 (build 26100)
- system   x86_64, mingw32
- ui       RTerm
- language (EN)
- collate  Spanish_Guatemala.utf8
- ctype    Spanish_Guatemala.utf8
- tz       America/Guatemala
- date     2025-04-09
- pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
- quarto   NA @ C:\\Users\\Usuario\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
-
-─ Packages ───────────────────────────────────────────────────────────────────
- package     * version date (UTC) lib source
- cachem        1.1.0   2024-05-16 [1] CRAN (R 4.4.2)
- cli           3.6.3   2024-06-21 [1] CRAN (R 4.4.2)
- devtools      2.4.5   2022-10-11 [1] CRAN (R 4.4.3)
- digest        0.6.37  2024-08-19 [1] CRAN (R 4.4.2)
- ellipsis      0.3.2   2021-04-29 [1] CRAN (R 4.4.3)
- evaluate      1.0.3   2025-01-10 [1] CRAN (R 4.4.2)
- fastmap       1.2.0   2024-05-15 [1] CRAN (R 4.4.2)
- fs            1.6.5   2024-10-30 [1] CRAN (R 4.4.2)
- glue          1.8.0   2024-09-30 [1] CRAN (R 4.4.2)
- htmltools     0.5.8.1 2024-04-04 [1] CRAN (R 4.4.2)
- htmlwidgets   1.6.4   2023-12-06 [1] CRAN (R 4.4.3)
- httpuv        1.6.15  2024-03-26 [1] CRAN (R 4.4.3)
- jsonlite      1.8.9   2024-09-20 [1] CRAN (R 4.4.2)
- knitr         1.49    2024-11-08 [1] CRAN (R 4.4.2)
- later         1.4.1   2024-11-27 [1] CRAN (R 4.4.3)
- lifecycle     1.0.4   2023-11-07 [1] CRAN (R 4.4.2)
- magrittr      2.0.3   2022-03-30 [1] CRAN (R 4.4.2)
- memoise       2.0.1   2021-11-26 [1] CRAN (R 4.4.2)
- mime          0.12    2021-09-28 [1] CRAN (R 4.4.0)
- miniUI        0.1.1.1 2018-05-18 [1] CRAN (R 4.4.3)
- pkgbuild      1.4.6   2025-01-16 [1] CRAN (R 4.4.3)
- pkgload       1.4.0   2024-06-28 [1] CRAN (R 4.4.3)
- profvis       0.4.0   2024-09-20 [1] CRAN (R 4.4.3)
- promises      1.3.2   2024-11-28 [1] CRAN (R 4.4.3)
- purrr         1.0.4   2025-02-05 [1] CRAN (R 4.4.2)
- R6            2.5.1   2021-08-19 [1] CRAN (R 4.4.2)
- Rcpp          1.0.14  2025-01-12 [1] CRAN (R 4.4.2)
- remotes       2.5.0   2024-03-17 [1] CRAN (R 4.4.3)
- rlang         1.1.5   2025-01-17 [1] CRAN (R 4.4.2)
- rmarkdown     2.29    2024-11-04 [1] CRAN (R 4.4.2)
- rstudioapi    0.17.1  2024-10-22 [1] CRAN (R 4.4.2)
- sessioninfo   1.2.3   2025-02-05 [1] CRAN (R 4.4.3)
- shiny         1.10.0  2024-12-14 [1] CRAN (R 4.4.3)
- urlchecker    1.0.1   2021-11-30 [1] CRAN (R 4.4.3)
- usethis       3.1.0   2024-11-26 [1] CRAN (R 4.4.3)
- vctrs         0.6.5   2023-12-01 [1] CRAN (R 4.4.2)
- xfun          0.50    2025-01-07 [1] CRAN (R 4.4.2)
- xtable        1.8-4   2019-04-21 [1] CRAN (R 4.4.3)
-
- [1] C:/Users/Usuario/AppData/Local/R/win-library/4.4
- [2] C:/Program Files/R/R-4.4.2/library
-
-──────────────────────────────────────────────────────────────────────────────</code></pre>
-</div>
-</div>
 
 
-</section>
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1057,10 +885,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./07_paquetes.html" class="pagination-link" aria-label="Paquetes en R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01_cbasicos.html" class="pagination-link" aria-label="Conceptos básicos de R">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Conceptos básicos de R</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./08.2_manipulacion.html" class="pagination-link" aria-label="Manipulación de Datos con Herramientas Base de R">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Manipulación de Datos con Herramientas Base de R</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

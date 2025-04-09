@@ -41,7 +41,9 @@ book:
     - 06.1_funciones.qmd
     - 07_paquetes.qmd
     - part: "Manipulación de datos"
-    - 08_manipulacion.qmd
+    - 08.1_manipulacion.qmd
+    - 08.2_manipulacion.qmd
+    - 08.3_manipulacion.qmd
     - part: "Visualización de datos"
     - 09_visualizacion.qmd
     - part: "Exportación de resultados"

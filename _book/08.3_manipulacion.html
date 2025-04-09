@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>9&nbsp; Manipulación de datos con dplyr y tidyr – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>11&nbsp; Manipulación de datos con dplyr y tidyr – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./09_visualizacion.html" rel="next">
-<link href="./07_paquetes.html" rel="prev">
+<link href="./08.2_manipulacion.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08_manipulacion.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./08.3_manipulacion.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -253,8 +253,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./08_manipulacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></span></a>
+  <a href="./08.1_manipulacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Introducción a la manipulación de datos en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.2_manipulacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Manipulación de Datos con Herramientas Base de R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08.3_manipulacion.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -264,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09_visualizacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualización de datos con ggplot2</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -274,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10_exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -284,7 +296,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -294,7 +306,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
   </div>
 </li>
     </ul>
@@ -307,23 +325,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#introducción-a-los-paquetes-dplyr-y-tidyr" id="toc-introducción-a-los-paquetes-dplyr-y-tidyr" class="nav-link active" data-scroll-target="#introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">9.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></a></li>
-  <li><a href="#operaciones-básicas-con-dplyr" id="toc-operaciones-básicas-con-dplyr" class="nav-link" data-scroll-target="#operaciones-básicas-con-dplyr"><span class="header-section-number">9.2</span> Operaciones básicas con dplyr</a>
+  <li><a href="#introducción-a-los-paquetes-dplyr-y-tidyr" id="toc-introducción-a-los-paquetes-dplyr-y-tidyr" class="nav-link active" data-scroll-target="#introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">11.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></a></li>
+  <li><a href="#operaciones-básicas-con-dplyr" id="toc-operaciones-básicas-con-dplyr" class="nav-link" data-scroll-target="#operaciones-básicas-con-dplyr"><span class="header-section-number">11.2</span> Operaciones básicas con dplyr</a>
   <ul class="collapse">
-  <li><a href="#filtrar-filas-con-filter" id="toc-filtrar-filas-con-filter" class="nav-link" data-scroll-target="#filtrar-filas-con-filter"><span class="header-section-number">9.2.1</span> Filtrar filas con <code>filter()</code></a></li>
-  <li><a href="#seleccionar-columnas-con-select" id="toc-seleccionar-columnas-con-select" class="nav-link" data-scroll-target="#seleccionar-columnas-con-select"><span class="header-section-number">9.2.2</span> Seleccionar columnas con <code>select()</code></a></li>
-  <li><a href="#crear-nuevas-columnas-con-mutate" id="toc-crear-nuevas-columnas-con-mutate" class="nav-link" data-scroll-target="#crear-nuevas-columnas-con-mutate"><span class="header-section-number">9.2.3</span> <strong>Crear nuevas columnas con <code>mutate()</code></strong></a></li>
-  <li><a href="#agrupar-y-resumir-datos-con-group_by-y-summarize" id="toc-agrupar-y-resumir-datos-con-group_by-y-summarize" class="nav-link" data-scroll-target="#agrupar-y-resumir-datos-con-group_by-y-summarize"><span class="header-section-number">9.2.4</span> Agrupar y resumir datos con <code>group_by()</code> y <code>summarize()</code></a></li>
+  <li><a href="#filtrar-filas-con-filter" id="toc-filtrar-filas-con-filter" class="nav-link" data-scroll-target="#filtrar-filas-con-filter"><span class="header-section-number">11.2.1</span> Filtrar filas con <code>filter()</code></a></li>
+  <li><a href="#seleccionar-columnas-con-select" id="toc-seleccionar-columnas-con-select" class="nav-link" data-scroll-target="#seleccionar-columnas-con-select"><span class="header-section-number">11.2.2</span> Seleccionar columnas con <code>select()</code></a></li>
+  <li><a href="#crear-nuevas-columnas-con-mutate" id="toc-crear-nuevas-columnas-con-mutate" class="nav-link" data-scroll-target="#crear-nuevas-columnas-con-mutate"><span class="header-section-number">11.2.3</span> <strong>Crear nuevas columnas con <code>mutate()</code></strong></a></li>
+  <li><a href="#agrupar-y-resumir-datos-con-group_by-y-summarize" id="toc-agrupar-y-resumir-datos-con-group_by-y-summarize" class="nav-link" data-scroll-target="#agrupar-y-resumir-datos-con-group_by-y-summarize"><span class="header-section-number">11.2.4</span> Agrupar y resumir datos con <code>group_by()</code> y <code>summarize()</code></a></li>
   </ul></li>
-  <li><a href="#uso-de-pipes-para-mejorar-la-legibilidad-del-código" id="toc-uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="nav-link" data-scroll-target="#uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">9.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</a>
+  <li><a href="#uso-de-pipes-para-mejorar-la-legibilidad-del-código" id="toc-uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="nav-link" data-scroll-target="#uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">11.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</a>
   <ul class="collapse">
-  <li><a href="#ventajas-del-uso-de-pipes" id="toc-ventajas-del-uso-de-pipes" class="nav-link" data-scroll-target="#ventajas-del-uso-de-pipes"><span class="header-section-number">9.3.1</span> Ventajas del uso de pipes</a></li>
+  <li><a href="#ventajas-del-uso-de-pipes" id="toc-ventajas-del-uso-de-pipes" class="nav-link" data-scroll-target="#ventajas-del-uso-de-pipes"><span class="header-section-number">11.3.1</span> Ventajas del uso de pipes</a></li>
   </ul></li>
-  <li><a href="#transformación-de-datos-con-tidyr" id="toc-transformación-de-datos-con-tidyr" class="nav-link" data-scroll-target="#transformación-de-datos-con-tidyr"><span class="header-section-number">9.4</span> Transformación de datos con tidyr</a>
+  <li><a href="#transformación-de-datos-con-tidyr" id="toc-transformación-de-datos-con-tidyr" class="nav-link" data-scroll-target="#transformación-de-datos-con-tidyr"><span class="header-section-number">11.4</span> Transformación de datos con tidyr</a>
   <ul class="collapse">
-  <li><a href="#qué-son-los-formatos-ancho-y-largo" id="toc-qué-son-los-formatos-ancho-y-largo" class="nav-link" data-scroll-target="#qué-son-los-formatos-ancho-y-largo"><span class="header-section-number">9.4.1</span> ¿Qué son los formatos ancho y largo?</a></li>
-  <li><a href="#funciones-principales-de-transformación" id="toc-funciones-principales-de-transformación" class="nav-link" data-scroll-target="#funciones-principales-de-transformación"><span class="header-section-number">9.4.2</span> Funciones principales de transformación</a></li>
-  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">9.4.3</span> Ejemplo práctico</a></li>
+  <li><a href="#qué-son-los-formatos-ancho-y-largo" id="toc-qué-son-los-formatos-ancho-y-largo" class="nav-link" data-scroll-target="#qué-son-los-formatos-ancho-y-largo"><span class="header-section-number">11.4.1</span> ¿Qué son los formatos ancho y largo?</a></li>
+  <li><a href="#funciones-principales-de-transformación" id="toc-funciones-principales-de-transformación" class="nav-link" data-scroll-target="#funciones-principales-de-transformación"><span class="header-section-number">11.4.2</span> Funciones principales de transformación</a></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">11.4.3</span> Ejemplo práctico</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -333,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Manipulación de datos con dplyr y tidyr</span></h1>
 </div>
 
 
@@ -351,16 +369,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>Los paquetes <strong>dplyr</strong> y <strong>tidyr</strong> son componentes fundamentales del ecosistema <strong>tidyverse</strong>, diseñados para simplificar y optimizar la manipulación y transformación de datos en R. Estas herramientas permiten realizar tareas comunes de análisis de datos de manera eficiente, reproducible y con una sintaxis clara e intuitiva (Wickham et al., 2023). En esta sección, se explorarán las principales funciones de estos paquetes, junto con ejemplos prácticos que ilustran su uso.</p>
-<section id="introducción-a-los-paquetes-dplyr-y-tidyr" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">9.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></h2>
+<section id="introducción-a-los-paquetes-dplyr-y-tidyr" class="level2" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">11.1</span> Introducción a los paquetes <code>dplyr</code> y <code>tidyr</code></h2>
 <p>El paquete <strong>dplyr</strong> está especializado en la manipulación de datos tabulares, ofreciendo funciones específicas para realizar operaciones como filtrar filas, seleccionar columnas, crear nuevas variables y resumir datos. Su diseño está optimizado para trabajar con estructuras como data frames y tibbles, proporcionando un rendimiento superior y una sintaxis más legible en comparación con las funciones base de R.</p>
 <p>Por otro lado, el paquete <strong>tidyr</strong> se centra en la reorganización de datos, facilitando la transformación entre formatos “ancho” y “largo”. Estas transformaciones son esenciales para preparar los datos de manera adecuada antes de su análisis o visualización, asegurando que estén en el formato más conveniente para las herramientas de análisis.</p>
 <p>Para ilustrar el uso de estas herramientas, en esta sección se desarrollará un ejemplo práctico que permitirá explorar las principales funciones de manipulación de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Manipulacion_Ej">Repositorio de ejemplo - Manipulación de datos</a>.</p>
 </section>
-<section id="operaciones-básicas-con-dplyr" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="operaciones-básicas-con-dplyr"><span class="header-section-number">9.2</span> Operaciones básicas con dplyr</h2>
-<section id="filtrar-filas-con-filter" class="level3" data-number="9.2.1">
-<h3 data-number="9.2.1" class="anchored" data-anchor-id="filtrar-filas-con-filter"><span class="header-section-number">9.2.1</span> Filtrar filas con <code>filter()</code></h3>
+<section id="operaciones-básicas-con-dplyr" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="operaciones-básicas-con-dplyr"><span class="header-section-number">11.2</span> Operaciones básicas con dplyr</h2>
+<section id="filtrar-filas-con-filter" class="level3" data-number="11.2.1">
+<h3 data-number="11.2.1" class="anchored" data-anchor-id="filtrar-filas-con-filter"><span class="header-section-number">11.2.1</span> Filtrar filas con <code>filter()</code></h3>
 <p>La función <strong><code>filter()</code></strong> se utiliza para seleccionar filas de un <em>data frame</em> que cumplen con una o más condiciones lógicas. Esta operación es útil para extraer subconjuntos de datos relevantes para un análisis específico.</p>
 <p><strong>Sintaxis básica:</strong></p>
 <div class="cell">
@@ -390,8 +408,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación</strong>: El resultado es un <em>data frame</em> que incluye únicamente las filas donde la variable <code>peso</code> es mayor a 65. Esta operación permite enfocar el análisis en un subconjunto específico de datos, lo que resulta útil en estudios que requieren segmentación de información.</p>
 </section>
-<section id="seleccionar-columnas-con-select" class="level3" data-number="9.2.2">
-<h3 data-number="9.2.2" class="anchored" data-anchor-id="seleccionar-columnas-con-select"><span class="header-section-number">9.2.2</span> Seleccionar columnas con <code>select()</code></h3>
+<section id="seleccionar-columnas-con-select" class="level3" data-number="11.2.2">
+<h3 data-number="11.2.2" class="anchored" data-anchor-id="seleccionar-columnas-con-select"><span class="header-section-number">11.2.2</span> Seleccionar columnas con <code>select()</code></h3>
 <p>La función <strong><code>select()</code></strong> permite extraer columnas específicas de un <em>data frame</em>. Esto es útil para reducir la cantidad de datos visibles o para trabajar únicamente con las variables necesarias.</p>
 <p><strong>Sintaxis básica:</strong></p>
 <div class="cell">
@@ -415,8 +433,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación</strong>: El resultado es un <em>data frame</em> que contiene únicamente las columnas <code>nombre</code> y <code>edad</code>. Esto es especialmente útil cuando se desea exportar información específica o simplificar la visualización de los datos.</p>
 </section>
-<section id="crear-nuevas-columnas-con-mutate" class="level3" data-number="9.2.3">
-<h3 data-number="9.2.3" class="anchored" data-anchor-id="crear-nuevas-columnas-con-mutate"><span class="header-section-number">9.2.3</span> <strong>Crear nuevas columnas con <code>mutate()</code></strong></h3>
+<section id="crear-nuevas-columnas-con-mutate" class="level3" data-number="11.2.3">
+<h3 data-number="11.2.3" class="anchored" data-anchor-id="crear-nuevas-columnas-con-mutate"><span class="header-section-number">11.2.3</span> <strong>Crear nuevas columnas con <code>mutate()</code></strong></h3>
 <p>La función <strong><code>mutate()</code></strong> permite añadir nuevas columnas calculadas a un <em>data frame</em>. Esta operación es esencial para realizar cálculos derivados de las variables existentes.</p>
 <p><strong>Sintaxis básica:</strong></p>
 <div class="cell">
@@ -440,8 +458,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación</strong>: Se añade una nueva columna llamada <code>IMC</code> al <em>data frame</em>, calculada como el peso dividido por el cuadrado de la altura. Esta operación permite enriquecer los datos con información derivada, facilitando análisis más detallados.</p>
 </section>
-<section id="agrupar-y-resumir-datos-con-group_by-y-summarize" class="level3" data-number="9.2.4">
-<h3 data-number="9.2.4" class="anchored" data-anchor-id="agrupar-y-resumir-datos-con-group_by-y-summarize"><span class="header-section-number">9.2.4</span> Agrupar y resumir datos con <code>group_by()</code> y <code>summarize()</code></h3>
+<section id="agrupar-y-resumir-datos-con-group_by-y-summarize" class="level3" data-number="11.2.4">
+<h3 data-number="11.2.4" class="anchored" data-anchor-id="agrupar-y-resumir-datos-con-group_by-y-summarize"><span class="header-section-number">11.2.4</span> Agrupar y resumir datos con <code>group_by()</code> y <code>summarize()</code></h3>
 <p>La combinación de <strong><code>group_by()</code></strong> y <strong><code>summarize()</code></strong> permite calcular estadísticas por grupo. Esto es útil para obtener resúmenes de datos categorizados, como promedios, sumas o conteos.</p>
 <p><strong>Sintaxis básica</strong>:</p>
 <div class="cell">
@@ -472,8 +490,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Explicación</strong>: Se crea una nueva variable <code>grupo_edad</code> que clasifica a los estudiantes en dos categorías: “Mayor o igual a 20” y “Menor a 20”. Luego, se calcula el peso promedio para cada grupo. Este tipo de operación es útil para realizar análisis comparativos entre categorías, como estudios demográficos o segmentación de datos.</p>
 </section>
 </section>
-<section id="uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">9.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</h2>
+<section id="uso-de-pipes-para-mejorar-la-legibilidad-del-código" class="level2" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="uso-de-pipes-para-mejorar-la-legibilidad-del-código"><span class="header-section-number">11.3</span> Uso de pipes (<code>%&gt;%</code>) para mejorar la legibilidad del código</h2>
 <p>El operador <strong>pipe</strong> (<code>%&gt;%</code>), introducido por el paquete <code>magrittr</code> y ampliamente adoptado en el ecosistema tidyverse, permite encadenar funciones de manera legible. En lugar de anidar funciones, el pipe pasa el resultado de una función como entrada a la siguiente.</p>
 <p><strong>Ejemplo sin pipes</strong>: Cuando no se utiliza el operador pipe, las funciones deben anidarse o ejecutarse en pasos separados, lo que puede dificultar la lectura y comprensión del código:</p>
 <div class="cell">
@@ -494,29 +512,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">peso_promedio =</span> <span class="fu">mean</span>(peso))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Diferencia clave</strong>: Con pipes, el flujo de trabajo se lee de arriba hacia abajo, siguiendo un orden lógico que refleja el proceso de análisis.</p>
-<section id="ventajas-del-uso-de-pipes" class="level3" data-number="9.3.1">
-<h3 data-number="9.3.1" class="anchored" data-anchor-id="ventajas-del-uso-de-pipes"><span class="header-section-number">9.3.1</span> Ventajas del uso de pipes</h3>
+<section id="ventajas-del-uso-de-pipes" class="level3" data-number="11.3.1">
+<h3 data-number="11.3.1" class="anchored" data-anchor-id="ventajas-del-uso-de-pipes"><span class="header-section-number">11.3.1</span> Ventajas del uso de pipes</h3>
 <p>El uso de pipes (<code>%&gt;%</code>) en R mejora significativamente la <strong>legibilidad</strong> del código al permitir que las operaciones se encadenen de manera secuencial y lógica, eliminando la necesidad de anidar funciones. Esto facilita la comprensión del flujo de trabajo, especialmente en análisis complejos. Además, los pipes simplifican la <strong>depuración</strong>, ya que dividen el análisis en pasos claros, lo que permite identificar errores y verificar resultados intermedios con mayor facilidad.</p>
 <p>Otra ventaja clave es la <strong>modularidad</strong>, ya que cada operación se organiza como un bloque independiente, lo que facilita realizar ajustes sin afectar el resto del análisis. Finalmente, los pipes promueven la <strong>reproducibilidad</strong>, al estructurar el código de forma clara y reutilizable, mejorando la colaboración y asegurando resultados consistentes.</p>
 </section>
 </section>
-<section id="transformación-de-datos-con-tidyr" class="level2" data-number="9.4">
-<h2 data-number="9.4" class="anchored" data-anchor-id="transformación-de-datos-con-tidyr"><span class="header-section-number">9.4</span> Transformación de datos con tidyr</h2>
+<section id="transformación-de-datos-con-tidyr" class="level2" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="transformación-de-datos-con-tidyr"><span class="header-section-number">11.4</span> Transformación de datos con tidyr</h2>
 <p>El paquete <strong><code>tidyr</code></strong> es una herramienta fundamental para la reorganización de datos en R, especialmente cuando se necesita cambiar entre formatos “ancho” y “largo”. Esta transformación es esencial para adaptar los datos a diferentes tipos de análisis estadísticos y visualizaciones (Wickham &amp; Grolemund, 2017).</p>
-<section id="qué-son-los-formatos-ancho-y-largo" class="level3" data-number="9.4.1">
-<h3 data-number="9.4.1" class="anchored" data-anchor-id="qué-son-los-formatos-ancho-y-largo"><span class="header-section-number">9.4.1</span> ¿Qué son los formatos ancho y largo?</h3>
+<section id="qué-son-los-formatos-ancho-y-largo" class="level3" data-number="11.4.1">
+<h3 data-number="11.4.1" class="anchored" data-anchor-id="qué-son-los-formatos-ancho-y-largo"><span class="header-section-number">11.4.1</span> ¿Qué son los formatos ancho y largo?</h3>
 <p><strong>Formato ancho</strong>: Cada variable tiene su propia columna, y cada observación está en una sola fila.</p>
 <p><strong>Formato largo</strong>: Las variables están organizadas en pares de columnas (nombre de variable y valor), con múltiples filas por observación.</p>
 </section>
-<section id="funciones-principales-de-transformación" class="level3" data-number="9.4.2">
-<h3 data-number="9.4.2" class="anchored" data-anchor-id="funciones-principales-de-transformación"><span class="header-section-number">9.4.2</span> Funciones principales de transformación</h3>
+<section id="funciones-principales-de-transformación" class="level3" data-number="11.4.2">
+<h3 data-number="11.4.2" class="anchored" data-anchor-id="funciones-principales-de-transformación"><span class="header-section-number">11.4.2</span> Funciones principales de transformación</h3>
 <ol type="1">
 <li><p><strong><code>pivot_longer()</code></strong>: se utiliza para transformar datos de formato ancho a largo. Este tipo de transformación es especialmente útil cuando se necesita trabajar con datos en los que cada observación debe ocupar una fila, mientras que las variables se representan en columnas separadas. Por ejemplo, es ideal para crear gráficos con múltiples series, ya que facilita la comparación entre diferentes variables en un mismo análisis. Además, este formato es requerido en muchos análisis estadísticos que trabajan con datos agrupados, como ANOVA o modelos de regresión, donde las variables deben estar organizadas en un formato más estructurado.</p></li>
 <li><p><strong><code>pivot_wider()</code></strong>: realiza la transformación inversa, es decir, convierte datos de formato largo a ancho. Este tipo de transformación es útil cuando se necesita crear tablas resumen que presenten los datos de manera más compacta y legible. También es esencial para análisis que requieren que las variables estén en columnas separadas, como cálculos de correlación o regresiones específicas. Además, el formato ancho es más adecuado para la presentación de resultados en reportes o tablas, ya que permite visualizar de forma clara las relaciones entre las variables y las observaciones.</p></li>
 </ol>
 </section>
-<section id="ejemplo-práctico" class="level3" data-number="9.4.3">
-<h3 data-number="9.4.3" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">9.4.3</span> Ejemplo práctico</h3>
+<section id="ejemplo-práctico" class="level3" data-number="11.4.3">
+<h3 data-number="11.4.3" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">11.4.3</span> Ejemplo práctico</h3>
 <p>Para ilustrar el uso de las funciones de transformación de datos, consideremos un ejemplo práctico con calificaciones de estudiantes. Inicialmente, crearemos un conjunto de datos que contiene las calificaciones de tres estudiantes en dos materias diferentes:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear data frame de calificaciones</span></span>
@@ -540,8 +558,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>En este formato, cada fila representa a un estudiante y las calificaciones de las materias están organizadas en columnas. Sin embargo, para ciertos análisis estadísticos o visualizaciones, es necesario transformar los datos a un formato largo.</p>
-<section id="transformar-de-formato-ancho-a-largo" class="level4" data-number="9.4.3.1">
-<h4 data-number="9.4.3.1" class="anchored" data-anchor-id="transformar-de-formato-ancho-a-largo"><span class="header-section-number">9.4.3.1</span> <strong>Transformar de formato ancho a largo</strong></h4>
+<section id="transformar-de-formato-ancho-a-largo" class="level4" data-number="11.4.3.1">
+<h4 data-number="11.4.3.1" class="anchored" data-anchor-id="transformar-de-formato-ancho-a-largo"><span class="header-section-number">11.4.3.1</span> <strong>Transformar de formato ancho a largo</strong></h4>
 <p>La función <code>pivot_longer()</code> permite reorganizar los datos para que cada combinación de estudiante y materia ocupe una fila independiente. Este formato es útil para análisis que requieren datos agrupados o para la creación de gráficos comparativos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar a formato largo</span></span>
@@ -571,8 +589,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>En este formato, cada fila representa una observación única de estudiante y materia, lo que facilita la comparación entre variables, el cálculo de estadísticas por grupo y la preparación de datos para visualizaciones.</p>
 </section>
-<section id="transformar-de-formato-largo-a-ancho" class="level4" data-number="9.4.3.2">
-<h4 data-number="9.4.3.2" class="anchored" data-anchor-id="transformar-de-formato-largo-a-ancho"><span class="header-section-number">9.4.3.2</span> Transformar de formato largo a ancho</h4>
+<section id="transformar-de-formato-largo-a-ancho" class="level4" data-number="11.4.3.2">
+<h4 data-number="11.4.3.2" class="anchored" data-anchor-id="transformar-de-formato-largo-a-ancho"><span class="header-section-number">11.4.3.2</span> Transformar de formato largo a ancho</h4>
 <p>Cuando se requiere regresar al formato original, por ejemplo, para presentar los datos en una tabla resumen, se utiliza la función <code>pivot_wider()</code>. Esta función reorganiza los datos para que las materias vuelvan a ocupar columnas separadas:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar de vuelta a formato ancho</span></span>
@@ -1174,13 +1192,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./07_paquetes.html" class="pagination-link" aria-label="Paquetes en R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span>
+      <a href="./08.2_manipulacion.html" class="pagination-link" aria-label="Manipulación de Datos con Herramientas Base de R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Manipulación de Datos con Herramientas Base de R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./09_visualizacion.html" class="pagination-link" aria-label="Visualización de datos">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Visualización de datos</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./09_visualizacion.html" class="pagination-link" aria-label="Visualización de datos con ggplot2">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualización de datos con ggplot2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
