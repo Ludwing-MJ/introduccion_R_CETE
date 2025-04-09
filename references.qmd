@@ -20,6 +20,8 @@ Field, A. (2013). Discovering Statistics Using IBM SPSS Statistics (4th ed.). SA
 
 Gentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. Journal of Computational and Graphical Statistics, 16(1), 1–23. https://doi.org/10.1198/106186007X178663
 
+Hernández, F., Usuga, O., & Mazo, M. (2024). *Modelos de Regresión con R*. \[Fecha de publicación: 12 de agosto de 2024\].
+
 Hmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). Educational Psychologist, 42(2), 99–107. https://doi.org/10.1080/00461520701263368
 
 Ihaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. Journal of Computational and Graphical Statistics, 5(3), 299–314. (No hay enlace disponible)

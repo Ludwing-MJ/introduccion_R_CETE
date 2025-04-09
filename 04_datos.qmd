@@ -1,6 +1,6 @@
-# Estructura de datos en R
+# Estructuras de datos en R
 
-En R, las estructuras de datos son esenciales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización de datos. Entre las principales estructuras de datos en R se encuentran los *vectores*, *data frames* y *listas*, cada una con características específicas que las hacen adecuadas para distintas tareas (R Core Team, 2023).
+En R, las estructuras de datos son esenciales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización de datos. Entre las principales estructuras de datos en R se encuentran los *vectores*, *matrices,* *data frames* y *listas*, cada una con características específicas que las hacen adecuadas para distintas tareas (R Core Team, 2023).
 
 ## Vectores
 
@@ -68,6 +68,65 @@ nuevo_vector
 ```
 
 Aquí, el vector `nuevo_vector` combina los elementos del vector `edades` con los valores `22` y `21`, generando un nuevo vector.
+
+## Matrices
+
+Las matrices son estructuras de datos bidimensionales en R que permiten almacenar datos de un mismo tipo en filas y columnas. Son fundamentales en el análisis estadístico, ya que facilitan la manipulación y el cálculo de datos en un formato tabular. A diferencia de los vectores, que son unidimensionales, las matrices permiten organizar los datos de manera más compleja, lo que resulta útil en diversas aplicaciones estadísticas (Ihaka & Gentleman, 1996).
+
+Las matrices son esenciales en R porque muchas operaciones matemáticas y estadísticas requieren datos organizados en dos dimensiones. Al igual que los vectores, todos los elementos de una matriz deben ser del mismo tipo de dato, lo que asegura la consistencia en las operaciones realizadas sobre ella.
+
+### Creación de Matrices
+
+Para crear una matriz en R, se utiliza la función `matrix()`, que permite especificar los elementos, así como el número de filas y columnas. A continuación, se presentan ejemplos de creación de matrices:
+
+```{r}
+# 1. Creación de una matriz de 3 filas y 2 columnas
+matriz <- matrix(1:6, nrow = 3, ncol = 2)
+print(matriz)
+
+# 2. Creación de una matriz de caracteres
+matriz_caracteres <- matrix(c("A", "B", "C", "D"), nrow = 2, ncol = 2)
+print(matriz_caracteres)
+```
+
+En estos ejemplos:
+
+1.  La matriz llamada: `matriz`, almacena valores numéricos organizados en 3 filas y 2 columnas.
+
+2.  La matriz llamada: `matriz_caracteres`, contiene cadenas de texto organizadas en 2 filas y 2 columnas.
+
+### Manipulación de Matrices
+
+Las matrices en R permiten realizar una amplia variedad de operaciones matemáticas y de manipulación de datos. Estas operaciones son fundamentales para el análisis estadístico y la transformación de datos. A continuación, se describen algunas de las operaciones más comunes:
+
+#### Acceso a Elementos Específicos
+
+Se pueden acceder a elementos individuales de una matriz utilizando índices entre corchetes, especificando primero la fila y luego la columna. Los índices en R comienzan en 1.
+
+```{r}
+# Acceder al elemento en la segunda fila y primera columna
+elemento <- matriz[2, 1]
+print(elemento)  # Imprime 2
+```
+
+En este ejemplo, `matriz[2, 1]` devuelve el elemento en la segunda fila y primera columna de la matriz, que es 2.
+
+#### Combinación de Matrices
+
+Las matrices pueden combinarse para crear nuevas matrices utilizando funciones como `rbind()` para combinar filas y `cbind()` para combinar columnas.
+
+```{r}
+# Combinar dos matrices por filas
+matriz2 <- matrix(7:12, nrow = 3, ncol = 2)
+matriz_combinada <- rbind(matriz, matriz2)
+print(matriz_combinada)
+```
+
+Aquí, `matriz_combinada` combina las filas de `matriz` y `matriz2`, generando una nueva matriz.
+
+### Texto de apoyo para algebra matricial
+
+El capítulo 20 del libro *Modelos de Regresión con R* de Hernández, Usuga y Mazo (2024) aborda en profundidad el tema del álgebra matricial con R, proporcionando una base sólida para entender cómo se aplican las matrices en el análisis estadístico. Para más detalles, se puede consultar el siguiente enlace: [Álgebra matricial con R](https://fhernanb.github.io/libro_regresion/algmat.html).
 
 ## Data frames
 
