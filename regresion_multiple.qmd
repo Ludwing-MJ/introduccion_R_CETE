@@ -1,0 +1,7 @@
+# Regresión múltiple usando R
+
+## Notas: 
+
+En esta sección se desarrollará un ejemplo de regresión multiple
+
+Esta pendiente de finalización y carga

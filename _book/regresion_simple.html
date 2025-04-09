@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>16&nbsp; Regresión lineal simple usando R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>21&nbsp; Regresión lineal simple usando R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -65,6 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./regresion_multiple.html" rel="next">
 <link href="./estadistica_descriptiva.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -119,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regresion_simple.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regresion_simple.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -274,18 +275,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./09_visualizacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Visualización de datos con ggplot2</span></span></a>
+  <a href="./09.1_visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Introducción a la visualización de datos</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09.2_visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualizaciones Base de R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09.3_visualizacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Visualización de datos con ggplot2</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Exportación de resultados</span></span>
+ <span class="menu-text">Gestión y Exportación de resultados</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./10_exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Exportación de resultados</span></span></a>
+  <a href="./10.1_exportacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Introducción a la Gestión de Proyectos en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10.2_exportacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Exportación de Resultados de Análisis en R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10.3_exportacion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Uso de Git y GitHub en Proyectos de R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -294,8 +319,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./11.1_M_apoyo.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Material de apoyo</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Material de apoyo y referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -305,13 +336,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./regresion_multiple.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
   </div>
 </li>
     </ul>
@@ -324,19 +361,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#conceptos-fundamentales" id="toc-conceptos-fundamentales" class="nav-link active" data-scroll-target="#conceptos-fundamentales"><span class="header-section-number">16.1</span> Conceptos fundamentales</a></li>
-  <li><a href="#modelo-de-regresión-lineal-simple" id="toc-modelo-de-regresión-lineal-simple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-simple"><span class="header-section-number">16.2</span> Modelo de Regresión Lineal Simple</a></li>
-  <li><a href="#supuestos-de-la-regresión-lineal" id="toc-supuestos-de-la-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-de-la-regresión-lineal"><span class="header-section-number">16.3</span> Supuestos de la Regresión Lineal</a></li>
-  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo"><span class="header-section-number">16.4</span> Evaluación del Modelo</a></li>
-  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">16.5</span> Ejemplo Práctico</a>
+  <li><a href="#conceptos-fundamentales" id="toc-conceptos-fundamentales" class="nav-link active" data-scroll-target="#conceptos-fundamentales"><span class="header-section-number">21.1</span> Conceptos fundamentales</a></li>
+  <li><a href="#modelo-de-regresión-lineal-simple" id="toc-modelo-de-regresión-lineal-simple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-simple"><span class="header-section-number">21.2</span> Modelo de Regresión Lineal Simple</a></li>
+  <li><a href="#supuestos-de-la-regresión-lineal" id="toc-supuestos-de-la-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-de-la-regresión-lineal"><span class="header-section-number">21.3</span> Supuestos de la Regresión Lineal</a></li>
+  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo"><span class="header-section-number">21.4</span> Evaluación del Modelo</a></li>
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">21.5</span> Ejemplo Práctico</a>
   <ul class="collapse">
-  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">16.5.1</span> Instalación y Carga de Paquetes</a></li>
-  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos"><span class="header-section-number">16.5.2</span> Importación de Datos</a></li>
-  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">16.5.3</span> Visualización de Datos</a></li>
-  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">16.5.4</span> Ajuste del Modelo de Regresión</a></li>
-  <li><a href="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" id="toc-gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="nav-link" data-scroll-target="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">16.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</a></li>
-  <li><a href="#prueba-de-normalidad-de-los-residuos" id="toc-prueba-de-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#prueba-de-normalidad-de-los-residuos"><span class="header-section-number">16.5.6</span> Prueba de Normalidad de los Residuos</a></li>
-  <li><a href="#prueba-de-homocedasticidad-de-la-varianza" id="toc-prueba-de-homocedasticidad-de-la-varianza" class="nav-link" data-scroll-target="#prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">16.5.7</span> Prueba de Homocedasticidad de la varianza</a></li>
+  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">21.5.1</span> Instalación y Carga de Paquetes</a></li>
+  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos"><span class="header-section-number">21.5.2</span> Importación de Datos</a></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">21.5.3</span> Visualización de Datos</a></li>
+  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">21.5.4</span> Ajuste del Modelo de Regresión</a></li>
+  <li><a href="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" id="toc-gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="nav-link" data-scroll-target="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">21.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</a></li>
+  <li><a href="#prueba-de-normalidad-de-los-residuos" id="toc-prueba-de-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#prueba-de-normalidad-de-los-residuos"><span class="header-section-number">21.5.6</span> Prueba de Normalidad de los Residuos</a></li>
+  <li><a href="#prueba-de-homocedasticidad-de-la-varianza" id="toc-prueba-de-homocedasticidad-de-la-varianza" class="nav-link" data-scroll-target="#prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">21.5.7</span> Prueba de Homocedasticidad de la varianza</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -346,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></h1>
 </div>
 
 
@@ -365,13 +402,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>La regresión lineal simple es una técnica estadística utilizada para modelar la relación entre una variable dependiente y una variable independiente. Su propósito principal es predecir el valor de la variable dependiente a partir de la variable independiente, lo que permite entender cómo varía una en función de la otra. Esta técnica es fundamental en el análisis estadístico, ya que proporciona una base para la inferencia y la toma de decisiones en diversos campos (Montgomery, Peck, &amp; Vining, 2012).</p>
 <p>Por ejemplo, en economía, la regresión lineal simple puede utilizarse para predecir el consumo en función del ingreso. En biología, se aplica para analizar la relación entre la dosis de un fármaco y la respuesta de un organismo. En ciencias sociales, se utiliza para estudiar cómo factores como la educación influyen en los ingresos de una población (Field, 2013).</p>
-<section id="conceptos-fundamentales" class="level2" data-number="16.1">
-<h2 data-number="16.1" class="anchored" data-anchor-id="conceptos-fundamentales"><span class="header-section-number">16.1</span> Conceptos fundamentales</h2>
+<section id="conceptos-fundamentales" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="conceptos-fundamentales"><span class="header-section-number">21.1</span> Conceptos fundamentales</h2>
 <p>Las <strong>variables dependientes</strong> son aquellas que se desean predecir o explicar, mientras que las <strong>variables independientes</strong> son las que se utilizan para realizar dicha predicción. La diferencia radica en que la variable dependiente es el resultado que se estudia, mientras que la variable independiente es el factor que se manipula o se observa (Cohen, Cohen, West, &amp; Aiken, 2003).</p>
 <p>La <strong>relación lineal</strong> implica que existe una conexión directa entre las variables, de tal manera que un cambio en la variable independiente produce un cambio proporcional en la variable dependiente.</p>
 </section>
-<section id="modelo-de-regresión-lineal-simple" class="level2" data-number="16.2">
-<h2 data-number="16.2" class="anchored" data-anchor-id="modelo-de-regresión-lineal-simple"><span class="header-section-number">16.2</span> Modelo de Regresión Lineal Simple</h2>
+<section id="modelo-de-regresión-lineal-simple" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="modelo-de-regresión-lineal-simple"><span class="header-section-number">21.2</span> Modelo de Regresión Lineal Simple</h2>
 <p>El modelo de regresión lineal simple se expresa mediante la siguiente ecuación:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -380,8 +417,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>En esta ecuación, <strong><em>Y</em></strong> representa la variable dependiente, <strong><em>X</em></strong> es la variable independiente, <strong><em>ß0</em></strong> es la intersección (el valor de <strong><em>Y</em></strong>) cuando <strong><em>X</em></strong>) es cero) y <strong><em>ß1</em></strong> es la pendiente (que indica el cambio en <strong><em>Y</em></strong>) por cada unidad de cambio en <strong><em>X</em></strong>. El término epilson (<strong><em>ε</em></strong>) representa el error del modelo, que captura la variabilidad en <strong><em>Y</em></strong> que no se explica por <strong><em>X</em></strong> (Kutner, Nachtsheim, Neter, &amp; Li, 2005).</p>
 </section>
-<section id="supuestos-de-la-regresión-lineal" class="level2" data-number="16.3">
-<h2 data-number="16.3" class="anchored" data-anchor-id="supuestos-de-la-regresión-lineal"><span class="header-section-number">16.3</span> Supuestos de la Regresión Lineal</h2>
+<section id="supuestos-de-la-regresión-lineal" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="supuestos-de-la-regresión-lineal"><span class="header-section-number">21.3</span> Supuestos de la Regresión Lineal</h2>
 <p>Para que el modelo de regresión lineal sea válido, es fundamental que se cumplan ciertos supuestos:</p>
 <ol type="1">
 <li><p><strong>Linealidad</strong>: La relación entre las variables debe ser lineal.</p></li>
@@ -390,21 +427,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Normalidad</strong>: Los errores deben seguir una distribución normal (Tabachnick &amp; Fidell, 2013).</p></li>
 </ol>
 </section>
-<section id="evaluación-del-modelo" class="level2" data-number="16.4">
-<h2 data-number="16.4" class="anchored" data-anchor-id="evaluación-del-modelo"><span class="header-section-number">16.4</span> Evaluación del Modelo</h2>
+<section id="evaluación-del-modelo" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="evaluación-del-modelo"><span class="header-section-number">21.4</span> Evaluación del Modelo</h2>
 <p>La calidad del modelo de regresión lineal simple se evalúa a través de varias métricas:</p>
 <ol type="1">
 <li><p><strong>R-cuadrado</strong>: Indica la proporción de la variabilidad en la variable dependiente que es explicada por la variable independiente. Un valor cercano a 1 sugiere un buen ajuste del modelo.</p></li>
 <li><p><strong>Análisis de residuos</strong>: Es crucial analizar los residuos para verificar los supuestos del modelo, asegurando que no haya patrones sistemáticos que indiquen un mal ajuste (Belsley, Kuh, &amp; Welsch, 1980).</p></li>
 </ol>
 </section>
-<section id="ejemplo-práctico" class="level2" data-number="16.5">
-<h2 data-number="16.5" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">16.5</span> Ejemplo Práctico</h2>
+<section id="ejemplo-práctico" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">21.5</span> Ejemplo Práctico</h2>
 <p>Este ejemplo práctico ilustra cómo realizar un análisis de regresión lineal simple utilizando un conjunto de datos sobre esporofitos. Los datos provienen de un estudio realizado en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala. En este estudio, se llevó a cabo la reproducción del helecho conocido como calahuala (<em>Phlebodium pseudoaureum</em> (Cav.) Lellinger).</p>
 <p>Se midió la altura de cada esporofito y se cuantificó la cantidad de esporofitos germinados en 30 frascos que contenían medio de cultivo Murashige y Skoog. Los resultados obtenidos se presentan en el <a href="https://docs.google.com/spreadsheets/d/1HTODUlwTvRYYEiTsP7rQRUvlOgll4n6R/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">siguiente archivo</a>. Este análisis se basa en la investigación de Rosales Castillo (2005), quien realizó una micropropagación de <em>Calahuala</em> utilizando tres tipos de explantes en diferentes medios de cultivo in vitro.</p>
 <p>El objetivo de este análisis es evaluar la relación entre la altura de los esporofitos y la cantidad de esporofitos germinados, utilizando la regresión lineal simple como herramienta estadística. A través de este proceso, se busca no solo ajustar un modelo que explique esta relación, sino también verificar los supuestos que sustentan la validez del modelo.</p>
-<section id="instalación-y-carga-de-paquetes" class="level3" data-number="16.5.1">
-<h3 data-number="16.5.1" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">16.5.1</span> Instalación y Carga de Paquetes</h3>
+<section id="instalación-y-carga-de-paquetes" class="level3" data-number="21.5.1">
+<h3 data-number="21.5.1" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">21.5.1</span> Instalación y Carga de Paquetes</h3>
 <p>Para comenzar, es necesario instalar y cargar los paquetes requeridos. Estos paquetes proporcionan funciones útiles para la manipulación de datos y la visualización.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes  </span></span>
@@ -424,8 +461,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong><code>readxl</code></strong>: Permite importar datos desde archivos de Excel, facilitando la carga de conjuntos de datos.</p></li>
 </ol>
 </section>
-<section id="importación-de-datos" class="level3" data-number="16.5.2">
-<h3 data-number="16.5.2" class="anchored" data-anchor-id="importación-de-datos"><span class="header-section-number">16.5.2</span> Importación de Datos</h3>
+<section id="importación-de-datos" class="level3" data-number="21.5.2">
+<h3 data-number="21.5.2" class="anchored" data-anchor-id="importación-de-datos"><span class="header-section-number">21.5.2</span> Importación de Datos</h3>
 <p>A continuación, se importan los datos desde un archivo Excel.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo csv</span></span>
@@ -447,8 +484,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Este código carga el archivo de Excel que contiene los datos sobre esporofitos y muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.</p>
 </section>
-<section id="visualización-de-datos" class="level3" data-number="16.5.3">
-<h3 data-number="16.5.3" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">16.5.3</span> Visualización de Datos</h3>
+<section id="visualización-de-datos" class="level3" data-number="21.5.3">
+<h3 data-number="21.5.3" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">21.5.3</span> Visualización de Datos</h3>
 <p>Se elabora un gráfico de dispersión para observar la relación entre las variables.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaboración de un gráfico de dispersión entre altura y cantidad</span></span>
@@ -463,8 +500,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Este gráfico permite visualizar la relación entre la cantidad de esporofitos y la altura en milímetros, facilitando la identificación de patrones. Como se puede apreciar en el gráfico anterior hay una relación inversamente proporcional entre la altura de los esporofitos y la cantidad de esporofitos.</p>
 </section>
-<section id="ajuste-del-modelo-de-regresión" class="level3" data-number="16.5.4">
-<h3 data-number="16.5.4" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">16.5.4</span> Ajuste del Modelo de Regresión</h3>
+<section id="ajuste-del-modelo-de-regresión" class="level3" data-number="21.5.4">
+<h3 data-number="21.5.4" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">21.5.4</span> Ajuste del Modelo de Regresión</h3>
 <p>Se ajusta el modelo de regresión lineal simple utilizando la función <code>lm()</code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
@@ -498,8 +535,8 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 <li><p><strong><code>summary(regsimple)</code></strong>: Proporciona un resumen del modelo ajustado, incluyendo coeficientes, errores estándar y estadísticas de ajuste.</p></li>
 </ol>
 </section>
-<section id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="level3" data-number="16.5.5">
-<h3 data-number="16.5.5" class="anchored" data-anchor-id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">16.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</h3>
+<section id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="level3" data-number="21.5.5">
+<h3 data-number="21.5.5" class="anchored" data-anchor-id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">21.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</h3>
 <p>Se generan gráficos de diagnóstico para evaluar los supuestos del modelo.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráficos de diagnóstico de los supuestos</span></span>
@@ -518,8 +555,8 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Explicación del código</strong>:</p>
 <p><strong><code>plot(regsimple, which=1:2)</code></strong>: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.</p>
 </section>
-<section id="prueba-de-normalidad-de-los-residuos" class="level3" data-number="16.5.6">
-<h3 data-number="16.5.6" class="anchored" data-anchor-id="prueba-de-normalidad-de-los-residuos"><span class="header-section-number">16.5.6</span> Prueba de Normalidad de los Residuos</h3>
+<section id="prueba-de-normalidad-de-los-residuos" class="level3" data-number="21.5.6">
+<h3 data-number="21.5.6" class="anchored" data-anchor-id="prueba-de-normalidad-de-los-residuos"><span class="header-section-number">21.5.6</span> Prueba de Normalidad de los Residuos</h3>
 <p>Se realiza la prueba de Shapiro-Wilk para evaluar la normalidad de los residuos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar la prueba de Shapiro-Wilk en los residuos</span></span>
@@ -535,8 +572,8 @@ W = 0.95651, p-value = 0.2516</code></pre>
 <p><strong>Explicación</strong>:</p>
 <p><strong><code>shapiro.test(residuals(regsimple))</code></strong>: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo ( &lt; 0.05) indica que los residuos no son normales. Para el ejemplo en cuestión el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indica que los residuos no son norales.</p>
 </section>
-<section id="prueba-de-homocedasticidad-de-la-varianza" class="level3" data-number="16.5.7">
-<h3 data-number="16.5.7" class="anchored" data-anchor-id="prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">16.5.7</span> Prueba de Homocedasticidad de la varianza</h3>
+<section id="prueba-de-homocedasticidad-de-la-varianza" class="level3" data-number="21.5.7">
+<h3 data-number="21.5.7" class="anchored" data-anchor-id="prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">21.5.7</span> Prueba de Homocedasticidad de la varianza</h3>
 <p>Finalmente, se evalúa el supuesto de homocedasticidad utilizando la prueba de heterocedasticidad.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar prueba para el supuesto de homocedasticidad</span></span>
@@ -1126,10 +1163,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./estadistica_descriptiva.html" class="pagination-link" aria-label="Estadística descriptiva usando funciones en R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./regresion_multiple.html" class="pagination-link" aria-label="Regresión múltiple usando R">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->

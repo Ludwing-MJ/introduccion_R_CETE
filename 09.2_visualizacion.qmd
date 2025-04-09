@@ -1,0 +1,5 @@
+# Visualizaciones Base de R
+
+## Notas:
+
+En esta sección se explicara tanto por que R es una herramienta muy poderosa en la elaboración de gráficos como se hara una introducción de conceptos necesarios para comprender la seccion de visualizacionen de R entera

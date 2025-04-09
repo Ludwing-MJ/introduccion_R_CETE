@@ -1,4 +1,4 @@
-# Exportación de resultados
+# Exportación de Resultados de Análisis en R
 
 La exportación de resultados es una etapa crucial en el análisis de datos, ya que permite guardar gráficos y tablas para su uso en informes, presentaciones o análisis posteriores. En esta sección, se detalla cómo guardar gráficos en formatos **PNG** y **PDF** utilizando la función `ggsave()` del paquete `ggplot2`, y cómo exportar tablas en formatos **CSV** y **Excel** utilizando las funciones `write.csv()` y `write_xlsx()` del paquete `writexl`. Estas herramientas son esenciales para garantizar que los resultados del análisis sean accesibles y reutilizables (R Core Team, 2023; Wickham, 2016).
 

@@ -45,15 +45,20 @@ book:
     - 08.2_manipulacion.qmd
     - 08.3_manipulacion.qmd
     - part: "Visualización de datos"
-    - 09_visualizacion.qmd
-    - part: "Exportación de resultados"
-    - 10_exportacion.qmd
+    - 09.1_visualizacion.qmd
+    - 09.2_visualizacion.qmd
+    - 09.3_visualizacion.qmd
+    - part: "Gestión y Exportación de resultados"
+    - 10.1_exportacion.qmd
+    - 10.2_exportacion.qmd
+    - 10.3_exportacion.qmd
     - part: "Material de apoyo y referencias"
     - 11.1_M_apoyo.qmd
     - references.qmd
     - part: "Ejemplos de Análisis Estadístico con R"
     - estadistica_descriptiva.qmd
     - regresion_simple.qmd
+    - regresion_multiple.qmd
 
 bibliography: references.bib
 biblio-style: "apalike"

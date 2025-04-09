@@ -1,0 +1,5 @@
+# Uso de Git y GitHub en Proyectos de R
+
+## Notas: 
+
+En esta sección se abordará una explicación sobre como clonar un repositorio de github en nuestro ordenador y como tener un control de versiones de nuestros proyectos usando github ademas de hablar de los pros y contras.

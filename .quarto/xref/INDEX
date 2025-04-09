@@ -112,5 +112,26 @@
   },
   "11.1_M_apoyo.qmd": {
     "11.1_M_apoyo.html": "bafe029e"
+  },
+  "09.1_visualizacion.qmd": {
+    "09.1_visualizacion.html": "6f35f06f"
+  },
+  "09.2_visualizacion.qmd": {
+    "09.2_visualizacion.html": "2f317a9f"
+  },
+  "09.3_visualizacion.qmd": {
+    "09.3_visualizacion.html": "e52ca702"
+  },
+  "10.1_exportacion.qmd": {
+    "10.1_exportacion.html": "ffca40fb"
+  },
+  "10.2_exportacion.qmd": {
+    "10.2_exportacion.html": "bf265959"
+  },
+  "10.3_exportacion.qmd": {
+    "10.3_exportacion.html": "0296fa91"
+  },
+  "regresion_multiple.qmd": {
+    "regresion_multiple.html": "6aac1831"
   }
 }

@@ -1,0 +1,5 @@
+# Introducción a la Gestión de Proyectos en R
+
+## Notas:
+
+En esta sección se deberá abordar los conceptos clave como github y conceptos de exportación de resultados de análisis y se ampliara la sección de organización de proyectos y recomendaciones al gestionarlos en el formato de carpetas y subcarpetas, hay que revisar la sección inicial donde se hace una introducción a estos temas para evitar ser redundante por lo que hay que desarrollar ambas secciones de la mano.
