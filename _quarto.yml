@@ -49,6 +49,7 @@ book:
     - part: "Exportación de resultados"
     - 10_exportacion.qmd
     - part: "Material de apoyo y referencias"
+    - 11.1_M_apoyo.qmd
     - references.qmd
     - part: "Ejemplos de Análisis Estadístico con R"
     - estadistica_descriptiva.qmd
