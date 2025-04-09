@@ -193,7 +193,7 @@ datos_filtrados
 
 Las listas son estructuras de datos más flexibles que los *data frames*, ya que pueden contener elementos de diferentes tipos y longitudes, como vectores, *data frames*, matrices o incluso funciones. A diferencia de los *data frames*, las listas no requieren que los elementos tengan la misma longitud o tipo de dato, lo que las hace ideales para almacenar resultados complejos o datos heterogéneos (R Core Team, 2023).
 
-### **Creación de listas**
+### Creación de listas
 
 Para crear una lista, se utiliza la función `list()`. A continuación, se presenta un ejemplo:
 
@@ -214,7 +214,7 @@ En este ejemplo:
 
 3.  El elemento `datos_completos` es un *data frame*.
 
-### **Acceso a elementos de una lista**
+### Acceso a elementos de una lista
 
 Los elementos de una lista pueden accederse mediante su nombre o índice:
 

@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>4&nbsp; Estructura de datos en R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>4&nbsp; Estructuras de datos en R – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -120,7 +120,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_datos.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructura de datos en R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04_datos.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructuras de datos en R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_datos.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructura de datos en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructuras de datos en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -366,18 +366,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#creación-de-vectores" id="toc-creación-de-vectores" class="nav-link" data-scroll-target="#creación-de-vectores"><span class="header-section-number">4.1.1</span> Creación de vectores</a></li>
   <li><a href="#manipulación-de-vectores" id="toc-manipulación-de-vectores" class="nav-link" data-scroll-target="#manipulación-de-vectores"><span class="header-section-number">4.1.2</span> Manipulación de vectores</a></li>
   </ul></li>
-  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">4.2</span> Data frames</a>
+  <li><a href="#matrices" id="toc-matrices" class="nav-link" data-scroll-target="#matrices"><span class="header-section-number">4.2</span> Matrices</a>
   <ul class="collapse">
-  <li><a href="#creación-de-data-frames" id="toc-creación-de-data-frames" class="nav-link" data-scroll-target="#creación-de-data-frames"><span class="header-section-number">4.2.1</span> Creación de data frames</a></li>
-  <li><a href="#ventajas-de-un-data-frame" id="toc-ventajas-de-un-data-frame" class="nav-link" data-scroll-target="#ventajas-de-un-data-frame"><span class="header-section-number">4.2.2</span> Ventajas de un data frame</a></li>
-  <li><a href="#manipulación-de-data-frames" id="toc-manipulación-de-data-frames" class="nav-link" data-scroll-target="#manipulación-de-data-frames"><span class="header-section-number">4.2.3</span> Manipulación de data frames</a></li>
+  <li><a href="#creación-de-matrices" id="toc-creación-de-matrices" class="nav-link" data-scroll-target="#creación-de-matrices"><span class="header-section-number">4.2.1</span> Creación de Matrices</a></li>
+  <li><a href="#manipulación-de-matrices" id="toc-manipulación-de-matrices" class="nav-link" data-scroll-target="#manipulación-de-matrices"><span class="header-section-number">4.2.2</span> Manipulación de Matrices</a></li>
+  <li><a href="#texto-de-apoyo-para-algebra-matricial" id="toc-texto-de-apoyo-para-algebra-matricial" class="nav-link" data-scroll-target="#texto-de-apoyo-para-algebra-matricial"><span class="header-section-number">4.2.3</span> Texto de apoyo para algebra matricial</a></li>
   </ul></li>
-  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">4.3</span> Listas</a>
+  <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames"><span class="header-section-number">4.3</span> Data frames</a>
   <ul class="collapse">
-  <li><a href="#creación-de-listas" id="toc-creación-de-listas" class="nav-link" data-scroll-target="#creación-de-listas"><span class="header-section-number">4.3.1</span> <strong>Creación de listas</strong></a></li>
-  <li><a href="#acceso-a-elementos-de-una-lista" id="toc-acceso-a-elementos-de-una-lista" class="nav-link" data-scroll-target="#acceso-a-elementos-de-una-lista"><span class="header-section-number">4.3.2</span> <strong>Acceso a elementos de una lista</strong></a></li>
+  <li><a href="#creación-de-data-frames" id="toc-creación-de-data-frames" class="nav-link" data-scroll-target="#creación-de-data-frames"><span class="header-section-number">4.3.1</span> Creación de data frames</a></li>
+  <li><a href="#ventajas-de-un-data-frame" id="toc-ventajas-de-un-data-frame" class="nav-link" data-scroll-target="#ventajas-de-un-data-frame"><span class="header-section-number">4.3.2</span> Ventajas de un data frame</a></li>
+  <li><a href="#manipulación-de-data-frames" id="toc-manipulación-de-data-frames" class="nav-link" data-scroll-target="#manipulación-de-data-frames"><span class="header-section-number">4.3.3</span> Manipulación de data frames</a></li>
   </ul></li>
-  <li><a href="#comparación-y-conclusiones-data-frames-y-listas" id="toc-comparación-y-conclusiones-data-frames-y-listas" class="nav-link" data-scroll-target="#comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación y conclusiones: Data Frames y Listas</a></li>
+  <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas"><span class="header-section-number">4.4</span> Listas</a>
+  <ul class="collapse">
+  <li><a href="#creación-de-listas" id="toc-creación-de-listas" class="nav-link" data-scroll-target="#creación-de-listas"><span class="header-section-number">4.4.1</span> Creación de listas</a></li>
+  <li><a href="#acceso-a-elementos-de-una-lista" id="toc-acceso-a-elementos-de-una-lista" class="nav-link" data-scroll-target="#acceso-a-elementos-de-una-lista"><span class="header-section-number">4.4.2</span> Acceso a elementos de una lista</a></li>
+  </ul></li>
+  <li><a href="#comparación-y-conclusiones-data-frames-y-listas" id="toc-comparación-y-conclusiones-data-frames-y-listas" class="nav-link" data-scroll-target="#comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.5</span> Comparación y conclusiones: Data Frames y Listas</a></li>
   </ul>
 </nav>
     </div>
@@ -386,7 +392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructura de datos en R</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructuras de datos en R</span></h1>
 </div>
 
 
@@ -403,7 +409,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En R, las estructuras de datos son esenciales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización de datos. Entre las principales estructuras de datos en R se encuentran los <em>vectores</em>, <em>data frames</em> y <em>listas</em>, cada una con características específicas que las hacen adecuadas para distintas tareas (R Core Team, 2023).</p>
+<p>En R, las estructuras de datos son esenciales para organizar, almacenar y manipular información de manera eficiente. Estas estructuras permiten trabajar con diferentes tipos de datos, desde valores individuales hasta colecciones complejas, facilitando el análisis estadístico y la visualización de datos. Entre las principales estructuras de datos en R se encuentran los <em>vectores</em>, <em>matrices,</em> <em>data frames</em> y <em>listas</em>, cada una con características específicas que las hacen adecuadas para distintas tareas (R Core Team, 2023).</p>
 <section id="vectores" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="vectores"><span class="header-section-number">4.1</span> Vectores</h2>
 <p>Un vector es la estructura de datos más básica y fundamental en R. Es una colección ordenada de elementos del mismo tipo, como números, texto o valores lógicos. Los vectores son unidimensionales, lo que significa que los datos se almacenan en una sola fila o columna. Por ejemplo, un vector puede representar una lista de edades, nombres o resultados de un experimento (Ihaka &amp; Gentleman, 1996).</p>
@@ -470,19 +476,93 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="data-frames" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4.2</span> Data frames</h2>
+<section id="matrices" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="matrices"><span class="header-section-number">4.2</span> Matrices</h2>
+<p>Las matrices son estructuras de datos bidimensionales en R que permiten almacenar datos de un mismo tipo en filas y columnas. Son fundamentales en el análisis estadístico, ya que facilitan la manipulación y el cálculo de datos en un formato tabular. A diferencia de los vectores, que son unidimensionales, las matrices permiten organizar los datos de manera más compleja, lo que resulta útil en diversas aplicaciones estadísticas (Ihaka &amp; Gentleman, 1996).</p>
+<p>Las matrices son esenciales en R porque muchas operaciones matemáticas y estadísticas requieren datos organizados en dos dimensiones. Al igual que los vectores, todos los elementos de una matriz deben ser del mismo tipo de dato, lo que asegura la consistencia en las operaciones realizadas sobre ella.</p>
+<section id="creación-de-matrices" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="creación-de-matrices"><span class="header-section-number">4.2.1</span> Creación de Matrices</h3>
+<p>Para crear una matriz en R, se utiliza la función <code>matrix()</code>, que permite especificar los elementos, así como el número de filas y columnas. A continuación, se presentan ejemplos de creación de matrices:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Creación de una matriz de 3 filas y 2 columnas</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>matriz <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Creación de una matriz de caracteres</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>matriz_caracteres <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>, <span class="st">"D"</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_caracteres)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,] "A"  "C" 
+[2,] "B"  "D" </code></pre>
+</div>
+</div>
+<p>En estos ejemplos:</p>
+<ol type="1">
+<li><p>La matriz llamada: <code>matriz</code>, almacena valores numéricos organizados en 3 filas y 2 columnas.</p></li>
+<li><p>La matriz llamada: <code>matriz_caracteres</code>, contiene cadenas de texto organizadas en 2 filas y 2 columnas.</p></li>
+</ol>
+</section>
+<section id="manipulación-de-matrices" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="manipulación-de-matrices"><span class="header-section-number">4.2.2</span> Manipulación de Matrices</h3>
+<p>Las matrices en R permiten realizar una amplia variedad de operaciones matemáticas y de manipulación de datos. Estas operaciones son fundamentales para el análisis estadístico y la transformación de datos. A continuación, se describen algunas de las operaciones más comunes:</p>
+<section id="acceso-a-elementos-específicos-1" class="level4" data-number="4.2.2.1">
+<h4 data-number="4.2.2.1" class="anchored" data-anchor-id="acceso-a-elementos-específicos-1"><span class="header-section-number">4.2.2.1</span> Acceso a Elementos Específicos</h4>
+<p>Se pueden acceder a elementos individuales de una matriz utilizando índices entre corchetes, especificando primero la fila y luego la columna. Los índices en R comienzan en 1.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al elemento en la segunda fila y primera columna</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>elemento <span class="ot">&lt;-</span> matriz[<span class="dv">2</span>, <span class="dv">1</span>]</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(elemento)  <span class="co"># Imprime 2</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2</code></pre>
+</div>
+</div>
+<p>En este ejemplo, <code>matriz[2, 1]</code> devuelve el elemento en la segunda fila y primera columna de la matriz, que es 2.</p>
+</section>
+<section id="combinación-de-matrices" class="level4" data-number="4.2.2.2">
+<h4 data-number="4.2.2.2" class="anchored" data-anchor-id="combinación-de-matrices"><span class="header-section-number">4.2.2.2</span> Combinación de Matrices</h4>
+<p>Las matrices pueden combinarse para crear nuevas matrices utilizando funciones como <code>rbind()</code> para combinar filas y <code>cbind()</code> para combinar columnas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combinar dos matrices por filas</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>matriz2 <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="dv">7</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">ncol =</span> <span class="dv">2</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>matriz_combinada <span class="ot">&lt;-</span> <span class="fu">rbind</span>(matriz, matriz2)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_combinada)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2]
+[1,]    1    4
+[2,]    2    5
+[3,]    3    6
+[4,]    7   10
+[5,]    8   11
+[6,]    9   12</code></pre>
+</div>
+</div>
+<p>Aquí, <code>matriz_combinada</code> combina las filas de <code>matriz</code> y <code>matriz2</code>, generando una nueva matriz.</p>
+</section>
+</section>
+<section id="texto-de-apoyo-para-algebra-matricial" class="level3" data-number="4.2.3">
+<h3 data-number="4.2.3" class="anchored" data-anchor-id="texto-de-apoyo-para-algebra-matricial"><span class="header-section-number">4.2.3</span> Texto de apoyo para algebra matricial</h3>
+<p>El capítulo 20 del libro <em>Modelos de Regresión con R</em> de Hernández, Usuga y Mazo (2024) aborda en profundidad el tema del álgebra matricial con R, proporcionando una base sólida para entender cómo se aplican las matrices en el análisis estadístico. Para más detalles, se puede consultar el siguiente enlace: <a href="https://fhernanb.github.io/libro_regresion/algmat.html">Álgebra matricial con R</a>.</p>
+</section>
+</section>
+<section id="data-frames" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="data-frames"><span class="header-section-number">4.3</span> Data frames</h2>
 <p>Un <em>data frame</em> es una estructura de datos tabular en R, similar a una hoja de cálculo o una tabla en una base de datos. Organiza los datos en filas y columnas, donde cada columna es un vector que puede contener un tipo de dato diferente (por ejemplo, números, texto o factores). Cada fila representa una observación, mientras que cada columna corresponde a una variable (R Core Team, 2023).</p>
 <p>Los <em>data frames</em> son ideales para trabajar con datos estructurados, como encuestas, experimentos o bases de datos, ya que permiten realizar análisis estadísticos y visualizaciones de manera eficiente. Además, son compatibles con una amplia variedad de funciones y paquetes en R, lo que los convierte en una de las estructuras más utilizadas en este lenguaje (Wickham &amp; Grolemund, 2017).</p>
-<section id="creación-de-data-frames" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="creación-de-data-frames"><span class="header-section-number">4.2.1</span> Creación de data frames</h3>
+<section id="creación-de-data-frames" class="level3" data-number="4.3.1">
+<h3 data-number="4.3.1" class="anchored" data-anchor-id="creación-de-data-frames"><span class="header-section-number">4.3.1</span> Creación de data frames</h3>
 <p>Para crear un <em>data frame</em>, se utiliza la función <code>data.frame()</code>, combinando vectores de igual longitud separados por comas. A continuación, se presenta un ejemplo usando los vectores creados en la sección anterior:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un data frame con vectores</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(nombres,  edades,  mayores_de_edad)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización del data frame</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>datos</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de un data frame con vectores</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(nombres,  edades,  mayores_de_edad)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualización del data frame</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>datos</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  nombres edades mayores_de_edad
 1    Juan     17           FALSE
@@ -498,8 +578,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>La columna <code>mayores_de_edad</code> contiene valores lógicos (<code>TRUE</code> o <code>FALSE</code>).</p></li>
 </ol>
 </section>
-<section id="ventajas-de-un-data-frame" class="level3" data-number="4.2.2">
-<h3 data-number="4.2.2" class="anchored" data-anchor-id="ventajas-de-un-data-frame"><span class="header-section-number">4.2.2</span> Ventajas de un data frame</h3>
+<section id="ventajas-de-un-data-frame" class="level3" data-number="4.3.2">
+<h3 data-number="4.3.2" class="anchored" data-anchor-id="ventajas-de-un-data-frame"><span class="header-section-number">4.3.2</span> Ventajas de un data frame</h3>
 <p>Los <em>data frames</em> ofrecen múltiples ventajas que los hacen indispensables para el análisis de datos en R:</p>
 <ol type="1">
 <li><p><strong>Estructura clara</strong>: Cada fila representa una observación y cada columna una variable, lo que facilita la interpretación de los datos.</p></li>
@@ -507,27 +587,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Flexibilidad</strong>: Permiten almacenar diferentes tipos de datos en columnas, como números, texto y factores.</p></li>
 </ol>
 </section>
-<section id="manipulación-de-data-frames" class="level3" data-number="4.2.3">
-<h3 data-number="4.2.3" class="anchored" data-anchor-id="manipulación-de-data-frames"><span class="header-section-number">4.2.3</span> Manipulación de data frames</h3>
+<section id="manipulación-de-data-frames" class="level3" data-number="4.3.3">
+<h3 data-number="4.3.3" class="anchored" data-anchor-id="manipulación-de-data-frames"><span class="header-section-number">4.3.3</span> Manipulación de data frames</h3>
 <p>Los <em>data frames</em> pueden manipularse fácilmente utilizando funciones básicas de R o herramientas avanzadas de paquetes como <code>dplyr</code>. A continuación, se describen algunas operaciones comunes:</p>
-<section id="acceso-a-columnas" class="level4" data-number="4.2.3.1">
-<h4 data-number="4.2.3.1" class="anchored" data-anchor-id="acceso-a-columnas"><span class="header-section-number">4.2.3.1</span> <strong>Acceso a columnas</strong></h4>
+<section id="acceso-a-columnas" class="level4" data-number="4.3.3.1">
+<h4 data-number="4.3.3.1" class="anchored" data-anchor-id="acceso-a-columnas"><span class="header-section-number">4.3.3.1</span> <strong>Acceso a columnas</strong></h4>
 <p>Se puede acceder a una columna específica utilizando el operador <code>$</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a la columna 'nombres'</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso a la columna 'nombres'</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>datos<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan"  "Ana"   "Luis"  "María"</code></pre>
 </div>
 </div>
 </section>
-<section id="filtrado-de-filas" class="level4" data-number="4.2.3.2">
-<h4 data-number="4.2.3.2" class="anchored" data-anchor-id="filtrado-de-filas"><span class="header-section-number">4.2.3.2</span> <strong>Filtrado de filas</strong></h4>
+<section id="filtrado-de-filas" class="level4" data-number="4.3.3.2">
+<h4 data-number="4.3.3.2" class="anchored" data-anchor-id="filtrado-de-filas"><span class="header-section-number">4.3.3.2</span> <strong>Filtrado de filas</strong></h4>
 <p>Es posible filtrar filas aplicando condiciones lógicas. Por ejemplo, para seleccionar las filas donde la edad sea mayor a 20:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar filas donde la edad sea mayor a 20</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos[datos<span class="sc">$</span>edades <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>datos_filtrados</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar filas donde la edad sea mayor a 20</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>datos_filtrados <span class="ot">&lt;-</span> datos[datos<span class="sc">$</span>edades <span class="sc">&gt;</span> <span class="dv">20</span>, ]</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>datos_filtrados</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  nombres edades mayores_de_edad
 4   María     25            TRUE</code></pre>
@@ -536,19 +616,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 </section>
 </section>
-<section id="listas" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="listas"><span class="header-section-number">4.3</span> Listas</h2>
+<section id="listas" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="listas"><span class="header-section-number">4.4</span> Listas</h2>
 <p>Las listas son estructuras de datos más flexibles que los <em>data frames</em>, ya que pueden contener elementos de diferentes tipos y longitudes, como vectores, <em>data frames</em>, matrices o incluso funciones. A diferencia de los <em>data frames</em>, las listas no requieren que los elementos tengan la misma longitud o tipo de dato, lo que las hace ideales para almacenar resultados complejos o datos heterogéneos (R Core Team, 2023).</p>
-<section id="creación-de-listas" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="creación-de-listas"><span class="header-section-number">4.3.1</span> <strong>Creación de listas</strong></h3>
+<section id="creación-de-listas" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="creación-de-listas"><span class="header-section-number">4.4.1</span> Creación de listas</h3>
 <p>Para crear una lista, se utiliza la función <code>list()</code>. A continuación, se presenta un ejemplo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de una lista</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>mi_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombres =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>),</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">edades =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>),</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">datos_completos =</span> datos</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de una lista</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>mi_lista <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombres =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>),</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">edades =</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">20</span>),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">datos_completos =</span> datos</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>En este ejemplo:</p>
 <ol type="1">
@@ -557,29 +637,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p>El elemento <code>datos_completos</code> es un <em>data frame</em>.</p></li>
 </ol>
 </section>
-<section id="acceso-a-elementos-de-una-lista" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="acceso-a-elementos-de-una-lista"><span class="header-section-number">4.3.2</span> <strong>Acceso a elementos de una lista</strong></h3>
+<section id="acceso-a-elementos-de-una-lista" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="acceso-a-elementos-de-una-lista"><span class="header-section-number">4.4.2</span> Acceso a elementos de una lista</h3>
 <p>Los elementos de una lista pueden accederse mediante su nombre o índice:</p>
 <p><strong>Por nombre</strong>: Utilizando el operador <code>$</code> o corchetes dobles <code>[[ ]]</code></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento 'nombres' por nombre</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>mi_lista<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al elemento 'nombres' por nombre</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>mi_lista<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
 <p><strong>Por índice</strong>: Utilizando corchetes dobles <code>[[ ]]</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al primer elemento de la lista</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>mi_lista[[<span class="dv">1</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceso al primer elemento de la lista</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>mi_lista[[<span class="dv">1</span>]]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="comparación-y-conclusiones-data-frames-y-listas" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.4</span> Comparación y conclusiones: Data Frames y Listas</h2>
+<section id="comparación-y-conclusiones-data-frames-y-listas" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="comparación-y-conclusiones-data-frames-y-listas"><span class="header-section-number">4.5</span> Comparación y conclusiones: Data Frames y Listas</h2>
 <p>Los <em>data frames</em> y las listas son estructuras de datos fundamentales en R, cada una con características específicas que las hacen adecuadas para diferentes tareas. Mientras que los <em>data frames</em> son ideales para trabajar con datos tabulares estructurados, las listas ofrecen una mayor flexibilidad para almacenar y manipular datos heterogéneos. A continuación, se presenta una comparación detallada entre ambas estructuras:</p>
 <table class="caption-top table">
 <colgroup>
