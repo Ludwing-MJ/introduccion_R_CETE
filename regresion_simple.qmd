@@ -141,7 +141,7 @@ shapiro.test(residuals(regsimple))
 
 **Explicación**:
 
-**`shapiro.test(residuals(regsimple))`**: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p bajo ( \< 0.05) indica que los residuos no son normales. Para el ejemplo en cuestión el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indica que los residuos no son norales.
+**`shapiro.test(residuals(regsimple))`**: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p por debajo del nivel de significancia ( \< 0.05) indica que los residuos no son normales. Para el ejemplo el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indicar que los residuos no son normales.
 
 ### Prueba de Homocedasticidad de la varianza
 
@@ -154,4 +154,4 @@ ncvTest(regsimple)
 
 **Explicación**:
 
-**`ncvTest(regsimple)`**: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p bajo (\<0.05) sugiere que hay heterocedasticidad, lo que puede invalidar el modelo. Para este ejemplo el valor de p es 0.78166 por lo que no hay evidencia estadística suficiente para indicar que la varianza de los residuos no es contante.
+**`ncvTest(regsimple)`**: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p menor al nivel de significancia (\<0.05) sugiere que hay heterocedasticidad, lo que puede invalidar el modelo. Para este ejemplo el valor de p es 0.78166 por lo que no hay evidencia estadística suficiente para indicar que la varianza de los residuos no es contante.
