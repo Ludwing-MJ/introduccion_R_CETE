@@ -76,6 +76,10 @@ format:
     link-external-newwindow: true
     
   pdf:
+    code-overflow: wrap
+    include-in-header: |
+      \usepackage{listings}
+      \lstset{breaklines=true}
     lang: es
     documentclass: scrreprt
     classoption: ["onepage", "openany"]

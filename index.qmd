@@ -1,32 +1,32 @@
 # Introducción {.unnumbered}
 
-La estadística clásica es una disciplina fundamental en la investigación científica y en la toma de decisiones basada en datos. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del manual, se abordan conceptos básicos acompañados de ejemplos prácticos que facilitan su comprensión y aplicación en diversos contextos. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.
+La estadística clásica constituye un pilar esencial en la investigación científica y en la toma de decisiones fundamentadas en datos. Este manual ha sido elaborado para quienes se inician en el análisis estadístico, con el objetivo de introducir de manera gradual y comprensible las herramientas fundamentales del lenguaje R, ampliamente reconocido en la ciencia de datos y la estadística aplicada. A lo largo del texto, se abordan desde los conceptos básicos hasta técnicas más avanzadas, acompañando la teoría con ejemplos prácticos que facilitan la comprensión y la aplicación en contextos reales. El propósito central es ofrecer una base sólida que permita a los lectores utilizar R de forma efectiva en el análisis de datos, sin requerir experiencia previa en programación o estadística (Ihaka & Gentleman, 1996; R Core Team, 2023).
 
 ## Propósito del manual
 
-El presente manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, desde su instalación y configuración hasta la aplicación de técnicas estadísticas clásicas. Se abordan temas como la manipulación de datos, la creación de gráficos y la realización de análisis estadísticos básicos. Además, se incluyen ejemplos prácticos que permiten aplicar los conceptos aprendidos en contextos reales.
+El manual está diseñado para guiar a personas principiantes en el uso de R, abarcando desde la instalación y configuración del entorno hasta la aplicación de técnicas estadísticas clásicas y modernas. Se exploran temas como la manipulación y visualización de datos, la gestión de proyectos, la exportación de resultados y la realización de análisis estadísticos descriptivos e inferenciales. Cada tema se desarrolla con ejemplos prácticos y ejercicios que permiten aplicar los conocimientos adquiridos en situaciones reales. Además, se enfatiza el uso de R como una herramienta de código abierto, destacando su flexibilidad, capacidad de extensión y su papel en la promoción de la reproducibilidad científica (Ihaka & Gentleman, 1996; R Core Team, 2023).
 
-R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica (Ihaka & Gentleman, 1996; R Core Team, 2023). A lo largo de este texto, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en programación estadística, con un enfoque en la claridad, organización y reproducibilidad.
+A lo largo del manual, se presentan las principales características de R y su entorno de desarrollo integrado, RStudio, resaltando su utilidad tanto en proyectos académicos como profesionales. El texto está dirigido a estudiantes, investigadores y profesionales interesados en adquirir competencias en programación estadística, priorizando la claridad, la organización y la reproducibilidad en los análisis.
 
 ## Organización del manual
 
-El contenido del manual está estructurado de manera progresiva, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas estadísticas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.
+El contenido del manual se estructura de manera progresiva, iniciando con los aspectos más elementales y avanzando hacia herramientas y técnicas estadísticas de mayor complejidad. Cada sección incluye explicaciones detalladas, ejemplos prácticos y ejercicios diseñados para consolidar el aprendizaje. Asimismo, se incorporan recomendaciones y buenas prácticas que facilitan la asimilación de los conceptos y fomentan la reproducibilidad en los análisis realizados.
 
 El manual se organiza en los siguientes capítulos principales:
 
-1.  **Introducción a R y RStudio**: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.
+1.  **Introducción a R y RStudio:** En este capítulo se presentan los conceptos básicos de R y RStudio, incluyendo sus características principales, el proceso de instalación y configuración, así como la preparación del entorno de trabajo para el análisis de datos.
 
-2.  **Conceptos básicos de R**: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.
+2.  **Conceptos básicos de R:** Se abordan los fundamentos esenciales del lenguaje R, tales como los primeros pasos en la consola, la estructura de los datos, la importación de información, el uso de operadores, funciones y la gestión de paquetes.
 
-3.  **Manipulación de datos**: Se introduce el uso de herramientas como `dplyr` y `tidyr` para transformar y organizar datos de manera eficiente.
+3.  **Manipulación de datos:** Este apartado introduce las técnicas fundamentales para la manipulación de datos en R, utilizando tanto las herramientas base del lenguaje como los paquetes dplyr y tidyr, permitiendo transformar, organizar y preparar los datos para su análisis.
 
-4.  **Visualización de datos**: Se enseña a crear gráficos básicos y personalizados utilizando el paquete `ggplot2`.
+4.  **Visualización de datos:** Se exploran las distintas opciones para la visualización de datos, comenzando con las herramientas básicas de R y avanzando hacia la creación de gráficos personalizados mediante el paquete ggplot2, facilitando la interpretación y comunicación de los resultados.
 
-5.  **Exportación de resultados**: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.
+5.  **Gestión y exportación de resultados:** En este capítulo se explica cómo gestionar proyectos en R, exportar resultados de análisis, gráficos y tablas en formatos adecuados para su uso en informes y presentaciones, así como la integración con herramientas de control de versiones como Git y GitHub.
 
-6.  **Material de apoyo y referencias**: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.
+6.  **Material de apoyo y referencias:** Se proporcionan recursos adicionales, materiales de consulta y referencias bibliográficas que permiten profundizar en el aprendizaje y la aplicación de R en distintos contextos.
 
-7.  **Ejemplos de análisis estadístico con R**: Se desarrollan de manera detallada ejemplos del uso de R para desarrollar análisis estadístico de datos.
+7.  **Ejemplos de análisis estadístico con R:** Finalmente, se desarrollan ejemplos detallados de análisis estadístico, incluyendo estadística descriptiva, regresión lineal simple y múltiple, mostrando la aplicación práctica de R en el análisis de datos reales.
 
 Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.
 
@@ -42,11 +42,31 @@ Este manual no requiere conocimientos previos en programación ni en análisis e
 
 Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.
 
-## Colofón
+## Software y convenciones
 
-La versión en línea de este manual se encuentra disponible en <https://introduccion-r-cete.vercel.app/>. La fuente del manual en español está alojada en el repositorio de GitHub: <https://github.com/Ludwing-MJ/introduccion_R_CETE>. Este manual ha sido desarrollado utilizando [*Quarto*](https://quarto.org/), una herramienta diseñada para convertir archivos con extensión `.qmd` en formatos publicables como HTML, PDF y EPUB.
+La versión en línea de este manual está disponible en <https://introduccion-r-cete.vercel.app/>, y la fuente en español se encuentra alojada en el repositorio de GitHub <https://github.com/Ludwing-MJ/introduccion_R_CETE>. El desarrollo del manual se realizó utilizando Quarto, una herramienta que permite transformar archivos con extensión .qmd en formatos publicables como HTML, PDF y EPUB, facilitando la integración de código, resultados y texto en un solo documento reproducible.
 
-Este manual fue construido con:
+Durante la elaboración del manual se emplearon diversos paquetes del ecosistema de R, entre los que destacan knitr y bookdown, los cuales permiten combinar las ventajas de LaTeX y R para la generación de documentos dinámicos y reproducibles (Xie, 2015; Xie, 2024). Esta integración posibilita que los ejemplos de código y los resultados presentados sean fácilmente replicables por el lector.
+
+A lo largo del manual, se presentan fragmentos de código que pueden ser copiados y ejecutados directamente en la consola de R para obtener los mismos resultados que se muestran en el texto. Los bloques de código se destacan en recuadros similares al siguiente:
+
+```{r eval=FALSE}
+4 + 6
+a <- c(1, 5, 6)
+5 * a
+1:10
+```
+
+Los resultados generados por la ejecución de estos códigos se identifican con el numero uno encerrado entre cochetes (`[1]`) al inicio de cada línea, indicando que corresponden a la salida producida por R. Todo lo que comience con `[1]` representa resultados y no debe ser copiado como parte del código. Por ejemplo, al ejecutar el bloque anterior, se obtendrían los siguientes resultados:
+
+```{r echo=FALSE}
+4 + 6
+a <- c(1, 5, 6)
+5 * a
+1:10
+```
+
+Para garantizar la reproducibilidad y transparencia, se recomienda que el lector utilice versiones actualizadas de R y de los paquetes mencionados. La información sobre el entorno de desarrollo y las versiones de los paquetes utilizados en la construcción de este manual puede consultarse ejecutando el siguiente comando en R:
 
 ```{r}
 devtools::session_info()

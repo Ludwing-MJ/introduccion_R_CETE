@@ -220,7 +220,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_datos.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructura de datos en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Estructuras de datos en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -366,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#propósito-del-manual" id="toc-propósito-del-manual" class="nav-link" data-scroll-target="#propósito-del-manual">Propósito del manual</a></li>
   <li><a href="#organización-del-manual" id="toc-organización-del-manual" class="nav-link" data-scroll-target="#organización-del-manual">Organización del manual</a></li>
   <li><a href="#pre-requisitos" id="toc-pre-requisitos" class="nav-link" data-scroll-target="#pre-requisitos">Pre requisitos</a></li>
-  <li><a href="#colofón" id="toc-colofón" class="nav-link" data-scroll-target="#colofón">Colofón</a></li>
+  <li><a href="#software-y-convenciones" id="toc-software-y-convenciones" class="nav-link" data-scroll-target="#software-y-convenciones">Software y convenciones</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -398,7 +398,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">9 abr 2025</p>
+      <p class="date">21 abr 2025</p>
     </div>
   </div>
   
@@ -412,24 +412,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introducción" class="level1 unnumbered">
 <h1 class="unnumbered">Introducción</h1>
-<p>La estadística clásica es una disciplina fundamental en la investigación científica y en la toma de decisiones basada en datos. Este manual está diseñado para principiantes y busca introducir las herramientas fundamentales de R, un lenguaje ampliamente utilizado en el análisis estadístico y la ciencia de datos. A lo largo del manual, se abordan conceptos básicos acompañados de ejemplos prácticos que facilitan su comprensión y aplicación en diversos contextos. El objetivo es proporcionar una base sólida que permita aplicar R de manera efectiva en el análisis de datos, incluso sin experiencia previa.</p>
+<p>La estadística clásica constituye un pilar esencial en la investigación científica y en la toma de decisiones fundamentadas en datos. Este manual ha sido elaborado para quienes se inician en el análisis estadístico, con el objetivo de introducir de manera gradual y comprensible las herramientas fundamentales del lenguaje R, ampliamente reconocido en la ciencia de datos y la estadística aplicada. A lo largo del texto, se abordan desde los conceptos básicos hasta técnicas más avanzadas, acompañando la teoría con ejemplos prácticos que facilitan la comprensión y la aplicación en contextos reales. El propósito central es ofrecer una base sólida que permita a los lectores utilizar R de forma efectiva en el análisis de datos, sin requerir experiencia previa en programación o estadística (Ihaka &amp; Gentleman, 1996; R Core Team, 2023).</p>
 <section id="propósito-del-manual" class="level2">
 <h2 class="anchored" data-anchor-id="propósito-del-manual">Propósito del manual</h2>
-<p>El presente manual está diseñado para guiar a principiantes en el uso del lenguaje de programación R, desde su instalación y configuración hasta la aplicación de técnicas estadísticas clásicas. Se abordan temas como la manipulación de datos, la creación de gráficos y la realización de análisis estadísticos básicos. Además, se incluyen ejemplos prácticos que permiten aplicar los conceptos aprendidos en contextos reales.</p>
-<p>R, como herramienta de código abierto, se ha consolidado como un estándar en el análisis estadístico y la ciencia de datos, gracias a su flexibilidad, extensibilidad y capacidad para garantizar la reproducibilidad científica (Ihaka &amp; Gentleman, 1996; R Core Team, 2023). A lo largo de este texto, se exploran las principales características de R y su entorno de desarrollo integrado (IDE), RStudio, destacando su utilidad en proyectos académicos y profesionales. Este manual está dirigido a estudiantes, investigadores y profesionales interesados en adquirir habilidades en programación estadística, con un enfoque en la claridad, organización y reproducibilidad.</p>
+<p>El manual está diseñado para guiar a personas principiantes en el uso de R, abarcando desde la instalación y configuración del entorno hasta la aplicación de técnicas estadísticas clásicas y modernas. Se exploran temas como la manipulación y visualización de datos, la gestión de proyectos, la exportación de resultados y la realización de análisis estadísticos descriptivos e inferenciales. Cada tema se desarrolla con ejemplos prácticos y ejercicios que permiten aplicar los conocimientos adquiridos en situaciones reales. Además, se enfatiza el uso de R como una herramienta de código abierto, destacando su flexibilidad, capacidad de extensión y su papel en la promoción de la reproducibilidad científica (Ihaka &amp; Gentleman, 1996; R Core Team, 2023).</p>
+<p>A lo largo del manual, se presentan las principales características de R y su entorno de desarrollo integrado, RStudio, resaltando su utilidad tanto en proyectos académicos como profesionales. El texto está dirigido a estudiantes, investigadores y profesionales interesados en adquirir competencias en programación estadística, priorizando la claridad, la organización y la reproducibilidad en los análisis.</p>
 </section>
 <section id="organización-del-manual" class="level2">
 <h2 class="anchored" data-anchor-id="organización-del-manual">Organización del manual</h2>
-<p>El contenido del manual está estructurado de manera progresiva, comenzando con los conceptos más básicos y avanzando hacia herramientas y técnicas estadísticas más complejas. Cada sección incluye explicaciones claras, ejemplos prácticos y ejercicios que permiten aplicar lo aprendido. Además, se han incorporado recomendaciones y buenas prácticas para facilitar el aprendizaje y fomentar la reproducibilidad en los análisis.</p>
+<p>El contenido del manual se estructura de manera progresiva, iniciando con los aspectos más elementales y avanzando hacia herramientas y técnicas estadísticas de mayor complejidad. Cada sección incluye explicaciones detalladas, ejemplos prácticos y ejercicios diseñados para consolidar el aprendizaje. Asimismo, se incorporan recomendaciones y buenas prácticas que facilitan la asimilación de los conceptos y fomentan la reproducibilidad en los análisis realizados.</p>
 <p>El manual se organiza en los siguientes capítulos principales:</p>
 <ol type="1">
-<li><p><strong>Introducción a R y RStudio</strong>: Se presenta qué es R, sus características principales y cómo instalar tanto R como RStudio. También se explica cómo configurar el entorno de trabajo.</p></li>
-<li><p><strong>Conceptos básicos de R</strong>: Se abordan los fundamentos del lenguaje, como la creación de objetos, tipos de datos y operadores.</p></li>
-<li><p><strong>Manipulación de datos</strong>: Se introduce el uso de herramientas como <code>dplyr</code> y <code>tidyr</code> para transformar y organizar datos de manera eficiente.</p></li>
-<li><p><strong>Visualización de datos</strong>: Se enseña a crear gráficos básicos y personalizados utilizando el paquete <code>ggplot2</code>.</p></li>
-<li><p><strong>Exportación de resultados</strong>: Se explica cómo guardar gráficos, tablas y otros resultados en formatos útiles para informes y presentaciones.</p></li>
-<li><p><strong>Material de apoyo y referencias</strong>: Se incluyen recursos adicionales para profundizar en el aprendizaje de R.</p></li>
-<li><p><strong>Ejemplos de análisis estadístico con R</strong>: Se desarrollan de manera detallada ejemplos del uso de R para desarrollar análisis estadístico de datos.</p></li>
+<li><p><strong>Introducción a R y RStudio:</strong> En este capítulo se presentan los conceptos básicos de R y RStudio, incluyendo sus características principales, el proceso de instalación y configuración, así como la preparación del entorno de trabajo para el análisis de datos.</p></li>
+<li><p><strong>Conceptos básicos de R:</strong> Se abordan los fundamentos esenciales del lenguaje R, tales como los primeros pasos en la consola, la estructura de los datos, la importación de información, el uso de operadores, funciones y la gestión de paquetes.</p></li>
+<li><p><strong>Manipulación de datos:</strong> Este apartado introduce las técnicas fundamentales para la manipulación de datos en R, utilizando tanto las herramientas base del lenguaje como los paquetes dplyr y tidyr, permitiendo transformar, organizar y preparar los datos para su análisis.</p></li>
+<li><p><strong>Visualización de datos:</strong> Se exploran las distintas opciones para la visualización de datos, comenzando con las herramientas básicas de R y avanzando hacia la creación de gráficos personalizados mediante el paquete ggplot2, facilitando la interpretación y comunicación de los resultados.</p></li>
+<li><p><strong>Gestión y exportación de resultados:</strong> En este capítulo se explica cómo gestionar proyectos en R, exportar resultados de análisis, gráficos y tablas en formatos adecuados para su uso en informes y presentaciones, así como la integración con herramientas de control de versiones como Git y GitHub.</p></li>
+<li><p><strong>Material de apoyo y referencias:</strong> Se proporcionan recursos adicionales, materiales de consulta y referencias bibliográficas que permiten profundizar en el aprendizaje y la aplicación de R en distintos contextos.</p></li>
+<li><p><strong>Ejemplos de análisis estadístico con R:</strong> Finalmente, se desarrollan ejemplos detallados de análisis estadístico, incluyendo estadística descriptiva, regresión lineal simple y múltiple, mostrando la aplicación práctica de R en el análisis de datos reales.</p></li>
 </ol>
 <p>Cada capítulo está diseñado para ser independiente, permitiendo que los lectores avancen a su propio ritmo y consulten las secciones según sus necesidades.</p>
 </section>
@@ -443,17 +443,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Con este enfoque, cualquier persona, independientemente de su experiencia previa, podrá utilizar este manual como una guía para iniciarse en el análisis estadístico con R.</p>
 </section>
-<section id="colofón" class="level2">
-<h2 class="anchored" data-anchor-id="colofón">Colofón</h2>
-<p>La versión en línea de este manual se encuentra disponible en <a href="https://introduccion-r-cete.vercel.app/" class="uri">https://introduccion-r-cete.vercel.app/</a>. La fuente del manual en español está alojada en el repositorio de GitHub: <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. Este manual ha sido desarrollado utilizando <a href="https://quarto.org/"><em>Quarto</em></a>, una herramienta diseñada para convertir archivos con extensión <code>.qmd</code> en formatos publicables como HTML, PDF y EPUB.</p>
-<p>Este manual fue construido con:</p>
+<section id="software-y-convenciones" class="level2">
+<h2 class="anchored" data-anchor-id="software-y-convenciones">Software y convenciones</h2>
+<p>La versión en línea de este manual está disponible en <a href="https://introduccion-r-cete.vercel.app/" class="uri">https://introduccion-r-cete.vercel.app/</a>, y la fuente en español se encuentra alojada en el repositorio de GitHub <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. El desarrollo del manual se realizó utilizando Quarto, una herramienta que permite transformar archivos con extensión .qmd en formatos publicables como HTML, PDF y EPUB, facilitando la integración de código, resultados y texto en un solo documento reproducible.</p>
+<p>Durante la elaboración del manual se emplearon diversos paquetes del ecosistema de R, entre los que destacan knitr y bookdown, los cuales permiten combinar las ventajas de LaTeX y R para la generación de documentos dinámicos y reproducibles (Xie, 2015; Xie, 2024). Esta integración posibilita que los ejemplos de código y los resultados presentados sean fácilmente replicables por el lector.</p>
+<p>A lo largo del manual, se presentan fragmentos de código que pueden ser copiados y ejecutados directamente en la consola de R para obtener los mismos resultados que se muestran en el texto. Los bloques de código se destacan en recuadros similares al siguiente:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">5</span>, <span class="dv">6</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">*</span> a</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span><span class="dv">10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Los resultados generados por la ejecución de estos códigos se identifican con el numero uno encerrado entre cochetes (<code>[1]</code>) al inicio de cada línea, indicando que corresponden a la salida producida por R. Todo lo que comience con <code>[1]</code> representa resultados y no debe ser copiado como parte del código. Por ejemplo, al ejecutar el bloque anterior, se obtendrían los siguientes resultados:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1]  5 25 30</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
+</div>
+</div>
+<p>Para garantizar la reproducibilidad y transparencia, se recomienda que el lector utilice versiones actualizadas de R y de los paquetes mencionados. La información sobre el entorno de desarrollo y las versiones de los paquetes utilizados en la construcción de este manual puede consultarse ejecutando el siguiente comando en R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">session_info</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
 comando ejecutado '"quarto"
-TMPDIR=C:/Users/Usuario/AppData/Local/Temp/Rtmp25gmTn/file3ec65f82616 -V' tiene
-el estatus 1</code></pre>
+TMPDIR=C:/Users/Usuario/AppData/Local/Temp/RtmpUDth68/file44a8592361ca -V'
+tiene el estatus 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
@@ -466,7 +486,7 @@ el estatus 1</code></pre>
  collate  Spanish_Guatemala.utf8
  ctype    Spanish_Guatemala.utf8
  tz       America/Guatemala
- date     2025-04-09
+ date     2025-04-21
  pandoc   3.2 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
  quarto   NA @ C:\\Users\\Usuario\\AppData\\Local\\Programs\\Quarto\\bin\\quarto.exe
 
