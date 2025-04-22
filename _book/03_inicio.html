@@ -362,23 +362,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#creación-de-scripts-en-rstudio" id="toc-creación-de-scripts-en-rstudio" class="nav-link active" data-scroll-target="#creación-de-scripts-en-rstudio"><span class="header-section-number">3.1</span> Creación de scripts en RStudio</a></li>
-  <li><a href="#guardado-y-organización-de-archivos" id="toc-guardado-y-organización-de-archivos" class="nav-link" data-scroll-target="#guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</a></li>
-  <li><a href="#organización-de-proyectos-y-directorios" id="toc-organización-de-proyectos-y-directorios" class="nav-link" data-scroll-target="#organización-de-proyectos-y-directorios"><span class="header-section-number">3.3</span> Organización de proyectos y directorios</a>
+  <li><a href="#guardado-y-organización-de-archivos" id="toc-guardado-y-organización-de-archivos" class="nav-link" data-scroll-target="#guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</a>
   <ul class="collapse">
-  <li><a href="#recomendaciones-para-la-organización-de-archivos" id="toc-recomendaciones-para-la-organización-de-archivos" class="nav-link" data-scroll-target="#recomendaciones-para-la-organización-de-archivos"><span class="header-section-number">3.3.1</span> Recomendaciones para la organización de archivos</a></li>
+  <li><a href="#guardado-de-scripts-y-archivos" id="toc-guardado-de-scripts-y-archivos" class="nav-link" data-scroll-target="#guardado-de-scripts-y-archivos"><span class="header-section-number">3.2.1</span> Guardado de scripts y archivos</a></li>
+  <li><a href="#organización-de-directorios-y-proyectos" id="toc-organización-de-directorios-y-proyectos" class="nav-link" data-scroll-target="#organización-de-directorios-y-proyectos"><span class="header-section-number">3.2.2</span> Organización de directorios y proyectos</a></li>
+  <li><a href="#buenas-prácticas-para-la-organización-de-archivos" id="toc-buenas-prácticas-para-la-organización-de-archivos" class="nav-link" data-scroll-target="#buenas-prácticas-para-la-organización-de-archivos"><span class="header-section-number">3.2.3</span> Buenas prácticas para la organización de archivos</a></li>
   </ul></li>
-  <li><a href="#introducción-a-los-objetos-en-r" id="toc-introducción-a-los-objetos-en-r" class="nav-link" data-scroll-target="#introducción-a-los-objetos-en-r"><span class="header-section-number">3.4</span> Introducción a los objetos en R</a>
+  <li><a href="#introducción-a-los-objetos-en-r" id="toc-introducción-a-los-objetos-en-r" class="nav-link" data-scroll-target="#introducción-a-los-objetos-en-r"><span class="header-section-number">3.3</span> Introducción a los objetos en R</a>
   <ul class="collapse">
-  <li><a href="#creación-de-objetos-en-r" id="toc-creación-de-objetos-en-r" class="nav-link" data-scroll-target="#creación-de-objetos-en-r"><span class="header-section-number">3.4.1</span> Creación de objetos en R</a></li>
+  <li><a href="#creación-de-objetos-en-r" id="toc-creación-de-objetos-en-r" class="nav-link" data-scroll-target="#creación-de-objetos-en-r"><span class="header-section-number">3.3.1</span> Creación de objetos en R</a></li>
+  <li><a href="#buenas-prácticas-y-documentación" id="toc-buenas-prácticas-y-documentación" class="nav-link" data-scroll-target="#buenas-prácticas-y-documentación"><span class="header-section-number">3.3.2</span> Buenas prácticas y documentación</a></li>
   </ul></li>
-  <li><a href="#tipos-de-objetos-en-r" id="toc-tipos-de-objetos-en-r" class="nav-link" data-scroll-target="#tipos-de-objetos-en-r"><span class="header-section-number">3.5</span> Tipos de objetos en R</a>
+  <li><a href="#tipos-principales-de-objetos-en-r" id="toc-tipos-principales-de-objetos-en-r" class="nav-link" data-scroll-target="#tipos-principales-de-objetos-en-r"><span class="header-section-number">3.4</span> Tipos principales de objetos en R</a>
   <ul class="collapse">
-  <li><a href="#objetos-numéricos" id="toc-objetos-numéricos" class="nav-link" data-scroll-target="#objetos-numéricos"><span class="header-section-number">3.5.1</span> Objetos Numéricos</a></li>
-  <li><a href="#objetos-de-texto" id="toc-objetos-de-texto" class="nav-link" data-scroll-target="#objetos-de-texto"><span class="header-section-number">3.5.2</span> Objetos de Texto</a></li>
-  <li><a href="#objetos-de-tipo-factor" id="toc-objetos-de-tipo-factor" class="nav-link" data-scroll-target="#objetos-de-tipo-factor"><span class="header-section-number">3.5.3</span> Objetos de Tipo Factor</a></li>
-  <li><a href="#objetos-lógicos" id="toc-objetos-lógicos" class="nav-link" data-scroll-target="#objetos-lógicos"><span class="header-section-number">3.5.4</span> Objetos Lógicos</a></li>
+  <li><a href="#objetos-numéricos" id="toc-objetos-numéricos" class="nav-link" data-scroll-target="#objetos-numéricos"><span class="header-section-number">3.4.1</span> Objetos Numéricos</a></li>
+  <li><a href="#objetos-de-texto" id="toc-objetos-de-texto" class="nav-link" data-scroll-target="#objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</a></li>
+  <li><a href="#objetos-de-tipo-factor" id="toc-objetos-de-tipo-factor" class="nav-link" data-scroll-target="#objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</a></li>
+  <li><a href="#objetos-lógicos" id="toc-objetos-lógicos" class="nav-link" data-scroll-target="#objetos-lógicos"><span class="header-section-number">3.4.4</span> Objetos Lógicos</a></li>
   </ul></li>
-  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión"><span class="header-section-number">3.6</span> Conclusión</a></li>
   </ul>
 </nav>
     </div>
@@ -404,63 +405,62 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Comenzar a trabajar con R y RStudio puede parecer un desafío al principio, pero con una guía clara y organizada, el proceso se vuelve mucho más accesible. Esta sección está diseñada para acompañar al usuario en sus primeros pasos dentro de este entorno de programación, abordando desde la creación de scripts hasta las mejores prácticas para organizar archivos y proyectos. Estas bases son esenciales para garantizar un flujo de trabajo eficiente, reproducible y bien estructurado.</p>
-<p>Un script en RStudio no solo es un espacio para escribir código, sino también una herramienta clave para documentar y reproducir análisis de datos. Además, se introducirá el concepto de objetos en R, fundamentales para almacenar y manipular datos, junto con una descripción de los principales tipos de objetos (numéricos, texto, factores y lógicos). Este conocimiento inicial permitirá al usuario sentar las bases para realizar análisis estadísticos y visualizaciones de datos de manera efectiva.</p>
+<p>Iniciar el trabajo en R y RStudio puede resultar desafiante para quienes no están familiarizados con estos entornos, pero una orientación adecuada facilita considerablemente el proceso. Esta sección guía al usuario en los aspectos fundamentales para comenzar a programar en R, desde la creación de scripts hasta la comprensión de los objetos básicos del lenguaje. Estos conocimientos iniciales son esenciales para establecer un flujo de trabajo eficiente y reproducible (Allaire et al., 2022).</p>
 <section id="creación-de-scripts-en-rstudio" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="creación-de-scripts-en-rstudio"><span class="header-section-number">3.1</span> Creación de scripts en RStudio</h2>
-<p>El primer paso para trabajar en RStudio es crear un script, que es un archivo donde se escribe y guarda el código que se ejecutará en R. Existen dos métodos principales para crear un script en RStudio:</p>
+<p>El script es el archivo principal donde se escribe, guarda y ejecuta el código en R. Utilizar scripts no solo permite desarrollar análisis de datos, sino también documentar cada paso del proceso, lo que contribuye a la reproducibilidad y la organización del trabajo. Para crear un script en RStudio, se puede optar por dos métodos:</p>
 <ol type="1">
-<li><p><strong>Manualmente:</strong> En la barra de menú, seleccionar <strong>File &gt; New File &gt; R Script</strong>.</p></li>
-<li><p><strong>Utilizando atajos de teclado:</strong> Presionar la combinación de teclas <strong>Ctrl + Shift + N</strong> para crear un nuevo script de manera rápida.</p></li>
+<li><p>Desde la barra de menú, seleccionar File &gt; New File &gt; R Script.</p></li>
+<li><p>Utilizar el atajo de teclado Ctrl + Shift + N para abrir un nuevo script de manera rápida.</p></li>
 </ol>
-<p>Una vez creado, el script se convierte en el espacio de trabajo principal donde se desarrollarán los análisis y se documentarán los pasos realizados. Es importante guardar el script desde el inicio para evitar la pérdida de trabajo.</p>
+<p>Una vez creado, el script se convierte en el espacio central para el desarrollo de los análisis. Es recomendable guardar el archivo desde el inicio para evitar la pérdida de información y facilitar la gestión de versiones.</p>
 </section>
 <section id="guardado-y-organización-de-archivos" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="guardado-y-organización-de-archivos"><span class="header-section-number">3.2</span> Guardado y organización de archivos</h2>
-<p>Guardar y organizar los archivos de manera adecuada es fundamental para mantener un flujo de trabajo eficiente y reproducible. Para guardar un script, se debe seleccionar la opción <strong>“Save As…”</strong> en la pestaña <strong>“File”</strong>, lo que permitirá elegir la ubicación y el nombre del archivo. Se recomienda seguir estas prácticas:</p>
+<p>Una gestión adecuada de los archivos es esencial para mantener la eficiencia y la reproducibilidad en el trabajo con R y RStudio. El uso de nombres descriptivos, la organización en carpetas y la documentación clara de los scripts contribuyen a un entorno de trabajo ordenado y profesional (Allaire et al., 2022).</p>
+<section id="guardado-de-scripts-y-archivos" class="level3" data-number="3.2.1">
+<h3 data-number="3.2.1" class="anchored" data-anchor-id="guardado-de-scripts-y-archivos"><span class="header-section-number">3.2.1</span> Guardado de scripts y archivos</h3>
+<p>Para guardar un script en RStudio, se debe seleccionar la opción “Save As…” en el menú “File”, lo que permite definir tanto la ubicación como el nombre del archivo. Es recomendable emplear nombres que reflejen el contenido y propósito del archivo, por ejemplo: “analisis_rendimiento.R” para scripts o “datos_suelo_2023.csv” para archivos de datos. Además, se sugiere evitar espacios y caracteres especiales en los nombres, utilizando guiones bajos (_) o guiones medios (-) para separar palabras, lo que previene posibles errores en la ejecución del código. Incluir fechas en formato estándar (YYYY-MM-DD) facilita la identificación de versiones y actualizaciones, como en “2023-10-15_importacion_datos.R”.</p>
+</section>
+<section id="organización-de-directorios-y-proyectos" class="level3" data-number="3.2.2">
+<h3 data-number="3.2.2" class="anchored" data-anchor-id="organización-de-directorios-y-proyectos"><span class="header-section-number">3.2.2</span> Organización de directorios y proyectos</h3>
+<p>La estructura de carpetas es clave para mantener el orden en los proyectos. Se recomienda crear una carpeta específica para cada proyecto, agrupando en ella todos los scripts, datos y resultados relacionados. Al trabajar con archivos de proyecto .Rproj, RStudio configura automáticamente el directorio de trabajo, lo que simplifica la gestión de archivos y reduce errores asociados a rutas incorrectas (R Core Team, 2023).</p>
+</section>
+<section id="buenas-prácticas-para-la-organización-de-archivos" class="level3" data-number="3.2.3">
+<h3 data-number="3.2.3" class="anchored" data-anchor-id="buenas-prácticas-para-la-organización-de-archivos"><span class="header-section-number">3.2.3</span> Buenas prácticas para la organización de archivos</h3>
+<p>Para optimizar la organización y facilitar la colaboración, se aconseja:</p>
 <ol type="1">
-<li><p><strong>Nombres descriptivos y consistentes</strong>: Utilizar nombres que describan claramente el contenido del archivo. Por ejemplo:</p>
-<p>Para scripts: <code>analisis_rendimiento.R</code> o <code>2023-10-15_analisis_maiz.R</code>.</p>
-<p>Para datos: <code>datos_suelo_2023.csv</code> o <code>resultados_finales.xlsx</code>.</p></li>
-<li><p><strong>Evitar espacios y caracteres especiales</strong>: Los nombres de los archivos no deben incluir espacios ni caracteres especiales, ya que esto puede generar errores en R. En su lugar, se recomienda usar guiones bajos (<code>_</code>) o guiones medios (<code>-</code>). Por ejemplo:</p>
-<p>En lugar de <code>analisis suelo.R</code>, usar <code>analisis_suelo.R</code>.</p></li>
-<li><p><strong>Incluir fechas en un formato estandarizado</strong>: Incorporar fechas en el formato <strong>YYYY-MM-DD</strong> ayuda a identificar rápidamente versiones o actualizaciones. Por ejemplo: <code>2023-10-15_importacion_datos.R</code>.</p></li>
+<li><p>Estandarizar los nombres de archivos, siguiendo un formato uniforme y descriptivo.</p></li>
+<li><p>Documentar los pasos del análisis mediante comentarios claros en los scripts, lo que ayuda a comprender y reproducir el trabajo en el futuro.</p></li>
+<li><p>Utilizar proyectos de RStudio (.Rproj) para asegurar que el entorno de trabajo esté correctamente configurado y todos los archivos relevantes se encuentren en la misma ubicación.</p></li>
+<li><p>Realizar copias de seguridad periódicas, ya sea mediante sistemas de control de versiones como Git o almacenando archivos importantes en ubicaciones seguras.</p></li>
 </ol>
-</section>
-<section id="organización-de-proyectos-y-directorios" class="level2" data-number="3.3">
-<h2 data-number="3.3" class="anchored" data-anchor-id="organización-de-proyectos-y-directorios"><span class="header-section-number">3.3</span> Organización de proyectos y directorios</h2>
-<p>La organización adecuada de los archivos en carpetas específicas para cada proyecto es esencial para garantizar un flujo de trabajo ordenado. Si se utiliza un archivo de proyecto <strong>.Rproj</strong>, este configurará automáticamente el directorio de trabajo, lo que facilita la gestión de los archivos relacionados. Se recomienda:</p>
-<p><strong>Crear una carpeta específica para cada proyecto</strong>: Agrupar todos los elementos relacionados con un proyecto (scripts, datos, resultados) en una sola carpeta.</p>
-<section id="recomendaciones-para-la-organización-de-archivos" class="level3" data-number="3.3.1">
-<h3 data-number="3.3.1" class="anchored" data-anchor-id="recomendaciones-para-la-organización-de-archivos"><span class="header-section-number">3.3.1</span> Recomendaciones para la organización de archivos</h3>
-<p>La organización de archivos en RStudio es comparable a mantener una cocina bien ordenada: separar los utensilios, ingredientes y especias en lugares específicos facilita el trabajo y evita errores. Para lograrlo, se sugieren las siguientes prácticas:</p>
-<ol type="1">
-<li><p><strong>Estandarizar nombres de archivos</strong>: Usar nombres descriptivos, evitar caracteres especiales y seguir un formato uniforme.</p></li>
-<li><p><strong>Documentar los pasos del análisis</strong>: Incluir comentarios en los scripts para explicar cada paso del análisis.</p></li>
-<li><p><strong>Utilizar proyectos de RStudio</strong>: Crear un archivo <strong>.Rproj</strong> para cada proyecto, lo que asegura que el entorno de trabajo esté configurado correctamente.</p></li>
-<li><p><strong>Realizar copias de seguridad</strong>: Guardar versiones importantes de los archivos en un repositorio de control de versiones (como Git) o en una ubicación segura.</p></li>
-</ol>
+<p>La aplicación de estas prácticas contribuye a un flujo de trabajo más eficiente, facilita la colaboración y asegura la reproducibilidad de los análisis realizados en RStudio (Allaire et al., 2022; R Core Team, 2023).</p>
 </section>
 </section>
-<section id="introducción-a-los-objetos-en-r" class="level2" data-number="3.4">
-<h2 data-number="3.4" class="anchored" data-anchor-id="introducción-a-los-objetos-en-r"><span class="header-section-number">3.4</span> Introducción a los objetos en R</h2>
-<p>En R, todo se maneja como un objeto, lo que significa que cualquier dato o estructura que se utilice en este lenguaje se representa como un objeto. Un objeto es una entidad que almacena información y tiene atributos como nombre, tipo y, en algunos casos, dimensiones. Los objetos son fundamentales para trabajar en R, ya que permiten almacenar, manipular y analizar datos de manera eficiente (R Core Team, 2023).</p>
-<section id="creación-de-objetos-en-r" class="level3" data-number="3.4.1">
-<h3 data-number="3.4.1" class="anchored" data-anchor-id="creación-de-objetos-en-r"><span class="header-section-number">3.4.1</span> Creación de objetos en R</h3>
-<p>Para crear un objeto en R, se utiliza un operador de asignación, que puede ser <code>=</code> o <code>&lt;-</code>. Sin embargo, el uso de <code>&lt;-</code> es el estándar recomendado en la comunidad de R, ya que mejora la legibilidad del código y sigue las convenciones establecidas (Ihaka &amp; Gentleman, 1996). Por ejemplo, para asignar el valor 10 a un objeto llamado <code>x</code>, se puede escribir:</p>
+<section id="introducción-a-los-objetos-en-r" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="introducción-a-los-objetos-en-r"><span class="header-section-number">3.3</span> Introducción a los objetos en R</h2>
+<p>En R, la gestión de datos y resultados se basa en el uso de objetos. Un objeto es una entidad que almacena información y puede tener atributos como nombre, tipo y en algunos casos, dimensiones. Esta estructura permite organizar, manipular y analizar datos de manera eficiente, lo que convierte a los objetos en el pilar fundamental del trabajo en R (R Core Team, 2023).</p>
+<section id="creación-de-objetos-en-r" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="creación-de-objetos-en-r"><span class="header-section-number">3.3.1</span> Creación de objetos en R</h3>
+<p>Para crear un objeto en R, se utiliza un operador de asignación, que puede ser <code>=</code> o <code>&lt;-</code>. Sin embargo, el uso de <code>&lt;-</code> es el estándar recomendado por la comunidad de R, ya que mejora la legibilidad del código y sigue las convenciones del lenguaje (Ihaka &amp; Gentleman, 1996). Por ejemplo, para asignar el valor 10 a un objeto llamado <code>x</code>, se escibe:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación del primer objeto en R</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>El operador <code>&lt;-</code> indica que el valor a la derecha se asigna al nombre del objeto a la izquierda. Este enfoque es especialmente útil para mantener un código claro y organizado.</p>
+<p>El valor a la derecha del operador se asigna al nombre del objeto a la izquierda. Este método facilita la organización y claridad del código.</p>
+</section>
+<section id="buenas-prácticas-y-documentación" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="buenas-prácticas-y-documentación"><span class="header-section-number">3.3.2</span> Buenas prácticas y documentación</h3>
+<p>En R, el símbolo numeral <code>#</code> se utiliza para incluir comentarios en el código. Los comentarios no son ejecutados y sirven para documentar el propósito de cada línea o bloque, facilitando la comprensión y el mantenimiento del script tanto para el autor como para otros usuarios (Ihaka &amp; Gentleman, 1996).</p>
 </section>
 </section>
-<section id="tipos-de-objetos-en-r" class="level2" data-number="3.5">
-<h2 data-number="3.5" class="anchored" data-anchor-id="tipos-de-objetos-en-r"><span class="header-section-number">3.5</span> Tipos de objetos en R</h2>
-<p>En R, los objetos pueden clasificarse en diferentes tipos según el tipo de datos que almacenan. Los principales tipos de objetos son: numéricos, texto, factores y lógicos. A continuación, se describen en detalle cada uno de ellos.</p>
-<section id="objetos-numéricos" class="level3" data-number="3.5.1">
-<h3 data-number="3.5.1" class="anchored" data-anchor-id="objetos-numéricos"><span class="header-section-number">3.5.1</span> Objetos Numéricos</h3>
-<p>Los objetos numéricos almacenan datos como números enteros o decimales. Son esenciales para representar variables cuantitativas, como edad, altura o peso. En R, los números se manejan como valores de punto flotante por defecto, lo que significa que incluso los enteros se tratan como números decimales.</p>
+<section id="tipos-principales-de-objetos-en-r" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="tipos-principales-de-objetos-en-r"><span class="header-section-number">3.4</span> Tipos principales de objetos en R</h2>
+<p>R permite trabajar con diferentes tipos de objetos, cada uno adecuado para almacenar y manipular distintos tipos de datos. Los más comunes son:</p>
+<section id="objetos-numéricos" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="objetos-numéricos"><span class="header-section-number">3.4.1</span> Objetos Numéricos</h3>
+<p>Los objetos numéricos almacenan datos como números enteros o decimales. Son esenciales para representar variables cuantitativas, como edad, altura o peso.</p>
 <p>Ejemplo de creación de objetos numéricos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos numéricos</span></span>
@@ -468,10 +468,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>altura_m <span class="ot">&lt;-</span> <span class="fl">1.70</span> </span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>peso_lb <span class="ot">&lt;-</span> <span class="dv">150</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Nota importante</strong>: En R, el símbolo numeral (<code>#</code>) se utiliza para incluir comentarios dentro del código. Las líneas que comienzan con este símbolo no son ejecutadas por el programa. Los comentarios son útiles para documentar el código, explicar pasos específicos y facilitar su comprensión tanto para otros usuarios como para el propio autor en el futuro.</p>
 </section>
-<section id="objetos-de-texto" class="level3" data-number="3.5.2">
-<h3 data-number="3.5.2" class="anchored" data-anchor-id="objetos-de-texto"><span class="header-section-number">3.5.2</span> Objetos de Texto</h3>
+<section id="objetos-de-texto" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</h3>
 <p>Los objetos de texto, también conocidos como objetos de tipo carácter, almacenan cadenas de texto. Estos se escriben entre comillas dobles (<code>"</code>) o simples (<code>'</code>). Son útiles para representar información cualitativa, como nombres, descripciones o etiquetas.</p>
 <p>Ejemplo de creación de objetos de texto:</p>
 <div class="cell">
@@ -479,10 +478,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>nombre <span class="ot">&lt;-</span> <span class="st">"Juan"</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>color_favorito <span class="ot">&lt;-</span> <span class="st">"azul"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Los objetos de texto son fundamentales para trabajar con datos categóricos o descriptivos, como nombres de variables, etiquetas de gráficos o valores de texto en bases de datos.</p>
 </section>
-<section id="objetos-de-tipo-factor" class="level3" data-number="3.5.3">
-<h3 data-number="3.5.3" class="anchored" data-anchor-id="objetos-de-tipo-factor"><span class="header-section-number">3.5.3</span> Objetos de Tipo Factor</h3>
+<section id="objetos-de-tipo-factor" class="level3" data-number="3.4.3">
+<h3 data-number="3.4.3" class="anchored" data-anchor-id="objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</h3>
 <p>Los objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos. Estos niveles representan categorías discretas, como escalas, estados o clasificaciones. Los factores son especialmente útiles en análisis estadísticos, ya que permiten manejar variables categóricas de manera eficiente.</p>
 <p>Ejemplo de creación de objetos tipo factor:</p>
 <div class="cell">
@@ -497,9 +495,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"masculino"</span>, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"masculino"</span>, <span class="st">"femenino"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="objetos-lógicos" class="level3" data-number="3.5.4">
-<h3 data-number="3.5.4" class="anchored" data-anchor-id="objetos-lógicos"><span class="header-section-number">3.5.4</span> Objetos Lógicos</h3>
-<p>Los objetos lógicos almacenan valores de tipo <code>TRUE</code> o <code>FALSE</code>, que resultan de comparaciones lógicas. Estos objetos son esenciales para realizar análisis condicionales, aplicar filtros y evaluar expresiones booleanas.</p>
+<section id="objetos-lógicos" class="level3" data-number="3.4.4">
+<h3 data-number="3.4.4" class="anchored" data-anchor-id="objetos-lógicos"><span class="header-section-number">3.4.4</span> Objetos Lógicos</h3>
+<p>Los objetos lógicos almacenan valores <code>TRUE</code> o <code>FALSE</code>, que resultan de comparaciones lógicas. Estos objetos son esenciales para realizar análisis condicionales, aplicar filtros y evaluaciones condiconales.</p>
 <p>Ejemplo de creación de objetos lógicos:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos lógicos</span></span>
@@ -509,15 +507,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>En este caso, la comparación <code>edad &gt;= 18</code> evalúa si el valor de <code>edad</code> es mayor o igual a 18. El resultado (<code>TRUE</code> o <code>FALSE</code>) se almacena en el objeto <code>mayoria_de_edad</code>.</p>
-<p>Los objetos lógicos son ampliamente utilizados en tareas como la selección de datos, la creación de condiciones en bucles y la evaluación de reglas en análisis estadísticos.</p>
-</section>
-</section>
-<section id="conclusión" class="level2" data-number="3.6">
-<h2 data-number="3.6" class="anchored" data-anchor-id="conclusión"><span class="header-section-number">3.6</span> Conclusión</h2>
-<p>Los objetos son la base del trabajo en R, ya que permiten almacenar y manipular datos de manera estructurada y eficiente. Comprender los diferentes tipos de objetos y cómo crearlos es un paso esencial para aprovechar al máximo las capacidades de este lenguaje. Desde datos numéricos hasta factores y valores lógicos, cada tipo de objeto tiene aplicaciones específicas que facilitan el análisis estadístico y la visualización de datos (R Core Team, 2023; Ihaka &amp; Gentleman, 1996).</p>
+<p>En este ejemplo, el objeto <code>mayoria_de_edad</code> almacenará TRUE si la edad es mayor o igual a 18, y FALSE en caso contrario.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
