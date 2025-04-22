@@ -115,13 +115,17 @@ Se evaluó el efecto de cinco tratamientos de preparación del terreno sobre el 
 
 ```{r message=FALSE, warning=FALSE}
 # Instalación y carga de paquetes necesarios
-packages <- c("tidyverse", "agricolae", "readxl", "writexl", "rstudioapi")
-for(pkg in packages) {
-    if (!require(pkg, character.only = TRUE)) {
-        install.packages(pkg)
-        library(pkg, character.only = TRUE)
-    }
-}
+## Incluye ggplot2, dplyr, tidyr
+if (!require("tidyverse")) install.packages("tidyverse")
+## Diseños experimentales agrícolas
+if (!require("agricolae")) install.packages("agricolae")
+## Importación de archivos Excel
+if (!require("readxl")) install.packages("readxl")    
+## Exportación a Excel
+if (!require("writexl")) install.packages("writexl")    
+## Establecer directorio de trabajo automaticamente
+if (!require("rstudioapi")) install.packages("rstudioapi")
+
 
 # Carga de datos
 altura_pino <- read_excel("datos_arboles.xlsx")
