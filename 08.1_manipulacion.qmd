@@ -1,1 +1,39 @@
 # Introducción a la manipulación de datos en R
+
+La manipulación de datos representa una etapa crítica en el proceso de análisis estadístico, ya que los datos raramente se encuentran en condiciones óptimas para su análisis inmediato. Es común que los conjuntos de datos contengan errores, valores faltantes, duplicados o estén organizados de manera poco conveniente para los objetivos del estudio. Por ello, la manipulación de datos es esencial para transformar los datos crudos en información útil, confiable y lista para el análisis estadístico y la visualización. Sin una adecuada manipulación, los resultados pueden ser erróneos o difíciles de interpretar, lo que afecta la validez y la reproducibilidad de los análisis (Wickham & Grolemund, 2017; R Core Team, 2023).
+
+## Principales tareas de manipulación de datos
+
+La manipulación de datos en R abarca un conjunto de tareas fundamentales que permiten preparar la información para su análisis estadístico. Estas tareas son necesarias para garantizar que los datos sean consistentes, completos y estén organizados de acuerdo con los requerimientos del análisis a realizar (Wickham & Grolemund, 2017).
+
+### Filtrado de datos
+
+El filtrado consiste en seleccionar subconjuntos de datos que cumplen ciertas condiciones específicas. Esta tarea es fundamental para enfocar el análisis en grupos de interés, eliminar registros no relevantes o excluir observaciones que puedan distorsionar los resultados. Por ejemplo, se puede filtrar una base de datos para analizar únicamente los registros de un grupo demográfico particular o eliminar casos con información incompleta (R Core Team, 2023).
+
+### Selección de variables
+
+La selección de variables implica elegir únicamente las columnas o variables relevantes para el análisis. Esta tarea simplifica el conjunto de datos, reduce la complejidad del análisis y facilita la interpretación de los resultados. Seleccionar las variables adecuadas es especialmente importante cuando se trabaja con bases de datos extensas o con información redundante (Wickham & Grolemund, 2017).
+
+### Transformación de datos
+
+La transformación de datos abarca la creación de nuevas variables, la modificación de valores existentes o la recodificación de categorías. Estas operaciones permiten adaptar los datos a los requerimientos del análisis estadístico, por ejemplo, convirtiendo variables categóricas en numéricas, calculando índices o agrupando categorías similares. La transformación es clave para preparar los datos antes de aplicar técnicas estadísticas específicas (R Core Team, 2023).
+
+### Agregación de información
+
+La agregación consiste en resumir la información contenida en los datos, calculando medidas como promedios, totales, conteos o proporciones por grupo. Esta tarea es fundamental para comparar tendencias, identificar patrones y realizar análisis descriptivos o inferenciales. La agregación permite sintetizar grandes volúmenes de datos en resúmenes comprensibles y útiles para la toma de decisiones (Wickham & Grolemund, 2017).
+
+### Reestructuración de datos
+
+La reestructuración de datos implica cambiar la forma en que los datos están organizados, por ejemplo, convirtiendo un conjunto de datos de formato ancho a largo o viceversa. Esta tarea es necesaria cuando la estructura original de los datos no es compatible con las técnicas estadísticas o de visualización que se desean aplicar. La reestructuración facilita la aplicación de modelos y la generación de gráficos adecuados (Wickham & Grolemund, 2017).
+
+## Enfoques disponibles en R para la manipulación de datos
+
+R ofrece dos enfoques principales para la manipulación de datos, cada uno con características y ventajas particulares que se adaptan a diferentes necesidades y niveles de experiencia del usuario (R Core Team, 2023).
+
+### Herramientas base de R
+
+Las herramientas base de R incluyen funciones integradas como el uso de corchetes para seleccionar filas y columnas, así como funciones como subset(), aggregate() y tapply(). Estas herramientas permiten realizar operaciones fundamentales de manipulación de datos de manera flexible y eficiente. Sin embargo, la sintaxis puede resultar menos intuitiva para quienes se inician en R, y las operaciones complejas pueden requerir múltiples pasos o combinaciones de funciones (R Core Team, 2023).
+
+### El enfoque tidyverse
+
+El tidyverse es un conjunto de paquetes desarrollados para simplificar y estandarizar la manipulación de datos en R. Entre estos paquetes destacan dplyr y tidyr, que ofrecen funciones específicas para filtrar, seleccionar, transformar y reestructurar datos de manera clara y legible. El uso del tidyverse facilita la construcción de flujos de trabajo reproducibles y eficientes, y su sintaxis está diseñada para ser accesible tanto para principiantes como para usuarios avanzados. Además, el tidyverse promueve el principio de “datos ordenados” (tidy data), que facilita la aplicación de técnicas estadísticas y la generación de visualizaciones (Wickham & Grolemund, 2017).

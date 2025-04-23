@@ -1,1 +1,225 @@
 # Manipulación de Datos con Herramientas Base de R
+
+La manipulación de datos con herramientas base de R constituye una etapa esencial en el flujo de trabajo estadístico clásico. Antes de aplicar técnicas como el análisis de varianza, la regresión lineal o la comparación de medias, es necesario preparar los datos para asegurar su integridad y adecuación al análisis. Las funciones básicas de R permiten seleccionar, filtrar, transformar, agrupar y limpiar datos de manera eficiente, facilitando la obtención de resultados estadísticos válidos y reproducibles (R Core Team, 2023).
+
+## Datos de ejemplo
+
+Para ilustrar las técnicas de manipulación, se emplea un conjunto de datos simulado que representa un experimento agrícola. Este conjunto contiene variables numéricas y categóricas, así como algunos valores faltantes, lo que permite demostrar operaciones comunes en la estadística clásica.
+
+```{r}
+# Establecer una semilla para que el usuario pueda replicar el ejemplo
+set.seed(123) # Garantiza reproducibilidad
+
+# Simular los resultados de un experimento con el diseño bloques completos al azar
+datos_cultivo <- data.frame(
+  parcela = 1:20,
+  tratamiento = rep(c("Control", 
+                      "Fertilizante A", 
+                      "Fertilizante B", 
+                      "Fertilizante C"), each = 5),
+  bloque = rep(1:5, times = 4),
+  altura_cm = round(rnorm(20, mean = 65, sd = 10), 1),
+  peso_gr = round(rnorm(20, mean = 120, sd = 25), 1),
+  daño_plaga = sample(c("Alto", "Medio", "Bajo"), 20, replace = TRUE),
+  fecha_siembra = as.Date("2024-01-01") + sample(1:10, 20, replace = TRUE)
+)
+
+# Simular la presencia de datos faltantes en los resultados del experimento
+datos_cultivo$altura_cm[c(3, 15)] <- NA
+datos_cultivo$peso_gr[c(7, 18)] <- NA
+
+# Visualizar las primeras filas del data frame con los datos simulados
+head(datos_cultivo)
+```
+
+## Selección y filtrado de datos en data frames
+
+La selección y el filtrado permiten trabajar con subconjuntos de datos relevantes para el análisis estadístico. Estas operaciones se realizan mediante la indexación y el uso de condiciones lógicas.
+
+### Selección de columnas
+
+Para seleccionar columnas específicas, se utiliza la notación de corchetes `[, ]`, donde el primer argumento indica las filas y el segundo las columnas.
+
+```{r}
+# Selección de columnas por nombre
+datos_mediciones <- datos_cultivo[, c("altura_cm", "peso_gr")]
+head(datos_mediciones) # Muestra las primeras filas del resultado
+
+# Exclusión de una columna
+datos_sin_fecha <- datos_cultivo[, !names(datos_cultivo) %in% "fecha_siembra"]
+head(datos_sin_fecha) # Muestra las primeras filas del resultado
+
+# Selección por posición
+primeras_tres_columnas <- datos_cultivo[, 1:3]
+head(primeras_tres_columnas) # Muestra las primeras filas del resultado
+
+```
+
+El uso de nombres de columnas es recomendable para evitar errores si el orden de las variables cambia.
+
+### Filtrado de filas por condiciones lógicas
+
+El filtrado de filas se realiza especificando una condición lógica en la parte de filas de la notación de corchetes.
+
+```{r}
+# Filtrar por tratamiento
+datos_control <- datos_cultivo[datos_cultivo$tratamiento == "Control", ]
+head(datos_control) # Muestra las primeras filas del resultado
+
+# Filtrar por condición múltiple
+datos_altos <- datos_cultivo[datos_cultivo$altura_cm > 65 &
+                               datos_cultivo$tratamiento != "Control", ]
+head(datos_altos) # Muestra las primeras filas del resultado
+
+# Uso de subset para mayor legibilidad
+datos_fertilizante_A <- subset(datos_cultivo, tratamiento == "Fertilizante A" &
+                                 bloque %in% c(2,3,4))
+head(datos_fertilizante_A) # Muestra las primeras filas del resultado
+```
+
+La función `subset()` permite expresar condiciones de manera más clara y evita la repetición del nombre del data frame.
+
+## Modificación de variables
+
+La modificación de variables es fundamental para adaptar los datos a los requerimientos de los métodos estadísticos clásicos.
+
+### Creación de nuevas columnas
+
+Nuevas variables pueden crearse mediante operaciones aritméticas o lógicas sobre las columnas existentes.
+
+```{r}
+# Índice de crecimiento: relación entre altura y peso
+datos_cultivo$indice_crecimiento <- datos_cultivo$altura_cm/datos_cultivo$peso_gr
+
+# Clasificación de peso en alto o bajo
+datos_cultivo$categoria_peso <- ifelse(datos_cultivo$peso_gr > 120, 
+                                       "Alto", "Bajo")
+
+# Transformación logarítmica para normalizar la variable peso
+datos_cultivo$log_peso <- log(datos_cultivo$peso_gr)
+head(datos_cultivo) # Muestra las primeras filas del resultado
+```
+
+La función `ifelse(condición, valor_si_verdadero, valor_si_falso)` permite crear variables categóricas a partir de condiciones lógicas.
+
+### Recodificación de variables categóricas
+
+La recodificación es útil para adaptar los niveles de factores a los requerimientos del análisis.
+
+```{r}
+# Recodificación de niveles de daño por plaga
+datos_cultivo$nivel_daño <- factor(datos_cultivo$daño_plaga, 
+                                   levels = c("Bajo", "Medio", "Alto"), 
+                                   labels = c("1", "2", "3"))
+
+# Variable indicadora para tratamiento control
+datos_cultivo$es_control <- ifelse(datos_cultivo$tratamiento == "Control", 1, 0)
+head(datos_cultivo)  # Muestra las primeras filas del resultado
+```
+
+La función `factor()` permite definir el orden y las etiquetas de los niveles de una variable categórica, lo cual es relevante en análisis como ANOVA.
+
+## Ordenamiento y agrupamiento de datos
+
+El ordenamiento y el agrupamiento facilitan la exploración y el cálculo de estadísticas descriptivas por grupos, pasos previos a los análisis clásicos.
+
+### Ordenamiento de datos
+
+El ordenamiento se realiza con la función `order()`, que devuelve el índice de ordenación.
+
+```{r}
+# Ordenar por altura
+datos_ordenados <- datos_cultivo[order(datos_cultivo$altura_cm), ]
+head(datos_ordenados) # Muestra las primeras filas del resultado
+
+# Ordenar por tratamiento y peso descendente
+datos_ordenados_multi <- datos_cultivo[order(datos_cultivo$tratamiento,
+                                             -datos_cultivo$peso_gr), ]
+head(datos_ordenados_multi) # Muestra las primeras filas del resultado
+```
+
+El signo negativo delante de una variable numérica indica orden descendente.
+
+### Cálculos estadísticos por grupo
+
+El cálculo de medias, desviaciones estándar y otros estadísticos por grupo es esencial en la estadística clásica. Las funciones `tapply()`, `aggregate()` y `by()` permiten realizar estos cálculos.
+
+```{r}
+# Media de altura por tratamiento usando tapply
+medias_altura <- tapply(datos_cultivo$altura_cm, datos_cultivo$tratamiento, 
+                        mean, na.rm = TRUE)
+medias_altura
+
+# Estadísticas descriptivas por tratamiento usando aggregate
+estadisticas_grupo <- aggregate(cbind(altura_cm, peso_gr) ~ tratamiento, 
+                                data = datos_cultivo, 
+                                FUN = function(x) 
+                                  c(media = mean(x, na.rm = TRUE), 
+                                    sd = sd(x, na.rm = TRUE)))
+estadisticas_grupo
+```
+
+En `tapply()`, el primer argumento es el vector de datos, el segundo es el factor de agrupamiento y el tercero es la función estadística. El argumento `na.rm = TRUE` indica que se deben omitir los valores faltantes.
+
+## Manejo de valores faltantes y duplicados
+
+El tratamiento de valores faltantes y duplicados es crucial para evitar sesgos y errores en los análisis estadísticos clásicos (Wickham & Grolemund, 2017).
+
+### Identificación y manejo de valores faltantes
+
+```{r}
+# Conteo de valores faltantes por columna
+na_por_columna <- colSums(is.na(datos_cultivo))
+na_por_columna # Numero de valores faltantes por columna
+
+# Eliminación de filas con valores faltantes
+datos_completos <- na.omit(datos_cultivo)
+
+# Imputación de valores faltantes con la media
+datos_cultivo$altura_cm[is.na(datos_cultivo$altura_cm)] <- 
+  mean(datos_cultivo$altura_cm, na.rm = TRUE)
+```
+
+La función `is.na()` identifica los valores faltantes, `colSums()` suma por columna y `na.omit()` elimina filas con al menos un NA.
+
+### Manejo de duplicados
+
+```{r}
+# Identificación de duplicados
+duplicados <- duplicated(datos_cultivo[, c("tratamiento", "bloque")])
+summary(duplicados) # Resume el número de duplicados encontrados
+# Eliminación de duplicados
+datos_sin_duplicados <- unique(datos_cultivo)
+```
+
+La función `duplicated()` devuelve un vector lógico que indica si una fila es duplicada respecto a las variables seleccionadas. `unique()` elimina las filas duplicadas.
+
+### Ejemplo práctico: Preparación de datos para análisis de varianza (ANOVA)
+
+A continuación se muestra cómo preparar un conjunto de datos para un análisis de varianza, integrando las técnicas presentadas.
+
+```{r}
+# 1. Eliminar valores faltantes
+datos_anova <- na.omit(datos_cultivo)
+
+# 2. Seleccionar variables relevantes
+datos_anova <- datos_anova[, c("tratamiento", "bloque", "altura_cm")]
+
+# 3. Recodificar variables como factores
+datos_anova$tratamiento <- factor(datos_anova$tratamiento)
+datos_anova$bloque <- factor(datos_anova$bloque)
+
+# 4. Estadísticas descriptivas previas
+estadisticas_previas <- aggregate(altura_cm ~ tratamiento, 
+                                  data = datos_anova,
+                                  FUN = function(x) 
+                                    c(media = mean(x), 
+                                      sd = sd(x), 
+                                      n = length(x)))
+estadisticas_previas
+# 5. Realizar ANOVA
+modelo_anova <- aov(altura_cm ~ tratamiento + bloque, data = datos_anova)
+summary(modelo_anova)
+```
+
+En este ejemplo, se eliminan los valores faltantes, se seleccionan las variables necesarias, se recodifican como factores y se calculan estadísticas descriptivas antes de aplicar el modelo ANOVA, una técnica central en la estadística clásica para comparar medias entre grupos (Montgomery, 2017; R Core Team, 2023).
