@@ -1,0 +1,107 @@
+# Visualización de datos con ggplot2
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Instalar y cargar el tidyverse
+if (!require("tidyverse")) install.packages("tidyverse")
+
+```
+
+El paquete `ggplot2` es una de las herramientas más potentes y versátiles para la visualización de datos en R. Su desarrollo se basa en la "gramática de los gráficos" (Grammar of Graphics), un enfoque teórico propuesto por Wilkinson (2005) que concibe los gráficos como la combinación de componentes independientes y anidados. Esta gramática permite construir visualizaciones complejas a partir de la suma de elementos simples, lo que facilita la exploración, el análisis y la comunicación de los datos de manera estructurada y reproducible (Wickham, 2016).
+
+A diferencia del sistema gráfico base de R, donde cada tipo de gráfico se genera con una función específica y la personalización puede requerir múltiples líneas de código, `ggplot2` utiliza una sintaxis declarativa y modular. Esto significa que el usuario describe qué quiere visualizar y cómo, y el sistema se encarga de ensamblar el gráfico a partir de los componentes especificados. Esta lógica modular permite añadir, modificar o eliminar capas y atributos de manera flexible, lo que resulta especialmente útil en el análisis exploratorio y la presentación de resultados (Wilkinson, 2005; Wickham, 2016).
+
+La gramática de los gráficos define que toda visualización se compone de los siguientes elementos (Wickham, 2016; Wilkinson, 2005):
+
+1.  Un conjunto de datos.
+
+2.  Mapeos estéticos que vinculan variables a atributos visuales (como posición, color o tamaño).
+
+3.  Geometrías que representan los datos (barras, puntos, líneas, etc.).
+
+4.  Escalas que controlan la interpretación de los valores.
+
+5.  Sistemas de coordenadas.
+
+6.  Facetas para subdividir el gráfico en paneles.
+
+7.  Temas para la presentación final.
+
+## Estructura básica de un gráfico en ggplot2
+
+La construcción de un gráfico en `ggplot2` sigue una lógica de capas, donde cada componente se añade mediante el operador `+`. La estructura básica de un gráfico incluye los siguientes pasos (Wickham, 2016):
+
+1.  Se inicia el objeto gráfico con la función `ggplot()`, especificando el conjunto de datos y los mapeos estéticos principales mediante `aes()`. Por ejemplo, se puede indicar qué variable se representa en el eje X y cuál en el eje Y.
+
+2.  Se añade una o más capas geométricas, como `geom_point()` para puntos, `geom_histogram()` para histogramas, `geom_boxplot()` para diagramas de caja, entre otras. Cada geometría puede tener sus propios mapeos estéticos y argumentos de personalización.
+
+3.  Se incorporan escalas para controlar la interpretación de los valores, como escalas de color, tamaño o forma, mediante funciones como `scale_color_manual()` o `scale_x_continuous()`.
+
+4.  Se añaden etiquetas y títulos con `labs()` o `ggtitle()`, y se puede modificar la apariencia general del gráfico con funciones de tema como `theme_minimal()` o `theme_classic()`.
+
+5.  Opcionalmente, se pueden añadir facetas para dividir el gráfico en paneles según una o más variables categóricas, utilizando `facet_wrap()` o `facet_grid()`.
+
+A continuación se muestra un ejemplo comentado que ilustra la estructura básica de un gráfico de dispersión (Wickham, 2016):
+
+```{r eval=FALSE}
+# Cargar el paquete ggplot2
+library(ggplot2)
+
+# Creación del gráfico de dispersión completo en una operación
+ggplot(
+    # Especificar datos y mapeos estéticos básicos
+    data = datos, 
+    aes(x = x, y = y, color = grupo)
+  ) +
+  # Añadir capa de puntos
+  geom_point(
+    size = 2  # Tamaño de los puntos
+  ) +
+  # Añadir etiquetas y título
+  labs(
+    title = "Gráfico de dispersión por grupo",  # Título principal
+    x = "Variable X",                           # Etiqueta eje X
+    y = "Variable Y",                           # Etiqueta eje Y
+    color = "Grupo"                             # Etiqueta de la leyenda
+  ) +
+  # Aplicar tema minimalista
+  theme_minimal()
+```
+
+En este ejemplo, cada línea añade un componente al gráfico. El mapeo estético `color = grupo` permite distinguir los puntos según la variable categórica 'grupo'. La función `labs()` personaliza las etiquetas y el título, y `theme_minimal()` aplica un estilo visual sencillo y profesional (Wickham, 2016).
+
+## Creación de gráficos exploratorios y descriptivos
+
+`ggplot2` facilita la construcción de los gráficos más utilizados en la estadística clásica, como histogramas, diagramas de caja y gráficos de dispersión. A continuación se presentan ejemplos detallados y comentados para cada caso (Wickham, 2016).
+
+1.  Para construir un histograma, se utiliza la función `geom_histogram()`, que permite visualizar la distribución de una variable continua. El argumento `bins` controla el número de intervalos, mientras que `fill` y `color` personalizan los colores de las barras y sus bordes.
+
+```{r}
+# Histograma de una variable continua
+ggplot(data = datos, aes(x = variable)) +
+  geom_histogram(bins = 15, fill = "lightblue", color = "darkblue") + # 15 intervalos, color de barras y bordes
+  labs(title = "Histograma de variable", x = "Variable", y = "Frecuencia") +
+  theme_classic()
+```
+
+2.  Para comparar la distribución de una variable entre grupos, se emplea `geom_boxplot()`. El argumento `fill` permite asignar colores a los grupos, y `notch = TRUE` añade una muesca para comparar medianas.
+
+```{r}
+# Diagrama de caja para comparar grupos
+ggplot(data = datos, aes(x = grupo, y = valor, fill = grupo)) +
+  geom_boxplot(outlier.colour = "red", notch = TRUE) + # Valores atípicos en rojo, muesca para la mediana
+  labs(title = "Diagrama de caja por grupo", x = "Grupo", y = "Valor") +
+  theme_minimal()
+```
+
+3.  Para analizar la relación entre dos variables cuantitativas, se utiliza `geom_point()` para los puntos y `geom_smooth()` para añadir una línea de tendencia, como una regresión lineal.
+
+```{r}
+# Gráfico de dispersión con línea de regresión
+ggplot(data = datos, aes(x = x, y = y)) +
+  geom_point(color = "navy", size = 2) + # Puntos en azul marino
+  geom_smooth(method = "lm", se = TRUE, color = "red", linetype = "dashed") + # Línea de regresión con intervalo de confianza
+  labs(title = "Dispersión y ajuste lineal", x = "X", y = "Y") +
+  theme_light()
+```
+
+En todos estos ejemplos, la lógica de capas y mapeos estéticos permite modificar y ampliar fácilmente la visualización, añadiendo nuevas geometrías, escalas o temas según las necesidades del análisis (Wickham, 2016).

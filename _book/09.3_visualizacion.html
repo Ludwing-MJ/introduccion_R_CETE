@@ -408,7 +408,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>La visualización de datos es una herramienta esencial en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete <strong><code>ggplot2</code></strong> es ampliamente reconocido por su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo aborda los conceptos básicos de <strong><code>ggplot2</code></strong>, la creación de gráficos comunes y las opciones de personalización disponibles, utilizando como ejemplo un conjunto de datos recopilado en un estudio realizado en la Universidad de San Carlos de Guatemala en 2002.</p>
+<p>El paquete <code>ggplot2</code> es una de las herramientas más potentes y versátiles para la visualización de datos en R. Su desarrollo se basa en la “gramática de los gráficos” (Grammar of Graphics), un enfoque teórico propuesto por Wilkinson (2005) que concibe los gráficos como la combinación de componentes independientes y anidados. Esta gramática permite construir visualizaciones complejas a partir de la suma de elementos simples, lo que facilita la exploración, el análisis y la comunicación de los datos de manera estructurada y reproducible (Wickham, 2016).</p>
+<p>A diferencia del sistema gráfico base de R, donde cada tipo de gráfico se genera con una función específica y la personalización puede requerir múltiples líneas de código, <code>ggplot2</code> utiliza una sintaxis declarativa y modular. Esto significa que el usuario describe qué quiere visualizar y cómo, y el sistema se encarga de ensamblar el gráfico a partir de los componentes especificados. Esta lógica modular permite añadir, modificar o eliminar capas y atributos de manera flexible, lo que resulta especialmente útil en el análisis exploratorio y la presentación de resultados (Wilkinson, 2005; Wickham, 2016).</p>
+<p>La gramática de los gráficos define que toda visualización se compone de los siguientes elementos (Wickham, 2016; Wilkinson, 2005):</p>
+<ol type="1">
+<li><p>Un conjunto de datos.</p></li>
+<li><p>Mapeos estéticos que vinculan variables a atributos visuales (como posición, color o tamaño).</p></li>
+<li><p>Geometrías que representan los datos (barras, puntos, líneas, etc.).</p></li>
+<li><p>Escalas que controlan la interpretación de los valores.</p></li>
+<li><p>Sistemas de coordenadas.</p></li>
+<li><p>Facetas para subdividir el gráfico en paneles.</p></li>
+<li><p>Temas para la presentación final.</p></li>
+</ol>
 <section id="contexto-de-la-base-de-datos-utilizada" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="contexto-de-la-base-de-datos-utilizada"><span class="header-section-number">14.1</span> Contexto de la base de datos utilizada</h2>
 <p>El estudio mencionado recopiló información de 460 estudiantes de diversas facultades, incluyendo variables como facultad, edad, sexo, estado civil, jornada de estudio, año de ingreso, peso, talla y hábitos como fumar o consumo de alcohol. Este conjunto de datos, disponible en formato CSV, será utilizado para ilustrar las herramientas y conceptos desarrollados en esta sección. El archivo puede descargarse desde el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Visualiz">GitHub - Visualización de datos</a>.</p>

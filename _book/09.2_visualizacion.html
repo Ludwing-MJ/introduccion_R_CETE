@@ -21,6 +21,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -327,7 +361,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#notas" id="toc-notas" class="nav-link active" data-scroll-target="#notas"><span class="header-section-number">13.1</span> Notas:</a></li>
+  <li><a href="#funciones-gráficas-básicas-de-r" id="toc-funciones-gráficas-básicas-de-r" class="nav-link active" data-scroll-target="#funciones-gráficas-básicas-de-r"><span class="header-section-number">13.1</span> Funciones gráficas básicas de R</a></li>
+  <li><a href="#creación-de-gráficos-exploratorios" id="toc-creación-de-gráficos-exploratorios" class="nav-link" data-scroll-target="#creación-de-gráficos-exploratorios"><span class="header-section-number">13.2</span> Creación de gráficos exploratorios</a>
+  <ul class="collapse">
+  <li><a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="header-section-number">13.2.1</span> Histogramas</a></li>
+  <li><a href="#diagramas-de-caja-boxplots" id="toc-diagramas-de-caja-boxplots" class="nav-link" data-scroll-target="#diagramas-de-caja-boxplots"><span class="header-section-number">13.2.2</span> Diagramas de caja (boxplots)</a></li>
+  <li><a href="#gráficos-de-dispersión" id="toc-gráficos-de-dispersión" class="nav-link" data-scroll-target="#gráficos-de-dispersión"><span class="header-section-number">13.2.3</span> Gráficos de dispersión</a></li>
+  <li><a href="#gráficos-de-líneas" id="toc-gráficos-de-líneas" class="nav-link" data-scroll-target="#gráficos-de-líneas"><span class="header-section-number">13.2.4</span> Gráficos de líneas</a></li>
+  </ul></li>
+  <li><a href="#visualización-para-la-comprobación-de-supuestos-estadísticos" id="toc-visualización-para-la-comprobación-de-supuestos-estadísticos" class="nav-link" data-scroll-target="#visualización-para-la-comprobación-de-supuestos-estadísticos"><span class="header-section-number">13.3</span> Visualización para la comprobación de supuestos estadísticos</a>
+  <ul class="collapse">
+  <li><a href="#gráficos-q-q-para-evaluar-normalidad" id="toc-gráficos-q-q-para-evaluar-normalidad" class="nav-link" data-scroll-target="#gráficos-q-q-para-evaluar-normalidad"><span class="header-section-number">13.3.1</span> Gráficos Q-Q para evaluar normalidad</a></li>
+  <li><a href="#gráficos-de-diagnóstico-para-modelos-de-regresión" id="toc-gráficos-de-diagnóstico-para-modelos-de-regresión" class="nav-link" data-scroll-target="#gráficos-de-diagnóstico-para-modelos-de-regresión"><span class="header-section-number">13.3.2</span> Gráficos de diagnóstico para modelos de regresión</a></li>
+  </ul></li>
+  <li><a href="#personalización-de-gráficos-en-r-base" id="toc-personalización-de-gráficos-en-r-base" class="nav-link" data-scroll-target="#personalización-de-gráficos-en-r-base"><span class="header-section-number">13.4</span> Personalización de gráficos en R base</a>
+  <ul class="collapse">
+  <li><a href="#principales-argumentos-y-funciones" id="toc-principales-argumentos-y-funciones" class="nav-link" data-scroll-target="#principales-argumentos-y-funciones"><span class="header-section-number">13.4.1</span> <strong>Principales argumentos y funciones:</strong></a></li>
+  <li><a href="#ejemplo-integral" id="toc-ejemplo-integral" class="nav-link" data-scroll-target="#ejemplo-integral"><span class="header-section-number">13.4.2</span> Ejemplo integral</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -353,11 +404,363 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="notas" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="notas"><span class="header-section-number">13.1</span> Notas:</h2>
-<p>En esta sección se explicara tanto por que R es una herramienta muy poderosa en la elaboración de gráficos como se hara una introducción de conceptos necesarios para comprender la seccion de visualizacionen de R entera</p>
+<p>La comprensión de los principios básicos de la visualización efectiva constituye la base para una correcta interpretación y comunicación de los datos en el análisis estadístico. Sin embargo, para llevar estos principios a la práctica, es indispensable conocer y dominar las herramientas que permiten construir representaciones gráficas de calidad. En este sentido, el lenguaje R ofrece un conjunto robusto de funciones base que facilitan la creación de diversos tipos de gráficos, esenciales para la exploración y validación de los supuestos estadísticos en la estadística clásica. El siguiente capítulo se centra en el uso de estas funciones, proporcionando ejemplos y recomendaciones para su aplicación en el análisis de datos, y mostrando cómo los conceptos teóricos previamente expuestos se materializan en la práctica cotidiana del análisis estadístico (Venables &amp; Ripley, 2002).</p>
+<section id="funciones-gráficas-básicas-de-r" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="funciones-gráficas-básicas-de-r"><span class="header-section-number">13.1</span> Funciones gráficas básicas de R</h2>
+<p>El sistema gráfico base de R constituye una de las herramientas más accesibles y versátiles para la visualización de datos en estadística clásica. Estas funciones permiten crear gráficos de manera rápida y flexible, facilitando tanto la exploración inicial de los datos como la comprobación de supuestos estadísticos fundamentales. El enfoque de R base se basa en la construcción secuencial de gráficos, donde cada elemento puede ser añadido o modificado mediante argumentos y funciones auxiliares, lo que resulta especialmente útil en el análisis exploratorio y diagnóstico (Murrell, 2018; Venables &amp; Ripley, 2002).</p>
+<p>Entre las funciones más utilizadas se encuentran:</p>
+<ol type="1">
+<li><p><code>plot()</code>: función genérica para gráficos de dispersión, líneas y otros tipos de visualizaciones.</p></li>
+<li><p><code>hist()</code>: para la creación de histogramas que muestran la distribución de variables cuantitativas.</p></li>
+<li><p><code>boxplot()</code>: para diagramas de caja que resumen la dispersión y los valores atípicos.</p></li>
+<li><p><code>barplot()</code>: para gráficos de barras de frecuencias o proporciones.</p></li>
+<li><p><code>qqnorm()</code> y <code>qqline()</code>: para gráficos Q-Q que evalúan la normalidad de los datos.</p></li>
+<li><p><code>pairs()</code>: para matrices de gráficos de dispersión entre varias variables.</p></li>
+</ol>
+<p>Estas funciones son la base para la mayoría de los análisis gráficos en estadística clásica, permitiendo una rápida inspección visual de los datos y la validación de supuestos (Venables &amp; Ripley, 2002).</p>
+</section>
+<section id="creación-de-gráficos-exploratorios" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="creación-de-gráficos-exploratorios"><span class="header-section-number">13.2</span> Creación de gráficos exploratorios</h2>
+<p>La creación de gráficos exploratorios en R base es fundamental para el análisis inicial de los datos y la detección de patrones, tendencias y anomalías. A continuación se detallan los principales tipos de gráficos, su sintaxis y los argumentos más relevantes, acompañados de ejemplos y explicaciones pedagógicas (Venables &amp; Ripley, 2002; Murrell, 2018).</p>
+<section id="histogramas" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">13.2.1</span> Histogramas</h3>
+<p>La función principal para crear histogramas en R es <code>hist()</code>. Su sintaxis general es:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="st">"Sturges"</span>, </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="cn">NULL</span>, </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="cn">NULL</span>, </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="cn">NULL</span>, </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>     ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación de los argumentos:</strong></p>
+<ol type="1">
+<li><p><code>x</code>: Vector numérico con los datos a graficar.</p></li>
+<li><p><code>breaks</code>: Define el número de intervalos (bins) o el método para calcularlos. Puede ser un número, un vector de puntos de corte, o un método como “Sturges”, “Scott”, “FD”.</p></li>
+<li><p><code>freq</code>: Si es TRUE, el eje Y muestra frecuencias absolutas; si es FALSE, muestra densidades.</p></li>
+<li><p><code>col</code>: Color de las barras.</p></li>
+<li><p><code>border</code>: Color del borde de las barras.</p></li>
+<li><p><code>main</code>: Título principal del gráfico.</p></li>
+<li><p><code>xlab</code>, <code>ylab</code>: Etiquetas de los ejes X e Y.</p></li>
+<li><p><code>...</code>: Otros argumentos gráficos adicionales.</p></li>
+</ol>
+<p><strong>Ejemplo detallado:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de datos</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>notas <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">200</span>, <span class="at">mean =</span> <span class="dv">70</span>, <span class="at">sd =</span> <span class="dv">10</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma personalizado</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(notas,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">breaks =</span> <span class="dv">15</span>,                <span class="co"># Número de intervalos</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">freq =</span> <span class="cn">TRUE</span>,                <span class="co"># Mostrar frecuencias absolutas</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"lightblue"</span>,          <span class="co"># Color de las barras</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">border =</span> <span class="st">"darkblue"</span>,        <span class="co"># Color del borde</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Histograma de calificaciones"</span>, <span class="co"># Título</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Puntaje"</span>,           <span class="co"># Etiqueta eje X</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Frecuencia"</span>)        <span class="co"># Etiqueta eje Y</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="diagramas-de-caja-boxplots" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="diagramas-de-caja-boxplots"><span class="header-section-number">13.2.2</span> Diagramas de caja (boxplots)</h3>
+<p>La función principal es <code>boxplot()</code>. Su sintaxis general es:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(formula, </span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">data =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="cn">NULL</span>, </span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">notch =</span> <span class="cn">FALSE</span>, </span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>        ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p><code>formula</code>: Expresión del tipo <code>y ~ grupo</code> para comparar grupos.</p></li>
+<li><p><code>data</code>: Data frame donde buscar las variables.</p></li>
+<li><p><code>main</code>, <code>xlab</code>, <code>ylab</code>: Títulos y etiquetas.</p></li>
+<li><p><code>col</code>: Colores de las cajas.</p></li>
+<li><p><code>border</code>: Color del borde de las cajas.</p></li>
+<li><p><code>notch</code>: Si es TRUE, añade una muesca para comparar medianas.</p></li>
+<li><p><code>outline</code>: Si es TRUE, muestra valores atípicos.</p></li>
+<li><p><code>...</code>: Otros argumentos gráficos.</p></li>
+</ol>
+<p><strong>Ejemplo detallado:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de datos para dos grupos</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>grupo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Tratamiento"</span>), <span class="at">each =</span> <span class="dv">100</span>))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>valores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">70</span>, <span class="dv">8</span>), <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">75</span>, <span class="dv">10</span>))</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot personalizado</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(valores <span class="sc">~</span> grupo,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Comparación entre Grupos"</span>,</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"Grupo"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Valores"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"lightgreen"</span>, <span class="st">"lightcoral"</span>),</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">border =</span> <span class="st">"darkgray"</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">notch =</span> <span class="cn">TRUE</span>,             <span class="co"># Mostrar muesca para comparar medianas</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">outline =</span> <span class="cn">TRUE</span>)           <span class="co"># Mostrar valores atípicos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráficos-de-dispersión" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="gráficos-de-dispersión"><span class="header-section-number">13.2.3</span> Gráficos de dispersión</h3>
+<p>La función principal es <code>plot()</code>. Su sintaxis general para dos variables es:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"p"</span>, </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">1</span>, </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="cn">NULL</span>, </span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="dv">1</span>, </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>     ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Explicación de los argumentos:</strong></p>
+<ol type="1">
+<li><p><code>x</code>, <code>y</code>: Vectores numéricos de igual longitud.</p></li>
+<li><p><code>type</code>: Tipo de gráfico (“p” para puntos, “l” para líneas, “b” para ambos).</p></li>
+<li><p><code>main</code>, <code>sub</code>: Título principal y subtítulo.</p></li>
+<li><p><code>xlab</code>, <code>ylab</code>: Etiquetas de los ejes.</p></li>
+<li><p><code>pch</code>: Tipo de símbolo para los puntos (1: círculo, 16: círculo sólido, 17: triángulo, etc.).</p></li>
+<li><p><code>col</code>: Color de los puntos.</p></li>
+<li><p><code>cex</code>: Tamaño relativo de los puntos.</p></li>
+<li><p><code>...</code>: Otros argumentos gráficos.</p></li>
+</ol>
+<p><strong>Ejemplo detallado:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de datos</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">10</span>, <span class="at">sd =</span> <span class="dv">2</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">3</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión personalizado</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"p"</span>,                  <span class="co"># Tipo de gráfico: puntos</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Relación entre X e Y"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">"Datos simulados"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Variable X"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Variable Y"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">16</span>,                    <span class="co"># Círculo sólido</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"navy"</span>,                <span class="co"># Color de los puntos</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.2</span>)                   <span class="co"># Tamaño de los puntos</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir línea de regresión</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="gráficos-de-líneas" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="gráficos-de-líneas"><span class="header-section-number">13.2.4</span> Gráficos de líneas</h3>
+<p>Para series temporales o secuencias, se usa <code>plot()</code> con <code>type = "l"</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y, </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>, </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="cn">NULL</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="cn">NULL</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="cn">NULL</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="dv">1</span>, </span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>     ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol type="1">
+<li><p><code>type = "l"</code>: Dibuja una línea.</p></li>
+<li><p><code>lwd</code>: Grosor de la línea.</p></li>
+</ol>
+<p><strong>Ejemplo detallado:</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de serie temporal</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>tiempo <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">50</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>medidas <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(<span class="fu">rnorm</span>(<span class="dv">50</span>))</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de líneas</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tiempo, medidas,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">type =</span> <span class="st">"l"</span>,                  <span class="co"># Tipo de gráfico: línea</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Serie temporal simulada"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Tiempo"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Medida"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"darkred"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>     <span class="at">lwd =</span> <span class="dv">2</span>)                     <span class="co"># Grosor de la línea</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir puntos sobre la línea</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a><span class="fu">points</span>(tiempo, medidas, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="visualización-para-la-comprobación-de-supuestos-estadísticos" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="visualización-para-la-comprobación-de-supuestos-estadísticos"><span class="header-section-number">13.3</span> Visualización para la comprobación de supuestos estadísticos</h2>
+<p>La validación gráfica de supuestos estadísticos es fundamental para garantizar la validez de los análisis en estadística clásica. Esta sección se centra en las herramientas gráficas específicas que R base proporciona para evaluar los supuestos de normalidad, homocedasticidad y linealidad, esenciales en pruebas como ANOVA y regresión lineal (Venables &amp; Ripley, 2002).</p>
+<section id="gráficos-q-q-para-evaluar-normalidad" class="level3" data-number="13.3.1">
+<h3 data-number="13.3.1" class="anchored" data-anchor-id="gráficos-q-q-para-evaluar-normalidad"><span class="header-section-number">13.3.1</span> Gráficos Q-Q para evaluar normalidad</h3>
+<p>Los gráficos Q-Q (quantile-quantile) constituyen una herramienta visual poderosa para evaluar el ajuste de los datos a una distribución teórica. Cuando los puntos se alinean sobre la diagonal, se puede inferir que los datos siguen la distribución de referencia, típicamente la normal. Las desviaciones sistemáticas de esta línea sugieren alejamientos de la normalidad que pueden requerir transformaciones de datos o el uso de métodos no paramétricos (Cleveland, 1993).</p>
+<p>La sintaxis básica para crear gráficos Q-Q en R incluye dos funciones principales: <code>qqnorm()</code> para crear el gráfico base y <code>qqline()</code> para añadir la línea de referencia. A continuación se presenta un ejemplo comentado que ilustra su implementación:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de tres conjuntos de datos con diferentes distribuciones</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>datos_normales <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)      <span class="co"># Distribución normal</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>datos_asimetricos <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">100</span>, <span class="at">rate =</span> <span class="dv">1</span>)            <span class="co"># Distribución exponencial</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>datos_uniformes <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">100</span>, <span class="at">min =</span> <span class="sc">-</span><span class="dv">3</span>, <span class="at">max =</span> <span class="dv">3</span>)    <span class="co"># Distribución uniforme</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuración de la ventana gráfica para múltiples gráficos</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico Q-Q para datos normales</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(datos_normales,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Datos Normales"</span>,</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,                <span class="co"># Tipo de punto: círculo sólido</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"navy"</span>)           <span class="co"># Color de los puntos</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(datos_normales,         <span class="co"># Línea de referencia</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>,            <span class="co"># Color de la línea</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)                <span class="co"># Grosor de la línea</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico Q-Q para datos asimétricos</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(datos_asimetricos,</span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Datos Asimétricos"</span>,</span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"darkgreen"</span>)</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(datos_asimetricos,</span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico Q-Q para datos uniformes</span></span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(datos_uniformes,</span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="st">"Datos Uniformes"</span>,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="dv">16</span>,</span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"purple"</span>)</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(datos_uniformes,</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"red"</span>,</span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd =</span> <span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restaurar la configuración original de la ventana gráfica</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La interpretación de estos gráficos se basa en el patrón que forman los puntos en relación con la línea de referencia. Según Venables &amp; Ripley (2002), las desviaciones más comunes incluyen: 1) Colas pesadas, cuando los extremos se alejan de la línea, 2) Asimetría, cuando se forma un patrón curvilíneo, y 3) Bimodalidad, cuando aparece un patrón en forma de S.</p>
+</section>
+<section id="gráficos-de-diagnóstico-para-modelos-de-regresión" class="level3" data-number="13.3.2">
+<h3 data-number="13.3.2" class="anchored" data-anchor-id="gráficos-de-diagnóstico-para-modelos-de-regresión"><span class="header-section-number">13.3.2</span> Gráficos de diagnóstico para modelos de regresión</h3>
+<p>Los gráficos de diagnóstico en regresión permiten evaluar simultáneamente varios supuestos del modelo lineal. R proporciona una serie de gráficos diagnósticos automáticos a través de la función <code>plot()</code> aplicada a objetos de clase <code>lm</code>. El siguiente ejemplo ilustra su implementación y uso:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación de datos para regresión lineal</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">1</span>, <span class="dv">100</span>)                           <span class="co"># Variable predictora</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">100</span>, <span class="dv">0</span>, <span class="dv">10</span>)            <span class="co"># Variable respuesta con error normal</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">x =</span> x, <span class="at">y =</span> y)          <span class="co"># Crear data frame</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo de regresión lineal</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(y <span class="sc">~</span> x, <span class="at">data =</span> datos)          <span class="co"># Ajustar modelo</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráficos de diagnóstico</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))                        <span class="co"># Configurar ventana 2x2</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo)                               <span class="co"># Generar gráficos diagnósticos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Restaurar la configuración original de la ventana gráfica</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Los gráficos diagnósticos generados incluyen, según Murrell (2018): 1) Residuos vs valores ajustados, para evaluar linealidad y homocedasticidad, 2) Q-Q de residuos, para verificar normalidad, 3) Scale-Location, para examinar la homogeneidad de varianza, y 4) Residuos vs Leverage, para identificar observaciones influyentes.</p>
+</section>
+</section>
+<section id="personalización-de-gráficos-en-r-base" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="personalización-de-gráficos-en-r-base"><span class="header-section-number">13.4</span> Personalización de gráficos en R base</h2>
+<p>La personalización se logra modificando los argumentos de las funciones gráficas y añadiendo elementos con funciones auxiliares. A continuación se explican los argumentos más importantes y se muestra un ejemplo integral (Murrell, 2018).</p>
+<section id="principales-argumentos-y-funciones" class="level3" data-number="13.4.1">
+<h3 data-number="13.4.1" class="anchored" data-anchor-id="principales-argumentos-y-funciones"><span class="header-section-number">13.4.1</span> <strong>Principales argumentos y funciones:</strong></h3>
+<ol type="1">
+<li><p><code>main</code>, <code>sub</code>, <code>xlab</code>, <code>ylab</code>: Títulos y etiquetas.</p></li>
+<li><p><code>col</code>, <code>border</code>, <code>pch</code>, <code>lty</code>, <code>lwd</code>: Colores, símbolos, tipo y grosor de líneas.</p></li>
+<li><p><code>cex</code>, <code>cex.axis</code>, <code>cex.lab</code>, <code>cex.main</code>: Tamaño de símbolos y textos.</p></li>
+<li><p><code>legend()</code>: Añade leyendas.</p></li>
+<li><p><code>text()</code>: Añade texto en posiciones específicas.</p></li>
+<li><p><code>abline()</code>: Añade líneas horizontales, verticales o de regresión.</p></li>
+<li><p><code>grid()</code>: Añade cuadrícula.</p></li>
+</ol>
+</section>
+<section id="ejemplo-integral" class="level3" data-number="13.4.2">
+<h3 data-number="13.4.2" class="anchored" data-anchor-id="ejemplo-integral"><span class="header-section-number">13.4.2</span> Ejemplo integral</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de dispersión personalizado</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, y,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Gráfico personalizado"</span>,</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">sub =</span> <span class="st">"Datos simulados"</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Variable X"</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Variable Y"</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"blue"</span>,                <span class="co"># Color de los puntos</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">pch =</span> <span class="dv">17</span>,                    <span class="co"># Triángulo sólido</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex =</span> <span class="fl">1.5</span>,                   <span class="co"># Tamaño de los puntos</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.main =</span> <span class="fl">1.2</span>,              <span class="co"># Tamaño del título</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">cex.lab =</span> <span class="fl">1.1</span>)               <span class="co"># Tamaño de etiquetas</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir línea de regresión</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="fu">lm</span>(y <span class="sc">~</span> x), <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">lwd =</span> <span class="dv">2</span>, <span class="at">lty =</span> <span class="dv">2</span>)</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir leyenda</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topleft"</span>,</span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"Datos"</span>, <span class="st">"Ajuste lineal"</span>),</span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>       <span class="at">pch =</span> <span class="fu">c</span>(<span class="dv">17</span>, <span class="cn">NA</span>),</span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">lty =</span> <span class="fu">c</span>(<span class="cn">NA</span>, <span class="dv">2</span>),</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"red"</span>),</span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty =</span> <span class="st">"n"</span>,</span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>       <span class="at">cex =</span> <span class="fl">0.8</span>)</span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir cuadrícula</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a><span class="fu">grid</span>(<span class="at">col =</span> <span class="st">"gray80"</span>, <span class="at">lty =</span> <span class="st">"dotted"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="09.2_visualizacion_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Este ejemplo muestra cómo modificar títulos, etiquetas, colores, símbolos, tamaños, añadir líneas de tendencia, leyendas y cuadrículas para lograr una visualización clara y profesional (Murrell, 2018; Venables &amp; Ripley, 2002).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

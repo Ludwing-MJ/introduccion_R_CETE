@@ -6,7 +6,25 @@ if (!require("tidyverse")) install.packages("tidyverse")
 
 ```
 
-La visualización de datos es una herramienta esencial en el análisis estadístico, ya que permite explorar patrones, identificar relaciones y comunicar resultados de manera efectiva. En R, el paquete **`ggplot2`** es ampliamente reconocido por su flexibilidad y capacidad para generar gráficos de alta calidad. Este capítulo aborda los conceptos básicos de **`ggplot2`**, la creación de gráficos comunes y las opciones de personalización disponibles, utilizando como ejemplo un conjunto de datos recopilado en un estudio realizado en la Universidad de San Carlos de Guatemala en 2002.
+El paquete `ggplot2` es una de las herramientas más potentes y versátiles para la visualización de datos en R. Su desarrollo se basa en la "gramática de los gráficos" (Grammar of Graphics), un enfoque teórico propuesto por Wilkinson (2005) que concibe los gráficos como la combinación de componentes independientes y anidados. Esta gramática permite construir visualizaciones complejas a partir de la suma de elementos simples, lo que facilita la exploración, el análisis y la comunicación de los datos de manera estructurada y reproducible (Wickham, 2016).
+
+A diferencia del sistema gráfico base de R, donde cada tipo de gráfico se genera con una función específica y la personalización puede requerir múltiples líneas de código, `ggplot2` utiliza una sintaxis declarativa y modular. Esto significa que el usuario describe qué quiere visualizar y cómo, y el sistema se encarga de ensamblar el gráfico a partir de los componentes especificados. Esta lógica modular permite añadir, modificar o eliminar capas y atributos de manera flexible, lo que resulta especialmente útil en el análisis exploratorio y la presentación de resultados (Wilkinson, 2005; Wickham, 2016).
+
+La gramática de los gráficos define que toda visualización se compone de los siguientes elementos (Wickham, 2016; Wilkinson, 2005):
+
+1.  Un conjunto de datos.
+
+2.  Mapeos estéticos que vinculan variables a atributos visuales (como posición, color o tamaño).
+
+3.  Geometrías que representan los datos (barras, puntos, líneas, etc.).
+
+4.  Escalas que controlan la interpretación de los valores.
+
+5.  Sistemas de coordenadas.
+
+6.  Facetas para subdividir el gráfico en paneles.
+
+7.  Temas para la presentación final.
 
 ## Contexto de la base de datos utilizada
 
