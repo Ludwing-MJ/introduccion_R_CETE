@@ -327,7 +327,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#notas" id="toc-notas" class="nav-link active" data-scroll-target="#notas"><span class="header-section-number">12.1</span> Notas:</a></li>
+  <li><a href="#historia-y-evolución-de-la-visualización-en-estadística" id="toc-historia-y-evolución-de-la-visualización-en-estadística" class="nav-link active" data-scroll-target="#historia-y-evolución-de-la-visualización-en-estadística"><span class="header-section-number">12.1</span> Historia y evolución de la visualización en estadística</a></li>
+  <li><a href="#principios-básicos-de-la-visualización-efectiva" id="toc-principios-básicos-de-la-visualización-efectiva" class="nav-link" data-scroll-target="#principios-básicos-de-la-visualización-efectiva"><span class="header-section-number">12.2</span> Principios básicos de la visualización efectiva</a>
+  <ul class="collapse">
+  <li><a href="#claridad" id="toc-claridad" class="nav-link" data-scroll-target="#claridad"><span class="header-section-number">12.2.1</span> Claridad</a></li>
+  <li><a href="#precisión" id="toc-precisión" class="nav-link" data-scroll-target="#precisión"><span class="header-section-number">12.2.2</span> Precisión</a></li>
+  <li><a href="#eficiencia" id="toc-eficiencia" class="nav-link" data-scroll-target="#eficiencia"><span class="header-section-number">12.2.3</span> Eficiencia</a></li>
+  <li><a href="#errores-comunes-a-evitar-en-la-visualización-de-datos" id="toc-errores-comunes-a-evitar-en-la-visualización-de-datos" class="nav-link" data-scroll-target="#errores-comunes-a-evitar-en-la-visualización-de-datos"><span class="header-section-number">12.2.4</span> Errores comunes a evitar en la visualización de datos</a></li>
+  <li><a href="#recomendaciones-para-una-visualización-efectiva" id="toc-recomendaciones-para-una-visualización-efectiva" class="nav-link" data-scroll-target="#recomendaciones-para-una-visualización-efectiva"><span class="header-section-number">12.2.5</span> Recomendaciones para una visualización efectiva</a></li>
+  </ul></li>
+  <li><a href="#tipos-de-gráficos-y-su-utilidad-en-estadística-clásica" id="toc-tipos-de-gráficos-y-su-utilidad-en-estadística-clásica" class="nav-link" data-scroll-target="#tipos-de-gráficos-y-su-utilidad-en-estadística-clásica"><span class="header-section-number">12.3</span> Tipos de gráficos y su utilidad en estadística clásica</a>
+  <ul class="collapse">
+  <li><a href="#gráficos-de-barras" id="toc-gráficos-de-barras" class="nav-link" data-scroll-target="#gráficos-de-barras"><span class="header-section-number">12.3.1</span> Gráficos de barras</a></li>
+  <li><a href="#histogramas" id="toc-histogramas" class="nav-link" data-scroll-target="#histogramas"><span class="header-section-number">12.3.2</span> Histogramas</a></li>
+  <li><a href="#diagramas-de-caja-boxplots" id="toc-diagramas-de-caja-boxplots" class="nav-link" data-scroll-target="#diagramas-de-caja-boxplots"><span class="header-section-number">12.3.3</span> Diagramas de caja (boxplots)</a></li>
+  <li><a href="#gráficos-de-dispersión-scatterplots" id="toc-gráficos-de-dispersión-scatterplots" class="nav-link" data-scroll-target="#gráficos-de-dispersión-scatterplots"><span class="header-section-number">12.3.4</span> Gráficos de dispersión (scatterplots)</a></li>
+  <li><a href="#gráficos-qq-quantile-quantile" id="toc-gráficos-qq-quantile-quantile" class="nav-link" data-scroll-target="#gráficos-qq-quantile-quantile"><span class="header-section-number">12.3.5</span> Gráficos QQ (quantile-quantile)</a></li>
+  <li><a href="#gráficos-de-residuos" id="toc-gráficos-de-residuos" class="nav-link" data-scroll-target="#gráficos-de-residuos"><span class="header-section-number">12.3.6</span> Gráficos de residuos</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -353,11 +370,131 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="notas" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="notas"><span class="header-section-number">12.1</span> Notas:</h2>
-<p>En esta sección se explicara tanto por que R es una herramienta muy poderosa en la elaboración de gráficos como se hara una introducción de conceptos necesarios para comprender la seccion de visualizacionen de R entera</p>
+<p>La visualización de datos se define como el proceso de representar información cuantitativa y cualitativa mediante gráficos, diagramas y otras formas visuales. Su objetivo principal es facilitar la comprensión, el análisis y la comunicación de los datos, permitiendo identificar patrones, tendencias, relaciones y anomalías que podrían pasar desapercibidas en tablas numéricas o descripciones textuales. En el contexto del análisis estadístico, la visualización es una herramienta esencial tanto en la fase exploratoria como en la presentación de resultados, ya que ayuda a validar supuestos, comunicar hallazgos y respaldar la toma de decisiones informadas (Wickham, 2016).</p>
+<p>La importancia de la visualización radica en su capacidad para transformar datos complejos en representaciones accesibles y comprensibles, promoviendo la transparencia y la reproducibilidad en la investigación científica. Además, los gráficos permiten detectar errores en los datos, identificar valores atípicos y comprender la distribución de las variables antes de aplicar técnicas estadísticas formales (Tufte, 2001).</p>
+<section id="historia-y-evolución-de-la-visualización-en-estadística" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="historia-y-evolución-de-la-visualización-en-estadística"><span class="header-section-number">12.1</span> Historia y evolución de la visualización en estadística</h2>
+<p>La visualización de datos tiene una larga tradición en la historia de la estadística. Sus orígenes se remontan al siglo XVIII, cuando se comenzaron a utilizar gráficos para representar información demográfica y económica. Uno de los hitos más importantes fue la invención del gráfico de barras por William Playfair en 1786, quien también introdujo el gráfico de líneas y el gráfico circular. Posteriormente, Florence Nightingale empleó diagramas de área para comunicar la mortalidad en hospitales militares, demostrando el poder de los gráficos para influir en la opinión pública y en la toma de decisiones políticas (Friendly, 2008).</p>
+<p>A lo largo del siglo XX, la visualización se consolidó como una disciplina fundamental en la estadística, especialmente con el desarrollo de la computación y el software estadístico, que permitieron la creación de gráficos más complejos y personalizados. En la actualidad, la visualización de datos es un componente central en el análisis exploratorio de datos (EDA) y en la comunicación científica, siendo reconocida como una herramienta indispensable para el trabajo estadístico (Wickham, 2016).</p>
+</section>
+<section id="principios-básicos-de-la-visualización-efectiva" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="principios-básicos-de-la-visualización-efectiva"><span class="header-section-number">12.2</span> Principios básicos de la visualización efectiva</h2>
+<p>La visualización efectiva de datos es un componente esencial para asegurar que la información transmitida sea comprensible, precisa y útil en la toma de decisiones estadísticas. Para lograr este objetivo, es fundamental considerar tres principios clave: claridad, precisión y eficiencia. Estos principios han sido ampliamente discutidos en la literatura especializada, destacando su relevancia en la comunicación gráfica de datos (Tufte, 2001; Cleveland, 1993).</p>
+<section id="claridad" class="level3" data-number="12.2.1">
+<h3 data-number="12.2.1" class="anchored" data-anchor-id="claridad"><span class="header-section-number">12.2.1</span> Claridad</h3>
+<p>La claridad en la visualización implica que el gráfico sea comprensible y transmita el mensaje principal de manera directa, sin ambigüedades ni elementos distractores. Para lograr claridad, se deben considerar los siguientes aspectos (Tufte, 2001):</p>
+<ol type="1">
+<li><p>Eliminar elementos decorativos innecesarios, como fondos llamativos, sombras o efectos tridimensionales que no aportan información relevante.</p></li>
+<li><p>Utilizar títulos descriptivos y etiquetas claras en los ejes, de modo que el lector comprenda de inmediato qué variables se están representando.</p></li>
+<li><p>Incluir leyendas explicativas cuando se utilicen colores, símbolos o líneas para diferenciar grupos o categorías.</p></li>
+<li><p>Mantener un diseño limpio y ordenado, evitando la sobrecarga visual y el uso excesivo de colores o tipografías.</p></li>
+<li><p>Presentar la información de manera secuencial y lógica, facilitando la interpretación del gráfico desde el primer vistazo.</p></li>
+</ol>
+</section>
+<section id="precisión" class="level3" data-number="12.2.2">
+<h3 data-number="12.2.2" class="anchored" data-anchor-id="precisión"><span class="header-section-number">12.2.2</span> Precisión</h3>
+<p>La precisión se refiere a la representación fiel y exacta de los datos, evitando distorsiones que puedan inducir a interpretaciones erróneas. Para asegurar la precisión en los gráficos, se recomienda (Cleveland, 1993):</p>
+<ol type="1">
+<li><p>Utilizar escalas proporcionales y adecuadas al rango de los datos, evitando truncar ejes o manipular escalas que alteren la percepción de las diferencias o relaciones.</p></li>
+<li><p>Representar todos los datos relevantes, sin omitir valores atípicos o subconjuntos importantes que puedan influir en la interpretación.</p></li>
+<li><p>Seleccionar el tipo de gráfico adecuado para el tipo de variable y el objetivo del análisis, por ejemplo, no usar gráficos de barras para variables continuas.</p></li>
+<li><p>Evitar la exageración visual de diferencias mediante el uso de áreas, volúmenes o efectos visuales que no correspondan a la magnitud real de los datos.</p></li>
+<li><p>Revisar cuidadosamente los datos y la codificación del gráfico para prevenir errores de transcripción o interpretación.</p></li>
+</ol>
+</section>
+<section id="eficiencia" class="level3" data-number="12.2.3">
+<h3 data-number="12.2.3" class="anchored" data-anchor-id="eficiencia"><span class="header-section-number">12.2.3</span> Eficiencia</h3>
+<p>La eficiencia en la visualización implica transmitir la mayor cantidad de información relevante con el menor esfuerzo cognitivo posible para el usuario. Para lograr eficiencia, se deben seguir estas recomendacionesndefined(Tufte, 2001; Cleveland, 1993):</p>
+<ol type="1">
+<li><p>Resumir la información de manera que el gráfico muestre los aspectos más importantes sin saturar de detalles innecesarios.</p></li>
+<li><p>Utilizar gráficos sintéticos, como diagramas de caja o gráficos de dispersión, que permiten visualizar múltiples características de los datos en una sola imagen.</p></li>
+<li><p>Priorizar la información relevante para el objetivo del análisis, evitando la inclusión de variables o elementos que no aportan al mensaje principal.</p></li>
+<li><p>Facilitar la comparación entre grupos o categorías mediante el uso de colores, formas o posiciones consistentes y fácilmente distinguibles.</p></li>
+<li><p>Optimizar el tamaño y la resolución del gráfico para que sea legible tanto en pantalla como en impresiones.</p></li>
+</ol>
+</section>
+<section id="errores-comunes-a-evitar-en-la-visualización-de-datos" class="level3" data-number="12.2.4">
+<h3 data-number="12.2.4" class="anchored" data-anchor-id="errores-comunes-a-evitar-en-la-visualización-de-datos"><span class="header-section-number">12.2.4</span> Errores comunes a evitar en la visualización de datos</h3>
+<p>Existen errores frecuentes que pueden comprometer la efectividad de una visualización. Entre los más relevantes se encuentran (Tufte, 2001; Cleveland, 1993):</p>
+<ol type="1">
+<li><p>Uso excesivo de colores, degradados o efectos visuales que dificultan la interpretación y distraen del mensaje principal.</p></li>
+<li><p>Omitir etiquetas, títulos o leyendas, lo que genera confusión sobre el significado de los elementos representados.</p></li>
+<li><p>Elegir un tipo de gráfico inadecuado para el tipo de datos, como utilizar gráficos circulares para comparar muchas categorías o gráficos de líneas para variables categóricas.</p></li>
+<li><p>Manipular escalas de los ejes para exagerar o minimizar diferencias, lo que puede inducir a conclusiones erróneas.</p></li>
+<li><p>Presentar demasiada información en un solo gráfico, lo que sobrecarga al usuario y dificulta la extracción de conclusiones claras.</p></li>
+</ol>
+</section>
+<section id="recomendaciones-para-una-visualización-efectiva" class="level3" data-number="12.2.5">
+<h3 data-number="12.2.5" class="anchored" data-anchor-id="recomendaciones-para-una-visualización-efectiva"><span class="header-section-number">12.2.5</span> Recomendaciones para una visualización efectiva</h3>
+<p>Para garantizar la integridad y la transparencia en la presentación de los datos, se recomienda (Tufte, 2001; Cleveland, 1993):</p>
+<ol type="1">
+<li><p>Seleccionar el tipo de gráfico más adecuado según el objetivo del análisis y la naturaleza de las variables.</p></li>
+<li><p>Mantener un diseño simple, claro y directo, priorizando la comprensión del mensaje principal.</p></li>
+<li><p>Revisar y validar los gráficos antes de su presentación, asegurando que representen fielmente los datos y sean interpretables por el público objetivo.</p></li>
+<li><p>Utilizar recursos visuales (colores, formas, tamaños) de manera coherente y justificada, evitando la sobrecarga visual.</p></li>
+<li><p>Documentar las decisiones tomadas en la construcción del gráfico, facilitando la reproducibilidad y la transparencia en el análisis.</p></li>
+</ol>
+</section>
+</section>
+<section id="tipos-de-gráficos-y-su-utilidad-en-estadística-clásica" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="tipos-de-gráficos-y-su-utilidad-en-estadística-clásica"><span class="header-section-number">12.3</span> Tipos de gráficos y su utilidad en estadística clásica</h2>
+<p>En la estadística clásica, la selección adecuada del tipo de gráfico es fundamental para explorar los datos, validar supuestos y comunicar resultados de manera efectiva. A continuación, se describen los principales tipos de gráficos utilizados, sus características y su utilidad específica en el análisis estadístico, siguiendo las recomendaciones de la literatura especializada (Venables &amp; Ripley, 2002; Cleveland, 1993).</p>
+<section id="gráficos-de-barras" class="level3" data-number="12.3.1">
+<h3 data-number="12.3.1" class="anchored" data-anchor-id="gráficos-de-barras"><span class="header-section-number">12.3.1</span> Gráficos de barras</h3>
+<p>Los gráficos de barras permiten comparar frecuencias o proporciones entre categorías de una variable cualitativa. Cada barra representa una categoría y su altura es proporcional a la frecuencia o porcentaje correspondiente. Este tipo de gráfico facilita la identificación de categorías dominantes o poco representadas y es especialmente útil en el análisis de variables como sexo, grupo de tratamiento o respuestas dicotómicas. Además, los gráficos de barras ayudan a detectar patrones de distribución y posibles sesgos en la recolección de datos (Cleveland, 1993).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/grafico_barras.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="histogramas" class="level3" data-number="12.3.2">
+<h3 data-number="12.3.2" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">12.3.2</span> Histogramas</h3>
+<p>El histograma es la herramienta principal para visualizar la distribución de variables cuantitativas continuas. Agrupa los datos en intervalos y muestra la frecuencia de observaciones en cada uno. Esta representación permite identificar la forma de la distribución, detectar asimetrías, curtosis, valores atípicos y la presencia de múltiples modos. Los histogramas son esenciales para evaluar el supuesto de normalidad, requisito frecuente en pruebas como el ANOVA y la regresión lineal (Venables &amp; Ripley, 2002).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/histograma.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="diagramas-de-caja-boxplots" class="level3" data-number="12.3.3">
+<h3 data-number="12.3.3" class="anchored" data-anchor-id="diagramas-de-caja-boxplots"><span class="header-section-number">12.3.3</span> Diagramas de caja (boxplots)</h3>
+<p>El diagrama de caja, o boxplot, resume la distribución de una variable cuantitativa mostrando la mediana, los cuartiles y los valores extremos. Este gráfico facilita la comparación entre grupos y la identificación de valores atípicos. Además, permite evaluar la homogeneidad de la varianza, aspecto crucial en el análisis de varianza. Su interpretación sencilla y su capacidad para sintetizar información lo convierten en una herramienta indispensable en la estadística descriptiva y comparativa (Cleveland, 1993).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/boxplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="gráficos-de-dispersión-scatterplots" class="level3" data-number="12.3.4">
+<h3 data-number="12.3.4" class="anchored" data-anchor-id="gráficos-de-dispersión-scatterplots"><span class="header-section-number">12.3.4</span> Gráficos de dispersión (scatterplots)</h3>
+<p>Los gráficos de dispersión se utilizan para analizar la relación entre dos variables cuantitativas. Cada punto representa una observación y su posición refleja los valores de ambas variables. Este tipo de gráfico permite identificar patrones de asociación, linealidad, presencia de valores atípicos y posibles agrupamientos. Además, es fundamental para explorar la existencia de correlaciones y para evaluar el supuesto de linealidad en modelos de regresión (Venables &amp; Ripley, 2002).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/scatterplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="gráficos-qq-quantile-quantile" class="level3" data-number="12.3.5">
+<h3 data-number="12.3.5" class="anchored" data-anchor-id="gráficos-qq-quantile-quantile"><span class="header-section-number">12.3.5</span> Gráficos QQ (quantile-quantile)</h3>
+<p>El gráfico QQ compara la distribución de los datos observados con una distribución teórica, generalmente la normal. Si los puntos del gráfico se alinean sobre la diagonal, se puede concluir que los datos siguen la distribución teórica. Este gráfico es esencial para evaluar el supuesto de normalidad en pruebas paramétricas y para detectar desviaciones sistemáticas, colas pesadas o asimetrías en la distribución de los datos (Cleveland, 1993).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/qqplot.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
+</section>
+<section id="gráficos-de-residuos" class="level3" data-number="12.3.6">
+<h3 data-number="12.3.6" class="anchored" data-anchor-id="gráficos-de-residuos"><span class="header-section-number">12.3.6</span> Gráficos de residuos</h3>
+<p>Los gráficos de residuos muestran la diferencia entre los valores observados y los valores ajustados por un modelo estadístico. Un patrón aleatorio en estos gráficos indica que el modelo es adecuado, mientras que la presencia de patrones sistemáticos sugiere problemas de especificación, heterocedasticidad o autocorrelación. Estos gráficos son fundamentales en la validación de modelos de regresión y en la toma de decisiones sobre la necesidad de transformar variables o ajustar el modelo (Venables &amp; Ripley, 2002).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/residuos.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
+</figure>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
