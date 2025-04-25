@@ -8,6 +8,12 @@ biblio-style: "apalike"
 ::: hanging-indent
 Cleveland, W. S. (1993). Visualizing Data. Hobart Press.
 
+Cui, T. (2020). DataExplorer: Automate Data Exploration and Treatment. R package version 0.8.2.
+
+Murrell, P. (2018). R Graphics (3rd ed.). Chapman and Hall/CRC.
+
+Wilkinson, L. (2005). The Grammar of Graphics (2nd ed.). Springer.
+
 Tufte, E. R. (2001). The Visual Display of Quantitative Information (2nd ed.). Graphics Press.
 
 Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer.
@@ -15,10 +21,15 @@ Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th e
 Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer.
 
 Friendly, M. (2008). A Brief History of Data Visualization. In C. Chen, W. Härdle, & A. Unwin (Eds.), Handbook of Data Visualization. Springer.
+
+Murrell, P. (2018). R Graphics (3rd ed.). Chapman and Hall/CRC.
+
+Tukey, J. W. (1977). Exploratory Data Analysis. Addison-Wesley.\
+
+Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer.
 :::
 
 ::: hanging-indent
-
 Allaire, J. J., Xie, Y., & McPherson, J. (2022). R Markdown: The Definitive Guide. Chapman & Hall/CRC. https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund
 
 Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. https://doi.org/10.1038/533452a

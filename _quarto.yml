@@ -47,7 +47,7 @@ book:
     - part: "Visualización de datos"
     - 09.1_visualizacion.qmd
     - 09.2_visualizacion.qmd
-    - 09.3_visualizacion.qmd
+    - 09.3_0visualizacion.qmd
     - part: "Gestión y Exportación de resultados"
     - 10.1_exportacion.qmd
     - 10.2_exportacion.qmd

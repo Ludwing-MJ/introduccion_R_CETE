@@ -6,9 +6,9 @@ if (!require("tidyverse")) install.packages("tidyverse")
 
 ```
 
-El paquete `ggplot2` es una de las herramientas más potentes y versátiles para la visualización de datos en R. Su desarrollo se basa en la "gramática de los gráficos" (Grammar of Graphics), un enfoque teórico propuesto por Wilkinson (2005) que concibe los gráficos como la combinación de componentes independientes y anidados. Esta gramática permite construir visualizaciones complejas a partir de la suma de elementos simples, lo que facilita la exploración, el análisis y la comunicación de los datos de manera estructurada y reproducible (Wickham, 2016).
+El paquete `ggplot2` es una herramienta fundamental para la visualización de datos en R, basada en la "gramática de los gráficos" propuesta por Wilkinson (2005). Esta gramática permite construir visualizaciones complejas a partir de la combinación de componentes independientes, facilitando la exploración y comunicación de los datos de manera estructurada y reproducible (Wickham, 2016). En el contexto de la base USAC 2002, esto permite analizar variables como EDAD, SEXO, IMC, PRESIÓN ARTERIAL, hábitos de consumo y otras características relevantes de la población universitaria.
 
-A diferencia del sistema gráfico base de R, donde cada tipo de gráfico se genera con una función específica y la personalización puede requerir múltiples líneas de código, `ggplot2` utiliza una sintaxis declarativa y modular. Esto significa que el usuario describe qué quiere visualizar y cómo, y el sistema se encarga de ensamblar el gráfico a partir de los componentes especificados. Esta lógica modular permite añadir, modificar o eliminar capas y atributos de manera flexible, lo que resulta especialmente útil en el análisis exploratorio y la presentación de resultados (Wilkinson, 2005; Wickham, 2016).
+A diferencia del sistema gráfico base de R, donde cada tipo de gráfico se genera con una función específica, `ggplot2` utiliza una sintaxis modular y declarativa. El usuario describe qué quiere visualizar y cómo, y el sistema ensambla el gráfico a partir de los componentes especificados, permitiendo añadir, modificar o eliminar capas y atributos de manera flexible (Wilkinson, 2005; Wickham, 2016).
 
 La gramática de los gráficos define que toda visualización se compone de los siguientes elementos (Wickham, 2016; Wilkinson, 2005):
 
@@ -26,44 +26,61 @@ La gramática de los gráficos define que toda visualización se compone de los 
 
 7.  Temas para la presentación final.
 
+## Importación y preparación de los datos
+
+Antes de realizar cualquier visualización, es fundamental importar correctamente la base de datos y asegurarse de que las variables tengan el tipo de dato adecuado. En este caso, se asume que la base de datos USAC 2002 se encuentra en un archivo CSV llamado `usac2002.csv`. Se recomienda revisar y ajustar los nombres de las variables para facilitar su uso en R (Wickham, 2016).
+
+```{r message=FALSE, warning=FALSE}
+# Instalar y cargar los paquetes necesarios
+if (!require("tidyverse")) install.packages("tidyverse")
+if (!require("readxl")) install.packages("readxl")
+
+# Importar la base de datos USAC 2002
+
+USAC2002 <- read_excel("Base_de_datos_USAC_2002.xlsx", sheet = )
+
+
+# Visualizar las primeras filas para verificar la importación
+head(USAC2002)
+
+# Convertir variables categóricas a factor si es necesario
+USAC2002 <- usac2002 %>%
+  mutate(
+    SEXO = as.factor(SEXO),
+    EST_CIVIL = as.factor(EST_CIVIL),
+    TRABAJA = as.factor(TRABAJA),
+    JORNADA = as.factor(JORNADA),
+    Fuma = as.factor(Fuma),
+    Alcohol = as.factor(Alcohol)
+  )
+```
+
+Este paso garantiza que las variables nominales y ordinales sean tratadas correctamente en las visualizaciones y análisis posteriores (Wickham, 2016).
+
 ## Estructura básica de un gráfico en ggplot2
 
-La construcción de un gráfico en `ggplot2` sigue una lógica de capas, donde cada componente se añade mediante el operador `+`. La estructura básica de un gráfico incluye los siguientes pasos (Wickham, 2016):
+La construcción de un gráfico en `ggplot2` sigue una lógica de capas, donde cada componente se añade mediante el operador `+`. El proceso básico incluye:
 
-1.  Se inicia el objeto gráfico con la función `ggplot()`, especificando el conjunto de datos y los mapeos estéticos principales mediante `aes()`. Por ejemplo, se puede indicar qué variable se representa en el eje X y cuál en el eje Y.
+1.  Iniciar el objeto gráfico con la función `ggplot()`, especificando el conjunto de datos y los mapeos estéticos principales mediante `aes()`. Por ejemplo, se puede representar la EDAD en el eje X y el IMC en el eje Y.
 
-2.  Se añade una o más capas geométricas, como `geom_point()` para puntos, `geom_histogram()` para histogramas, `geom_boxplot()` para diagramas de caja, entre otras. Cada geometría puede tener sus propios mapeos estéticos y argumentos de personalización.
+2.  Añadir una o más capas geométricas, como `geom_point()` para puntos, `geom_histogram()` para histogramas, o `geom_boxplot()` para diagramas de caja.
 
-3.  Se incorporan escalas para controlar la interpretación de los valores, como escalas de color, tamaño o forma, mediante funciones como `scale_color_manual()` o `scale_x_continuous()`.
+3.  Incorporar escalas para controlar la interpretación de los valores, como escalas de color o tamaño.
 
-4.  Se añaden etiquetas y títulos con `labs()` o `ggtitle()`, y se puede modificar la apariencia general del gráfico con funciones de tema como `theme_minimal()` o `theme_classic()`.
+4.  Añadir etiquetas y títulos con `labs()` o `ggtitle()`, y modificar la apariencia general del gráfico con funciones de tema como `theme_minimal()`.
 
-5.  Opcionalmente, se pueden añadir facetas para dividir el gráfico en paneles según una o más variables categóricas, utilizando `facet_wrap()` o `facet_grid()`.
+5.  Opcionalmente, añadir facetas para dividir el gráfico en paneles según una variable categórica, como SEXO o JORNADA.
 
-A continuación se muestra un ejemplo comentado que ilustra la estructura básica de un gráfico de dispersión (Wickham, 2016):
+A continuación se muestra un ejemplo comentado utilizando la base USAC 2002, donde se visualiza la relación entre EDAD e IMC, diferenciando por SEXO (Wickham, 2016):
 
-```{r eval=FALSE}
-# Cargar el paquete ggplot2
-library(ggplot2)
-
-# Creación del gráfico de dispersión completo en una operación
-ggplot(
-    # Especificar datos y mapeos estéticos básicos
-    data = datos, 
-    aes(x = x, y = y, color = grupo)
-  ) +
-  # Añadir capa de puntos
-  geom_point(
-    size = 2  # Tamaño de los puntos
-  ) +
-  # Añadir etiquetas y título
-  labs(
-    title = "Gráfico de dispersión por grupo",  # Título principal
-    x = "Variable X",                           # Etiqueta eje X
-    y = "Variable Y",                           # Etiqueta eje Y
-    color = "Grupo"                             # Etiqueta de la leyenda
-  ) +
-  # Aplicar tema minimalista
+```{r}
+# Gráfico de dispersión de EDAD vs IMC, coloreado por SEXO
+ggplot(data = USAC2002, aes(x = EDAD, y = IMC, color = SEXO)) +
+  geom_point(size = 2, alpha = 0.7) + # Puntos semi-transparentes
+  labs(title = "Relación entre EDAD e IMC por SEXO",
+       x = "EDAD (años)",
+       y = "Índice de Masa Corporal (IMC)",
+       color = "SEXO") +
   theme_minimal()
 ```
 
@@ -105,3 +122,102 @@ ggplot(data = datos, aes(x = x, y = y)) +
 ```
 
 En todos estos ejemplos, la lógica de capas y mapeos estéticos permite modificar y ampliar fácilmente la visualización, añadiendo nuevas geometrías, escalas o temas según las necesidades del análisis (Wickham, 2016).
+
+## Personalización avanzada de gráficos
+
+La personalización en `ggplot2` es sumamente flexible y permite modificar prácticamente cualquier aspecto visual del gráfico. Los elementos más relevantes incluyen la modificación de colores y paletas, el ajuste de etiquetas y títulos, la configuración de leyendas y la aplicación de temas predefinidos o personalizados (Wickham, 2016).
+
+1.  Los colores pueden modificarse tanto a nivel de geometría como mediante escalas específicas, como `scale_color_brewer()` para paletas predefinidas o `scale_fill_manual()` para colores personalizados.
+
+2.  Las etiquetas y títulos se ajustan con `labs()` o `ggtitle()`, permitiendo una presentación clara y profesional.
+
+3.  Las leyendas pueden personalizarse en posición, título y formato mediante `guides()` y argumentos dentro de `theme()`.
+
+4.  Los temas controlan la apariencia general del gráfico, y pueden seleccionarse entre opciones como `theme_minimal()`, `theme_classic()`, `theme_bw()`, o modificarse directamente con la función `theme()`.
+
+A continuación se muestra un ejemplo de personalización avanzada (Wickham, 2016):
+
+```{r}
+# Personalización avanzada de un gráfico de dispersión
+ggplot(data = datos, aes(x = x, y = y, color = grupo)) +
+  geom_point(size = 3, alpha = 0.7) + # Puntos grandes y semi-transparentes
+  scale_color_brewer(palette = "Set1") + # Paleta de colores predefinida
+  labs(title = "Dispersión por grupo", x = "X", y = "Y", color = "Grupo") +
+  theme_bw() + # Tema de fondo blanco
+  theme(legend.position = "bottom", # Leyenda en la parte inferior
+        plot.title = element_text(face = "bold", size = 16), # Título en negrita y grande
+        axis.text = element_text(size = 12)) # Texto de ejes más grande
+```
+
+Este ejemplo muestra cómo combinar diferentes elementos de personalización para lograr una visualización clara, estética y adaptada a las necesidades de comunicación científica (Wickham, 2016).
+
+## Visualización de supuestos estadísticos con ggplot2
+
+La comprobación gráfica de supuestos estadísticos es esencial en la estadística clásica. `ggplot2` permite construir visualizaciones específicas para evaluar la normalidad, la homocedasticidad y la linealidad de los datos o de los residuos de un modelo (Wickham, 2016).
+
+1.  Para evaluar la normalidad, se puede construir un gráfico Q-Q utilizando el paquete complementario `qqplotr`, que extiende la funcionalidad de `ggplot2` para este tipo de gráficos.
+
+```{r}
+# Gráfico Q-Q con ggplot2 y qqplotr
+library(qqplotr)
+ggplot(datos, aes(sample = variable)) +
+  stat_qq_point(size = 2, color = "navy") + # Puntos del Q-Q plot
+  stat_qq_line(color = "red", linetype = "dashed") + # Línea de referencia
+  labs(title = "Gráfico Q-Q para normalidad", x = "Cuantiles teóricos", y = "Cuantiles muestrales") +
+  theme_minimal()
+```
+
+2.  Para evaluar la homocedasticidad, se puede graficar los residuos de un modelo lineal frente a los valores ajustados.
+
+```{r}
+# Ajuste de modelo lineal y gráfico de residuos
+modelo <- lm(y ~ x, data = datos)
+datos$residuos <- resid(modelo)
+datos$ajustados <- fitted(modelo)
+
+ggplot(datos, aes(x = ajustados, y = residuos)) +
+  geom_point(color = "darkgreen", alpha = 0.6) + # Puntos de residuos
+  geom_hline(yintercept = 0, color = "red", linetype = "dashed") + # Línea horizontal en cero
+  labs(title = "Residuos vs valores ajustados", x = "Valores ajustados", y = "Residuos") +
+  theme_classic()
+```
+
+3.  Para evaluar la linealidad, se puede utilizar un gráfico de dispersión con una línea de ajuste lineal.
+
+```{r}
+ggplot(datos, aes(x = x, y = y)) +
+  geom_point(color = "navy") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") + # Línea de regresión
+  labs(title = "Evaluación de linealidad", x = "X", y = "Y") +
+  theme_light()
+```
+
+Estos gráficos permiten identificar visualmente desviaciones de los supuestos y tomar decisiones informadas sobre la validez de los modelos estadísticos aplicados (Wickham, 2016).
+
+## Paquetes complementarios para visualización especializada
+
+Existen paquetes que amplían las capacidades de `ggplot2` y automatizan la generación de gráficos exploratorios. Uno de los más destacados es `DataExplorer`, que permite crear reportes gráficos completos con una sola función, facilitando la exploración inicial de los datos (Cui, 2020).
+
+```{r}
+# Ejemplo con DataExplorer
+library(DataExplorer)
+create_report(datos) # Genera un informe HTML con gráficos exploratorios automáticos
+```
+
+Otros paquetes útiles incluyen `GGally`, que permite crear matrices de gráficos de dispersión y correlación, y `corrplot`, especializado en la visualización de matrices de correlación. Estas herramientas son especialmente valiosas en el análisis exploratorio de datos multivariados (Cui, 2020).
+
+## Comparación entre R base vs ggplot2
+
+La siguiente tabla resume las diferencias clave entre el sistema gráfico base de R y `ggplot2`, considerando filosofía, sintaxis, personalización, facetado, temas, integración y automatización (Wickham, 2016; Murrell, 2018):
+
+| Característica | R base | ggplot2 |
+|----|----|----|
+| Filosofía | Funciones independientes para cada tipo de gráfico | Gramática de los gráficos, construcción modular |
+| Sintaxis | Procedural, secuencial | Declarativa, basada en capas |
+| Personalización | Mediante argumentos y funciones adicionales | Mediante capas, escalas y temas |
+| Facetado | Limitado, requiere funciones externas | Integrado con `facet_wrap()` y `facet_grid()` |
+| Temas y estilos | Limitado, requiere mucho código | Amplia variedad de temas y fácil modificación |
+| Integración con tidyverse | Parcial | Total |
+| Automatización de reportes | Limitada | Compatible con paquetes como DataExplorer |
+
+Esta comparación evidencia que, aunque R base es eficiente para gráficos rápidos y sencillos, `ggplot2` ofrece mayor flexibilidad, reproducibilidad y calidad visual, especialmente en contextos de análisis exploratorio y comunicación de resultados (Wickham, 2016; Murrell, 2018).
