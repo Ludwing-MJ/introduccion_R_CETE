@@ -6,63 +6,64 @@ biblio-style: "apalike"
 # Referencias
 
 ::: hanging-indent
-Allaire, J. J., Xie, Y., & McPherson, J. (2022). R Markdown: The Definitive Guide. Chapman & Hall/CRC. <https://www.taylorfrancis.com/books/mono/10.1201/9781138359444/markdown-yihui-xie-allaire-garrett-grolemund>
 
 Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. <https://doi.org/10.1038/533452a>
 
-Belsley, D. A., Kuh, E., & Welsch, R. E. (1980). Regression Diagnostics: Identifying Influential Data and Sources of Collinearity. Wiley.
+Belsley, D. A., Kuh, E., & Welsch, R. E. (1980). Regression Diagnostics: Identifying Influential Data and Sources of Collinearity. Wiley. <https://doi.org/10.1002/0471725153>
 
 Bryan, J. (2018). Happy Git and GitHub for the useR. <https://happygitwithr.com/>
 
 Cleveland, W. S. (1993). Visualizing Data. Hobart Press.
 
-Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003). Applied Multiple Regression/Correlation Analysis for the Behavioral Sciences (3rd ed.). Lawrence Erlbaum Associates.
+Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003). *Applied multiple regression/correlation analysis for the behavioral sciences* (3rd ed.). Lawrence Erlbaum Associates Publishers.
 
-Cui, T. (2020). DataExplorer: Automate Data Exploration and Treatment. R package version 0.8.2.
+Cui, B. (2020). Automate Data Exploration and Treatment \[R package DataExplorer version 0.8.2\]. *R-Project.org*. <https://cran.r-project.org/package=DataExplorer>
 
-Draper, N. R., & Smith, H. (1998). Applied Regression Analysis (3rd ed.). Wiley.
+Draper, N. R., & Smith, H. (1998). Applied Regression Analysis (3rd ed.). Wiley. <https://doi.org/10.1002/9781118625590>
 
-Field, A. (2013). Discovering Statistics Using IBM SPSS Statistics (4th ed.). SAGE Publications.
+Field, A. P. (2013). *Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll* (4th edition). Sage.
 
-Friendly, M. (2008). A Brief History of Data Visualization. In C. Chen, W. Härdle, & A. Unwin (Eds.), Handbook of Data Visualization. Springer.
+Friendly, M. (2008). A Brief History of Data Visualization. In: Handbook of Data Visualization. Springer Handbooks Comp.Statistics. Springer, Berlin, Heidelberg. <https://doi.org/10.1007/978-3-540-33037-0_2>
 
 Gentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. Journal of Computational and Graphical Statistics, 16(1), 1–23. <https://doi.org/10.1198/106186007X178663>
 
-Hernández, F., Usuga, O., & Mazo, M. (2024). Modelos de Regresión con R. \[Fecha de publicación: 12 de agosto de 2024\].
+Hernández, F., Usuga, O., & Mazo, M. (12 de agosto de 2024). *Modelos de Regresión con R*. Github.io. <https://fhernanb.github.io/libro_regresion/>
 
 Hmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). Educational Psychologist, 42(2), 99–107. <https://doi.org/10.1080/00461520701263368>
 
-Ihaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. Journal of Computational and Graphical Statistics, 5(3), 299–314.
+Ihaka, R., & Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. *Journal of Computational and Graphical Statistics*, *5*(3), 299–314. <https://doi.org/10.1080/10618600.1996.10474713>
 
-Kolb, D. A. (1984). Experiential learning: Experience as the source of learning and development. Prentice Hall.
+Kolb, D. (1984). Experiential learning: Experience as the source of learning and development. Prentice Hall.
 
-Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). Applied Linear Statistical Models (5th ed.). McGraw-Hill.
+Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). Applied Linear Statistical Models (5th ed.). McGraw-Hill, Irwin, New York.
 
 López, E., & González, B. (2016). Diseño y análisis de experimentos. Internet Archive. <https://archive.org/details/DiseoYAnlisisDeExperimentos2016>
 
-Montgomery, D. C., Peck, E. A., & Vining, G. G. (2012). Introduction to Linear Regression Analysis (5th ed.). Wiley.
+Montgomery, D.C., Peck, E.A. and Vining, G.G. (2012) Introduction to Linear Regression Analysis. Vol. 821, John Wiley & Sons, Hoboken.
 
-Murrell, P. (2018). R Graphics (3rd ed.). Chapman and Hall/CRC.
+Murrell, P. (2018). R Graphics (3rd ed.). Chapman and Hall/CRC. https://doi.org/10.1201/9780429422768
 
 National Academies of Sciences, Engineering, and Medicine. (2019). Reproducibility and replicability in science. National Academies Press. <https://doi.org/10.17226/25303>
 
-R Core Team. (2023). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. <https://www.Rproject.org>
+R Core Team. (2023). R: A Language and Environment for Statistical Computing. R Foundation for Statistical Computing. <https://www.r-project.org/>
 
 Rosales Castillo, J. M. (2005). Micropropagación de Calahuala Phlebodium psedoaureum (Cav.) Lellinger con tres tipos de explantes en diferentes medios de cultivo in vitro. Tesis Ing. Agr. Guatemala, Universidad de San Carlos de Guatemala, Facultad de Agronomía. 51 p.
 
-Tabachnick, B. G., & Fidell, L. S. (2013). Using Multivariate Statistics (6th ed.). Pearson.
+Tabachnick, B., & Fidell, L. (2013). Using Multivariate Statistics (6th ed.). Boston, MA: Pearson.
 
 The Turing Way Community. (2023). The Turing Way: A handbook for reproducible, ethical and collaborative research. <https://the-turing-way.netlify.app>
 
-Tufte, E. R. (2001). The Visual Display of Quantitative Information (2nd ed.). Graphics Press.
+Tufte, E. (2001). The Visual Display of Quantitative Information (2nd ed.). Graphics Press.
 
 Tukey, J. W. (1977). Exploratory Data Analysis. Addison-Wesley.
 
-Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer.
+Venables, W. N., & Ripley, B. D. (2002). Modern Applied Statistics with S (4th ed.). Springer. <https://doi.org/10.1007/978-0-387-21706-2>
 
-Wickham, H. (2016). ggplot2: Elegant Graphics for Data Analysis. Springer.
+Wickham, H. (2016). *ggplot2: Elegant graphics for data analysis* (2. ed.). Springer Cham. <https://doi.org/10.1007/978-3-319-24277-4>
 
-Wilkinson, L. (2005). The Grammar of Graphics (2nd ed.). Springer.
+Wilkinson, L. (2005). *The grammar of graphics* (2nd ed.). Springer. <https://doi.org/10.1007/0-387-28695-0>
 
-Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data, 3(1), 160018. <https://doi.org/10.1038/sdata.2016.18>
+Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. Scientific Data 3, 160018. <https://doi.org/10.1038/sdata.2016.18>
+
+Xie, Y., Allaire, J.J., & Grolemund, G. (2018). R Markdown: The Definitive Guide (1st ed.). Chapman and Hall/CRC. <https://doi.org/10.1201/9781138359444>
 :::

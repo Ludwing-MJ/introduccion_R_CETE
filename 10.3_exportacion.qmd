@@ -116,3 +116,34 @@ Esto sube los cambios al repositorio en línea, donde pueden ser consultados por
 GitHub permite revisar el historial completo de commits, comparar versiones de archivos y, en proyectos colaborativos, gestionar solicitudes de cambio (pull requests) y comentarios. Esto facilita la colaboración y la revisión del trabajo en equipo.
 
 El uso regular de Git y GitHub asegura que el proyecto esté siempre respaldado, documentado y listo para ser compartido o retomado en cualquier momento (Bryan, 2018).
+
+## Importación de repositorios de GitHub para trabajo local o personal
+
+Importar un repositorio de GitHub permite descargar una copia completa del proyecto para trabajar localmente, modificarlo o adaptarlo a nuevas necesidades. Este proceso se conoce como “clonar” un repositorio y es útil tanto para uso personal como para colaborar en proyectos de otros usuarios.
+
+**Pasos para clonar un repositorio de GitHub:**
+
+**1. Obtener la URL del repositorio**\
+En la página del repositorio en GitHub, hacer clic en el botón “Code” y copiar la URL que aparece (por ejemplo, `https://github.com/usuario/analisis_estadistico.git`).
+
+**2. Clonar el repositorio en la computadora local**\
+Abrir una terminal o la consola de RStudio y ejecutar el siguiente comando:
+
+```{r eval=FALSE}
+git clone https://github.com/usuario/analisis_estadistico.git
+```
+
+Esto creará una carpeta local con todos los archivos y el historial del proyecto.
+
+**3. Trabajar localmente**\
+Una vez clonado el repositorio, se puede abrir la carpeta en RStudio, modificar los archivos, ejecutar los scripts y exportar nuevos resultados. Si se tiene permiso para hacerlo, los cambios pueden subirse nuevamente a GitHub con los comandos `git add`, `git commit` y `git push`. Si el objetivo es solo uso personal, los cambios pueden mantenerse localmente sin necesidad de sincronizarlos con el repositorio remoto.
+
+**Ventajas de clonar repositorios:**
+
+1.  Permite reutilizar análisis existentes y aprender de otros proyectos.
+
+2.  Facilita la colaboración en equipo, ya que todos los miembros trabajan con la misma versión del proyecto.
+
+3.  Asegura la trazabilidad y la integridad del trabajo, ya que todo el historial de cambios se conserva.
+
+La importación de repositorios es una práctica recomendada para quienes desean aprovechar recursos existentes, colaborar en proyectos abiertos o mantener una copia de seguridad de su trabajo (Bryan, 2018).

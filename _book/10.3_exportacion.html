@@ -65,7 +65,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./11.1_M_apoyo.html" rel="next">
+<link href="./references.html" rel="next">
 <link href="./10.2_exportacion.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
 <script src="site_libs/quarto-html/quarto.js"></script>
@@ -315,18 +315,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Material de apoyo y referencias</span></span>
+ <span class="menu-text">Referencias</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11.1_M_apoyo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Material de apoyo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -336,19 +330,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_multiple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
   </div>
 </li>
     </ul>
@@ -364,6 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introducción-al-control-de-versiones-y-colaboración" id="toc-introducción-al-control-de-versiones-y-colaboración" class="nav-link active" data-scroll-target="#introducción-al-control-de-versiones-y-colaboración"><span class="header-section-number">17.1</span> Introducción al control de versiones y colaboración</a></li>
   <li><a href="#subida-de-un-proyecto-de-r-a-github" id="toc-subida-de-un-proyecto-de-r-a-github" class="nav-link" data-scroll-target="#subida-de-un-proyecto-de-r-a-github"><span class="header-section-number">17.2</span> Subida de un proyecto de R a GitHub</a></li>
   <li><a href="#modificación-y-seguimiento-de-proyectos-en-github" id="toc-modificación-y-seguimiento-de-proyectos-en-github" class="nav-link" data-scroll-target="#modificación-y-seguimiento-de-proyectos-en-github"><span class="header-section-number">17.3</span> Modificación y seguimiento de proyectos en GitHub</a></li>
+  <li><a href="#importación-de-repositorios-de-github-para-trabajo-local-o-personal" id="toc-importación-de-repositorios-de-github-para-trabajo-local-o-personal" class="nav-link" data-scroll-target="#importación-de-repositorios-de-github-para-trabajo-local-o-personal"><span class="header-section-number">17.4</span> Importación de repositorios de GitHub para trabajo local o personal</a></li>
   </ul>
 </nav>
     </div>
@@ -473,6 +468,28 @@ Cada vez que se desee registrar un avance, se puede utilizar el punto para indic
 <p><strong>4. Visualizar el historial y colaborar</strong><br>
 GitHub permite revisar el historial completo de commits, comparar versiones de archivos y, en proyectos colaborativos, gestionar solicitudes de cambio (pull requests) y comentarios. Esto facilita la colaboración y la revisión del trabajo en equipo.</p>
 <p>El uso regular de Git y GitHub asegura que el proyecto esté siempre respaldado, documentado y listo para ser compartido o retomado en cualquier momento (Bryan, 2018).</p>
+</section>
+<section id="importación-de-repositorios-de-github-para-trabajo-local-o-personal" class="level2" data-number="17.4">
+<h2 data-number="17.4" class="anchored" data-anchor-id="importación-de-repositorios-de-github-para-trabajo-local-o-personal"><span class="header-section-number">17.4</span> Importación de repositorios de GitHub para trabajo local o personal</h2>
+<p>Importar un repositorio de GitHub permite descargar una copia completa del proyecto para trabajar localmente, modificarlo o adaptarlo a nuevas necesidades. Este proceso se conoce como “clonar” un repositorio y es útil tanto para uso personal como para colaborar en proyectos de otros usuarios.</p>
+<p><strong>Pasos para clonar un repositorio de GitHub:</strong></p>
+<p><strong>1. Obtener la URL del repositorio</strong><br>
+En la página del repositorio en GitHub, hacer clic en el botón “Code” y copiar la URL que aparece (por ejemplo, <code>https://github.com/usuario/analisis_estadistico.git</code>).</p>
+<p><strong>2. Clonar el repositorio en la computadora local</strong><br>
+Abrir una terminal o la consola de RStudio y ejecutar el siguiente comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>git clone https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>usuario<span class="sc">/</span>analisis_estadistico.git</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esto creará una carpeta local con todos los archivos y el historial del proyecto.</p>
+<p><strong>3. Trabajar localmente</strong><br>
+Una vez clonado el repositorio, se puede abrir la carpeta en RStudio, modificar los archivos, ejecutar los scripts y exportar nuevos resultados. Si se tiene permiso para hacerlo, los cambios pueden subirse nuevamente a GitHub con los comandos <code>git add</code>, <code>git commit</code> y <code>git push</code>. Si el objetivo es solo uso personal, los cambios pueden mantenerse localmente sin necesidad de sincronizarlos con el repositorio remoto.</p>
+<p><strong>Ventajas de clonar repositorios:</strong></p>
+<ol type="1">
+<li><p>Permite reutilizar análisis existentes y aprender de otros proyectos.</p></li>
+<li><p>Facilita la colaboración en equipo, ya que todos los miembros trabajan con la misma versión del proyecto.</p></li>
+<li><p>Asegura la trazabilidad y la integridad del trabajo, ya que todo el historial de cambios se conserva.</p></li>
+</ol>
+<p>La importación de repositorios es una práctica recomendada para quienes desean aprovechar recursos existentes, colaborar en proyectos abiertos o mantener una copia de seguridad de su trabajo (Bryan, 2018).</p>
 
 
 </section>
@@ -1053,8 +1070,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./11.1_M_apoyo.html" class="pagination-link" aria-label="Material de apoyo">
-        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Material de apoyo</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./references.html" class="pagination-link" aria-label="Referencias">
+        <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

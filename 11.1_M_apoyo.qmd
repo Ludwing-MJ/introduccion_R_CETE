@@ -1,7 +1,0 @@
-# Material de apoyo
-
-1.  [Tutorial en YouTube “Cómo instalar R y RStudio en menos de 2 minutos - 2024”. Elaborado por Herbert Lizama.](https://www.youtube.com/watch?v=hbgzW3Cvda4)
-
-2.  [R para ciencia de datos por Handley Wickham & Garrett Grolemund](https://es.r4ds.hadley.nz/03-visualize.html)
-
-3.  [Regresión lineal usando R.](https://fhernanb.github.io/libro_regresion/algmat.html)
