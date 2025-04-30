@@ -26,6 +26,8 @@ Friendly, M. (2008). A Brief History of Data Visualization. In: Handbook of Data
 
 Gentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. Journal of Computational and Graphical Statistics, 16(1), 1–23. <https://doi.org/10.1198/106186007X178663>
 
+Grolemund, G., & Wickham, H. (2017). *R for data science*. O’Reilly Media. <https://r4ds.had.co.nz/>
+
 Hernández, F., Usuga, O., & Mazo, M. (12 de agosto de 2024). *Modelos de Regresión con R*. Github.io. <https://fhernanb.github.io/libro_regresion/>
 
 Hmelo-Silver, C. E., Duncan, R. G., & Chinn, C. A. (2007). Scaffolding and achievement in problem-based and inquiry learning: A response to Kirschner, Sweller, and Clark (2006). Educational Psychologist, 42(2), 99–107. <https://doi.org/10.1080/00461520701263368>
