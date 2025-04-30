@@ -315,18 +315,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Material de apoyo y referencias</span></span>
+ <span class="menu-text">Referencias</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11.1_M_apoyo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Material de apoyo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -336,19 +330,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_multiple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
   </div>
 </li>
     </ul>
@@ -375,12 +369,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#seleccionar-la-versión-de-r" id="toc-seleccionar-la-versión-de-r" class="nav-link" data-scroll-target="#seleccionar-la-versión-de-r"><span class="header-section-number">2.3.1</span> Seleccionar la versión de R</a></li>
   <li><a href="#configurar-la-apariencia-de-rstudio" id="toc-configurar-la-apariencia-de-rstudio" class="nav-link" data-scroll-target="#configurar-la-apariencia-de-rstudio"><span class="header-section-number">2.3.2</span> Configurar la apariencia de RStudio</a></li>
+  <li><a href="#configurar-el-panel-de-trabajo" id="toc-configurar-el-panel-de-trabajo" class="nav-link" data-scroll-target="#configurar-el-panel-de-trabajo"><span class="header-section-number">2.3.3</span> Configurar el panel de trabajo</a></li>
+  <li><a href="#habilitar-el-número-de-líneas-en-el-editor-de-scripts" id="toc-habilitar-el-número-de-líneas-en-el-editor-de-scripts" class="nav-link" data-scroll-target="#habilitar-el-número-de-líneas-en-el-editor-de-scripts"><span class="header-section-number">2.3.4</span> Habilitar el número de líneas en el editor de scripts</a></li>
   </ul></li>
   <li><a href="#organización-de-proyectos" id="toc-organización-de-proyectos" class="nav-link" data-scroll-target="#organización-de-proyectos"><span class="header-section-number">2.4</span> Organización de proyectos</a>
   <ul class="collapse">
   <li><a href="#crear-un-proyecto-en-rstudio" id="toc-crear-un-proyecto-en-rstudio" class="nav-link" data-scroll-target="#crear-un-proyecto-en-rstudio"><span class="header-section-number">2.4.1</span> Crear un proyecto en RStudio</a></li>
   <li><a href="#establecer-un-directorio-de-trabajo" id="toc-establecer-un-directorio-de-trabajo" class="nav-link" data-scroll-target="#establecer-un-directorio-de-trabajo"><span class="header-section-number">2.4.2</span> Establecer un directorio de trabajo</a></li>
-  <li><a href="#uso-de-archivos-.rproj" id="toc-uso-de-archivos-.rproj" class="nav-link" data-scroll-target="#uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos <em>.Rproj</em></a></li>
+  <li><a href="#uso-de-archivos-.rproj" id="toc-uso-de-archivos-.rproj" class="nav-link" data-scroll-target="#uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos .Rproj</a></li>
   <li><a href="#beneficios-de-la-organización-de-proyectos" id="toc-beneficios-de-la-organización-de-proyectos" class="nav-link" data-scroll-target="#beneficios-de-la-organización-de-proyectos"><span class="header-section-number">2.4.4</span> Beneficios de la organización de proyectos</a></li>
   </ul></li>
   </ul>
@@ -408,105 +404,104 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Antes de comenzar a trabajar con R y RStudio, es fundamental realizar la instalación y configuración de ambos programas. R es un lenguaje de programación y entorno computacional ampliamente utilizado en el análisis estadístico, la visualización de datos y la investigación reproducible (Ihaka &amp; Gentleman, 1996). Por su parte, RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con R, proporcionando una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo (Allaire et al., 2022). Esta sección detalla los pasos necesarios para descargar, instalar y configurar ambos programas, asegurando un entorno de trabajo funcional y eficiente.</p>
+<p>Antes de comenzar a trabajar con R y RStudio, es fundamental realizar la instalación y configuración de ambos programas. R es un lenguaje de programación y entorno computacional ampliamente utilizado en el análisis estadístico, la visualización de datos y la investigación reproducible (Ihaka &amp; Gentleman, 1996). Por su parte, RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con R, proporcionando una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo (Xie et al., 2018). Este capítulo detalla los pasos necesarios para descargar, instalar y configurar ambos programas, asegurando un entorno de trabajo funcional y eficiente.</p>
 <section id="descarga-de-r-y-rstudio" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="descarga-de-r-y-rstudio"><span class="header-section-number">2.1</span> Descarga de R y RStudio</h2>
-<p>Para utilizar R y RStudio, es necesario descargar ambos programas. Mientras que R proporciona el núcleo del lenguaje y las herramientas computacionales, RStudio actúa como una interfaz que simplifica su uso y mejora la experiencia del usuario.</p>
+<p>Para utilizar R y RStudio, es necesario descargar ambos programas de sus sitios oficiales. R proporciona el núcleo del lenguaje y las herramientas computacionales fundamentales, mientras que RStudio actúa como una interfaz que simplifica el uso de R y mejora la experiencia del usuario, integrando funciones para la gestión de proyectos, edición de scripts y visualización de resultados (Xie et al., 2018).</p>
 <section id="descarga-de-r" class="level3" data-number="2.1.1">
 <h3 data-number="2.1.1" class="anchored" data-anchor-id="descarga-de-r"><span class="header-section-number">2.1.1</span> Descarga de R</h3>
-<p>Se recomienda descargar una versión estable de R para evitar posibles incompatibilidades con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, la versión R 4.4.2 es reconocida por su estabilidad y amplio soporte en la comunidad (R Core Team, 2023).</p>
-<p>El repositorio oficial de R está disponible en <a href="https://cran.r-project.org/bin/windows/base/old/" class="uri">https://cran.r-project.org/bin/windows/base/old/</a>, donde se pueden encontrar todas las versiones publicadas. Para descargar una versión específica, basta con seleccionar el nombre de la versión deseada y, posteriormente, hacer clic en el archivo con terminación -win.exe para iniciar la descarga del instalador.</p>
+<p>Se recomienda descargar una versión estable de R para evitar posibles incompatibilidades con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, la versión R 4.4.2 es reconocida por su estabilidad y amplio soporte dentro de la comunidad de usuarios (R Core Team, 2023). El repositorio oficial de R se encuentra disponible en <a href="https://cran.r-project.org/bin/windows/base/old/" class="uri">https://cran.r-project.org/bin/windows/base/old/</a>, donde es posible acceder a todas las versiones publicadas. Para descargar una versión específica, se debe seleccionar el nombre de la versión deseada y hacer clic en el archivo con terminación -win.exe, lo que iniciará la descarga del instalador correspondiente (R Core Team, 2023).</p>
 </section>
 <section id="descarga-de-rstudio" class="level3" data-number="2.1.2">
 <h3 data-number="2.1.2" class="anchored" data-anchor-id="descarga-de-rstudio"><span class="header-section-number">2.1.2</span> Descarga de RStudio</h3>
-<p>La descarga de RStudio se realiza desde su <a href="https://posit.co/download/rstudio-desktop/">página oficial</a>, donde se encuentra la versión más reciente para distintos sistemas operativos. Para usuarios de Windows, se debe seleccionar la opció<strong>n “Download RStudio Desktop for Windows</strong>”. En caso de utilizar macOS o Linux, la misma página ofrece las versiones correspondientes para estos sistemas (Allaire et al., 2022).</p>
+<p>La descarga de RStudio se realiza desde su <a href="https://posit.co/download/rstudio-desktop/">página oficial</a>, donde se encuentra disponible la versión más reciente para los principales sistemas operativos. Para usuarios de Windows, se debe seleccionar la opción “Download RStudio Desktop for Windows”, mientras que para quienes utilizan macOS o Linux, la misma página ofrece las versiones correspondientes para estos sistemas (Xie et al., 2018). Es importante asegurarse de descargar la versión adecuada según el sistema operativo del equipo para garantizar la compatibilidad y el correcto funcionamiento del entorno.</p>
 </section>
 </section>
 <section id="instalación-de-r-y-rstudio" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="instalación-de-r-y-rstudio"><span class="header-section-number">2.2</span> Instalación de R y RStudio</h2>
-<p>La instalación de R y RStudio debe realizarse en un orden específico para evitar conflictos y errores. A continuación, se describen los pasos detallados para cada programa:</p>
+<p>La instalación de R y RStudio debe realizarse siguiendo un orden específico para evitar conflictos y asegurar que ambos programas funcionen correctamente. A continuación, se describen los pasos detallados para cada uno:</p>
 <section id="instalación-de-r" class="level3" data-number="2.2.1">
 <h3 data-number="2.2.1" class="anchored" data-anchor-id="instalación-de-r"><span class="header-section-number">2.2.1</span> Instalación de R</h3>
-<p>Una vez descargado el instalador de R, se debe ejecutar el archivo .exe y seguir las instrucciones del asistente de instalación. Generalmente, es suficiente con aceptar las configuraciones predeterminadas, salvo que se requiera una configuración personalizada.</p>
+<p>Una vez descargado el instalador de R, se debe ejecutar el archivo .exe y seguir las instrucciones proporcionadas por el asistente de instalación. En la mayoría de los casos, es suficiente con aceptar las configuraciones predeterminadas, a menos que se requiera una configuración personalizada para necesidades específicas del usuario o del proyecto (R Core Team, 2023).</p>
 </section>
 <section id="instalación-de-rstudio" class="level3" data-number="2.2.2">
 <h3 data-number="2.2.2" class="anchored" data-anchor-id="instalación-de-rstudio"><span class="header-section-number">2.2.2</span> Instalación de RStudio</h3>
-<p>Después de instalar R, se procede a ejecutar el instalador de RStudio previamente descargado. Al igual que en el caso de R, se pueden aceptar las opciones predeterminadas durante la instalación. Es importante destacar que RStudio permite gestionar múltiples versiones de R en un mismo dispositivo, lo que resulta útil para trabajar en proyectos que requieren versiones específicas del lenguaje. Esta selección se realiza desde la configuración de RStudio (R Core Team, 2023).</p>
+<p>Después de instalar R, se procede a ejecutar el instalador de RStudio previamente descargado. Al igual que en el caso de R, se pueden aceptar las opciones predeterminadas durante la instalación. Es relevante destacar que RStudio permite gestionar múltiples versiones de R en un mismo dispositivo, lo que resulta especialmente útil para trabajar en proyectos que requieren versiones específicas del lenguaje. Esta selección puede realizarse desde la configuración de RStudio, facilitando así la administración de entornos de trabajo diferenciados (Xie et al., 2018; R Core Team, 2023).</p>
 </section>
 </section>
 <section id="configuración-inicial" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="configuración-inicial"><span class="header-section-number">2.3</span> Configuración inicial</h2>
-<p>Una vez completada la instalación de R y RStudio, es recomendable realizar una configuración inicial que permita personalizar el entorno de trabajo, mejorar la organización y facilitar el desarrollo de análisis estadísticos. Estas configuraciones optimizan la experiencia del usuario y contribuyen a un flujo de trabajo más eficiente (Allaire et al., 2022). A continuación, se describen los pasos esenciales para configurar RStudio de manera eficiente.</p>
+<p>Tras completar la instalación de R y RStudio, es recomendable realizar una configuración inicial que permita personalizar el entorno de trabajo, mejorar la organización y facilitar el desarrollo de análisis estadísticos. Estas configuraciones contribuyen a optimizar la experiencia del usuario y a establecer un flujo de trabajo más eficiente y productivo (Xie et al., 2018). A continuación, se describen los pasos esenciales para configurar RStudio de manera adecuada.</p>
 <section id="seleccionar-la-versión-de-r" class="level3" data-number="2.3.1">
 <h3 data-number="2.3.1" class="anchored" data-anchor-id="seleccionar-la-versión-de-r"><span class="header-section-number">2.3.1</span> Seleccionar la versión de R</h3>
-<p>RStudio permite elegir la versión de R que se utilizará, esto es especialmente útil si se tienen múltiples versiones instaladas en el mismo dispositivo. Esta funcionalidad garantiza la compatibilidad con proyectos que requieren versiones específicas del lenguaje (R Core Team, 2023). Para configurar la versión de R en RStudio, se deben seguir los siguientes pasos:</p>
+<p>RStudio permite elegir la versión de R que se utilizará, lo cual es especialmente útil si se tienen múltiples versiones instaladas en el mismo dispositivo. Esta funcionalidad garantiza la compatibilidad con proyectos que requieren versiones específicas del lenguaje (R Core Team, 2023). Para seleccionar la versión de R en RStudio, se deben seguir estos pasos:</p>
 <ol type="1">
-<li><p>Ir a <strong>Tools &gt; Global Options &gt; General</strong>.</p></li>
-<li><p>En el apartado <strong>R version</strong>, seleccionar la versión deseada de R.</p></li>
+<li><p>Ir al menú <strong>Tools</strong> y seleccionar <strong>Global Options</strong>.</p></li>
+<li><p>En la ventana emergente, dirigirse a la pestaña <strong>General</strong>.</p></li>
+<li><p>En el apartado <strong>R version</strong>, elegir la versión deseada de R.</p></li>
 </ol>
 </section>
 <section id="configurar-la-apariencia-de-rstudio" class="level3" data-number="2.3.2">
 <h3 data-number="2.3.2" class="anchored" data-anchor-id="configurar-la-apariencia-de-rstudio"><span class="header-section-number">2.3.2</span> Configurar la apariencia de RStudio</h3>
-<p>RStudio ofrece opciones de personalización para adaptar su apariencia a las preferencias del usuario, mejorando la experiencia de trabajo y reduciendo la fatiga visual durante sesiones prolongadas (Allaire et al., 2022). A continuación, se detallan las configuraciones principales:</p>
-<section id="cambiar-el-tema-de-la-interfaz" class="level4" data-number="2.3.2.1">
-<h4 data-number="2.3.2.1" class="anchored" data-anchor-id="cambiar-el-tema-de-la-interfaz"><span class="header-section-number">2.3.2.1</span> Cambiar el tema de la interfaz</h4>
+<p>RStudio ofrece opciones de personalización para adaptar su apariencia a las preferencias del usuario, lo que puede mejorar la experiencia de trabajo y reducir la fatiga visual durante sesiones prolongadas (Xie et al., 2018). Para cambiar el tema de la interfaz y ajustar la fuente, se deben seguir los siguientes pasos:</p>
 <ol type="1">
-<li><p>En la barra de menú, se debe seleccionar <strong>Tools &gt; Global Options</strong>.</p></li>
-<li><p>En la ventana emergente, se accede a la pestaña <strong>Appearance</strong>.</p></li>
-<li><p>En esta sección, es posible elegir entre diferentes temas para la interfaz, como temas claros u oscuros. Por ejemplo, los temas oscuros como <strong>Cobalt</strong> son recomendables para reducir la fatiga visual.</p></li>
-<li><p>También se pueden ajustar el tamaño y el tipo de fuente para facilitar la lectura del código, según las preferencias del usuario.</p></li>
+<li><p>Acceder al menú <strong>Tools</strong> y seleccionar <strong>Global Options</strong>.</p></li>
+<li><p>En la ventana emergente, ir a la pestaña <strong>Appearance</strong>.</p></li>
+<li><p>Elegir el tema preferido, ya sea claro u oscuro (por ejemplo, el tema Cobalt para reducir la fatiga visual).</p></li>
+<li><p>Ajustar el tamaño y el tipo de fuente según las preferencias personales.</p></li>
 </ol>
 </section>
-<section id="configurar-el-panel-de-trabajo" class="level4" data-number="2.3.2.2">
-<h4 data-number="2.3.2.2" class="anchored" data-anchor-id="configurar-el-panel-de-trabajo"><span class="header-section-number">2.3.2.2</span> Configurar el panel de trabajo</h4>
-<p>La interfaz de RStudio está organizada en cuatro paneles principales: el editor de scripts, la consola, el entorno/archivos y los gráficos/ayuda. Estos paneles pueden reorganizarse según las necesidades del usuario para optimizar el flujo de trabajo. Los pasos para configurar los paneles son:</p>
+<section id="configurar-el-panel-de-trabajo" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="configurar-el-panel-de-trabajo"><span class="header-section-number">2.3.3</span> Configurar el panel de trabajo</h3>
+<p>La interfaz de RStudio está organizada en cuatro paneles principales: editor de scripts, consola, entorno/archivos y gráficos/ayuda. Estos paneles pueden reorganizarse para optimizar el flujo de trabajo. Para modificar la disposición de los paneles, se deben seguir estos pasos:</p>
 <ol type="1">
-<li><p>Desde la barra de menú, se selecciona <strong>Tools &gt; Global Options &gt; Pane Layout</strong>.</p></li>
-<li><p>En esta sección, se ajusta la disposición de los paneles. Por ejemplo, se puede colocar el editor de scripts en la parte superior izquierda y la consola en la parte inferior para facilitar el acceso.</p></li>
+<li><p>Ir al menú <strong>Tools</strong> y seleccionar <strong>Global Options</strong>.</p></li>
+<li><p>Acceder a la sección <strong>Pane Layout</strong>.</p></li>
+<li><p>Ajustar la ubicación de los paneles según las necesidades, por ejemplo, colocando el editor de scripts en la parte superior izquierda y la consola en la parte inferior.</p></li>
 <li><p>Guardar los cambios para aplicar la nueva disposición.</p></li>
 </ol>
 </section>
-<section id="habilitar-el-número-de-líneas-en-el-editor-de-scripts" class="level4" data-number="2.3.2.3">
-<h4 data-number="2.3.2.3" class="anchored" data-anchor-id="habilitar-el-número-de-líneas-en-el-editor-de-scripts"><span class="header-section-number">2.3.2.3</span> Habilitar el número de líneas en el editor de scripts</h4>
-<p>La numeración de líneas en el editor de scripts facilita la navegación y depuración del código. Para habilitar esta opción:</p>
+<section id="habilitar-el-número-de-líneas-en-el-editor-de-scripts" class="level3" data-number="2.3.4">
+<h3 data-number="2.3.4" class="anchored" data-anchor-id="habilitar-el-número-de-líneas-en-el-editor-de-scripts"><span class="header-section-number">2.3.4</span> Habilitar el número de líneas en el editor de scripts</h3>
+<p>La numeración de líneas en el editor de scripts facilita la navegación y depuración del código. Para habilitar esta opción, se deben seguir los siguientes pasos:</p>
 <ol type="1">
-<li><p>Se accede a <strong>Tools &gt; Global Options &gt; Code &gt; Display</strong>.</p></li>
-<li><p>En esta sección, se marca la casilla <strong>Show line numbers</strong> para activar la numeración de líneas.</p></li>
+<li><p>Acceder al menú <strong>Tools</strong> y seleccionar <strong>Global Options</strong>.</p></li>
+<li><p>Ir a la pestaña <strong>Code</strong> y luego a <strong>Display</strong>.</p></li>
+<li><p>Marcar la casilla <strong>Show line numbers</strong> para activar la numeración de líneas.</p></li>
 </ol>
-</section>
 </section>
 </section>
 <section id="organización-de-proyectos" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="organización-de-proyectos"><span class="header-section-number">2.4</span> Organización de proyectos</h2>
-<p>La organización adecuada de proyectos en RStudio es fundamental para lograr un flujo de trabajo eficiente, reproducible y estructurado. Una gestión ordenada de archivos y scripts no solo facilita el desarrollo de los análisis, sino que también mejora la colaboración y la reproducibilidad de los resultados (Allaire et al., 2022).</p>
+<p>La organización adecuada de proyectos en RStudio es esencial para establecer un flujo de trabajo eficiente, reproducible y estructurado. Una gestión ordenada de archivos y scripts no solo facilita el desarrollo de los análisis, sino que también mejora la colaboración y la reproducibilidad de los resultados (Xie et al., 2018).</p>
 <section id="crear-un-proyecto-en-rstudio" class="level3" data-number="2.4.1">
 <h3 data-number="2.4.1" class="anchored" data-anchor-id="crear-un-proyecto-en-rstudio"><span class="header-section-number">2.4.1</span> Crear un proyecto en RStudio</h3>
 <p>Para organizar los archivos, datos y scripts de un análisis específico, RStudio permite crear proyectos siguiendo estos pasos:</p>
 <ol type="1">
-<li><p>En la barra de menú, selecciona <strong>File &gt; New Project</strong>.</p></li>
-<li><p>Elige entre las opciones disponibles:</p>
+<li><p>En la barra de menú, seleccionar <strong>File &gt; New Project</strong>.</p></li>
+<li><p>Elegir una de las siguientes opciones:</p>
 <ol type="1">
-<li><p><strong>New Directory</strong>: Crea un proyecto desde cero en una nueva carpeta.</p></li>
-<li><p><strong>Existing Directory</strong>: Convierte una carpeta existente en un proyecto de RStudio.</p></li>
-<li><p><strong>Version Control</strong>: Clona un repositorio de Git para trabajar en un proyecto versionado.</p></li>
+<li><p><strong>New Directory</strong>: para crear un proyecto desde cero en una nueva carpeta.</p></li>
+<li><p><strong>Existing Directory</strong>: para convertir una carpeta existente en un proyecto de RStudio.</p></li>
+<li><p><strong>Version Control</strong>: para clonar un repositorio de Git y trabajar en un proyecto con control de versiones.</p></li>
 </ol></li>
-<li><p>Configurar el nombre y la ubicación del proyecto.</p></li>
+<li><p>Configurar el nombre y la ubicación del proyecto según las necesidades del análisis.</p></li>
 <li><p>Hacer clic en <strong>Create Project</strong> para finalizar la configuración.</p></li>
 </ol>
-<p>El uso de proyectos en RStudio permite mantener una estructura clara y organizada, lo que facilita la gestión de los recursos necesarios para el análisis (Allaire et al., 2022).</p>
+<p>El uso de proyectos en RStudio permite mantener una estructura clara y organizada, facilitando la gestión de los recursos necesarios para el análisis y promoviendo la reproducibilidad (Xie et al., 2018).</p>
 </section>
 <section id="establecer-un-directorio-de-trabajo" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="establecer-un-directorio-de-trabajo"><span class="header-section-number">2.4.2</span> Establecer un directorio de trabajo</h3>
-<p>El directorio de trabajo es la carpeta donde R buscará los archivos y guardará los resultados generados durante el análisis. Para establecerlo manualmente, se puede utilizar la función setwd(), como se muestra a continuación:</p>
+<p>El directorio de trabajo es la carpeta donde R buscará los archivos y guardará los resultados generados durante el análisis. Para establecerlo manualmente, se puede utilizar la función <code>setwd()</code>, como se muestra a continuación:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establecer directorio de trabajo</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"ruta/del/directorio"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>No obstante, al trabajar con proyectos en RStudio, el directorio de trabajo se configura automáticamente al abrir el archivo del proyecto, lo que elimina la necesidad de establecerlo manualmente y reduce errores relacionados con rutas incorrectas (R Core Team, 2023).</p>
+<p>Sin embargo, al trabajar con proyectos en RStudio, el directorio de trabajo se configura automáticamente al abrir el archivo del proyecto, lo que elimina la necesidad de establecerlo manualmente y reduce errores relacionados con rutas incorrectas (R Core Team, 2023).</p>
 </section>
 <section id="uso-de-archivos-.rproj" class="level3" data-number="2.4.3">
-<h3 data-number="2.4.3" class="anchored" data-anchor-id="uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos <em>.Rproj</em></h3>
-<p>El archivo .Rproj es el elemento central de cada proyecto en RStudio. Este archivo almacena las configuraciones específicas del proyecto, como el directorio de trabajo, las opciones de visualización y otros ajustes personalizados. Al abrir un archivo .Rproj, se carga automáticamente el entorno de trabajo asociado, lo que facilita la continuidad y la gestión del análisis.</p>
+<h3 data-number="2.4.3" class="anchored" data-anchor-id="uso-de-archivos-.rproj"><span class="header-section-number">2.4.3</span> Uso de archivos .Rproj</h3>
+<p>El archivo <code>.Rproj</code> es el elemento central de cada proyecto en RStudio. Este archivo almacena las configuraciones específicas del proyecto, como el directorio de trabajo, las opciones de visualización y otros ajustes personalizados. Al abrir un archivo <code>.Rproj</code>, se carga automáticamente el entorno de trabajo asociado, lo que facilita la continuidad y la gestión del análisis (Xie et al., 2018).</p>
 </section>
 <section id="beneficios-de-la-organización-de-proyectos" class="level3" data-number="2.4.4">
 <h3 data-number="2.4.4" class="anchored" data-anchor-id="beneficios-de-la-organización-de-proyectos"><span class="header-section-number">2.4.4</span> Beneficios de la organización de proyectos</h3>
@@ -515,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Reproducibilidad</strong>: Facilita que otros usuarios (o el propio usuario en el futuro) comprendan y reproduzcan el análisis, asegurando que los resultados sean consistentes.</p></li>
 <li><p><strong>Eficiencia</strong>: Reduce el tiempo perdido buscando archivos o configurando rutas manualmente, permitiendo un enfoque más directo en el análisis.</p></li>
 <li><p><strong>Colaboración</strong>: Mejora la comunicación y el trabajo en equipo al mantener una estructura clara y consistente, especialmente en proyectos compartidos.</p></li>
-<li><p><strong>Optimización del flujo de trabajo</strong>: La combinación de una apariencia personalizada y una estructura organizada permite al usuario enfocarse en el análisis de datos de manera más eficiente y profesional (Allaire et al., 2022).</p></li>
+<li><p><strong>Optimización del flujo de trabajo</strong>: La combinación de una apariencia personalizada y una estructura organizada permite al usuario enfocarse en el análisis de datos de manera más eficiente y profesional (Xie et al., 2018).</p></li>
 </ol>
 
 

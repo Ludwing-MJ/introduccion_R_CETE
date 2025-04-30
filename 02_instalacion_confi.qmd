@@ -1,104 +1,106 @@
 # Instalación y configuración
 
-Antes de comenzar a trabajar con R y RStudio, es fundamental realizar la instalación y configuración de ambos programas. R es un lenguaje de programación y entorno computacional ampliamente utilizado en el análisis estadístico, la visualización de datos y la investigación reproducible (Ihaka & Gentleman, 1996). Por su parte, RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con R, proporcionando una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo (Allaire et al., 2022). Esta sección detalla los pasos necesarios para descargar, instalar y configurar ambos programas, asegurando un entorno de trabajo funcional y eficiente.
+Antes de comenzar a trabajar con R y RStudio, es fundamental realizar la instalación y configuración de ambos programas. R es un lenguaje de programación y entorno computacional ampliamente utilizado en el análisis estadístico, la visualización de datos y la investigación reproducible (Ihaka & Gentleman, 1996). Por su parte, RStudio es un Entorno de Desarrollo Integrado (IDE, por sus siglas en inglés) diseñado específicamente para trabajar con R, proporcionando una interfaz amigable y herramientas avanzadas que optimizan el flujo de trabajo (Xie et al., 2018). Este capítulo detalla los pasos necesarios para descargar, instalar y configurar ambos programas, asegurando un entorno de trabajo funcional y eficiente.
 
 ## Descarga de R y RStudio
 
-Para utilizar R y RStudio, es necesario descargar ambos programas. Mientras que R proporciona el núcleo del lenguaje y las herramientas computacionales, RStudio actúa como una interfaz que simplifica su uso y mejora la experiencia del usuario.
+Para utilizar R y RStudio, es necesario descargar ambos programas de sus sitios oficiales. R proporciona el núcleo del lenguaje y las herramientas computacionales fundamentales, mientras que RStudio actúa como una interfaz que simplifica el uso de R y mejora la experiencia del usuario, integrando funciones para la gestión de proyectos, edición de scripts y visualización de resultados (Xie et al., 2018).
 
 ### Descarga de R
 
-Se recomienda descargar una versión estable de R para evitar posibles incompatibilidades con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, la versión R 4.4.2 es reconocida por su estabilidad y amplio soporte en la comunidad (R Core Team, 2023).
-
-El repositorio oficial de R está disponible en <https://cran.r-project.org/bin/windows/base/old/>, donde se pueden encontrar todas las versiones publicadas. Para descargar una versión específica, basta con seleccionar el nombre de la versión deseada y, posteriormente, hacer clic en el archivo con terminación -win.exe para iniciar la descarga del instalador.
+Se recomienda descargar una versión estable de R para evitar posibles incompatibilidades con paquetes que aún no han sido actualizados para las versiones más recientes. Por ejemplo, la versión R 4.4.2 es reconocida por su estabilidad y amplio soporte dentro de la comunidad de usuarios (R Core Team, 2023). El repositorio oficial de R se encuentra disponible en <https://cran.r-project.org/bin/windows/base/old/>, donde es posible acceder a todas las versiones publicadas. Para descargar una versión específica, se debe seleccionar el nombre de la versión deseada y hacer clic en el archivo con terminación -win.exe, lo que iniciará la descarga del instalador correspondiente (R Core Team, 2023).
 
 ### Descarga de RStudio
 
-La descarga de RStudio se realiza desde su [página oficial](https://posit.co/download/rstudio-desktop/), donde se encuentra la versión más reciente para distintos sistemas operativos. Para usuarios de Windows, se debe seleccionar la opció**n “Download RStudio Desktop for Windows**”. En caso de utilizar macOS o Linux, la misma página ofrece las versiones correspondientes para estos sistemas (Allaire et al., 2022).
+La descarga de RStudio se realiza desde su [página oficial](https://posit.co/download/rstudio-desktop/), donde se encuentra disponible la versión más reciente para los principales sistemas operativos. Para usuarios de Windows, se debe seleccionar la opción “Download RStudio Desktop for Windows”, mientras que para quienes utilizan macOS o Linux, la misma página ofrece las versiones correspondientes para estos sistemas (Xie et al., 2018). Es importante asegurarse de descargar la versión adecuada según el sistema operativo del equipo para garantizar la compatibilidad y el correcto funcionamiento del entorno.
 
 ## Instalación de R y RStudio
 
-La instalación de R y RStudio debe realizarse en un orden específico para evitar conflictos y errores. A continuación, se describen los pasos detallados para cada programa:
+La instalación de R y RStudio debe realizarse siguiendo un orden específico para evitar conflictos y asegurar que ambos programas funcionen correctamente. A continuación, se describen los pasos detallados para cada uno:
 
 ### Instalación de R
 
-Una vez descargado el instalador de R, se debe ejecutar el archivo .exe y seguir las instrucciones del asistente de instalación. Generalmente, es suficiente con aceptar las configuraciones predeterminadas, salvo que se requiera una configuración personalizada.
+Una vez descargado el instalador de R, se debe ejecutar el archivo .exe y seguir las instrucciones proporcionadas por el asistente de instalación. En la mayoría de los casos, es suficiente con aceptar las configuraciones predeterminadas, a menos que se requiera una configuración personalizada para necesidades específicas del usuario o del proyecto (R Core Team, 2023).
 
 ### Instalación de RStudio
 
-Después de instalar R, se procede a ejecutar el instalador de RStudio previamente descargado. Al igual que en el caso de R, se pueden aceptar las opciones predeterminadas durante la instalación. Es importante destacar que RStudio permite gestionar múltiples versiones de R en un mismo dispositivo, lo que resulta útil para trabajar en proyectos que requieren versiones específicas del lenguaje. Esta selección se realiza desde la configuración de RStudio (R Core Team, 2023).
+Después de instalar R, se procede a ejecutar el instalador de RStudio previamente descargado. Al igual que en el caso de R, se pueden aceptar las opciones predeterminadas durante la instalación. Es relevante destacar que RStudio permite gestionar múltiples versiones de R en un mismo dispositivo, lo que resulta especialmente útil para trabajar en proyectos que requieren versiones específicas del lenguaje. Esta selección puede realizarse desde la configuración de RStudio, facilitando así la administración de entornos de trabajo diferenciados (Xie et al., 2018; R Core Team, 2023).
 
 ## Configuración inicial
 
-Una vez completada la instalación de R y RStudio, es recomendable realizar una configuración inicial que permita personalizar el entorno de trabajo, mejorar la organización y facilitar el desarrollo de análisis estadísticos. Estas configuraciones optimizan la experiencia del usuario y contribuyen a un flujo de trabajo más eficiente (Allaire et al., 2022). A continuación, se describen los pasos esenciales para configurar RStudio de manera eficiente.
+Tras completar la instalación de R y RStudio, es recomendable realizar una configuración inicial que permita personalizar el entorno de trabajo, mejorar la organización y facilitar el desarrollo de análisis estadísticos. Estas configuraciones contribuyen a optimizar la experiencia del usuario y a establecer un flujo de trabajo más eficiente y productivo (Xie et al., 2018). A continuación, se describen los pasos esenciales para configurar RStudio de manera adecuada.
 
 ### Seleccionar la versión de R
 
-RStudio permite elegir la versión de R que se utilizará, esto es especialmente útil si se tienen múltiples versiones instaladas en el mismo dispositivo. Esta funcionalidad garantiza la compatibilidad con proyectos que requieren versiones específicas del lenguaje (R Core Team, 2023). Para configurar la versión de R en RStudio, se deben seguir los siguientes pasos:
+RStudio permite elegir la versión de R que se utilizará, lo cual es especialmente útil si se tienen múltiples versiones instaladas en el mismo dispositivo. Esta funcionalidad garantiza la compatibilidad con proyectos que requieren versiones específicas del lenguaje (R Core Team, 2023). Para seleccionar la versión de R en RStudio, se deben seguir estos pasos:
 
-1.  Ir a **Tools \> Global Options \> General**.
+1.  Ir al menú **Tools** y seleccionar **Global Options**.
 
-2.  En el apartado **R version**, seleccionar la versión deseada de R.
+2.  En la ventana emergente, dirigirse a la pestaña **General**.
+
+3.  En el apartado **R version**, elegir la versión deseada de R.
 
 ### Configurar la apariencia de RStudio
 
-RStudio ofrece opciones de personalización para adaptar su apariencia a las preferencias del usuario, mejorando la experiencia de trabajo y reduciendo la fatiga visual durante sesiones prolongadas (Allaire et al., 2022). A continuación, se detallan las configuraciones principales:
+RStudio ofrece opciones de personalización para adaptar su apariencia a las preferencias del usuario, lo que puede mejorar la experiencia de trabajo y reducir la fatiga visual durante sesiones prolongadas (Xie et al., 2018). Para cambiar el tema de la interfaz y ajustar la fuente, se deben seguir los siguientes pasos:
 
-#### Cambiar el tema de la interfaz
+1.  Acceder al menú **Tools** y seleccionar **Global Options**.
 
-1.  En la barra de menú, se debe seleccionar **Tools \> Global Options**.
+2.  En la ventana emergente, ir a la pestaña **Appearance**.
 
-2.  En la ventana emergente, se accede a la pestaña **Appearance**.
+3.  Elegir el tema preferido, ya sea claro u oscuro (por ejemplo, el tema Cobalt para reducir la fatiga visual).
 
-3.  En esta sección, es posible elegir entre diferentes temas para la interfaz, como temas claros u oscuros. Por ejemplo, los temas oscuros como **Cobalt** son recomendables para reducir la fatiga visual.
+4.  Ajustar el tamaño y el tipo de fuente según las preferencias personales.
 
-4.  También se pueden ajustar el tamaño y el tipo de fuente para facilitar la lectura del código, según las preferencias del usuario.
+### Configurar el panel de trabajo
 
-#### Configurar el panel de trabajo
+La interfaz de RStudio está organizada en cuatro paneles principales: editor de scripts, consola, entorno/archivos y gráficos/ayuda. Estos paneles pueden reorganizarse para optimizar el flujo de trabajo. Para modificar la disposición de los paneles, se deben seguir estos pasos:
 
-La interfaz de RStudio está organizada en cuatro paneles principales: el editor de scripts, la consola, el entorno/archivos y los gráficos/ayuda. Estos paneles pueden reorganizarse según las necesidades del usuario para optimizar el flujo de trabajo. Los pasos para configurar los paneles son:
+1.  Ir al menú **Tools** y seleccionar **Global Options**.
 
-1.  Desde la barra de menú, se selecciona **Tools \> Global Options \> Pane Layout**.
+2.  Acceder a la sección **Pane Layout**.
 
-2.  En esta sección, se ajusta la disposición de los paneles. Por ejemplo, se puede colocar el editor de scripts en la parte superior izquierda y la consola en la parte inferior para facilitar el acceso.
+3.  Ajustar la ubicación de los paneles según las necesidades, por ejemplo, colocando el editor de scripts en la parte superior izquierda y la consola en la parte inferior.
 
-3.  Guardar los cambios para aplicar la nueva disposición.
+4.  Guardar los cambios para aplicar la nueva disposición.
 
-#### Habilitar el número de líneas en el editor de scripts
+### Habilitar el número de líneas en el editor de scripts
 
-La numeración de líneas en el editor de scripts facilita la navegación y depuración del código. Para habilitar esta opción:
+La numeración de líneas en el editor de scripts facilita la navegación y depuración del código. Para habilitar esta opción, se deben seguir los siguientes pasos:
 
-1.  Se accede a **Tools \> Global Options \> Code \> Display**.
+1.  Acceder al menú **Tools** y seleccionar **Global Options**.
 
-2.  En esta sección, se marca la casilla **Show line numbers** para activar la numeración de líneas.
+2.  Ir a la pestaña **Code** y luego a **Display**.
+
+3.  Marcar la casilla **Show line numbers** para activar la numeración de líneas.
 
 ## Organización de proyectos
 
-La organización adecuada de proyectos en RStudio es fundamental para lograr un flujo de trabajo eficiente, reproducible y estructurado. Una gestión ordenada de archivos y scripts no solo facilita el desarrollo de los análisis, sino que también mejora la colaboración y la reproducibilidad de los resultados (Allaire et al., 2022).
+La organización adecuada de proyectos en RStudio es esencial para establecer un flujo de trabajo eficiente, reproducible y estructurado. Una gestión ordenada de archivos y scripts no solo facilita el desarrollo de los análisis, sino que también mejora la colaboración y la reproducibilidad de los resultados (Xie et al., 2018).
 
 ### Crear un proyecto en RStudio
 
 Para organizar los archivos, datos y scripts de un análisis específico, RStudio permite crear proyectos siguiendo estos pasos:
 
-1.  En la barra de menú, selecciona **File \> New Project**.
+1.  En la barra de menú, seleccionar **File \> New Project**.
 
-2.  Elige entre las opciones disponibles:
+2.  Elegir una de las siguientes opciones:
 
-    1.  **New Directory**: Crea un proyecto desde cero en una nueva carpeta.
+    1.  **New Directory**: para crear un proyecto desde cero en una nueva carpeta.
 
-    2.  **Existing Directory**: Convierte una carpeta existente en un proyecto de RStudio.
+    2.  **Existing Directory**: para convertir una carpeta existente en un proyecto de RStudio.
 
-    3.  **Version Control**: Clona un repositorio de Git para trabajar en un proyecto versionado.
+    3.  **Version Control**: para clonar un repositorio de Git y trabajar en un proyecto con control de versiones.
 
-3.  Configurar el nombre y la ubicación del proyecto.
+3.  Configurar el nombre y la ubicación del proyecto según las necesidades del análisis.
 
 4.  Hacer clic en **Create Project** para finalizar la configuración.
 
-El uso de proyectos en RStudio permite mantener una estructura clara y organizada, lo que facilita la gestión de los recursos necesarios para el análisis (Allaire et al., 2022).
+El uso de proyectos en RStudio permite mantener una estructura clara y organizada, facilitando la gestión de los recursos necesarios para el análisis y promoviendo la reproducibilidad (Xie et al., 2018).
 
 ### Establecer un directorio de trabajo
 
-El directorio de trabajo es la carpeta donde R buscará los archivos y guardará los resultados generados durante el análisis. Para establecerlo manualmente, se puede utilizar la función setwd(), como se muestra a continuación:
+El directorio de trabajo es la carpeta donde R buscará los archivos y guardará los resultados generados durante el análisis. Para establecerlo manualmente, se puede utilizar la función `setwd()`, como se muestra a continuación:
 
 ```{r warning=FALSE, message=FALSE, eval=FALSE}
 # Establecer directorio de trabajo
@@ -106,11 +108,11 @@ setwd("ruta/del/directorio")
 
 ```
 
-No obstante, al trabajar con proyectos en RStudio, el directorio de trabajo se configura automáticamente al abrir el archivo del proyecto, lo que elimina la necesidad de establecerlo manualmente y reduce errores relacionados con rutas incorrectas (R Core Team, 2023).
+Sin embargo, al trabajar con proyectos en RStudio, el directorio de trabajo se configura automáticamente al abrir el archivo del proyecto, lo que elimina la necesidad de establecerlo manualmente y reduce errores relacionados con rutas incorrectas (R Core Team, 2023).
 
-### Uso de archivos *.Rproj*
+### Uso de archivos .Rproj
 
-El archivo .Rproj es el elemento central de cada proyecto en RStudio. Este archivo almacena las configuraciones específicas del proyecto, como el directorio de trabajo, las opciones de visualización y otros ajustes personalizados. Al abrir un archivo .Rproj, se carga automáticamente el entorno de trabajo asociado, lo que facilita la continuidad y la gestión del análisis.
+El archivo `.Rproj` es el elemento central de cada proyecto en RStudio. Este archivo almacena las configuraciones específicas del proyecto, como el directorio de trabajo, las opciones de visualización y otros ajustes personalizados. Al abrir un archivo `.Rproj`, se carga automáticamente el entorno de trabajo asociado, lo que facilita la continuidad y la gestión del análisis (Xie et al., 2018).
 
 ### Beneficios de la organización de proyectos
 
@@ -122,4 +124,4 @@ La correcta organización de proyectos en RStudio ofrece varios beneficios clave
 
 3.  **Colaboración**: Mejora la comunicación y el trabajo en equipo al mantener una estructura clara y consistente, especialmente en proyectos compartidos.
 
-4.  **Optimización del flujo de trabajo**: La combinación de una apariencia personalizada y una estructura organizada permite al usuario enfocarse en el análisis de datos de manera más eficiente y profesional (Allaire et al., 2022).
+4.  **Optimización del flujo de trabajo**: La combinación de una apariencia personalizada y una estructura organizada permite al usuario enfocarse en el análisis de datos de manera más eficiente y profesional (Xie et al., 2018).
