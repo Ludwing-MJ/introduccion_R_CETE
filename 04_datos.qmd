@@ -243,7 +243,7 @@ datos_filtrados
 
 En este caso, `datos_filtrados` contendrá únicamente las filas donde la condición se cumple.
 
-### **Otras operaciones comunes**
+### Otras operaciones comunes
 
 Además de acceder y filtrar datos, los data frames permiten realizar muchas otras operaciones útiles para el análisis y la organización de la información. A continuación se explican algunas de las más frecuentes, acompañadas de ejemplos y explicaciones paso a paso.
 
