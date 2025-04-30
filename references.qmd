@@ -6,7 +6,6 @@ biblio-style: "apalike"
 # Referencias
 
 ::: hanging-indent
-
 Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. Nature, 533(7604), 452–454. <https://doi.org/10.1038/533452a>
 
 Belsley, D. A., Kuh, E., & Welsch, R. E. (1980). Regression Diagnostics: Identifying Influential Data and Sources of Collinearity. Wiley. <https://doi.org/10.1002/0471725153>

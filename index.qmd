@@ -12,7 +12,7 @@ A lo largo del manual, se presentan las principales características de R y su e
 
 El contenido del manual se estructura de manera progresiva, iniciando con los aspectos más elementales y avanzando hacia herramientas y técnicas estadísticas de mayor complejidad. Cada sección incluye explicaciones detalladas, ejemplos prácticos y ejercicios diseñados para consolidar el aprendizaje. Asimismo, se incorporan recomendaciones y buenas prácticas que facilitan la asimilación de los conceptos y fomentan la reproducibilidad en los análisis realizados.
 
-El manual se organiza en los siguientes capítulos principales:
+El manual se organiza en las siguientes secciones:
 
 1.  **Introducción a R y RStudio:** En este capítulo se presentan los conceptos básicos de R y RStudio, incluyendo sus características principales, el proceso de instalación y configuración, así como la preparación del entorno de trabajo para el análisis de datos.
 
@@ -24,7 +24,7 @@ El manual se organiza en los siguientes capítulos principales:
 
 5.  **Gestión y exportación de resultados:** En este capítulo se explica cómo gestionar proyectos en R, exportar resultados de análisis, gráficos y tablas en formatos adecuados para su uso en informes y presentaciones, así como la integración con herramientas de control de versiones como Git y GitHub.
 
-6.  **Material de apoyo y referencias:** Se proporcionan recursos adicionales, materiales de consulta y referencias bibliográficas que permiten profundizar en el aprendizaje y la aplicación de R en distintos contextos.
+6.  **Referencias:** Se proporcionan las referencias bibliográficas empleadas para la construcción de este manual, que le permiten al lector profundizar en el aprendizaje y la aplicación de R en distintos contextos estadísticos.
 
 7.  **Ejemplos de análisis estadístico con R:** Finalmente, se desarrollan ejemplos detallados de análisis estadístico, incluyendo estadística descriptiva, regresión lineal simple y múltiple, mostrando la aplicación práctica de R en el análisis de datos reales.
 
