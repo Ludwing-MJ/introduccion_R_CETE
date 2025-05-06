@@ -3,7 +3,7 @@ project:
   output-dir: _book
 
 book:
-  title: "Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos"
+  title: "Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos"
   author: "P. Agr. Ludwing Isaí Marroquín Jiménez"
   output-file: "MANUAL"
   date: today
