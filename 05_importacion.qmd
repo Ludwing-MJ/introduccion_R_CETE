@@ -1,28 +1,25 @@
 # Importación de datos
 
-```{r message=FALSE, warning=FALSE, echo=FALSE}
-# Configuración del repositorio para la descarga de los paquetes
-options(repos = c(CRAN = "https://cloud.r-project.org/"))
-```
-
-La importación de datos es un paso fundamental en cualquier análisis estadístico, ya que permite trabajar con información proveniente de diversas fuentes, como archivos CSV, Excel o páginas web. R proporciona funciones y paquetes especializados para importar datos de manera eficiente y reproducible, lo que facilita el manejo de grandes volúmenes de información (R Core Team, 2023).
+La importación de datos constituye una etapa esencial en el proceso de análisis estadístico, ya que posibilita el acceso y la manipulación de información proveniente de diversas fuentes, tales como archivos en formato CSV, hojas de cálculo de Excel o datos disponibles en páginas web. El entorno R ofrece un conjunto robusto de funciones y paquetes especializados que permiten realizar la importación de datos de manera eficiente, reproducible y escalable, facilitando así el manejo de grandes volúmenes de información y promoviendo la integridad y trazabilidad de los análisis (R Core Team, 2023; Grolemund & Wickham, 2017).
 
 ## Configuración previa: el directorio de trabajo
 
-Antes de importar datos, es esencial asegurarse de que el directorio de trabajo esté correctamente configurado. El directorio de trabajo, o *working directory*, es la carpeta desde la cual R buscará archivos y guardará los resultados generados. Una configuración adecuada del directorio de trabajo contribuye a la organización, reproducibilidad y eficiencia del análisis.
+Previo a la importación de datos, resulta imprescindible verificar y establecer correctamente el directorio de trabajo. El directorio de trabajo, conocido en inglés como *working directory*, corresponde a la carpeta desde la cual R accede a los archivos de entrada y en la que almacena los resultados generados. Una adecuada configuración de este directorio contribuye significativamente a la organización, reproducibilidad y eficiencia del flujo de trabajo analítico (Bryan, 2018; Gentleman & Temple Lang, 2007).
 
-Cuando se utiliza un proyecto de RStudio (**.Rproj**), el directorio de trabajo se establece automáticamente al abrir el proyecto, lo que simplifica la gestión de archivos. Sin embargo, si se trabaja con scripts independientes, es necesario definir manualmente el directorio utilizando la función `setwd()`. Por ejemplo:
+En el caso de utilizar proyectos de RStudio (.Rproj), el directorio de trabajo se define automáticamente al abrir el proyecto. Esta acción simplifica la gestión de archivos y minimiza la probabilidad de errores relacionados con rutas de acceso. No obstante, cuando se trabaja con scripts independientes, es necesario establecer manualmente el directorio de trabajo mediante la función `setwd()`. Por ejemplo:
 
 ```{r eval=FALSE}
 # Establecer directorio de trabajo
 setwd("ruta/del/directorio")
 ```
 
-Configurar el directorio de trabajo correctamente evita errores como "archivo no encontrado" y asegura que el código sea portable y replicable en diferentes computadoras o ubicaciones.
+La correcta configuración del directorio de trabajo previene errores frecuentes, como el mensaje “archivo no encontrado”. Además, garantiza que el código sea portable y replicable en distintos sistemas o ubicaciones (Bryan, 2018).
 
 ### Automatización del directorio de trabajo en scripts independientes
 
-Para scripts que no forman parte de un proyecto, se puede automatizar la configuración del directorio de trabajo utilizando el paquete `rstudioapi`. Este método establece como directorio de trabajo la carpeta donde está guardado el script, facilitando la portabilidad y colaboración:
+Para scripts que no están asociados a un proyecto de RStudio, es posible automatizar la configuración del directorio de trabajo utilizando el paquete `rstudioapi`. Este enfoque permite establecer como directorio de trabajo la carpeta en la que se encuentra guardado el script. Esto facilita la portabilidad y la colaboración entre diferentes usuarios y equipos (Bryan, 2018).
+
+El siguiente fragmento de código ilustra este procedimiento:
 
 ```{r eval=FALSE}
 # Instalación y carga del paquete rstudioapi
@@ -32,28 +29,30 @@ if (!require("rstudioapi")) install.packages("rstudioapi")
 setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
 ```
 
-Este código verifica si el paquete `rstudioapi` está instalado y, de no ser así, lo instala automáticamente. Luego, obtiene la ruta del script actual y la utiliza para definir el directorio de trabajo, permitiendo acceder a los archivos de la carpeta sin necesidad de rutas completas.
+Este código verifica si el paquete `rstudioapi` está instalado y, en caso contrario, lo instala automáticamente. Posteriormente, obtiene la ruta del script en ejecución y la utiliza para definir el directorio de trabajo. Esto permite el acceso a los archivos de la carpeta sin necesidad de especificar rutas absolutas.
 
 ### Verificación y buenas prácticas
 
-Antes de importar datos o guardar resultados, es recomendable verificar el directorio de trabajo actual con la función `getwd()`:
+Antes de proceder con la importación de datos o el almacenamiento de resultados, se recomienda verificar el directorio de trabajo actual mediante la función `getwd()`:
 
 ```{r eval=FALSE}
 # Verificación del directorio de trabajo actual
 getwd()
 ```
 
-Además, se sugiere guardar el script antes de ejecutar la configuración automática del directorio, ya que R necesita conocer la ubicación del archivo para establecer correctamente el entorno de trabajo.
+Adicionalmente, es aconsejable guardar el script antes de ejecutar la configuración automática del directorio. R requiere conocer la ubicación del archivo para establecer correctamente el entorno de trabajo.
 
-Siempre que sea posible, se recomienda trabajar dentro de un proyecto de RStudio, ya que esto automatiza la gestión del directorio de trabajo y mejora la organización de los archivos relacionados con el análisis.
+Siempre que sea posible, se sugiere trabajar dentro de un proyecto de RStudio. Esta práctica automatiza la gestión del directorio de trabajo y favorece la organización de los archivos y recursos asociados al análisis. Esto promueve la reproducibilidad y la eficiencia en el desarrollo de proyectos de análisis de datos (Bryan, 2018; Gentleman & Temple Lang, 2007).
 
 ## Importación de archivos CSV y Excel en R
 
-La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes que permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016; Wickham & Bryan, 2023).
+La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes. Estos permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016; Wickham & Bryan, 2023).
 
 ### Importación de archivos CSV
 
-Los archivos CSV (Comma-Separated Values) son ampliamente utilizados debido a su simplicidad y compatibilidad con diferentes plataformas. Para importar un archivo CSV en R, se emplea la función `read.csv()`, que permite leer datos tabulares de manera eficiente. Un ejemplo básico de uso es el siguiente:
+El formato CSV (Comma-Separated Values) se ha consolidado como uno de los estándares más utilizados para el almacenamiento y el intercambio de datos tabulares, debido a su simplicidad, legibilidad y compatibilidad con múltiples plataformas y aplicaciones. En R, la función `read.csv()` permite importar archivos CSV de manera eficiente, posibilitando la lectura de grandes volúmenes de datos sin requerir transformaciones previas (Grolemund & Wickham, 2017).
+
+A continuación, se presenta un ejemplo básico de importación de un archivo CSV:
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 # Importar un archivo CSV
@@ -63,25 +62,23 @@ datos <- read.csv("ruta/del/archivo/datos.csv",
 
 ```
 
-Los parámetros principales de esta función son:
+Los parámetros principales de esta función se describen a continuación:
 
-1.  **header:** Indica si la primera fila del archivo contiene los nombres de las columnas (`TRUE`) o si los datos comienzan desde la primera fila (`FALSE`).
+1.  **header**: Este argumento lógico indica si la primera fila del archivo CSV contiene los nombres de las columnas. Si se establece en `TRUE`, la primera fila se interpretará como los nombres de las variables; si se establece en `FALSE`, R asignará nombres genéricos a las columnas (R Core Team, 2023).
 
-2.  **sep:** Especifica el carácter separador de los valores. Por defecto, es la coma (`,`), pero puede ajustarse a otros separadores como punto y coma (`;`) o tabulación (`\t`) según el formato del archivo.
+2.  **sep**: Este argumento especifica el carácter que se utiliza para separar los valores en cada fila del archivo CSV. El valor predeterminado es la coma (`,`), pero puede ajustarse a otros caracteres, como el punto y coma (`;`) o la tabulación (`\t`), en función del formato del archivo (Grolemund & Wickham, 2017).
 
 ### Importación de archivos Excel
 
-Para trabajar con archivos de Excel (.xlsx), R dispone del paquete `readxl`, que permite importar datos directamente desde hojas de cálculo sin necesidad de convertir previamente el archivo a otro formato (Wickham & Bryan, 2023). El proceso recomendado es el siguiente:
+El uso de hojas de cálculo en formato Excel (.xlsx) es frecuente en contextos profesionales y académicos, debido a la flexibilidad y las capacidades de organización que ofrece este software. Para la importación de archivos Excel en R, el paquete `readxl` proporciona funciones optimizadas que permiten acceder a los datos directamente desde las hojas de cálculo, sin necesidad de convertir los archivos a otros formatos intermedios (Wickham & Bryan, 2023).
 
-1.  Instalar y cargar el paquete `readxl`.
+El procedimiento recomendado para la importación de archivos Excel incluye la instalación y carga del paquete `readxl`, seguido del uso de la función `read_excel()`, como se muestra a continuación:
 
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 # Instalar y cargar el paquete readxl
 if (!require("readxl")) install.packages("readxl")
 
 ```
-
-2.  Importar el archivo Excel utilizando la función `read_excel()`:
 
 ```{r eval=FALSE}
 # Importar un archivo Excel
@@ -91,81 +88,54 @@ datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
 
 ```
 
-Los parámetros más relevantes son:
+Los argumentos más relevantes de la función `read_excel()` se detallan a continuación:
 
-1.  **sheet**: Permite especificar el nombre o el número de la hoja que se desea importar.
+-   **sheet**: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, `"Hoja1"`) o el número de la hoja (por ejemplo, `1` para la primera hoja) (Wickham & Bryan, 2023).
 
-2.  **col_names**: Indica si la primera fila debe ser utilizada como nombres de las columnas (`TRUE`) o si los datos comienzan desde la primera fila (`FALSE`).
+-   **col_names**: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en `TRUE`, la primera fila se interpretará como los nombres de las variables; si se establece en `FALSE`, R asignará nombres genéricos a las columnas (Grolemund & Wickham, 2017).
 
-## Ejemplo práctico: Base de datos de estudiantes USAC
+## Verificación de la importación de datos
 
-Para consolidar los conceptos de importación de datos, se utilizará como ejemplo una base de datos recopilada en 2002 en la Universidad de San Carlos de Guatemala. Esta base contiene información de 460 estudiantes de distintas facultades y está disponible tanto en formato [CSV](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=drive_link) como [Excel](https://docs.google.com/spreadsheets/d/1QKF09EHbp2H647jdDIYppKa1YEYd75VK/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true). A lo largo del manual, esta base de datos servirá como referencia para los ejercicios y ejemplos prácticos.
+La verificación de la importación de datos representa una fase crítica en el proceso de análisis estadístico, ya que permite identificar y corregir posibles inconsistencias, errores de formato o problemas de codificación que puedan afectar la calidad y la validez de los resultados. Una revisión exhaustiva de los datos importados contribuye a la reproducibilidad y confiabilidad de los análisis, además de optimizar el flujo de trabajo y prevenir dificultades en etapas posteriores (Grolemund & Wickham, 2017; R Core Team, 2023).
 
-### Importación de la base de datos
+### Inspección preliminar de los datos
 
-A continuación, se muestra cómo importar la base de datos en ambos formatos:
+La inspección preliminar consiste en una revisión rápida del contenido y la estructura del conjunto de datos recién importado. R proporciona funciones específicas para este propósito:
 
-1.  Importar archivo CSV:
+1.  `head()`: Permite visualizar las primeras filas del data frame, facilitando la comprobación de la correcta lectura de los encabezados, la alineación de las columnas y la presencia de datos esperados.
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Importar datos en formato CSV
-datos_csv <- read.csv("datos_estudiantes.csv", 
-                      header = TRUE, 
-                      sep = ",")
-```
+2.  `tail()`: Muestra las últimas filas del conjunto de datos, útil para verificar la integridad de los registros al final del archivo.
 
-2.  Importar archivo Excel: Primero, el usuario se debe asegurar de tener instalado y cargado el paquete `readxl`.
+3.  `dim()`: Informa sobre el número de filas y columnas, lo que ayuda a confirmar que la cantidad de observaciones y variables coincide con lo esperado (Venables & Ripley, 2002).
 
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Instalar y cargar el paquete readxl
-if (!require("readxl")) install.packages("readxl")
+### Evaluación de la estructura y los tipos de variables
 
+La correcta interpretación de los tipos de variables es fundamental para evitar errores en el análisis estadístico. R ofrece herramientas para examinar la estructura interna del objeto de datos:
 
-# Importar datos en formato Excel
-datos_excel <- read_excel("datos_estudiantes_2002.xlsx",
-                         sheet = "datos",
-                         col_names = TRUE)
+1.  `str()`: Proporciona información detallada sobre el tipo de cada variable (numérica, carácter, factor, etc.), la cantidad de observaciones y la organización de las columnas. Esta función resulta esencial para detectar conversiones automáticas no deseadas, como la transformación de variables numéricas en factores o viceversa (Grolemund & Wickham, 2017).
 
-```
+2.  `names()`: Permite consultar los nombres de las columnas, lo que facilita la identificación de posibles errores en la lectura de los encabezados o la presencia de nombres duplicados.
 
-### Verificación de la importación de datos
+### Resumen estadístico y detección de inconsistencias
 
-Una vez importados los datos, es fundamental comprobar que la importación se realizó correctamente. R ofrece varias funciones útiles para este propósito:
+El análisis exploratorio inicial incluye la obtención de resúmenes estadísticos básicos, que permiten identificar valores atípicos, rangos inusuales o la presencia de datos faltantes:
 
-1.  Visualizar las primeras filas del conjunto de datos:
+1.  `summary()`: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham & Bryan, 2023).
 
-```{r eval=F}
-# Visualizar las primeras filas de la base de datos
-head(datos_csv)
-```
+2.  `table()`: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.
 
-2.  Examinar la estructura del data frame:
+### Verificación de la codificación de caracteres
 
-```{r eval=F}
-# Examinar la estructura de la base de datos
-str(datos_csv)
-```
+En contextos donde los datos contienen caracteres especiales, como tildes o la letra "ñ", es fundamental asegurarse de que la codificación utilizada durante la importación sea la adecuada. El argumento `encoding` en funciones como `read.csv()` permite especificar la codificación, por ejemplo, `"UTF-8"`, para evitar la aparición de símbolos incorrectos o pérdida de información (R Core Team, 2023).
 
-3.  Obtener un resumen estadístico básico:
+### Identificación de valores faltantes y duplicados
 
-```{r eval=F}
-# Resumen estadístico básico de la base de datos
-summary(datos_csv)
-```
+La presencia de valores faltantes o registros duplicados puede afectar la validez de los análisis. R ofrece funciones para detectar y cuantificar estos casos:
 
-4.  Conocer las dimensiones del data frame (número de filas y columnas):
+1.  `is.na()`: Permite identificar valores ausentes en el conjunto de datos.
 
-```{r eval=F}
-# Conocer las dimensiones del data frame
-dim(datos_csv)
-```
+2.  `anyDuplicated()`: Informa sobre la existencia de filas duplicadas, lo que resulta relevante para garantizar la unicidad de las observaciones (Venables & Ripley, 2002).
 
-### Consideraciones adicionales
+### Importancia de la verificación sistemática
 
-1.  **Ubicación de archivos**: Cuando se trabaja con proyectos de RStudio, los archivos deben estar en el directorio del proyecto para facilitar su acceso.
-
-2.  **Codificación de caracteres**: En caso de problemas con caracteres especiales (ñ, tildes), se puede especificar la codificación:
-
-    ```{r eval=FALSE}
-    datos <- read.csv("archivo.csv", encoding = "UTF-8")
-    ```
+La aplicación sistemática de estas herramientas y procedimientos permite detectar de manera temprana problemas que, de no ser corregidos, pueden comprometer la interpretación y la validez de los resultados. La verificación de la importación de datos debe considerarse una buena práctica en la gestión de información y un paso indispensable en cualquier proyecto de análisis estadístico (Bryan, 2018; R Core Team, 2023).

@@ -1,5 +1,11 @@
 # Introducción {.unnumbered}
 
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+# Configuración del repositorio para la descarga de los paquetes
+options(repos = c(CRAN = "https://cloud.r-project.org/"))
+
+```
+
 La estadística clásica constituye un pilar esencial en la investigación científica y en la toma de decisiones fundamentadas en datos. Este manual ha sido elaborado para quienes se inician en el análisis estadístico, con el objetivo de introducir de manera gradual y comprensible las herramientas fundamentales del lenguaje R, ampliamente reconocido en la ciencia de datos y la estadística aplicada. A lo largo del texto, se abordan desde los conceptos básicos hasta técnicas más avanzadas, acompañando la teoría con ejemplos prácticos que facilitan la comprensión y la aplicación en contextos reales. El propósito central es ofrecer una base sólida que permita a los lectores utilizar R de forma efectiva en el análisis de datos, sin requerir experiencia previa en programación o estadística (Ihaka & Gentleman, 1996; R Core Team, 2023).
 
 ## Propósito del manual
