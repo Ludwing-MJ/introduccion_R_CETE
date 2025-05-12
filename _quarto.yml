@@ -5,7 +5,7 @@ project:
 book:
   title: "Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos"
   author: "P. Agr. Ludwing Isaí Marroquín Jiménez"
-  output-file: "MANUAL"
+  output-file: "Manual_Introduccion_R_CETE"
   date: today
   date-format: medium
   favicon: logo_cete_vector.png

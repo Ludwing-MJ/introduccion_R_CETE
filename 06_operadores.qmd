@@ -5,7 +5,7 @@ En R, los operadores son herramientas fundamentales que permiten realizar cálcu
 Los operadores en R se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje, junto con ejemplos prácticos para ilustrar su uso.
 
 | **Tipo de Operador** | **Ejemplo** | **Descripción** |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **Aritméticos** | `+`, `-`, `*`, `/` | Realizan operaciones matemáticas básicas como suma, resta, multiplicación, etc. |
 | **Lógicos** | `>`, `<`, `==`, `!=` | Comparan valores y devuelven un resultado lógico (`TRUE` o `FALSE`). |
 | **Asignación** | `<-`, `=` | Asignan valores a objetos. |
@@ -95,7 +95,7 @@ En R, los operadores de manipulación de datos cumplen una función central en e
 La siguiente tabla resume los principales operadores de manipulación de datos en R, su función, un ejemplo de uso y el resultado esperado:
 
 | **Operador** | **Acción** | **Ejemplo** | **Resultado** |
-|------------------|------------------|------------------|------------------|
+|----|----|----|----|
 | `[]` | Acceso a elementos por posición | `vector[1]` | Primer elemento del vector |
 | `[ , ]` | Acceso a filas y columnas en un data frame | `data[1, 2]` | Elemento en la fila 1, columna 2 |
 | `$` | Acceso a una columna específica en un data frame | `data$columna` | Columna seleccionada |

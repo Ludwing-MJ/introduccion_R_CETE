@@ -76,7 +76,7 @@ En este ejemplo, el usuario define la lógica de la función, especifica el argu
 Las principales diferencias entre funciones predefinidas y personalizadas en R se resumen en la siguiente tabla:
 
 | Característica | Funciones predefinidas | Funciones personalizadas |
-|------------------------|------------------------|------------------------|
+|----|----|----|
 | **Disponibilidad** | Incluidas en R o en paquetes | Creadas por el usuario |
 | **Flexibilidad** | Limitada a las tareas para las que fueron diseñadas | Totalmente adaptables a las necesidades del usuario |
 | **Ejemplos** | `mean()`, `sum()`, `sd()`, `summary()` | `calcular_area_circulo()` |
