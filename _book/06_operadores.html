@@ -522,12 +522,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#operadores-de-asignación" id="toc-operadores-de-asignación" class="nav-link active" data-scroll-target="#operadores-de-asignación"><span class="header-section-number">6.1</span> Operadores de Asignación</a></li>
-  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos"><span class="header-section-number">6.2</span> Operadores aritméticos</a></li>
+  <li><a href="#operadores-aritméticos" id="toc-operadores-aritméticos" class="nav-link" data-scroll-target="#operadores-aritméticos"><span class="header-section-number">6.2</span> Operadores aritméticos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">6.2.1</span> Ejemplo práctico</a></li>
+  </ul></li>
   <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos"><span class="header-section-number">6.3</span> Operadores lógicos</a>
   <ul class="collapse">
-  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">6.3.1</span> Ejemplo práctico</a></li>
+  <li><a href="#ejemplo-práctico-1" id="toc-ejemplo-práctico-1" class="nav-link" data-scroll-target="#ejemplo-práctico-1"><span class="header-section-number">6.3.1</span> Ejemplo práctico</a></li>
   </ul></li>
-  <li><a href="#operadores-de-manipulación-de-datos" id="toc-operadores-de-manipulación-de-datos" class="nav-link" data-scroll-target="#operadores-de-manipulación-de-datos"><span class="header-section-number">6.4</span> Operadores de Manipulación de Datos</a></li>
+  <li><a href="#operadores-de-manipulación-de-datos" id="toc-operadores-de-manipulación-de-datos" class="nav-link" data-scroll-target="#operadores-de-manipulación-de-datos"><span class="header-section-number">6.4</span> Operadores de Manipulación de Datos</a>
+  <ul class="collapse">
+  <li><a href="#ejemplo-práctico-2" id="toc-ejemplo-práctico-2" class="nav-link" data-scroll-target="#ejemplo-práctico-2"><span class="header-section-number">6.4.1</span> Ejemplo Práctico</a></li>
+  <li><a href="#aplicaciones-avanzadas" id="toc-aplicaciones-avanzadas" class="nav-link" data-scroll-target="#aplicaciones-avanzadas"><span class="header-section-number">6.4.2</span> Aplicaciones Avanzadas</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -554,13 +561,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En R, los operadores son herramientas fundamentales que permiten realizar cálculos, comparaciones, asignaciones y manipulaciones de datos. Son el equivalente a las herramientas básicas de un taller, que se combinan para construir soluciones más complejas. Comprender su funcionamiento es esencial para aprovechar al máximo las capacidades del lenguaje en el análisis estadístico y la programación (R Core Team, 2023).</p>
-<p>Los operadores en R se clasifican en diferentes categorías según su función. A continuación, se describen los principales tipos de operadores disponibles en el lenguaje, junto con ejemplos prácticos para ilustrar su uso.</p>
+<p>En el lenguaje de programación R, los operadores constituyen herramientas esenciales que permiten ejecutar cálculos matemáticos, realizar comparaciones lógicas, efectuar asignaciones de valores y manipular estructuras de datos. Su dominio es fundamental para desarrollar análisis estadísticos robustos y para implementar flujos de trabajo reproducibles y eficientes en programación estadística (R Core Team, 2023). Los operadores pueden considerarse los instrumentos básicos de un entorno de trabajo analítico, ya que su correcta aplicación posibilita la construcción de soluciones complejas a partir de operaciones elementales.</p>
+<p>La clasificación de los operadores en R se realiza en función de la naturaleza de las operaciones que permiten ejecutar. A continuación, se describen las principales categorías de operadores, acompañadas de ejemplos prácticos que ilustran su uso y aplicación en el contexto del análisis de datos.</p>
 <table class="caption-top table">
 <colgroup>
+<col style="width: 26%">
 <col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 39%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -573,46 +580,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td><strong>Aritméticos</strong></td>
 <td><code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></td>
-<td>Realizan operaciones matemáticas básicas como suma, resta, multiplicación, etc.</td>
+<td>Realizan operaciones matemáticas básicas como suma, resta, multiplicación, entre otras</td>
 </tr>
 <tr class="even">
 <td><strong>Lógicos</strong></td>
 <td><code>&gt;</code>, <code>&lt;</code>, <code>==</code>, <code>!=</code></td>
-<td>Comparan valores y devuelven un resultado lógico (<code>TRUE</code> o <code>FALSE</code>).</td>
+<td>Comparan valores y devuelven un resultado lógico (<code>TRUE</code> o <code>FALSE</code>)</td>
 </tr>
 <tr class="odd">
 <td><strong>Asignación</strong></td>
-<td><code>&lt;-</code>, <code>=</code></td>
-<td>Asignan valores a objetos.</td>
+<td><code>&lt;-</code>, <code>=</code>, <code>-&gt;</code></td>
+<td>Asignan valores a objetos</td>
 </tr>
 <tr class="even">
 <td><strong>Manipulación de datos</strong></td>
 <td><code>$</code>, <code>[]</code>, <code>:</code></td>
-<td>Acceden o manipulan elementos dentro de estructuras de datos.</td>
+<td>Acceden o manipulan elementos dentro de estructuras de datos</td>
 </tr>
 </tbody>
 </table>
 <section id="operadores-de-asignación" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="operadores-de-asignación"><span class="header-section-number">6.1</span> Operadores de Asignación</h2>
-<p>En R, los operadores de asignación permiten crear objetos y almacenar valores en ellos, lo que constituye una de las bases para la manipulación de datos y la programación en este lenguaje. Los dos operadores de asignación más utilizados son <code>&lt;-</code> y <code>=</code>. Ambos operadores cumplen la función de asignar un valor a un objeto, sin embargo, la convención en la comunidad de R es emplear <code>&lt;-</code>, ya que este evita posibles ambigüedades con el operador lógico de igualdad (<code>==</code>) y mantiene la claridad en el código (Ihaka &amp; Gentleman, 1996).</p>
-<p>Por ejemplo, al ejecutar la instrucción <code>x &lt;- 10</code>, se asigna el valor 10 al objeto x. De manera similar, <code>y = 20</code> asigna el valor 20 al objeto y, aunque esta forma es menos recomendada en contextos profesionales. Posteriormente, es posible utilizar estos objetos en operaciones, como se muestra a continuación:</p>
+<p>En R, los operadores de asignación cumplen la función de crear objetos y almacenar valores o resultados en ellos, lo que representa uno de los pilares de la programación y la manipulación de datos en este lenguaje. Los dos operadores de asignación más empleados son <code>&lt;-</code> y <code>=</code>, ambos válidos para asignar valores a objetos. Sin embargo, la convención ampliamente aceptada en la comunidad de R es utilizar el operador <code>&lt;-</code>, ya que este evita ambigüedades con el operador lógico de igualdad (<code>==</code>) y contribuye a mantener la claridad y coherencia en el código (Ihaka &amp; Gentleman, 1996).</p>
+<p>Por ejemplo, la instrucción:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Asignación de valores a objetos</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span>          </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">20</span>           </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de objetos</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y    <span class="co"># Resultado: 30</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span>          </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>asigna el valor numérico 10 al objeto denominado <code>x</code>. De manera similar, la instrucción:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">20</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>asigna el valor 20 al objeto <code>y</code>, aunque esta forma es menos recomendada en contextos profesionales y académicos. Una vez creados, estos objetos pueden ser utilizados en operaciones posteriores, como se muestra a continuación:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Asignación de valores a objetos</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span>          </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">20</span>           </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de objetos</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> y    <span class="co"># Resultado: 30</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La salida generada por R será:</p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 30</code></pre>
 </div>
 </div>
-<p>Es importante destacar que, aunque el operador = puede emplearse para asignar valores, su uso puede generar confusiones, especialmente cuando se trabaja con expresiones lógicas, ya que = también se utiliza en otros contextos dentro del lenguaje. Por esta razón, se recomienda preferir el uso de &lt;- para la asignación de valores en la mayoría de los casos (Ihaka &amp; Gentleman, 1996).</p>
+<p>Es relevante señalar que, aunque el operador <code>=</code> puede emplearse para asignar valores, su uso puede inducir a confusiones, especialmente en contextos donde se emplean expresiones lógicas o en la definición de argumentos dentro de funciones, ya que <code>=</code> también se utiliza para asociar valores a parámetros. Por esta razón, se recomienda preferir el uso de <code>&lt;-</code> para la asignación de valores en la mayoría de los casos, siguiendo las mejores prácticas de programación en R (Ihaka &amp; Gentleman, 1996).</p>
 </section>
 <section id="operadores-aritméticos" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="operadores-aritméticos"><span class="header-section-number">6.2</span> Operadores aritméticos</h2>
-<p>Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos. Los operadores aritméticos permiten realizar operaciones matemáticas básicas y avanzadas. Son fundamentales para trabajar con datos numéricos y realizar cálculos en análisis estadísticos. Estos operadores operan sobre valores numéricos y devuelven resultados numéricos (R Core Team, 2023).</p>
-<p>A continuación se presenta un cuadro con los principales operadores aritméticos disponibles en R y las operaciones que ejecutan:</p>
+<p>Los operadores aritméticos son elementos fundamentales en R, ya que posibilitan la ejecución de operaciones matemáticas tanto básicas como avanzadas. Estos operadores son esenciales para la manipulación de datos numéricos y la realización de cálculos en el ámbito del análisis estadístico. Actúan sobre valores numéricos y producen resultados numéricos, permitiendo así la transformación y el análisis cuantitativo de la información (R Core Team, 2023).</p>
+<p>La siguiente tabla resume los principales operadores aritméticos disponibles en R, junto con su función, un ejemplo de uso y el resultado esperado:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -667,10 +685,41 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
+<section id="ejemplo-práctico" class="level3" data-number="6.2.1">
+<h3 data-number="6.2.1" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">6.2.1</span> Ejemplo práctico</h3>
+<p>En este ejemplo se utilizan operadores aritméticos para realizar cálculos básicos con dos variables numéricas:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de variables</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="dv">15</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Suma</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>suma <span class="ot">&lt;-</span> a <span class="sc">+</span> b           <span class="co"># 19</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Resta</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>resta <span class="ot">&lt;-</span> a <span class="sc">-</span> b          <span class="co"># 11</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Multiplicación</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>multiplicacion <span class="ot">&lt;-</span> a <span class="sc">*</span> b <span class="co"># 60</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># División</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>division <span class="ot">&lt;-</span> a <span class="sc">/</span> b       <span class="co"># 3.75</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Potencia</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>potencia <span class="ot">&lt;-</span> a <span class="sc">^</span> b       <span class="co"># 50625</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># División entera</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>division_entera <span class="ot">&lt;-</span> a <span class="sc">%/%</span> b  <span class="co"># 3</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Módulo o residuo</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>residuo <span class="ot">&lt;-</span> a <span class="sc">%%</span> b            <span class="co"># 3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este ejemplo, se observa cómo los operadores aritméticos permiten realizar operaciones matemáticas básicas y obtener resultados numéricos de manera directa y sencilla en R (R Core Team, 2023).</p>
+</section>
 </section>
 <section id="operadores-lógicos" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="operadores-lógicos"><span class="header-section-number">6.3</span> Operadores lógicos</h2>
-<p>Los operadores lógicos desempeñan un papel fundamental en la evaluación de condiciones y la toma de decisiones dentro del código. Estos operadores permiten comparar valores y establecer reglas condicionales, lo que resulta esencial para tareas como el filtrado de datos, la selección de subconjuntos y la implementación de estructuras de control. Los operadores lógicos trabajan con valores booleanos, es decir, <strong>TRUE</strong> o <strong>FALSE</strong>, y su correcta utilización facilita la construcción de análisis estadísticos robustos y flexibles (R Core Team, 2023).</p>
+<p>Los operadores lógicos desempeñan un papel crucial en la evaluación de condiciones y la toma de decisiones dentro del código en R. Estos operadores permiten comparar valores y establecer reglas condicionales, lo cual es esencial para tareas como el filtrado de datos, la selección de subconjuntos y la implementación de estructuras de control. Los operadores lógicos trabajan con valores booleanos (<code>TRUE</code> o <code>FALSE</code>), y su correcta utilización facilita la construcción de análisis estadísticos robustos y flexibles (R Core Team, 2023).</p>
 <p>A continuación, se presenta una tabla que resume los principales operadores lógicos en R, junto con su función, un ejemplo de uso y el resultado esperado:</p>
 <table class="caption-top table">
 <colgroup>
@@ -744,39 +793,39 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<section id="ejemplo-práctico" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">6.3.1</span> Ejemplo práctico</h3>
-<p>A continuación, se muestra un ejemplo práctico, donde se emplean operadores lógicos para realizar comparaciones y evaluaciones condicionales:</p>
+<section id="ejemplo-práctico-1" class="level3" data-number="6.3.1">
+<h3 data-number="6.3.1" class="anchored" data-anchor-id="ejemplo-práctico-1"><span class="header-section-number">6.3.1</span> Ejemplo práctico</h3>
+<p>A continuación, se presenta un ejemplo práctico donde se emplean operadores lógicos para realizar comparaciones y evaluaciones condicionales en un contexto de análisis de datos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparaciones simples</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>es_mayor <span class="ot">&lt;-</span> edad <span class="sc">&gt;</span> <span class="dv">18</span>          <span class="co"># TRUE, porque 25 es mayor que 18</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>es_menor <span class="ot">&lt;-</span> edad <span class="sc">&lt;</span> <span class="dv">30</span>          <span class="co"># TRUE, porque 25 es menor que 30</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>es_igual <span class="ot">&lt;-</span> edad <span class="sc">==</span> <span class="dv">25</span>         <span class="co"># TRUE, porque 25 es igual a 25</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>es_diferente <span class="ot">&lt;-</span> edad <span class="sc">!=</span> <span class="dv">20</span>     <span class="co"># TRUE, porque 25 es diferente de 20</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Operaciones lógicas compuestas</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>peso_Kg <span class="ot">&lt;-</span> <span class="dv">70</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>altura <span class="ot">&lt;-</span> <span class="fl">1.75</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> peso_Kg <span class="sc">/</span> (altura<span class="sc">^</span><span class="dv">2</span>)    <span class="co"># Cálculo del índice de masa corporal</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>sobrepeso <span class="ot">&lt;-</span> imc <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> imc <span class="sc">&lt;</span> <span class="dv">30</span>      </span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>sobrepeso   <span class="co"># FALSE, el IMC está fuera del rango de sobrepeso</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Comparaciones simples</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>edad <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>es_mayor <span class="ot">&lt;-</span> edad <span class="sc">&gt;</span> <span class="dv">18</span>          <span class="co"># TRUE, porque 25 es mayor que 18</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>es_menor <span class="ot">&lt;-</span> edad <span class="sc">&lt;</span> <span class="dv">30</span>          <span class="co"># TRUE, porque 25 es menor que 30</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>es_igual <span class="ot">&lt;-</span> edad <span class="sc">==</span> <span class="dv">25</span>         <span class="co"># TRUE, porque 25 es igual a 25</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>es_diferente <span class="ot">&lt;-</span> edad <span class="sc">!=</span> <span class="dv">20</span>     <span class="co"># TRUE, porque 25 es diferente de 20</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Operaciones lógicas compuestas</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>peso_Kg <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>altura <span class="ot">&lt;-</span> <span class="fl">1.75</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>imc <span class="ot">&lt;-</span> peso_Kg <span class="sc">/</span> (altura<span class="sc">^</span><span class="dv">2</span>)    <span class="co"># Cálculo del índice de masa corporal</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>sobrepeso <span class="ot">&lt;-</span> imc <span class="sc">&gt;=</span> <span class="dv">25</span> <span class="sc">&amp;</span> imc <span class="sc">&lt;</span> <span class="dv">30</span>      </span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>sobrepeso   <span class="co"># FALSE, el IMC está fuera del rango de sobrepeso</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] FALSE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>peso_normal <span class="ot">&lt;-</span> imc <span class="sc">&gt;=</span> <span class="fl">18.5</span> <span class="sc">&amp;</span> imc <span class="sc">&lt;</span> <span class="dv">25</span>  </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>peso_normal <span class="co"># TRUE, el IMC está en el rango de peso normal</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>peso_normal <span class="ot">&lt;-</span> imc <span class="sc">&gt;=</span> <span class="fl">18.5</span> <span class="sc">&amp;</span> imc <span class="sc">&lt;</span> <span class="dv">25</span>  </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>peso_normal <span class="co"># TRUE, el IMC está en el rango de peso normal</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>En este ejemplo, se observa cómo los operadores lógicos permiten evaluar condiciones tanto simples como compuestas, facilitando la clasificación de datos y la toma de decisiones dentro del análisis estadístico en R (R Core Team, 2023).</p>
+<p>En este ejemplo, se ilustra cómo los operadores lógicos permiten evaluar condiciones tanto simples como compuestas, facilitando la clasificación de datos y la toma de decisiones dentro del análisis estadístico en R (R Core Team, 2023). El cálculo del índice de masa corporal (IMC) y la posterior evaluación de si una persona se encuentra en un rango de peso normal o en sobrepeso son ejemplos claros de la aplicación práctica de estos operadores.</p>
 </section>
 </section>
 <section id="operadores-de-manipulación-de-datos" class="level2" data-number="6.4">
 <h2 data-number="6.4" class="anchored" data-anchor-id="operadores-de-manipulación-de-datos"><span class="header-section-number">6.4</span> Operadores de Manipulación de Datos</h2>
-<p>En R, los operadores de manipulación de datos cumplen una función central en el acceso, selección y modificación de elementos dentro de estructuras como vectores, listas y data frames. El dominio de estos operadores resulta indispensable para trabajar con datos organizados y ejecutar análisis estadísticos de manera eficiente, ya que permiten extraer, transformar y analizar información específica de grandes conjuntos de datos (R Core Team, 2023).</p>
+<p>En R, los operadores de manipulación de datos desempeñan una función esencial en el acceso, selección y modificación de elementos dentro de diversas estructuras de datos como vectores, matrices, listas y data frames. El dominio de estos operadores resulta indispensable para trabajar con datos organizados y ejecutar análisis estadísticos de manera eficiente, ya que permiten extraer, transformar y analizar información específica de grandes conjuntos de datos (R Core Team, 2023).</p>
 <p>La siguiente tabla resume los principales operadores de manipulación de datos en R, su función, un ejemplo de uso y el resultado esperado:</p>
 <table class="caption-top table">
 <colgroup>
@@ -820,43 +869,73 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>A continuación, se presenta un ejemplo práctico utilizando fragmentos de código en R para ilustrar el uso de estos operadores:</p>
+<p>Estos operadores constituyen herramientas fundamentales para la manipulación de datos en R, permitiendo a los analistas y científicos de datos acceder con precisión a los elementos que necesitan procesar. Su correcta aplicación facilita la implementación de análisis estadísticos complejos y la generación de visualizaciones informativas (Wickham &amp; Grolemund, 2017).</p>
+<section id="ejemplo-práctico-2" class="level3" data-number="6.4.1">
+<h3 data-number="6.4.1" class="anchored" data-anchor-id="ejemplo-práctico-2"><span class="header-section-number">6.4.1</span> Ejemplo Práctico</h3>
+<p>A continuación, se presenta un ejemplo práctico utilizando fragmentos de código en R para ilustrar el uso de estos operadores de manipulación de datos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un vector</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al primer elemento</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>vector[<span class="dv">1</span>]       <span class="co"># Resultado: 10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un vector</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al primer elemento</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>vector[<span class="dv">1</span>]       <span class="co"># Resultado: 10</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame para el ejemplo</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>, <span class="st">"Luis"</span>),</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">80</span>)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a una columna</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>edad      <span class="co"># Resultado: 25, 30, 22</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame para el ejemplo</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">nombre =</span> <span class="fu">c</span>(<span class="st">"Juan"</span>, <span class="st">"Ana"</span>, <span class="st">"Luis"</span>),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">edad =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">80</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a una columna completa</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>edad      <span class="co"># Resultado: 25, 30, 22</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25 30 22</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a un elemento específico</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">2</span>, <span class="dv">3</span>]       <span class="co"># Resultado: 65 (peso de Ana)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder a un elemento específico</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>data[<span class="dv">2</span>, <span class="dv">3</span>]     <span class="co"># Resultado: 65 (peso de Ana)</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 65</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una secuencia de números del 1 al 10</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>secuencia <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>   <span class="co"># Resultado: 1, 2, 3, ..., 10               </span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>secuencia</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una secuencia de números del 1 al 10</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>secuencia <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>   <span class="co"># Resultado: 1, 2, 3, ..., 10               </span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>secuencia</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 </div>
 </div>
 <p>Este ejemplo muestra cómo los operadores de manipulación de datos permiten seleccionar elementos individuales, columnas completas o secuencias de valores dentro de las estructuras de datos más utilizadas en R. Estas operaciones son fundamentales para filtrar, transformar y analizar información de manera precisa y eficiente en el entorno estadístico (R Core Team, 2023).</p>
+</section>
+<section id="aplicaciones-avanzadas" class="level3" data-number="6.4.2">
+<h3 data-number="6.4.2" class="anchored" data-anchor-id="aplicaciones-avanzadas"><span class="header-section-number">6.4.2</span> Aplicaciones Avanzadas</h3>
+<p>Los operadores de manipulación de datos también pueden combinarse para realizar selecciones más complejas. Por ejemplo:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar múltiples elementos de un vector</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Selecciona los elementos en las posiciones 1, 3 y 5</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>vector[<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">5</span>)]   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10 30 50</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar un subconjunto de filas y columnas en un data frame</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Selecciona nombre y peso de personas mayores de 25 años</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>data[data<span class="sc">$</span>edad <span class="sc">&gt;</span> <span class="dv">25</span>, <span class="fu">c</span>(<span class="st">"nombre"</span>, <span class="st">"peso"</span>)]   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  nombre peso
+2    Ana   65</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Utilizar secuencias para seleccionar rangos de elementos</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="do">## Selecciona los elementos desde la posición 2 hasta la 4</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>vector[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]   </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20 30 40</code></pre>
+</div>
+</div>
+<p>Estas aplicaciones avanzadas demuestran la flexibilidad y potencia de los operadores de manipulación de datos en R, permitiendo a los usuarios realizar selecciones precisas y complejas con una sintaxis relativamente sencilla (Wickham, 2016).</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
