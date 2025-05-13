@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.40">
+<meta name="generator" content="quarto-1.7.30">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>11&nbsp; Manipulación de datos con dplyr y tidyr – Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</title>
+<title>11&nbsp; Manipulación de datos con dplyr y tidyr – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,8 +22,9 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -34,7 +35,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -68,17 +69,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="./09.1_visualizacion.html" rel="next">
 <link href="./08.2_manipulacion.html" rel="prev">
 <link href="./logo_cete_vector.png" rel="icon" type="image/png">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ea72dc5fed832574809a9c94082fbbb.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2b3e328b71be8d25427581baeb23079b.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-de070a7b0ab54f8780927367ac907214.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-d5d78c9e45e9a5253a6059031ce5ea1b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/bootstrap/bootstrap-dark-e52668a91f5ec55536531c4088279e75.min.css" rel="prefetch" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c27fdc8e5b00b532d2d5a75ada188648.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-7e2894aa5b254abfcce6e63262fa4edf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c27fdc8e5b00b532d2d5a75ada188648.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -111,7 +115,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="custom.css">
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -138,19 +304,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./logo_cete_vector.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Introducción al entorno de programacón R y su aplicación en el análisis estadístico de datos</a> 
+      <a href="./">Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</a> 
         <div class="sidebar-tools-main tools-wide">
     <div class="dropdown">
       <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./MANUAL.pdf">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.pdf">
               <i class="bi bi-file-pdf pe-1"></i>
             Download PDF
             </a>
           </li>
           <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./MANUAL.epub">
+            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.epub">
               <i class="bi bi-journal pe-1"></i>
             Download ePub
             </a>
@@ -244,7 +410,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R: Expansión y Modularidad del Entorno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -315,18 +481,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Material de apoyo y referencias</span></span>
+ <span class="menu-text">Referencias</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./11.1_M_apoyo.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Material de apoyo</span></span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -336,19 +496,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_multiple.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Regresión múltiple usando R</span></span></a>
   </div>
 </li>
     </ul>
@@ -362,7 +522,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introducción-a-los-paquetes-dplyr-y-tidyr" id="toc-introducción-a-los-paquetes-dplyr-y-tidyr" class="nav-link active" data-scroll-target="#introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">11.1</span> Introducción a los paquetes dplyr y tidyr</a></li>
-  <li><a href="#datos-ejemplo" id="toc-datos-ejemplo" class="nav-link" data-scroll-target="#datos-ejemplo"><span class="header-section-number">11.2</span> Datos ejemplo</a></li>
+  <li><a href="#configuración-del-entorno-y-datos-de-ejemplo" id="toc-configuración-del-entorno-y-datos-de-ejemplo" class="nav-link" data-scroll-target="#configuración-del-entorno-y-datos-de-ejemplo"><span class="header-section-number">11.2</span> Configuración del Entorno y Datos de Ejemplo</a></li>
   <li><a href="#operaciones-básicas-con-dplyr" id="toc-operaciones-básicas-con-dplyr" class="nav-link" data-scroll-target="#operaciones-básicas-con-dplyr"><span class="header-section-number">11.3</span> Operaciones básicas con dplyr</a>
   <ul class="collapse">
   <li><a href="#filtrado-de-datos-con-filter" id="toc-filtrado-de-datos-con-filter" class="nav-link" data-scroll-target="#filtrado-de-datos-con-filter"><span class="header-section-number">11.3.1</span> Filtrado de datos con filter()</a></li>
@@ -380,15 +540,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#transformación-de-formato-ancho-a-largo-con-pivot_longer" id="toc-transformación-de-formato-ancho-a-largo-con-pivot_longer" class="nav-link" data-scroll-target="#transformación-de-formato-ancho-a-largo-con-pivot_longer"><span class="header-section-number">11.5.1</span> Transformación de formato ancho a largo con pivot_longer()</a></li>
   <li><a href="#transformación-de-formato-largo-a-ancho-con-pivot_wider" id="toc-transformación-de-formato-largo-a-ancho-con-pivot_wider" class="nav-link" data-scroll-target="#transformación-de-formato-largo-a-ancho-con-pivot_wider"><span class="header-section-number">11.5.2</span> Transformación de formato largo a ancho con pivot_wider()</a></li>
-  <li><a href="#manipulación-de-variables-compuestas-con-separate-y-unite" id="toc-manipulación-de-variables-compuestas-con-separate-y-unite" class="nav-link" data-scroll-target="#manipulación-de-variables-compuestas-con-separate-y-unite"><span class="header-section-number">11.5.3</span> Manipulación de variables compuestas con separate() y unite()</a></li>
+  <li><a href="#separación-y-unión-de-columnas-con-separate-y-unite" id="toc-separación-y-unión-de-columnas-con-separate-y-unite" class="nav-link" data-scroll-target="#separación-y-unión-de-columnas-con-separate-y-unite"><span class="header-section-number">11.5.3</span> Separación y Unión de Columnas con separate() y unite()</a></li>
   </ul></li>
-  <li><a href="#ejemplo-integrado-preparación-de-datos-para-análisis-estadístico-clásico" id="toc-ejemplo-integrado-preparación-de-datos-para-análisis-estadístico-clásico" class="nav-link" data-scroll-target="#ejemplo-integrado-preparación-de-datos-para-análisis-estadístico-clásico"><span class="header-section-number">11.6</span> Ejemplo integrado: Preparación de datos para análisis estadístico clásico</a></li>
-  <li><a href="#comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" id="toc-comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" class="nav-link" data-scroll-target="#comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse"><span class="header-section-number">11.7</span> Comparación entre la manipulación de datos con R base y tidyverse</a></li>
+  <li><a href="#comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" id="toc-comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" class="nav-link" data-scroll-target="#comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse"><span class="header-section-number">11.6</span> Comparación entre la manipulación de datos con R base y tidyverse</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -411,54 +571,67 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introducción-a-los-paquetes-dplyr-y-tidyr" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="introducción-a-los-paquetes-dplyr-y-tidyr"><span class="header-section-number">11.1</span> Introducción a los paquetes dplyr y tidyr</h2>
-<p>Los paquetes dplyr y tidyr forman parte del ecosistema tidyverse y han sido diseñados específicamente para la manipulación y transformación de datos en R. En el contexto del análisis estadístico clásico, estas herramientas facilitan la preparación de datos para técnicas como ANOVA, regresión y pruebas de hipótesis, ofreciendo una sintaxis clara y consistente (Wickham &amp; Grolemund, 2017).</p>
-<p>El paquete dplyr se especializa en la manipulación de datos tabulares, proporcionando funciones específicas para operaciones comunes como filtrado, selección y agregación. Por su parte, tidyr se centra en la reorganización de datos, permitiendo transformaciones entre diferentes formatos según los requerimientos del análisis estadístico (Wickham et al., 2023).</p>
-<p>Para ilustrar el uso de estas herramientas, en esta sección se desarrollará un ejemplo práctico que permitirá explorar las principales funciones de manipulación de datos. El script correspondiente a este ejemplo está disponible en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Manipulacion_Ej">Repositorio de ejemplo - Manipulación de datos</a>.</p>
+<p>Los paquetes dplyr y tidyr constituyen componentes fundamentales del ecosistema tidyverse, diseñados específicamente para la manipulación y transformación eficiente de datos en R. Estos paquetes implementan una filosofía de programación que prioriza la claridad y consistencia en el código, facilitando el desarrollo de análisis estadísticos reproducibles (Wickham &amp; Grolemund, 2017).</p>
+<p>El paquete dplyr se especializa en la manipulación de datos tabulares, proporcionando un conjunto coherente de verbos (funciones) que corresponden a las operaciones más comunes en el análisis de datos. Estas operaciones incluyen el filtrado de observaciones, la selección de variables, la creación de nuevas variables y la agregación de datos. Por su parte, tidyr se centra en la reorganización estructural de los datos, permitiendo transformaciones entre diferentes formatos según los requerimientos específicos del análisis estadístico (Wickham et al., 2023).</p>
 </section>
-<section id="datos-ejemplo" class="level2" data-number="11.2">
-<h2 data-number="11.2" class="anchored" data-anchor-id="datos-ejemplo"><span class="header-section-number">11.2</span> Datos ejemplo</h2>
+<section id="configuración-del-entorno-y-datos-de-ejemplo" class="level2" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="configuración-del-entorno-y-datos-de-ejemplo"><span class="header-section-number">11.2</span> Configuración del Entorno y Datos de Ejemplo</h2>
 <p>Se emplea el mismo conjunto de datos simulado del experimento agrícola utilizado en el capítulo anterior, lo que permite comparar directamente los enfoques de R base y tidyverse.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar el paquete necesario</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Configuración inicial del entorno de análisis</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)    <span class="co"># Carga del paquete para manipulación de datos</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)    <span class="co"># Carga del paquete para reorganización de datos</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear datos de ejemplo</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>) <span class="co"># Para reproducibilidad</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de datos simulados para experimento agrícola</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)     <span class="co"># Establecimiento de semilla para reproducibilidad</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>datos_cultivo <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">parcela =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">tratamiento =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Fertilizante A"</span>,</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                      <span class="st">"Fertilizante B"</span>, <span class="st">"Fertilizante C"</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">bloque =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">4</span>),</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_cm =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>),</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso_gr =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">25</span>), <span class="dv">1</span>),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  daño<span class="at">_plaga =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Alto"</span>, <span class="st">"Medio"</span>, <span class="st">"Bajo"</span>), <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">fecha_siembra =</span> <span class="fu">as.Date</span>(<span class="st">"2024-01-01"</span>) <span class="sc">+</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">parcela =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">20</span>,    <span class="co"># Identificador único de cada parcela</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">tratamiento =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Control"</span>, <span class="st">"Fertilizante A"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>                       <span class="st">"Fertilizante B"</span>, <span class="st">"Fertilizante C"</span>), <span class="at">each =</span> <span class="dv">5</span>),</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">bloque =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">times =</span> <span class="dv">4</span>),    <span class="co"># Estructura de bloques</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">altura_cm =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">65</span>, <span class="at">sd =</span> <span class="dv">10</span>), <span class="dv">1</span>),    <span class="co"># Variable respuesta 1</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">peso_gr =</span> <span class="fu">round</span>(<span class="fu">rnorm</span>(<span class="dv">20</span>, <span class="at">mean =</span> <span class="dv">120</span>, <span class="at">sd =</span> <span class="dv">25</span>), <span class="dv">1</span>),     <span class="co"># Variable respuesta 2</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    daño<span class="at">_plaga =</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"Alto"</span>, <span class="st">"Medio"</span>, <span class="st">"Bajo"</span>), <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">fecha_siembra =</span> <span class="fu">as.Date</span>(<span class="st">"2024-01-01"</span>) <span class="sc">+</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Agregar algunos valores NA para ejemplos posteriores</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Introducción de valores faltantes para ejemplos didácticos</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>datos_cultivo<span class="sc">$</span>altura_cm[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">15</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>datos_cultivo<span class="sc">$</span>peso_gr[<span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">18</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>El conjunto de datos simulado representa un experimento agrícola con un diseño de bloques completamente aleatorizado. Los datos incluyen mediciones de altura y peso de plantas bajo diferentes tratamientos de fertilización, organizados en bloques para controlar la variabilidad ambiental. La estructura del experimento sigue los principios fundamentales del diseño experimental descritos por Montgomery et al.&nbsp;(2012), donde el control local mediante bloques permite una estimación más precisa de los efectos de los tratamientos.</p>
+<p>Las variables incluidas en el conjunto de datos son:</p>
+<ol type="1">
+<li><p>parcela: Identificador único de cada unidad experimental</p></li>
+<li><p>tratamiento: Factor experimental con cuatro niveles (Control y tres tipos de fertilizantes)</p></li>
+<li><p>bloque: Factor de control local con cinco niveles</p></li>
+<li><p>altura_cm: Variable respuesta que mide el crecimiento vertical de las plantas</p></li>
+<li><p>peso_gr: Variable respuesta que mide la biomasa de las plantas</p></li>
+<li><p>daño_plaga: Evaluación categórica del daño por plagas</p></li>
+<li><p>fecha_siembra: Registro temporal de la implementación del experimento</p></li>
+</ol>
+<p>La inclusión deliberada de valores faltantes en las variables de respuesta (altura_cm y peso_gr) permite ilustrar técnicas comunes de manejo de datos incompletos, una situación frecuente en experimentos agrícolas (Field, 2013).</p>
 </section>
 <section id="operaciones-básicas-con-dplyr" class="level2" data-number="11.3">
 <h2 data-number="11.3" class="anchored" data-anchor-id="operaciones-básicas-con-dplyr"><span class="header-section-number">11.3</span> Operaciones básicas con dplyr</h2>
 <section id="filtrado-de-datos-con-filter" class="level3" data-number="11.3.1">
 <h3 data-number="11.3.1" class="anchored" data-anchor-id="filtrado-de-datos-con-filter"><span class="header-section-number">11.3.1</span> Filtrado de datos con filter()</h3>
-<p>La función <code>filter()</code> permite seleccionar filas de un data frame que cumplen condiciones lógicas. Su sintaxis es:</p>
+<p>La función <code>filter()</code> permite seleccionar subconjuntos de filas en un data frame o tibble, basándose en una o más condiciones lógicas. Esta función es esencial para enfocar el análisis en observaciones específicas que cumplen con criterios predefinidos (Wickham &amp; Grolemund, 2017).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis general de la función filter()</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">filter</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Donde:</p>
 <ol type="1">
-<li><p><code>.data</code>: el data frame o tibble sobre el que se aplicará el filtrado.</p></li>
-<li><p><code>...</code>: una o más condiciones lógicas que deben cumplirse para que una fila sea seleccionada.</p></li>
+<li><p><code>.data</code>: Especifica el data frame o tibble sobre el cual se aplicará el filtrado.</p></li>
+<li><p><code>...</code>: Representa una o más expresiones lógicas que deben evaluarse como <code>TRUE</code> para que una fila sea seleccionada.</p></li>
 </ol>
-<p>Ejemplo:</p>
+<p>Ejemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar las parcelas con tratamiento "Control"</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Filtrar parcelas con tratamiento "Control"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>datos_control <span class="ot">&lt;-</span> <span class="fu">filter</span>(datos_cultivo, tratamiento <span class="sc">==</span> <span class="st">"Control"</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_control) <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_control) <span class="co"># Visualizar las primeras filas del resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela tratamiento bloque altura_cm peso_gr daño_plaga fecha_siembra
 1       1     Control      1      59.4    93.3      Medio    2024-01-10
@@ -467,9 +640,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4       4     Control      4      65.7   101.8      Medio    2024-01-09
 5       5     Control      5      66.3   104.4      Medio    2024-01-10</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar parcelas con altura mayor a 65 cm y tratamiento distinto de "Control"</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>datos_altos <span class="ot">&lt;-</span> <span class="fu">filter</span>(datos_cultivo, altura_cm <span class="sc">&gt;</span> <span class="dv">65</span>, tratamiento <span class="sc">!=</span> <span class="st">"Control"</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_altos)   <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este ejemplo, se crea un nuevo data frame llamado <code>datos_control</code> que contiene únicamente las filas donde la columna <code>tratamiento</code> es igual a “Control”. La función <code>head()</code> se utiliza para mostrar las primeras filas del resultado, permitiendo una rápida verificación del filtrado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Filtrar parcelas con altura mayor a 65 cm y </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>           <span class="co"># tratamiento distinto de "Control"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>datos_altos <span class="ot">&lt;-</span> <span class="fu">filter</span>(datos_cultivo, altura_cm <span class="sc">&gt;</span> <span class="dv">65</span>, tratamiento <span class="sc">!=</span> <span class="st">"Control"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_altos) <span class="co"># Visualizar las primeras filas del resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela    tratamiento bloque altura_cm peso_gr daño_plaga fecha_siembra
 1       6 Fertilizante A      1      82.2    77.8       Bajo    2024-01-04
@@ -480,23 +657,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6      14 Fertilizante B      4      66.1   142.0       Alto    2024-01-09</code></pre>
 </div>
 </div>
-<p>En el primer caso, solo se seleccionan las filas donde la columna <code>tratamiento</code> es igual a “Control”. En el segundo, se seleccionan las filas donde la altura es mayor a 65 cm y el tratamiento no es “Control”. Es importante notar que, a diferencia de R base, no es necesario escribir el nombre del data frame en cada condición, lo que simplifica la sintaxis (Wickham &amp; Grolemund, 2017).</p>
+<p>En este caso, se combinan dos condiciones lógicas: la altura debe ser mayor a 65 cm y el tratamiento no debe ser “Control”. El resultado es un data frame que contiene solo las parcelas que cumplen ambos criterios. Es importante notar que, a diferencia de R base, no es necesario repetir el nombre del data frame en cada condición, lo que simplifica la sintaxis y mejora la legibilidad del código (Wickham et al., 2023).</p>
 </section>
 <section id="selección-de-columnas-con-select" class="level3" data-number="11.3.2">
 <h3 data-number="11.3.2" class="anchored" data-anchor-id="selección-de-columnas-con-select"><span class="header-section-number">11.3.2</span> Selección de columnas con select()</h3>
-<p>La función <code>select()</code> permite extraer columnas específicas de un data frame. Su sintaxis es:</p>
+<p>La función <code>select()</code> permite extraer un subconjunto de columnas de un data frame o tibble. Esta función es útil para simplificar el análisis, enfocándose únicamente en las variables relevantes para la investigación (Wickham &amp; Grolemund, 2017).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis general de la función select()</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Donde:</p>
 <ol type="1">
-<li><p><code>.data</code>: el data frame o tibble de entrada.</p></li>
-<li><p><code>...</code>: nombres de las columnas a seleccionar, o funciones auxiliares como <code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>, etc.</p></li>
+<li><p><code>.data</code>: Especifica el data frame o tibble de entrada.</p></li>
+<li><p><code>...</code>: Representa los nombres de las columnas a seleccionar, o funciones auxiliares que permiten patrones de selección más complejos.</p></li>
 </ol>
-<p>Ejemplo:</p>
+<p>Ejemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar las columnas altura_cm y peso_gr</span></span>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Seleccionar las columnas altura_cm y peso_gr</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datos_mediciones <span class="ot">&lt;-</span> <span class="fu">select</span>(datos_cultivo, altura_cm, peso_gr)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_mediciones)  <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_mediciones) <span class="co"># Visualizar las primeras filas del resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  altura_cm peso_gr
 1      59.4    93.3
@@ -506,9 +685,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5      66.3   104.4
 6      82.2    77.8</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Excluir la columna fecha_siembra</span></span>
+</div>
+<p>En este ejemplo, se crea un nuevo data frame llamado <code>datos_mediciones</code> que contiene únicamente las columnas <code>altura_cm</code> y <code>peso_gr</code> del data frame original.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Excluir la columna fecha_siembra</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos_sin_fecha <span class="ot">&lt;-</span> <span class="fu">select</span>(datos_cultivo, <span class="sc">-</span>fecha_siembra)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_sin_fecha)  <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_sin_fecha) <span class="co"># Visualizar las primeras filas del resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela    tratamiento bloque altura_cm peso_gr daño_plaga
 1       1        Control      1      59.4    93.3      Medio
@@ -518,9 +700,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5       5        Control      5      66.3   104.4      Medio
 6       6 Fertilizante A      1      82.2    77.8       Bajo</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Seleccionar columnas que terminan en "cm" o "gr"</span></span>
+</div>
+<p>En este caso, se utiliza el operador <code>-</code> para excluir la columna <code>fecha_siembra</code> del resultado. El nuevo data frame <code>datos_sin_fecha</code> contiene todas las columnas del original, excepto la columna excluida.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 3: Seleccionar columnas que terminan en "cm" o "gr"</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>datos_numericos <span class="ot">&lt;-</span> <span class="fu">select</span>(datos_cultivo, <span class="fu">ends_with</span>(<span class="st">"cm"</span>), <span class="fu">ends_with</span>(<span class="st">"gr"</span>))</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_numericos)  <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_numericos) <span class="co"># Visualizar las primeras filas del resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  altura_cm peso_gr
 1      59.4    93.3
@@ -531,56 +716,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 6      82.2    77.8</code></pre>
 </div>
 </div>
-<p>El uso de funciones auxiliares permite seleccionar columnas de manera flexible, lo que resulta útil en bases de datos extensas (Wickham et al., 2023).</p>
+<p>Este ejemplo demuestra el uso de la función auxiliar <code>ends_with()</code> para seleccionar columnas cuyos nombres terminan con “cm” o “gr”. El resultado es un data frame que contiene únicamente las columnas que cumplen con este patrón. El uso de funciones auxiliares permite seleccionar columnas de manera flexible, lo que resulta útil en bases de datos extensas (Wickham et al., 2023).</p>
 </section>
 <section id="creación-y-transformación-de-variables-con-mutate" class="level3" data-number="11.3.3">
 <h3 data-number="11.3.3" class="anchored" data-anchor-id="creación-y-transformación-de-variables-con-mutate"><span class="header-section-number">11.3.3</span> Creación y transformación de variables con mutate()</h3>
-<p>La función <code>mutate()</code> permite crear nuevas columnas o modificar las existentes. Su sintaxis es:</p>
+<p>La función <code>mutate()</code> permite crear nuevas columnas o modificar las existentes en un data frame o tibble. Esta función es fundamental para la ingeniería de variables, que consiste en transformar los datos originales para generar nuevas variables que capturen información relevante para el análisis (Wickham &amp; Grolemund, 2017).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis general de la función mutate()</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><p><code>.data</code>: el data frame o tibble de entrada.</p></li>
-<li><p><code>...</code>: una o más expresiones que definen las nuevas columnas o transformaciones.</p></li>
+<li><p><code>.data</code>: Especifica el data frame o tibble de entrada.</p></li>
+<li><p><code>...</code>: Representa una o más expresiones que definen las nuevas columnas o transformaciones.</p></li>
 </ol>
-<p>Ejemplo:</p>
+<p>Ejemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear una nueva variable: índice de crecimiento</span></span>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Crear una nueva variable: índice de crecimiento</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>datos_cultivo <span class="ot">&lt;-</span> <span class="fu">mutate</span>(datos_cultivo,</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">indice_crecimiento =</span> </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                         altura_cm <span class="sc">/</span> peso_gr)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear varias variables nuevas</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>datos_cultivo <span class="ot">&lt;-</span> <span class="fu">mutate</span>(datos_cultivo,</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                       <span class="at">altura_m =</span> altura_cm <span class="sc">/</span> <span class="dv">100</span>,</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                       <span class="at">peso_kg =</span> peso_gr <span class="sc">/</span> <span class="dv">1000</span>,</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                       <span class="at">categoria_altura =</span> <span class="fu">ifelse</span>(</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>                         altura_cm <span class="sc">&gt;</span> <span class="dv">65</span>, <span class="st">"Alto"</span>, <span class="st">"Bajo"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                         altura_cm <span class="sc">/</span> peso_gr)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>La función <code>ifelse(condición, valor_si_verdadero, valor_si_falso)</code> permite crear variables categóricas a partir de condiciones lógicas, lo que es común en la estadística clásica para definir grupos o categorías (Wickham &amp; Grolemund, 2017).</p>
+<p>En este ejemplo, se crea una nueva columna llamada <code>indice_crecimiento</code> que se calcula como la razón entre la altura y el peso de cada planta. La nueva columna se añade al data frame original <code>datos_cultivo</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Crear varias variables nuevas</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>datos_cultivo <span class="ot">&lt;-</span> <span class="fu">mutate</span>(datos_cultivo,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                       <span class="at">altura_m =</span> altura_cm <span class="sc">/</span> <span class="dv">100</span>,</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>                       <span class="at">peso_kg =</span> peso_gr <span class="sc">/</span> <span class="dv">1000</span>,</span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>                       <span class="at">categoria_altura =</span> <span class="fu">ifelse</span>(</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>                         altura_cm <span class="sc">&gt;</span> <span class="dv">65</span>, <span class="st">"Alto"</span>, <span class="st">"Bajo"</span>))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este caso, se crean tres nuevas columnas: <code>altura_m</code> (altura en metros), <code>peso_kg</code> (peso en kilogramos) y <code>categoria_altura</code> (categoría de altura basada en un umbral). La función <code>ifelse(condición, valor_si_verdadero, valor_si_falso)</code> permite crear variables categóricas a partir de condiciones lógicas, lo que es común en la estadística clásica para definir grupos o categorías (Wickham &amp; Grolemund, 2017).</p>
 </section>
 <section id="agrupamiento-y-resumen-con-group_by-y-summarize" class="level3" data-number="11.3.4">
 <h3 data-number="11.3.4" class="anchored" data-anchor-id="agrupamiento-y-resumen-con-group_by-y-summarize"><span class="header-section-number">11.3.4</span> Agrupamiento y resumen con group_by() y summarize()</h3>
-<p>La función <code>group_by()</code> agrupa los datos según una o más variables, y <code>summarize()</code> calcula estadísticas resumen por grupo. Sus sintaxis son:</p>
+<p>Las funciones <code>group_by()</code> y <code>summarize()</code> son herramientas poderosas para el análisis exploratorio de datos y la generación de estadísticas descriptivas por grupos. La función <code>group_by()</code> permite dividir un data frame en grupos basados en los valores de una o más variables, mientras que <code>summarize()</code> calcula estadísticas resumen para cada grupo (Wickham &amp; Grolemund, 2017).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(.data, ...)</span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis general de las funciones group_by() y summarize()</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>(.data, ...)</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summarize</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Donde:</p>
 <ol type="1">
-<li><p><code>.data</code>: el data frame o tibble de entrada.</p></li>
-<li><p><code>...</code>: variables de agrupamiento (en <code>group_by</code>) o expresiones de resumen (en <code>summarize</code>).</p></li>
+<li><p><code>.data</code>: Especifica el data frame o tibble de entrada.</p></li>
+<li><p><code>...</code>: Representa las variables de agrupamiento (en <code>group_by()</code>) o las expresiones de resumen (en <code>summarize()</code>).</p></li>
 </ol>
-<p>Ejemplo:</p>
+<p>Ejemplos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrupar por tratamiento y calcular estadísticas descriptivas</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> datos_cultivo <span class="sc">%&gt;%</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tratamiento) <span class="sc">%&gt;%</span></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_altura =</span> <span class="fu">sd</span>(altura_cm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo: Agrupar por tratamiento y calcular estadísticas descriptivas</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> datos_cultivo <span class="sc">%&gt;%</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(tratamiento) <span class="sc">%&gt;%</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>        <span class="at">sd_altura =</span> <span class="fu">sd</span>(altura_cm, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 4 × 4
   tratamiento    media_altura sd_altura     n
@@ -591,194 +781,232 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 4 Fertilizante C         66.1     14.1      5</code></pre>
 </div>
 </div>
+<p>En este ejemplo, se utiliza el operador pipe (<code>%&gt;%</code>) para encadenar las funciones <code>group_by()</code> y <code>summarize()</code>. Primero, se agrupan los datos por la variable <code>tratamiento</code>. Luego, para cada grupo, se calculan las siguientes estadísticas:</p>
 <ol type="1">
-<li><p><code>mean(altura_cm, na.rm = TRUE)</code>: calcula la media, ignorando los valores NA.</p></li>
-<li><p><code>sd(altura_cm, na.rm = TRUE)</code>: calcula la desviación estándar.</p></li>
-<li><p><code>n()</code>: cuenta el número de observaciones en cada grupo.</p></li>
+<li><p><code>media_altura = mean(altura_cm, na.rm = TRUE)</code>: Calcula la media de la altura, excluyendo los valores faltantes (<code>NA</code>). El argumento <code>na.rm = TRUE</code> es crucial para evitar que los valores faltantes afecten el cálculo de la media.</p></li>
+<li><p><code>sd_altura = sd(altura_cm, na.rm = TRUE)</code>: Calcula la desviación estándar de la altura, también excluyendo los valores faltantes.</p></li>
+<li><p><code>n = n()</code>: Cuenta el número de observaciones en cada grupo. La función <code>n()</code> es una función especial de dplyr que cuenta el tamaño de cada grupo.</p></li>
 </ol>
-<p>Estas funciones son esenciales para obtener resúmenes estadísticos por grupo, como promedios por tratamiento en un experimento clásico (Wickham et al., 2023).</p>
+<p>El resultado es un nuevo data frame llamado <code>resumen_tratamiento</code> que contiene las estadísticas descriptivas para cada tratamiento. Estas funciones son esenciales para obtener resúmenes estadísticos por grupo, como promedios por tratamiento en un experimento clásico (Wickham et al., 2023).</p>
 </section>
 <section id="ordenamiento-de-datos-con-arrange" class="level3" data-number="11.3.5">
 <h3 data-number="11.3.5" class="anchored" data-anchor-id="ordenamiento-de-datos-con-arrange"><span class="header-section-number">11.3.5</span> Ordenamiento de datos con arrange()</h3>
-<p>La función <code>arrange()</code> permite ordenar los datos según una o más variables. Su sintaxis es:</p>
+<p>La función <code>arrange()</code> permite ordenar las filas de un data frame o tibble según los valores de una o más variables. El ordenamiento es útil para identificar valores extremos, preparar tablas para reportes o facilitar la visualización de datos (Wickham &amp; Grolemund, 2017).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis general de la función arrange()</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>(.data, ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Donde:</p>
 <ol type="1">
-<li><p><code>.data</code>: el data frame o tibble de entrada.</p></li>
-<li><p><code>...</code>: variables por las que se desea ordenar; se puede usar <code>desc()</code> para orden descendente.</p></li>
+<li><p><code>.data</code>: Especifica el data frame o tibble de entrada.</p></li>
+<li><p><code>...</code>: Representa las variables por las que se desea ordenar. Se puede utilizar la función <code>desc()</code> para ordenar en orden descendente.</p></li>
 </ol>
-<p>Ejemplo:</p>
+<p>Ejemplos</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar por altura de menor a mayor</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>datos_ordenados <span class="ot">&lt;-</span> <span class="fu">arrange</span>(datos_cultivo, altura_cm)</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar por tratamiento y peso descendente</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>datos_ordenados_multi <span class="ot">&lt;-</span> <span class="fu">arrange</span>(datos_cultivo, </span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                                 tratamiento, </span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">desc</span>(peso_gr))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 1: Ordenar por altura de menor a mayor</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>datos_ordenados <span class="ot">&lt;-</span> <span class="fu">arrange</span>(datos_cultivo, altura_cm)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>El ordenamiento es útil para identificar valores extremos o preparar tablas para reportes (Wickham &amp; Grolemund, 2017).</p>
+<p>En este ejemplo, se crea un nuevo data frame llamado <code>datos_ordenados</code> que contiene las mismas filas que <code>datos_cultivo</code>, pero ordenadas de menor a mayor según los valores de la columna <code>altura_cm</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo 2: Ordenar por tratamiento y peso descendente</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>datos_ordenados_multi <span class="ot">&lt;-</span> <span class="fu">arrange</span>(datos_cultivo, </span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                                 tratamiento, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="fu">desc</span>(peso_gr))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este caso, se ordenan los datos por dos variables: primero por <code>tratamiento</code> (en orden ascendente por defecto) y luego por <code>peso_gr</code> (en orden descendente, gracias a la función <code>desc()</code>). El resultado es un data frame donde las filas están ordenadas alfabéticamente por tratamiento, y dentro de cada tratamiento, las filas están ordenadas de mayor a menor según el peso.</p>
 </section>
 </section>
 <section id="introducción-a-los-pipes" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="introducción-a-los-pipes"><span class="header-section-number">11.4</span> Introducción a los pipes (%&gt;%)</h2>
-<p>El operador pipe (<code>%&gt;%</code>), introducido por el paquete magrittr y adoptado como parte fundamental del tidyverse, representa una innovación significativa en la sintaxis de R. Este operador permite construir secuencias de operaciones de manera clara y lógica, siguiendo un flujo natural de procesamiento de datos. El pipe toma el resultado de una expresión a su izquierda y lo pasa como primer argumento a la función a su derecha (Wickham &amp; Grolemund, 2017).</p>
+<p>El operador pipe (<code>%&gt;%</code>), introducido por el paquete <code>magrittr</code> y adoptado como parte fundamental del <code>tidyverse</code>, representa una innovación significativa en la sintaxis de R. Este operador permite construir secuencias de operaciones de manera clara y lógica, siguiendo un flujo natural de procesamiento de datos. El pipe toma el resultado de una expresión a su izquierda y lo pasa como primer argumento a la función a su derecha (Wickham &amp; Grolemund, 2017).</p>
 <p>La sintaxis básica del operador pipe es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estructura usando pipes</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">funcion</span>()</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalente a la siguiente estructura anidada</span></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">funcion</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estructura usando pipes</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span> <span class="fu">funcion</span>()</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Equivalente a la siguiente estructura anidada</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">funcion</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <section id="ventajas-del-uso-de-pipes" class="level3" data-number="11.4.1">
 <h3 data-number="11.4.1" class="anchored" data-anchor-id="ventajas-del-uso-de-pipes"><span class="header-section-number">11.4.1</span> Ventajas del uso de pipes</h3>
 <p>El uso de pipes ofrece múltiples ventajas en el análisis estadístico (Wickham et al., 2023):</p>
 <ol type="1">
-<li><p><strong>Legibilidad mejorada</strong>: Las operaciones se leen de izquierda a derecha y de arriba hacia abajo, siguiendo el orden natural de lectura.</p></li>
-<li><p><strong>Reducción de objetos intermedios</strong>: No es necesario crear variables temporales para almacenar resultados intermedios.</p></li>
-<li><p><strong>Facilidad de depuración</strong>: Cada paso puede ser comentado o modificado independientemente.</p></li>
-<li><p><strong>Claridad en la secuencia de operaciones</strong>: El flujo de trabajo se hace explícito y fácil de seguir.</p></li>
+<li><p><strong>Legibilidad mejorada</strong>: Las operaciones se leen de izquierda a derecha y de arriba hacia abajo, siguiendo el orden natural de lectura. Esto facilita la comprensión del flujo de trabajo y reduce la probabilidad de errores.</p></li>
+<li><p><strong>Reducción de objetos intermedios</strong>: No es necesario crear variables temporales para almacenar resultados intermedios. Esto simplifica el código y reduce el riesgo de errores asociados con la gestión de múltiples objetos.</p></li>
+<li><p><strong>Facilidad de depuración</strong>: Cada paso puede ser comentado o modificado independientemente. Esto facilita la identificación y corrección de errores en el código.</p></li>
+<li><p><strong>Claridad en la secuencia de operaciones</strong>: El flujo de trabajo se hace explícito y fácil de seguir. Esto mejora la mantenibilidad del código y facilita la colaboración entre analistas.</p></li>
 </ol>
 </section>
 <section id="ejemplo-práctico" class="level3" data-number="11.4.2">
 <h3 data-number="11.4.2" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">11.4.2</span> Ejemplo práctico</h3>
-<p>Sin pipe (anidado): En la sintaxis tradicional, las funciones deben anidarse, lo que puede dificultar la lectura:</p>
+<p>Para ilustrar las ventajas del uso de pipes, consideremos el siguiente ejemplo, donde se calcula la media de la altura por tratamiento, excluyendo los valores faltantes:</p>
+<p><strong>Sin pipe (anidado):</strong> En la sintaxis tradicional, las funciones deben anidarse, lo que puede dificultar la lectura:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de altura por tratamiento, excluyendo valores NA</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(datos_cultivo, <span class="sc">!</span><span class="fu">is.na</span>(altura_cm)),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    tratamiento</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de altura por tratamiento, excluyendo valores NA</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> <span class="fu">summarize</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(datos_cultivo, <span class="sc">!</span><span class="fu">is.na</span>(altura_cm)),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    tratamiento</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>En este ejemplo, primero se filtran las filas sin valores faltantes en <code>altura_cm</code>, luego se agrupan por <code>tratamiento</code> y finalmente se calcula la media de altura para cada grupo.</p>
-<p>Con pipe (más legible) el mismo análisis, usando pipes, resulta más claro y fácil de seguir:</p>
+<p>En este ejemplo, primero se filtran las filas sin valores faltantes en <code>altura_cm</code>, luego se agrupan por <code>tratamiento</code> y finalmente se calcula la media de altura para cada grupo. La anidación de funciones dificulta la lectura y comprensión del código.</p>
+<p><strong>Con pipe (más legible):</strong> El mismo análisis, usando pipes, resulta más claro y fácil de seguir:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de altura por tratamiento, excluyendo valores NA</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> datos_cultivo <span class="sc">%&gt;%</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Eliminar filas con NA en altura_cm</span></span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(altura_cm)) <span class="sc">%&gt;%</span>      </span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2. Agrupar los datos por tratamiento</span></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tratamiento) <span class="sc">%&gt;%</span>         </span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 3. Calcular la media de altura por grupo</span></span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm)) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular la media de altura por tratamiento, excluyendo valores NA</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> datos_cultivo <span class="sc">%&gt;%</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1. Eliminar filas con NA en altura_cm</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(altura_cm)) <span class="sc">%&gt;%</span>    </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2. Agrupar los datos por tratamiento</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">group_by</span>(tratamiento) <span class="sc">%&gt;%</span>    </span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3. Calcular la media de altura por grupo</span></span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">summarize</span>(<span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>En este ejemplo, el código se lee de arriba hacia abajo, siguiendo el orden lógico de las operaciones:</p>
 <ol type="1">
-<li><p>En la primera línea, se eliminan las filas donde la altura es NA.</p></li>
+<li><p>En la primera línea, se eliminan las filas donde la altura es <code>NA</code>.</p></li>
 <li><p>En la segunda línea, se agrupan los datos por el tipo de tratamiento.</p></li>
 <li><p>En la tercera línea, se calcula la media de la altura para cada tratamiento.</p></li>
 </ol>
-<p>Cada paso es explícito y se puede leer de arriba hacia abajo, lo que facilita la comprensión y depuración del análisis (Wickham &amp; Grolemund, 2017).</p>
+<p>Cada paso es explícito y se puede leer de arriba hacia abajo, lo que facilita la comprensión y depuración del análisis (Wickham &amp; Grolemund, 2017). El uso de pipes mejora significativamente la legibilidad y mantenibilidad del código, facilitando la colaboración y reduciendo la probabilidad de errores.</p>
 </section>
 </section>
 <section id="transformaciones-de-datos-con-tidyr" class="level2" data-number="11.5">
 <h2 data-number="11.5" class="anchored" data-anchor-id="transformaciones-de-datos-con-tidyr"><span class="header-section-number">11.5</span> Transformaciones de datos con tidyr</h2>
-<p>El paquete tidyr es una herramienta fundamental para la reorganización y transformación de datos en R, permitiendo adaptar la estructura de los conjuntos de datos a los requerimientos de los métodos estadísticos clásicos. Estas transformaciones son esenciales para preparar los datos antes de aplicar técnicas como ANOVA, regresión o análisis descriptivos, ya que muchos procedimientos requieren que los datos estén en un formato específico (Wickham &amp; Grolemund, 2017).</p>
+<p>El paquete <code>tidyr</code> es una herramienta fundamental para la reorganización y transformación de datos en R, permitiendo adaptar la estructura de los conjuntos de datos a los requerimientos de los métodos estadísticos clásicos. Estas transformaciones son esenciales para preparar los datos antes de aplicar técnicas como ANOVA, regresión o análisis descriptivos, ya que muchos procedimientos requieren que los datos estén en un formato específico (Wickham &amp; Grolemund, 2017).</p>
 <section id="transformación-de-formato-ancho-a-largo-con-pivot_longer" class="level3" data-number="11.5.1">
 <h3 data-number="11.5.1" class="anchored" data-anchor-id="transformación-de-formato-ancho-a-largo-con-pivot_longer"><span class="header-section-number">11.5.1</span> Transformación de formato ancho a largo con pivot_longer()</h3>
 <p>La función <code>pivot_longer()</code> convierte varias columnas de un data frame en pares de nombre-valor, generando un formato largo. Este formato es especialmente útil en análisis estadísticos donde cada observación debe ocupar una fila y las variables medidas se representan en una columna adicional, como en el caso de ANOVA de medidas repetidas (Wickham &amp; Grolemund, 2017).</p>
-<p>La sintaxis principal de <code>pivot_longer()</code> es la siguiente:</p>
+<p>La sintaxis principal es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  data,         <span class="co"># Data frame o tibble de entrada</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  cols,         <span class="co"># Columnas a transformar (vector de nombres, rango o función selectora)</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  names_to,     <span class="co"># Nombre de la nueva columna que contendrá los nombres originales de las variables</span></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  values_to     <span class="co"># Nombre de la nueva columna que contendrá los valores</span></span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis principal de la funcion pivot_longer ()</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_longer</span>(</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  data,              <span class="co"># Data frame o tibble de entrada</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>  cols,              <span class="co"># Columnas a transformar</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"name"</span>, <span class="co"># Nombre de la nueva columna para las columnas originales</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"value"</span> <span class="co"># Nombre de la nueva columna para los valores originales</span></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Por ejemplo, considérese un subconjunto pequeño de datos con alturas y pesos de tres parcelas:</p>
+<p>Para ilustrar el uso de <code>pivot_longer()</code>, consideremos un ejemplo simplificado:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un dataframe para visualizar mejor los ejemplos</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>mini_datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">parcela =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>),</span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_cm =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">60</span>),</span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso_gr =</span> <span class="fu">c</span>(<span class="dv">120</span>, <span class="dv">115</span>, <span class="dv">110</span>)</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>mini_datos <span class="co"># visualizar el data frame original</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear un data frame de ejemplo</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>datos_ancho <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">parcela =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>,</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_2023 =</span> <span class="fu">c</span>(<span class="dv">150</span>, <span class="dv">160</span>, <span class="dv">155</span>),</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso_2023 =</span> <span class="fu">c</span>(<span class="dv">80</span>, <span class="dv">85</span>, <span class="dv">82</span>),</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_2024 =</span> <span class="fu">c</span>(<span class="dv">165</span>, <span class="dv">170</span>, <span class="dv">168</span>),</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">peso_2024 =</span> <span class="fu">c</span>(<span class="dv">88</span>, <span class="dv">90</span>, <span class="dv">89</span>)</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>datos_ancho</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  parcela altura_cm peso_gr
-1       1        70     120
-2       2        65     115
-3       3        60     110</code></pre>
+<pre><code>  parcela altura_2023 peso_2023 altura_2024 peso_2024
+1       1         150        80         165        88
+2       2         160        85         170        90
+3       3         155        82         168        89</code></pre>
 </div>
 </div>
-<p>Para transformar este data frame a formato largo, se utiliza:</p>
+<p>Este data frame representa mediciones de altura y peso de tres parcelas en dos años diferentes. Para transformar este data frame a formato largo, podemos usar <code>pivot_longer()</code> de la siguiente manera:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mini_largo <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_datos,</span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(altura_cm, peso_gr), <span class="co"># Columnas a transformar</span></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_to =</span> <span class="st">"variable"</span>,        <span class="co"># Nueva columna para los nombres de las variables originales</span></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_to =</span> <span class="st">"valor"</span>           <span class="co"># Nueva columna para los valores</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>mini_largo <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar a formato largo</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>datos_largo <span class="ot">&lt;-</span> datos_ancho <span class="sc">%&gt;%</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(altura_2023, peso_2023, altura_2024, peso_2024),</span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"valor"</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>datos_largo</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  parcela variable  valor
-    &lt;dbl&gt; &lt;chr&gt;     &lt;dbl&gt;
-1       1 altura_cm    70
-2       1 peso_gr     120
-3       2 altura_cm    65
-4       2 peso_gr     115
-5       3 altura_cm    60
-6       3 peso_gr     110</code></pre>
+<pre><code># A tibble: 12 × 3
+   parcela variable    valor
+     &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
+ 1       1 altura_2023   150
+ 2       1 peso_2023      80
+ 3       1 altura_2024   165
+ 4       1 peso_2024      88
+ 5       2 altura_2023   160
+ 6       2 peso_2023      85
+ 7       2 altura_2024   170
+ 8       2 peso_2024      90
+ 9       3 altura_2023   155
+10       3 peso_2023      82
+11       3 altura_2024   168
+12       3 peso_2024      89</code></pre>
 </div>
 </div>
-<p>En este ejemplo, el argumento <code>cols</code> indica las columnas a transformar, <code>names_to</code> define el nombre de la columna que almacenará los nombres de las variables originales y <code>values_to</code> define el nombre de la columna que almacenará los valores correspondientes (Wickham &amp; Grolemund, 2017).</p>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>cols = c(altura_2023, peso_2023, altura_2024, peso_2024)</code>: Especifica las columnas que se van a transformar.</p></li>
+<li><p><code>names_to = "variable"</code>: Indica que los nombres de las columnas originales se almacenarán en una nueva columna llamada “variable”.</p></li>
+<li><p><code>values_to = "valor"</code>: Indica que los valores de las columnas originales se almacenarán en una nueva columna llamada “valor”.</p></li>
+</ol>
+<p>El resultado es un data frame en formato largo, donde cada fila representa una medición de altura o peso para una parcela en un año específico. Este formato es ideal para realizar análisis estadísticos que requieren que cada observación ocupe una fila, como ANOVA de medidas repetidas o modelos mixtos (Kutner et al., 2005).</p>
 </section>
 <section id="transformación-de-formato-largo-a-ancho-con-pivot_wider" class="level3" data-number="11.5.2">
 <h3 data-number="11.5.2" class="anchored" data-anchor-id="transformación-de-formato-largo-a-ancho-con-pivot_wider"><span class="header-section-number">11.5.2</span> Transformación de formato largo a ancho con pivot_wider()</h3>
-<p>La función <code>pivot_wider()</code> realiza la transformación inversa, es decir, convierte un data frame en formato largo a formato ancho. Esto es útil para reportes o análisis que requieren que cada variable esté en una columna separada (Wickham &amp; Grolemund, 2017).</p>
-<p>La sintaxis principal de <code>pivot_wider()</code> es:</p>
+<p>La función <code>pivot_wider()</code> realiza la operación inversa a <code>pivot_longer()</code>, transformando un data frame de formato largo a formato ancho. Esta función es útil cuando se necesita organizar los datos de manera que diferentes valores de una variable se conviertan en columnas separadas, facilitando la comparación entre grupos o condiciones (Wickham &amp; Grolemund, 2017).</p>
+<p>La sintaxis principal es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  data,         <span class="co"># Data frame o tibble de entrada</span></span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  names_from,   <span class="co"># Columna cuyos valores se usarán como nombres de nuevas columnas</span></span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  values_from   <span class="co"># Columna cuyos valores se distribuirán en las nuevas columnas</span></span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis principal de la funcion pivot_wider ()</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pivot_wider</span>(</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Data frame o tibble de entrada</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  data,              </span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Columna cuyos valores se usarán como nombres de las nuevas columnas</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> , </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Columna cuyos valores se usarán para llenar las nuevas columnas</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span>        </span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Utilizando el subconjunto <code>mini_largo</code> generado previamente:</p>
+<p>Para ilustrar el uso de <code>pivot_wider()</code>, consideremos el data frame <code>datos_largo</code> creado en la sección anterior. Para transformar este data frame de nuevo a formato ancho, podemos usar <code>pivot_wider()</code> de la siguiente manera:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>mini_ancho <span class="ot">&lt;-</span> <span class="fu">pivot_wider</span>(</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_largo,</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">names_from =</span> variable,  <span class="co"># Columna que define los nombres de las nuevas columnas</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">values_from =</span> valor     <span class="co"># Columna que define los valores a distribuir</span></span>
-<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>mini_ancho <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Transformar a formato ancho</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>datos_ancho <span class="ot">&lt;-</span> datos_largo <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> variable,</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> valor</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>datos_ancho</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  parcela altura_cm peso_gr
-    &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
-1       1        70     120
-2       2        65     115
-3       3        60     110</code></pre>
+<pre><code># A tibble: 3 × 5
+  parcela altura_2023 peso_2023 altura_2024 peso_2024
+    &lt;int&gt;       &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+1       1         150        80         165        88
+2       2         160        85         170        90
+3       3         155        82         168        89</code></pre>
 </div>
 </div>
-<p>En este caso, el argumento <code>names_from</code> indica la columna cuyos valores se convertirán en nombres de nuevas columnas y <code>values_from</code> indica la columna cuyos valores se colocarán en las nuevas columnas (Wickham &amp; Grolemund, 2017).</p>
+<p>En este ejemplo:</p>
+<ol type="1">
+<li><p><code>names_from = variable</code>: Especifica que los valores de la columna <code>variable</code> (altura_2023, peso_2023, altura_2024, peso_2024) se utilizarán como nombres de las nuevas columnas.</p></li>
+<li><p><code>values_from = valor</code>: Especifica que los valores de la columna <code>valor</code> se utilizarán para llenar las nuevas columnas.</p></li>
+</ol>
+<p>El resultado es un data frame en formato ancho, donde cada fila representa una parcela y cada columna representa una medición de altura o peso en un año específico. Este formato facilita la comparación directa de las mediciones entre años para cada parcela.</p>
 </section>
-<section id="manipulación-de-variables-compuestas-con-separate-y-unite" class="level3" data-number="11.5.3">
-<h3 data-number="11.5.3" class="anchored" data-anchor-id="manipulación-de-variables-compuestas-con-separate-y-unite"><span class="header-section-number">11.5.3</span> Manipulación de variables compuestas con separate() y unite()</h3>
-<p>En ocasiones, una columna puede contener información de varias variables codificadas en un solo valor. Para dividir o combinar estas variables, se utilizan las funciones <code>separate()</code> y <code>unite()</code> (Wickham &amp; Grolemund, 2017).</p>
-<p>La función <code>separate()</code> divide una columna en dos o más columnas, utilizando un carácter separador. Su sintaxis principal es:</p>
+<section id="separación-y-unión-de-columnas-con-separate-y-unite" class="level3" data-number="11.5.3">
+<h3 data-number="11.5.3" class="anchored" data-anchor-id="separación-y-unión-de-columnas-con-separate-y-unite"><span class="header-section-number">11.5.3</span> Separación y Unión de Columnas con separate() y unite()</h3>
+<p>Las funciones <code>separate()</code> y <code>unite()</code> permiten manipular variables compuestas, dividiendo una columna en varias o combinando varias columnas en una sola. Estas funciones son útiles para limpiar y estructurar datos que contienen información combinada en una sola columna (Wickham &amp; Grolemund, 2017).</p>
+<p>La función <code>separate()</code> divide una columna en varias, utilizando un carácter separador. Su sintaxis principal es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  data,         <span class="co"># Data frame o tibble de entrada</span></span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  col,          <span class="co"># Columna a dividir</span></span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  into,         <span class="co"># Vector con los nombres de las nuevas columnas</span></span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  sep           <span class="co"># Carácter separador (por defecto, cualquier carácter no alfanumérico)</span></span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis de la funcion separate ()</span></span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">separate</span>(</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>  data,    <span class="co"># Data frame o tibble de entrada</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>  col,     <span class="co"># Columna a dividir</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  into,    <span class="co"># Vector con los nombres de las nuevas columnas</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  sep      <span class="co"># Carácter separador (por defecto, cualquier carácter no alfanumérico)</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Por ejemplo, considérese el siguiente subconjunto:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el dataframe para el ejemplo</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>mini_datos_comp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">parcela_bloque =</span> <span class="fu">c</span>(<span class="st">"1-1"</span>, <span class="st">"2-2"</span>, <span class="st">"3-3"</span>),</span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_cm =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">60</span>)</span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar el dataframe original</span></span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>mini_datos_comp</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear el dataframe para el ejemplo</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>mini_datos_comp <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">parcela_bloque =</span> <span class="fu">c</span>(<span class="st">"1-1"</span>, <span class="st">"2-2"</span>, <span class="st">"3-3"</span>),</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">altura_cm =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">65</span>, <span class="dv">60</span>)</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>mini_datos_comp</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela_bloque altura_cm
 1            1-1        70
@@ -788,13 +1016,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Para separar la columna <code>parcela_bloque</code> en dos columnas llamadas <code>parcela</code> y <code>bloque</code>, se utiliza:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>mini_separado <span class="ot">&lt;-</span> <span class="fu">separate</span>(</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_datos_comp,</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> parcela_bloque,         <span class="co"># Columna a dividir</span></span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"parcela"</span>, <span class="st">"bloque"</span>),<span class="co"># Nombres de las nuevas columnas</span></span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"-"</span>                     <span class="co"># Carácter separador</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>mini_separado <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>mini_separado <span class="ot">&lt;-</span> <span class="fu">separate</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_datos_comp,</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> parcela_bloque,    <span class="co"># Columna a dividir</span></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"parcela"</span>, <span class="st">"bloque"</span>),<span class="co"># Nombres de las nuevas columnas</span></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"-"</span>                <span class="co"># Carácter separador</span></span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>mini_separado</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela bloque altura_cm
 1       1      1        70
@@ -805,22 +1034,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El argumento <code>col</code> indica la columna a dividir, <code>into</code> define los nombres de las nuevas columnas y <code>sep</code> especifica el carácter separador (Wickham &amp; Grolemund, 2017).</p>
 <p>La función <code>unite()</code> combina dos o más columnas en una sola, utilizando un carácter separador. Su sintaxis principal es:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">unite</span>(</span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  data,         <span class="co"># Data frame o tibble de entrada</span></span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  col,          <span class="co"># Nombre de la nueva columna</span></span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  ...,          <span class="co"># Columnas a unir</span></span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  sep           <span class="co"># Carácter separador</span></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Sintaxis de la funcion unite ()</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unite</span>(</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>  data,    <span class="co"># Data frame o tibble de entrada</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  col,     <span class="co"># Nombre de la nueva columna</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>  ...,     <span class="co"># Columnas a unir</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  sep      <span class="co"># Carácter separador</span></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Por ejemplo, para volver a unir las columnas <code>parcela</code> y <code>bloque</code> en una sola columna <code>parcela_bloque</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>mini_unido <span class="ot">&lt;-</span> <span class="fu">unite</span>(</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_separado,</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"parcela_bloque"</span>, <span class="co"># Nombre de la nueva columna</span></span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>  parcela, bloque,        <span class="co"># Columnas a unir</span></span>
-<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"-"</span>               <span class="co"># Carácter separador</span></span>
-<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>mini_unido <span class="co"># Visualizar el resultado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>mini_unido <span class="ot">&lt;-</span> <span class="fu">unite</span>(</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> mini_separado,</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">col =</span> <span class="st">"parcela_bloque"</span>, <span class="co"># Nombre de la nueva columna</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>  parcela, bloque,        <span class="co"># Columnas a unir</span></span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">sep =</span> <span class="st">"-"</span>                <span class="co"># Carácter separador</span></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>mini_unido</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  parcela_bloque altura_cm
 1            1-1        70
@@ -831,65 +1062,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El argumento <code>col</code> define el nombre de la nueva columna resultante, los siguientes argumentos son las columnas a unir y <code>sep</code> indica el carácter separador (Wickham &amp; Grolemund, 2017).</p>
 </section>
 </section>
-<section id="ejemplo-integrado-preparación-de-datos-para-análisis-estadístico-clásico" class="level2" data-number="11.6">
-<h2 data-number="11.6" class="anchored" data-anchor-id="ejemplo-integrado-preparación-de-datos-para-análisis-estadístico-clásico"><span class="header-section-number">11.6</span> Ejemplo integrado: Preparación de datos para análisis estadístico clásico</h2>
-<p>A continuación se muestra un flujo de trabajo típico para preparar los datos del experimento agrícola antes de realizar un análisis de varianza (ANOVA), utilizando dplyr y tidyr.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Eliminar valores faltantes en altura y peso</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>datos_limpios <span class="ot">&lt;-</span> datos_cultivo <span class="sc">%&gt;%</span></span>
-<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(altura_cm), <span class="sc">!</span><span class="fu">is.na</span>(peso_gr))</span>
-<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Crear variables derivadas</span></span>
-<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>datos_limpios <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span></span>
-<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">indice_crecimiento =</span> altura_cm <span class="sc">/</span> peso_gr,</span>
-<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">categoria_altura =</span> <span class="fu">ifelse</span>(altura_cm <span class="sc">&gt;</span> <span class="dv">65</span>, <span class="st">"Alto"</span>, <span class="st">"Bajo"</span>)</span>
-<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Agrupar por tratamiento y calcular estadísticas descriptivas</span></span>
-<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span></span>
-<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(tratamiento) <span class="sc">%&gt;%</span></span>
-<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_altura =</span> <span class="fu">mean</span>(altura_cm),</span>
-<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">sd_altura =</span> <span class="fu">sd</span>(altura_cm),</span>
-<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>resumen_tratamiento</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 4 × 4
-  tratamiento    media_altura sd_altura     n
-  &lt;chr&gt;                 &lt;dbl&gt;     &lt;dbl&gt; &lt;int&gt;
-1 Control                63.5      3.17     4
-2 Fertilizante A         63.3     13.1      4
-3 Fertilizante B         70.2      4.82     4
-4 Fertilizante C         71.3      9.27     4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Transformar a formato largo para análisis multivariado</span></span>
-<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>datos_largo <span class="ot">&lt;-</span> datos_limpios <span class="sc">%&gt;%</span></span>
-<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
-<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(altura_cm, peso_gr),</span>
-<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"variable"</span>,</span>
-<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"valor"</span></span>
-<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_largo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 11
-  parcela tratamiento bloque daño_plaga fecha_siembra indice_crecimiento
-    &lt;int&gt; &lt;chr&gt;        &lt;int&gt; &lt;chr&gt;      &lt;date&gt;                     &lt;dbl&gt;
-1       1 Control          1 Medio      2024-01-10                 0.637
-2       1 Control          1 Medio      2024-01-10                 0.637
-3       2 Control          2 Medio      2024-01-08                 0.547
-4       2 Control          2 Medio      2024-01-08                 0.547
-5       4 Control          4 Medio      2024-01-09                 0.645
-6       4 Control          4 Medio      2024-01-09                 0.645
-# ℹ 5 more variables: altura_m &lt;dbl&gt;, peso_kg &lt;dbl&gt;, categoria_altura &lt;chr&gt;,
-#   variable &lt;chr&gt;, valor &lt;dbl&gt;</code></pre>
-</div>
-</div>
-</section>
-<section id="comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" class="level2" data-number="11.7">
-<h2 data-number="11.7" class="anchored" data-anchor-id="comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse"><span class="header-section-number">11.7</span> Comparación entre la manipulación de datos con R base y tidyverse</h2>
-<p>La manipulación de datos es una etapa fundamental en el análisis estadístico clásico. Existen dos enfoques principales en R: el uso de funciones base y el uso de paquetes del tidyverse, como dplyr y tidyr. A continuación se presenta un cuadro comparativo que resume las principales diferencias entre ambos enfoques, considerando aspectos como sintaxis, legibilidad, flexibilidad y reproducibilidad (Wickham &amp; Grolemund, 2017).</p>
+<section id="comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse" class="level2" data-number="11.6">
+<h2 data-number="11.6" class="anchored" data-anchor-id="comparación-entre-la-manipulación-de-datos-con-r-base-y-tidyverse"><span class="header-section-number">11.6</span> Comparación entre la manipulación de datos con R base y tidyverse</h2>
+<p>La manipulación de datos constituye una etapa esencial en el análisis estadístico clásico, ya que permite preparar, transformar y explorar la información antes de aplicar técnicas inferenciales o modelos predictivos. En el entorno R, existen dos enfoques principales para realizar estas tareas: el uso de funciones base y el empleo de paquetes del tidyverse, como dplyr y tidyr. A continuación, se presenta una comparación estructurada de ambos enfoques, considerando aspectos clave como sintaxis, legibilidad, flexibilidad y reproducibilidad (Wickham &amp; Grolemund, 2017).</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -956,394 +1131,269 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </tr>
 </tbody>
 </table>
-<p>Como se observa, el enfoque tidyverse ofrece ventajas notables en términos de claridad, reproducibilidad y facilidad de uso, especialmente en flujos de trabajo complejos o colaborativos. No obstante, el conocimiento de las funciones base de R sigue siendo valioso, ya que permite comprender el funcionamiento interno del lenguaje y resolver tareas específicas de manera eficiente (Wickham &amp; Grolemund, 2017).</p>
+<p>En síntesis, el enfoque tidyverse ofrece ventajas notables en términos de claridad, reproducibilidad y facilidad de uso, especialmente en flujos de trabajo complejos o colaborativos. Sin embargo, el conocimiento de las funciones base de R sigue siendo valioso, ya que permite comprender el funcionamiento interno del lenguaje y resolver tareas específicas de manera eficiente (Wickham &amp; Grolemund, 2017).</p>
 
 
 </section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
     }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const disableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'prefetch';
-    }
-  }
-  const enableStylesheet = (stylesheets) => {
-    for (let i=0; i < stylesheets.length; i++) {
-      const stylesheet = stylesheets[i];
-      stylesheet.rel = 'stylesheet';
-    }
-  }
-  const manageTransitions = (selector, allowTransitions) => {
-    const els = window.document.querySelectorAll(selector);
-    for (let i=0; i < els.length; i++) {
-      const el = els[i];
-      if (allowTransitions) {
-        el.classList.remove('notransition');
-      } else {
-        el.classList.add('notransition');
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-  }
-  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
-    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
-    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
-    let newTheme = '';
-    if(darkModeDefault) {
-      newTheme = isAlternate ? baseTheme : alternateTheme;
-    } else {
-      newTheme = isAlternate ? alternateTheme : baseTheme;
-    }
-    const changeGiscusTheme = () => {
-      // From: https://github.com/giscus/giscus/issues/336
-      const sendMessage = (message) => {
-        const iframe = document.querySelector('iframe.giscus-frame');
-        if (!iframe) return;
-        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      sendMessage({
-        setConfig: {
-          theme: newTheme
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+            // default icon
+            link.classList.add("external");
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
         }
       });
     }
-    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
-    if (isGiscussLoaded) {
-      changeGiscusTheme();
-    }
-  }
-  const toggleColorMode = (alternate) => {
-    // Switch the stylesheets
-    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
-    manageTransitions('#quarto-margin-sidebar .nav-link', false);
-    if (alternate) {
-      enableStylesheet(alternateStylesheets);
-      for (const sheetNode of alternateStylesheets) {
-        if (sheetNode.id === "quarto-bootstrap") {
-          toggleBodyColorMode(sheetNode);
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
         }
       }
-    } else {
-      disableStylesheet(alternateStylesheets);
-      toggleBodyColorPrimary();
-    }
-    manageTransitions('#quarto-margin-sidebar .nav-link', true);
-    // Switch the toggles
-    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
-    for (let i=0; i < toggles.length; i++) {
-      const toggle = toggles[i];
-      if (toggle) {
-        if (alternate) {
-          toggle.classList.add("alternate");     
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
         } else {
-          toggle.classList.remove("alternate");
-        }
-      }
-    }
-    // Hack to workaround the fact that safari doesn't
-    // properly recolor the scrollbar when toggling (#1455)
-    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
-      manageTransitions("body", false);
-      window.scrollTo(0, 1);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        manageTransitions("body", true);
-      }, 40);  
-    }
-  }
-  const isFileUrl = () => { 
-    return window.location.protocol === 'file:';
-  }
-  const hasAlternateSentinel = () => {  
-    let styleSentinel = getColorSchemeSentinel();
-    if (styleSentinel !== null) {
-      return styleSentinel === "alternate";
-    } else {
-      return false;
-    }
-  }
-  const setStyleSentinel = (alternate) => {
-    const value = alternate ? "alternate" : "default";
-    if (!isFileUrl()) {
-      window.localStorage.setItem("quarto-color-scheme", value);
-    } else {
-      localAlternateSentinel = value;
-    }
-  }
-  const getColorSchemeSentinel = () => {
-    if (!isFileUrl()) {
-      const storageValue = window.localStorage.getItem("quarto-color-scheme");
-      return storageValue != null ? storageValue : localAlternateSentinel;
-    } else {
-      return localAlternateSentinel;
-    }
-  }
-  const darkModeDefault = false;
-  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
-  // Dark / light mode switch
-  window.quartoToggleColorScheme = () => {
-    // Read the current dark / light value 
-    let toAlternate = !hasAlternateSentinel();
-    toggleColorMode(toAlternate);
-    setStyleSentinel(toAlternate);
-    toggleGiscusIfUsed(toAlternate, darkModeDefault);
-  };
-  // Ensure there is a toggle, if there isn't float one in the top right
-  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
-    const a = window.document.createElement('a');
-    a.classList.add('top-right');
-    a.classList.add('quarto-color-scheme-toggle');
-    a.href = "";
-    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
-    const i = window.document.createElement("i");
-    i.classList.add('bi');
-    a.appendChild(i);
-    window.document.body.appendChild(a);
-  }
-  // Switch to dark mode if need be
-  if (hasAlternateSentinel()) {
-    toggleColorMode(true);
-  } else {
-    toggleColorMode(false);
-  }
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copiado");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copiado");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-          // target, if specified
-          link.setAttribute("target", "_blank");
-          if (link.getAttribute("rel") === null) {
-            link.setAttribute("rel", "noopener");
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
           }
-          // default icon
-          link.classList.add("external");
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
+          return note.innerHTML;
+        }
       } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
         }
-      }
-    }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
-          }
-        }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
-        }
-        return container.innerHTML
-      } else {
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -1351,185 +1401,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./08.2_manipulacion.html" class="pagination-link" aria-label="Manipulación de Datos con Herramientas Base de R">

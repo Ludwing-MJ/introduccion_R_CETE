@@ -593,15 +593,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">fecha_siembra =</span> <span class="fu">as.Date</span>(<span class="st">"2024-01-01"</span>) <span class="sc">+</span> <span class="fu">sample</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>, <span class="dv">20</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Explicación:</strong> En este bloque de código se crea un data frame denominado <code>datos_cultivo</code> que simula los resultados de un experimento agrícola bajo un diseño de bloques completos al azar. Las variables incluyen identificadores de parcela, tipo de tratamiento aplicado, bloque experimental, altura y peso de las plantas, nivel de daño por plaga y fecha de siembra. La función <code>set.seed(123)</code> asegura que los resultados sean reproducibles, permitiendo que cualquier usuario obtenga el mismo conjunto de datos al ejecutar el código.</p>
-<p><strong>Simulación de valores faltantes:</strong></p>
+<p>En este bloque de código se crea un data frame denominado <code>datos_cultivo</code> que simula los resultados de un experimento agrícola bajo un diseño de bloques completos al azar. Las variables incluyen identificadores de parcela, tipo de tratamiento aplicado, bloque experimental, altura y peso de las plantas, nivel de daño por plaga y fecha de siembra. La función <code>set.seed(123)</code> asegura que los resultados sean reproducibles, permitiendo que cualquier usuario obtenga el mismo conjunto de datos al ejecutar el código.</p>
+<p><strong>Simulación de valores faltantes</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simular la presencia de datos faltantes en los resultados del experimento</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos_cultivo<span class="sc">$</span>altura_cm[<span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">15</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>datos_cultivo<span class="sc">$</span>peso_gr[<span class="fu">c</span>(<span class="dv">7</span>, <span class="dv">18</span>)] <span class="ot">&lt;-</span> <span class="cn">NA</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Explicación:</strong> Se introducen valores faltantes (NA) en las variables <code>altura_cm</code> y <code>peso_gr</code> para reflejar situaciones reales en las que los datos pueden estar incompletos. Este paso es fundamental para demostrar técnicas de manejo de datos faltantes en secciones posteriores.</p>
-<p><strong>Visualización preliminar de los datos:</strong></p>
+<p>Se introducen valores faltantes (NA) en las variables <code>altura_cm</code> y <code>peso_gr</code> para reflejar situaciones reales en las que los datos pueden estar incompletos. Este paso es fundamental para demostrar técnicas de manejo de datos faltantes en secciones posteriores.</p>
+<p><strong>Visualización preliminar de los datos</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar las primeras filas del data frame con los datos simulados</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_cultivo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -616,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>La función <code>head()</code> permite observar las primeras seis filas del data frame, facilitando la verificación de la correcta creación de las variables y la identificación de valores faltantes.</p>
-<p><strong>Nota:</strong> Es importante revisar la estructura y el contenido de los datos antes de proceder con cualquier análisis, ya que la presencia de valores faltantes o inconsistencias puede afectar la validez de los resultados estadísticos. Para ello tambien se puede usar la función <code>view ()</code>, que nos permite visualizar un objeto en su totalidad en formato tabular (R Core Team, 2023).</p>
+<p>Es importante revisar la estructura y el contenido de los datos antes de proceder con cualquier análisis, ya que la presencia de valores faltantes o inconsistencias puede afectar la validez de los resultados estadísticos. Para ello también se puede usar la función <code>view ()</code>, que nos permite visualizar un objeto en su totalidad en formato tabular (R Core Team, 2023).</p>
 </section>
 <section id="selección-y-filtrado-de-datos-en-data-frames" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="selección-y-filtrado-de-datos-en-data-frames"><span class="header-section-number">10.2</span> Selección y filtrado de datos en data frames</h2>

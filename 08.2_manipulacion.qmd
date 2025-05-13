@@ -29,9 +29,9 @@ datos_cultivo <- data.frame(
 )
 ```
 
-**Explicación:** En este bloque de código se crea un data frame denominado `datos_cultivo` que simula los resultados de un experimento agrícola bajo un diseño de bloques completos al azar. Las variables incluyen identificadores de parcela, tipo de tratamiento aplicado, bloque experimental, altura y peso de las plantas, nivel de daño por plaga y fecha de siembra. La función `set.seed(123)` asegura que los resultados sean reproducibles, permitiendo que cualquier usuario obtenga el mismo conjunto de datos al ejecutar el código.
+En este bloque de código se crea un data frame denominado `datos_cultivo` que simula los resultados de un experimento agrícola bajo un diseño de bloques completos al azar. Las variables incluyen identificadores de parcela, tipo de tratamiento aplicado, bloque experimental, altura y peso de las plantas, nivel de daño por plaga y fecha de siembra. La función `set.seed(123)` asegura que los resultados sean reproducibles, permitiendo que cualquier usuario obtenga el mismo conjunto de datos al ejecutar el código.
 
-**Simulación de valores faltantes:**
+**Simulación de valores faltantes**
 
 ```{r}
 # Simular la presencia de datos faltantes en los resultados del experimento
@@ -39,9 +39,9 @@ datos_cultivo$altura_cm[c(3, 15)] <- NA
 datos_cultivo$peso_gr[c(7, 18)] <- NA
 ```
 
-**Explicación:** Se introducen valores faltantes (NA) en las variables `altura_cm` y `peso_gr` para reflejar situaciones reales en las que los datos pueden estar incompletos. Este paso es fundamental para demostrar técnicas de manejo de datos faltantes en secciones posteriores.
+Se introducen valores faltantes (NA) en las variables `altura_cm` y `peso_gr` para reflejar situaciones reales en las que los datos pueden estar incompletos. Este paso es fundamental para demostrar técnicas de manejo de datos faltantes en secciones posteriores.
 
-**Visualización preliminar de los datos:**
+**Visualización preliminar de los datos**
 
 ```{r}
 # Visualizar las primeras filas del data frame con los datos simulados
@@ -50,7 +50,7 @@ head(datos_cultivo)
 
 La función `head()` permite observar las primeras seis filas del data frame, facilitando la verificación de la correcta creación de las variables y la identificación de valores faltantes.
 
-**Nota:** Es importante revisar la estructura y el contenido de los datos antes de proceder con cualquier análisis, ya que la presencia de valores faltantes o inconsistencias puede afectar la validez de los resultados estadísticos. Para ello tambien se puede usar la función `view ()`, que nos permite visualizar un objeto en su totalidad en formato tabular (R Core Team, 2023).
+Es importante revisar la estructura y el contenido de los datos antes de proceder con cualquier análisis, ya que la presencia de valores faltantes o inconsistencias puede afectar la validez de los resultados estadísticos. Para ello también se puede usar la función `view ()`, que nos permite visualizar un objeto en su totalidad en formato tabular (R Core Team, 2023).
 
 ## Selección y filtrado de datos en data frames
 
