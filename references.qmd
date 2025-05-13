@@ -12,6 +12,8 @@ Belsley, D. A., Kuh, E., & Welsch, R. E. (1980). Regression Diagnostics: Identif
 
 Bryan, J. (2018). Happy Git and GitHub for the useR. <https://happygitwithr.com/>
 
+Chambers, J. (2008). *Software for data analysis: Programming with R* (1st ed.). Springer. <https://doi.org/10.1007/978-0-387-75936-4>
+
 Cleveland, W. S. (1993). Visualizing Data. Hobart Press.
 
 Cohen, J., Cohen, P., West, S. G., & Aiken, L. S. (2003). *Applied multiple regression/correlation analysis for the behavioral sciences* (3rd ed.). Lawrence Erlbaum Associates Publishers.

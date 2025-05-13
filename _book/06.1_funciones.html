@@ -525,14 +525,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#tipos-de-funciones" id="toc-tipos-de-funciones" class="nav-link" data-scroll-target="#tipos-de-funciones"><span class="header-section-number">7.1.1</span> Tipos de funciones</a></li>
   <li><a href="#funciones-predefinidas-en-r" id="toc-funciones-predefinidas-en-r" class="nav-link" data-scroll-target="#funciones-predefinidas-en-r"><span class="header-section-number">7.1.2</span> Funciones predefinidas en R</a></li>
-  <li><a href="#diferencias-entre-funciones-predefinidas-y-personalizadas" id="toc-diferencias-entre-funciones-predefinidas-y-personalizadas" class="nav-link" data-scroll-target="#diferencias-entre-funciones-predefinidas-y-personalizadas"><span class="header-section-number">7.1.3</span> Diferencias entre funciones predefinidas y personalizadas</a></li>
+  <li><a href="#funciones-personalizadas-en-r" id="toc-funciones-personalizadas-en-r" class="nav-link" data-scroll-target="#funciones-personalizadas-en-r"><span class="header-section-number">7.1.3</span> Funciones personalizadas en R</a></li>
+  <li><a href="#diferencias-entre-funciones-predefinidas-y-personalizadas" id="toc-diferencias-entre-funciones-predefinidas-y-personalizadas" class="nav-link" data-scroll-target="#diferencias-entre-funciones-predefinidas-y-personalizadas"><span class="header-section-number">7.1.4</span> Diferencias entre funciones predefinidas y personalizadas</a></li>
   </ul></li>
-  <li><a href="#usos-y-beneficios-de-las-funciones-en-r" id="toc-usos-y-beneficios-de-las-funciones-en-r" class="nav-link" data-scroll-target="#usos-y-beneficios-de-las-funciones-en-r"><span class="header-section-number">7.2</span> Usos y beneficios de las funciones en R</a></li>
-  <li><a href="#cómo-crear-funciones-en-r-sintaxis-y-ejemplos-básicos" id="toc-cómo-crear-funciones-en-r-sintaxis-y-ejemplos-básicos" class="nav-link" data-scroll-target="#cómo-crear-funciones-en-r-sintaxis-y-ejemplos-básicos"><span class="header-section-number">7.3</span> Cómo crear funciones en R: Sintaxis y ejemplos básicos</a>
+  <li><a href="#usos-y-beneficios-de-las-funciones-en-r" id="toc-usos-y-beneficios-de-las-funciones-en-r" class="nav-link" data-scroll-target="#usos-y-beneficios-de-las-funciones-en-r"><span class="header-section-number">7.2</span> Usos y beneficios de las funciones en R</a>
   <ul class="collapse">
-  <li><a href="#sintaxis-básica" id="toc-sintaxis-básica" class="nav-link" data-scroll-target="#sintaxis-básica"><span class="header-section-number">7.3.1</span> Sintaxis básica</a></li>
+  <li><a href="#ejemplo-de-automatización-con-funciones" id="toc-ejemplo-de-automatización-con-funciones" class="nav-link" data-scroll-target="#ejemplo-de-automatización-con-funciones"><span class="header-section-number">7.2.1</span> Ejemplo de automatización con funciones</a></li>
+  </ul></li>
+  <li><a href="#creación-de-funciones-en-r-sintaxis-y-elementos-fundamentales" id="toc-creación-de-funciones-en-r-sintaxis-y-elementos-fundamentales" class="nav-link" data-scroll-target="#creación-de-funciones-en-r-sintaxis-y-elementos-fundamentales"><span class="header-section-number">7.3</span> Creación de funciones en R: Sintaxis y elementos fundamentales</a>
+  <ul class="collapse">
+  <li><a href="#sintaxis-general-de-una-función-en-r" id="toc-sintaxis-general-de-una-función-en-r" class="nav-link" data-scroll-target="#sintaxis-general-de-una-función-en-r"><span class="header-section-number">7.3.1</span> Sintaxis general de una función en R</a></li>
   <li><a href="#elementos-clave-de-una-función" id="toc-elementos-clave-de-una-función" class="nav-link" data-scroll-target="#elementos-clave-de-una-función"><span class="header-section-number">7.3.2</span> Elementos clave de una función</a></li>
-  <li><a href="#ejemplo-básico" id="toc-ejemplo-básico" class="nav-link" data-scroll-target="#ejemplo-básico"><span class="header-section-number">7.3.3</span> Ejemplo básico</a></li>
+  <li><a href="#ejemplo-de-función-personalizada" id="toc-ejemplo-de-función-personalizada" class="nav-link" data-scroll-target="#ejemplo-de-función-personalizada"><span class="header-section-number">7.3.3</span> Ejemplo de función personalizada</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -560,76 +564,77 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Las funciones son uno de los pilares fundamentales de la programación en R. Constituyen bloques de código que encapsulan una serie de instrucciones diseñadas para realizar tareas específicas. Estas permiten automatizar procesos, reducir la repetición de código y mejorar la legibilidad de los scripts. Comprender cómo funcionan las funciones y cómo crearlas es esencial para aprovechar al máximo las capacidades de R en el análisis estadístico y la programación (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
-<p>Esta sección aborda el concepto de función en R, su utilización y el proceso para crear funciones personalizadas que resuelvan necesidades particulares.</p>
+<p>Las funciones constituyen uno de los componentes esenciales y estructurales de la programación en R, desempeñando un papel central en la automatización de tareas, la reducción de la redundancia y la mejora de la legibilidad y mantenibilidad del código. Una función puede entenderse como un bloque de instrucciones encapsuladas que, al ser invocadas, ejecutan una tarea específica sobre uno o varios valores de entrada, denominados argumentos, y devuelven un resultado. El dominio en la creación y utilización de funciones es indispensable para aprovechar plenamente las capacidades de R en el análisis estadístico, la manipulación de datos y el desarrollo de soluciones eficientes (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
+<p>El presente capítulo explora en profundidad el concepto de función en R, su estructura fundamental, los tipos existentes y el proceso para definir funciones personalizadas que respondan a necesidades analíticas particulares.</p>
 <section id="definición-y-características-de-las-funciones-en-r" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="definición-y-características-de-las-funciones-en-r"><span class="header-section-number">7.1</span> Definición y características de las funciones en R</h2>
-<p>Una función en R se define como un objeto capaz de recibir uno o más valores de entrada, denominados argumentos, ejecutar una serie de operaciones sobre ellos y devolver un resultado. La utilización de funciones permite estructurar el código de manera eficiente y reutilizable, lo que es fundamental para el desarrollo de proyectos complejos (Chambers, 2008).</p>
-<p>Toda función en R se compone de tres elementos principales:</p>
+<p>En R, una función se define formalmente como un objeto que recibe uno o más argumentos, ejecuta una secuencia de operaciones sobre ellos y retorna un valor como resultado. El uso de funciones permite modularizar el código, facilitando su reutilización, mantenimiento y escalabilidad, aspectos cruciales en el desarrollo de proyectos de análisis de datos de cualquier envergadura (Chambers, 2008).</p>
+<p>Toda función en R está compuesta por los siguientes elementos fundamentales:</p>
 <ol type="1">
-<li><p>El <strong>nombre</strong>, que sirve como identificador para invocar la función.</p></li>
-<li><p>Los <strong>argumentos</strong>, que corresponden a los valores de entrada requeridos para ejecutar las operaciones internas.</p></li>
-<li><p>El <strong>cuerpo</strong>, que contiene el conjunto de instrucciones que determinan el comportamiento de la función.</p></li>
+<li><p><strong>Nombre:</strong> Identificador único que permite invocar la función dentro del entorno de trabajo.</p></li>
+<li><p><strong>Argumentos:</strong> Valores de entrada que la función requiere para ejecutar sus operaciones internas. Los argumentos pueden tener valores por defecto, lo que otorga flexibilidad y adaptabilidad a la función.</p></li>
+<li><p><strong>Cuerpo:</strong> Conjunto de instrucciones que definen el comportamiento de la función y especifican las operaciones a realizar sobre los argumentos recibidos.</p></li>
+<li><p><strong>Valor de retorno:</strong> Resultado que la función entrega tras la ejecución de su cuerpo. En R, este valor se especifica mediante la instrucción <code>return()</code>, aunque si no se utiliza explícitamente, la función devolverá el último valor evaluado.</p></li>
 </ol>
+<p>La correcta estructuración de estos elementos permite desarrollar funciones robustas, reutilizables y fácilmente integrables en flujos de trabajo complejos.</p>
 <section id="tipos-de-funciones" class="level3" data-number="7.1.1">
 <h3 data-number="7.1.1" class="anchored" data-anchor-id="tipos-de-funciones"><span class="header-section-number">7.1.1</span> Tipos de funciones</h3>
-<p>En R, las funciones se dividen en dos categorías principales:</p>
+<p>Las funciones en R pueden clasificarse en dos grandes categorías, según su origen y propósito:</p>
 <ol type="1">
-<li><p>Las <strong>funciones predefinidas,</strong> también conocidas como <strong>built-in</strong>, están incluidas en el propio lenguaje o en paquetes adicionales. Estas funciones cubren una amplia gama de tareas, como cálculos matemáticos, operaciones estadísticas, manipulación de datos y generación de gráficos.</p></li>
-<li><p>Las <strong>funciones personalizadas,</strong> o <strong>user-defined</strong>, son creadas por el usuario para abordar necesidades específicas que no se resuelven con las funciones predefinidas. Este tipo de funciones resulta especialmente útil para automatizar procesos repetitivos o implementar cálculos complejos adaptados a un contexto particular.</p></li>
+<li><p><strong>Funciones predefinidas (built-in):</strong> Son aquellas incluidas en el núcleo del lenguaje R o en paquetes adicionales ampliamente utilizados. Estas funciones abarcan una extensa variedad de tareas, que van desde operaciones matemáticas y estadísticas básicas, hasta la manipulación avanzada de datos y la generación de gráficos. Su uso es fundamental para la resolución eficiente de problemas comunes y para la implementación de análisis estándar (R Core Team, 2023).</p></li>
+<li><p><strong>Funciones personalizadas (user-defined):</strong> Son funciones definidas por el usuario para abordar necesidades específicas que no pueden resolverse mediante las funciones predefinidas. La creación de funciones personalizadas resulta especialmente útil para automatizar procesos repetitivos, encapsular procedimientos complejos y adaptar el análisis a contextos particulares. El desarrollo de funciones propias fomenta la modularidad y la reutilización del código, contribuyendo a la eficiencia y escalabilidad de los proyectos (Wickham &amp; Grolemund, 2017; Chambers, 2008).</p></li>
 </ol>
-<p>El dominio de la creación y el uso de funciones, tanto predefinidas como personalizadas, es clave para desarrollar análisis eficientes y escalables en R (R Core Team, 2023; Wickham &amp; Grolemund, 2017; Chambers, 2008).</p>
 </section>
 <section id="funciones-predefinidas-en-r" class="level3" data-number="7.1.2">
 <h3 data-number="7.1.2" class="anchored" data-anchor-id="funciones-predefinidas-en-r"><span class="header-section-number">7.1.2</span> Funciones predefinidas en R</h3>
-<p>Las funciones predefinidas en R constituyen herramientas fundamentales para la realización de operaciones habituales de manera eficiente y directa. Estas funciones, incluidas en el núcleo del lenguaje, permiten efectuar cálculos estadísticos, manipular datos y obtener resúmenes sin necesidad de definir procedimientos adicionales. Su uso facilita la resolución de tareas comunes y contribuye a la claridad del código (R Core Team, 2023).</p>
-<p>A continuación, se presentan ejemplos de algunas funciones predefinidas ampliamente utilizadas, junto con fragmentos de código que ilustran su aplicación:</p>
+<p>Las funciones predefinidas en R constituyen un conjunto de herramientas esenciales que facilitan la ejecución de operaciones comunes de manera eficiente y directa. Integradas en el núcleo del lenguaje y en diversos paquetes complementarios, estas funciones permiten realizar cálculos estadísticos, manipular datos y obtener resúmenes informativos sin necesidad de definir procedimientos adicionales. Su uso simplifica la resolución de tareas habituales y contribuye a la claridad y concisión del código (R Core Team, 2023).</p>
+<p>A continuación, se presentan algunos ejemplos de funciones predefinidas ampliamente utilizadas en R, junto con fragmentos de código que ilustran su aplicación:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de un vector de datos</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la media aritmética</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(datos)           <span class="co"># Resultado: 3</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(datos)           <span class="co"># Resultado: 13</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 3</code></pre>
+<pre><code>[1] 13</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Suma de los elementos del vector</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(datos)             <span class="co"># Resultado: 15</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(datos)             <span class="co"># Resultado: 325</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 15</code></pre>
+<pre><code>[1] 325</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cálculo de la desviación estándar</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(datos)        <span class="co"># Resultado: 1.581139</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(datos)        <span class="co"># Resultado: 7.359801</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.581139</code></pre>
+<pre><code>[1] 7.359801</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen estadístico del conjunto de datos</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos)   <span class="co"># Resultado:</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-      1       2       3       3       4       5 </code></pre>
+      1       7      13      13      19      25 </code></pre>
 </div>
 </div>
-<p>Estas funciones están disponibles de forma predeterminada en R y permiten realizar análisis estadísticos básicos de manera inmediata, sin requerir definiciones adicionales por parte del usuario. Su dominio es esencial para el trabajo cotidiano con datos en R (R Core Team, 2023).</p>
-<section id="funciones-personalizadas-en-r" class="level4" data-number="7.1.2.1">
-<h4 data-number="7.1.2.1" class="anchored" data-anchor-id="funciones-personalizadas-en-r"><span class="header-section-number">7.1.2.1</span> Funciones personalizadas en R</h4>
+<p>Estas funciones están disponibles de forma predeterminada en R y permiten realizar análisis estadísticos básicos de manera inmediata, sin requerir definiciones adicionales por parte del usuario. Su dominio es esencial para el trabajo cotidiano con datos en R (R Core Team, 2023). Además de las funciones mostradas, R ofrece una amplia gama de funciones predefinidas para tareas como la manipulación de cadenas de texto (<code>grep</code>, <code>gsub</code>), la gestión de fechas y horas (<code>Sys.Date</code>, <code>strptime</code>), la generación de números aleatorios (<code>runif</code>, <code>rnorm</code>) y la creación de gráficos (<code>plot</code>, <code>hist</code>), entre muchas otras.</p>
+</section>
+<section id="funciones-personalizadas-en-r" class="level3" data-number="7.1.3">
+<h3 data-number="7.1.3" class="anchored" data-anchor-id="funciones-personalizadas-en-r"><span class="header-section-number">7.1.3</span> Funciones personalizadas en R</h3>
 <p>Las funciones personalizadas permiten al usuario definir procedimientos específicos para resolver problemas que no están cubiertos por las funciones predefinidas. Este tipo de funciones resulta especialmente útil para automatizar tareas repetitivas o implementar cálculos complejos adaptados a necesidades particulares. La creación de funciones personalizadas contribuye a la organización y reutilización del código, facilitando el desarrollo de análisis más eficientes (R Core Team, 2023).</p>
 <p>A continuación, se muestra un ejemplo de cómo definir y utilizar una función personalizada en R para calcular el área de un círculo a partir de su radio:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de una función personalizada para calcular el área de un círculo</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>calcular_area_circulo <span class="ot">&lt;-</span> <span class="cf">function</span>(radio) {</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>area_circulo <span class="ot">&lt;-</span> <span class="cf">function</span>(radio) {</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  area <span class="ot">&lt;-</span> pi <span class="sc">*</span> radio<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(area)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de la función personalizada</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">calcular_area_circulo</span>(<span class="dv">5</span>)   <span class="co"># Resultado: 78.53982</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>area <span class="ot">&lt;-</span> <span class="fu">area_circulo</span>(<span class="dv">5</span>)   <span class="co"># Resultado: 78.53982</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>En este ejemplo, el usuario define la lógica de la función, especifica el argumento necesario (radio) y utiliza la función para obtener el resultado deseado.</p>
+<p>En este ejemplo, el usuario define la lógica de la función, especifica el argumento necesario (radio) y utiliza la función para obtener el resultado deseado. La función <code>area_circulo</code> encapsula la fórmula matemática para el cálculo del área, lo que permite reutilizarla fácilmente con diferentes valores de radio sin necesidad de repetir el código.</p>
 </section>
-</section>
-<section id="diferencias-entre-funciones-predefinidas-y-personalizadas" class="level3" data-number="7.1.3">
-<h3 data-number="7.1.3" class="anchored" data-anchor-id="diferencias-entre-funciones-predefinidas-y-personalizadas"><span class="header-section-number">7.1.3</span> Diferencias entre funciones predefinidas y personalizadas</h3>
+<section id="diferencias-entre-funciones-predefinidas-y-personalizadas" class="level3" data-number="7.1.4">
+<h3 data-number="7.1.4" class="anchored" data-anchor-id="diferencias-entre-funciones-predefinidas-y-personalizadas"><span class="header-section-number">7.1.4</span> Diferencias entre funciones predefinidas y personalizadas</h3>
 <p>Las principales diferencias entre funciones predefinidas y personalizadas en R se resumen en la siguiente tabla:</p>
 <table class="caption-top table">
 <colgroup>
@@ -646,53 +651,68 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td><strong>Disponibilidad</strong></td>
+<td>Disponibilidad</td>
 <td>Incluidas en R o en paquetes</td>
 <td>Creadas por el usuario</td>
 </tr>
 <tr class="even">
-<td><strong>Flexibilidad</strong></td>
+<td>Flexibilidad</td>
 <td>Limitada a las tareas para las que fueron diseñadas</td>
 <td>Totalmente adaptables a las necesidades del usuario</td>
 </tr>
 <tr class="odd">
-<td><strong>Ejemplos</strong></td>
+<td>Ejemplos</td>
 <td><code>mean()</code>, <code>sum()</code>, <code>sd()</code>, <code>summary()</code></td>
-<td><code>calcular_area_circulo()</code></td>
+<td><code>area_circulo()</code></td>
 </tr>
 <tr class="even">
-<td><strong>Reutilización</strong></td>
+<td>Reutilización</td>
 <td>Reutilizables en cualquier script</td>
-<td>Reutilizables si se definen en el entorno o importan</td>
+<td>Reutilizables si se definen en el entorno o se importan</td>
+</tr>
+<tr class="odd">
+<td>Mantenimiento</td>
+<td>Actualizadas por los desarrolladores de R o del paquete</td>
+<td>Mantenidas por el usuario</td>
+</tr>
+<tr class="even">
+<td>Documentación</td>
+<td>Generalmente bien documentadas en la ayuda de R</td>
+<td>Requieren documentación explícita por parte del usuario</td>
 </tr>
 </tbody>
 </table>
-<p>Esta distinción permite seleccionar el tipo de función más adecuado según el contexto y los objetivos del análisis (R Core Team, 2023).</p>
+<p>Esta distinción permite seleccionar el tipo de función más adecuado según el contexto y los objetivos del análisis (R Core Team, 2023). En general, se recomienda utilizar funciones predefinidas siempre que sea posible, ya que suelen estar optimizadas y bien probadas. Sin embargo, cuando se requiere una funcionalidad específica que no está disponible en las funciones predefinidas, la creación de funciones personalizadas es la solución más adecuada.</p>
 </section>
 </section>
 <section id="usos-y-beneficios-de-las-funciones-en-r" class="level2" data-number="7.2">
 <h2 data-number="7.2" class="anchored" data-anchor-id="usos-y-beneficios-de-las-funciones-en-r"><span class="header-section-number">7.2</span> Usos y beneficios de las funciones en R</h2>
-<p>El empleo de funciones en R aporta ventajas significativas que optimizan el desarrollo y la gestión de proyectos de análisis de datos. La reutilización de código es uno de los principales beneficios, ya que una función definida puede emplearse en distintas partes de un mismo proyecto o en proyectos diferentes, lo que reduce la duplicación y facilita el mantenimiento. Además, las funciones promueven la modularidad, permitiendo descomponer problemas complejos en componentes más simples y manejables, lo que mejora la organización y la estructura del código.</p>
-<p>Otro aspecto relevante es la legibilidad, ya que encapsular operaciones dentro de funciones contribuye a que el código sea más claro y comprensible, facilitando su revisión y colaboración entre usuarios. Asimismo, las funciones permiten automatizar tareas repetitivas, lo que incrementa la eficiencia y ahorra tiempo en la ejecución de procesos rutinarios (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
-<p>A continuación, se presenta un ejemplo de automatización mediante una función personalizada. Si se requiere calcular el área de varios círculos con diferentes radios, basta con aplicar la función previamente definida a un vector de radios, evitando así la repetición manual del cálculo:</p>
+<p>El uso de funciones en R representa una estrategia fundamental para optimizar el desarrollo y la gestión de proyectos de análisis de datos. Una de las ventajas más destacadas es la reutilización del código. Cuando se define una función, esta puede emplearse en diferentes partes de un mismo proyecto o incluso en proyectos distintos, lo que reduce la duplicación de instrucciones y facilita el mantenimiento del código. Esta reutilización contribuye a minimizar errores, ya que la lógica centralizada en una función puede ser actualizada o corregida en un solo lugar, propagando automáticamente los cambios a todas las instancias donde se utiliza.</p>
+<p>Otro beneficio esencial es la modularidad. Las funciones permiten descomponer problemas complejos en componentes más simples y manejables. Esta descomposición facilita la organización y la estructura del código, haciendo que cada función se enfoque en una tarea específica. Como resultado, el proceso de depuración y mejora del código se vuelve más eficiente, ya que es posible identificar y corregir errores en módulos independientes sin afectar el resto del programa.</p>
+<p>La legibilidad y la mantenibilidad del código también se ven favorecidas por el uso de funciones. Encapsular operaciones dentro de funciones contribuye a que el código sea más claro y comprensible, lo que facilita su revisión y la colaboración entre diferentes usuarios o equipos de trabajo. Además, la automatización de tareas repetitivas mediante funciones incrementa la eficiencia y ahorra tiempo en la ejecución de procesos rutinarios, permitiendo que el analista se concentre en aspectos más estratégicos del análisis (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
+<section id="ejemplo-de-automatización-con-funciones" class="level3" data-number="7.2.1">
+<h3 data-number="7.2.1" class="anchored" data-anchor-id="ejemplo-de-automatización-con-funciones"><span class="header-section-number">7.2.1</span> Ejemplo de automatización con funciones</h3>
+<p>Para ilustrar estos beneficios, se puede considerar el caso en el que se requiere calcular el área de varios círculos con diferentes radios. En lugar de repetir manualmente el cálculo para cada radio, basta con aplicar una función personalizada a un vector de radios. Por ejemplo:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>radios <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar la función a cada radio</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">calcular_area_circulo</span>(radios)</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>areas  <span class="co"># Resultado:</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>areas <span class="ot">&lt;-</span> <span class="fu">area_circulo</span>(radios)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>areas  </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El resultado será un vector con las áreas correspondientes a cada radio:</p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1]  3.141593 12.566371 28.274334 50.265482 78.539816</code></pre>
 </div>
 </div>
-<p>Este ejemplo ilustra cómo el uso de funciones personalizadas permite automatizar cálculos y trabajar de manera más eficiente con conjuntos de datos, reafirmando la importancia de las funciones en la programación con R (R Core Team, 2023).</p>
+<p>Este ejemplo demuestra cómo el uso de funciones personalizadas permite automatizar cálculos y trabajar de manera más eficiente con conjuntos de datos, reafirmando la importancia de las funciones en la programación con R (R Core Team, 2023).</p>
 </section>
-<section id="cómo-crear-funciones-en-r-sintaxis-y-ejemplos-básicos" class="level2" data-number="7.3">
-<h2 data-number="7.3" class="anchored" data-anchor-id="cómo-crear-funciones-en-r-sintaxis-y-ejemplos-básicos"><span class="header-section-number">7.3</span> Cómo crear funciones en R: Sintaxis y ejemplos básicos</h2>
+</section>
+<section id="creación-de-funciones-en-r-sintaxis-y-elementos-fundamentales" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="creación-de-funciones-en-r-sintaxis-y-elementos-fundamentales"><span class="header-section-number">7.3</span> Creación de funciones en R: Sintaxis y elementos fundamentales</h2>
 <p>La definición de funciones en R se realiza mediante una sintaxis clara y estructurada, lo que facilita la creación de procedimientos personalizados para resolver tareas específicas. Comprender la estructura básica de una función es fundamental para aprovechar al máximo la modularidad y reutilización del código en R (R Core Team, 2023; Wickham &amp; Grolemund, 2017).</p>
-<section id="sintaxis-básica" class="level3" data-number="7.3.1">
-<h3 data-number="7.3.1" class="anchored" data-anchor-id="sintaxis-básica"><span class="header-section-number">7.3.1</span> Sintaxis básica</h3>
-<p>La sintaxis general para crear una función en R es la siguiente:</p>
+<section id="sintaxis-general-de-una-función-en-r" class="level3" data-number="7.3.1">
+<h3 data-number="7.3.1" class="anchored" data-anchor-id="sintaxis-general-de-una-función-en-r"><span class="header-section-number">7.3.1</span> Sintaxis general de una función en R</h3>
+<p>La sintaxis básica para crear una función en R consiste en asignar un nombre descriptivo a la función y utilizar la palabra reservada <code>function</code>, seguida de una lista de argumentos entre paréntesis. El cuerpo de la función, delimitado por llaves, contiene las instrucciones y operaciones que se ejecutarán al llamar a la función. El valor de retorno se especifica mediante la instrucción <code>return()</code>, aunque si no se utiliza explícitamente, R devolverá automáticamente el último valor evaluado en el cuerpo de la función. La estructura general es la siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>nombre_funcion <span class="ot">&lt;-</span> <span class="cf">function</span>(argumento1, argumento2, ...) {</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Instrucciones y operaciones</span></span>
@@ -706,26 +726,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ol type="1">
 <li><p><strong>Nombre de la función</strong>: que debe ser descriptivo y reflejar claramente la tarea que realiza.</p></li>
 <li><p><strong>Argumentos</strong>: representan los valores de entrada requeridos por la función. Es posible asignar valores por defecto a estos argumentos para hacer la función más flexible.</p></li>
-<li><p><strong>Cuerpo de la función</strong>: donde se incluyen las operaciones y cálculos que se ejecutan al llamar a la función.</p></li>
-<li><p><strong>Valor de retorno</strong>: que se especifica mediante la instrucción return(). Si no se utiliza <code>return()</code>, la función devolverá automáticamente el último valor evaluado en su cuerpo.</p></li>
+<li><p><strong>Cuerpo de la función</strong>: contiene la lógica y las operaciones principales, y puede incluir validaciones y manejo de errores para asegurar la robustez del código.</p></li>
+<li><p><strong>Valor de retorno</strong>: es el resultado que la función entrega tras la ejecución de sus operaciones; este valor puede ser un dato simple o una estructura más compleja, dependiendo del propósito de la función.</p></li>
 </ol>
 </section>
-<section id="ejemplo-básico" class="level3" data-number="7.3.3">
-<h3 data-number="7.3.3" class="anchored" data-anchor-id="ejemplo-básico"><span class="header-section-number">7.3.3</span> Ejemplo básico</h3>
+<section id="ejemplo-de-función-personalizada" class="level3" data-number="7.3.3">
+<h3 data-number="7.3.3" class="anchored" data-anchor-id="ejemplo-de-función-personalizada"><span class="header-section-number">7.3.3</span> Ejemplo de función personalizada</h3>
 <p>A continuación, se muestra un ejemplo de una función personalizada que convierte temperaturas de grados Celsius a Fahrenheit:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para convertir grados Celsius a Fahrenheit</span></span>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Definición de la función para convertir temperaturas de Celsius a Fahrenheit</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>celsius_a_fahrenheit <span class="ot">&lt;-</span> <span class="cf">function</span>(celsius) {</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  fahrenheit <span class="ot">&lt;-</span> (celsius <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(fahrenheit)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de la función</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">celsius_a_fahrenheit</span>(<span class="dv">25</span>)   <span class="co"># Resultado: 77</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Validación del tipo de dato del argumento de entrada</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(celsius)) {</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Si el argumento no es numérico, </span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>        <span class="co"># detiene la ejecución y muestra un mensaje de error </span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>        <span class="fu">stop</span>(<span class="st">"El argumento 'celsius' debe ser numérico"</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Cálculo de la conversión de Celsius a Fahrenheit</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>    fahrenheit <span class="ot">&lt;-</span> (celsius <span class="sc">*</span> <span class="dv">9</span><span class="sc">/</span><span class="dv">5</span>) <span class="sc">+</span> <span class="dv">32</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Devuelve el resultado de la conversión</span></span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(fahrenheit)</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso de la función</span></span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Se convierte 25 grados Celsius a Fahrenheit</span></span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>temperatura_celsius <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>resultado <span class="ot">&lt;-</span> <span class="fu">celsius_a_fahrenheit</span>(temperatura_celsius)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esta función demuestra varios conceptos importantes en la programación con R:</p>
+<ol type="1">
+<li><p><strong>Validación de datos:</strong> La función verifica que el argumento de entrada sea del tipo correcto antes de realizar los cálculos, lo que previene errores y mejora la robustez del código.</p></li>
+<li><p><strong>Claridad en la estructura:</strong> La función sigue una estructura lógica clara: validación, cálculo y retorno del resultado.</p></li>
+<li><p><strong>Documentación interna:</strong> Los comentarios explican el propósito de cada sección del código, facilitando su comprensión y mantenimiento.</p></li>
+<li><p><strong>Reutilización:</strong> La función puede ser utilizada con diferentes valores de entrada, incluyendo vectores de temperaturas, gracias a la vectorización inherente de R.</p></li>
+</ol>
+<p>Para ilustrar la versatilidad de la función, se puede utilizar con múltiples valores simultáneamente:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de uso con múltiples temperaturas</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>temperaturas_celsius <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">25</span>, <span class="dv">100</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>temperaturas_fahrenheit <span class="ot">&lt;-</span> <span class="fu">celsius_a_fahrenheit</span>(temperaturas_celsius)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>temperaturas_fahrenheit <span class="co"># Vector con los resultados:</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 77</code></pre>
+<pre><code>[1]  32  77 212</code></pre>
 </div>
 </div>
+<p>La inclusión de comentarios detallados y ejemplos de uso hace que el código sea más accesible para otros usuarios y facilita su mantenimiento a largo plazo, aspectos fundamentales en el desarrollo de software científico y análisis de datos (R Core Team, 2023).</p>
 
 
 </section>
