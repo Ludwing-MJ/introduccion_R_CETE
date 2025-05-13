@@ -1,6 +1,37 @@
-# Visualizaciones Base de R
+# Sistema Gráfico Base de R: Arquitectura y Funcionalidades
 
-La comprensión de los principios básicos de la visualización efectiva constituye la base para una correcta interpretación y comunicación de los datos en el análisis estadístico. Sin embargo, para llevar estos principios a la práctica, es indispensable conocer y dominar las herramientas que permiten construir representaciones gráficas de calidad. En este sentido, el lenguaje R ofrece un conjunto robusto de funciones base que facilitan la creación de diversos tipos de gráficos, esenciales para la exploración y validación de los supuestos estadísticos en la estadística clásica. El siguiente capítulo se centra en el uso de estas funciones, proporcionando ejemplos y recomendaciones para su aplicación en el análisis de datos, y mostrando cómo los conceptos teóricos previamente expuestos se materializan en la práctica cotidiana del análisis estadístico (Venables & Ripley, 2002).
+La representación gráfica de la información constituye un componente indispensable para la comprensión, la comunicación y la validación de resultados estadísticos. El sistema gráfico base de R ofrece un conjunto de herramientas versátiles que permiten construir visualizaciones de alta calidad siguiendo un enfoque incremental, en el cual cada elemento puede añadirse o modificarse de forma independiente (Murrell, 2018). A continuación se describe, de manera detallada y pedagógica, la arquitectura de este sistema y las funciones esenciales para el análisis exploratorio y la comprobación de supuestos en la estadística clásica.
+
+El propósito principal de la visualización es facilitar la detección de patrones, tendencias y anomalías que resultan difíciles de advertir mediante inspección numérica (Cleveland, 1993). Además, las gráficas permiten evaluar supuestos tales como normalidad, homocedasticidad y linealidad, que son cruciales para la validez de métodos paramétricos como la regresión lineal y el ANOVA (Venables & Ripley, 2002). Bajo esta perspectiva, la elaboración de gráficos debe regirse por principios de claridad, precisión y economía visual (Tufte, 2001).
+
+##  Arquitectura del sistema gráfico base
+
+El sistema gráfico base de R se sustenta en tres principios operativos:
+
+1.  **Modularidad:** cada elemento (ejes, marcas, títulos, objetos geométricos) puede añadirse o modificarse sin rehacer el gráfico desde cero.
+
+2.  **Jerarquía:** los componentes se dibujan en capas sucesivas sobre un “lienzo” inicial.
+
+3.  **Persistencia:** las modificaciones se aplican sobre el dispositivo gráfico activo hasta que este se cierra o se restablecen los parámetros originales (Murrell, 2018).
+
+```{r}
+# Ejemplo ilustrativo de construcción modular
+plot(NULL,                         # Lienzo vacío
+     xlim = c(0, 10), ylim = c(0, 10),
+     xlab = "Eje X", ylab = "Eje Y",
+     main = "Demostración de modularidad")
+
+grid(col = "gray90")               # Capa 1: cuadrícula
+
+# Capa 2: puntos de datos simulados
+set.seed(123)
+x <- runif(50, 0, 10)
+y <- 0.8 * x + rnorm(50, 0, 1)
+points(x, y, pch = 16, col = "navy")
+
+# Capa 3: línea de tendencia
+abline(lm(y ~ x), col = "red", lwd = 2, lty = 2)
+```
 
 ## Funciones gráficas básicas de R
 
@@ -22,13 +53,15 @@ Entre las funciones más utilizadas se encuentran:
 
 Estas funciones son la base para la mayoría de los análisis gráficos en estadística clásica, permitiendo una rápida inspección visual de los datos y la validación de supuestos (Venables & Ripley, 2002).
 
-## Creación de gráficos exploratorios
+## Funciones esenciales para la exploración de datos
 
-La creación de gráficos exploratorios en R base es fundamental para el análisis inicial de los datos y la detección de patrones, tendencias y anomalías. A continuación se detallan los principales tipos de gráficos, su sintaxis y los argumentos más relevantes, acompañados de ejemplos y explicaciones pedagógicas (Venables & Ripley, 2002; Murrell, 2018).
+La exploración visual de los datos es una etapa fundamental en cualquier análisis estadístico, ya que permite identificar patrones, tendencias, anomalías y posibles errores en los datos antes de aplicar modelos formales. El sistema gráfico base de R proporciona funciones versátiles y personalizables para la creación de gráficos exploratorios, facilitando la comprensión y la comunicación de los resultados (Venables & Ripley, 2002; Murrell, 2018).
 
 ### Histogramas
 
-La función principal para crear histogramas en R es `hist()`. Su sintaxis general es:
+El histograma es una herramienta gráfica que permite representar la distribución de una variable numérica, facilitando la identificación de asimetrías, curtosis, valores atípicos y posibles multimodalidades (Cleveland, 1993). En R, la función principal para crear histogramas es `hist()`.
+
+**Sintaxis general:**
 
 ```{r eval=FALSE}
 hist(x, 
@@ -42,7 +75,7 @@ hist(x,
      ...)
 ```
 
-**Explicación de los argumentos:**
+**Explicación de los argumentos principales:**
 
 1.  `x`: Vector numérico con los datos a graficar.
 
@@ -60,27 +93,33 @@ hist(x,
 
 8.  `...`: Otros argumentos gráficos adicionales.
 
-**Ejemplo detallado:**
+**Ejemplo:**
 
 ```{r}
-# Simulación de datos
+# Simulación de datos: calificaciones de 200 estudiantes
 set.seed(123)
 notas <- rnorm(200, mean = 70, sd = 10)
 
-# Histograma personalizado
+# Creación de un histograma personalizado
 hist(notas,
-     breaks = 15,                # Número de intervalos
-     freq = TRUE,                # Mostrar frecuencias absolutas
+     breaks = 15,                # Número de intervalos (bins)
+     freq = TRUE,                # Mostrar frecuencias absolutas en el eje Y
      col = "lightblue",          # Color de las barras
-     border = "darkblue",        # Color del borde
-     main = "Histograma de calificaciones", # Título
-     xlab = "Puntaje",           # Etiqueta eje X
-     ylab = "Frecuencia")        # Etiqueta eje Y
+     border = "darkblue",        # Color del borde de las barras
+     main = "Histograma de calificaciones", # Título principal
+     xlab = "Puntaje",           # Etiqueta del eje X
+     ylab = "Frecuencia")        # Etiqueta del eje Y
+
+
 ```
+
+La elección del número de intervalos (`breaks`) es crucial para evitar interpretaciones erróneas: intervalos muy amplios pueden ocultar detalles importantes, mientras que intervalos muy estrechos pueden generar ruido visual (Venables & Ripley, 2002).
 
 ### Diagramas de caja (boxplots)
 
-La función principal es `boxplot()`. Su sintaxis general es:
+El diagrama de caja, o boxplot, es una herramienta gráfica que resume la dispersión, la mediana y la presencia de valores atípicos en una o varias muestras. Es especialmente útil para comparar grupos y detectar asimetrías (Tukey, 1977).
+
+**Sintaxis general:**
 
 ```{r eval=FALSE}
 boxplot(formula, 
@@ -111,7 +150,7 @@ boxplot(formula,
 
 8.  `...`: Otros argumentos gráficos.
 
-**Ejemplo detallado:**
+**Ejemplo:**
 
 ```{r}
 # Simulación de datos para dos grupos
@@ -119,20 +158,26 @@ set.seed(123)
 grupo <- factor(rep(c("Control", "Tratamiento"), each = 100))
 valores <- c(rnorm(100, 70, 8), rnorm(100, 75, 10))
 
-# Boxplot personalizado
+# Creación de un boxplot personalizado
 boxplot(valores ~ grupo,
         main = "Comparación entre Grupos",
         xlab = "Grupo",
         ylab = "Valores",
-        col = c("lightgreen", "lightcoral"),
-        border = "darkgray",
-        notch = TRUE,             # Mostrar muesca para comparar medianas
-        outline = TRUE)           # Mostrar valores atípicos
+        col = c("lightgreen", "lightcoral"), # Colores para cada grupo
+        border = "darkgray",                 # Color del borde
+        notch = TRUE,                        # Muesca para comparar medianas
+        outline = TRUE)                      # Mostrar valores atípicos
+
+
 ```
+
+La muesca en el boxplot ayuda a comparar visualmente las medianas: si las muescas no se superponen, existe evidencia de diferencia significativa entre los grupos (Murrell, 2018).
 
 ### Gráficos de dispersión
 
-La función principal es `plot()`. Su sintaxis general para dos variables es:
+El gráfico de dispersión es fundamental para analizar la relación entre dos variables cuantitativas, permitiendo identificar tendencias lineales, no lineales, agrupamientos y valores atípicos (Cleveland, 1993).
+
+**Sintaxis general:**
 
 ```{r eval=FALSE}
 plot(x, y, 
@@ -147,7 +192,7 @@ plot(x, y,
      ...)
 ```
 
-**Explicación de los argumentos:**
+**Explicación de los argumentos principales:**
 
 1.  `x`, `y`: Vectores numéricos de igual longitud.
 
@@ -165,10 +210,10 @@ plot(x, y,
 
 8.  `...`: Otros argumentos gráficos.
 
-**Ejemplo detallado:**
+**Ejemplo:**
 
 ```{r}
-# Simulación de datos
+# Simulación de datos correlacionados
 set.seed(123)
 x <- rnorm(100, mean = 10, sd = 2)
 y <- 2 * x + rnorm(100, 0, 3)
@@ -184,13 +229,16 @@ plot(x, y,
      col = "navy",                # Color de los puntos
      cex = 1.2)                   # Tamaño de los puntos
 
-# Añadir línea de regresión
+# Añadir línea de regresión lineal
 abline(lm(y ~ x), col = "red", lwd = 2, lty = 2)
+
 ```
+
+La adición de la línea de regresión ayuda a identificar la dirección y fuerza de la relación entre las variables (Venables & Ripley, 2002).
 
 ### Gráficos de líneas
 
-Para series temporales o secuencias, se usa `plot()` con `type = "l"`:
+Los gráficos de líneas son ideales para representar la evolución de una variable a lo largo del tiempo o en función de un orden secuencial, permitiendo detectar tendencias, ciclos y cambios abruptos (Murrell, 2018).
 
 ```{r eval=FALSE}
 plot(x, y, 
@@ -207,10 +255,10 @@ plot(x, y,
 
 2.  `lwd`: Grosor de la línea.
 
-**Ejemplo detallado:**
+**Ejemplo:**
 
 ```{r}
-# Simulación de serie temporal
+# Simulación de una serie temporal
 set.seed(123)
 tiempo <- 1:50
 medidas <- cumsum(rnorm(50))
@@ -224,137 +272,167 @@ plot(tiempo, medidas,
      col = "darkred",
      lwd = 2)                     # Grosor de la línea
 
-# Añadir puntos sobre la línea
+# Añadir puntos sobre la línea para enfatizar cada observación
 points(tiempo, medidas, pch = 16, col = "black")
+
 ```
+
+La combinación de líneas y puntos facilita la identificación de valores individuales y la tendencia global de la serie.
 
 ## Visualización para la comprobación de supuestos estadísticos
 
-La validación gráfica de supuestos estadísticos es fundamental para garantizar la validez de los análisis en estadística clásica. Esta sección se centra en las herramientas gráficas específicas que R base proporciona para evaluar los supuestos de normalidad, homocedasticidad y linealidad, esenciales en pruebas como ANOVA y regresión lineal (Venables & Ripley, 2002).
+La validación gráfica de los supuestos estadísticos es un paso esencial para garantizar la validez de los análisis en la estadística clásica. Antes de aplicar pruebas como ANOVA o modelos de regresión lineal, es fundamental verificar visualmente la normalidad, la homocedasticidad y la linealidad de los datos. El sistema gráfico base de R proporciona herramientas específicas para evaluar estos supuestos de manera eficiente y pedagógica (Venables & Ripley, 2002; Murrell, 2018).
 
-### Gráficos Q-Q para evaluar normalidad
+### Gráficos Q-Q: Evaluación visual de la normalidad
 
-Los gráficos Q-Q (quantile-quantile) constituyen una herramienta visual poderosa para evaluar el ajuste de los datos a una distribución teórica. Cuando los puntos se alinean sobre la diagonal, se puede inferir que los datos siguen la distribución de referencia, típicamente la normal. Las desviaciones sistemáticas de esta línea sugieren alejamientos de la normalidad que pueden requerir transformaciones de datos o el uso de métodos no paramétricos (Cleveland, 1993).
+El gráfico Q-Q (quantile-quantile) es una herramienta visual poderosa para comparar la distribución de los datos observados con una distribución teórica, generalmente la normal. Si los puntos del gráfico se alinean sobre la diagonal, se puede inferir que los datos siguen la distribución de referencia. Las desviaciones sistemáticas de esta línea indican alejamientos de la normalidad, lo que puede requerir transformaciones de los datos o el uso de métodos no paramétricos (Cleveland, 1993).
 
-La sintaxis básica para crear gráficos Q-Q en R incluye dos funciones principales: `qqnorm()` para crear el gráfico base y `qqline()` para añadir la línea de referencia. A continuación se presenta un ejemplo comentado que ilustra su implementación:
+**Sintaxis básica y explicación:**
+
+1.  `qqnorm()`: Genera el gráfico Q-Q de los datos frente a la normal.
+
+2.  `qqline()`: Añade la línea de referencia teórica.
+
+**Ejemplo:**
 
 ```{r}
 # Simulación de tres conjuntos de datos con diferentes distribuciones
 set.seed(123)
-datos_normales <- rnorm(100, mean = 0, sd = 1)      # Distribución normal
-datos_asimetricos <- rexp(100, rate = 1)            # Distribución exponencial
-datos_uniformes <- runif(100, min = -3, max = 3)    # Distribución uniforme
+# Datos con distribución normal
+datos_normales <- rnorm(100, mean = 0, sd = 1)   
+# Datos con distribución exponencial (asimétrica)
+datos_asimetricos <- rexp(100, rate = 1)        
+# Datos con distribución uniforme
+datos_uniformes <- runif(100, min = -3, max = 3)   
 
-# Configuración de la ventana gráfica para múltiples gráficos
-par(mfrow = c(1,3))
+# Configuración de la ventana gráfica para mostrar tres gráficos en una fila
+par(mfrow = c(1, 3))
 
 # Gráfico Q-Q para datos normales
 qqnorm(datos_normales,
-       main = "Datos Normales",
-       pch = 16,                # Tipo de punto: círculo sólido
-       col = "navy")           # Color de los puntos
-qqline(datos_normales,         # Línea de referencia
-       col = "red",            # Color de la línea
-       lwd = 2)                # Grosor de la línea
+       main = "Normal",
+       pch = 16,                # Círculo sólido
+       col = "navy")            # Color de los puntos
+qqline(datos_normales, col = "red", lwd = 2)  # Línea de referencia
 
 # Gráfico Q-Q para datos asimétricos
 qqnorm(datos_asimetricos,
-       main = "Datos Asimétricos",
+       main = "Exponencial",
        pch = 16,
        col = "darkgreen")
-qqline(datos_asimetricos,
-       col = "red",
-       lwd = 2)
+qqline(datos_asimetricos, col = "red", lwd = 2)
 
 # Gráfico Q-Q para datos uniformes
 qqnorm(datos_uniformes,
-       main = "Datos Uniformes",
+       main = "Uniforme",
        pch = 16,
        col = "purple")
-qqline(datos_uniformes,
-       col = "red",
-       lwd = 2)
+qqline(datos_uniformes, col = "red", lwd = 2)
 
 # Restaurar la configuración original de la ventana gráfica
-par(mfrow = c(1,1))
+par(mfrow = c(1, 1))
 ```
 
-La interpretación de estos gráficos se basa en el patrón que forman los puntos en relación con la línea de referencia. Según Venables & Ripley (2002), las desviaciones más comunes incluyen: 1) Colas pesadas, cuando los extremos se alejan de la línea, 2) Asimetría, cuando se forma un patrón curvilíneo, y 3) Bimodalidad, cuando aparece un patrón en forma de S.
+La interpretación de estos gráficos se basa en el patrón que forman los puntos en relación con la línea de referencia. Según Venables & Ripley (2002), las desviaciones más comunes incluyen:
+
+1.  **Colas pesadas:** cuando los extremos se alejan de la línea.
+
+2.  **Asimetría**: cuando se forma un patrón curvilíneo.
+
+3.  **Bimodalidad:** cuando aparece un patrón en forma de S.
 
 ### Gráficos de diagnóstico para modelos de regresión
 
-Los gráficos de diagnóstico en regresión permiten evaluar simultáneamente varios supuestos del modelo lineal. R proporciona una serie de gráficos diagnósticos automáticos a través de la función `plot()` aplicada a objetos de clase `lm`. El siguiente ejemplo ilustra su implementación y uso:
+La regresión lineal clásica asume linealidad, normalidad de los residuos, homocedasticidad (varianza constante) e independencia. R facilita la evaluación simultánea de estos supuestos mediante gráficos de diagnóstico automáticos generados con la función `plot()` aplicada a objetos de clase `lm` (Murrell, 2018).
+
+**Ejemplo:**
 
 ```{r}
 # Simulación de datos para regresión lineal
 set.seed(123)
 x <- seq(1, 100)                           # Variable predictora
-y <- 2 * x + rnorm(100, 0, 10)            # Variable respuesta con error normal
+y <- 2 * x + rnorm(100, 0, 10)             # Variable respuesta con error normal
 datos <- data.frame(x = x, y = y)          # Crear data frame
 
 # Ajuste del modelo de regresión lineal
 modelo <- lm(y ~ x, data = datos)          # Ajustar modelo
 
-# Gráficos de diagnóstico
-par(mfrow = c(2,2))                        # Configurar ventana 2x2
+# Configuración de la ventana gráfica para mostrar cuatro gráficos
+par(mfrow = c(2, 2))
 plot(modelo)                               # Generar gráficos diagnósticos
-
-# Restaurar la configuración original de la ventana gráfica
-par(mfrow = c(1,1))
-
+par(mfrow = c(1, 1))                       # Restaurar configuración
 ```
 
-Los gráficos diagnósticos generados incluyen, según Murrell (2018): 1) Residuos vs valores ajustados, para evaluar linealidad y homocedasticidad, 2) Q-Q de residuos, para verificar normalidad, 3) Scale-Location, para examinar la homogeneidad de varianza, y 4) Residuos vs Leverage, para identificar observaciones influyentes.
+Descripción e interpretación de los gráficos generados:
+
+1.  **Residuos vs valores ajustados:** Permite evaluar la linealidad y la homogeneidad de la varianza. Un patrón aleatorio indica que se cumplen los supuestos; patrones sistemáticos sugieren problemas de especificación del modelo.
+
+2.  **Q-Q de residuos:** Evalúa la normalidad de los residuos. Desviaciones de la línea diagonal indican que los residuos no son normales.
+
+3.  **Scale-Location (raíz cuadrada de los residuos estandarizados vs valores ajustados):** Permite examinar la homogeneidad de la varianza. Una banda horizontal indica homogeneidad de la varianza.
+
+4.  **Residuos vs leverage:** Identifica observaciones influyentes. Puntos alejados o con gran leverage pueden indicar outliers o casos influyentes que afectan el ajuste del modelo (Murrell, 2018).
 
 ## Personalización de gráficos en R base
 
-La personalización se logra modificando los argumentos de las funciones gráficas y añadiendo elementos con funciones auxiliares. A continuación se explican los argumentos más importantes y se muestra un ejemplo integral (Murrell, 2018).
+La personalización de gráficos es un aspecto fundamental para lograr visualizaciones claras, informativas y estéticamente agradables. En el sistema gráfico base de R, la personalización se realiza mediante la modificación de los argumentos de las funciones gráficas principales y la incorporación de elementos adicionales a través de funciones auxiliares. Esta flexibilidad permite adaptar cada gráfico a las necesidades específicas del análisis y a los estándares de comunicación científica (Murrell, 2018).
 
-### **Principales argumentos y funciones:**
+### **Argumentos y funciones clave para la personalizaciónA continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:**
 
-1.  `main`, `sub`, `xlab`, `ylab`: Títulos y etiquetas.
+A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:
 
-2.  `col`, `border`, `pch`, `lty`, `lwd`: Colores, símbolos, tipo y grosor de líneas.
+1.  **main, sub, xlab, ylab:** Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.
 
-3.  `cex`, `cex.axis`, `cex.lab`, `cex.main`: Tamaño de símbolos y textos.
+2.  **col, border, pch, lty, lwd:** Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.
 
-4.  `legend()`: Añade leyendas.
+3.  **cex, cex.axis, cex.lab, cex.main:** Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.
 
-5.  `text()`: Añade texto en posiciones específicas.
+4.  **legend():** Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.
 
-6.  `abline()`: Añade líneas horizontales, verticales o de regresión.
+5.  **text():** Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.
 
-7.  `grid()`: Añade cuadrícula.
+6.  **abline():** Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.
+
+7.  **grid():** Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.
 
 ### Ejemplo integral
 
+A continuación se presenta un ejemplo completo que ilustra cómo combinar estos argumentos y funciones para lograr una visualización profesional y clara:
+
 ```{r}
+# Simulación de datos para el ejemplo
+set.seed(123)
+x <- rnorm(100, mean = 10, sd = 2)
+y <- 2 * x + rnorm(100, 0, 3)
+
 # Gráfico de dispersión personalizado
 plot(x, y,
-     main = "Gráfico personalizado",
-     sub = "Datos simulados",
-     xlab = "Variable X",
-     ylab = "Variable Y",
-     col = "blue",                # Color de los puntos
-     pch = 17,                    # Triángulo sólido
-     cex = 1.5,                   # Tamaño de los puntos
-     cex.main = 1.2,              # Tamaño del título
-     cex.lab = 1.1)               # Tamaño de etiquetas
+     main = "Gráfico personalizado",      # Título principal
+     sub = "Datos simulados",             # Subtítulo
+     xlab = "Variable X",                 # Etiqueta eje X
+     ylab = "Variable Y",                 # Etiqueta eje Y
+     col = "black",                        # Color de los puntos
+     pch = 18,                            # Símbolo: rombo sólido
+     cex = 1.5,                           # Tamaño de los puntos
+     cex.main = 1.2,                      # Tamaño del título
+     cex.lab = 1.1)                       # Tamaño de las etiquetas
 
-# Añadir línea de regresión
-abline(lm(y ~ x), col = "red", lwd = 2, lty = 2)
+# Añadir línea de regresión lineal
+abline(lm(y ~ x), col = "red", lwd = 2, lty = 2)  # Línea de tendencia
 
-# Añadir leyenda
+# Añadir leyenda explicativa
 legend("topleft",
        legend = c("Datos", "Ajuste lineal"),
-       pch = c(17, NA),
-       lty = c(NA, 2),
-       col = c("blue", "red"),
-       bty = "n",
-       cex = 0.8)
+       pch = c(18, NA),                  # Símbolo para los datos
+       lty = c(NA, 2),                   # Línea discontinua para el ajuste
+       col = c("black", "red"),
+       bty = "n",                        # Sin borde en la leyenda
+       cex = 0.8)                        # Tamaño de la leyenda
 
-# Añadir cuadrícula
-grid(col = "gray80", lty = "dotted")
+# Añadir cuadrícula de fondo
+grid(col = "gray80", lty = "dotted")     # Cuadrícula con líneas punteadas grises
+
+
 ```
 
-Este ejemplo muestra cómo modificar títulos, etiquetas, colores, símbolos, tamaños, añadir líneas de tendencia, leyendas y cuadrículas para lograr una visualización clara y profesional (Murrell, 2018; Venables & Ripley, 2002).
+La personalización adecuada de los gráficos no solo mejora la estética, sino que también facilita la interpretación y la comunicación de los resultados, permitiendo resaltar los aspectos más relevantes del análisis (Murrell, 2018; Venables & Ripley, 2002).
