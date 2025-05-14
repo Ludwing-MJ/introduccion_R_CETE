@@ -16,7 +16,7 @@ book:
   sidebar: 
     logo: logo_cete_vector.png
     search: true
-    collapse-level: 2
+    collapse-level: 3
 
   repo-subdir: book
   sharing: [twitter, linkedin]

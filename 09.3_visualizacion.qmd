@@ -1,385 +1,707 @@
 # Visualización de datos con ggplot2
 
-## Contexto y origen de la base de datos utilizada
+En el contexto del análisis estadístico moderno, la visualización de datos constituye una herramienta esencial para la exploración, interpretación y comunicación de resultados. Si bien el sistema gráfico base de R ofrece una amplia variedad de funciones para la creación de gráficos, la creciente demanda de visualizaciones más sofisticadas, reproducibles y estéticamente profesionales ha impulsado el desarrollo de herramientas especializadas, entre las cuales destaca el paquete **ggplot2** (Wickham, 2016).
 
-La base de datos empleada en este capítulo corresponde a un estudio transversal realizado en la Universidad de San Carlos de Guatemala en 2002. El objetivo del estudio fue caracterizar a la población estudiantil de primer ingreso, recolectando información de 460 estudiantes de diversas facultades. Las variables incluidas abarcan datos sociodemográficos (facultad, edad, sexo, estado civil, jornada de estudio, año de ingreso), antropométricos (peso, talla, IMC), clínicos (presión arterial) y de hábitos (tabaquismo, consumo de alcohol, actividad física, entre otros). Esta base de datos, disponible en formato Excel y CSV, constituye un recurso ideal para ilustrar las capacidades de visualización de ggplot2 en el análisis estadístico aplicado a datos reales (Wickham, 2016).
+**ggplot2** es un paquete de R diseñado para la creación de gráficos estadísticos de alta calidad, basado en la “gramática de los gráficos” (Grammar of Graphics) propuesta por Wilkinson (2005). Esta gramática proporciona un marco conceptual que permite construir visualizaciones complejas a partir de componentes independientes y combinables, facilitando la personalización y la integración de múltiples capas de información en un solo gráfico.
 
-Antes de iniciar cualquier análisis, es fundamental importar correctamente la base de datos y asegurarse de que las variables tengan el tipo de dato adecuado. Se recomienda guardar el archivo en la carpeta de trabajo del proyecto y utilizar los siguientes comandos para su importación y verificación:
+El uso de ggplot2 se ha consolidado como un estándar en la comunidad científica y profesional debido a varias razones fundamentales:
+
+1.  **Claridad y profesionalismo:** Los gráficos generados con ggplot2 cumplen con los estándares visuales requeridos en publicaciones científicas, reportes técnicos y presentaciones académicas.
+
+2.  **Flexibilidad y modularidad:** La estructura de ggplot2 permite añadir, modificar o eliminar elementos gráficos de manera sencilla, adaptando cada visualización a las necesidades específicas del análisis.
+
+3.  **Reproducibilidad:** La sintaxis declarativa de ggplot2 facilita la documentación y replicación exacta de los gráficos, aspecto crucial en la investigación científica y la docencia.
+
+4.  **Integración con el ecosistema tidyverse:** ggplot2 forma parte del conjunto de paquetes tidyverse, lo que permite una integración fluida con herramientas para manipulación, transformación y modelado de datos (Wickham et al., 2019).
+
+En síntesis, ggplot2 es una herramienta indispensable para quienes buscan comunicar resultados estadísticos de manera clara, precisa y profesional. Su adopción en entornos académicos y profesionales responde a la necesidad de contar con visualizaciones que no solo sean informativas, sino también estéticamente adecuadas para su inclusión en documentos formales y publicaciones científicas.
+
+## Ventajas principales de ggplot2
+
+El paquete **ggplot2** se ha consolidado como una de las herramientas más utilizadas para la visualización de datos en R, tanto en el ámbito académico como profesional. Su popularidad se debe a una serie de ventajas que lo distinguen frente a otros sistemas gráficos, especialmente en el contexto del análisis estadístico y la elaboración de documentos formales.
+
+1.  **Modularidad y gramática de gráficos:** ggplot2 está basado en la “gramática de los gráficos” (Grammar of Graphics), lo que permite construir visualizaciones a partir de componentes independientes: datos, mapeos estéticos, geometrías, escalas, temas y capas adicionales. Esta modularidad facilita la creación de gráficos complejos de manera incremental, permitiendo añadir o modificar elementos sin rehacer el gráfico desde cero (Wilkinson, 2005; Wickham, 2016).
+
+2.  **Flexibilidad y personalización:** A diferencia del sistema gráfico base de R, ggplot2 ofrece una amplia gama de opciones para personalizar cada aspecto del gráfico, desde los colores y tipos de símbolos hasta la disposición de leyendas, títulos y escalas. Esta flexibilidad es fundamental para adaptar las visualizaciones a los estándares de publicaciones científicas y a las necesidades específicas de cada análisis (Wickham, 2016).
+
+3.  **Resultados visuales profesionales:** Los gráficos generados con ggplot2 presentan una estética cuidada y profesional por defecto, lo que facilita su inclusión directa en artículos científicos, reportes técnicos y presentaciones académicas. Además, la posibilidad de aplicar temas predefinidos o personalizados permite mantener la coherencia visual en todos los productos gráficos de un proyecto (Wickham, 2016).
+
+4.  **Reproducibilidad y transparencia:** La sintaxis declarativa de ggplot2 favorece la reproducibilidad de los análisis, ya que cada gráfico puede ser reconstruido exactamente a partir del código utilizado. Esto es especialmente relevante en la investigación científica, donde la transparencia y la replicabilidad son principios fundamentales (Wickham et al., 2019).
+
+5.  **Integración con el ecosistema tidyverse:** ggplot2 forma parte del tidyverse, un conjunto de paquetes diseñados para el manejo, transformación y modelado de datos en R. Esta integración permite una transición fluida desde la manipulación de datos hasta la visualización, optimizando el flujo de trabajo y reduciendo la posibilidad de errores (Wickham et al., 2019).
+
+6.  **Comunidad activa y abundancia de recursos:** La amplia adopción de ggplot2 ha dado lugar a una comunidad activa de usuarios y desarrolladores, lo que se traduce en una gran cantidad de recursos, tutoriales, ejemplos y extensiones disponibles para resolver dudas y ampliar las capacidades del paquete.
+
+En conjunto, estas ventajas hacen de ggplot2 una herramienta indispensable para quienes buscan comunicar resultados estadísticos de manera clara, precisa y profesional, cumpliendo con los estándares de calidad exigidos en la ciencia y la industria.
+
+## Gramática de los Gráficos en ggplot2
+
+La visualización de datos es una etapa fundamental en el análisis estadístico, ya que permite identificar patrones, tendencias y anomalías que pueden pasar desapercibidos en una inspección numérica (Cleveland, 1993; Tufte, 2001). En este contexto, **ggplot2** se destaca por su enfoque basado en la “gramática de los gráficos” (*Grammar of Graphics*), un marco conceptual que facilita la construcción de visualizaciones claras, reproducibles y adaptadas a los estándares de la comunicación científica (Wilkinson, 2005; Wickham, 2016).
+
+### Principios conceptuales de la gramática de los gráficos
+
+La gramática de los gráficos, propuesta originalmente por Wilkinson (2005), parte de la premisa de que toda visualización estadística puede descomponerse en un conjunto de componentes básicos. Este enfoque modular permite construir gráficos complejos a partir de la combinación sistemática de elementos independientes, lo que resulta especialmente útil para quienes se inician en la programación estadística, ya que reduce la complejidad y favorece la comprensión progresiva del proceso de visualización (Wickham, 2016).
+
+Según Cleveland (1993), la claridad y la precisión en la representación gráfica son esenciales para evitar interpretaciones erróneas y comunicar los resultados de manera efectiva. Por ello, la gramática de los gráficos enfatiza la importancia de definir explícitamente cada elemento visual, asegurando que el gráfico resultante sea informativo y estéticamente adecuado (Tufte, 2001).
+
+### Componentes esenciales de un gráfico en ggplot2
+
+A continuación se describen los principales componentes que conforman la gramática de los gráficos en ggplot2, siguiendo la estructura propuesta por Wilkinson (2005) y adaptada por Wickham (2016):
+
+1.  **Datos:** Constituyen el insumo fundamental de cualquier gráfico. En R, los datos suelen organizarse en data frames, lo que facilita su manipulación y visualización (Wickham & Grolemund, 2017).
+
+2.  **Mapeos estéticos (*aesthetics*):** Son las correspondencias entre las variables de los datos y las propiedades visuales del gráfico, como la posición en los ejes, el color, el tamaño o la forma de los elementos. Definir correctamente los mapeos es crucial para garantizar que la visualización transmita la información deseada (Wickham, 2016).
+
+3.  **Geometrías (*geoms*):** Representan los objetos gráficos que visualizan los datos, como puntos (`geom_point()`), líneas (`geom_line()`), barras (`geom_bar()`), cajas (`geom_boxplot()`), entre otros. La elección de la geometría depende del tipo de variable y del objetivo del análisis (Cleveland, 1993).
+
+4.  **Transformaciones estadísticas (*stats*):** Permiten aplicar cálculos o resúmenes estadísticos antes de la representación gráfica, como medias, medianas, conteos o ajustes de modelos. Por ejemplo, `geom_smooth()` puede añadir una línea de tendencia basada en un modelo de regresión (Wickham, 2016).
+
+5.  **Escalas:** Definen cómo se traducen los valores de las variables a propiedades visuales, por ejemplo, escalas de color, tamaño o forma. Las escalas permiten adaptar el gráfico a diferentes contextos y audiencias (Wilkinson, 2005).
+
+6.  **Sistemas de coordenadas:** Determinan el sistema de referencia utilizado para ubicar los elementos gráficos, siendo el cartesiano el más común, aunque también se pueden emplear coordenadas polares u otras transformaciones (Wickham, 2016).
+
+7.  **Facetas:** Permiten dividir el gráfico en subgráficos según los valores de una o más variables categóricas, facilitando la comparación visual entre grupos o condiciones experimentales (Wickham, 2016).
+
+8.  **Temas:** Controlan la apariencia general del gráfico, incluyendo el tipo y tamaño de fuente, colores de fondo, líneas de cuadrícula y otros elementos estéticos globales. La personalización de temas es fundamental para adaptar los gráficos a los estándares de publicaciones científicas (Tufte, 2001; Wickham, 2016).
+
+### Construcción secuencial y sintaxis básica de gráficos en ggplot2
+
+La sintaxis de ggplot2 se basa en la adición secuencial de capas, donde cada componente se incorpora mediante el operador `+`. Este enfoque modular permite construir gráficos de manera progresiva, añadiendo o modificando elementos según las necesidades del análisis (Wickham, 2016).
+
+**Ejemplo con datos simulados:**
 
 ```{r message=FALSE, warning=FALSE}
-# Instalar y cargar los paquetes necesarios
-if (!require("tidyverse")) install.packages("tidyverse")
-if (!require("readxl")) install.packages("readxl")
+# Cargar el paquete ggplot2
+library(ggplot2)
 
+# Simulación de datos
+set.seed(123)
+x <- rnorm(100, mean = 10, sd = 2)
+y <- 2 * x + rnorm(100, 0, 3)
+datos <- data.frame(x = x, y = y)
 
-# Importar la base de datos USAC 2002
-USAC2002 <- read_excel("Base_de_datos_USAC_2002.xlsx", sheet = "DATOS")
-
-# Comprobar la estructura de las variables
-str(USAC2002)
+# Construcción secuencial de un gráfico de dispersión
+ggplot(datos, aes(x = x, y = y)) +   # Inicialización y mapeo estético
+  geom_point()                       # Capa de geometría: puntos
 ```
 
-Este paso permite identificar si existen variables que requieren ser convertidas a factores (por ejemplo, SEXO, FACULTAD, JORNADA) o si es necesario ajustar nombres para facilitar su uso en R. La correcta preparación de los datos es esencial para obtener visualizaciones precisas y significativas (Wickham, 2016).
+**Explicación:**
 
-## Introducción al paquete ggplot2
+1.  `ggplot(datos, aes(x = x, y = y))` inicializa el objeto gráfico y define que la variable `x` se mapea al eje horizontal y `y` al eje vertical.
 
-ggplot2 es un paquete de R que se utiliza para crear gráficos estadísticos de alta calidad de manera sencilla y flexible. Forma parte del conjunto de herramientas conocido como tidyverse, que está diseñado para facilitar el análisis y la visualización de datos. La principal característica de ggplot2 es que se basa en la “gramática de los gráficos”, una idea desarrollada por Wilkinson (2005) y adaptada por Wickham (2016), que permite construir gráficos complejos a partir de piezas simples y combinables.
+2.  `geom_point()` añade la capa de puntos, representando cada observación como un símbolo en el plano cartesiano.
 
-A diferencia de los gráficos base de R, donde cada tipo de gráfico tiene su propia función y la personalización puede ser complicada, ggplot2 utiliza una estructura modular. Esto significa que se puede empezar con un gráfico básico y, poco a poco, ir añadiendo o modificando elementos para adaptarlo a lo que se necesita. Así, se pueden crear gráficos claros, atractivos y personalizados para comunicar los resultados de un análisis de datos de forma efectiva (Wickham, 2016).
+3.  El operador `+` permite añadir más capas o personalizaciones de manera sencilla y ordenada.
 
-### Ventajas principales de ggplot2
+### Ejemplo avanzado: Incorporación de capas y personalización
 
-1.  Permite crear muchos tipos de gráficos, como barras, líneas, puntos, histogramas y boxplots, entre otros.
+La verdadera potencia de ggplot2 se manifiesta al combinar múltiples capas y personalizaciones en un solo gráfico. A continuación se muestra cómo añadir una línea de tendencia y personalizar etiquetas y temas, siguiendo las recomendaciones de claridad y economía visual de Tufte (2001):
 
-2.  Cada parte del gráfico se puede personalizar fácilmente: colores, títulos, etiquetas, escalas, temas y más.
+```{r message=FALSE, warning=FALSE}
+ggplot(datos, aes(x = x, y = y)) +
+  # Puntos personalizados
+  geom_point(color = "navy", size = 2) +                
+  # Línea de regresión
+  geom_smooth(method = "lm", color = "red", linetype = "dashed") + 
+  labs(
+    title = "Relación entre X e Y",
+    subtitle = "Ejemplo con datos simulados",
+    x = "Variable X",
+    y = "Variable Y"
+  ) +
+  # Tema profesional y limpio
+  theme_minimal(base_size = 13)                        
+```
 
-3.  Se integra muy bien con otras herramientas del tidyverse, lo que facilita trabajar con datos y visualizarlos en un solo flujo de trabajo.
+**Explicación:**
 
-4.  Utiliza una lógica de “capas”, lo que significa que se pueden añadir diferentes elementos (como puntos, líneas o etiquetas) uno sobre otro, de manera ordenada y controlada.
+1.  `geom_smooth(method = "lm", ...)` añade una línea de regresión lineal con estilo personalizado, facilitando la interpretación de la tendencia general de los datos (Cleveland, 1993).
 
-### ¿Cómo funciona la gramática de los gráficos?
+2.  `labs()` permite definir títulos y etiquetas descriptivas, mejorando la claridad del gráfico.
 
-La gramática de los gráficos es como una receta que indica qué ingredientes debe tener un gráfico y cómo combinarlos. En ggplot2, cada gráfico se construye a partir de varios componentes básicos (Wickham, 2016; Wilkinson, 2005):
+3.  `theme_minimal()` aplica un tema visual adecuado para presentaciones y publicaciones, siguiendo los principios de economía visual (Tufte, 2001).
 
-1.  **Datos**: Es el conjunto de información que se quiere visualizar, normalmente en forma de tabla o data frame.
+### Ventajas del enfoque modular y declarativo
 
-2.  **Mapeos estéticos (aes)**: Son las instrucciones que indican cómo se relacionan las variables de los datos con los elementos visuales del gráfico, como la posición en los ejes, el color o el tamaño de los puntos.
+El enfoque modular y declarativo de ggplot2 ofrece ventajas significativas para principiantes y usuarios avanzados:
 
-3.  **Geometrías (geoms)**: Son las formas que se usan para mostrar los datos, por ejemplo, barras para un gráfico de barras, puntos para un gráfico de dispersión, o cajas para un boxplot.
+1.  Permite construir gráficos complejos de manera incremental y reproducible, facilitando el aprendizaje progresivo (Wickham, 2016).
 
-4.  **Escalas**: Permiten controlar cómo se muestran los valores en el gráfico, por ejemplo, los colores, los tamaños o los intervalos de los ejes.
+2.  Facilita la modificación y personalización de cada elemento visual, adaptando los gráficos a diferentes audiencias y contextos (Wilkinson, 2005).
 
-5.  **Sistemas de coordenadas**: Determinan el tipo de espacio en el que se dibuja el gráfico, como el sistema cartesiano (el más común) o el sistema polar (para gráficos circulares).
+3.  Favorece la claridad y la transparencia en la comunicación de resultados, aspectos esenciales en la investigación científica y la docencia (Cleveland, 1993; Tufte, 2001).
 
-6.  **Facetas**: Sirven para dividir el gráfico en varios paneles, mostrando diferentes grupos de datos uno al lado del otro, lo que facilita la comparación entre categorías.
+## Estructura y Flujo de Trabajo para la Construcción de Gráficos en ggplot2
 
-7.  **Temas**: Permiten cambiar el aspecto general del gráfico, como el fondo, los textos y las líneas de cuadrícula, para que el resultado sea más claro y profesional.
+La creación de gráficos profesionales en **ggplot2** sigue un flujo de trabajo sistemático y reproducible, que facilita tanto el aprendizaje para principiantes como la producción de visualizaciones de alta calidad para informes y publicaciones científicas (Wickham, 2016; Wilkinson, 2005). Comprender este workflow es esencial para aprovechar al máximo las capacidades del paquete y garantizar la claridad y la coherencia en la comunicación de resultados.
 
-## Estructura básica de un gráfico en ggplot2
+### Preparación y organización de los datos
 
-La construcción de un gráfico en ggplot2 sigue una lógica de capas, donde cada componente se añade mediante el operador `+`. El proceso básico incluye:
+El primer paso en cualquier proceso de visualización es la preparación de los datos. En R, los datos suelen organizarse en data frames, lo que permite una manipulación eficiente y una integración directa con ggplot2 (Wickham & Grolemund, 2017). Es fundamental asegurarse de que los datos estén limpios, estructurados y listos para ser mapeados a los elementos visuales del gráfico.
 
-1.  **Iniciar el objeto gráfico** con la función `ggplot()`, especificando el conjunto de datos y los mapeos estéticos principales mediante `aes()`. Por ejemplo, se puede representar la EDAD en el eje X y el IMC en el eje Y.
-
-2.  **Añadir una o más capas geométricas**, como `geom_point()` para puntos, `geom_histogram()` para histogramas, o `geom_boxplot()` para diagramas de caja.
-
-3.  **Incorporar escalas** para controlar la interpretación de los valores, como escalas de color o tamaño.
-
-4.  **Añadir etiquetas y títulos** con `labs()` o `ggtitle()`, y modificar la apariencia general del gráfico con funciones de tema como `theme_minimal()`.
-
-5.  **Opcionalmente, añadir facetas** para dividir el gráfico en paneles según una variable categórica, como SEXO o JORNADA.
-
-**Ejemplo básico:**
+**Ejemplo:**
 
 ```{r}
-ggplot(data = USAC2002, aes(x = EDAD, y = IMC)) +
-  geom_point() +
-  labs(title = "Relación entre edad e IMC", 
-       x = "Edad (años)", 
-       y = "Índice de Masa Corporal (IMC)")   
+# Simulación de datos para el ejemplo
+set.seed(123)
+x <- rnorm(100, mean = 10, sd = 2)
+y <- 2 * x + rnorm(100, 0, 3)
+datos <- data.frame(x = x, y = y)
 ```
 
-En este ejemplo, cada línea añade un componente al gráfico. El mapeo estético `aes(x = EDAD, y = IMC)` define qué variables se representan en los ejes, mientras que `geom_point()` indica que se utilizarán puntos para visualizar la relación.
+**Explicación:** Se simulan dos variables numéricas (`x` e `y`) y se almacenan en un data frame llamado `datos`, siguiendo las mejores prácticas de organización de datos para análisis estadístico (Wickham & Grolemund, 2017).
 
-## Creación de gráficos exploratorios y descriptivos
+### Inicialización del objeto gráfico y definición de mapeos estéticos
 
-En el análisis de datos, la visualización inicial es clave para comprender la estructura y las características principales de las variables. ggplot2 permite construir de manera eficiente los gráficos más utilizados en la exploración y descripción de datos, facilitando la identificación de patrones, tendencias y diferencias entre grupos (Wickham, 2016).
+El flujo de trabajo (*workflow*) de ggplot2 comienza con la inicialización del objeto gráfico mediante la función `ggplot()`, donde se especifica el data frame y los mapeos estéticos principales a través de la función `aes()`. Los mapeos estéticos determinan cómo se asignan las variables de los datos a las propiedades visuales del gráfico, como los ejes, el color, el tamaño o la forma (Wickham, 2016).
 
-### Gráficos de barras para variables categóricas
-
-El gráfico de barras es una herramienta fundamental para mostrar la cantidad de observaciones en cada categoría de una variable cualitativa. En ggplot2, este tipo de gráfico se genera de forma automática a partir de los datos, permitiendo comparar visualmente la frecuencia de cada grupo.
+**Ejemplo:**
 
 ```{r}
-# Crear gráfico de barras para la variable JORNADA
-# Este gráfico muestra la distribución de estudiantes en las diferentes jornadas
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = JORNADA)) +                 # Variable categórica en el eje X
-  geom_bar(fill = "orange",                # Color de relleno de las barras
-           color = "black") +              # Color del borde de las barras
-  labs(title = "Distribución de estudiantes por jornada",  # Título del gráfico
-       x = "Jornada",                      # Etiqueta del eje X
-       y = "Frecuencia")                   # Etiqueta del eje Y
+# Inicialización del objeto gráfico con mapeos estéticos
+grafico_base <- ggplot(datos, aes(x = x, y = y))
+grafico_base
 ```
 
-**Explicación del código:**
+**Explicación:** Se crea un objeto gráfico vacío, donde se define que la variable `x` se ubicará en el eje horizontal y `y` en el eje vertical. Este objeto sirve como base para añadir capas adicionales.
 
-1.  La función `ggplot()` inicia la construcción del gráfico especificando los datos y el mapeo estético.
+### Adición de geometrías para la representación visual
 
-2.  `geom_bar()` crea automáticamente las barras contando las observaciones en cada categoría.
+El siguiente paso consiste en añadir una o más geometrías, que determinan cómo se visualizarán los datos. Las geometrías más comunes incluyen puntos (`geom_point()`), líneas (`geom_line()`), barras (`geom_bar()`) y cajas (`geom_boxplot()`). Cada geometría puede personalizarse mediante argumentos adicionales, como color, tamaño o forma (Cleveland, 1993; Wickham, 2016).
 
-3.  Los argumentos `fill` y `color` personalizan la apariencia de las barras.
-
-4.  La función `labs()` añade las etiquetas necesarias para la interpretación del gráfico.
-
-### Histogramas para variables continuas
-
-El histograma es el gráfico más adecuado para examinar la distribución de una variable numérica. Permite observar la forma general de los datos, la presencia de asimetrías y la existencia de valores extremos.
+**Ejemplo:**
 
 ```{r}
-# Crear histograma para la variable PESO_lbs
-# Este gráfico muestra la distribución del peso de los estudiantes
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = PESO_lbs)) +                # Variable numérica en el eje X
-  geom_histogram(bins = 15,                # Número de intervalos
-                 fill = "lightblue",       # Color de relleno de las barras
-                 color = "darkblue") +     # Color del borde de las barras
-  labs(title = "Histograma del peso en libras",  # Título del gráfico
-       x = "Peso en libras",              # Etiqueta del eje X
-       y = "Frecuencia")                  # Etiqueta del eje Y
+# Adición de una geometría de puntos
+grafico_dispersion <- grafico_base + geom_point()
+grafico_dispersion
 ```
 
-**Explicación del código:**
+**Explicación:** `geom_point()` añade una capa de puntos, representando cada observación como un símbolo en el plano cartesiano. El operador `+` permite añadir más capas o personalizaciones de manera ordenada y progresiva.
 
-1.  El parámetro `bins` determina el número de intervalos en que se dividirán los datos.
+### Personalización de etiquetas, títulos y leyendas
 
-2.  Los colores se eligen para contrastar el relleno con el borde de las barras.
+Para mejorar la claridad y la interpretación del gráfico, es recomendable añadir títulos, subtítulos, etiquetas a los ejes y leyendas mediante la función `labs()`. Una correcta rotulación facilita la comunicación de los resultados y evita ambigüedades (Tufte, 2001).
 
-3.  Las etiquetas proporcionan contexto sobre la variable analizada.
-
-### Gráficos de dispersión para relaciones entre variables numéricas
-
-El gráfico de dispersión es la opción principal para explorar la relación entre dos variables cuantitativas. Cada punto representa una observación, ubicándose según sus valores en los ejes X e Y.
+**Ejemplo:**
 
 ```{r}
-# Crear gráfico de dispersión para TALLA vs PESO_lbs
-# Este gráfico muestra la relación entre la talla y el peso de los estudiantes
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = TALLA,                      # Variable numérica en el eje X
-           y = PESO_lbs)) +                # Variable numérica en el eje Y
-  geom_point(color = "red",                # Color de los puntos
-             size = 2) +                   # Tamaño de los puntos
-  labs(title = "Relación entre talla y peso",  # Título del gráfico
-       x = "Talla (metros)",              # Etiqueta del eje X
-       y = "Peso (libras)")               # Etiqueta del eje Y
+# Personalización de etiquetas y títulos
+grafico_etiquetado <- grafico_dispersion +
+  labs(
+    title = "Gráfico de dispersión básico",
+    subtitle = "Ejemplo con datos simulados",
+    x = "Variable X",
+    y = "Variable Y"
+  )
+grafico_etiquetado
 ```
 
-**Explicación del código:**
+**Explicación:** `labs()` permite definir el título principal, el subtítulo y las etiquetas de los ejes, mejorando la presentación y la comprensión del gráfico.
 
-1.  `geom_point()` crea un punto por cada par de valores (TALLA, PESO_lbs).
+### Aplicación de temas y ajustes estéticos
 
-2.  El argumento `size` controla el tamaño de los puntos para mejorar su visibilidad.
+**Ggplot2** ofrece una variedad de temas predefinidos que modifican la apariencia general del gráfico, adaptándolo a diferentes contextos y estándares de publicación. Los temas controlan aspectos como el fondo, las fuentes, las líneas de cuadrícula y los colores (Wickham, 2016; Tufte, 2001).
 
-3.  Las etiquetas incluyen las unidades de medida para mayor claridad.
-
-### Boxplots para comparación de grupos
-
-El boxplot es un gráfico que resume la distribución de una variable numérica y facilita la comparación entre diferentes grupos definidos por una variable categórica (Wickham, 2016).
+**Ejemplo:**
 
 ```{r}
-# Crear boxplot para PESO_lbs por SEXO
-# Este gráfico compara la distribución del peso entre hombres y mujeres
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = SEXO,                       # Variable categórica en el eje X
-           y = PESO_lbs,                   # Variable numérica en el eje Y
-           fill = SEXO)) +                 # Color según el sexo
-  geom_boxplot() +                         # Crear el boxplot
-  labs(title = "Distribución del peso por sexo",  # Título del gráfico
-       x = "Sexo",                         # Etiqueta del eje X
-       y = "Peso (libras)")               # Etiqueta del eje Y
+# Aplicación de un tema profesional
+grafico_final <- grafico_etiquetado +
+  theme_minimal(base_size = 13)
+grafico_final
 ```
 
-**Explicación del código:**
+**Explicación:** `theme_minimal()` aplica un estilo visual limpio y profesional, adecuado para presentaciones y publicaciones científicas. El argumento `base_size` ajusta el tamaño base de las fuentes, facilitando la lectura.
 
-1.  El mapeo estético `fill = SEXO` asigna automáticamente diferentes colores a cada grupo.
+### Exportación y reutilización del gráfico
 
-2.  `geom_boxplot()` crea las cajas que muestran la distribución de cada grupo.
+Una vez finalizado el gráfico, es posible exportarlo a diferentes formatos (PNG, PDF, SVG) utilizando funciones como `ggsave()`, lo que facilita su inclusión en documentos formales, reportes técnicos y publicaciones científicas (Wickham, 2016).
 
-3.  Las etiquetas ayudan a interpretar la comparación entre grupos.
+**Ejemplo:**
 
-Estos gráficos constituyen la base del análisis exploratorio y descriptivo en R con ggplot2, permitiendo obtener una visión clara y rápida de los datos antes de aplicar técnicas estadísticas más avanzadas (Wickham, 2016).
+```{r}
+# Exportar el gráfico a un archivo PNG
+ggsave("grafico_dispersión.png", 
+       plot = grafico_final, 
+       width = 6, height = 4, dpi = 300)
+```
+
+**Explicación:** `ggsave()` permite guardar el gráfico en un archivo con la resolución y dimensiones especificadas, asegurando la calidad necesaria para su uso profesional.
+
+### Resumen del flujo de trabajo en ggplot2
+
+El flujo de trabajo recomendado para la construcción de gráficos en ggplot2 puede resumirse en los siguientes pasos:
+
+1.  **Preparar y organizar los datos** en un formato adecuado (data frame).
+
+2.  **Inicializar el objeto gráfico** con los mapeos estéticos principales.
+
+3.  **Añadir geometrías** para representar los datos visualmente.
+
+4.  **Personalizar etiquetas, títulos y leyendas** para mejorar la claridad.
+
+5.  **Aplicar temas y ajustes estéticos** para adaptar el gráfico a los estándares profesionales.
+
+6.  **Exportar y reutilizar el gráfico** en diferentes formatos según las necesidades del proyecto.
+
+Este flujo de trabajo modular y progresivo no solo facilita el aprendizaje para principiantes, sino que también garantiza la reproducibilidad, la claridad y la calidad en la comunicación de resultados estadísticos (Wickham, 2016; Wilkinson, 2005; Tufte, 2001).
+
+## Creación de gráficos exploratorios y descriptivos en ggplot2
+
+El paquete **ggplot2** proporciona una sintaxis coherente y modular para la creación de diferentes tipos de gráficos estadísticos en R. Cada visualización requiere una estructura específica de datos, generalmente en formato data frame, y utiliza funciones geométricas particulares que determinan cómo se representarán los datos. La construcción de estos gráficos sigue el workflow profesional establecido, donde primero se preparan los datos, luego se inicializa el objeto gráfico con `ggplot()`, se añaden las geometrías correspondientes y finalmente se personalizan los elementos visuales según sea necesario (Wickham, 2016).
+
+### Gráficos de barras con geom_bar()
+
+La función `geom_bar()` es la geometría principal para crear gráficos de barras a partir de variables categóricas. Esta función cuenta automáticamente las frecuencias de cada categoría y las representa como barras verticales.
+
+```{r}
+# Simulación de datos categóricos
+set.seed(123)
+grupo <- sample(c("A", "B", "C"), size = 200, replace = TRUE)
+datos_cat <- data.frame(grupo = grupo)
+
+# Gráfico de barras
+ggplot(datos_cat, aes(x = grupo)) +
+  geom_bar()
+```
+
+**Explicación:**
+
+1.  Se crea un data frame con una variable categórica (`grupo`).
+
+2.  `ggplot(datos_cat, aes(x = grupo))` inicializa el gráfico mapeando la variable al eje X.
+
+3.  `geom_bar()` añade las barras, calculando automáticamente las frecuencias.
+
+### Histogramas con geom_histogram()
+
+La función `geom_histogram()` genera histogramas para variables numéricas continuas, dividiendo los datos en intervalos (bins) y contando la frecuencia en cada uno.
+
+```{r}
+# Simulación de datos numéricos
+set.seed(123)
+valores <- rnorm(200, mean = 70, sd = 10)
+datos_hist <- data.frame(valores = valores)
+
+# Histograma
+ggplot(datos_hist, aes(x = valores)) +
+  geom_histogram(bins = 15)
+```
+
+**Explicación:**
+
+1.  Se crea un data frame con una variable numérica (`valores`).
+
+2.  `ggplot(datos_hist, aes(x = valores))` mapea la variable al eje X.
+
+3.  `geom_histogram()` crea el histograma, especificando el número de bins deseado.
+
+### Gráficos de dispersión con geom_point()
+
+La función `geom_point()` crea gráficos de dispersión para analizar la relación entre dos variables numéricas, representando cada observación como un punto en el plano cartesiano.
+
+```{r}
+# Simulación de datos correlacionados
+set.seed(123)
+x <- rnorm(100, mean = 10, sd = 2)
+y <- 2 * x + rnorm(100, 0, 3)
+datos_disp <- data.frame(x = x, y = y)
+
+# Gráfico de dispersión
+ggplot(datos_disp, aes(x = x, y = y)) +
+  geom_point()
+```
+
+**Explicación:**
+
+1.  Se crea un data frame con dos variables numéricas (`x` e `y`).
+
+2.  `ggplot(datos_disp, aes(x = x, y = y))` mapea las variables a los ejes X e Y.
+
+3.  `geom_point()` representa cada par de valores como un punto.
+
+### Boxplots con geom_boxplot()
+
+La función `geom_boxplot()` construye diagramas de caja para comparar la distribución de una variable numérica entre diferentes grupos o categorías.
+
+```{r}
+# Simulación de datos para dos grupos
+set.seed(123)
+grupo <- factor(rep(c("Control", "Tratamiento"), each = 100))
+valores <- c(rnorm(100, 70, 8), rnorm(100, 75, 10))
+datos_box <- data.frame(grupo = grupo, valores = valores)
+
+# Boxplot
+ggplot(datos_box, aes(x = grupo, y = valores)) +
+  geom_boxplot()
+```
+
+**Explicación:**
+
+1.  Se crea un data frame con una variable categórica (`grupo`) y una numérica (`valores`).
+
+2.  `ggplot(datos_box, aes(x = grupo, y = valores))` mapea el grupo al eje X y los valores al eje Y.
+
+3.  `geom_boxplot()` genera los diagramas de caja para cada grupo.
 
 ## Personalización de gráficos en ggplot2
 
-La personalización de gráficos es un aspecto fundamental para comunicar efectivamente los resultados de un análisis estadístico. ggplot2 ofrece una amplia gama de opciones para adaptar cada elemento visual según las necesidades específicas del usuario y el contexto de presentación (Wickham, 2016).
+La personalización es una de las fortalezas principales de **ggplot2**, permitiendo adaptar cada gráfico a los estándares de comunicación científica, a las necesidades de la audiencia y a los requisitos de publicaciones profesionales. El flujo de trabajo de personalización en ggplot2 es progresivo y modular: cada aspecto visual puede ajustarse mediante capas adicionales o argumentos específicos, lo que facilita la reproducibilidad y la claridad en la presentación de resultados (Wickham, 2016).
 
 ### Modificación de colores y escalas
 
-La elección adecuada de colores puede mejorar significativamente la interpretación de un gráfico. ggplot2 permite personalizar los colores tanto de manera directa como a través de escalas predefinidas o personalizadas.
+El control de los colores es fundamental para mejorar la interpretación, la accesibilidad y la estética de los gráficos. ggplot2 permite modificar los colores de los elementos gráficos tanto de forma automática como manual, utilizando funciones de escala específicas. Para variables categóricas, se emplea `scale_fill_manual()` (relleno) o `scale_color_manual()` (bordes, líneas y puntos). Para variables continuas, existen escalas como `scale_fill_gradient()` o `scale_color_gradient()`, que permiten definir paletas de colores personalizadas o predefinidas.
 
 ```{r}
+# Simulación de los datos
+set.seed(123)
+grupo <- factor(rep(c("Control", "Tratamiento"), each = 100))
+valores <- c(rnorm(100, 70, 8), rnorm(100, 75, 10))
+datos_box <- data.frame(grupo = grupo, valores = valores)
 # Ejemplo de personalización de colores en un boxplot
-# Este gráfico compara el peso entre sexos con colores específicos
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = SEXO,                       # Variable categórica en eje X
-           y = PESO_lbs,                   # Variable numérica en eje Y
-           fill = SEXO)) +                 # Color de relleno según sexo
-  geom_boxplot() +                         # Crear boxplot
-  scale_fill_manual(                       # Personalizar colores de relleno
-    values = c("pink", "lightblue")) +     # Asignar colores específicos
-  labs(title = "Distribución del peso por sexo",  # Título principal
-       x = "Sexo",                         # Etiqueta eje X
-       y = "Peso (libras)",               # Etiqueta eje Y
-       fill = "Sexo") +                   # Título de la leyenda
-  theme_minimal()                          # Tema minimalista
+ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
+  geom_boxplot(color = "gray30", outlier.colour = "red", outlier.shape = 8) +
+  scale_fill_manual(values = c("skyblue", "salmon")) +
+  scale_color_manual(values = c("gray30", "gray30")) +
+  labs(title = "Boxplot personalizado por grupo")
 ```
 
-**Explicación del código:**
+**Explicación:**
 
-1.  La función `scale_fill_manual()` permite asignar colores específicos a cada categoría.
+1.  Se crea un data frame con variables categórica y numérica.
 
-2.  Los colores se eligen para maximizar el contraste y la legibilidad.
+2.  `aes(fill = grupo)` mapea el color de relleno a la variable de grupo.
 
-3.  El argumento `fill` en `labs()` personaliza el título de la leyenda.
+3.  `geom_boxplot()` permite personalizar el color del borde y el estilo de los valores atípicos.
+
+4.  `scale_fill_manual()` asigna colores específicos a cada grupo.
+
+5.  `scale_color_manual()` ajusta el color del borde de las cajas.
+
+Para variables continuas, se puede utilizar una escala de gradiente:
+
+```{r}
+# Simulación de los datos
+set.seed(123)
+x <- rnorm(100)
+y <- 2 * x + rnorm(100)
+z <- rnorm(100, mean = 50, sd = 10)
+datos_disp <- data.frame(x = x, y = y, z = z)
+# Ejemplo de gradiente de color en un gráfico de dispersión
+ggplot(datos_disp, aes(x = x, y = y, color = z)) +
+  geom_point(size = 3) +
+  scale_color_gradient(low = "yellow", high = "blue") +
+  labs(title = "Gradiente de color según variable continua")
+```
+
+**Explicación:**
+
+1.  Se crea un data frame con dos variables numéricas y una variable adicional para el color.
+
+2.  `aes(color = z)` mapea la variable continua al color de los puntos.
+
+3.  `scale_color_gradient()` define los colores mínimo y máximo del gradiente.
 
 ### Etiquetas, títulos y leyendas
 
-Las etiquetas y títulos son esenciales para proporcionar contexto y facilitar la interpretación del gráfico. ggplot2 ofrece múltiples opciones para personalizar estos elementos.
+La función `labs()` es la herramienta principal para añadir y personalizar títulos, subtítulos, etiquetas de ejes y leyendas. Una correcta rotulación es esencial para la interpretación y la comunicación efectiva de los resultados. Además, la posición y el formato de la leyenda pueden ajustarse mediante argumentos en la función `theme()`.
 
 ```{r}
-# Ejemplo de personalización completa de etiquetas
-# Este gráfico incluye título, subtítulo y nota al pie
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = FACULTAD)) +                # Variable categórica en eje X
-  geom_bar(fill = "steelblue",            # Color de las barras
-           alpha = 0.7) +                  # Transparencia de las barras
+# Ejemplo de personalización de etiquetas y leyendas
+ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
+  geom_boxplot() +
   labs(
-    title = "Distribución de estudiantes por facultad",     # Título principal
-    subtitle = "Datos del estudio de 2002, USAC",          # Subtítulo
-    x = "Facultad",                                        # Etiqueta eje X
-    y = "Cantidad de estudiantes",                         # Etiqueta eje Y
-    caption = "Fuente: Estudio realizado en 2002"         # Nota al pie
+    title = "Comparación de valores por grupo",
+    subtitle = "Datos simulados",
+    x = "Grupo experimental",
+    y = "Medición",
+    fill = "Condición experimental"
   ) +
-  theme_minimal() +                        # Tema base minimalista
-  theme(
-    axis.text.x = element_text(           # Personalizar texto eje X
-      angle = 45,                         # Rotar texto 45 grados
-      hjust = 1                          # Alinear texto
-    )
-  )
+  theme(legend.position = "bottom", legend.title = element_text(face = "bold"))
 ```
 
-**Explicación del código:**
+**Explicación:**
 
-1.  La función `labs()` permite añadir múltiples elementos informativos.
+1.  `labs()` define el título, subtítulo, etiquetas de ejes y el texto de la leyenda.
 
-2.  El argumento `alpha` controla la transparencia de las barras.
+2.  `theme(legend.position = "bottom")` coloca la leyenda debajo del gráfico.
 
-3.  La rotación del texto en el eje X mejora la legibilidad cuando hay muchas categorías.
+3.  `legend.title = element_text(face = "bold")` resalta el título de la leyenda.
 
 ### Aplicación y personalización de temas
 
-Los temas en ggplot2 permiten controlar la apariencia general del gráfico, desde el fondo hasta los elementos más pequeños. La personalización puede ser global o específica para cada elemento (Wickham, 2016).
+Los temas en ggplot2 controlan la apariencia global del gráfico, incluyendo el fondo, las fuentes, las líneas de cuadrícula y otros elementos estéticos. Existen temas predefinidos como `theme_minimal()`, `theme_classic()`, `theme_bw()`, y `theme_light()`, que pueden ser utilizados directamente o modificados mediante la función `theme()` para ajustar detalles específicos. La personalización de temas es clave para adaptar los gráficos a los estándares de publicaciones científicas y presentaciones profesionales (Tufte, 2001; Wickham, 2016).
 
 ```{r}
-# Ejemplo de personalización avanzada de tema
-# Este gráfico muestra múltiples personalizaciones de elementos visuales
-
-ggplot(data = USAC2002,                    # Especificamos la base de datos
-       aes(x = TALLA, y = PESO_lbs)) +     # Variables en ejes X e Y
-  geom_point(color = "darkblue",           # Color de los puntos
-             alpha = 0.6) +                # Transparencia de los puntos
-  theme_minimal() +                        # Tema base minimalista
+# Ejemplo de aplicación y ajuste de un tema
+ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
+  geom_boxplot() +
+  theme_minimal(base_size = 14) +
   theme(
-    # Personalización del título
-    plot.title = element_text(
-      hjust = 0.5,                        # Centrar título
-      size = 16,                          # Tamaño de fuente
-      face = "bold"                       # Texto en negrita
-    ),
-    # Personalización del texto de los ejes
-    axis.text = element_text(
-      size = 12,                          # Tamaño de fuente
-      color = "darkgray"                  # Color del texto
-    ),
-    # Personalización de títulos de ejes
-    axis.title = element_text(
-      size = 14,                          # Tamaño de fuente
-      face = "italic"                     # Texto en cursiva
-    ),
-    # Personalización de la cuadrícula
-    panel.grid.major = element_line(
-      color = "gray",                     # Color de líneas principales
-      linetype = "dashed"                 # Tipo de línea
-    ),
-    panel.grid.minor = element_blank()    # Eliminar líneas secundarias
-  ) +
-  labs(title = "Relación entre talla y peso",
-       x = "Talla (metros)",
-       y = "Peso (libras)")
+    plot.title = element_text(face = "bold", color = "navy", size = 18),
+    plot.subtitle = element_text(face = "italic", color = "gray40"),
+    axis.title = element_text(face = "italic", size = 14),
+    axis.text = element_text(color = "gray30"),
+    panel.grid.major = element_line(color = "gray80"),
+    panel.grid.minor = element_blank(),
+    legend.position = "right"
+  )
 ```
 
-**Explicación del código:**
+**Explicación:**
 
-1.  `theme_minimal()` establece un tema base limpio y profesional.
+1.  Se aplica el tema `theme_minimal()` para un estilo limpio y profesional.
 
-2.  `element_text()` permite personalizar todos los elementos de texto.
+2.  `plot.title` y `plot.subtitle` ajustan el estilo y color de los títulos.
 
-3.  `element_line()` controla la apariencia de las líneas de la cuadrícula.
+3.  `axis.title` y `axis.text` modifican el estilo y tamaño de los textos de ejes.
 
-4.  `element_blank()` elimina elementos no deseados.
+4.  `panel.grid.major` y `panel.grid.minor` controlan la visibilidad y color de las líneas de cuadrícula.
 
-La personalización adecuada de un gráfico puede mejorar significativamente su capacidad para comunicar información, haciendo que los datos sean más accesibles y comprensibles para diferentes audiencias (Wickham, 2016).
+5.  `legend.position` define la ubicación de la leyenda.
 
-## Uso de facetas para comparación de grupos
+### Personalización avanzada: fuentes, márgenes y elementos gráficos
 
-Las facetas en ggplot2 son una herramienta poderosa para dividir un gráfico en varios subgráficos, cada uno correspondiente a un grupo definido por una o más variables categóricas. Esto facilita la comparación visual entre diferentes segmentos de los datos, permitiendo identificar patrones, similitudes o diferencias que podrían pasar desapercibidas en un solo gráfico global (Wickham, 2016).
-
-### Facet_wrap y facet_grid: sintaxis y aplicaciones
-
-ggplot2 ofrece dos funciones principales para crear facetas: `facet_wrap()` y `facet_grid()`. Cada una tiene una lógica y utilidad específica.
+ggplot2 permite un control detallado sobre elementos como el tipo y tamaño de fuente, los márgenes del gráfico, la orientación de las etiquetas y la visibilidad de los ejes. Estas opciones avanzadas se gestionan principalmente a través de la función `theme()`, lo que permite adaptar el gráfico a los requisitos específicos de cada publicación o presentación.
 
 ```{r}
-# Ejemplo 1: Uso de facet_wrap para comparar por facultad
-# Este gráfico muestra la relación entre talla y peso, generando un subgráfico para cada facultad
-
-ggplot(data = USAC2002, aes(x = TALLA, y = PESO_lbs)) +  # Variables numéricas en los ejes
-  geom_point(color = "darkgreen", alpha = 0.6) +         # Puntos verdes con transparencia
-  facet_wrap(~ FACULTAD) +                               # Un panel por cada facultad
-  labs(
-    title = "Relación entre talla y peso por facultad",   # Título principal
-    x = "Talla (metros)",                                # Etiqueta eje X
-    y = "Peso (libras)"                                  # Etiqueta eje Y
-  ) +
-  theme_minimal()                                        # Tema limpio y profesional
+# Ejemplo de personalización avanzada
+ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
+  geom_boxplot() +
+  theme_classic(base_size = 13) +
+  theme(
+    plot.margin = margin(20, 20, 20, 20),
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    axis.line = element_line(color = "black", linewidth = 1),
+    legend.background = element_rect(fill = "gray95", color = "gray80")
+  )
 ```
 
-1.  `facet_wrap(~ FACULTAD)` divide el gráfico en tantos paneles como valores únicos tenga la variable FACULTAD, permitiendo comparar la relación entre talla y peso en cada facultad de manera individual.
+**Explicación:**
 
-2.  Es útil cuando se desea comparar un solo criterio de agrupación y se prefiere que los paneles se organicen en una cuadrícula flexible.
+1.  `plot.margin` ajusta los márgenes del gráfico.
+
+2.  `axis.text.x` rota las etiquetas del eje X para mejorar la legibilidad.
+
+3.  `axis.line` resalta los ejes con líneas más gruesas y visibles.
+
+4.  `legend.background` modifica el fondo de la leyenda.
+
+La personalización progresiva y modular de los gráficos en ggplot2 permite adaptar cada visualización a los estándares de comunicación científica y a las necesidades específicas de cada proyecto, garantizando resultados reproducibles y de alta calidad (Wickham, 2016).
+
+## Uso de facetas para comparación de grupos en ggplot2
+
+Las facetas en **ggplot2** permiten dividir un gráfico en múltiples paneles según los valores de una o más variables categóricas, facilitando la comparación visual entre subgrupos o condiciones experimentales. Esta funcionalidad es especialmente útil en el análisis exploratorio de datos, ya que permite identificar patrones, diferencias y tendencias específicas en cada grupo sin perder la coherencia visual y la escala común entre paneles (Wickham, 2016).
+
+El flujo de trabajo para el uso de facetas en ggplot2 consiste en preparar los datos con las variables categóricas de interés, construir el gráfico base y añadir la capa de facetas mediante las funciones `facet_wrap()` o `facet_grid()`. Estas funciones ofrecen flexibilidad para organizar los paneles en filas, columnas o matrices, y permiten personalizar etiquetas, escalas y disposición de los subgráficos.
+
+### Facetado simple con facet_wrap()
+
+La función `facet_wrap()` divide el gráfico en paneles independientes según los valores de una sola variable categórica. Los paneles se organizan automáticamente en una cuadrícula, lo que resulta útil para comparar múltiples niveles de una variable.
 
 ```{r}
-# Ejemplo 2: Uso de facet_grid para comparar por sexo y jornada
-# Este gráfico muestra la relación entre talla y peso, generando una matriz de subgráficos según sexo y jornada
+# Simulación de datos con una variable de facetas
+set.seed(123)
+grupo <- sample(c("A", "B", "C"), size = 150, replace = TRUE)
+categoria <- sample(c("X", "Y"), size = 150, replace = TRUE)
+valor <- rnorm(150, mean = 50, sd = 10)
+datos_facet <- data.frame(grupo = grupo, categoria = categoria, valor = valor)
 
-ggplot(data = USAC2002, aes(x = TALLA, y = PESO_lbs)) +  # Variables numéricas en los ejes
-  geom_point(color = "purple", alpha = 0.5) +             # Puntos morados con transparencia
-  facet_grid(SEXO ~ JORNADA) +                            # Filas por SEXO, columnas por JORNADA
-  labs(
-    title = "Relación entre talla y peso por sexo y jornada",  # Título principal
-    x = "Talla (metros)",                                    # Etiqueta eje X
-    y = "Peso (libras)"                                      # Etiqueta eje Y
-  ) +
-  theme_minimal()                                            # Tema limpio y profesional
+# Gráfico de dispersión facetado por grupo
+ggplot(datos_facet, aes(x = categoria, y = valor)) +
+  geom_boxplot(fill = "lightblue") +
+  facet_wrap(~ grupo)
 ```
 
-1.  `facet_grid(SEXO ~ JORNADA)` crea una matriz de paneles, donde las filas corresponden a los niveles de SEXO y las columnas a los niveles de JORNADA.
+**Explicación**
 
-2.  Es especialmente útil para comparar dos criterios de agrupación de manera cruzada y ordenada.
+1.  Se crea un data frame con una variable categórica para las facetas (`grupo`), una variable categórica para el eje X (`categoria`) y una variable numérica (`valor`).
 
-### **Cuadro resumen de diferencias de las funciones face_wrap y face_grid**
+2.  `ggplot(datos_facet, aes(x = categoria, y = valor))` inicializa el gráfico.
 
-| Función | Uso principal | Organización de paneles | Variables categóricas involucradas | Ejemplo de sintaxis |
-|----|----|----|----|----|
-| `facet_wrap()` | Comparar grupos definidos por una sola variable | Cuadrícula flexible (ajuste automático) | Una variable categórica | `facet_wrap(~ FACULTAD)` |
-| `facet_grid()` | Comparar grupos definidos por dos variables | Matriz (filas y columnas fijas) | Dos variables categóricas (filas y columnas) | `facet_grid(SEXO ~ JORNADA)` |
+3.  `geom_boxplot()` representa los datos como diagramas de caja.
+
+4.  `facet_wrap(~ grupo)` divide el gráfico en paneles independientes para cada nivel de la variable `grupo`.
+
+El argumento `nrow` o `ncol` en `facet_wrap()` permite controlar el número de filas o columnas de la cuadrícula de paneles.
+
+### Facetado múltiple con facet_grid()
+
+La función `facet_grid()` permite crear una matriz de paneles utilizando dos variables categóricas, una para las filas y otra para las columnas. Esta organización es ideal para comparar simultáneamente los efectos de dos factores sobre la variable de interés.
+
+```{r}
+# Gráfico de dispersión facetado por grupo y categoría
+ggplot(datos_facet, aes(x = valor)) +
+  geom_histogram(bins = 10, fill = "salmon", color = "white") +
+  facet_grid(grupo ~ categoria)
+```
+
+**Explicación:**
+
+1.  Se utiliza el mismo data frame con dos variables categóricas (`grupo` y `categoria`).
+
+2.  `geom_histogram()` representa la distribución de la variable numérica.
+
+3.  `facet_grid(grupo ~ categoria)` crea una matriz de paneles, donde las filas corresponden a los niveles de `grupo` y las columnas a los niveles de `categoria`.
+
+El uso de `facet_grid()` es especialmente útil cuando se desea analizar la interacción entre dos factores y observar cómo varía la distribución de la variable numérica en cada combinación de niveles.
+
+### Personalización de facetas
+
+ggplot2 permite personalizar las etiquetas de los paneles, la disposición de los subgráficos y la independencia de las escalas entre paneles. Los argumentos `labeller`, `scales` y `strip.position` en las funciones de facetas ofrecen un control detallado sobre la presentación final.
+
+```{r}
+# Personalización avanzada de facetas
+ggplot(datos_facet, aes(x = categoria, y = valor, fill = categoria)) +
+  geom_boxplot() +
+  facet_wrap(~ grupo, nrow = 1, labeller = label_both,
+             strip.position = "bottom", scales = "free_y") +
+  theme(strip.background = element_rect(fill = "gray90"),
+        strip.text = element_text(face = "bold", color = "navy"))
+```
+
+**Explicación:**
+
+1.  `nrow = 1` organiza los paneles en una sola fila.
+
+2.  `labeller = label_both` muestra el nombre de la variable y el valor en la etiqueta del panel.
+
+3.  `strip.position = "bottom"` coloca las etiquetas de los paneles en la parte inferior.
+
+4.  `scales = "free_y"` permite que cada panel tenga su propia escala en el eje Y.
+
+5.  `theme()` personaliza el fondo y el texto de las etiquetas de los paneles.
+
+La personalización de facetas es clave para mejorar la legibilidad y la interpretación de los gráficos comparativos, especialmente cuando se trabaja con conjuntos de datos complejos o con múltiples niveles de agrupamiento.
+
+El uso de facetas en ggplot2, mediante `facet_wrap()` y `facet_grid()`, es una herramienta poderosa para la exploración visual y la comunicación de resultados en análisis estadístico, permitiendo comparar grupos de manera clara, eficiente y reproducible (Wickham, 2016).
 
 ## Comparación entre ggplot2 y el sistema gráfico base de R
 
-Antes de elegir una herramienta de visualización en R, es importante conocer las diferencias clave entre **ggplot2** y el sistema gráfico base. Cada uno tiene ventajas y limitaciones que pueden hacerlos más adecuados según el contexto y los objetivos del análisis (Wickham, 2016).
+La comparación entre **ggplot2** y el sistema gráfico base de R es fundamental para quienes inician en la visualización de datos, ya que permite comprender las ventajas y limitaciones de cada enfoque. Para garantizar una comparación justa, se utilizará el conjunto de datos `iris`, uno de los más clásicos y ampliamente utilizados en la literatura estadística y en la enseñanza de R. Este conjunto contiene mediciones de longitud y ancho de sépalos y pétalos de tres especies de flores, y es ideal para ilustrar gráficos de dispersión con agrupamiento por especie (Anderson, 1935).
 
-| Característica | ggplot2 | Sistema gráfico base de R |
+### Sintaxis y filosofía
+
+1.  **ggplot2** se basa en la gramática de los gráficos, permitiendo construir visualizaciones complejas mediante la combinación modular de componentes. Su sintaxis es declarativa, lo que facilita la especificación de *qué* se desea visualizar.
+
+2.  **El sistema gráfico base** utiliza una sintaxis imperativa, donde cada paso debe ser definido explícitamente. Es más directo para gráficos simples, pero menos flexible para personalizaciones avanzadas.
+
+**Ejemplo comparativo:**
+
+```{r}
+# 1. ggplot2
+library(ggplot2)
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point(size = 2) +
+  labs(
+    title = "Relación entre longitud y ancho del sépalo",
+    x = "Longitud del sépalo (cm)",
+    y = "Ancho del sépalo (cm)",
+    color = "Especie"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 2. Sistema gráfico base
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     col = as.numeric(iris$Species),
+     pch = 16,
+     main = "Relación entre longitud y ancho del sépalo",
+     xlab = "Longitud del sépalo (cm)",
+     ylab = "Ancho del sépalo (cm)")
+legend("topright",
+       legend = levels(iris$Species),
+       col = 1:3,
+       pch = 16,
+       title = "Especie")
+```
+
+Ambos gráficos utilizan el mismo conjunto de datos y presentan título, etiquetas de ejes y leyenda, lo que permite una comparación equitativa de la sintaxis y el resultado visual.
+
+### Flexibilidad y personalización
+
+1.  **ggplot2** permite personalizar cada elemento del gráfico de manera eficiente, utilizando capas y funciones específicas para colores, escalas, temas y leyendas.
+
+2.  **El sistema gráfico base** requiere argumentos adicionales y, en ocasiones, funciones externas para lograr el mismo nivel de personalización, lo que puede dificultar la reproducibilidad y la claridad del código.
+
+**Ejemplo:**
+
+```{r}
+# 1. ggplot2
+ggplot(iris, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = c("red", "green", "blue")) +
+  labs(
+    title = "Relación entre longitud y ancho del sépalo",
+    subtitle = "Datos del conjunto iris",
+    x = "Longitud del sépalo (cm)",
+    y = "Ancho del sépalo (cm)",
+    color = "Especie"
+  ) +
+  theme_minimal(base_size = 13)
+
+# 2. Sistema gráfico base
+plot(iris$Sepal.Length, iris$Sepal.Width,
+     col = c("red", "green", "blue")[as.numeric(iris$Species)],
+     pch = 16,
+     main = "Relación entre longitud y ancho del sépalo",
+     xlab = "Longitud del sépalo (cm)",
+     ylab = "Ancho del sépalo (cm)")
+legend("topright",
+       legend = levels(iris$Species),
+       col = c("red", "green", "blue"),
+       pch = 16,
+       title = "Especie")
+mtext("Datos del conjunto iris", side = 3, line = 0.5, cex = 0.9, col = "gray40")
+```
+
+Ambos gráficos incluyen personalización de colores, subtítulo, título, etiquetas de ejes y leyenda, asegurando una comparación justa.
+
+### Resumen comparativo
+
+A continuación se presenta un cuadro comparativo que integra los aspectos más relevantes discutidos, facilitando la consulta rápida y la toma de decisiones informada:
+
+| Característica | ggplot2 | Sistema gráfico base |
 |----|----|----|
-| Enfoque | Modular, basado en la gramática de los gráficos | Funciones específicas para cada gráfico |
-| Personalización | Avanzada y flexible | Limitada y menos intuitiva |
-| Sintaxis | Declarativa y estructurada | Imperativa y secuencial |
-| Integración con tidyverse | Total | Parcial o nula |
-| Curva de aprendizaje | Inicialmente más alta | Más baja para gráficos simples |
-| Ideal para | Informes profesionales, gráficos complejos | Exploración rápida, gráficos sencillos |
+| Sintaxis | Declarativa, modular, basada en la gramática de los gráficos | Imperativa, secuencial |
+| Flexibilidad | Alta, personalización eficiente y detallada | Limitada, requiere mayor esfuerzo |
+| Estética | Moderna y profesional por defecto, fácil de mantener entre gráficos | Tradicional, requiere ajustes manuales |
+| Flujo de trabajo | Modular, reproducible y documentado; facilita colaboración y revisión | Menos modular, menos reproducible |
+| Reutilización | Alta, gracias a la estructura por capas y la posibilidad de guardar objetos gráficos | Baja, requiere repetir comandos y ajustes |
+| Curva de aprendizaje | Inicialmente más pronunciada, pero ventajosa en proyectos complejos | Más sencilla para gráficos básicos |
+| Integración | Excelente con el ecosistema tidyverse y flujos de trabajo modernos | Integración limitada con otros paquetes |
+| Comunidad y recursos | Amplia documentación, comunidad activa y abundantes ejemplos | Documentación tradicional, menos recursos |
 
-En resumen, **ggplot2** es preferible cuando se requiere personalización, reproducibilidad y presentación profesional, mientras que el sistema gráfico base resulta útil para análisis exploratorios rápidos o cuando se necesita generar gráficos simples con poco código. La elección depende de las necesidades del usuario y del contexto del análisis (Wickham, 2016).
+En conclusión, **ggplot2** es la opción preferente para la elaboración de gráficos complejos, personalizados y de alta calidad, especialmente en contextos académicos y científicos donde la reproducibilidad, la estética y la flexibilidad son prioritarias. El sistema gráfico base de R, por su parte, sigue siendo útil para la creación rápida de gráficos exploratorios y para usuarios que requieren soluciones sencillas y directas, o que priorizan la inmediatez sobre la personalización (Murrell, 2018; Wickham, 2016).
+
+## Material de apoyo y paquetes adicionales recomendados
+
+El aprendizaje y perfeccionamiento en la visualización de datos con `ggplot2` puede potenciarse mediante el acceso a recursos especializados y la integración de paquetes adicionales que amplían las capacidades del entorno gráfico en R. A continuación, se presentan recomendaciones de materiales de apoyo y herramientas complementarias, útiles tanto para quienes inician como para usuarios avanzados.
+
+### Recursos para profundizar en ggplot2
+
+El ecosistema de R y `ggplot2` cuenta con una amplia variedad de materiales didácticos, manuales y cursos en línea que facilitan la adquisición de competencias en visualización de datos:
+
+1.  **Documentación oficial de `ggplot2`**: El sitio oficial del paquete ofrece una referencia completa de funciones, ejemplos y guías de uso, actualizadas conforme a las nuevas versiones (Wickham, 2016). La documentación es un recurso esencial para comprender a fondo las capacidades del paquete. <https://ggplot2.tidyverse.org/>
+
+2.  **Libros especializados**: ***ggplot2: Elegant Graphics for Data Analysis*** (Wickham, 2016) es la obra de referencia para comprender la filosofía y el uso avanzado del paquete. Este libro proporciona una base sólida para la creación de gráficos complejos y personalizados.
+
+3.  **Cursos y tutoriales en línea**: Plataformas como DataCamp, Coursera y edX ofrecen cursos interactivos sobre visualización de datos con R y `ggplot2`, que incluyen ejercicios prácticos y proyectos aplicados (Healy, 2018).
+
+### Paquetes adicionales recomendados
+
+El uso de paquetes complementarios puede optimizar tareas específicas y ampliar las posibilidades de personalización y análisis gráfico:
+
+1.  **DataExplorer**: Facilita la exploración inicial de datos mediante la generación automática de reportes gráficos y estadísticos, permitiendo identificar patrones, valores atípicos y distribuciones de manera eficiente (Cui, 2020). Este paquete es especialmente útil para el análisis exploratorio de datos.
+
+2.  **ggthemes**: Proporciona una colección de temas predefinidos inspirados en estilos de publicaciones y medios reconocidos, lo que permite adaptar la estética de los gráficos a diferentes contextos profesionales. Los temas predefinidos pueden ahorrar tiempo y mejorar la apariencia de los gráficos.
+
+3.  **plotly**: Permite transformar gráficos estáticos de `ggplot2` en visualizaciones interactivas, ideales para presentaciones y análisis exploratorio en entornos web. La interactividad puede mejorar la comunicación de los resultados.
+
+4.  **ggrepel**: Mejora la legibilidad de los gráficos al evitar el solapamiento de etiquetas, especialmente útil en gráficos de dispersión con muchos puntos o etiquetas extensas. Evitar el solapamiento de etiquetas es crucial para la claridad visual.
+
+5.  **viridis**: Ofrece paletas de colores perceptualmente uniformes y accesibles para personas con daltonismo, recomendadas para mapas de calor y representaciones de datos continuos. El uso de paletas de colores accesibles es importante para la inclusión.
+
+###  Consideraciones finales
+
+La visualización de datos es un campo en constante evolución. Se recomienda explorar de manera continua nuevas herramientas, técnicas y buenas prácticas, así como participar en comunidades y foros especializados para resolver dudas y compartir experiencias. La integración de `ggplot2` con otros paquetes del ecosistema tidyverse y herramientas adicionales permite abordar desafíos complejos de visualización de manera eficiente, reproducible y profesional (Wickham et al., 2019).

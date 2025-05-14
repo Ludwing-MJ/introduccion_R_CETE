@@ -1,10 +1,10 @@
-# Sistema Gráfico Base de R: Arquitectura y Funcionalidades
+# Sistema Gráfico Base de R
 
 La representación gráfica de la información constituye un componente indispensable para la comprensión, la comunicación y la validación de resultados estadísticos. El sistema gráfico base de R ofrece un conjunto de herramientas versátiles que permiten construir visualizaciones de alta calidad siguiendo un enfoque incremental, en el cual cada elemento puede añadirse o modificarse de forma independiente (Murrell, 2018). A continuación se describe, de manera detallada y pedagógica, la arquitectura de este sistema y las funciones esenciales para el análisis exploratorio y la comprobación de supuestos en la estadística clásica.
 
 El propósito principal de la visualización es facilitar la detección de patrones, tendencias y anomalías que resultan difíciles de advertir mediante inspección numérica (Cleveland, 1993). Además, las gráficas permiten evaluar supuestos tales como normalidad, homocedasticidad y linealidad, que son cruciales para la validez de métodos paramétricos como la regresión lineal y el ANOVA (Venables & Ripley, 2002). Bajo esta perspectiva, la elaboración de gráficos debe regirse por principios de claridad, precisión y economía visual (Tufte, 2001).
 
-##  Arquitectura del sistema gráfico base
+## Arquitectura del sistema gráfico base
 
 El sistema gráfico base de R se sustenta en tres principios operativos:
 
@@ -381,19 +381,19 @@ La personalización de gráficos es un aspecto fundamental para lograr visualiza
 
 A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:
 
-1.  **main, sub, xlab, ylab:** Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.
+1.  **`main, sub, xlab, ylab`:** Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.
 
-2.  **col, border, pch, lty, lwd:** Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.
+2.  **`col, border, pch, lty, lwd`:** Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.
 
-3.  **cex, cex.axis, cex.lab, cex.main:** Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.
+3.  **`cex, cex.axis, cex.lab, cex.main`:** Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.
 
-4.  **legend():** Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.
+4.  **`legend()`:** Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.
 
-5.  **text():** Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.
+5.  **`text()`:** Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.
 
-6.  **abline():** Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.
+6.  **`abline()`:** Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.
 
-7.  **grid():** Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.
+7.  **`grid()`:** Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.
 
 ### Ejemplo integral
 

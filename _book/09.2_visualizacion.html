@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>13&nbsp; Sistema Gráfico Base de R: Arquitectura y Funcionalidades – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
+<title>13&nbsp; Sistema Gráfico Base de R – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09.2_visualizacion.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R: Arquitectura y Funcionalidades</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./09.2_visualizacion.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -448,7 +448,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09.2_visualizacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R: Arquitectura y Funcionalidades</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -549,7 +549,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R: Arquitectura y Funcionalidades</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R</span></h1>
 </div>
 
 
@@ -929,13 +929,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="argumentos-y-funciones-clave-para-la-personalizacióna-continuación-se-describen-los-argumentos-y-funciones-más-relevantes-para-la-personalización-de-gráficos-en-r-base"><span class="header-section-number">13.5.1</span> <strong>Argumentos y funciones clave para la personalizaciónA continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:</strong></h3>
 <p>A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:</p>
 <ol type="1">
-<li><p><strong>main, sub, xlab, ylab:</strong> Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.</p></li>
-<li><p><strong>col, border, pch, lty, lwd:</strong> Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.</p></li>
-<li><p><strong>cex, cex.axis, cex.lab, cex.main:</strong> Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.</p></li>
-<li><p><strong>legend():</strong> Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.</p></li>
-<li><p><strong>text():</strong> Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.</p></li>
-<li><p><strong>abline():</strong> Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.</p></li>
-<li><p><strong>grid():</strong> Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.</p></li>
+<li><p><strong><code>main, sub, xlab, ylab</code>:</strong> Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.</p></li>
+<li><p><strong><code>col, border, pch, lty, lwd</code>:</strong> Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.</p></li>
+<li><p><strong><code>cex, cex.axis, cex.lab, cex.main</code>:</strong> Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.</p></li>
+<li><p><strong><code>legend()</code>:</strong> Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.</p></li>
+<li><p><strong><code>text()</code>:</strong> Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.</p></li>
+<li><p><strong><code>abline()</code>:</strong> Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.</p></li>
+<li><p><strong><code>grid()</code>:</strong> Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.</p></li>
 </ol>
 </section>
 <section id="ejemplo-integral" class="level3" data-number="13.5.2">
