@@ -41,7 +41,7 @@ Para descargar e instalar Git, se puede acceder a la página oficial de Git (<ht
 3.  **Conexión del repositorio local con el repositorio remoto en GitHub:** Para vincular la carpeta local con el repositorio creado en GitHub, se debe copiar la URL del repositorio (por ejemplo, `https://github.com/usuario/analisis_estadistico.git`) y ejecutar el siguiente comando en la terminal:
 
     ```{r eval=FALSE}
-    git remote add origin https://github.com/usuario/analisis_estadistico.git
+    git remote add origin https://github.com/usuario/repositorio.git
     ```
 
 4.  **Agregado y confirmación de archivos:** Se agregan los archivos del proyecto al control de versiones con el comando:

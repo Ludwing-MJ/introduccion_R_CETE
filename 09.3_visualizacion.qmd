@@ -359,9 +359,12 @@ set.seed(123)
 grupo <- factor(rep(c("Control", "Tratamiento"), each = 100))
 valores <- c(rnorm(100, 70, 8), rnorm(100, 75, 10))
 datos_box <- data.frame(grupo = grupo, valores = valores)
+
 # Ejemplo de personalización de colores en un boxplot
 ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
-  geom_boxplot(color = "gray30", outlier.colour = "red", outlier.shape = 8) +
+  geom_boxplot(color = "gray30", 
+               outlier.colour = "red", 
+               outlier.shape = 8) +
   scale_fill_manual(values = c("skyblue", "salmon")) +
   scale_color_manual(values = c("gray30", "gray30")) +
   labs(title = "Boxplot personalizado por grupo")
@@ -418,7 +421,8 @@ ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
     y = "Medición",
     fill = "Condición experimental"
   ) +
-  theme(legend.position = "bottom", legend.title = element_text(face = "bold"))
+  theme(legend.position = "bottom", 
+        legend.title = element_text(face = "bold"))
 ```
 
 **Explicación:**
@@ -506,7 +510,9 @@ set.seed(123)
 grupo <- sample(c("A", "B", "C"), size = 150, replace = TRUE)
 categoria <- sample(c("X", "Y"), size = 150, replace = TRUE)
 valor <- rnorm(150, mean = 50, sd = 10)
-datos_facet <- data.frame(grupo = grupo, categoria = categoria, valor = valor)
+datos_facet <- data.frame(grupo = grupo, 
+                          categoria = categoria, 
+                          valor = valor)
 
 # Gráfico de dispersión facetado por grupo
 ggplot(datos_facet, aes(x = categoria, y = valor)) +
@@ -652,7 +658,9 @@ legend("topright",
        col = c("red", "green", "blue"),
        pch = 16,
        title = "Especie")
-mtext("Datos del conjunto iris", side = 3, line = 0.5, cex = 0.9, col = "gray40")
+mtext("Datos del conjunto iris", 
+      side = 3, line = 0.5, 
+      cex = 0.9, col = "gray40")
 ```
 
 Ambos gráficos incluyen personalización de colores, subtítulo, título, etiquetas de ejes y leyenda, asegurando una comparación justa.
@@ -662,7 +670,7 @@ Ambos gráficos incluyen personalización de colores, subtítulo, título, etiqu
 A continuación se presenta un cuadro comparativo que integra los aspectos más relevantes discutidos, facilitando la consulta rápida y la toma de decisiones informada:
 
 | Característica | ggplot2 | Sistema gráfico base |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Sintaxis | Declarativa, modular, basada en la gramática de los gráficos | Imperativa, secuencial |
 | Flexibilidad | Alta, personalización eficiente y detallada | Limitada, requiere mayor esfuerzo |
 | Estética | Moderna y profesional por defecto, fácil de mantener entre gráficos | Tradicional, requiere ajustes manuales |
@@ -702,6 +710,6 @@ El uso de paquetes complementarios puede optimizar tareas específicas y ampliar
 
 5.  **viridis**: Ofrece paletas de colores perceptualmente uniformes y accesibles para personas con daltonismo, recomendadas para mapas de calor y representaciones de datos continuos. El uso de paletas de colores accesibles es importante para la inclusión.
 
-###  Consideraciones finales
+### Consideraciones finales
 
 La visualización de datos es un campo en constante evolución. Se recomienda explorar de manera continua nuevas herramientas, técnicas y buenas prácticas, así como participar en comunidades y foros especializados para resolver dudas y compartir experiencias. La integración de `ggplot2` con otros paquetes del ecosistema tidyverse y herramientas adicionales permite abordar desafíos complejos de visualización de manera eficiente, reproducible y profesional (Wickham et al., 2019).

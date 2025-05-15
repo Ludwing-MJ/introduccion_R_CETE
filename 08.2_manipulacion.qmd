@@ -14,7 +14,8 @@ El objetivo de este ejemplo es mostrar cómo crear y explorar un conjunto de dat
 # Establecer una semilla para que el usuario pueda replicar el ejemplo
 set.seed(123) # Garantiza reproducibilidad
 
-# Simular los resultados de un experimento con el diseño bloques completos al azar
+# Simular los resultados de un experimento
+# con el diseño bloques completos al azar
 datos_cultivo <- data.frame(
   parcela = 1:20,
   tratamiento = rep(c("Control", 
@@ -74,7 +75,8 @@ La exclusión de columnas también puede realizarse de manera eficiente. Por eje
 
 ```{r}
 # Excluir la columna fecha_siembra del data frame
-datos_sin_fecha <- datos_cultivo[, !names(datos_cultivo) %in% "fecha_siembra"]
+datos_sin_fecha <- datos_cultivo[, !names(datos_cultivo)
+                                 %in% "fecha_siembra"]
 
 # Verificar que la columna fecha_siembra ha sido eliminada
 head(datos_sin_fecha)
@@ -147,8 +149,9 @@ En R, la creación de nuevas variables se realiza mediante operaciones aritméti
 
 ```{r}
 # Crear un índice que relaciona altura y peso
-# La división de columnas genera una nueva variable que representa la relación
-datos_cultivo$indice_crecimiento <- datos_cultivo$altura_cm/datos_cultivo$peso_gr
+# La división genera una nueva variable que es el indice de crecimiento
+datos_cultivo$indice_crecimiento <- 
+  datos_cultivo$altura_cm/datos_cultivo$peso_gr
 
 # Categorizar el peso en dos niveles usando una condición lógica
 # ifelse() evalúa cada valor y asigna una categoría según la condición
@@ -170,15 +173,17 @@ La creación de estas nuevas variables permite enriquecer el análisis y adaptar
 La recodificación de variables categóricas es fundamental para establecer un orden específico en los niveles de los factores o para simplificar categorías, lo cual es particularmente relevante en análisis como ANOVA o regresión logística:
 
 ```{r}
-# Recodificar los niveles de daño por plaga como valores numéricos ordenados
-# factor() permite especificar el orden de los niveles y asignar nuevas etiquetas
+# Recodificar los niveles de daño por plaga como valores numéricos 
+## factor() permite especificar el orden de los niveles 
+## y asignar nuevas etiquetas
 datos_cultivo$nivel_daño <- factor(datos_cultivo$daño_plaga, 
                                   levels = c("Bajo", "Medio", "Alto"), 
                                   labels = c("1", "2", "3"))
 
 # Crear una variable indicadora (dummy) para el tratamiento control
 # Esta transformación es útil para análisis de regresión
-datos_cultivo$es_control <- ifelse(datos_cultivo$tratamiento == "Control", 1, 0)
+datos_cultivo$es_control <- 
+  ifelse(datos_cultivo$tratamiento == "Control", 1, 0)
 
 # Verificar la recodificación
 head(datos_cultivo)

@@ -20,7 +20,7 @@ book:
 
   repo-subdir: book
   sharing: [twitter, linkedin]
-  downloads: [pdf, epub]
+  downloads: [pdf]
   image: logo_cete_vector.png
 
   page-footer:
@@ -53,8 +53,8 @@ book:
     - 10.2_exportacion.qmd
     - 10.3_exportacion.qmd
     - part: "Referencias"
-    - references.qmd
-    - part: "Ejemplos de Análisis Estadístico con R"
+    - references_HTML.qmd
+    - part: "Ejemplos de análisis estadístico"
     - estadistica_descriptiva.qmd
     - regresion_simple.qmd
     - regresion_multiple.qmd
@@ -76,32 +76,24 @@ format:
     
   pdf:
     code-overflow: wrap
-    include-in-header: |
-      \usepackage{listings}
-      \lstset{breaklines=true}
     lang: es
     documentclass: scrreprt
     classoption: ["onepage", "openany"]
     papersize: a4
     toc: true
-    margin-top: 35mm
+    margin-top: 30mm
     margin-left: 30mm
     margin-bottom: 30mm
     margin-right: 30mm
     titlepage-geometry: 
-      - top=35mm
+      - top=30mm
       - bottom=30mm
       - right=30mm
       - left=30mm
-
-  epub: 
-    lang: es
-    belongs-to-collection: "Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos"
-    group-position: 0
-    creator: "P. Agr. Ludwing Isaí Marroquín Jiménez"
-    rights: "© Ludwing | 2025"
-    fig-responsive: true
-    number-sections: true
+    include-in-header: 
+      text: |
+        \usepackage{hanging}
+        \renewcommand{\partname}{Capítulo} % Cambia "Part" por "Capítulo"
 
 editor: visual
 

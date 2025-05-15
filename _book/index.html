@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="P. Agr. Ludwing Isaí Marroquín Jiménez">
-<meta name="dcterms.date" content="2025-05-14">
+<meta name="dcterms.date" content="2025-05-15">
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
 <title>Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
@@ -307,26 +307,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="./Manual_Introduccion_R_CETE.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.pdf">
-              <i class="bi bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.epub">
-              <i class="bi bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
               <i class="bi bi-twitter pe-1"></i>
@@ -477,7 +461,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10.3_exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Uso de Git y GitHub en Proyectos de R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -486,13 +470,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references_HTML.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Ejemplos de Análisis Estadístico con R</span></span>
+ <span class="menu-text">Ejemplos de análisis estadístico</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -560,7 +544,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">14 may 2025</p>
+      <p class="date">15 may 2025</p>
     </div>
   </div>
   
@@ -608,7 +592,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="software-y-convenciones" class="level2">
 <h2 class="anchored" data-anchor-id="software-y-convenciones">Software y convenciones</h2>
 <p>La versión en línea de este manual está disponible en <a href="https://introduccion-r-cete.vercel.app/" class="uri">https://introduccion-r-cete.vercel.app/</a>, y la fuente en español se encuentra alojada en el repositorio de GitHub <a href="https://github.com/Ludwing-MJ/introduccion_R_CETE" class="uri">https://github.com/Ludwing-MJ/introduccion_R_CETE</a>. El desarrollo del manual se realizó utilizando Quarto, una herramienta que permite transformar archivos con extensión .qmd en formatos publicables como HTML, PDF y EPUB, facilitando la integración de código, resultados y texto en un solo documento reproducible.</p>
-<p>Durante la elaboración del manual se emplearon diversos paquetes del ecosistema de R, entre los que destacan knitr y bookdown, los cuales permiten combinar las ventajas de LaTeX y R para la generación de documentos dinámicos y reproducibles (Xie, 2015; Xie, 2024). Esta integración posibilita que los ejemplos de código y los resultados presentados sean fácilmente replicables por el lector.</p>
+<p>Durante la elaboración del manual se emplearon diversos paquetes del ecosistema de R, entre los que destacan knitr y bookdown, los cuales permiten combinar las ventajas de LaTeX y R para la generación de documentos dinámicos y reproducibles (Xie et al., 2018). Esta integración posibilita que los ejemplos de código y los resultados presentados sean fácilmente replicables por el</p>
 <p>A lo largo del manual, se presentan fragmentos de código que pueden ser copiados y ejecutados directamente en la consola de R para obtener los mismos resultados que se muestran en el texto. Los bloques de código se destacan en recuadros similares al siguiente:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> <span class="sc">+</span> <span class="dv">6</span></span>
@@ -634,7 +618,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning in system2("quarto", "-V", stdout = TRUE, env = paste0("TMPDIR=", : el
 comando ejecutado '"quarto"
-TMPDIR=C:/Users/FAUSAC/AppData/Local/Temp/RtmpyYY30y/file2144710a4e51 -V' tiene
+TMPDIR=C:/Users/FAUSAC/AppData/Local/Temp/Rtmp6HVavh/file3964191d5b45 -V' tiene
 el estatus 1</code></pre>
 </div>
 <div class="cell-output cell-output-stdout">
@@ -648,7 +632,7 @@ el estatus 1</code></pre>
  collate  Spanish_Guatemala.utf8
  ctype    Spanish_Guatemala.utf8
  tz       America/Guatemala
- date     2025-05-12
+ date     2025-05-15
  pandoc   3.4 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
  quarto   NA @ C:\\PROGRA~1\\Quarto\\bin\\quarto.exe
 

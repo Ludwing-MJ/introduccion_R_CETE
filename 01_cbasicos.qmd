@@ -12,7 +12,7 @@ El lenguaje R se distingue principalmente por su orientación al análisis estad
 
 R es un software de código abierto, lo que significa que es gratuito y su desarrollo es impulsado por una comunidad internacional de usuarios y desarrolladores. Esta característica fomenta la colaboración, la transparencia y la mejora continua del entorno. La extensibilidad de R es notable, ya que cuenta con un repositorio central (CRAN) que, hasta 2023, alberga más de 19,000 paquetes, los cuales amplían sus capacidades para abordar tareas especializadas como análisis genómico, minería de texto, modelado espacial, entre otros (R Core Team, 2023).
 
-Otra característica fundamental de R es su contribución a la reproducibilidad científica. El uso de scripts y cuadernos de trabajo permite documentar cada paso del análisis, facilitando la replicación y verificación de resultados por parte de otros investigadores (Peng, 2011). Además, R es altamente interoperable, permitiendo la integración con otros lenguajes de programación como Python, C++ y SQL, así como la importación y exportación de datos en múltiples formatos, incluyendo CSV, Excel, JSON y bases de datos relacionales (R Core Team, 2023).
+Otra característica fundamental de R es su contribución a la reproducibilidad científica. El uso de scripts y cuadernos de trabajo permite documentar cada paso del análisis, facilitando la replicación y verificación de resultados por parte de otros investigadores. Además, R es altamente interoperable, permitiendo la integración con otros lenguajes de programación como Python, C++ y SQL, así como la importación y exportación de datos en múltiples formatos, incluyendo CSV, Excel, JSON y bases de datos relacionales (R Core Team, 2023).
 
 ### ¿Por qué es especial R?
 

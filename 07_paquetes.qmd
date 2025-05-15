@@ -14,7 +14,7 @@ Los paquetes en R presentan una serie de atributos fundamentales que los disting
 
 2.  **Documentación Integral:** Los paquetes incluyen documentación detallada que describe el propósito de cada función, sus argumentos y ejemplos de uso, lo que facilita el aprendizaje autónomo y la correcta aplicación de las herramientas.
 
-3.  **Conjuntos de Datos Ilustrativos:** Muchos paquetes incorporan conjuntos de datos de ejemplo, que permiten a los usuarios practicar y comprender la funcionalidad ofrecida, así como reproducir ejemplos y casos de estudio presentados en la documentación (Grolemund & Wickham, 2017; Xie, Allaire & Grolemund, 2018).
+3.  **Conjuntos de Datos Ilustrativos:** Muchos paquetes incorporan conjuntos de datos de ejemplo, que permiten a los usuarios practicar y comprender la funcionalidad ofrecida, así como reproducir ejemplos y casos de estudio presentados en la documentación (Grolemund & Wickham, 2017; Xie et al., 2018).
 
 ### Relevancia Estratégica del Uso de Paquetes en R: Beneficios y Aplicaciones
 

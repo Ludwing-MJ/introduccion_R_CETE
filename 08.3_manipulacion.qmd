@@ -28,10 +28,13 @@ datos_cultivo <- data.frame(
     tratamiento = rep(c("Control", "Fertilizante A",
                        "Fertilizante B", "Fertilizante C"), each = 5),
     bloque = rep(1:5, times = 4),    # Estructura de bloques
-    altura_cm = round(rnorm(20, mean = 65, sd = 10), 1),    # Variable respuesta 1
-    peso_gr = round(rnorm(20, mean = 120, sd = 25), 1),     # Variable respuesta 2
+     # Variable respuesta 1
+    altura_cm = round(rnorm(20, mean = 65, sd = 10), 1),
+     # Variable respuesta 2
+    peso_gr = round(rnorm(20, mean = 120, sd = 25), 1),    
     daño_plaga = sample(c("Alto", "Medio", "Bajo"), 20, replace = TRUE),
-    fecha_siembra = as.Date("2024-01-01") + sample(1:10, 20, replace = TRUE)
+    fecha_siembra = as.Date("2024-01-01") + 
+      sample(1:10, 20, replace = TRUE)
 )
 
 # Introducción de valores faltantes para ejemplos didácticos
@@ -90,7 +93,8 @@ En este ejemplo, se crea un nuevo data frame llamado `datos_control` que contien
 ```{r}
 # Ejemplo 2: Filtrar parcelas con altura mayor a 65 cm y 
            # tratamiento distinto de "Control"
-datos_altos <- filter(datos_cultivo, altura_cm > 65, tratamiento != "Control")
+datos_altos <- filter(datos_cultivo, 
+                      altura_cm > 65, tratamiento != "Control")
 head(datos_altos) # Visualizar las primeras filas del resultado
 ```
 
@@ -330,8 +334,10 @@ La sintaxis principal es:
 pivot_longer(
   data,              # Data frame o tibble de entrada
   cols,              # Columnas a transformar
-  names_to = "name", # Nombre de la nueva columna para las columnas originales
-  values_to = "value" # Nombre de la nueva columna para los valores originales
+  # Nombre de la nueva columna para las columnas originales
+  names_to = "name", 
+  # Nombre de la nueva columna para los valores originales
+  values_to = "value" 
 )
 ```
 
@@ -425,7 +431,7 @@ separate(
   data,    # Data frame o tibble de entrada
   col,     # Columna a dividir
   into,    # Vector con los nombres de las nuevas columnas
-  sep      # Carácter separador (por defecto, cualquier carácter no alfanumérico)
+  sep      # Carácter separador 
 )
 ```
 

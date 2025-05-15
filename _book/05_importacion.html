@@ -306,26 +306,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="./Manual_Introduccion_R_CETE.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.pdf">
-              <i class="bi bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.epub">
-              <i class="bi bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
               <i class="bi bi-twitter pe-1"></i>
@@ -476,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10.3_exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Uso de Git y GitHub en Proyectos de R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -485,13 +469,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references_HTML.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Ejemplos de Análisis Estadístico con R</span></span>
+ <span class="menu-text">Ejemplos de análisis estadístico</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -602,7 +586,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importación-de-archivos-csv-y-excel-en-r" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="importación-de-archivos-csv-y-excel-en-r"><span class="header-section-number">5.2</span> Importación de archivos CSV y Excel en R</h2>
-<p>La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes. Estos permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016; Wickham &amp; Bryan, 2023).</p>
+<p>La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes. Estos permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016).</p>
 <section id="importación-de-archivos-csv" class="level3" data-number="5.2.1">
 <h3 data-number="5.2.1" class="anchored" data-anchor-id="importación-de-archivos-csv"><span class="header-section-number">5.2.1</span> Importación de archivos CSV</h3>
 <p>El formato CSV (Comma-Separated Values) se ha consolidado como uno de los estándares más utilizados para el almacenamiento y el intercambio de datos tabulares, debido a su simplicidad, legibilidad y compatibilidad con múltiples plataformas y aplicaciones. En R, la función <code>read.csv()</code> permite importar archivos CSV de manera eficiente, posibilitando la lectura de grandes volúmenes de datos sin requerir transformaciones previas (Grolemund &amp; Wickham, 2017).</p>
@@ -621,7 +605,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="importación-de-archivos-excel" class="level3" data-number="5.2.2">
 <h3 data-number="5.2.2" class="anchored" data-anchor-id="importación-de-archivos-excel"><span class="header-section-number">5.2.2</span> Importación de archivos Excel</h3>
-<p>El uso de hojas de cálculo en formato Excel (.xlsx) es frecuente en contextos profesionales y académicos, debido a la flexibilidad y las capacidades de organización que ofrece este software. Para la importación de archivos Excel en R, el paquete <code>readxl</code> proporciona funciones optimizadas que permiten acceder a los datos directamente desde las hojas de cálculo, sin necesidad de convertir los archivos a otros formatos intermedios (Wickham &amp; Bryan, 2023).</p>
+<p>El uso de hojas de cálculo en formato Excel (.xlsx) es frecuente en contextos profesionales y académicos, debido a la flexibilidad y las capacidades de organización que ofrece este software. Para la importación de archivos Excel en R, el paquete <code>readxl</code> proporciona funciones optimizadas que permiten acceder a los datos directamente desde las hojas de cálculo, sin necesidad de convertir los archivos a otros formatos intermedios (Wickham, 2016).</p>
 <p>El procedimiento recomendado para la importación de archivos Excel incluye la instalación y carga del paquete <code>readxl</code>, seguido del uso de la función <code>read_excel()</code>, como se muestra a continuación:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar y cargar el paquete readxl</span></span>
@@ -635,7 +619,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Los argumentos más relevantes de la función <code>read_excel()</code> se detallan a continuación:</p>
 <ul>
-<li><p><strong>sheet</strong>: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, <code>"Hoja1"</code>) o el número de la hoja (por ejemplo, <code>1</code> para la primera hoja) (Wickham &amp; Bryan, 2023).</p></li>
+<li><p><strong>sheet</strong>: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, <code>"Hoja1"</code>) o el número de la hoja (por ejemplo, <code>1</code> para la primera hoja) (Wickham, 2016).</p></li>
 <li><p><strong>col_names</strong>: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en <code>TRUE</code>, la primera fila se interpretará como los nombres de las variables; si se establece en <code>FALSE</code>, R asignará nombres genéricos a las columnas (Grolemund &amp; Wickham, 2017).</p></li>
 </ul>
 </section>
@@ -664,7 +648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="resumen-estadístico-y-detección-de-inconsistencias"><span class="header-section-number">5.3.3</span> Resumen estadístico y detección de inconsistencias</h3>
 <p>El análisis exploratorio inicial incluye la obtención de resúmenes estadísticos básicos, que permiten identificar valores atípicos, rangos inusuales o la presencia de datos faltantes:</p>
 <ol type="1">
-<li><p><code>summary()</code>: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham &amp; Bryan, 2023).</p></li>
+<li><p><code>summary()</code>: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).</p></li>
 <li><p><code>table()</code>: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.</p></li>
 </ol>
 </section>

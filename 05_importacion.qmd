@@ -46,7 +46,7 @@ Siempre que sea posible, se sugiere trabajar dentro de un proyecto de RStudio. E
 
 ## Importación de archivos CSV y Excel en R
 
-La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes. Estos permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016; Wickham & Bryan, 2023).
+La importación de datos tabulares es una tarea fundamental en el análisis estadístico. R facilita este proceso mediante funciones y paquetes. Estos permiten trabajar con archivos en formatos ampliamente utilizados, como CSV y Excel. Comprender cómo importar estos archivos correctamente es esencial para garantizar la integridad y reproducibilidad del análisis (Wickham, 2016).
 
 ### Importación de archivos CSV
 
@@ -70,7 +70,7 @@ Los parámetros principales de esta función se describen a continuación:
 
 ### Importación de archivos Excel
 
-El uso de hojas de cálculo en formato Excel (.xlsx) es frecuente en contextos profesionales y académicos, debido a la flexibilidad y las capacidades de organización que ofrece este software. Para la importación de archivos Excel en R, el paquete `readxl` proporciona funciones optimizadas que permiten acceder a los datos directamente desde las hojas de cálculo, sin necesidad de convertir los archivos a otros formatos intermedios (Wickham & Bryan, 2023).
+El uso de hojas de cálculo en formato Excel (.xlsx) es frecuente en contextos profesionales y académicos, debido a la flexibilidad y las capacidades de organización que ofrece este software. Para la importación de archivos Excel en R, el paquete `readxl` proporciona funciones optimizadas que permiten acceder a los datos directamente desde las hojas de cálculo, sin necesidad de convertir los archivos a otros formatos intermedios (Wickham, 2016).
 
 El procedimiento recomendado para la importación de archivos Excel incluye la instalación y carga del paquete `readxl`, seguido del uso de la función `read_excel()`, como se muestra a continuación:
 
@@ -90,7 +90,7 @@ datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
 
 Los argumentos más relevantes de la función `read_excel()` se detallan a continuación:
 
--   **sheet**: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, `"Hoja1"`) o el número de la hoja (por ejemplo, `1` para la primera hoja) (Wickham & Bryan, 2023).
+-   **sheet**: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, `"Hoja1"`) o el número de la hoja (por ejemplo, `1` para la primera hoja) (Wickham, 2016).
 
 -   **col_names**: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en `TRUE`, la primera fila se interpretará como los nombres de las variables; si se establece en `FALSE`, R asignará nombres genéricos a las columnas (Grolemund & Wickham, 2017).
 
@@ -120,7 +120,7 @@ La correcta interpretación de los tipos de variables es fundamental para evitar
 
 El análisis exploratorio inicial incluye la obtención de resúmenes estadísticos básicos, que permiten identificar valores atípicos, rangos inusuales o la presencia de datos faltantes:
 
-1.  `summary()`: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham & Bryan, 2023).
+1.  `summary()`: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).
 
 2.  `table()`: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.
 

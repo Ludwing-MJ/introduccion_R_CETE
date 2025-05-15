@@ -61,7 +61,7 @@ Las funciones personalizadas permiten al usuario definir procedimientos específ
 A continuación, se muestra un ejemplo de cómo definir y utilizar una función personalizada en R para calcular el área de un círculo a partir de su radio:
 
 ```{r}
-# Definición de una función personalizada para calcular el área de un círculo
+# Función personalizada para calcular el área de un círculo
 area_circulo <- function(radio) {
   area <- pi * radio^2
   return(area)
@@ -78,7 +78,7 @@ En este ejemplo, el usuario define la lógica de la función, especifica el argu
 Las principales diferencias entre funciones predefinidas y personalizadas en R se resumen en la siguiente tabla:
 
 | Característica | Funciones predefinidas | Funciones personalizadas |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Disponibilidad | Incluidas en R o en paquetes | Creadas por el usuario |
 | Flexibilidad | Limitada a las tareas para las que fueron diseñadas | Totalmente adaptables a las necesidades del usuario |
 | Ejemplos | `mean()`, `sum()`, `sd()`, `summary()` | `area_circulo()` |
@@ -150,7 +150,7 @@ Cada función en R se compone de los siguientes elementos:
 A continuación, se muestra un ejemplo de una función personalizada que convierte temperaturas de grados Celsius a Fahrenheit:
 
 ```{r}
-# Definición de la función para convertir temperaturas de Celsius a Fahrenheit
+# función para convertir temperaturas de Celsius a Fahrenheit
 celsius_a_fahrenheit <- function(celsius) {
     # Validación del tipo de dato del argumento de entrada
     if (!is.numeric(celsius)) {

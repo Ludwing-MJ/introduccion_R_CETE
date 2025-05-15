@@ -154,7 +154,9 @@ sexo <- factor("masculino")
 estado_civil <- factor("soltero", 
                       levels = c("soltero", "casado", "divorciado"))
 nivel_educativo <- factor("licenciatura",
-                         levels = c("bachillerato", "licenciatura", "posgrado"),
+                         levels = c("bachillerato",
+                                    "licenciatura",
+                                    "posgrado"),
                          ordered = TRUE)  # Factor ordenado
 
 # Exploración de factores
@@ -224,7 +226,9 @@ class(nombre) # Devuelve "character"
 str(nombre)   # Muestra la estructura del objeto
 
 # Exploración de un factor
-estado_civil <- factor("soltero", levels = c("soltero", "casado", "divorciado"))
+estado_civil <- factor("soltero", levels = c("soltero",
+                                             "casado",
+                                             "divorciado"))
 class(estado_civil)   # Devuelve "factor"
 typeof(estado_civil)  # Devuelve "integer"
 str(estado_civil)     # Muestra la estructura del factor

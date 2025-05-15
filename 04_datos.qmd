@@ -159,7 +159,9 @@ print(matriz4)
 
 
 # Ejemplo 5: Asignación de nombres a filas y columnas con dimnames
-matriz5 <- matrix(1:4, nrow = 2, dimnames = list(c("Fila1", "Fila2"), c("Col1", "Col2")))
+matriz5 <- matrix(1:4, nrow = 2, 
+                  dimnames = list(c("Fila1", "Fila2"), 
+                                  c("Col1", "Col2")))
 print(matriz5)
 
 ```
@@ -440,7 +442,7 @@ Además, las listas son ideales para agrupar diferentes tipos de datos relaciona
 En R, los data frames y las listas constituyen estructuras de datos esenciales, pero difieren significativamente en su organización interna y en los contextos para los que resultan más apropiadas. La siguiente tabla resume las diferencias clave entre ambas estructuras (R Core Team, 2023; Wickham & Grolemund, 2017):
 
 | Característica | Data Frame | Lista |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | Estructura | Tabular: filas y columnas | Colección de objetos heterogéneos |
 | Tipos de datos | Cada columna puede tener un tipo distinto, pero todos los elementos de una columna deben ser del mismo tipo | Cada elemento puede ser de cualquier tipo y longitud |
 | Uso principal | Análisis estadístico y visualización de datos estructurados | Almacenamiento y gestión de resultados complejos o heterogéneos |
