@@ -1,7 +1,16 @@
 # Regresión múltiple usando R
 
-## Notas:
+Dataset propuesto: \
+1. **Wine Quality Dataset (Calidad del vino)**
 
-En esta sección se desarrollará un ejemplo de regresión multiple
+**Enlace al artículo/dataset:**
 
-Esta pendiente de finalización y carga
+-   [UCI Machine Learning Repository: Wine Quality Data Set](https://archive.ics.uci.edu/ml/datasets/wine+quality)
+
+**Estructura de la base de datos:**
+
+-   **quality** (dependiente, cuantitativa): Puntuación de calidad del vino (0-10)
+
+-   **fixed acidity, volatile acidity, citric acid, residual sugar, chlorides, free sulfur dioxide, total sulfur dioxide, density, pH, sulphates, alcohol** (independientes, cuantitativas)
+
+**Breve descripción:** Datos de 1,599 muestras de vino tinto de Portugal, con 11 variables fisicoquímicas como predictores de la calidad sensorial. \
