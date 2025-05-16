@@ -1,609 +1,381 @@
-# Estadística descriptiva usando funciones en R
+# Estimación de parámetros de estadística descriptiva en R
 
-La estadística descriptiva es una rama esencial de la estadística que se ocupa de resumir y describir las características principales de un conjunto de datos. Su propósito es proporcionar una visión clara y comprensible de los datos, permitiendo identificar patrones, tendencias y comportamientos generales sin realizar inferencias o predicciones. Este tipo de análisis es el primer paso en cualquier estudio estadístico, ya que organiza y presenta la información de manera que sea fácil de interpretar.
+La estadística descriptiva es una rama fundamental de la estadística que se dedica a resumir y presentar datos de manera informativa. A través de medidas como la media, la mediana y la moda, es posible obtener una comprensión inicial de las características principales de un conjunto de datos (Navarro, 2019). En esta sección, se ilustrará cómo calcular y presentar estos estadísticos descriptivos utilizando el lenguaje de programación R y el paquete `tidyverse`, que facilita la manipulación y visualización de datos (Wickham, 2019).
 
-En R, la estadística descriptiva se puede realizar de manera eficiente gracias a una amplia variedad de herramientas y funciones predefinidas, así como paquetes especializados que amplían las capacidades del análisis. Estas herramientas permiten calcular medidas clave que se agrupan en tres categorías principales: medidas de tendencia central, medidas de dispersión y medidas de forma.
+## Base de datos
 
-## Medidas principales en estadística descriptiva
+El conjunto de datos IRIS es uno de los conjuntos de datos más utilizados en la literatura de estadística y aprendizaje automático. Fue introducido por Ronald Fisher en 1936 y contiene mediciones de cuatro características morfológicas de flores de tres especies distintas de iris: *Iris setosa*, *Iris versicolor* e *Iris virginica*. Este dataset es ampliamente empleado para ilustrar técnicas de análisis estadístico y clasificación supervisada (Fisher, 1936).
 
-### Medidas de tendencia central
+**Referencia del dataset:** Fisher, R. (1936). Iris \[Dataset\]. UCI Machine Learning Repository. <https://doi.org/10.24432/C56C76>
 
-Las medidas de tendencia central describen el valor típico o central de un conjunto de datos. Estas medidas son fundamentales para resumir los datos en un solo valor representativo.
+**Acceso a recursos:** El script completo con los ejemplos desarrollados y la base de datos IRIS pueden descargarse en el siguiente repositorio: `[ADJUNTAR ACA EL ENLACE AL REPOSITORIO]`
 
-**Media aritmética**: Es el promedio aritmético de los datos. Se calcula sumando todos los valores y dividiendo entre el número total de observaciones. Es sensible a valores extremos (outliers).
+## Configuración del Entorno de Trabajo
 
-Fórmula:
+Antes de comenzar cualquier análisis, es fundamental configurar adecuadamente el entorno de trabajo. Esto implica instalar y cargar los paquetes necesarios, así como explorar y comprender la estructura del conjunto de datos que se utilizará. En esta sección, se detallarán los pasos para configurar el entorno de trabajo y realizar una exploración inicial del conjunto de datos `iris`.
 
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112229.png){fig-align="center"}
+### Instalación y carga de paquetes necesarios
 
-Ejemplo en R:
+R cuenta con una amplia variedad de paquetes que facilitan la realización de análisis estadísticos y visualizaciones de datos. Para este manual, se utilizarán los siguientes paquetes:
 
-```{r}
-datos <- c(10, 20, 30, 40, 50)
-media <- mean(datos)
-print(media)  # Resultado: 
-```
+1.  **tidyverse:** Proporciona un conjunto de paquetes para la manipulación, transformación y visualización de datos, incluyendo `dplyr`, `ggplot2`, `tidyr`, entre otros (Wickham et al., 2019).
 
-**Mediana**: Es el valor que divide el conjunto de datos en dos partes iguales, de modo que el 50% de los valores son menores o iguales a la mediana y el otro 50% son mayores o iguales. Es menos sensible a valores extremos que la media.
+2.  **psych:** Ofrece funciones para el análisis psicométrico y estadístico, incluyendo descripciones detalladas de los datos (Revelle, 2023).
 
-Ejemplo en R:
+3.  **ggplot2:** Facilita la creación de gráficos de alta calidad (Wickham, 2016).
 
-```{r}
-mediana <- median(datos)
-print(mediana)  # Resultado: 
-```
+4.  **DataExplorer:** Proporciona herramientas para la exploración automática de datos (Cui, 2023).
 
-**Moda**: Es el valor o los valores que ocurren con mayor frecuencia en un conjunto de datos. En R base, no existe una función predefinida para calcular la moda, pero se puede implementar fácilmente.
-
-Ejemplo de función para calcular la moda:
-
-```{r}
-moda_ej <- function(x) {
-  tabla <- table(x)
-  moda <- names(tabla[tabla == max(tabla)])
-  return(moda)
-}
-datos_moda <- c(10, 20, 20, 30, 40)
-print(moda_ej(datos_moda))  # Resultado: 
-```
-
-### Medidas de dispersión
-
-Las medidas de dispersión describen la variabilidad o el grado de dispersión de los datos en torno a la media. Estas medidas son esenciales para entender la distribución de los datos.
-
-**Varianza**: Mide la dispersión de los datos respecto a la media. Es el promedio de las diferencias al cuadrado entre cada valor y la media. Una varianza alta indica que los datos están muy dispersos.
-
-Fórmula de la varianza muestral:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112528.png){fig-align="center"}
-
-```{r}
-varianza <- var(datos)
-print(varianza)  # Resultado: 
-```
-
-**Desviación estándar**: Es la raíz cuadrada de la varianza. Proporciona una medida de dispersión en las mismas unidades que los datos originales.
-
-Fórmula:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112744.png){fig-align="center"}
-
-Ejemplo en R:
-
-```{r}
-desviacion <- sd(datos)
-print(desviacion)  # Resultado:
-```
-
-**Rango**: Es la diferencia entre el valor máximo y el valor mínimo de los datos. Es una medida simple pero útil para entender la amplitud de los datos.
-
-Ejemplo en R:
-
-```{r}
-rango <- max(datos)-min(datos)
-print(rango)  # Resultado: 
-```
-
-**Rango intercuartílico (IQR)**: Es la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). Representa la dispersión de la mitad central de los datos y es menos sensible a valores extremos.
-
-Fórmula:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20112915.png){fig-align="center"}
-
-Ejemplo en R:
-
-```{r}
-iqr <- IQR(datos)
-print(iqr)  # Resultado: 
-```
-
-### Medidas de forma
-
-Las medidas de forma describen la distribución de los datos en términos de su simetría y concentración en torno a la media.
-
-**Asimetría (skewness)**: Mide el grado de simetría de la distribución de los datos. Una asimetría positiva indica que la cola derecha es más larga, mientras que una asimetría negativa indica que la cola izquierda es más larga.
-
-Guía gráfica para interpretar asimetría:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113841.png){fig-align="center"}
-
-Fórmula:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113031.png){fig-align="center"}
-
-Ejemplo en R (usando el paquete `psych`):
+El siguiente código instala y carga estos paquetes, verificando primero si ya están instalados para evitar reinstalaciones innecesarias:
 
 ```{r message=FALSE, warning=FALSE}
-# Instalación y carga del paquete psych
-if (!require("psych")) install.packages("psych")
-
-# Análisis de asimetria
-datos <- c(10, 20, 30, 40, 50)
-asimetria <- skew(datos)
-print(asimetria)  # Resultado: 0 (distribución simétrica)
+# Instalación y carga de paquetes necesarios
+## Para manipulación de datos
+if (!require(tidyverse)) install.packages("tidyverse")  
+## Para estadísticas descriptivas
+if (!require(psych)) install.packages("psych")         
+## Para visualización de correlaciones
+if (!require(corrplot)) install.packages("corrplot")    
+## Para gráficos avanzados
+if (!require(ggplot2)) install.packages("ggplot2")      
+## Para exploración automática
+if (!require(DataExplorer)) install.packages("DataExplorer")  
 ```
 
-**Curtosis (kurtosis)**: Mide la concentración de los datos en torno a la media. Una curtosis alta indica una distribución con colas más pesadas (leptocúrtica), mientras que una curtosis baja indica colas más ligeras (platicúrtica).
+### Carga y exploración inicial del dataset
 
-Guía gráfica para interpretar curtosis:
+Una vez configurado el entorno de trabajo, es fundamental cargar y explorar el conjunto de datos que se utilizará. En este caso, se utilizará el conjunto de datos `iris`, que está incluido por defecto en R. Este conjunto de datos contiene información sobre las dimensiones de los sépalos y pétalos de tres especies de flores de iris (setosa, versicolor y virginica).
 
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113648.png){fig-align="center"}
-
-Fórmula:
-
-![](_06.1_images/Captura%20de%20pantalla%202025-03-31%20113127.png){fig-align="center"}
-
-Ejemplo en R (usando el paquete `psych`):
+El siguiente código carga el conjunto de datos `iris` y muestra las primeras filas y la estructura de los datos:
 
 ```{r}
-curtosis <- kurtosi(datos)
-print(curtosis)  # Resultado: -1.912 (distribución platicúrtica)
+# Cargar el dataset IRIS
+data(iris)
+
+# Visualizar las primeras filas
+head(iris)
+
+# Explorar la estructura de los datos
+str(iris)
 ```
 
-## Base de datos para los ejemplos
+1.  `head(iris)` proporciona una vista rápida de las primeras filas del conjunto de datos, lo que ayuda a detectar valores atípicos evidentes y familiarizarse con las variables.
 
-En 2002, se llevó a cabo un estudio en la Universidad de San Carlos de Guatemala, en el que se recopilaron datos de 460 estudiantes de diversas facultades, generando una base de datos que incluye una amplia variedad de variables como: *FACULTAD, EDAD, SEXO, EST_CIVIL, PESO_lbs, TALLA, entre otras*. Esta base de datos, disponible para su descarga en [formato CSV](https://drive.google.com/file/d/1ZUg9MUHNApvq0gHcr-KFu88ah1QI0D3O/view?usp=sharing), se utilizará a lo largo de esta sección del manual para ilustrar diferentes métodos de análisis descriptivo de datos, adaptando las herramientas y conceptos desarrollados a las características de las variables incluidas. Para seguir los ejemplos prácticos, se recomienda que el usuario descargue el archivo y lo guarde en la carpeta correspondiente al proyecto en curso.
+2.  `str(iris)` muestra la estructura del conjunto de datos, incluyendo el tipo de cada variable (numérico o factor) y los primeros valores de cada variable. Esto facilita la planificación del análisis y la identificación de posibles problemas con los datos.
 
-### Preparación del área de trabajo
-
-Antes de comenzar con el análisis, es necesario preparar el entorno de trabajo instalando y cargando los paquetes necesarios, estableciendo el directorio de trabajo y revisando la estructura de los datos.
-
-```{r message=FALSE, warning=FALSE}
-
-# Instalación y carga de paquetes  
- # Incluye ggplot2, dplyr, tidyr
-if (!require("tidyverse")) install.packages("tidyverse")
-
- # Exportación a Excel
-if (!require("writexl")) install.packages("writexl")  
-
- # Realiza analisis de estaística descriptiva completos
-if (!require("psych")) install.packages("psych")
-
- # Se utiliza para establecer el directorio de trabajo 
-if (!require("rstudioapi")) install.packages("rstudioapi")
-
-```
-
-### Establecer directorio de trabajo
-
-Es importante asegurarse de que el archivo de datos esté en el directorio de trabajo correcto. Esto se puede hacer con el siguiente código una vez ya se ha guardado el script:
-
-```{r eval=FALSE}
-# Establecer y verificar directorio de trabajo
-setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
-getwd()
-```
-
-### Importar la base de datos
-
-Una vez establecido el directorio de trabajo, se puede importar la base de datos en formato CSV:
-
-```{r message=FALSE, warning=FALSE}
-# Importar la base de datos
-estudiantes<- read_csv("datos_estudiantes.csv")
-```
-
-### Revisar de la estructura de los datos
-
-Es fundamental revisar la estructura de los datos para entender el tipo de variables y su formato:
-
-```{r message=FALSE, warning=FALSE, echo=FALSE}
-# Codigo que se ejecuta pero no se presenta por secuencia para el usuario
-# Convertir todos los nombres de las columnas a minúsculas
-names(estudiantes)<- tolower(names(estudiantes))
-
-# Tener todas las variables en minúsculas facilita su manipulación
-
-# Revisar los valores de las variables categoricas 
-categoricas<-list(facultad = c(unique(estudiantes$facultad)),
-           sexo = c(unique(estudiantes$sexo)), 
-           est_civil = c(unique(estudiantes$est_civil)),
-           trabaja = c(unique(estudiantes$trabaja)),
-           jornada = c(unique(estudiantes$jornada)),
-           fuma = c(unique(estudiantes$fuma)),
-           alcohol = c(unique(estudiantes$alcohol)))
-
-```
-
-```{r message=FALSE, warning=FALSE, eval=FALSE}
-# Revisar la estructura de los datos
-sapply(estudiantes, class)
-
-# Convertir todos los nombres de las columnas a minúsculas
-names(estudiantes)<- tolower(names(estudiantes))
-
-# Tener todas las variables en minúsculas facilita su manipulación
-
-# Revisar los valores de las variables categoricas 
-categoricas<-list(facultad = c(unique(estudiantes$facultad)),
-           sexo = c(unique(estudiantes$sexo)), 
-           est_civil = c(unique(estudiantes$est_civil)),
-           trabaja = c(unique(estudiantes$trabaja)),
-           jornada = c(unique(estudiantes$jornada)),
-           fuma = c(unique(estudiantes$fuma)),
-           alcohol = c(unique(estudiantes$alcohol)))
-```
-
-### Limpieza de la base de datos
-
-Antes de realizar el análisis, es necesario limpiar los datos para corregir valores inconsistentes y asegurarse de que las variables estén en el formato adecuado:
-
-```{r message=FALSE, warning=FALSE}
-# Corregir los valores incorrectos de la variable "fuma"
-estudiantes$fuma <- ifelse(tolower(estudiantes$fuma) == "sí",
-                           1, estudiantes$fuma)
-unique(estudiantes$fuma)
-
-# Establecer como varibales tipo factor a las variables categoricas
-estudiantes <- estudiantes %>%
-  mutate(across(
-    c(facultad, sexo, est_civil, trabaja, jornada, fuma, alcohol), 
-    as.factor))
-
-```
-
-## Funciones por defecto en R para estadística descriptiva
-
-R base proporciona varias funciones útiles para realizar análisis descriptivos básicos. A continuación, se presentan ejemplos utilizando la base de datos de estudiantes.
-
-### Medidas de tendencia central
-
-Las medidas de tendencia central describen el valor típico o central de un conjunto de datos.
-
-**Media**: Promedio de los valores.
-
-**Mediana**: Valor que divide los datos en dos partes iguales.
-
-**Moda**: Valor más frecuente (no existe una función por defecto en R para calcular la moda).
+Además de `head()` y `str()`, el paquete `DataExplorer` ofrece funciones para la exploración automática de datos, como `plot_intro()`, que genera un informe completo sobre las características del conjunto de datos.
 
 ```{r}
-# Calcular medidas de tendencia central para la variable "edad"
-media_edad <- mean(estudiantes$edad, na.rm = TRUE)
-mediana_edad <- median(estudiantes$edad, na.rm = TRUE)
-
-# Resultados
-print(paste("Media:", media_edad))
-print(paste("Mediana:", mediana_edad))
-
+# Exploración automática con DataExplorer
+DataExplorer::plot_intro(iris)
 ```
 
-### Medidas de dispersión
+La función `plot_intro()` genera un informe que incluye información sobre el número de variables, el número de observaciones, el porcentaje de valores faltantes y el tipo de cada variable. Esto permite obtener una visión general del conjunto de datos de manera rápida y eficiente.
 
-Las medidas de dispersión describen la variabilidad de los datos.
+En resumen, la configuración del entorno de trabajo y la exploración inicial del conjunto de datos son pasos fundamentales para garantizar la calidad y validez del análisis. La instalación y carga de los paquetes necesarios, así como la exploración de la estructura y características del conjunto de datos, permiten identificar posibles problemas y planificar el análisis de manera efectiva (Wickham & Grolemund, 2017).
 
-**Varianza**: Dispersión respecto a la media.
+## Medidas de tendencia central
 
-**Desviación estándar**: Raíz cuadrada de la varianza.
+Las medidas de tendencia central son estadísticos que resumen el centro de un conjunto de datos. Las más comunes son la media, la mediana y la moda. Estas medidas proporcionan información valiosa sobre los valores típicos en una distribución y son fundamentales para comprender las características principales de los datos (Moore et al., 2017).
 
-**Rango**: Diferencia entre el valor máximo y mínimo.
+### Media y mediana
 
-**Rango intercuartílico (IQR)**: Diferencia entre el tercer y primer cuartil.
+La media es el promedio aritmético de los valores, mientras que la mediana es el valor que se encuentra en el centro de la distribución cuando los datos están ordenados. En R, se pueden calcular fácilmente con las funciones base `mean()` y `median()`.
 
 ```{r}
-# Calcular medidas de dispersión para la variable "peso_lbs"
-varianza_peso <- var(estudiantes$peso_lbs, na.rm = TRUE)
-desviacion_peso <- sd(estudiantes$peso_lbs, na.rm = TRUE)
-rango_peso <- max(estudiantes$peso_lbs)-min(estudiantes$peso_lbs)
-iqr_peso <- IQR(estudiantes$peso_lbs, na.rm = TRUE)
+# Media aritmética de la longitud del sépalo
+mean(iris$Sepal.Length)
 
-# Resultados
-print(paste("Varianza:", varianza_peso))
-print(paste("Desviación estándar:", desviacion_peso))
-print(paste("Rango:", paste(rango_peso)))
-print(paste("IQR:", iqr_peso))
+# Mediana de la longitud del sépalo
+median(iris$Sepal.Length)
 ```
 
-### Medidas de forma
+La media de la longitud del sépalo es 5.84 cm y la mediana es 5.80 cm. La cercanía entre la media y la mediana sugiere que la distribución de la variable `Sepal.Length` es relativamente simétrica, es decir, no presenta una asimetría significativa. En distribuciones simétricas, la media y la mediana tienden a ser iguales, mientras que en distribuciones asimétricas, la media se desplaza hacia la cola más larga (James et al., 2013).
 
-Las medidas de forma describen la distribución de los datos en términos de simetría y concentración.
+### Cálculo de la moda
 
-**Asimetría**: Grado de simetría de la distribución.
-
-**Curtosis**: Concentración de los datos en torno a la media.
-
-La asimetría y curtosis no se pueden calcular con la funciones base de R para ello se debe emplear el paquete `psych`, con este las medidas de forma se calculan fácilmente:
+La moda es el valor que aparece con mayor frecuencia en un conjunto de datos. A diferencia de la media y la mediana, R no tiene una función base para calcular la moda. Por lo tanto, se define una función personalizada para calcular la moda, que maneja adecuadamente los valores faltantes (NA) y permite identificar múltiples modas en caso de empate.
 
 ```{r}
-# Calcular asimetría y curtosis para la variable "talla"
-asimetria_talla <- skew(estudiantes$talla, na.rm = TRUE)
-curtosis_talla <- kurtosi(estudiantes$talla, na.rm = TRUE)
-
-# Resultados
-print(paste("Asimetría:", asimetria_talla))
-print(paste("Curtosis:", curtosis_talla))
-```
-
-### Resumen general con `summary()`
-
-La función `summary()` proporciona un resumen estadístico básico para variables numéricas y categóricas:
-
-```{r}
-# Resumen general de la variable talla
-resumen_general <- summary(estudiantes$talla)
-print(resumen_general)
-```
-
-## Paquetes especializados para estadística descriptiva (el paquete `psych`)
-
-El paquete `psych` es una herramienta poderosa y versátil para realizar análisis estadísticos descriptivos avanzados en R. Este paquete es especialmente útil cuando se trabaja con variables categóricas y numéricas simultáneamente, ya que permite calcular estadísticas detalladas, realizar análisis por grupos y obtener medidas de forma como asimetría y curtosis. Además, incluye opciones para calcular errores estándar e intervalos de confianza, lo que lo convierte en una excelente opción para análisis más completos.
-
-### Instalación y carga del paquete
-
-```{r message=FALSE, warning=FALSE}
-# Instalación y carga del paquete
-if (!require("psych")) install.packages("psych")
-```
-
-### Análisis descriptivo general
-
-A continuación, se utilizará la base de datos de estudiantes para realizar un análisis descriptivo detallado. Este análisis incluirá medidas de tendencia central, dispersión y forma.
-
-La función `describe()` del paquete `psych` permite calcular estadísticas descriptivas detalladas para variables numéricas. Estas estadísticas incluyen: Media, Desviación estándar, Mediana, Rango, Asimetría, Curtosis, Errores estándar.
-
-```{r}
-# Análisis descriptivo general para variables numéricas
-resultado_general <- describe(estudiantes[, c("edad", "peso_lbs", "talla")])
-
-# Mostrar resultados
-print(resultado_general)
-```
-
-**Salida esperada:** El resultado incluye un resumen detallado de cada variable numérica, con estadísticas como la media, desviación estándar, asimetría y curtosis.
-
-### Análisis descriptivo categorizado
-
-La función `describeBy()` permite realizar un análisis descriptivo agrupado por una o más variables categóricas. Esto es útil para comparar estadísticas entre diferentes grupos.
-
-```{r}
-# Análisis descriptivo agrupado por sexo y trabaja
-resultado_agrupado <- describeBy(
-  estudiantes[, c("edad", "peso_lbs", "talla")], 
-  group = list(estudiantes$sexo, estudiantes$trabaja)
-)
-
-# Mostrar resultados
-print(resultado_agrupado)
-```
-
-**Nota importante:** Cuando se utiliza `describeBy()`, el paquete `psych` genera una tabla separada para cada combinación de las variables categóricas. Esto puede ser útil para análisis simples, pero puede volverse limitante en casos donde se necesite consolidar los resultados en un solo dataframe o realizar análisis más complejos.
-
-### Exportación de resultados
-
-Los resultados del análisis descriptivo pueden exportarse fácilmente a un [archivo Excel](https://docs.google.com/spreadsheets/d/1hKCKIBayjskA1LBN2avyqf4OtQZnALBC/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true) para su revisión o presentación:
-
-```{r}
-# Exportar resultados agrupados a Excel
-write_xlsx(resultado_agrupado, "analisis_descriptivo_psych.xlsx")
-```
-
-### Ventajas del paquete `psych`
-
-El paquete `psych` ofrece varias ventajas para el análisis descriptivo:
-
-1.  **Estadísticas más detalladas**: Incluye medidas avanzadas como asimetría, curtosis, errores estándar e intervalos de confianza.
-
-2.  **Análisis por grupos**: Permite calcular estadísticas descriptivas para diferentes combinaciones de variables categóricas.
-
-3.  **Flexibilidad**: Facilita la categorización de variables numéricas en rangos personalizados.
-
-4.  **Exportación de resultados**: Los resultados pueden exportarse fácilmente a formatos como Excel para su análisis posterior.
-
-### Limitaciones del paquete `psych`
-
-Aunque el paquete `psych` es muy útil, presenta algunas limitaciones:
-
-1.  **Resultados separados por combinación de categorías**: La función `describeBy()` genera una tabla separada para cada combinación de las variables categóricas, lo que puede dificultar la consolidación de los resultados en un solo archivo o dataframe.
-
-2.  **Falta de personalización**: No permite agregar estadísticas personalizadas, como percentiles específicos o medidas adicionales que no estén incluidas en las funciones predefinidas.
-
-3.  **Manejo de valores faltantes**: Aunque maneja valores faltantes de manera básica, no ofrece opciones avanzadas para imputación o análisis detallado de datos incompletos.
-
-4.  **Exportación limitada**: Los resultados no están listos para exportarse directamente en un formato tabular consolidado, lo que requiere pasos adicionales para su preparación.
-
-## Función personalizada para análisis descriptivo completo
-
-Para superar las limitaciones del paquete `psych`, se puede utilizar una función personalizada que ofrezca mayor flexibilidad y personalización. A continuación, se presenta una solución que incluye funciones auxiliares para calcular medidas avanzadas como la moda, asimetría y curtosis.
-
-### Establecer funciones auxiliares
-
-#### Moda
-
-```{r}
-# Función de la moda
+# Función para calcular la moda
 moda <- function(x) {
   # Eliminar valores NA
   x <- na.omit(x)
-  
+
   # Verificar si el vector está vacío
   if (length(x) == 0) return(NA_character_)
-  
+
   # Calcular la frecuencia de cada valor
   tabla <- table(x)
-  
+
   # Identificar el/los valores con mayor frecuencia
   max_frecuencia <- max(tabla)
   modas <- names(tabla[tabla == max_frecuencia])
-  
+
   # Verificar si todos los valores son únicos (sin moda)
   if (max_frecuencia == 1) return(NA_character_)
-  
+
   # Retornar la moda como un string separado por comas
   return(paste(modas, collapse = ", "))
 }
 ```
 
-#### Asimetría
+**Explicación de la función:**
+
+1.  `x` es el vector de datos para el cual se calculará la moda.
+
+2.  `na.omit(x)` elimina los valores faltantes del vector.
+
+3.  `table(x)` calcula la frecuencia de cada valor en el vector.
+
+4.  `max(tabla)` identifica la frecuencia máxima.
+
+5.  `names(tabla[tabla == max_frecuencia])` extrae los valores que tienen la frecuencia máxima.
+
+6.  `paste(modas, collapse = ", ")` retorna la moda como un string separado por comas en caso de múltiples modas.
+
+Una vez definida la función `moda()`, se puede calcular la moda de la variable `Sepal.Length`:
 
 ```{r}
-# Función Asimentría
-calcular_asimetria <- function(x) {
-  # Eliminar valores NA
-  x <- na.omit(x)
-  
-  # Verificar que haya suficientes datos
-  if (length(x) < 3) return(NA_real_)
-  
-  # Calcular media y desviación estándar
-  m <- mean(x)
-  s <- sd(x)
-  
-  # Manejar el caso de desviación estándar cero
-  if (s == 0) return(0)
-  
-  # Calcular asimetría
-  asimetria <- sum((x - m)^3) / (length(x) * s^3)
-  return(asimetria)
-}
+# Calculo de la moda de la longitud del sépalo
+moda (iris$Sepal.Length)
 ```
 
-#### **Curtosis**
+La moda de la longitud del sépalo es "5", lo que indica que este valor es el más frecuente en el conjunto de datos. La diferencia entre la moda (5.00) y la media (5.84) sugiere que la distribución de la variable `Sepal.Length` puede tener una ligera asimetría o presentar múltiples picos.
+
+## Medidas de dispersión (globales)
+
+Las medidas de dispersión cuantifican la variabilidad de los datos, es decir, qué tan dispersos están los valores alrededor de la media. Las medidas de dispersión más comunes son la varianza, la desviación estándar, el rango y el rango intercuartílico (IQR).
 
 ```{r}
-# Función Curtosis 
-calcular_curtosis <- function(x) {
-  # Eliminar valores NA
-  x <- na.omit(x)
-  
-  # Verificar que haya suficientes datos
-  if (length(x) < 4) return(NA_real_)
-  
-  # Calcular media y desviación estándar
-  m <- mean(x)
-  s <- sd(x)
-  
-  # Manejar el caso de desviación estándar cero
-  if (s == 0) return(0)
-  
-  # Calcular curtosis
-  curtosis <- sum((x - m)^4) / (length(x) * s^4) - 3
-  return(curtosis)
-}
+# Varianza y desviación estándar
+var(iris$Sepal.Length)
+sd(iris$Sepal.Length)
+
+# Rango y rango intercuartílico
+range(iris$Sepal.Length)
+IQR(iris$Sepal.Length)
 ```
 
-### Función principal: análisis por categorías
+**Interpretación:**
 
-La función principal realiza el análisis descriptivo agrupando los datos según las variables categóricas especificadas. Calcula estadísticas clave como la media, mediana, moda, desviación estándar, varianza, rango, cuartiles, asimetría y curtosis.
+1.  `var()` mide la dispersión cuadrática media respecto de la media. Un valor alto indica mayor variabilidad.
+
+2.  `sd()` es la raíz cuadrada de la varianza y mantiene las unidades originales. Es una medida de dispersión más interpretable que la varianza.
+
+3.  `range()` devuelve los valores mínimo y máximo del conjunto de datos. La diferencia entre el valor máximo y el valor mínimo indica la amplitud total de los datos.
+
+4.  `IQR()` es el rango intercuartílico, que se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). El IQR es una medida de dispersión robusta frente a valores atípicos, ya que no se ve afectado por los valores extremos.
+
+En resumen, las medidas de tendencia central y dispersión proporcionan información valiosa sobre las características principales de un conjunto de datos. La media, la mediana y la moda resumen el centro de la distribución, mientras que la varianza, la desviación estándar, el rango y el IQR cuantifican la variabilidad de los datos. La combinación de estas medidas permite obtener una visión integral de los datos y comprender su distribución y dispersión (Moore et al., 2017).
+
+## Medidas de tendencia central por grupos
+
+El análisis de medidas de tendencia central por grupos permite comparar las características de diferentes subconjuntos de datos. A continuación, se explorarán dos enfoques para calcular la media, la mediana y la moda por especie en el conjunto de datos `iris`: el enfoque base con la función `aggregate()` y el enfoque moderno con el paquete `dplyr`.
+
+### Enfoque base con aggregate()
+
+La función `aggregate()` es una herramienta versátil en R para realizar cálculos por grupos. Permite dividir un marco de datos por una o más variables categóricas y aplicar una función a cada subconjunto. En este caso, se utilizará `aggregate()` para calcular la media y la mediana de las variables numéricas por especie.
 
 ```{r}
-# Función Análisis por Categoría
-analisis_por_categoria <- function(datos, 
-                                   columna_numerica,
-                                   columnas_categoricas) {
-  datos %>%
-    group_by(across(all_of(columnas_categoricas))) %>%
-    summarise(
-      Variable = columna_numerica,
-      N_validos = sum(!is.na(.data[[columna_numerica]])),
-      N_missing = sum(is.na(.data[[columna_numerica]])),
-      Media = mean(.data[[columna_numerica]], na.rm = TRUE),
-      Mediana = median(.data[[columna_numerica]], na.rm = TRUE),
-      Moda = moda(.data[[columna_numerica]]),
-      Desviacion_estandar = sd(.data[[columna_numerica]], na.rm = TRUE),
-      Varianza = var(.data[[columna_numerica]], na.rm = TRUE),
-      Rango_min = min(.data[[columna_numerica]], na.rm = TRUE),
-      Rango_max = max(.data[[columna_numerica]], na.rm = TRUE),
-      Rango = Rango_max - Rango_min,
-      IQR = IQR(.data[[columna_numerica]], na.rm = TRUE),
-      Q1 = quantile(.data[[columna_numerica]], probs = 0.25, na.rm = TRUE),
-      Q2 = quantile(.data[[columna_numerica]], probs = 0.50, na.rm = TRUE),
-      Q3 = quantile(.data[[columna_numerica]], probs = 0.75, na.rm = TRUE),
-      Asimetria = calcular_asimetria(.data[[columna_numerica]]),
-      Curtosis = calcular_curtosis(.data[[columna_numerica]]),
-      .groups = 'drop'
-    )
-}
+# Media y mediana por especie usando aggregate()
+aggregate(. ~ Species,
+          data = iris,
+          FUN  = function(v) c(media = mean(v),
+                               mediana = median(v)))
 ```
 
-### Función para análisis de múltiples variables numéricas
+La función `aggregate()` divide el marco de datos `iris` por la variable categórica `Species` y aplica la función especificada a cada subconjunto (Venables & Ripley, 2002). En este caso, la función calcula la media y la mediana de cada variable numérica para cada especie. La salida muestra los valores de la media y la mediana para cada variable y especie.
 
-Para analizar varias columnas numéricas simultáneamente, se puede usar la siguiente función, que aplica `analisis_por_categoria` a cada columna numérica especificada:
+### Enfoque moderno con dplyr (media, mediana y moda)
 
-```{r }
-# Función para anlisar multiples variables numericas simultaneamente 
-analisis_multiple <- function(datos, 
-                              columnas_numericas,
-                              columnas_categoricas) {
-  resultados <- list()
-  for (col in columnas_numericas) {
-    resultados[[col]] <- analisis_por_categoria(
-      datos = datos,
-      columna_numerica = col,
-      columnas_categoricas = columnas_categoricas
-    )
-  }
-  bind_rows(resultados)  # Combina todos los resultados en un dataframe
-}
+Para facilitar la comparación de estadísticos descriptivos entre diferentes especies y variables, se propone generar una tabla resumen que incluya la media, la mediana y la moda para cada combinación de especie y variable. A continuación, se muestra el código para generar esta tabla utilizando el paquete `dplyr`.
+
+```{r message=FALSE, warning=FALSE}
+# Crear tabla resumen 
+tabla_resumen <- iris %>%
+  # Convertir a formato largo para facilitar los cálculos
+  pivot_longer(
+    cols = -Species,
+    names_to = "Variable",
+    values_to = "Valor"
+  ) %>%
+  group_by(Species, Variable) %>%
+  summarise(
+    Media = round(mean(Valor, na.rm = TRUE), 2),
+    Mediana = round(median(Valor, na.rm = TRUE), 2),
+    Moda = moda(Valor),
+  ) %>%
+  arrange(Species, Variable)
+
+# Imprimir la tabla resumen
+tabla_resumen
+
 ```
 
-### Ejemplo de uso
+**En este código:**
 
-Para ilustrar el uso de la función personalizada, se realizará un análisis descriptivo completo utilizando la base de datos de estudiantes de la Universidad de San Carlos de Guatemala. Este ejemplo mostrará cómo analizar múltiples variables numéricas categorizadas por diferentes variables cualitativas.
+1.  La función `moda` calcula la moda de un vector numérico, manejando adecuadamente valores faltantes y posibles empates.
 
-#### Preparación del análisis
+2.  `pivot_longer()` transforma el conjunto de datos de formato ancho a largo, facilitando el cálculo de estadísticos por variable.
 
-Antes de ejecutar el análisis, es necesario definir las columnas numéricas y categóricas que se incluirán en el estudio. Las columnas numéricas representan las variables cuantitativas que se analizarán, mientras que las columnas categóricas se utilizarán para agrupar los datos.
+3.  `group_by(Species, Variable)` agrupa los datos por especie y por cada característica morfométrica.
+
+4.  `summarise()` calcula la media (`mean`), la mediana (`median`) y la moda (`moda`) para cada grupo, redondeando los valores numéricos a dos decimales para mejorar la presentación.
+
+5.  `.groups = "drop"` elimina la estructura de agrupamiento tras el resumen, dejando la tabla lista para su visualización o exportación.
+
+6.  `arrange(Species, Variable)` ordena la tabla para facilitar la comparación entre especies y variables.
+
+La tabla resumen permite comparar de manera clara y directa los valores centrales de cada variable morfométrica entre las especies de iris. Por ejemplo, se observa que *Iris virginica* presenta, en promedio, sépalos más largos que las otras especies, mientras que *Iris setosa* tiene los sépalos más anchos. La cercanía entre la media y la mediana en la mayoría de los casos indica que las distribuciones de las variables son aproximadamente simétricas, es decir, no presentan una asimetría significativa. Cuando la moda coincide con la mediana y la media, se refuerza la idea de simetría y ausencia de sesgo. Por el contrario, diferencias notables entre estos estadísticos pueden sugerir la presencia de valores atípicos, discretización de los datos o una ligera asimetría en la distribución (Navarro, 2019).
+
+En resumen, ambos enfoques permiten calcular medidas de tendencia central por grupos, pero el enfoque moderno con `dplyr` ofrece mayor flexibilidad y claridad en la presentación de los resultados. La tabla resumen generada con `dplyr` facilita la comparación entre especies y variables, y promueve la reproducibilidad y claridad en el análisis (Wickham et al., 2023).
+
+## Resumen estadístico completo
+
+R proporciona diversas funciones para obtener resúmenes estadísticos de manera rápida y eficiente. Además de las funciones base, el paquete `psych` ofrece descripciones más detalladas y completas de los datos. A continuación, se explorarán ambas opciones para obtener una visión integral de las características del conjunto de datos `iris`.
+
+### Resumen estadístico con funciones base
+
+La función `summary()` es una herramienta fundamental en R para obtener un panorama general de los datos. Proporciona información sobre los valores mínimos, máximos, cuartiles y la media de cada variable numérica, así como la frecuencia de cada categoría en las variables factor (o categóricas).
+
+```{r message=FALSE, warning=FALSE}
+# Resumen estadístico con funciones base
+summary(iris)
+
+```
+
+**Interpretación:**
+
+1.  **Variables numéricas:** Para cada variable numérica (Sepal.Length, Sepal.Width, Petal.Length, Petal.Width), `summary()` muestra el valor mínimo (Min.), el primer cuartil (1st Qu.), la mediana (Median), la media (Mean), el tercer cuartil (3rd Qu.) y el valor máximo (Max.). Estos estadísticos permiten evaluar la distribución y dispersión de los datos.
+
+2.  **Variable categórica:** Para la variable Species, `summary()` muestra la frecuencia de cada especie (setosa, versicolor, virginica). Esto permite verificar si las clases están balanceadas o no.
+
+**Resumen estadístico detallado con el paquete psych**
+
+El paquete `psych` proporciona funciones para obtener descripciones más detalladas de los datos, incluyendo medidas de tendencia central, dispersión, forma de la distribución y error estándar. La función `describe()` es especialmente útil para obtener un resumen completo de las variables numéricas.
+
+```{r message=FALSE, warning=FALSE}
+# Instalar y cargar el paquete psych si es necesario
+if (!require(psych)) install.packages("psych")
+
+
+# Resumen detallado con psych
+describe(iris[, 1:4])
+```
+
+**Interpretación:**
+
+1.  **vars:** Número de variable.
+
+2.  **n:** Número de observaciones.
+
+3.  **mean:** Media.
+
+4.  **sd:** Desviación estándar.
+
+5.  **median:** Mediana.
+
+6.  **trimmed:** Media truncada (5% por defecto).
+
+7.  **mad:** Desviación absoluta mediana.
+
+8.  **min:** Valor mínimo.
+
+9.  **max:** Valor máximo.
+
+10. **range:** Rango (max - min).
+
+11. **skew:** Asimetría.
+
+12. **kurtosis:** Curtosis.
+
+13. **se:** Error estándar de la media.
+
+La función `describe()` proporciona información adicional sobre la forma de la distribución de los datos. La asimetría (skew) mide la falta de simetría de la distribución, mientras que la curtosis (kurtosis) mide la concentración de los datos alrededor de la media. Estos estadísticos son útiles para identificar posibles valores atípicos y evaluar la normalidad de los datos.
+
+En resumen, `summary()` ofrece un panorama rápido de los estadísticos básicos, mientras que `describe()` (del paquete `psych`) añade información sobre la asimetría, curtosis y error estándar, profundizando el diagnóstico de los datos (Revelle, 2023). La combinación de ambas funciones permite obtener una visión completa y detallada de las características del conjunto de datos.
+
+## Visualizaciones básicas con DataExplorer y ggplot2
+
+El paquete `DataExplorer` permite generar visualizaciones exploratorias de manera eficiente y automática, facilitando la interpretación de los datos. Este paquete proporciona funciones para obtener una visión general de las variables, sus distribuciones y las relaciones entre ellas, optimizando el análisis exploratorio inicial (Cui, 2023).
+
+### Histogramas de variables numéricas
+
+La función `plot_histogram()` genera histogramas para cada variable numérica del conjunto de datos, lo que permite visualizar la distribución de los datos y detectar posibles asimetrías o valores atípicos.
 
 ```{r}
-# Definir las columnas numéricas y categóricas
-# Variables cuantitativas
-columnas_numericas <- c("talla", "peso_lbs", "edad")  
-
-# Variables cualitativas
-columnas_categoricas <- c("sexo", "trabaja")         
-
-
+# Histogramas de variables numéricas
+plot_histogram(iris)
 ```
 
-A continuación, se ejecuta la función `analisis_multiple`, que aplica el análisis descriptivo a cada variable numérica, agrupando los resultados según las categorías especificadas.
+**Interpretación:** Los histogramas permiten visualizar la distribución de cada variable numérica y detectar posibles asimetrías o valores atípicos. Por ejemplo, se puede observar si la distribución es simétrica, asimétrica a la derecha (positiva) o asimétrica a la izquierda (negativa).
+
+### Diagramas de caja por especie
+
+La función `plot_boxplot()` genera diagramas de caja para cada variable numérica, agrupados por la variable categórica `Species`. Esto permite comparar la distribución de cada variable entre las diferentes especies.
 
 ```{r}
-# Ejecutar el análisis descriptivo completo
-resultados_finales <- analisis_multiple(
-  datos = estudiantes,
-  columnas_numericas = columnas_numericas,
-  columnas_categoricas = columnas_categoricas
-)
+# Diagramas de caja por especie
+plot_boxplot(iris, by = "Species")
 ```
 
-#### Visualización de resultados
+**Interpretación:** Los diagramas de caja permiten comparar la distribución de cada variable entre las diferentes especies. Se puede observar la mediana, los cuartiles, los valores atípicos y la dispersión de los datos para cada especie.
 
-Los resultados del análisis se almacenan en un objeto llamado `resultados_finales`, que contiene un resumen estadístico detallado para cada combinación de las variables categóricas. Este resumen incluye medidas como la media, mediana, moda, desviación estándar, varianza, rango, asimetría y curtosis, entre otras.
+### Mapa de calor de correlaciones
 
-Para visualizar los resultados directamente en la consola, se utiliza la función `print()`. El resultado es una tabla organizada que muestra las estadísticas descriptivas para cada combinación de las categorías `sexo` y `trabaja`.
+La función `plot_correlation()` genera un mapa de calor de las correlaciones entre las variables numéricas del conjunto de datos. Esto permite visualizar las correlaciones de manera gráfica y detectar las relaciones más fuertes entre las variables.
 
 ```{r}
-
-# Mostrar resultados
-print(resultados_finales)
-
-
+# Mapa de calor de correlaciones
+plot_correlation(iris[, 1:4])
 ```
 
-Además de visualizar los resultados en la consola, es posible exportarlos a un archivo Excel para facilitar su revisión o presentación:
+**Interpretación:** El mapa de calor de correlaciones permite visualizar las correlaciones entre las variables numéricas de manera gráfica. Los colores más intensos indican correlaciones más fuertes, mientras que los colores más claros indican correlaciones más débiles.
+
+### Visualización de histogramas por especie y variable
+
+Para visualizar la distribución de cada variable dentro de cada especie, se propone generar histogramas individuales para cada combinación de especie y variable. A continuación, se muestra el código para generar estos histogramas utilizando el paquete `ggplot2`:
 
 ```{r}
-# Exportar resultados a Excel para mejor visualización
-write_xlsx(resultados_finales, "analisis_descriptivo_estudiantes.xlsx")
+library(ggplot2)
+
+# Convertir los datos a formato largo
+iris_long <- iris %>%
+  tidyr::pivot_longer(
+    cols = starts_with("Sepal") | starts_with("Petal"),
+    names_to = "Variable",
+    values_to = "Value"
+  )
+
+# Generar histogramas para cada especie y variable
+ggplot(iris_long, aes(x = Value)) +
+  geom_histogram(bins = 40, fill = "steelblue", color = "black") +
+  facet_grid(Species ~ Variable, scales = "free") +
+  labs(
+    title = "Histogramas por Especie y Variable",
+    x = "Valor",
+    y = "Frecuencia"
+  ) +
+  theme_bw()
 ```
 
-Este ejemplo demuestra cómo utilizar la función personalizada para realizar un análisis descriptivo completo y categorizado. La tabla resultante proporciona una visión detallada de las características de las variables numéricas, agrupadas por categorías cualitativas. Además, la posibilidad de exportar los [resultados a Excel](https://docs.google.com/spreadsheets/d/1MIa8Un9jvrJru_kzcQfgFx2hiAfQaD3Z/edit?usp=sharing&ouid=106152052819657144907&rtpof=true&sd=true) permite compartir y analizar los datos de manera más eficiente.
+**En este código:**
 
-## Resumen Comparativo: Funciones Base de R, Paquete `psych` y Función Personalizada
+1.  `library(ggplot2)` carga el paquete `ggplot2`, que permite crear gráficos de alta calidad.
 
-A continuación, se presenta una comparación entre el paquete `psych` y la función personalizada para realizar análisis descriptivos, destacando las fortalezas y limitaciones de cada enfoque. Esta comparación permite identificar cuál es la mejor opción según las necesidades específicas del análisis.
+2.  `iris %>% tidyr::pivot_longer(...)` transforma los datos de formato ancho a formato largo, facilitando la generación de gráficos.
 
-| **Característica** | **Funciones Base de R** | **Paquete `psych`** | **Función Personalizada** |
-|----|----|----|----|
-| **Estadísticas avanzadas** | Calcula medidas básicas como media, mediana, desviación estándar, varianza y rango. | Incluye medidas como asimetría y curtosis. | Incluye asimetría, curtosis, moda y más estadísticas avanzadas. |
-| **Análisis por grupos** | Requiere pasos adicionales para agrupar y calcular estadísticas por categorías. | Genera tablas separadas para cada combinación de categorías, lo que puede dificultar la consolidación. | Consolida todos los resultados en un único dataframe, facilitando su manejo y análisis. |
-| **Flexibilidad** | Limitada a las funciones predefinidas, sin opciones para personalización avanzada. | Limitada a las funciones predefinidas del paquete. | Totalmente personalizable, permitiendo agregar o modificar estadísticas según las necesidades. |
-| **Exportación** | Requiere pasos adicionales para preparar los resultados antes de exportarlos. | Requiere pasos adicionales para preparar los resultados antes de exportarlos. | Los resultados están listos para exportarse directamente en un formato tabular. |
-| **Facilidad de uso** | Muy fácil de usar para cálculos básicos, pero limitada en análisis avanzados. | Fácil de usar para análisis avanzados estándar. | Requiere más configuración inicial, pero ofrece mayor control y personalización. |
-| **Manejo de valores faltantes** | Manejo básico con argumentos como `na.rm = TRUE`. | Manejo básico de valores faltantes. | Permite un manejo avanzado y personalizado de valores faltantes. |
+3.  `ggplot(iris_long, aes(x = Value))` crea un objeto gráfico base, especificando que se utilizará la variable "Value" en el eje x.
 
-Las **funciones base de R** son ideales para cálculos rápidos y sencillos, como la media (`mean()`), mediana (`median()`), desviación estándar (`sd()`), varianza (`var()`), rango (`range()`), y el resumen general (`summary()`). Estas funciones son fáciles de usar y están disponibles de forma predeterminada, lo que las convierte en una excelente opción para análisis básicos. Sin embargo, su alcance es limitado cuando se requiere un análisis más detallado o agrupado, ya que no incluyen medidas avanzadas como asimetría o curtosis, ni permiten un análisis categorizado sin pasos adicionales.
+4.  `geom_histogram(bins = 40, fill = "steelblue", color = "black")` agrega un histograma al gráfico, especificando el número de bins, el color de relleno y el color del borde.
 
-El **paquete `psych`** es una herramienta poderosa y fácil de usar para realizar análisis descriptivos avanzados, especialmente cuando se busca rapidez y simplicidad en el cálculo de estadísticas estándar. Ofrece medidas avanzadas como asimetría y curtosis, y permite realizar análisis agrupados con la función `describeBy()`. Sin embargo, su enfoque en generar tablas separadas para cada combinación de categorías puede ser una limitación en proyectos que requieren consolidar resultados o realizar análisis más complejos. Además, la personalización de las estadísticas calculadas es limitada, ya que depende de las funciones predefinidas del paquete.
+5.  `facet_grid(Species ~ Variable, scales = "free")` genera un panel de gráficos, mostrando un histograma para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x.
 
-Por otro lado, la **función personalizada** destaca por su flexibilidad y capacidad de adaptación. Permite incluir estadísticas adicionales, como la moda, y consolidar resultados en un único dataframe, lo que facilita su manejo y exportación en un formato listo para su uso. Además, ofrece un control total sobre el análisis, permitiendo adaptarlo a necesidades específicas, como el manejo avanzado de valores faltantes o la categorización de variables numéricas. Esto la convierte en una opción ideal para proyectos que demandan un mayor nivel de personalización y control.
+6.  `labs(...)` agrega etiquetas al gráfico, incluyendo el título, la etiqueta del eje x y la etiqueta del eje y.
+
+7.  `theme_bw()` aplica un tema visual en blanco y negro al gráfico.
+
+**Interpretación:** Los histogramas permiten visualizar la distribución de cada variable dentro de cada especie. Se puede observar la forma de la distribución, la presencia de valores atípicos y la dispersión de los datos para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x, lo que facilita la comparación entre las diferentes combinaciones de especie y variable.
+
+En resumen, la combinación de las funciones del paquete `DataExplorer` y la visualización de histogramas con `ggplot2` permite obtener una visión completa y detallada de las características del conjunto de datos, facilitando la interpretación de los datos y la identificación de posibles patrones o relaciones (Wickham, 2016).

@@ -27,6 +27,8 @@ Cui, B. (2020). *DataExplorer: Automate data exploration and treatment* (Version
 
 Field, A. P. (2013). *Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll* (4th edition). Sage.
 
+Fisher, R. (1936). Iris \[Dataset\]. *UCI Machine Learning Repository*. <https://doi.org/10.24432/C56C76.>
+
 Friendly, M. (2008). A Brief History of Data Visualization. In: *Handbook of Data Visualization*. Springer Handbooks Comp.Statistics. Springer, Berlin, Heidelberg. <https://doi.org/10.1007/978-3-540-33037-0_2>
 
 Gentleman, R., & Temple Lang, D. (2007). Statistical analyses and reproducible research. *Journal of Computational and Graphical Statistics*, 16(1), 1–23. <https://doi.org/10.1198/106186007X178663>
@@ -47,7 +49,11 @@ Murrell, P. (2018). *R Graphics* (3rd ed.). Chapman and Hall/CRC. <https://doi.o
 
 National Academies of Sciences, Engineering, and Medicine. (2019). *Reproducibility and replicability in science*. National Academies Press. <https://doi.org/10.17226/25303>
 
+Navarro, D. J. (2019). *Learning statistics with R: A tutorial for psychology students and other beginners* (Version 0.6). <https://learningstatisticswithr.com>
+
 R Core Team. (2023). *R: A Language and Environment for Statistical Computing*. R Foundation for Statistical Computing. <https://www.r-project.org/>
+
+Revelle, W. (2023). *psych: Procedures for Psychological, Psychometric, and Personality Research*. R package version 2.3.6. <https://CRAN.R-project.org/package=psych>
 
 Rosales Castillo, J. M. (2005). Micropropagación de Calahuala Phlebodium psedoaureum (Cav.) Lellinger con tres tipos de explantes en diferentes medios de cultivo in vitro. Tesis Ing. Agr. Guatemala, Universidad de San Carlos de Guatemala, Facultad de Agronomía. 51 p.
 
