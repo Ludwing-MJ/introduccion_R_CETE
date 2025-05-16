@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>20&nbsp; Regresión lineal simple usando R – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
+<title>20&nbsp; Regresión lineal usando R – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regresion_simple.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./regresion_simple.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal usando R</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -306,26 +306,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</a> 
         <div class="sidebar-tools-main tools-wide">
+    <a href="./Manual_Introduccion_R_CETE.pdf" title="Download PDF" class="quarto-navigation-tool px-1" aria-label="Download PDF"><i class="bi bi-file-pdf"></i></a>
     <div class="dropdown">
-      <a href="" title="Download" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Download"><i class="bi bi-download"></i></a>
+      <a href="" title="Share" id="quarto-navigation-tool-dropdown-0" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
       <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-0">
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.pdf">
-              <i class="bi bi-file-pdf pe-1"></i>
-            Download PDF
-            </a>
-          </li>
-          <li>
-            <a class="dropdown-item sidebar-tools-main-item" href="./Manual_Introduccion_R_CETE.epub">
-              <i class="bi bi-journal pe-1"></i>
-            Download ePub
-            </a>
-          </li>
-      </ul>
-    </div>
-    <div class="dropdown">
-      <a href="" title="Share" id="quarto-navigation-tool-dropdown-1" class="quarto-navigation-tool dropdown-toggle px-1" data-bs-toggle="dropdown" aria-expanded="false" role="link" aria-label="Share"><i class="bi bi-share"></i></a>
-      <ul class="dropdown-menu" aria-labelledby="quarto-navigation-tool-dropdown-1">
           <li>
             <a class="dropdown-item sidebar-tools-main-item" href="https://twitter.com/intent/tweet?url=|url|">
               <i class="bi bi-twitter pe-1"></i>
@@ -410,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R: Expansión y Modularidad del Entorno</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -448,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./09.2_visualizacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Visualizaciones Base de R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sistema Gráfico Base de R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -476,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10.3_exportacion.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Uso de Git y GitHub en Proyectos de R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -485,24 +469,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link">
+  <a href="./references_HTML.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Referencias</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Ejemplos de Análisis Estadístico con R</span></span>
+ <span class="menu-text">Ejemplos de análisis estadístico</span></span>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./estadistica_descriptiva.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estimación de parámetros de estadística descriptiva en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./regresion_simple.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal usando R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -521,20 +505,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Tabla de contenidos</h2>
    
   <ul>
-  <li><a href="#conceptos-fundamentales" id="toc-conceptos-fundamentales" class="nav-link active" data-scroll-target="#conceptos-fundamentales"><span class="header-section-number">20.1</span> Conceptos fundamentales</a></li>
-  <li><a href="#modelo-de-regresión-lineal-simple" id="toc-modelo-de-regresión-lineal-simple" class="nav-link" data-scroll-target="#modelo-de-regresión-lineal-simple"><span class="header-section-number">20.2</span> Modelo de Regresión Lineal Simple</a></li>
-  <li><a href="#supuestos-de-la-regresión-lineal" id="toc-supuestos-de-la-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-de-la-regresión-lineal"><span class="header-section-number">20.3</span> Supuestos de la Regresión Lineal</a></li>
-  <li><a href="#evaluación-del-modelo" id="toc-evaluación-del-modelo" class="nav-link" data-scroll-target="#evaluación-del-modelo"><span class="header-section-number">20.4</span> Evaluación del Modelo</a></li>
-  <li><a href="#ejemplo-práctico" id="toc-ejemplo-práctico" class="nav-link" data-scroll-target="#ejemplo-práctico"><span class="header-section-number">20.5</span> Ejemplo Práctico</a>
+  <li><a href="#definición-y-objetivos" id="toc-definición-y-objetivos" class="nav-link active" data-scroll-target="#definición-y-objetivos"><span class="header-section-number">20.1</span> Definición y Objetivos</a>
   <ul class="collapse">
-  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">20.5.1</span> Instalación y Carga de Paquetes</a></li>
-  <li><a href="#importación-de-datos" id="toc-importación-de-datos" class="nav-link" data-scroll-target="#importación-de-datos"><span class="header-section-number">20.5.2</span> Importación de Datos</a></li>
-  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">20.5.3</span> Visualización de Datos</a></li>
-  <li><a href="#ajuste-del-modelo-de-regresión" id="toc-ajuste-del-modelo-de-regresión" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión"><span class="header-section-number">20.5.4</span> Ajuste del Modelo de Regresión</a></li>
-  <li><a href="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" id="toc-gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="nav-link" data-scroll-target="#gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">20.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</a></li>
-  <li><a href="#prueba-de-normalidad-de-los-residuos" id="toc-prueba-de-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#prueba-de-normalidad-de-los-residuos"><span class="header-section-number">20.5.6</span> Prueba de Normalidad de los Residuos</a></li>
-  <li><a href="#prueba-de-homocedasticidad-de-la-varianza" id="toc-prueba-de-homocedasticidad-de-la-varianza" class="nav-link" data-scroll-target="#prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">20.5.7</span> Prueba de Homocedasticidad de la varianza</a></li>
+  <li><a href="#tipos-de-regresión-lineal" id="toc-tipos-de-regresión-lineal" class="nav-link" data-scroll-target="#tipos-de-regresión-lineal"><span class="header-section-number">20.1.1</span> Tipos de Regresión Lineal</a></li>
+  <li><a href="#supuestos-del-modelo-de-regresión-lineal" id="toc-supuestos-del-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#supuestos-del-modelo-de-regresión-lineal"><span class="header-section-number">20.1.2</span> Supuestos del Modelo de Regresión Lineal</a></li>
   </ul></li>
+  <li><a href="#base-de-datos" id="toc-base-de-datos" class="nav-link" data-scroll-target="#base-de-datos"><span class="header-section-number">20.2</span> Base de datos</a></li>
+  <li><a href="#preparación-del-entorno-en-r" id="toc-preparación-del-entorno-en-r" class="nav-link" data-scroll-target="#preparación-del-entorno-en-r"><span class="header-section-number">20.3</span> Preparación del Entorno en R</a>
+  <ul class="collapse">
+  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes"><span class="header-section-number">20.3.1</span> Instalación y Carga de Paquetes</a></li>
+  <li><a href="#importación-y-exploración-de-datos" id="toc-importación-y-exploración-de-datos" class="nav-link" data-scroll-target="#importación-y-exploración-de-datos"><span class="header-section-number">20.3.2</span> Importación y Exploración de Datos</a></li>
+  <li><a href="#preparación-y-limpieza-de-datos" id="toc-preparación-y-limpieza-de-datos" class="nav-link" data-scroll-target="#preparación-y-limpieza-de-datos"><span class="header-section-number">20.3.3</span> Preparación y Limpieza de Datos</a></li>
+  </ul></li>
+  <li><a href="#análisis-descriptivo-de-los-datos" id="toc-análisis-descriptivo-de-los-datos" class="nav-link" data-scroll-target="#análisis-descriptivo-de-los-datos"><span class="header-section-number">20.4</span> Análisis Descriptivo de los Datos</a>
+  <ul class="collapse">
+  <li><a href="#estadísticas-descriptivas-con-el-paquete-psych" id="toc-estadísticas-descriptivas-con-el-paquete-psych" class="nav-link" data-scroll-target="#estadísticas-descriptivas-con-el-paquete-psych"><span class="header-section-number">20.4.1</span> Estadísticas Descriptivas con el Paquete <code>psych</code></a></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos"><span class="header-section-number">20.4.2</span> Visualización de Datos</a></li>
+  <li><a href="#interpretación-del-análisis-descriptivo" id="toc-interpretación-del-análisis-descriptivo" class="nav-link" data-scroll-target="#interpretación-del-análisis-descriptivo"><span class="header-section-number">20.4.3</span> Interpretación del Análisis Descriptivo</a></li>
+  </ul></li>
+  <li><a href="#ajuste-del-modelo-de-regresión-lineal" id="toc-ajuste-del-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión-lineal"><span class="header-section-number">20.5</span> Ajuste del Modelo de Regresión Lineal</a>
+  <ul class="collapse">
+  <li><a href="#creación-del-modelo" id="toc-creación-del-modelo" class="nav-link" data-scroll-target="#creación-del-modelo"><span class="header-section-number">20.5.1</span> Creación del Modelo</a></li>
+  <li><a href="#resumen-del-modelo" id="toc-resumen-del-modelo" class="nav-link" data-scroll-target="#resumen-del-modelo"><span class="header-section-number">20.5.2</span> Resumen del Modelo</a></li>
+  <li><a href="#interpretación-del-modelo-de-regresión-lineal" id="toc-interpretación-del-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#interpretación-del-modelo-de-regresión-lineal"><span class="header-section-number">20.5.3</span> Interpretación del Modelo de Regresión Lineal</a></li>
+  </ul></li>
+  <li><a href="#diagnóstico-del-modelo-de-regresión-lineal" id="toc-diagnóstico-del-modelo-de-regresión-lineal" class="nav-link" data-scroll-target="#diagnóstico-del-modelo-de-regresión-lineal"><span class="header-section-number">20.6</span> Diagnóstico del Modelo de Regresión Lineal</a>
+  <ul class="collapse">
+  <li><a href="#linealidad" id="toc-linealidad" class="nav-link" data-scroll-target="#linealidad"><span class="header-section-number">20.6.1</span> Linealidad</a></li>
+  <li><a href="#independencia-de-los-residuos" id="toc-independencia-de-los-residuos" class="nav-link" data-scroll-target="#independencia-de-los-residuos"><span class="header-section-number">20.6.2</span> Independencia de los residuos</a></li>
+  <li><a href="#homocedasticidad-igualdad-de-varianzas" id="toc-homocedasticidad-igualdad-de-varianzas" class="nav-link" data-scroll-target="#homocedasticidad-igualdad-de-varianzas"><span class="header-section-number">20.6.3</span> Homocedasticidad (igualdad de varianzas)</a></li>
+  <li><a href="#normalidad-de-los-residuos" id="toc-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#normalidad-de-los-residuos"><span class="header-section-number">20.6.4</span> Normalidad de los residuos</a></li>
+  <li><a href="#evaluación-global-del-modelo" id="toc-evaluación-global-del-modelo" class="nav-link" data-scroll-target="#evaluación-global-del-modelo"><span class="header-section-number">20.6.5</span> Evaluación Global del Modelo</a></li>
+  </ul></li>
+  <li><a href="#predicciones" id="toc-predicciones" class="nav-link" data-scroll-target="#predicciones"><span class="header-section-number">20.7</span> Predicciones</a>
+  <ul class="collapse">
+  <li><a href="#creación-de-nuevas-predicciones" id="toc-creación-de-nuevas-predicciones" class="nav-link" data-scroll-target="#creación-de-nuevas-predicciones"><span class="header-section-number">20.7.1</span> Creación de Nuevas Predicciones</a></li>
+  <li><a href="#intervalos-de-confianza-y-predicción" id="toc-intervalos-de-confianza-y-predicción" class="nav-link" data-scroll-target="#intervalos-de-confianza-y-predicción"><span class="header-section-number">20.7.2</span> Intervalos de Confianza y Predicción</a></li>
+  </ul></li>
+  <li><a href="#conclusiones" id="toc-conclusiones" class="nav-link" data-scroll-target="#conclusiones"><span class="header-section-number">20.8</span> Conclusiones</a></li>
   </ul>
 </nav>
     </div>
@@ -544,7 +552,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal simple usando R</span></h1>
+<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Regresión lineal usando R</span></h1>
 </div>
 
 
@@ -561,76 +569,72 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>La regresión lineal simple es una técnica estadística utilizada para modelar la relación entre una variable dependiente y una variable independiente. Su propósito principal es predecir el valor de la variable dependiente a partir de la variable independiente, lo que permite entender cómo varía una en función de la otra. Esta técnica es fundamental en el análisis estadístico, ya que proporciona una base para la inferencia y la toma de decisiones en diversos campos (Montgomery, Peck, &amp; Vining, 2012).</p>
-<p>Por ejemplo, en economía, la regresión lineal simple puede utilizarse para predecir el consumo en función del ingreso. En biología, se aplica para analizar la relación entre la dosis de un fármaco y la respuesta de un organismo. En ciencias sociales, se utiliza para estudiar cómo factores como la educación influyen en los ingresos de una población (Field, 2013).</p>
-<section id="conceptos-fundamentales" class="level2" data-number="20.1">
-<h2 data-number="20.1" class="anchored" data-anchor-id="conceptos-fundamentales"><span class="header-section-number">20.1</span> Conceptos fundamentales</h2>
-<p>Las <strong>variables dependientes</strong> son aquellas que se desean predecir o explicar, mientras que las <strong>variables independientes</strong> son las que se utilizan para realizar dicha predicción. La diferencia radica en que la variable dependiente es el resultado que se estudia, mientras que la variable independiente es el factor que se manipula o se observa (Cohen, Cohen, West, &amp; Aiken, 2003).</p>
-<p>La <strong>relación lineal</strong> implica que existe una conexión directa entre las variables, de tal manera que un cambio en la variable independiente produce un cambio proporcional en la variable dependiente.</p>
-</section>
-<section id="modelo-de-regresión-lineal-simple" class="level2" data-number="20.2">
-<h2 data-number="20.2" class="anchored" data-anchor-id="modelo-de-regresión-lineal-simple"><span class="header-section-number">20.2</span> Modelo de Regresión Lineal Simple</h2>
-<p>El modelo de regresión lineal simple se expresa mediante la siguiente ecuación:</p>
+<p>La regresión lineal constituye una de las técnicas estadísticas fundamentales para el análisis de la relación entre variables cuantitativas. Su objetivo principal es modelar la relación existente entre una variable dependiente (también denominada respuesta) y una o más variables independientes (o predictoras), permitiendo así predecir valores de la variable dependiente a partir de valores conocidos de las independientes (Kutner et al., 2005; Montgomery et al., 2012).</p>
+<section id="definición-y-objetivos" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="definición-y-objetivos"><span class="header-section-number">20.1</span> Definición y Objetivos</h2>
+<p>El análisis de regresión lineal busca cuantificar y describir la relación lineal entre variables, proporcionando una ecuación matemática que representa dicha relación. En el caso más simple, la regresión lineal simple, se estudia la relación entre dos variables: una dependiente <code>Y</code> y una independiente <code>X</code>. El modelo se expresa generalmente como:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="images/clipboard-1828248141.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="400"></p>
 </figure>
 </div>
-<p>En esta ecuación, <strong><em>Y</em></strong> representa la variable dependiente, <strong><em>X</em></strong> es la variable independiente, <strong><em>ß0</em></strong> es la intersección (el valor de <strong><em>Y</em></strong>) cuando <strong><em>X</em></strong>) es cero) y <strong><em>ß1</em></strong> es la pendiente (que indica el cambio en <strong><em>Y</em></strong>) por cada unidad de cambio en <strong><em>X</em></strong>. El término epilson (<strong><em>ε</em></strong>) representa el error del modelo, que captura la variabilidad en <strong><em>Y</em></strong> que no se explica por <strong><em>X</em></strong> (Kutner, Nachtsheim, Neter, &amp; Li, 2005).</p>
+<p>En esta ecuación, <strong><em>Y</em></strong> representa la variable dependiente, <strong><em>X</em></strong> es la variable independiente, <strong><em>ß0</em></strong> es la intersección (el valor de <strong><em>Y</em></strong>) cuando <strong><em>X</em></strong> es cero) y <strong><em>ß1</em></strong> es la pendiente que indica el cambio en <strong><em>Y</em></strong> por cada unidad de cambio en <strong><em>X</em></strong>. El término epilson (<strong><em>ε</em></strong>) representa el error del modelo, que captura la variabilidad en <strong><em>Y</em></strong> que no se explica por <strong><em>X</em></strong> (Kutner, Nachtsheim, Neter, &amp; Li, 2005).</p>
+<p>La regresión lineal es ampliamente utilizada en diversas disciplinas, como economía, biología, ingeniería y ciencias sociales, debido a su capacidad para identificar tendencias, realizar pronósticos y evaluar la fuerza y dirección de las relaciones entre variables (Kutner et al., 2005; Hernández et al., 2024).</p>
+<section id="tipos-de-regresión-lineal" class="level3" data-number="20.1.1">
+<h3 data-number="20.1.1" class="anchored" data-anchor-id="tipos-de-regresión-lineal"><span class="header-section-number">20.1.1</span> Tipos de Regresión Lineal</h3>
+<p>Existen dos tipos principales de regresión lineal: la regresión lineal simple y la regresión lineal múltiple. La regresión lineal simple involucra una sola variable independiente, mientras que la regresión lineal múltiple considera dos o más variables independientes para explicar la variabilidad de la variable dependiente (Kutner et al., 2005). La extensión a modelos múltiples permite capturar relaciones más complejas y controlar el efecto de variables adicionales.</p>
 </section>
-<section id="supuestos-de-la-regresión-lineal" class="level2" data-number="20.3">
-<h2 data-number="20.3" class="anchored" data-anchor-id="supuestos-de-la-regresión-lineal"><span class="header-section-number">20.3</span> Supuestos de la Regresión Lineal</h2>
-<p>Para que el modelo de regresión lineal sea válido, es fundamental que se cumplan ciertos supuestos:</p>
+<section id="supuestos-del-modelo-de-regresión-lineal" class="level3" data-number="20.1.2">
+<h3 data-number="20.1.2" class="anchored" data-anchor-id="supuestos-del-modelo-de-regresión-lineal"><span class="header-section-number">20.1.2</span> Supuestos del Modelo de Regresión Lineal</h3>
+<p>Para que los resultados del modelo de regresión lineal sean válidos y confiables, es necesario que se cumplan ciertos supuestos fundamentales (Montgomery et al., 2012):</p>
 <ol type="1">
-<li><p><strong>Linealidad</strong>: La relación entre las variables debe ser lineal.</p></li>
-<li><p><strong>Independencia</strong>: Las observaciones deben ser independientes entre sí.</p></li>
-<li><p><strong>Homoscedasticidad</strong>: La varianza de los errores debe ser constante a lo largo de todos los niveles de <strong><em>X.</em></strong></p></li>
-<li><p><strong>Normalidad</strong>: Los errores deben seguir una distribución normal (Tabachnick &amp; Fidell, 2013).</p></li>
+<li><p><strong>Linealidad:</strong> Se asume que la relación entre la variable dependiente y las independientes es lineal.</p></li>
+<li><p><strong>Independencia:</strong> Los errores (residuos) del modelo son independientes entre sí.</p></li>
+<li><p><strong>Homoscedasticidad:</strong> La varianza de los errores es constante a lo largo de los valores de las variables independientes.</p></li>
+<li><p><strong>Normalidad:</strong> Los errores del modelo se distribuyen normalmente.</p></li>
 </ol>
+<p>La verificación de estos supuestos es esencial, ya que su incumplimiento puede afectar la validez de las inferencias y predicciones realizadas a partir del modelo (Kutner et al., 2005; Montgomery et al., 2012).</p>
 </section>
-<section id="evaluación-del-modelo" class="level2" data-number="20.4">
-<h2 data-number="20.4" class="anchored" data-anchor-id="evaluación-del-modelo"><span class="header-section-number">20.4</span> Evaluación del Modelo</h2>
-<p>La calidad del modelo de regresión lineal simple se evalúa a través de varias métricas:</p>
-<ol type="1">
-<li><p><strong>R-cuadrado</strong>: Indica la proporción de la variabilidad en la variable dependiente que es explicada por la variable independiente. Un valor cercano a 1 sugiere un buen ajuste del modelo.</p></li>
-<li><p><strong>Análisis de residuos</strong>: Es crucial analizar los residuos para verificar los supuestos del modelo, asegurando que no haya patrones sistemáticos que indiquen un mal ajuste (Belsley, Kuh, &amp; Welsch, 1980).</p></li>
-</ol>
 </section>
-<section id="ejemplo-práctico" class="level2" data-number="20.5">
-<h2 data-number="20.5" class="anchored" data-anchor-id="ejemplo-práctico"><span class="header-section-number">20.5</span> Ejemplo Práctico</h2>
-<p>Este ejemplo práctico ilustra cómo realizar un análisis de regresión lineal simple utilizando un conjunto de datos sobre esporofitos. Los datos provienen de un estudio realizado en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala. En este estudio, se llevó a cabo la reproducción del helecho conocido como calahuala (<em>Phlebodium pseudoaureum</em> (Cav.) Lellinger).</p>
-<p>Se midió la altura de cada esporofito y se cuantificó la cantidad de esporofitos germinados en 30 frascos que contenían medio de cultivo Murashige y Skoog. Los resultados obtenidos se presentan en el <a href="https://docs.google.com/spreadsheets/d/1HTODUlwTvRYYEiTsP7rQRUvlOgll4n6R/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">siguiente archivo</a>. Este análisis se basa en la investigación de Rosales Castillo (2005), quien realizó una micropropagación de <em>Calahuala</em> utilizando tres tipos de explantes en diferentes medios de cultivo in vitro.</p>
-<p>El objetivo de este análisis es evaluar la relación entre la altura de los esporofitos y la cantidad de esporofitos germinados, utilizando la regresión lineal simple como herramienta estadística. A través de este proceso, se busca no solo ajustar un modelo que explique esta relación, sino también verificar los supuestos que sustentan la validez del modelo.</p>
-<section id="instalación-y-carga-de-paquetes" class="level3" data-number="20.5.1">
-<h3 data-number="20.5.1" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">20.5.1</span> Instalación y Carga de Paquetes</h3>
-<p>Para comenzar, es necesario instalar y cargar los paquetes requeridos. Estos paquetes proporcionan funciones útiles para la manipulación de datos y la visualización.</p>
+<section id="base-de-datos" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="base-de-datos"><span class="header-section-number">20.2</span> Base de datos</h2>
+<p>El presente ejemplo práctico expone el procedimiento para realizar un análisis de regresión lineal simple utilizando un conjunto de datos experimentales sobre esporofitos. Los datos fueron recolectados en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala, en el marco de un estudio enfocado en la reproducción in vitro del helecho conocido como calahuala (<em>Phlebodium pseudoaureum</em> (Cav.) Lellinger).</p>
+<p>En el experimento, se midió la altura de cada esporofito y se registró la cantidad de esporofitos germinados en 30 frascos, todos ellos cultivados en medio Murashige y Skoog. La información analizada corresponde a los resultados obtenidos bajo estas condiciones controladas. Este análisis toma como referencia la investigación de Rosales Castillo (2005), quien desarrolló un protocolo de micropropagación de calahuala empleando tres tipos de explantes y diferentes medios de cultivo in vitro.</p>
+<p>El objetivo principal de este análisis es evaluar la relación entre la cantidad de esporofitos germinados (variable independiente) y la altura de los esporofitos (variable dependiente), empleando la regresión lineal simple como herramienta estadística. Además de ajustar un modelo que describa esta relación, se busca verificar rigurosamente los supuestos estadísticos que garantizan la validez de las inferencias obtenidas.</p>
+<p><strong>Acceso a recursos:</strong> El script completo con los ejemplos desarrollados y la base de datos sobre esporofitos están disponibles para su consulta y descarga en el siguiente repositorio: <code>[ADJUNTAR ACA EL ENLACE AL REPOSITORIO]</code></p>
+</section>
+<section id="preparación-del-entorno-en-r" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="preparación-del-entorno-en-r"><span class="header-section-number">20.3</span> Preparación del Entorno en R</h2>
+<section id="instalación-y-carga-de-paquetes" class="level3" data-number="20.3.1">
+<h3 data-number="20.3.1" class="anchored" data-anchor-id="instalación-y-carga-de-paquetes"><span class="header-section-number">20.3.1</span> Instalación y Carga de Paquetes</h3>
+<p>Para realizar el análisis de regresión lineal con datos de esporofitos de calahuala (Phlebodium pseudoaureum), es necesario utilizar varios paquetes de R que facilitan la importación, manipulación y visualización de datos. A continuación, se presenta el código para la instalación y carga de los paquetes necesarios (Grolemund &amp; Wickham, 2017):</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes  </span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Incluye ggplot2, dplyr, tidyr</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"tidyverse"</span>)) <span class="fu">install.packages</span>(<span class="st">"tidyverse"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Se utiliza para evaluar el supuesto de homocedasticidad</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"car"</span>)) <span class="fu">install.packages</span>(<span class="st">"car"</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Se utiliza para importar archivos de Excel</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"readxl"</span>)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de paquetes necesarios</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Para leer archivos Excel</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(readxl)) <span class="fu">install.packages</span>(<span class="st">"readxl"</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Para visualización de datos</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(ggplot2)) <span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)     </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Para manipulación de datos</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(dplyr)) <span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)         </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Para diagnósticos de regresión</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(car)) <span class="fu">install.packages</span>(<span class="st">"car"</span>)              </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Para pruebas de supuestos</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(lmtest)) <span class="fu">install.packages</span>(<span class="st">"lmtest"</span>)    </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Para pruebas de normalidad</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(nortest)) <span class="fu">install.packages</span>(<span class="st">"nortest"</span>)    </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Para estadística descriptiva</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(psych)) <span class="fu">install.packages</span>(<span class="st">"psych"</span>)    </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<ol type="1">
-<li><p><strong><code>tidyverse</code></strong>: Este paquete incluye varias herramientas para la manipulación y visualización de datos, como <code>ggplot2</code>, <code>dplyr</code> y <code>tidyr</code>.</p></li>
-<li><p><strong><code>car</code></strong>: Proporciona funciones para realizar pruebas de hipótesis y diagnósticos de modelos, incluyendo la evaluación de homocedasticidad.</p></li>
-<li><p><strong><code>readxl</code></strong>: Permite importar datos desde archivos de Excel, facilitando la carga de conjuntos de datos.</p></li>
-</ol>
 </section>
-<section id="importación-de-datos" class="level3" data-number="20.5.2">
-<h3 data-number="20.5.2" class="anchored" data-anchor-id="importación-de-datos"><span class="header-section-number">20.5.2</span> Importación de Datos</h3>
-<p>A continuación, se importan los datos desde un archivo Excel.</p>
+<section id="importación-y-exploración-de-datos" class="level3" data-number="20.3.2">
+<h3 data-number="20.3.2" class="anchored" data-anchor-id="importación-y-exploración-de-datos"><span class="header-section-number">20.3.2</span> Importación y Exploración de Datos</h3>
+<p>Los datos sobre los esporofitos de calahuala se encuentran almacenados en un archivo Excel (<a href="https://docs.google.com/spreadsheets/d/1HTODUlwTvRYYEiTsP7rQRUvlOgll4n6R/edit?usp=sharing&amp;ouid=106152052819657144907&amp;rtpof=true&amp;sd=true">esporofitos.xlsx</a>). A continuación, se presenta el código para importar y realizar una exploración inicial de los datos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar un archivo csv</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"esporofitos.xlsx"</span>)</span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar datos desde el archivo Excel</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>datos_esporofitos <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"esporofitos.xlsx"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar los primeros registros del data frame</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar las primeras filas del conjunto de datos</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   frasco cantidad_de_esporofitos altura_mm
@@ -642,67 +646,109 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 5      5                      58      21  
 6      6                      40      21.7</code></pre>
 </div>
-</div>
-<p>Este código carga el archivo de Excel que contiene los datos sobre esporofitos y muestra las primeras filas del conjunto de datos para verificar que se haya importado correctamente.</p>
-</section>
-<section id="visualización-de-datos" class="level3" data-number="20.5.3">
-<h3 data-number="20.5.3" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">20.5.3</span> Visualización de Datos</h3>
-<p>Se elabora un gráfico de dispersión para observar la relación entre las variables.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaboración de un gráfico de dispersión entre altura y cantidad</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>( datos<span class="sc">$</span>altura_mm, datos<span class="sc">$</span>cantidad_de_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="regresion_simple_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Este gráfico permite visualizar la relación entre la cantidad de esporofitos y la altura en milímetros, facilitando la identificación de patrones. Como se puede apreciar en el gráfico anterior hay una relación inversamente proporcional entre la altura de los esporofitos y la cantidad de esporofitos.</p>
-</section>
-<section id="ajuste-del-modelo-de-regresión" class="level3" data-number="20.5.4">
-<h3 data-number="20.5.4" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión"><span class="header-section-number">20.5.4</span> Ajuste del Modelo de Regresión</h3>
-<p>Se ajusta el modelo de regresión lineal simple utilizando la función <code>lm()</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajuste del modelo</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>regsimple <span class="ot">&lt;-</span> <span class="fu">lm</span>(datos<span class="sc">$</span>altura_mm <span class="sc">~</span> datos <span class="sc">$</span>cantidad_de_esporofitos)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(regsimple)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Estructura del conjunto de datos</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = datos$altura_mm ~ datos$cantidad_de_esporofitos)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--0.78523 -0.15056  0.01664  0.22403  0.62850 
-
-Coefficients:
-                                Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)                   22.8933399  0.1446248  158.29   &lt;2e-16 ***
-datos$cantidad_de_esporofitos -0.0401248  0.0008826  -45.46   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 0.3753 on 28 degrees of freedom
-Multiple R-squared:  0.9866,    Adjusted R-squared:  0.9862 
-F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+<pre><code>tibble [30 × 3] (S3: tbl_df/tbl/data.frame)
+ $ frasco                 : num [1:30] 1 2 3 4 5 6 7 8 9 10 ...
+ $ cantidad_de_esporofitos: num [1:30] 40 45 60 55 58 40 52 65 45 40 ...
+ $ altura_mm              : num [1:30] 21.4 21 20.5 20 21 21.7 21.1 19.5 21.1 21.3 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen estadístico básico</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     frasco      cantidad_de_esporofitos   altura_mm    
+ Min.   : 1.00   Min.   : 40.0           Min.   :12.10  
+ 1st Qu.: 8.25   1st Qu.: 58.5           1st Qu.:14.03  
+ Median :15.50   Median :150.0           Median :16.95  
+ Mean   :15.50   Mean   :144.3           Mean   :17.10  
+ 3rd Qu.:22.75   3rd Qu.:215.2           3rd Qu.:20.38  
+ Max.   :30.00   Max.   :267.0           Max.   :21.70  </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar valores faltantes</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">colSums</span>(<span class="fu">is.na</span>(datos_esporofitos))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                 frasco cantidad_de_esporofitos               altura_mm 
+                      0                       0                       0 </code></pre>
 </div>
 </div>
-<p>El resumen del modelo ajustado proporciona información sobre los coeficientes, errores estándar y estadísticas de ajuste, permitiendo evaluar la calidad del modelo.</p>
-<p><strong>Explicación del código</strong>:</p>
+</section>
+<section id="preparación-y-limpieza-de-datos" class="level3" data-number="20.3.3">
+<h3 data-number="20.3.3" class="anchored" data-anchor-id="preparación-y-limpieza-de-datos"><span class="header-section-number">20.3.3</span> Preparación y Limpieza de Datos</h3>
+<p>Es importante realizar una limpieza inicial de los datos para asegurar su calidad antes del análisis (Wickham, 2016):</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Eliminar filas con valores faltantes (si existen)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos_esporofitos <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(datos_esporofitos)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Renombrar columnas para facilitar el análisis (si es necesario)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_esporofitos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"frasco"</span>, <span class="st">"altura"</span>, <span class="st">"cantidad"</span>)</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar la estructura final de los datos</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [30 × 3] (S3: tbl_df/tbl/data.frame)
+ $ frasco  : num [1:30] 1 2 3 4 5 6 7 8 9 10 ...
+ $ altura  : num [1:30] 40 45 60 55 58 40 52 65 45 40 ...
+ $ cantidad: num [1:30] 21.4 21 20.5 20 21 21.7 21.1 19.5 21.1 21.3 ...</code></pre>
+</div>
+</div>
+<p>Este conjunto de códigos prepara el entorno para realizar el análisis de regresión lineal con los datos de esporofitos de calahuala, siguiendo las mejores prácticas en análisis de datos con R (Grolemund &amp; Wickham, 2017). La estructura organizada facilita la reproducibilidad del análisis y permite un manejo eficiente de los datos provenientes del estudio de micropropagación realizado por Rosales Castillo (2005).</p>
+</section>
+</section>
+<section id="análisis-descriptivo-de-los-datos" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="análisis-descriptivo-de-los-datos"><span class="header-section-number">20.4</span> Análisis Descriptivo de los Datos</h2>
+<p>El análisis descriptivo de los datos es un paso crucial antes de realizar un análisis de regresión lineal. Permite comprender las características principales de las variables, identificar posibles problemas en los datos (como valores atípicos o distribuciones no normales) y evaluar la pertinencia de aplicar un modelo de regresión lineal (Tukey, 1977). A continuación, se presenta el análisis descriptivo utilizando el paquete <code>psych</code> en R.</p>
+<section id="estadísticas-descriptivas-con-el-paquete-psych" class="level3" data-number="20.4.1">
+<h3 data-number="20.4.1" class="anchored" data-anchor-id="estadísticas-descriptivas-con-el-paquete-psych"><span class="header-section-number">20.4.1</span> Estadísticas Descriptivas con el Paquete <code>psych</code></h3>
+<p>El paquete <code>psych</code> proporciona funciones convenientes para calcular y presentar estadísticas descriptivas de manera eficiente (Revelle, 2023). Se utiliza la función <code>describe()</code> para obtener un resumen de las principales estadísticas de las variables de interés: altura de los esporofitos y cantidad de esporofitos germinados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular estadísticas descriptivas</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>descripcion <span class="ot">&lt;-</span> <span class="fu">describe</span>(datos_esporofitos)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir las estadísticas descriptivas</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descripcion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         vars  n  mean    sd median trimmed    mad  min   max range  skew
+frasco      1 30  15.5  8.80  15.50   15.50  11.12  1.0  30.0  29.0  0.00
+altura      2 30 144.3 78.95 150.00  143.00 124.54 40.0 267.0 227.0 -0.01
+cantidad    3 30  17.1  3.19  16.95   17.14   4.60 12.1  21.7   9.6  0.00
+         kurtosis    se
+frasco      -1.32  1.61
+altura      -1.53 14.41
+cantidad    -1.48  0.58</code></pre>
+</div>
+</div>
+<p>La función <code>describe()</code> proporciona las siguientes estadísticas para cada variable:</p>
 <ol type="1">
-<li><p><strong><code>lm()</code></strong>: Esta función ajusta un modelo de regresión lineal donde la cantidad de esporofitos es la variable dependiente y la altura es la variable independiente.</p></li>
-<li><p><strong><code>summary(regsimple)</code></strong>: Proporciona un resumen del modelo ajustado, incluyendo coeficientes, errores estándar y estadísticas de ajuste.</p></li>
+<li><p><code>vars</code>: Número de variable.</p></li>
+<li><p><code>n</code>: Número de observaciones.</p></li>
+<li><p><code>mean</code>: Media.</p></li>
+<li><p><code>sd</code>: Desviación estándar.</p></li>
+<li><p><code>median</code>: Mediana.</p></li>
+<li><p><code>trimmed</code>: Media recortada al 10%.</p></li>
+<li><p><code>mad</code>: Desviación absoluta mediana.</p></li>
+<li><p><code>min</code>: Valor mínimo.</p></li>
+<li><p><code>max</code>: Valor máximo.</p></li>
+<li><p><code>range</code>: Rango (máximo - mínimo).</p></li>
+<li><p><code>skew</code>: Asimetría.</p></li>
+<li><p><code>kurtosis</code>: Curtosis.</p></li>
+<li><p><code>se</code>: Error estándar de la media.</p></li>
 </ol>
 </section>
-<section id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo" class="level3" data-number="20.5.5">
-<h3 data-number="20.5.5" class="anchored" data-anchor-id="gráficos-de-diagnóstico-para-evaluar-los-supuestos-del-modelo"><span class="header-section-number">20.5.5</span> Gráficos de Diagnóstico para evaluar los supuestos del modelo</h3>
-<p>Se generan gráficos de diagnóstico para evaluar los supuestos del modelo.</p>
+<section id="visualización-de-datos" class="level3" data-number="20.4.2">
+<h3 data-number="20.4.2" class="anchored" data-anchor-id="visualización-de-datos"><span class="header-section-number">20.4.2</span> Visualización de Datos</h3>
+<p>La visualización de datos es fundamental para complementar el análisis descriptivo y obtener una comprensión más profunda de la distribución y relación entre las variables (Cleveland, 1993; Tufte, 2001). Se utilizan histogramas y diagramas de dispersión para visualizar la distribución de cada variable y la relación entre ellas.</p>
+<section id="histogramas" class="level4" data-number="20.4.2.1">
+<h4 data-number="20.4.2.1" class="anchored" data-anchor-id="histogramas"><span class="header-section-number">20.4.2.1</span> Histogramas</h4>
+<p>Los histogramas permiten visualizar la distribución de cada variable y evaluar su forma, simetría y presencia de valores atípicos.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráficos de diagnóstico de los supuestos</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>)) <span class="co"># Crea una matriz de dos gráficos</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(regsimple, <span class="at">which=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma de la altura de los esporofitos</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_esporofitos, <span class="fu">aes</span>(<span class="at">x =</span> altura)) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histograma de la Altura de los Esporofitos"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altura (mm)"</span>,</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -710,46 +756,278 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 </figure>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>)) <span class="co"># Devuelve a su estado normal el área de gráficos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma de la cantidad de esporofitos germinados</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_esporofitos, <span class="fu">aes</span>(<span class="at">x =</span> cantidad)) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histograma de la Cantidad de Esporofitos Germinados"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cantidad de Esporofitos"</span>,</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<p>Estos gráficos ayudan a verificar la linealidad y la homocedasticidad, asegurando que los supuestos del modelo se cumplan.</p>
-<p><strong>Explicación del código</strong>:</p>
-<p><strong><code>plot(regsimple, which=1:2)</code></strong>: Genera los gráficos de residuos y ajuste, que ayudan a verificar la linealidad y la homocedasticidad.</p>
+</div>
+</div>
 </section>
-<section id="prueba-de-normalidad-de-los-residuos" class="level3" data-number="20.5.6">
-<h3 data-number="20.5.6" class="anchored" data-anchor-id="prueba-de-normalidad-de-los-residuos"><span class="header-section-number">20.5.6</span> Prueba de Normalidad de los Residuos</h3>
-<p>Se realiza la prueba de Shapiro-Wilk para evaluar la normalidad de los residuos.</p>
+<section id="diagrama-de-dispersión" class="level4" data-number="20.4.2.2">
+<h4 data-number="20.4.2.2" class="anchored" data-anchor-id="diagrama-de-dispersión"><span class="header-section-number">20.4.2.2</span> Diagrama de Dispersión</h4>
+<p>El diagrama de dispersión permite visualizar la relación entre la altura de los esporofitos y la cantidad de esporofitos germinados.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar la prueba de Shapiro-Wilk en los residuos</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(regsimple))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagrama de dispersión</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_esporofitos, <span class="fu">aes</span>(<span class="at">x =</span> cantidad, <span class="at">y =</span> altura)) <span class="sc">+</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">color =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Diagrama de Dispersión: Cantidad de Esporofitos vs. Altura"</span>,</span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cantidad de Esporofitos"</span>,</span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Altura (mm)"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="interpretación-del-análisis-descriptivo" class="level3" data-number="20.4.3">
+<h3 data-number="20.4.3" class="anchored" data-anchor-id="interpretación-del-análisis-descriptivo"><span class="header-section-number">20.4.3</span> Interpretación del Análisis Descriptivo</h3>
+<p>El análisis descriptivo proporciona información valiosa sobre las características de los datos. Por ejemplo, la media y la mediana indican el valor central de cada variable, mientras que la desviación estándar y el rango miden su dispersión. La asimetría y la curtosis informan sobre la forma de la distribución.</p>
+<p>Los histogramas permiten identificar si las variables tienen una distribución aproximadamente normal o si presentan asimetrías o valores atípicos. El diagrama de dispersión permite evaluar visualmente si existe una relación lineal entre las variables y si hay patrones inusuales en los datos.</p>
+<p>En el contexto del análisis de regresión lineal, el análisis descriptivo ayuda a determinar si los datos cumplen con los supuestos del modelo y si es necesario realizar transformaciones en las variables para mejorar el ajuste del modelo (Kutner et al., 2005).</p>
+</section>
+</section>
+<section id="ajuste-del-modelo-de-regresión-lineal" class="level2" data-number="20.5">
+<h2 data-number="20.5" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión-lineal"><span class="header-section-number">20.5</span> Ajuste del Modelo de Regresión Lineal</h2>
+<p>Una vez realizado el análisis descriptivo de los datos, el siguiente paso es ajustar el modelo de regresión lineal. Este proceso implica la estimación de los parámetros del modelo que mejor describen la relación entre la variable dependiente (altura de los esporofitos) y la variable independiente (cantidad de esporofitos germinados).</p>
+<section id="creación-del-modelo" class="level3" data-number="20.5.1">
+<h3 data-number="20.5.1" class="anchored" data-anchor-id="creación-del-modelo"><span class="header-section-number">20.5.1</span> Creación del Modelo</h3>
+<p>Se utiliza la función <code>lm()</code> para ajustar el modelo de regresión lineal. La sintaxis general es <code>lm(variable_dependiente ~ variable_independiente, data = nombre_del_data_frame)</code>. En este caso, se busca modelar la altura de los esporofitos en función de la cantidad de esporofitos germinados (Montgomery et al., 2012).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ajustar el modelo de regresión lineal</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>modelo <span class="ot">&lt;-</span> <span class="fu">lm</span>(altura <span class="sc">~</span> cantidad, <span class="at">data =</span> datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="resumen-del-modelo" class="level3" data-number="20.5.2">
+<h3 data-number="20.5.2" class="anchored" data-anchor-id="resumen-del-modelo"><span class="header-section-number">20.5.2</span> Resumen del Modelo</h3>
+<p>Para obtener información detallada sobre el modelo ajustado, se utiliza la función <code>summary()</code>. Esta función proporciona los coeficientes estimados, el error estándar, el valor t, el valor p y el coeficiente de determinación (<code>R^2</code>) (Kutner et al., 2005).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen del modelo</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>resumen_modelo <span class="ot">&lt;-</span> <span class="fu">summary</span>(modelo)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir el resumen del modelo</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumen_modelo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = altura ~ cantidad, data = datos_esporofitos)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-20.3681  -3.7261  -0.4503   6.4108  15.8646 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 564.8555     9.4053   60.06   &lt;2e-16 ***
+cantidad    -24.5891     0.5409  -45.46   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 9.29 on 28 degrees of freedom
+Multiple R-squared:  0.9866,    Adjusted R-squared:  0.9862 
+F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>El resumen del modelo incluye la siguiente información clave:</p>
+<ol type="1">
+<li><p><strong>Coefficients:</strong></p>
+<ol type="a">
+<li><p><code>Estimate</code>: Estimación de los coeficientes del modelo (intercepto y pendiente).</p></li>
+<li><p><code>Std. Error</code>: Error estándar de los coeficientes.</p></li>
+<li><p><code>t value</code>: Valor t para la prueba de hipótesis de que el coeficiente es igual a cero.</p></li>
+<li><p><code>Pr(&gt;|t|)</code>: Valor p asociado al valor t.</p></li>
+</ol></li>
+<li><p><strong>Residual standard error:</strong> Estimación de la desviación estándar de los residuos.</p></li>
+<li><p><strong>Multiple R-squared:</strong> Coeficiente de determinación (<code>R^2</code>), que indica la proporción de la varianza de la variable dependiente explicada por el modelo.</p></li>
+<li><p><strong>Adjusted R-squared:</strong> Coeficiente de determinación ajustado, que tiene en cuenta el número de variables independientes en el modelo.</p></li>
+<li><p><strong>F-statistic:</strong> Estadístico F para la prueba de hipótesis de que todos los coeficientes del modelo son iguales a cero.</p></li>
+<li><p><strong>p-value:</strong> Valor p asociado al estadístico F.</p></li>
+</ol>
+</section>
+<section id="interpretación-del-modelo-de-regresión-lineal" class="level3" data-number="20.5.3">
+<h3 data-number="20.5.3" class="anchored" data-anchor-id="interpretación-del-modelo-de-regresión-lineal"><span class="header-section-number">20.5.3</span> Interpretación del Modelo de Regresión Lineal</h3>
+<p><strong>El modelo ajustado es:</strong> <code>altura=564.86−24.59×cantidad</code></p>
+<p><strong>Donde:</strong></p>
+<ol type="1">
+<li><p><strong>Intercepto (</strong>β0=564.86<strong>):</strong> El intercepto representa la altura estimada de los esporofitos cuando la cantidad de esporofitos germinados es cero. Matemáticamente, si no hubiera esporofitos germinados en un frasco, la altura estimada sería de 564.86 mm. Sin embargo, en el contexto biológico, este valor puede carecer de sentido práctico, ya que no es realista tener altura sin esporofitos germinados, pero es necesario para la ecuación del modelo (Kutner et al., 2005).</p></li>
+<li><p><strong>Pendiente (</strong>β1=−24.59<strong>):</strong> La pendiente indica que, por cada esporofito germinado adicional en el frasco, la altura promedio de los esporofitos disminuye en 24.59 mm. Este valor negativo sugiere una relación inversa entre la cantidad de esporofitos germinados y la altura de los esporofitos: a mayor cantidad de esporofitos germinados, menor es la altura promedio de los mismos.</p></li>
+<li><p><strong>Significancia estadística de los coeficientes:</strong> Ambos coeficientes (intercepto y pendiente) presentan valores p menores a 2e-16, lo que indica que son altamente significativos desde el punto de vista estadístico. Esto significa que existe evidencia suficiente para afirmar que la cantidad de esporofitos germinados es un predictor relevante de la altura de los esporofitos en este experimento (Montgomery et al., 2012).</p></li>
+<li><p><strong>Coeficiente de determinación (</strong>R2=0.9866<strong>):</strong> El valor de R2 es 0.9866, lo que indica que el 98.66% de la variabilidad observada en la altura de los esporofitos es explicada por la cantidad de esporofitos germinados. Este valor extremadamente alto sugiere que el modelo ajustado tiene un excelente poder explicativo para estos datos.</p></li>
+<li><p><strong>Error estándar de los residuos:</strong> El error estándar de los residuos es 9.29, lo que indica que, en promedio, las predicciones del modelo difieren de los valores observados en aproximadamente 9.29 mm.</p></li>
+<li><p><strong>Estadístico F y valor p global:</strong> El estadístico F es 2067 con un valor p menor a 2.2e-16, lo que confirma que el modelo en su conjunto es significativo y que la variable independiente (cantidad) contribuye de manera significativa a explicar la variabilidad en la altura.</p></li>
+</ol>
+</section>
+</section>
+<section id="diagnóstico-del-modelo-de-regresión-lineal" class="level2" data-number="20.6">
+<h2 data-number="20.6" class="anchored" data-anchor-id="diagnóstico-del-modelo-de-regresión-lineal"><span class="header-section-number">20.6</span> Diagnóstico del Modelo de Regresión Lineal</h2>
+<p>El diagnóstico del modelo de regresión lineal es una etapa esencial para validar los resultados obtenidos y garantizar que las inferencias realizadas sean confiables. Este proceso consiste en verificar que se cumplan los supuestos fundamentales del modelo, identificar posibles valores atípicos o influyentes y evaluar la calidad del ajuste (Kutner et al., 2005; Montgomery et al., 2012).</p>
+<p>Los principales supuestos que deben cumplirse en un modelo de regresión lineal simple son: linealidad, independencia, homocedasticidad y normalidad de los residuos.</p>
+<section id="linealidad" class="level3" data-number="20.6.1">
+<h3 data-number="20.6.1" class="anchored" data-anchor-id="linealidad"><span class="header-section-number">20.6.1</span> Linealidad</h3>
+<p>Se asume que la relación entre la variable independiente (cantidad de esporofitos germinados) y la variable dependiente (altura de los esporofitos) es lineal. Para verificar este supuesto, se recomienda observar el diagrama de dispersión y el gráfico de residuos versus valores ajustados.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de residuos vs valores ajustados</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo<span class="sc">$</span>fitted.values, modelo<span class="sc">$</span>residuals,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Valores ajustados"</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Residuos"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Residuos vs Valores Ajustados"</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Un patrón aleatorio alrededor de la línea horizontal en cero indica que el supuesto de linealidad es razonable.</p>
+</section>
+<section id="independencia-de-los-residuos" class="level3" data-number="20.6.2">
+<h3 data-number="20.6.2" class="anchored" data-anchor-id="independencia-de-los-residuos"><span class="header-section-number">20.6.2</span> Independencia de los residuos</h3>
+<p>La independencia de los residuos puede evaluarse mediante el test de Durbin-Watson, disponible en el paquete <code>lmtest</code> (Montgomery et al., 2012).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Evaluación de la independencia de los residuos</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwtest</span>(modelo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Durbin-Watson test
+
+data:  modelo
+DW = 2.6795, p-value = 0.9618
+alternative hypothesis: true autocorrelation is greater than 0</code></pre>
+</div>
+</div>
+<p>Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que hay evidencia de independencia de los residuos.</p>
+</section>
+<section id="homocedasticidad-igualdad-de-varianzas" class="level3" data-number="20.6.3">
+<h3 data-number="20.6.3" class="anchored" data-anchor-id="homocedasticidad-igualdad-de-varianzas"><span class="header-section-number">20.6.3</span> Homocedasticidad (igualdad de varianzas)</h3>
+<p>La homocedasticidad implica que la varianza de los residuos es constante a lo largo de los valores ajustados. Se puede evaluar visualmente con el gráfico de residuos y formalmente con la prueba de Breusch-Pagan.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de Breusch-Pagan</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bptest</span>(modelo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    studentized Breusch-Pagan test
+
+data:  modelo
+BP = 0.25903, df = 1, p-value = 0.6108</code></pre>
+</div>
+</div>
+<p>Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que no hay evidencia de heterocedasticidad.</p>
+</section>
+<section id="normalidad-de-los-residuos" class="level3" data-number="20.6.4">
+<h3 data-number="20.6.4" class="anchored" data-anchor-id="normalidad-de-los-residuos"><span class="header-section-number">20.6.4</span> Normalidad de los residuos</h3>
+<p>La normalidad de los residuos puede evaluarse mediante un gráfico Q-Q y pruebas estadísticas como Shapiro-Wilk o Anderson-Darling.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico Q-Q</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="fu">qqnorm</span>(modelo<span class="sc">$</span>residuals)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">qqline</span>(modelo<span class="sc">$</span>residuals, <span class="at">col =</span> <span class="st">"red"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_simple_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de Shapiro-Wilk</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(modelo<span class="sc">$</span>residuals)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Shapiro-Wilk normality test
 
-data:  residuals(regsimple)
-W = 0.95651, p-value = 0.2516</code></pre>
+data:  modelo$residuals
+W = 0.96712, p-value = 0.4636</code></pre>
 </div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<p><strong><code>shapiro.test(residuals(regsimple))</code></strong>: Esta prueba evalúa si los residuos del modelo siguen una distribución normal. Un valor p por debajo del nivel de significancia ( &lt; 0.05) indica que los residuos no son normales. Para el ejemplo el valor de p es de 0.2516 por lo que no se rechaza la hipótesis nula y por lo tanto no hay suficiente evidencia estadística para indicar que los residuos no son normales.</p>
+<p>Si los puntos del gráfico Q-Q se alinean aproximadamente sobre la línea y el valor p de la prueba es mayor a 0.05, se puede asumir normalidad de los residuos (Kutner et al., 2005).</p>
 </section>
-<section id="prueba-de-homocedasticidad-de-la-varianza" class="level3" data-number="20.5.7">
-<h3 data-number="20.5.7" class="anchored" data-anchor-id="prueba-de-homocedasticidad-de-la-varianza"><span class="header-section-number">20.5.7</span> Prueba de Homocedasticidad de la varianza</h3>
-<p>Finalmente, se evalúa el supuesto de homocedasticidad utilizando la prueba de heterocedasticidad.</p>
+<section id="evaluación-global-del-modelo" class="level3" data-number="20.6.5">
+<h3 data-number="20.6.5" class="anchored" data-anchor-id="evaluación-global-del-modelo"><span class="header-section-number">20.6.5</span> Evaluación Global del Modelo</h3>
+<p>Los supuestos se cumplen se puede concluir que el modelo es adecuado para describir la relación entre la cantidad de esporofitos germinados y la altura de los esporofitos. En caso contrario, se debería considerar transformaciones de las variables, exclusión de valores atípicos o el uso de modelos alternativos (Kutner et al., 2005).</p>
+</section>
+</section>
+<section id="predicciones" class="level2" data-number="20.7">
+<h2 data-number="20.7" class="anchored" data-anchor-id="predicciones"><span class="header-section-number">20.7</span> Predicciones</h2>
+<p>Una vez ajustado y validado el modelo de regresión lineal, es posible utilizarlo para realizar predicciones sobre la altura de los esporofitos a partir de nuevos valores de la cantidad de esporofitos germinados. Este proceso es fundamental para la aplicación práctica del modelo, ya que permite estimar resultados bajo diferentes escenarios experimentales (Kutner et al., 2005).</p>
+<section id="creación-de-nuevas-predicciones" class="level3" data-number="20.7.1">
+<h3 data-number="20.7.1" class="anchored" data-anchor-id="creación-de-nuevas-predicciones"><span class="header-section-number">20.7.1</span> Creación de Nuevas Predicciones</h3>
+<p>Para generar predicciones, se utiliza la función <code>predict()</code> de R, la cual permite estimar el valor de la variable dependiente (altura) para nuevos valores de la variable independiente (cantidad). A continuación se muestra cómo crear un conjunto de nuevos datos y obtener las predicciones correspondientes:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar prueba para el supuesto de homocedasticidad</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(regsimple)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear nuevos datos para predicción</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>nuevos_datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cantidad =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>))</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar predicciones de altura</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>predicciones <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> nuevos_datos)</span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(predicciones)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Non-constant Variance Score Test 
-Variance formula: ~ fitted.values 
-Chisquare = 0.07681442, Df = 1, p = 0.78166</code></pre>
+<pre><code>        1         2         3 
+318.96456 196.01907  73.07358 </code></pre>
 </div>
 </div>
-<p><strong>Explicación</strong>:</p>
-<p><strong><code>ncvTest(regsimple)</code></strong>: Esta función evalúa si la varianza de los residuos es constante a lo largo de los valores de la variable independiente. Un valor p menor al nivel de significancia (&lt;0.05) sugiere que hay heterocedasticidad, lo que puede invalidar el modelo. Para este ejemplo el valor de p es 0.78166 por lo que no hay evidencia estadística suficiente para indicar que la varianza de los residuos no es contante.</p>
-
-
+<p>En este ejemplo, se predice la altura de los esporofitos para frascos con 10, 15 y 20 esporofitos germinados. El resultado será un vector con los valores estimados de altura para cada caso.</p>
 </section>
+<section id="intervalos-de-confianza-y-predicción" class="level3" data-number="20.7.2">
+<h3 data-number="20.7.2" class="anchored" data-anchor-id="intervalos-de-confianza-y-predicción"><span class="header-section-number">20.7.2</span> Intervalos de Confianza y Predicción</h3>
+<p>Además de las predicciones puntuales, es recomendable calcular intervalos de confianza e intervalos de predicción para cuantificar la incertidumbre asociada a las estimaciones (Kutner et al., 2005; Montgomery et al., 2012):</p>
+<ol type="1">
+<li><p><strong>Intervalo de confianza:</strong> Indica el rango en el que se espera que se encuentre la media poblacional de la altura para un valor dado de la cantidad de esporofitos germinados, con un nivel de confianza especificado (por defecto, 95%).</p></li>
+<li><p><strong>Intervalo de predicción:</strong> Indica el rango en el que se espera que se encuentre un valor individual de la altura para un nuevo frasco con una cantidad específica de esporofitos germinados, considerando tanto la incertidumbre del modelo como la variabilidad individual.</p></li>
+</ol>
+<p>El siguiente código muestra cómo obtener ambos intervalos:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalos de confianza para la media</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>intervalos_confianza <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, </span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>                                <span class="at">newdata =</span> nuevos_datos, </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(intervalos_confianza)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        fit       lwr       upr
+1 318.96456 310.36148 327.56765
+2 196.01907 191.83552 200.20262
+3  73.07358  68.34372  77.80344</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalos de predicción para valores individuales</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>intervalos_prediccion <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, </span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">newdata =</span> nuevos_datos, </span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">interval =</span> <span class="st">"prediction"</span>)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(intervalos_prediccion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        fit      lwr       upr
+1 318.96456 298.0805 339.84867
+2 196.01907 176.5349 215.50329
+3  73.07358  53.4648  92.68236</code></pre>
+</div>
+</div>
+<p>Los resultados mostrarán, para cada valor de cantidad, la predicción puntual, el límite inferior y el límite superior del intervalo correspondiente.</p>
+<p>Estos procedimientos permiten aplicar el modelo de regresión lineal para estimar la altura de los esporofitos bajo diferentes condiciones experimentales y cuantificar la precisión de dichas estimaciones, lo que resulta fundamental para la toma de decisiones en el contexto de la micropropagación y el manejo experimental (Kutner et al., 2005; Montgomery et al., 2012).</p>
+</section>
+</section>
+<section id="conclusiones" class="level2" data-number="20.8">
+<h2 data-number="20.8" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">20.8</span> Conclusiones</h2>
+<p>El análisis de regresión lineal simple realizado para evaluar la relación entre la cantidad de esporofitos germinados y la altura de los esporofitos en el experimento de micropropagación de calahuala permitió obtener resultados estadísticamente robustos y relevantes. A continuación, se presentan las conclusiones principales del estudio, considerando que el modelo ajustado cumplió con todos los supuestos fundamentales de la regresión lineal (linealidad, independencia, homocedasticidad y normalidad de los residuos).</p>
+<p>En primer lugar, se identificó una relación lineal negativa y significativa entre la cantidad de esporofitos germinados y la altura de los esporofitos. Específicamente, el modelo estimó que por cada esporofito germinado adicional, la altura promedio de los esporofitos disminuye en aproximadamente 24.59 mm. Este hallazgo sugiere que, bajo las condiciones experimentales descritas, un mayor número de esporofitos germinados en un frasco se asocia con un menor crecimiento en altura de los mismos, lo que podría estar relacionado con la competencia por recursos en el medio de cultivo (Rosales Castillo, 2005).</p>
+<p>El coeficiente de determinación (R2R^2R2) obtenido fue de 0.9866, lo que indica que el modelo explica el 98.66% de la variabilidad observada en la altura de los esporofitos. Este valor refleja un ajuste excelente y respalda la utilidad del modelo para describir y predecir la altura de los esporofitos a partir de la cantidad de esporofitos germinados.</p>
+<p>La verificación de los supuestos del modelo confirmó la validez de las inferencias realizadas. No se detectaron problemas de linealidad, independencia, homocedasticidad ni normalidad de los residuos, lo que refuerza la confiabilidad de los resultados obtenidos (Kutner et al., 2005; Montgomery et al., 2012).</p>
+<p>En síntesis, el análisis realizado demuestra que la cantidad de esporofitos germinados es un factor determinante en la altura de los esporofitos en el contexto experimental evaluado. Estos resultados pueden ser de utilidad para optimizar las condiciones de micropropagación y orientar futuras investigaciones sobre el crecimiento y desarrollo de esporofitos en medios de cultivo in vitro.</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1174,8 +1452,8 @@ Chisquare = 0.07681442, Df = 1, p = 0.78166</code></pre>
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./estadistica_descriptiva.html" class="pagination-link" aria-label="Estadística descriptiva usando funciones en R">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estadística descriptiva usando funciones en R</span></span>
+      <a href="./estadistica_descriptiva.html" class="pagination-link" aria-label="Estimación de parámetros de estadística descriptiva en R">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Estimación de parámetros de estadística descriptiva en R</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
