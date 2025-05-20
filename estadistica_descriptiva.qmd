@@ -8,7 +8,7 @@ El conjunto de datos IRIS es uno de los conjuntos de datos más utilizados en la
 
 **Referencia del dataset:** Fisher, R. (1936). Iris \[Dataset\]. UCI Machine Learning Repository. <https://doi.org/10.24432/C56C76>
 
-**Acceso a recursos:** El script completo con los ejemplos desarrollados y la base de datos IRIS pueden descargarse en el siguiente repositorio: `[ADJUNTAR ACA EL ENLACE AL REPOSITORIO]`
+**Acceso a recursos:** El script completo con el ejemplo desarrollado y la base de datos IRIS pueden descargarse en el siguiente repositorio: <https://github.com/Ludwing-MJ/Est_Desc_EJ.git>
 
 ## Configuración del Entorno de Trabajo
 
@@ -208,7 +208,7 @@ tabla_resumen <- iris %>%
   ) %>%
   arrange(Species, Variable)
 
-# Imprimir la tabla resumen
+# Visualizar la tabla resumen
 tabla_resumen
 
 ```
@@ -378,4 +378,4 @@ ggplot(iris_long, aes(x = Value)) +
 
 **Interpretación:** Los histogramas permiten visualizar la distribución de cada variable dentro de cada especie. Se puede observar la forma de la distribución, la presencia de valores atípicos y la dispersión de los datos para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x, lo que facilita la comparación entre las diferentes combinaciones de especie y variable.
 
-En resumen, la combinación de las funciones del paquete `DataExplorer` y la visualización de histogramas con `ggplot2` permite obtener una visión completa y detallada de las características del conjunto de datos, facilitando la interpretación de los datos y la identificación de posibles patrones o relaciones (Wickham, 2016).
+La combinación de las funciones del paquete `DataExplorer` y la visualización de histogramas con `ggplot2` permite obtener una visión completa y detallada de las características del conjunto de datos, facilitando la interpretación de los datos y la identificación de posibles patrones o relaciones (Wickham, 2016).
