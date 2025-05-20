@@ -601,7 +601,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El presente ejemplo práctico expone el procedimiento para realizar un análisis de regresión lineal simple utilizando un conjunto de datos experimentales sobre esporofitos. Los datos fueron recolectados en el laboratorio de cultivo de tejidos de la Facultad de Agronomía de la Universidad de San Carlos de Guatemala, en el marco de un estudio enfocado en la reproducción in vitro del helecho conocido como calahuala (<em>Phlebodium pseudoaureum</em> (Cav.) Lellinger).</p>
 <p>En el experimento, se midió la altura de cada esporofito y se registró la cantidad de esporofitos germinados en 30 frascos, todos ellos cultivados en medio Murashige y Skoog. La información analizada corresponde a los resultados obtenidos bajo estas condiciones controladas. Este análisis toma como referencia la investigación de Rosales Castillo (2005), quien desarrolló un protocolo de micropropagación de calahuala empleando tres tipos de explantes y diferentes medios de cultivo in vitro.</p>
 <p>El objetivo principal de este análisis es evaluar la relación entre la cantidad de esporofitos germinados (variable independiente) y la altura de los esporofitos (variable dependiente), empleando la regresión lineal simple como herramienta estadística. Además de ajustar un modelo que describa esta relación, se busca verificar rigurosamente los supuestos estadísticos que garantizan la validez de las inferencias obtenidas.</p>
-<p><strong>Acceso a recursos:</strong> El script completo con los ejemplos desarrollados y la base de datos sobre esporofitos están disponibles para su consulta y descarga en el siguiente repositorio: <code>[ADJUNTAR ACA EL ENLACE AL REPOSITORIO]</code></p>
+<p><strong>Acceso a recursos:</strong> El script completo con los ejemplos desarrollados y la base de datos sobre esporofitos están disponibles para su consulta y descarga en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Reg_Lineal_EJ.git" class="uri">https://github.com/Ludwing-MJ/Reg_Lineal_EJ.git</a></p>
 </section>
 <section id="preparación-del-entorno-en-r" class="level2" data-number="20.3">
 <h2 data-number="20.3" class="anchored" data-anchor-id="preparación-del-entorno-en-r"><span class="header-section-number">20.3</span> Preparación del Entorno en R</h2>
@@ -681,15 +681,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>datos_esporofitos <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(datos_esporofitos)</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Renombrar columnas para facilitar el análisis (si es necesario)</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_esporofitos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"frasco"</span>, <span class="st">"altura"</span>, <span class="st">"cantidad"</span>)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(datos_esporofitos) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"frasco"</span>, <span class="st">"cantidad"</span>, <span class="st">"altura"</span>)</span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar la estructura final de los datos</span></span>
 <span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_esporofitos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>tibble [30 × 3] (S3: tbl_df/tbl/data.frame)
  $ frasco  : num [1:30] 1 2 3 4 5 6 7 8 9 10 ...
- $ altura  : num [1:30] 40 45 60 55 58 40 52 65 45 40 ...
- $ cantidad: num [1:30] 21.4 21 20.5 20 21 21.7 21.1 19.5 21.1 21.3 ...</code></pre>
+ $ cantidad: num [1:30] 40 45 60 55 58 40 52 65 45 40 ...
+ $ altura  : num [1:30] 21.4 21 20.5 20 21 21.7 21.1 19.5 21.1 21.3 ...</code></pre>
 </div>
 </div>
 <p>Este conjunto de códigos prepara el entorno para realizar el análisis de regresión lineal con los datos de esporofitos de calahuala, siguiendo las mejores prácticas en análisis de datos con R (Grolemund &amp; Wickham, 2017). La estructura organizada facilita la reproducibilidad del análisis y permite un manejo eficiente de los datos provenientes del estudio de micropropagación realizado por Rosales Castillo (2005).</p>
@@ -705,17 +705,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular estadísticas descriptivas</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>descripcion <span class="ot">&lt;-</span> <span class="fu">describe</span>(datos_esporofitos)</span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir las estadísticas descriptivas</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar las estadísticas descriptivas</span></span>
 <span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(descripcion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         vars  n  mean    sd median trimmed    mad  min   max range  skew
 frasco      1 30  15.5  8.80  15.50   15.50  11.12  1.0  30.0  29.0  0.00
-altura      2 30 144.3 78.95 150.00  143.00 124.54 40.0 267.0 227.0 -0.01
-cantidad    3 30  17.1  3.19  16.95   17.14   4.60 12.1  21.7   9.6  0.00
+cantidad    2 30 144.3 78.95 150.00  143.00 124.54 40.0 267.0 227.0 -0.01
+altura      3 30  17.1  3.19  16.95   17.14   4.60 12.1  21.7   9.6  0.00
          kurtosis    se
 frasco      -1.32  1.61
-altura      -1.53 14.41
-cantidad    -1.48  0.58</code></pre>
+cantidad    -1.53 14.41
+altura      -1.48  0.58</code></pre>
 </div>
 </div>
 <p>La función <code>describe()</code> proporciona las siguientes estadísticas para cada variable:</p>
@@ -744,7 +744,7 @@ cantidad    -1.48  0.58</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma de la altura de los esporofitos</span></span>
 <span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_esporofitos, <span class="fu">aes</span>(<span class="at">x =</span> altura)) <span class="sc">+</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histograma de la Altura de los Esporofitos"</span>,</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Altura (mm)"</span>,</span>
 <span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
@@ -758,7 +758,7 @@ cantidad    -1.48  0.58</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histograma de la cantidad de esporofitos germinados</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_esporofitos, <span class="fu">aes</span>(<span class="at">x =</span> cantidad)) <span class="sc">+</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">1</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">15</span>, <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histograma de la Cantidad de Esporofitos Germinados"</span>,</span>
 <span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Cantidad de Esporofitos"</span>,</span>
 <span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Frecuencia"</span>) <span class="sc">+</span></span>
@@ -822,7 +822,7 @@ cantidad    -1.48  0.58</code></pre>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen del modelo</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>resumen_modelo <span class="ot">&lt;-</span> <span class="fu">summary</span>(modelo)</span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Imprimir el resumen del modelo</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar el resumen del modelo</span></span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(resumen_modelo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -831,16 +831,16 @@ lm(formula = altura ~ cantidad, data = datos_esporofitos)
 
 Residuals:
      Min       1Q   Median       3Q      Max 
--20.3681  -3.7261  -0.4503   6.4108  15.8646 
+-0.78523 -0.15056  0.01664  0.22403  0.62850 
 
 Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) 564.8555     9.4053   60.06   &lt;2e-16 ***
-cantidad    -24.5891     0.5409  -45.46   &lt;2e-16 ***
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 22.8933399  0.1446248  158.29   &lt;2e-16 ***
+cantidad    -0.0401248  0.0008826  -45.46   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-Residual standard error: 9.29 on 28 degrees of freedom
+Residual standard error: 0.3753 on 28 degrees of freedom
 Multiple R-squared:  0.9866,    Adjusted R-squared:  0.9862 
 F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
@@ -863,14 +863,14 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
 </section>
 <section id="interpretación-del-modelo-de-regresión-lineal" class="level3" data-number="20.5.3">
 <h3 data-number="20.5.3" class="anchored" data-anchor-id="interpretación-del-modelo-de-regresión-lineal"><span class="header-section-number">20.5.3</span> Interpretación del Modelo de Regresión Lineal</h3>
-<p><strong>El modelo ajustado es:</strong> <code>altura=564.86−24.59×cantidad</code></p>
+<p><strong>El modelo ajustado es:</strong> <code>altura=22.89−0.04×cantidad</code></p>
 <p><strong>Donde:</strong></p>
 <ol type="1">
-<li><p><strong>Intercepto (</strong>β0=564.86<strong>):</strong> El intercepto representa la altura estimada de los esporofitos cuando la cantidad de esporofitos germinados es cero. Matemáticamente, si no hubiera esporofitos germinados en un frasco, la altura estimada sería de 564.86 mm. Sin embargo, en el contexto biológico, este valor puede carecer de sentido práctico, ya que no es realista tener altura sin esporofitos germinados, pero es necesario para la ecuación del modelo (Kutner et al., 2005).</p></li>
-<li><p><strong>Pendiente (</strong>β1=−24.59<strong>):</strong> La pendiente indica que, por cada esporofito germinado adicional en el frasco, la altura promedio de los esporofitos disminuye en 24.59 mm. Este valor negativo sugiere una relación inversa entre la cantidad de esporofitos germinados y la altura de los esporofitos: a mayor cantidad de esporofitos germinados, menor es la altura promedio de los mismos.</p></li>
+<li><p><strong>Intercepto (</strong>β0=22.89<strong>):</strong> El intercepto representa la altura estimada de los esporofitos cuando la cantidad de esporofitos germinados es cero. Matemáticamente, si no hubiera esporofitos germinados en un frasco, la altura estimada sería de 22.89 mm. Sin embargo, en el contexto biológico, este valor puede carecer de sentido práctico, ya que no es realista tener altura sin esporofitos germinados, pero es necesario para la ecuación del modelo (Kutner et al., 2005).</p></li>
+<li><p><strong>Pendiente (</strong>β1=−0.04<strong>):</strong> La pendiente indica que, por cada esporofito germinado adicional en el frasco, la altura promedio de los esporofitos disminuye en 0.04 mm. Este valor negativo sugiere una relación inversa entre la cantidad de esporofitos germinados y la altura de los esporofitos: a mayor cantidad de esporofitos germinados, menor es la altura promedio de los mismos.</p></li>
 <li><p><strong>Significancia estadística de los coeficientes:</strong> Ambos coeficientes (intercepto y pendiente) presentan valores p menores a 2e-16, lo que indica que son altamente significativos desde el punto de vista estadístico. Esto significa que existe evidencia suficiente para afirmar que la cantidad de esporofitos germinados es un predictor relevante de la altura de los esporofitos en este experimento (Montgomery et al., 2012).</p></li>
 <li><p><strong>Coeficiente de determinación (</strong>R2=0.9866<strong>):</strong> El valor de R2 es 0.9866, lo que indica que el 98.66% de la variabilidad observada en la altura de los esporofitos es explicada por la cantidad de esporofitos germinados. Este valor extremadamente alto sugiere que el modelo ajustado tiene un excelente poder explicativo para estos datos.</p></li>
-<li><p><strong>Error estándar de los residuos:</strong> El error estándar de los residuos es 9.29, lo que indica que, en promedio, las predicciones del modelo difieren de los valores observados en aproximadamente 9.29 mm.</p></li>
+<li><p><strong>Error estándar de los residuos:</strong> El error estándar de los residuos es 0.3753, lo que indica que, en promedio, las predicciones del modelo difieren de los valores observados en aproximadamente 0.3753 mm.</p></li>
 <li><p><strong>Estadístico F y valor p global:</strong> El estadístico F es 2067 con un valor p menor a 2.2e-16, lo que confirma que el modelo en su conjunto es significativo y que la variable independiente (cantidad) contribuye de manera significativa a explicar la variabilidad en la altura.</p></li>
 </ol>
 </section>
@@ -910,11 +910,11 @@ F-statistic:  2067 on 1 and 28 DF,  p-value: &lt; 2.2e-16</code></pre>
     Durbin-Watson test
 
 data:  modelo
-DW = 2.6795, p-value = 0.9618
+DW = 2.7293, p-value = 0.9725
 alternative hypothesis: true autocorrelation is greater than 0</code></pre>
 </div>
 </div>
-<p>Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que hay evidencia de independencia de los residuos.</p>
+<p>Un valor p alto (mayor al nivel de significancia, que en investigación agricola normalmente es 0.05) en la prueba indica que hay evidencia de independencia de los residuos.</p>
 </section>
 <section id="homocedasticidad-igualdad-de-varianzas" class="level3" data-number="20.6.3">
 <h3 data-number="20.6.3" class="anchored" data-anchor-id="homocedasticidad-igualdad-de-varianzas"><span class="header-section-number">20.6.3</span> Homocedasticidad (igualdad de varianzas)</h3>
@@ -927,10 +927,10 @@ alternative hypothesis: true autocorrelation is greater than 0</code></pre>
     studentized Breusch-Pagan test
 
 data:  modelo
-BP = 0.25903, df = 1, p-value = 0.6108</code></pre>
+BP = 0.095527, df = 1, p-value = 0.7573</code></pre>
 </div>
 </div>
-<p>Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que no hay evidencia de heterocedasticidad.</p>
+<p>Un valor p alto (mayor al nivel de significancia, que en investigación agricola normalmente es 0.05) en la prueba indica que no hay evidencia de heterocedasticidad.</p>
 </section>
 <section id="normalidad-de-los-residuos" class="level3" data-number="20.6.4">
 <h3 data-number="20.6.4" class="anchored" data-anchor-id="normalidad-de-los-residuos"><span class="header-section-number">20.6.4</span> Normalidad de los residuos</h3>
@@ -953,7 +953,7 @@ BP = 0.25903, df = 1, p-value = 0.6108</code></pre>
     Shapiro-Wilk normality test
 
 data:  modelo$residuals
-W = 0.96712, p-value = 0.4636</code></pre>
+W = 0.95651, p-value = 0.2516</code></pre>
 </div>
 </div>
 <p>Si los puntos del gráfico Q-Q se alinean aproximadamente sobre la línea y el valor p de la prueba es mayor a 0.05, se puede asumir normalidad de los residuos (Kutner et al., 2005).</p>
@@ -971,17 +971,17 @@ W = 0.96712, p-value = 0.4636</code></pre>
 <p>Para generar predicciones, se utiliza la función <code>predict()</code> de R, la cual permite estimar el valor de la variable dependiente (altura) para nuevos valores de la variable independiente (cantidad). A continuación se muestra cómo crear un conjunto de nuevos datos y obtener las predicciones correspondientes:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crear nuevos datos para predicción</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>nuevos_datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cantidad =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>))</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>nuevos_datos <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">cantidad =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">50</span>, <span class="dv">75</span>))</span>
 <span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar predicciones de altura</span></span>
 <span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>predicciones <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, <span class="at">newdata =</span> nuevos_datos)</span>
 <span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(predicciones)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        1         2         3 
-318.96456 196.01907  73.07358 </code></pre>
+<pre><code>       1        2        3 
+21.89022 20.88710 19.88398 </code></pre>
 </div>
 </div>
-<p>En este ejemplo, se predice la altura de los esporofitos para frascos con 10, 15 y 20 esporofitos germinados. El resultado será un vector con los valores estimados de altura para cada caso.</p>
+<p>En este ejemplo, se predice la altura de los esporofitos para frascos con 25, 50 y 75 esporofitos germinados. El resultado será un vector con los valores estimados de altura para cada caso.</p>
 </section>
 <section id="intervalos-de-confianza-y-predicción" class="level3" data-number="20.7.2">
 <h3 data-number="20.7.2" class="anchored" data-anchor-id="intervalos-de-confianza-y-predicción"><span class="header-section-number">20.7.2</span> Intervalos de Confianza y Predicción</h3>
@@ -998,10 +998,10 @@ W = 0.96712, p-value = 0.4636</code></pre>
 <span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>                                <span class="at">interval =</span> <span class="st">"confidence"</span>)</span>
 <span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(intervalos_confianza)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        fit       lwr       upr
-1 318.96456 310.36148 327.56765
-2 196.01907 191.83552 200.20262
-3  73.07358  68.34372  77.80344</code></pre>
+<pre><code>       fit      lwr      upr
+1 21.89022 21.63288 22.14756
+2 20.88710 20.66627 21.10793
+3 19.88398 19.69584 20.07212</code></pre>
 </div>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Intervalos de predicción para valores individuales</span></span>
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>intervalos_prediccion <span class="ot">&lt;-</span> <span class="fu">predict</span>(modelo, </span>
@@ -1009,10 +1009,10 @@ W = 0.96712, p-value = 0.4636</code></pre>
 <span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">interval =</span> <span class="st">"prediction"</span>)</span>
 <span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(intervalos_prediccion)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        fit      lwr       upr
-1 318.96456 298.0805 339.84867
-2 196.01907 176.5349 215.50329
-3  73.07358  53.4648  92.68236</code></pre>
+<pre><code>       fit      lwr      upr
+1 21.89022 21.07957 22.70087
+2 20.88710 20.08729 21.68691
+3 19.88398 19.09257 20.67539</code></pre>
 </div>
 </div>
 <p>Los resultados mostrarán, para cada valor de cantidad, la predicción puntual, el límite inferior y el límite superior del intervalo correspondiente.</p>
@@ -1022,10 +1022,9 @@ W = 0.96712, p-value = 0.4636</code></pre>
 <section id="conclusiones" class="level2" data-number="20.8">
 <h2 data-number="20.8" class="anchored" data-anchor-id="conclusiones"><span class="header-section-number">20.8</span> Conclusiones</h2>
 <p>El análisis de regresión lineal simple realizado para evaluar la relación entre la cantidad de esporofitos germinados y la altura de los esporofitos en el experimento de micropropagación de calahuala permitió obtener resultados estadísticamente robustos y relevantes. A continuación, se presentan las conclusiones principales del estudio, considerando que el modelo ajustado cumplió con todos los supuestos fundamentales de la regresión lineal (linealidad, independencia, homocedasticidad y normalidad de los residuos).</p>
-<p>En primer lugar, se identificó una relación lineal negativa y significativa entre la cantidad de esporofitos germinados y la altura de los esporofitos. Específicamente, el modelo estimó que por cada esporofito germinado adicional, la altura promedio de los esporofitos disminuye en aproximadamente 24.59 mm. Este hallazgo sugiere que, bajo las condiciones experimentales descritas, un mayor número de esporofitos germinados en un frasco se asocia con un menor crecimiento en altura de los mismos, lo que podría estar relacionado con la competencia por recursos en el medio de cultivo (Rosales Castillo, 2005).</p>
+<p>En primer lugar, se identificó una relación lineal negativa y significativa entre la cantidad de esporofitos germinados y la altura de los esporofitos. Específicamente, el modelo estimó que por cada esporofito germinado adicional, la altura promedio de los esporofitos disminuye en aproximadamente 0.04 mm. Este hallazgo sugiere que, bajo las condiciones experimentales descritas, un mayor número de esporofitos germinados en un frasco se asocia con un menor crecimiento en altura de los mismos, lo que podría estar relacionado con la competencia por recursos en el medio de cultivo (Rosales Castillo, 2005).</p>
 <p>El coeficiente de determinación (R2R^2R2) obtenido fue de 0.9866, lo que indica que el modelo explica el 98.66% de la variabilidad observada en la altura de los esporofitos. Este valor refleja un ajuste excelente y respalda la utilidad del modelo para describir y predecir la altura de los esporofitos a partir de la cantidad de esporofitos germinados.</p>
 <p>La verificación de los supuestos del modelo confirmó la validez de las inferencias realizadas. No se detectaron problemas de linealidad, independencia, homocedasticidad ni normalidad de los residuos, lo que refuerza la confiabilidad de los resultados obtenidos (Kutner et al., 2005; Montgomery et al., 2012).</p>
-<p>En síntesis, el análisis realizado demuestra que la cantidad de esporofitos germinados es un factor determinante en la altura de los esporofitos en el contexto experimental evaluado. Estos resultados pueden ser de utilidad para optimizar las condiciones de micropropagación y orientar futuras investigaciones sobre el crecimiento y desarrollo de esporofitos en medios de cultivo in vitro.</p>
 
 
 </section>

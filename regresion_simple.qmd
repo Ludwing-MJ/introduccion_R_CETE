@@ -38,7 +38,7 @@ En el experimento, se midió la altura de cada esporofito y se registró la cant
 
 El objetivo principal de este análisis es evaluar la relación entre la cantidad de esporofitos germinados (variable independiente) y la altura de los esporofitos (variable dependiente), empleando la regresión lineal simple como herramienta estadística. Además de ajustar un modelo que describa esta relación, se busca verificar rigurosamente los supuestos estadísticos que garantizan la validez de las inferencias obtenidas.
 
-**Acceso a recursos:** El script completo con los ejemplos desarrollados y la base de datos sobre esporofitos están disponibles para su consulta y descarga en el siguiente repositorio: `[ADJUNTAR ACA EL ENLACE AL REPOSITORIO]`
+**Acceso a recursos:** El script completo con los ejemplos desarrollados y la base de datos sobre esporofitos están disponibles para su consulta y descarga en el siguiente repositorio: <https://github.com/Ludwing-MJ/Reg_Lineal_EJ.git>
 
 ## Preparación del Entorno en R
 
@@ -98,7 +98,7 @@ Es importante realizar una limpieza inicial de los datos para asegurar su calida
 datos_esporofitos <- na.omit(datos_esporofitos)
 
 # Renombrar columnas para facilitar el análisis (si es necesario)
-names(datos_esporofitos) <- c("frasco", "altura", "cantidad")
+names(datos_esporofitos) <- c("frasco", "cantidad", "altura")
 
 # Verificar la estructura final de los datos
 str(datos_esporofitos)
@@ -119,7 +119,7 @@ El paquete `psych` proporciona funciones convenientes para calcular y presentar 
 # Calcular estadísticas descriptivas
 descripcion <- describe(datos_esporofitos)
 
-# Imprimir las estadísticas descriptivas
+# Visualizar las estadísticas descriptivas
 print(descripcion)
 ```
 
@@ -162,7 +162,7 @@ Los histogramas permiten visualizar la distribución de cada variable y evaluar 
 ```{r}
 # Histograma de la altura de los esporofitos
 ggplot(datos_esporofitos, aes(x = altura)) +
-  geom_histogram(binwidth = 15, fill = "skyblue", color = "black") +
+  geom_histogram(binwidth = 1, fill = "skyblue", color = "black") +
   labs(title = "Histograma de la Altura de los Esporofitos",
        x = "Altura (mm)",
        y = "Frecuencia") +
@@ -170,7 +170,7 @@ ggplot(datos_esporofitos, aes(x = altura)) +
 
 # Histograma de la cantidad de esporofitos germinados
 ggplot(datos_esporofitos, aes(x = cantidad)) +
-  geom_histogram(binwidth = 1, fill = "lightgreen", color = "black") +
+  geom_histogram(binwidth = 15, fill = "lightgreen", color = "black") +
   labs(title = "Histograma de la Cantidad de Esporofitos Germinados",
        x = "Cantidad de Esporofitos",
        y = "Frecuencia") +
@@ -221,7 +221,7 @@ Para obtener información detallada sobre el modelo ajustado, se utiliza la func
 # Resumen del modelo
 resumen_modelo <- summary(modelo)
 
-# Imprimir el resumen del modelo
+# Visualizar el resumen del modelo
 print(resumen_modelo)
 ```
 
@@ -249,19 +249,19 @@ El resumen del modelo incluye la siguiente información clave:
 
 ### Interpretación del Modelo de Regresión Lineal
 
-**El modelo ajustado es:** `altura=564.86−24.59×cantidad`
+**El modelo ajustado es:** `altura=22.89−0.04×cantidad`
 
 **Donde:**
 
-1.  **Intercepto (**β0=564.86**):** El intercepto representa la altura estimada de los esporofitos cuando la cantidad de esporofitos germinados es cero. Matemáticamente, si no hubiera esporofitos germinados en un frasco, la altura estimada sería de 564.86 mm. Sin embargo, en el contexto biológico, este valor puede carecer de sentido práctico, ya que no es realista tener altura sin esporofitos germinados, pero es necesario para la ecuación del modelo (Kutner et al., 2005).
+1.  **Intercepto (**β0=22.89**):** El intercepto representa la altura estimada de los esporofitos cuando la cantidad de esporofitos germinados es cero. Matemáticamente, si no hubiera esporofitos germinados en un frasco, la altura estimada sería de 22.89 mm. Sin embargo, en el contexto biológico, este valor puede carecer de sentido práctico, ya que no es realista tener altura sin esporofitos germinados, pero es necesario para la ecuación del modelo (Kutner et al., 2005).
 
-2.  **Pendiente (**β1=−24.59**):** La pendiente indica que, por cada esporofito germinado adicional en el frasco, la altura promedio de los esporofitos disminuye en 24.59 mm. Este valor negativo sugiere una relación inversa entre la cantidad de esporofitos germinados y la altura de los esporofitos: a mayor cantidad de esporofitos germinados, menor es la altura promedio de los mismos.
+2.  **Pendiente (**β1=−0.04**):** La pendiente indica que, por cada esporofito germinado adicional en el frasco, la altura promedio de los esporofitos disminuye en 0.04 mm. Este valor negativo sugiere una relación inversa entre la cantidad de esporofitos germinados y la altura de los esporofitos: a mayor cantidad de esporofitos germinados, menor es la altura promedio de los mismos.
 
 3.  **Significancia estadística de los coeficientes:** Ambos coeficientes (intercepto y pendiente) presentan valores p menores a 2e-16, lo que indica que son altamente significativos desde el punto de vista estadístico. Esto significa que existe evidencia suficiente para afirmar que la cantidad de esporofitos germinados es un predictor relevante de la altura de los esporofitos en este experimento (Montgomery et al., 2012).
 
 4.  **Coeficiente de determinación (**R2=0.9866**):** El valor de R2 es 0.9866, lo que indica que el 98.66% de la variabilidad observada en la altura de los esporofitos es explicada por la cantidad de esporofitos germinados. Este valor extremadamente alto sugiere que el modelo ajustado tiene un excelente poder explicativo para estos datos.
 
-5.  **Error estándar de los residuos:** El error estándar de los residuos es 9.29, lo que indica que, en promedio, las predicciones del modelo difieren de los valores observados en aproximadamente 9.29 mm.
+5.  **Error estándar de los residuos:** El error estándar de los residuos es 0.3753, lo que indica que, en promedio, las predicciones del modelo difieren de los valores observados en aproximadamente 0.3753 mm.
 
 6.  **Estadístico F y valor p global:** El estadístico F es 2067 con un valor p menor a 2.2e-16, lo que confirma que el modelo en su conjunto es significativo y que la variable independiente (cantidad) contribuye de manera significativa a explicar la variabilidad en la altura.
 
@@ -295,7 +295,7 @@ La independencia de los residuos puede evaluarse mediante el test de Durbin-Wats
 dwtest(modelo)
 ```
 
-Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que hay evidencia de independencia de los residuos.
+Un valor p alto (mayor al nivel de significancia, que en investigación agricola normalmente es 0.05) en la prueba indica que hay evidencia de independencia de los residuos.
 
 ### Homocedasticidad (igualdad de varianzas)
 
@@ -306,7 +306,7 @@ La homocedasticidad implica que la varianza de los residuos es constante a lo la
 bptest(modelo)
 ```
 
-Un valor p alto (mayor al nivel de significancia que en investigación agricola normalmente es 0.05) en la prueba indica que no hay evidencia de heterocedasticidad.
+Un valor p alto (mayor al nivel de significancia, que en investigación agricola normalmente es 0.05) en la prueba indica que no hay evidencia de heterocedasticidad.
 
 ### Normalidad de los residuos
 
@@ -337,14 +337,14 @@ Para generar predicciones, se utiliza la función `predict()` de R, la cual perm
 
 ```{r}
 # Crear nuevos datos para predicción
-nuevos_datos <- data.frame(cantidad = c(10, 15, 20))
+nuevos_datos <- data.frame(cantidad = c(25, 50, 75))
 
 # Realizar predicciones de altura
 predicciones <- predict(modelo, newdata = nuevos_datos)
 print(predicciones)
 ```
 
-En este ejemplo, se predice la altura de los esporofitos para frascos con 10, 15 y 20 esporofitos germinados. El resultado será un vector con los valores estimados de altura para cada caso.
+En este ejemplo, se predice la altura de los esporofitos para frascos con 25, 50 y 75 esporofitos germinados. El resultado será un vector con los valores estimados de altura para cada caso.
 
 ### Intervalos de Confianza y Predicción
 
@@ -378,10 +378,8 @@ Estos procedimientos permiten aplicar el modelo de regresión lineal para estima
 
 El análisis de regresión lineal simple realizado para evaluar la relación entre la cantidad de esporofitos germinados y la altura de los esporofitos en el experimento de micropropagación de calahuala permitió obtener resultados estadísticamente robustos y relevantes. A continuación, se presentan las conclusiones principales del estudio, considerando que el modelo ajustado cumplió con todos los supuestos fundamentales de la regresión lineal (linealidad, independencia, homocedasticidad y normalidad de los residuos).
 
-En primer lugar, se identificó una relación lineal negativa y significativa entre la cantidad de esporofitos germinados y la altura de los esporofitos. Específicamente, el modelo estimó que por cada esporofito germinado adicional, la altura promedio de los esporofitos disminuye en aproximadamente 24.59 mm. Este hallazgo sugiere que, bajo las condiciones experimentales descritas, un mayor número de esporofitos germinados en un frasco se asocia con un menor crecimiento en altura de los mismos, lo que podría estar relacionado con la competencia por recursos en el medio de cultivo (Rosales Castillo, 2005).
+En primer lugar, se identificó una relación lineal negativa y significativa entre la cantidad de esporofitos germinados y la altura de los esporofitos. Específicamente, el modelo estimó que por cada esporofito germinado adicional, la altura promedio de los esporofitos disminuye en aproximadamente 0.04 mm. Este hallazgo sugiere que, bajo las condiciones experimentales descritas, un mayor número de esporofitos germinados en un frasco se asocia con un menor crecimiento en altura de los mismos, lo que podría estar relacionado con la competencia por recursos en el medio de cultivo (Rosales Castillo, 2005).
 
 El coeficiente de determinación (R2R\^2R2) obtenido fue de 0.9866, lo que indica que el modelo explica el 98.66% de la variabilidad observada en la altura de los esporofitos. Este valor refleja un ajuste excelente y respalda la utilidad del modelo para describir y predecir la altura de los esporofitos a partir de la cantidad de esporofitos germinados.
 
 La verificación de los supuestos del modelo confirmó la validez de las inferencias realizadas. No se detectaron problemas de linealidad, independencia, homocedasticidad ni normalidad de los residuos, lo que refuerza la confiabilidad de los resultados obtenidos (Kutner et al., 2005; Montgomery et al., 2012).
-
-En síntesis, el análisis realizado demuestra que la cantidad de esporofitos germinados es un factor determinante en la altura de los esporofitos en el contexto experimental evaluado. Estos resultados pueden ser de utilidad para optimizar las condiciones de micropropagación y orientar futuras investigaciones sobre el crecimiento y desarrollo de esporofitos en medios de cultivo in vitro.
