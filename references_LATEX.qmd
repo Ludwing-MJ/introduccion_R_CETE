@@ -8,17 +8,23 @@ Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. \textit{Natu
 
 Bryan, J. (2018). \textit{Happy Git and GitHub for the useR}. \url{https://happygitwithr.com/}
 
+Burnham, K. P., \& Anderson, D. R. (2004). Multimodel inference: understanding AIC and BIC in model selection. \textit{Sociological Methods \& Research}, 33(2), 261-304.
+
 Chang, W. (2018). \textit{R graphics cookbook} (2nd ed.). O’Reilly Media.
 
 Chambers, J. (2008). \textit{Software for data analysis: Programming with R} (1st ed.). Springer. \url{https://doi.org/10.1007/978-0-387-75936-4}
 
 Cleveland, W. S. (1993). \textit{Visualizing Data}. Hobart Press.
 
-Cui, B. (2020). \textit{DataExplorer: Automate data exploration and treatment} (Version 0.8.2) [R package]. \url{https://cran.r-project.org/package=DataExplorer}
+Cui, B. (2023). \textit{DataExplorer: Automate data exploration for complete preliminary analysis} (versión 0.8.3) [Paquete R]. CRAN. \url{https://CRAN.R-project.org/package=DataExplorer}
 
-Field, A. P. (2013). \textit{Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll} (4th edition). Sage.
+Field, A. (2013). \textit{Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll} (4th ed.). Sage.
 
-Friendly, M. (2008). A Brief History of Data Visualization. In: \textit{Handbook of Data Visualization}. Springer Handbooks Comp.Statistics. Springer, Berlin, Heidelberg. \url{https://doi.org/10.1007/978-3-540-33037-0_2}
+Field, A. (2018). \textit{Discovering statistics using R}. Sage.
+
+Fisher, R. (1936). Iris [Dataset]. UCI Machine Learning Repository. \url{https://doi.org/10.24432/C56C76}
+
+Friendly, M. (2008). A brief history of data visualization. In \textit{Handbook of Data Visualization} (pp. 15–56). Springer. \url{https://doi.org/10.1007/978-3-540-33037-0_2}
 
 Gentleman, R., \& Temple Lang, D. (2007). Statistical analyses and reproducible research. \textit{Journal of Computational and Graphical Statistics}, 16(1), 1–23. \url{https://doi.org/10.1198/106186007X178663}
 
@@ -26,38 +32,56 @@ Grolemund, G., \& Wickham, H. (2017). \textit{R for data science}. O’Reilly Me
 
 Healy, K. (2018). \textit{Data visualization: A practical introduction}. Princeton University Press.
 
-Hernández, F., Usuga, O., \& Mazo, M. (12 de agosto de 2024). \textit{Modelos de Regresión con R}. Github.io. \url{https://fhernanb.github.io/libro_regresion/}
+Hernández, F., Usuga, O., \& Mazo, M. (12 de agosto de 2024). \textit{Modelos de regresión con R}. Github.io. \url{https://fhernanb.github.io/libro_regresion/}
 
-Ihaka, R., \& Gentleman, R. (1996). R: A Language for Data Analysis and Graphics. \textit{Journal of Computational and Graphical Statistics}, 5(3), 299–314. \url{https://doi.org/10.1080/10618600.1996.10474713}
+Ihaka, R., \& Gentleman, R. (1996). R: A language for data analysis and graphics. \textit{Journal of Computational and Graphical Statistics}, 5(3), 299–314. \url{https://doi.org/10.1080/10618600.1996.10474713}
 
-Kutner, M. H., Nachtsheim, C. J., Neter, J., \& Li, W. (2005). \textit{Applied Linear Statistical Models} (5th ed.). McGraw-Hill, Irwin, New York.
+James, G., Witten, D., Hastie, T., \& Tibshirani, R. (2013). \textit{An introduction to statistical learning: with applications in R}. Springer.
 
-Montgomery, D.C., Peck, E.A. and Vining, G.G. (2012). \textit{Introduction to Linear Regression Analysis}. Vol. 821, John Wiley \& Sons, Hoboken.
+Kutner, M. H., Nachtsheim, C. J., Neter, J., \& Li, W. (2005). \textit{Applied linear statistical models} (5th ed.). McGraw-Hill, Irwin.
 
-Murrell, P. (2018). \textit{R Graphics} (3rd ed.). Chapman and Hall/CRC. \url{https://doi.org/10.1201/9780429422768}
+Montgomery, D. C., Peck, E. A., \& Vining, G. G. (2012). \textit{Introduction to linear regression analysis} (Vol. 821). John Wiley \& Sons.
+
+Moore, D. S., Notz, W. I., \& Flinger, M. A. (2017). \textit{The basic practice of statistics} (8th ed.). W. H. Freeman.
+
+Murrell, P. (2018). \textit{R graphics} (3rd ed.). Chapman and Hall/CRC. \url{https://doi.org/10.1201/9780429422768}
 
 National Academies of Sciences, Engineering, and Medicine. (2019). \textit{Reproducibility and replicability in science}. National Academies Press. \url{https://doi.org/10.17226/25303}
 
-R Core Team. (2023). \textit{R: A Language and Environment for Statistical Computing}. R Foundation for Statistical Computing. \url{https://www.r-project.org/}
+Navarro, D. J. (2019). \textit{Learning statistics with R: A tutorial for psychology students and other beginners} (versión 0.6). \url{https://learningstatisticswithr.com}
 
-Rosales Castillo, J. M. (2005). Micropropagación de Calahuala Phlebodium psedoaureum (Cav.) Lellinger con tres tipos de explantes en diferentes medios de cultivo in vitro. Tesis Ing. Agr. Guatemala, Universidad de San Carlos de Guatemala, Facultad de Agronomía. 51 p.
+R Core Team. (2023). \textit{R: A language and environment for statistical computing}. R Foundation for Statistical Computing. \url{https://www.r-project.org/}
+
+Revelle, W. (2023). \textit{psych: Procedures for psychological, psychometric, and personality research} (versión 2.3.6) [Paquete R]. CRAN. \url{https://CRAN.R-project.org/package=psych}
+
+Rosales Castillo, J. M. (2005). Micropropagación de Calahuala Phlebodium psedoaureum (Cav.) Lellinger con tres tipos de explantes en diferentes medios de cultivo in vitro. Tesis Ing. Agr. Guatemala, Universidad de San Carlos de Guatemala, Facultad de Agronomía.
 
 The Turing Way Community. (2023). \textit{The Turing Way: A handbook for reproducible, ethical and collaborative research}. \url{https://the-turing-way.netlify.app}
 
-Tufte, E. (2001). \textit{The Visual Display of Quantitative Information} (2nd ed.). Graphics Press.
+Trujillo Sierra, E. (2022). Modelo de Regresión Lineal Múltiple - Salinidad. RStudio Pubs. Recuperado de: \url{https://rstudio-pubs-static.s3.amazonaws.com/940966_d007915418ef41c7874f7316aa972543.html}
 
-Tukey, J. W. (1977). \textit{Exploratory Data Analysis}. Addison-Wesley.
+Tufte, E. (2001). \textit{The visual display of quantitative information} (2nd ed.). Graphics Press.
 
-Venables, W. N., \& Ripley, B. D. (2002). \textit{Modern Applied Statistics with S} (4th ed.). Springer. \url{https://doi.org/10.1007/978-0-387-21706-2}
+Tukey, J. W. (1977). \textit{Exploratory data analysis}. Addison-Wesley.
 
-Wickham, H. (2016). \textit{ggplot2: Elegant graphics for data analysis} (2. ed.). Springer Cham. \url{https://doi.org/10.1007/978-3-319-24277-4}
+Venables, W. N., \& Ripley, B. D. (2002). \textit{Modern applied statistics with S} (4th ed.). Springer. \url{https://doi.org/10.1007/978-0-387-21706-2}
+
+Wickham, H. (2016). \textit{ggplot2: Elegant graphics for data analysis}. Springer. \url{https://ggplot2.tidyverse.org}
+
+Wickham, H., Averick, M., Bryan, J., Chang, W., D’Agostino McGowan, L., François, R., Grolemund, G., Hayes, A., Henry, L., Hester, J., Kuhn, M., Pedersen, T. L., Miller, E., Bache, S. M., Müller, K., Ooms, J., Robinson, D., Seidel, D. P., Spinu, V., ... Yutani, H. (2019). Welcome to the tidyverse. \textit{Journal of Open Source Software}, 4(43), 1686. \url{https://doi.org/10.21105/joss.01686}
+
+Wickham, H., François, R., Henry, L., \& Müller, K. (2019). \textit{dplyr: A grammar of data manipulation} (versión 1.1.2) [Paquete R]. CRAN. \url{https://CRAN.R-project.org/package=dplyr}
+
+Wickham, H., \& Grolemund, G. (2017). \textit{R for data science: Import, tidy, transform, visualize, and model data}. O’Reilly Media. \url{https://r4ds.had.co.nz}
 
 Wilkinson, L. (2005). \textit{The grammar of graphics} (2nd ed.). Springer. \url{https://doi.org/10.1007/0-387-28695-0}
 
-Wilkinson, M. D. et al. (2016). The FAIR Guiding Principles for scientific data management and stewardship. \textit{Scientific Data}, 3, 160018. \url{https://doi.org/10.1038/sdata.2016.18}
+Wilkinson, M. D., Dumontier, M., Aalbersberg, I. J., Appleton, G., Axton, M., Baak, A., Blomberg, N., Boiten, J.-W., da Silva Santos, L. B., Bourne, P. E., Bouwman, J., Brookes, A. J., Clark, T., Crosas, M., Dillo, I., Dumon, O., Edmunds, S., Evelo, C. T., Finkers, R., ... Mons, B. (2016). The FAIR Guiding Principles for scientific data management and stewardship. \textit{Scientific Data}, 3, 160018. \url{https://doi.org/10.1038/sdata.2016.18}
 
 Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, A. J., \& Teal, T. K. (2017). Good enough practices in scientific computing. \textit{PLOS Computational Biology}, 13(6), e1005510. \url{https://doi.org/10.1371/journal.pcbi.1005510}
 
-Xie, Y., Allaire, J.J., \& Grolemund, G. (2018). \textit{R Markdown: The Definitive Guide} (1st ed.). Chapman and Hall/CRC. \url{https://doi.org/10.1201/9781138359444}
+Xie, Y., Allaire, J. J., \& Grolemund, G. (2018). \textit{R Markdown: The definitive guide} (1st ed.). Chapman and Hall/CRC. \url{https://doi.org/10.1201/9781138359444}
+
+\end{hangparas}
 
 \end{hangparas}

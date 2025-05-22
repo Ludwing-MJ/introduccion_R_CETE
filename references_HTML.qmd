@@ -17,6 +17,8 @@ Baker, M. (2016). 1,500 scientists lift the lid on reproducibility. *Nature, 533
 
 Bryan, J. (2018). *Happy Git and GitHub for the useR*. <https://happygitwithr.com/>
 
+Burnham, K. P., & Anderson, D. R. (2004). Multimodel inference: understanding AIC and BIC in model selection. *Sociological Methods & Research*, 33(2), 261-304.
+
 Chang, W. (2018). *R graphics cookbook* (2nd ed.). O’Reilly Media.
 
 Chambers, J. (2008). *Software for data analysis: Programming with R* (1st ed.). Springer. <https://doi.org/10.1007/978-0-387-75936-4>
@@ -25,7 +27,9 @@ Cleveland, W. S. (1993). *Visualizing Data*. Hobart Press.
 
 Cui, B. (2023). *DataExplorer: Automate data exploration for complete preliminary analysis* (versión 0.8.3) \[Paquete R\]. CRAN. <https://CRAN.R-project.org/package=DataExplorer>
 
-Field, A. P. (2013). *Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll* (4th ed.). Sage.
+Field, A. (2013). *Discovering statistics using IBM SPSS statistics: and sex and drugs and rock'n'roll* (4th ed.). Sage.
+
+Field, A. (2018). *Discovering statistics using R*. Sage.
 
 Fisher, R. (1936). Iris \[Dataset\]. UCI Machine Learning Repository. <https://doi.org/10.24432/C56C76>
 
@@ -40,6 +44,8 @@ Healy, K. (2018). *Data visualization: A practical introduction*. Princeton Univ
 Hernández, F., Usuga, O., & Mazo, M. (12 de agosto de 2024). Modelos de regresión con R. Github.io. <https://fhernanb.github.io/libro_regresion/>
 
 Ihaka, R., & Gentleman, R. (1996). R: A language for data analysis and graphics. *Journal of Computational and Graphical Statistics, 5*(3), 299–314. <https://doi.org/10.1080/10618600.1996.10474713>
+
+James, G., Witten, D., Hastie, T., & Tibshirani, R. (2013). *An introduction to statistical learning: with applications in R*. Springer.
 
 Kutner, M. H., Nachtsheim, C. J., Neter, J., & Li, W. (2005). *Applied linear statistical models* (5th ed.). McGraw-Hill, Irwin.
 
@@ -60,6 +66,8 @@ Revelle, W. (2023). *psych: Procedures for psychological, psychometric, and pers
 Rosales Castillo, J. M. (2005). Micropropagación de Calahuala Phlebodium psedoaureum (Cav.) Lellinger con tres tipos de explantes en diferentes medios de cultivo in vitro. Tesis Ing. Agr. Guatemala, Universidad de San Carlos de Guatemala, Facultad de Agronomía.
 
 The Turing Way Community. (2023). *The Turing Way: A handbook for reproducible, ethical and collaborative research*. <https://the-turing-way.netlify.app>
+
+Trujillo Sierra, E. (2022). Modelo de Regresión Lineal Múltiple - Salinidad. RStudio Pubs. Recuperado de: <https://rstudio-pubs-static.s3.amazonaws.com/940966_d007915418ef41c7874f7316aa972543.html>
 
 Tufte, E. (2001). *The visual display of quantitative information* (2nd ed.). Graphics Press.
 

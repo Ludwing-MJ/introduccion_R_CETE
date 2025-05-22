@@ -21,6 +21,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -464,8 +499,29 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#supuestos-de-la-regresión-lineal-múltiple" id="toc-supuestos-de-la-regresión-lineal-múltiple" class="nav-link active" data-scroll-target="#supuestos-de-la-regresión-lineal-múltiple"><span class="header-section-number">21.1</span> Supuestos de la regresión lineal múltiple</a></li>
+  <li><a href="#contexto-de-la-base-de-datos" id="toc-contexto-de-la-base-de-datos" class="nav-link" data-scroll-target="#contexto-de-la-base-de-datos"><span class="header-section-number">21.2</span> Contexto de la base de datos</a></li>
+  <li><a href="#preparación-del-entorno-de-trabajo" id="toc-preparación-del-entorno-de-trabajo" class="nav-link" data-scroll-target="#preparación-del-entorno-de-trabajo"><span class="header-section-number">21.3</span> Preparación del entorno de trabajo</a></li>
+  <li><a href="#exploración-inicial-de-los-datos" id="toc-exploración-inicial-de-los-datos" class="nav-link" data-scroll-target="#exploración-inicial-de-los-datos"><span class="header-section-number">21.4</span> Exploración inicial de los datos</a></li>
+  <li><a href="#análisis-exploratorio-y-matriz-de-correlaciones" id="toc-análisis-exploratorio-y-matriz-de-correlaciones" class="nav-link" data-scroll-target="#análisis-exploratorio-y-matriz-de-correlaciones"><span class="header-section-number">21.5</span> Análisis exploratorio y matriz de correlaciones</a></li>
+  <li><a href="#ajuste-del-modelo-de-regresión-lineal-múltiple" id="toc-ajuste-del-modelo-de-regresión-lineal-múltiple" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión-lineal-múltiple"><span class="header-section-number">21.6</span> Ajuste del modelo de regresión lineal múltiple</a></li>
+  <li><a href="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" id="toc-selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" class="nav-link" data-scroll-target="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise) y criterio BIC</a></li>
+  <li><a href="#evaluación-de-los-supuestos-del-modelo-final" id="toc-evaluación-de-los-supuestos-del-modelo-final" class="nav-link" data-scroll-target="#evaluación-de-los-supuestos-del-modelo-final"><span class="header-section-number">21.8</span> Evaluación de los supuestos del modelo final</a>
+  <ul class="collapse">
+  <li><a href="#linealidad" id="toc-linealidad" class="nav-link" data-scroll-target="#linealidad"><span class="header-section-number">21.8.1</span> Linealidad</a></li>
+  <li><a href="#independencia-de-los-errores" id="toc-independencia-de-los-errores" class="nav-link" data-scroll-target="#independencia-de-los-errores"><span class="header-section-number">21.8.2</span> Independencia de los errores</a></li>
+  <li><a href="#normalidad-de-los-residuos" id="toc-normalidad-de-los-residuos" class="nav-link" data-scroll-target="#normalidad-de-los-residuos"><span class="header-section-number">21.8.3</span> Normalidad de los residuos</a></li>
+  <li><a href="#homocedasticidad" id="toc-homocedasticidad" class="nav-link" data-scroll-target="#homocedasticidad"><span class="header-section-number">21.8.4</span> Homocedasticidad</a></li>
+  <li><a href="#ausencia-de-multicolinealidad" id="toc-ausencia-de-multicolinealidad" class="nav-link" data-scroll-target="#ausencia-de-multicolinealidad"><span class="header-section-number">21.8.5</span> Ausencia de multicolinealidad</a></li>
+  <li><a href="#ausencia-de-valores-influyentes" id="toc-ausencia-de-valores-influyentes" class="nav-link" data-scroll-target="#ausencia-de-valores-influyentes"><span class="header-section-number">21.8.6</span> Ausencia de valores influyentes</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -490,10 +546,281 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><br>
-</p>
+<p>La regresión lineal múltiple es una técnica estadística fundamental para analizar la relación entre una variable dependiente y varias variables independientes. Su aplicación permite modelar fenómenos complejos en los que múltiples factores influyen simultáneamente en el resultado de interés. En el ámbito agronómico, comprender cómo las características del suelo afectan la producción de biomasa vegetal resulta esencial para optimizar la producción y diseñar estrategias de manejo sostenible (James et al., 2013).</p>
+<section id="supuestos-de-la-regresión-lineal-múltiple" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="supuestos-de-la-regresión-lineal-múltiple"><span class="header-section-number">21.1</span> Supuestos de la regresión lineal múltiple</h2>
+<p>Para que un modelo de regresión lineal múltiple sea válido, segun Field (2018) deben cumplirse los siguientes supuestos:</p>
+<ol type="1">
+<li><p><strong>Linealidad</strong>: Debe existir una relación lineal entre la variable dependiente y cada una de las variables independientes.</p></li>
+<li><p><strong>Independencia</strong>: Los errores (residuos) del modelo deben ser independientes entre sí.</p></li>
+<li><p><strong>Homocedasticidad</strong>: La varianza de los errores debe ser constante para todos los valores de las variables independientes.</p></li>
+<li><p><strong>Normalidad</strong>: Los residuos deben seguir una distribución normal.</p></li>
+<li><p><strong>Ausencia de multicolinealidad</strong>: Las variables independientes no deben estar altamente correlacionadas entre sí.</p></li>
+<li><p><strong>Ausencia de valores influyentes</strong>: No deben existir observaciones que tengan una influencia desproporcionada en los resultados del modelo.</p></li>
+</ol>
+</section>
+<section id="contexto-de-la-base-de-datos" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="contexto-de-la-base-de-datos"><span class="header-section-number">21.2</span> Contexto de la base de datos</h2>
+<p>El objetivo de este análisis es determinar el modelo de regresión lineal múltiple que mejor explica la relación entre la producción de biomasa de una especie forrajera y las características del suelo donde crece, específicamente el pH, la salinidad, el contenido de zinc (Zn) y el contenido de potasio (K). Para ello, se dispone de una base de datos con 45 observaciones, en las que se registraron los valores de biomasa (en gramos) y de las variables mencionadas para cada muestra de suelo (Trujillo Sierra, 2022).</p>
+<p><strong>Acceso a recursos:</strong> El script completo con los ejemplos desarrollados y la base de datos sobre biomasa están disponibles para su consulta y descarga en el siguiente repositorio: <a href="https://github.com/Ludwing-MJ/Reg_multiple_EJ" class="uri">https://github.com/Ludwing-MJ/Reg_multiple_EJ</a></p>
+</section>
+<section id="preparación-del-entorno-de-trabajo" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="preparación-del-entorno-de-trabajo"><span class="header-section-number">21.3</span> Preparación del entorno de trabajo</h2>
+<p>Siguiendo las buenas prácticas recomendadas en el manual, se inicia el análisis con la preparación del entorno de trabajo en R, asegurando la instalación y carga de los paquetes necesarios para la exploración y modelado de los datos. Se utiliza el paquete <code>DataExplorer</code> para la exploración inicial y el paquete <code>car</code> para la evaluación de supuestos del modelo.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalación y carga de los paquetes utilizados en el análisis</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"DataExplorer"</span>)) <span class="fu">install.packages</span>(DataExplorer)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span>(<span class="sc">!</span><span class="fu">require</span>(<span class="st">"car"</span>)) <span class="fu">install.packages</span>(car)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Importar base de datos</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"Biomasa.csv"</span>, <span class="at">sep =</span> <span class="st">";"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="exploración-inicial-de-los-datos" class="level2" data-number="21.4">
+<h2 data-number="21.4" class="anchored" data-anchor-id="exploración-inicial-de-los-datos"><span class="header-section-number">21.4</span> Exploración inicial de los datos</h2>
+<p>Se recomienda revisar la estructura de los datos y realizar una exploración gráfica inicial para identificar posibles datos faltantes o inconsistencias. Esta exploración es crucial para asegurar la calidad de los datos y la validez del análisis posterior.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANÁLISIS EXPLORATORIO DE LOS DATOS</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisar la estructura de la base de datos</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   45 obs. of  5 variables:
+ $ Biomasa  : num  765 954 828 755 896 ...
+ $ pH       : num  5 4.7 4.2 4.4 5.55 5.5 4.25 4.45 4.75 4.6 ...
+ $ Salinidad: num  33 35 32 30 33 33 36 30 38 30 ...
+ $ Zinc     : num  16.4 14 15.3 17.3 22.3 ...
+ $ potasio  : num  1442 1299 1154 1045 522 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración gráfica de la base de datos</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_intro</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La función <code>str(data)</code> muestra la estructura de la base de datos, incluyendo el tipo de cada variable y las primeras observaciones. La función <code>plot_intro(data)</code> del paquete <code>DataExplorer</code> genera gráficos que resumen la distribución de las variables y la presencia de datos faltantes. En este caso, no se detectaron datos faltantes, lo que facilita el análisis posterior.</p>
+</section>
+<section id="análisis-exploratorio-y-matriz-de-correlaciones" class="level2" data-number="21.5">
+<h2 data-number="21.5" class="anchored" data-anchor-id="análisis-exploratorio-y-matriz-de-correlaciones"><span class="header-section-number">21.5</span> Análisis exploratorio y matriz de correlaciones</h2>
+<p>Antes de ajustar el modelo, se analiza la relación entre las variables mediante una matriz de correlaciones. Este paso permite identificar relaciones lineales y posibles problemas de multicolinealidad entre los predictores, lo que es crucial para la interpretación y estabilidad del modelo (James et al., 2013).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaboración de una matriz de correlaciones</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot_correlation</span>(data)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>La interpretación de la matriz de correlaciones debe centrarse en detectar correlaciones elevadas entre variables independientes, ya que esto podría indicar multicolinealidad, afectando la precisión de las estimaciones de los coeficientes.</p>
+</section>
+<section id="ajuste-del-modelo-de-regresión-lineal-múltiple" class="level2" data-number="21.6">
+<h2 data-number="21.6" class="anchored" data-anchor-id="ajuste-del-modelo-de-regresión-lineal-múltiple"><span class="header-section-number">21.6</span> Ajuste del modelo de regresión lineal múltiple</h2>
+<p>Se ajusta un modelo inicial considerando todas las variables predictoras:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ANALISIS DE REGRESION LINEAL MULTIPLE</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de Attach para no colocar el signo de dolar con todas las variables</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(data)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaborar un modelo empleando todas las variables como predictoras</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>modelo_completo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Biomasa <span class="sc">~</span> pH <span class="sc">+</span> Zinc <span class="sc">+</span> potasio <span class="sc">+</span> Salinidad, <span class="at">data =</span> data)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisar el modelo</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_completo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Biomasa ~ pH + Zinc + potasio + Salinidad, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-294.07  -88.87   -9.48   88.08  387.22 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1492.43223  453.60067   3.290 0.002095 ** 
+pH           262.88941   33.73382   7.793 1.51e-09 ***
+Zinc         -28.96756    5.66425  -5.114 8.23e-06 ***
+potasio       -0.11501    0.08191  -1.404 0.168007    
+Salinidad    -33.49121    8.65231  -3.871 0.000392 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 158.9 on 40 degrees of freedom
+Multiple R-squared:  0.9231,    Adjusted R-squared:  0.9154 
+F-statistic:   120 on 4 and 40 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>La función <code>attach(data)</code> permite acceder a las variables de la base de datos directamente por su nombre, sin necesidad de usar el operador <code>$</code>. La salida del modelo (<code>summary(modelo_completo)</code>) proporciona los coeficientes estimados, errores estándar, valores t y p-valores para cada predictor. Un p-valor menor a 0.05 indica que la variable correspondiente tiene un efecto estadísticamente significativo sobre la biomasa (en este ejemplo únicamente la variable potasio no tiene un efecto estadísticamente significativo sobre la biomasa), manteniendo constantes las demás variables. El coeficiente de determinación ajustado (Adjusted R-squared) indica el porcentaje de variabilidad de la biomasa explicado por el modelo siendo este del 91.54% para el modelo incial.</p>
+</section>
+<section id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" class="level2" data-number="21.7">
+<h2 data-number="21.7" class="anchored" data-anchor-id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise) y criterio BIC</h2>
+<p>Para seleccionar el modelo más parsimonioso y evitar el sobreajuste, se emplea el método paso a paso (stepwise), utilizando el criterio de información bayesiano (BIC) como criterio de selección. El BIC penaliza la complejidad del modelo de manera más estricta que el AIC, favoreciendo modelos más simples y robustos, especialmente recomendable cuando se dispone de un número limitado de observaciones, como en este caso (Burnham &amp; Anderson, 2004).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar stepwise (BIC como criterio)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>modelo_final <span class="ot">&lt;-</span> <span class="fu">step</span>(modelo_completo, <span class="at">direction =</span> <span class="st">"both"</span>,</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">k =</span> <span class="fu">log</span>(<span class="fu">nrow</span>(data)), <span class="at">trace =</span> <span class="dv">0</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_final)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Biomasa ~ pH + Zinc + Salinidad, data = data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-363.52 -107.13    8.46   78.41  398.30 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 1501.972    458.892   3.273 0.002165 ** 
+pH           255.014     33.656   7.577 2.56e-09 ***
+Zinc         -30.403      5.637  -5.394 3.14e-06 ***
+Salinidad    -34.791      8.704  -3.997 0.000261 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 160.8 on 41 degrees of freedom
+Multiple R-squared:  0.9193,    Adjusted R-squared:  0.9134 
+F-statistic: 155.6 on 3 and 41 DF,  p-value: &lt; 2.2e-16</code></pre>
+</div>
+</div>
+<p>El modelo final seleccionado incluye únicamente las variables que contribuyen significativamente a explicar la variabilidad de la biomasa, considerando la penalización por complejidad. Siendo el modelo final el siguiente:</p>
+<p><code>Biomasa = 1501.97 + 255.01 (pH) - 30.40 (Zinc) - 34.79 (Salinidad)</code></p>
+<p>Este modelo tiene un coeficiente de determinación ajustado del 91.34% y tanto el modelo como todos sus estimadores son estadísticamente significativo lo que implica que este es un modelo bastante confiable.</p>
+</section>
+<section id="evaluación-de-los-supuestos-del-modelo-final" class="level2" data-number="21.8">
+<h2 data-number="21.8" class="anchored" data-anchor-id="evaluación-de-los-supuestos-del-modelo-final"><span class="header-section-number">21.8</span> Evaluación de los supuestos del modelo final</h2>
+<p>La validez inferencial de un modelo de regresión lineal múltiple descansa en el cumplimiento simultáneo de seis supuestos clásicos: linealidad, independencia de los errores, homocedasticidad, normalidad de los residuos, ausencia de multicolinealidad y ausencia de valores influyentes. A continuación se desarrolla cada uno de estos supuestos y se discuten posibles acciones correctivas cuando se detectan violaciones (Field, 2018; James et al., 2013; Venables &amp; Ripley, 2002).</p>
+<section id="linealidad" class="level3" data-number="21.8.1">
+<h3 data-number="21.8.1" class="anchored" data-anchor-id="linealidad"><span class="header-section-number">21.8.1</span> Linealidad</h3>
+<p>La forma funcional que vincula la variable dependiente con cada predictor debe ser lineal. Si la relación real es curvilínea, las estimaciones serán sesgadas y los intervalos de confianza perderán validez (James et al., 2013).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de residuos versus valores ajustados</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_final, <span class="dv">1</span>,</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Linealidad: residuos vs ajustados"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Interpretación:</strong> Un patrón en forma de “U” o “∩” indica no linealidad. En ese caso se recomiendan transformaciones (log, raíz cuadrada), introducción de términos polinómicos o métodos no paramétricos (James et al., 2013). Para este caso la ausencia de patrones sistemáticos en el gráfico anterior indica que la relación es aproximadamente lineal.</p>
+</section>
+<section id="independencia-de-los-errores" class="level3" data-number="21.8.2">
+<h3 data-number="21.8.2" class="anchored" data-anchor-id="independencia-de-los-errores"><span class="header-section-number">21.8.2</span> Independencia de los errores</h3>
+<p>Los residuos deben ser incorrelados entre sí. La autocorrelación es habitual en series temporales o datos espaciales y conduce a varianzas de los coeficientes subestimadas (Field, 2018).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prueba de Durbin-Watson</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwt</span>(modelo_final)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> lag Autocorrelation D-W Statistic p-value
+   1       0.1225464      1.598719   0.112
+ Alternative hypothesis: rho != 0</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong> Un estadístico D-W próximo a 2 indica independencia; valores &lt; 1.5 sugieren autocorrelación positiva (Field, 2018). Si se detecta autocorrelación, puede recurrirse a modelos con estructura de correlación (GLS), regresión con errores AR(1) o incluir variables de tiempo/espacio (Venables &amp; Ripley, 2002). También se puede interpretar únicamente el p-valor que para este ejemplo al ser mayor que el nivel de significancia (0.12&gt;0.05) indica se cumple con el supuesto de independencia de los errores.</p>
+</section>
+<section id="normalidad-de-los-residuos" class="level3" data-number="21.8.3">
+<h3 data-number="21.8.3" class="anchored" data-anchor-id="normalidad-de-los-residuos"><span class="header-section-number">21.8.3</span> Normalidad de los residuos</h3>
+<p>Se requiere que los residuos sigan una distribución normal para garantizar la validez de los contrastes t y F (Venables &amp; Ripley, 2002). La normalidad es menos crítica con tamaños muestrales grandes, pero se verifica por completitud.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Q–Q plot</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_final, <span class="dv">2</span>,</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Normalidad: gráfico Q–Q"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de Shapiro–Wilk</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">shapiro.test</span>(<span class="fu">residuals</span>(modelo_final))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Shapiro-Wilk normality test
+
+data:  residuals(modelo_final)
+W = 0.97443, p-value = 0.4146</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong> Un p-valor &gt; 0.05 indica que no se rechaza la normalidad (Cleveland, 1993). Si el supuesto falla, suele bastar con transformaciones o con el uso de intervalos de confianza bootstrap, menos sensibles a la no normalidad (James et al., 2013).</p>
+</section>
+<section id="homocedasticidad" class="level3" data-number="21.8.4">
+<h3 data-number="21.8.4" class="anchored" data-anchor-id="homocedasticidad"><span class="header-section-number">21.8.4</span> Homocedasticidad</h3>
+<p>La varianza de los errores debe permanecer constante a lo largo del rango de valores predichos. La heterocedasticidad provoca estimaciones ineficientes y p-valores poco fiables (James et al., 2013).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico Scale–Location (√|residuos| vs ajustados)</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_final, <span class="dv">3</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Homocedasticidad: Scale–Location"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Test de Breusch–Pagan</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ncvTest</span>(modelo_final)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Non-constant Variance Score Test 
+Variance formula: ~ fitted.values 
+Chisquare = 0.7243543, Df = 1, p = 0.39472</code></pre>
+</div>
+</div>
+<p><strong>Interpretación:</strong> Un p-valor &gt; 0.05 respalda la homocedasticidad. Cuando se viola este supuesto, son útiles las transformaciones de la respuesta (log), la estimación con errores estándar robustos (<code>vcovHC</code>) o el empleo de modelos ponderados (Weighted Least Squares) (Field, 2018).</p>
+</section>
+<section id="ausencia-de-multicolinealidad" class="level3" data-number="21.8.5">
+<h3 data-number="21.8.5" class="anchored" data-anchor-id="ausencia-de-multicolinealidad"><span class="header-section-number">21.8.5</span> Ausencia de multicolinealidad</h3>
+<p>La colinealidad incrementa la varianza de las estimaciones y dificulta la interpretación de los coeficientes (Field, 2018).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Revision de ausencia de multicolinealidad</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el VIF para cada variable independiente</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="fu">vif</span>(modelo_final)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       pH      Zinc Salinidad 
+ 3.035319  3.703030  1.784158 </code></pre>
+</div>
+</div>
+<p><strong>Criterios:</strong> VIF &lt; 5 se considera aceptable; valores entre 5 y 10 requieren atención; &gt; 10 indican colinealidad severa (James et al., 2013).</p>
+<p><strong>Interpretación:</strong> Las tres variables independientes presentan un VIF &lt; 5, esto se considera aceptable y sugiere ausencia de colinealidad entre las variables independientes. Entre las estrategias de mitigación cuando no se cumple el supuesto se incluyen eliminar o combinar variables, centrar/estandarizar predictores o utilizar componentes principales (PCR).</p>
+</section>
+<section id="ausencia-de-valores-influyentes" class="level3" data-number="21.8.6">
+<h3 data-number="21.8.6" class="anchored" data-anchor-id="ausencia-de-valores-influyentes"><span class="header-section-number">21.8.6</span> Ausencia de valores influyentes</h3>
+<p>Observaciones con alta influencia pueden distorsionar drásticamente el ajuste (Field, 2018).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de la distancia de Cook</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(modelo_final, <span class="dv">4</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Observaciones influyentes (Cook)"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="regresion_multiple_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificación numérica de casos influyentes</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">which</span>(<span class="fu">cooks.distance</span>(modelo_final) <span class="sc">&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>      <span class="dv">4</span> <span class="sc">/</span> <span class="fu">nrow</span>(data))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> 5  9 41 
+ 5  9 41 </code></pre>
+</div>
+</div>
+<p><strong>Regla práctica:</strong> Valores de Cook &gt; 4/n sugieren influencia notable (James et al., 2013). Ante detección, se recomienda comprobar errores de registro, justificar su inclusión o aplicar métodos robustos (RLM).</p>
+<p><strong>Interpretación:</strong> En este modelo se identificaron los registros 5, 9 y 41 como observaciones potencialmente influyentes, de acuerdo con los valores obtenidos en la distancia de Cook.</p>
+<p>Se recomienda al lector realizar una comprobación sistemática del impacto de las observaciones influyentes en el modelo de regresión. Para ello, se sugiere ajustar el modelo dos veces: la primera, utilizando el conjunto completo de datos; y la segunda, excluyendo los registros identificados como influyentes (en este caso, los registros 5, 9 y 41). Posteriormente, se debe comparar los coeficientes estimados, los errores estándar, el coeficiente de determinación ajustado (R²) y los valores p de ambos modelos.</p>
+<p>Este procedimiento permite evaluar la robustez de los resultados y determinar en qué medida las observaciones influyentes afectan la interpretación y la validez del modelo. En caso de observar diferencias sustanciales entre los modelos, se recomienda discutir las posibles causas y considerar alternativas metodológicas, como la aplicación de técnicas de regresión robusta o la revisión detallada de los datos involucrados (Field, 2018; James et al., 2013).</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
