@@ -8,7 +8,7 @@
 
 <meta name="description" content="Este manual es una guía práctica para aprender R y RStudio, enfocándose en análisis estadístico, manipulación y visualización de datos.">
 
-<title>17&nbsp; Introducción al control de versiones y la colaboración reproducible – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
+<title>17&nbsp; Introducción al control de versiones – Introducción al entorno de programación R y su aplicación en el análisis estadístico de datos</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -286,7 +286,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10.3_exportacion.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./10.3_exportacion.html"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Alternar barra lateral" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Buscar" onclick="window.quartoOpenSearch();">
@@ -460,7 +460,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./10.3_exportacion.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -513,9 +513,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#modificación-seguimiento-y-colaboración-en-proyectos-de-github" id="toc-modificación-seguimiento-y-colaboración-en-proyectos-de-github" class="nav-link" data-scroll-target="#modificación-seguimiento-y-colaboración-en-proyectos-de-github"><span class="header-section-number">17.4</span> Modificación, seguimiento y colaboración en proyectos de GitHub</a>
   <ul class="collapse">
-  <li><a href="#registro-y-documentación-de-cambios" id="toc-registro-y-documentación-de-cambios" class="nav-link" data-scroll-target="#registro-y-documentación-de-cambios"><span class="header-section-number">17.4.1</span> Registro y documentación de cambios</a></li>
-  <li><a href="#sincronización-y-colaboración" id="toc-sincronización-y-colaboración" class="nav-link" data-scroll-target="#sincronización-y-colaboración"><span class="header-section-number">17.4.2</span> Sincronización y colaboración</a></li>
-  <li><a href="#ventajas-de-la-colaboración-con-git-y-github" id="toc-ventajas-de-la-colaboración-con-git-y-github" class="nav-link" data-scroll-target="#ventajas-de-la-colaboración-con-git-y-github"><span class="header-section-number">17.4.3</span> Ventajas de la colaboración con Git y GitHub</a></li>
+  <li><a href="#modificación-seguimiento-y-colaboración-en-proyectos-de-github-1" id="toc-modificación-seguimiento-y-colaboración-en-proyectos-de-github-1" class="nav-link" data-scroll-target="#modificación-seguimiento-y-colaboración-en-proyectos-de-github-1"><span class="header-section-number">17.4.1</span> Modificación, seguimiento y colaboración en proyectos de GitHub</a></li>
   </ul></li>
   <li><a href="#importación-y-reutilización-de-repositorios-de-github" id="toc-importación-y-reutilización-de-repositorios-de-github" class="nav-link" data-scroll-target="#importación-y-reutilización-de-repositorios-de-github"><span class="header-section-number">17.5</span> Importación y reutilización de repositorios de GitHub</a>
   <ul class="collapse">
@@ -533,7 +531,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones y la colaboración reproducible</span></h1>
+<h1 class="title"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Introducción al control de versiones</span></h1>
 </div>
 
 
@@ -580,47 +578,76 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Para descargar e instalar Git, se puede acceder a la página oficial de Git (<a href="https://git-scm.com/downloads" class="uri">https://git-scm.com/downloads</a>) y seguir las instrucciones correspondientes al sistema operativo utilizado (Windows, macOS o Linux). Una vez instalado, Git estará disponible para ser utilizado desde la línea de comandos o a través de la interfaz de RStudio (Bryan, 2018).</p>
 <ol type="1">
 <li><p><strong>Creación de una cuenta y repositorio en GitHub:</strong> El primer paso consiste en crear una cuenta personal en <a href="https://github.com/">GitHub</a>. Una vez registrado, se debe crear un nuevo repositorio, asignándole un nombre descriptivo y, opcionalmente, una breve descripción. Es posible elegir entre un repositorio público o privado, según las necesidades del proyecto.</p></li>
+<li><p><strong>Configurar el nombre de usuario en Git:</strong> En la terminal, se debe establecer el nombre de usuario global con el siguiente comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global user.name <span class="st">"nombre"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esto permite que Git asocie los cambios realizados con el usuario correspondiente (Bryan, 2018).</p></li>
+<li><p><strong>Configurar el correo electrónico en Git:</strong> También en la terminal, se debe definir el correo electrónico global con el comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git config <span class="sc">--</span>global user.email <span class="st">"correo"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Este correo debe coincidir con el registrado en GitHub para asegurar la correcta vinculación de los commits (Bryan, 2018).</p></li>
 <li><p><strong>Inicialización de Git en la carpeta local del proyecto:</strong> En la computadora local, se debe ubicar la carpeta del proyecto de R (que contiene el archivo <code>.Rproj</code>, los datos, los scripts y los resultados exportados). En RStudio, se activa el control de versiones desde el menú “Tools &gt; Project Options &gt; Git/SVN”, seleccionando Git. Alternativamente, en la terminal, se ejecuta el comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>git init</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git init</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Esto crea una carpeta oculta llamada <code>.git</code> que permitirá a Git rastrear los cambios en los archivos del proyecto.</p></li>
-<li><p><strong>Conexión del repositorio local con el repositorio remoto en GitHub:</strong> Para vincular la carpeta local con el repositorio creado en GitHub, se debe copiar la URL del repositorio (por ejemplo, <code>https://github.com/usuario/analisis_estadistico.git</code>) y ejecutar el siguiente comando en la terminal:</p>
+<li><p><strong>Conexión del repositorio local con el repositorio remoto en GitHub:</strong> Para vincular la carpeta local con el repositorio creado en GitHub, se debe copiar la URL del repositorio (por ejemplo, <code>https://github.com/usuario/repositorio.git</code>) y ejecutar el siguiente comando en la terminal:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>usuario<span class="sc">/</span>repositorio.git</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>git remote add origin https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>usuario<span class="sc">/</span>repositorio.git</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
 <li><p><strong>Agregado y confirmación de archivos:</strong> Se agregan los archivos del proyecto al control de versiones con el comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>git add .</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>git add .</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>El punto (<code>.</code>) indica que se agregarán todos los archivos de la carpeta.<br>
-</p>
-<p>Luego, se realiza el primer registro de cambios (commit) con un mensaje descriptivo:</p>
+<p>El punto (<code>.</code>) indica que se agregarán todos los archivos de la carpeta.</p></li>
+<li><p><strong>Comentar los cambios realizados al código:</strong> Se realiza el primer registro de cambios (commit) con un mensaje descriptivo:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">"Primer commit: subida inicial del proyecto"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">"Primer commit: subida inicial del proyecto"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></li>
+<li><p><strong>Crear la rama principal “main”:</strong> Para asegurarse de que la rama principal se llame “main”, se ejecuta:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>git branch <span class="sc">-</span>M main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Esto es importante para mantener la compatibilidad con la configuración estándar de GitHub (Grolemund &amp; Wickham, 2017).</p></li>
 <li><p><strong>Subida de archivos al repositorio remoto:</strong> Finalmente, los archivos se suben al repositorio remoto con el comando:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>git push <span class="sc">-</span>u origin main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>git push <span class="sc">-</span>u origin main</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Cabe señalar que la rama principal puede denominarse “main” o “master”, dependiendo de la configuración del repositorio. Una vez completados estos pasos, el proyecto estará disponible en GitHub, permitiendo su consulta, descarga y colaboración (Bryan, 2018; Grolemund &amp; Wickham, 2017).</p></li>
+<p>Una vez completados estos pasos, el proyecto estará disponible en GitHub, permitiendo su consulta, descarga y colaboración (Bryan, 2018; Grolemund &amp; Wickham, 2017). Cabe resaltar que los <strong>pasos</strong> <strong>2</strong> y <strong>3</strong> únicamente se realizan la primera vez que se configura git en una computadora o si se desea cambiar de usuario en un dispositivo.</p></li>
 </ol>
 </section>
 </section>
 <section id="modificación-seguimiento-y-colaboración-en-proyectos-de-github" class="level2" data-number="17.4">
 <h2 data-number="17.4" class="anchored" data-anchor-id="modificación-seguimiento-y-colaboración-en-proyectos-de-github"><span class="header-section-number">17.4</span> Modificación, seguimiento y colaboración en proyectos de GitHub</h2>
-<p>Una vez que el proyecto está alojado en GitHub, es posible continuar su desarrollo y mantener un registro detallado de todas las modificaciones. El flujo de trabajo básico consiste en realizar cambios en los archivos del proyecto, registrar estos cambios mediante commits con mensajes claros y específicos, y sincronizarlos con el repositorio remoto utilizando el comando <code>git push</code> (Bryan, 2018).</p>
-<section id="registro-y-documentación-de-cambios" class="level3" data-number="17.4.1">
-<h3 data-number="17.4.1" class="anchored" data-anchor-id="registro-y-documentación-de-cambios"><span class="header-section-number">17.4.1</span> Registro y documentación de cambios</h3>
-<p>La claridad en los mensajes de commit es fundamental para facilitar la comprensión del historial de cambios y la revisión por parte de otros colaboradores. Se recomienda que cada mensaje sea breve, descriptivo y específico respecto a las modificaciones realizadas.</p>
-</section>
-<section id="sincronización-y-colaboración" class="level3" data-number="17.4.2">
-<h3 data-number="17.4.2" class="anchored" data-anchor-id="sincronización-y-colaboración"><span class="header-section-number">17.4.2</span> Sincronización y colaboración</h3>
-<p>Para mantener el repositorio remoto actualizado y respaldado, se utiliza el comando <code>git push</code>, que sube los cambios al repositorio en línea. GitHub permite visualizar el historial completo de commits, comparar versiones de archivos y gestionar solicitudes de cambio (pull requests), lo que favorece la colaboración y la revisión del trabajo en equipo (The Turing Way Community, 2023).</p>
-</section>
-<section id="ventajas-de-la-colaboración-con-git-y-github" class="level3" data-number="17.4.3">
-<h3 data-number="17.4.3" class="anchored" data-anchor-id="ventajas-de-la-colaboración-con-git-y-github"><span class="header-section-number">17.4.3</span> Ventajas de la colaboración con Git y GitHub</h3>
-<p>El uso regular de Git y GitHub asegura que el proyecto esté siempre respaldado, documentado y listo para ser compartido o retomado en cualquier momento, promoviendo así la reproducibilidad y la transparencia en la investigación científica (Gentleman &amp; Temple Lang, 2007; National Academies of Sciences, Engineering, and Medicine, 2019).</p>
+<p>Una vez que el proyecto está alojado en GitHub, es posible continuar su desarrollo y mantener un registro detallado de todas las modificaciones. El flujo de trabajo básico consiste en realizar cambios en los archivos del proyecto, registrar estos cambios mediante commits con mensajes claros y específicos, y sincronizarlos con el repositorio remoto utilizando el comando <code>git push</code> (Bryan, 2018). A continuación se datalla este proceso:</p>
+<section id="modificación-seguimiento-y-colaboración-en-proyectos-de-github-1" class="level3" data-number="17.4.1">
+<h3 data-number="17.4.1" class="anchored" data-anchor-id="modificación-seguimiento-y-colaboración-en-proyectos-de-github-1"><span class="header-section-number">17.4.1</span> Modificación, seguimiento y colaboración en proyectos de GitHub</h3>
+<ol type="1">
+<li><p><strong>Sincronización con el repositorio remoto:</strong> Antes de realizar cualquier cambio en el proyecto, se recomienda actualizar la copia local del repositorio para asegurarse de trabajar con la versión más reciente. Esto se logra ejecutando el siguiente comando en la terminal:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>git pull</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Este comando descarga y fusiona los cambios realizados por otros colaboradores en el repositorio remoto, evitando conflictos y asegurando la coherencia del trabajo (Bryan, 2018).</p></li>
+<li><p><strong>Realización de cambios en los archivos del proyecto:</strong> Una vez sincronizado el repositorio local, se pueden modificar, agregar o eliminar archivos según las necesidades del proyecto. Estas modificaciones pueden incluir la edición de scripts, la incorporación de nuevos datos o la actualización de documentación.</p></li>
+<li><p><strong>Preparación de los archivos modificados para el seguimiento:</strong> Tras realizar los cambios, es necesario agregar los archivos modificados al área de preparación (staging area) mediante el comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>git add .</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>El punto (.) indica que se incluirán todos los archivos modificados, nuevos o eliminados en el próximo commit.</p></li>
+<li><p><strong>Registro de los cambios realizados:</strong> Para documentar las modificaciones, se debe crear un commit con un mensaje claro y descriptivo que explique la naturaleza de los cambios. Esto se realiza con el comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>git commit <span class="sc">-</span>m <span class="st">"Mensaje descriptivo de los cambios realizados"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La claridad y especificidad en los mensajes de commit facilitan la revisión y el seguimiento del historial del proyecto (Bryan, 2018).</p></li>
+<li><p><strong>Sincronización de los cambios con el repositorio remoto:</strong> Finalmente, para compartir los cambios con otros colaboradores y mantener actualizado el repositorio en línea, se utiliza el comando:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>git push</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Este comando sube los commits locales al repositorio remoto en GitHub, permitiendo la colaboración y el respaldo continuo del proyecto.</p></li>
+</ol>
+<p>El uso sistemático de este flujo de trabajo garantiza que el proyecto esté siempre respaldado, documentado y disponible para la colaboración, promoviendo la transparencia y la reproducibilidad en el desarrollo científico y profesional (Gentleman &amp; Temple Lang, 2007; National Academies of Sciences, Engineering, and Medicine, 2019; The Turing Way Community, 2023).</p>
 </section>
 </section>
 <section id="importación-y-reutilización-de-repositorios-de-github" class="level2" data-number="17.5">
@@ -629,21 +656,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="pasos-para-clonar-un-repositorio" class="level3" data-number="17.5.1">
 <h3 data-number="17.5.1" class="anchored" data-anchor-id="pasos-para-clonar-un-repositorio"><span class="header-section-number">17.5.1</span> Pasos para clonar un repositorio</h3>
 <ol type="1">
-<li><p>Obtener la URL del repositorio desde la página del proyecto en GitHub.</p></li>
-<li><p>Ejecutar el siguiente comando en la terminal o consola de RStudio:</p>
+<li><p><strong>Obtener la URL del repositorio:</strong> Se debe acceder a la página del proyecto en GitHub y copiar la URL del repositorio, esta se encuentra disponible mediante el botón “Code”.</p></li>
+<li><p><strong>Ejecutar el comando de clonación:</strong> En la terminal de RStudio, se debe utilizar el siguiente comando, reemplazando la URL por la correspondiente al repositorio de interés:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>git clone https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>usuario<span class="sc">/</span>analisis_estadistico.git</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>git clone https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>usuario<span class="sc">/</span>analisis_estadistico.git</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<p>Esto crea una carpeta local con todos los archivos y el historial del proyecto.</p></li>
+<p>Este comando crea una carpeta local que contiene todos los archivos del proyecto, así como su historial completo de versiones.</p></li>
 </ol>
 </section>
 <section id="trabajo-local-y-sincronización-de-cambios" class="level3" data-number="17.5.2">
 <h3 data-number="17.5.2" class="anchored" data-anchor-id="trabajo-local-y-sincronización-de-cambios"><span class="header-section-number">17.5.2</span> Trabajo local y sincronización de cambios</h3>
-<p>Una vez clonado el repositorio, es posible modificar los archivos, ejecutar scripts y exportar nuevos resultados. Si se cuenta con los permisos necesarios, los cambios pueden subirse nuevamente a GitHub mediante los comandos <code>git add</code>, <code>git commit</code> y <code>git push</code>. En caso contrario, los cambios pueden mantenerse localmente.</p>
+<p>Una vez clonado el repositorio, es posible modificar los archivos, ejecutar scripts, agregar nuevos datos o exportar resultados. Si se dispone de los permisos necesarios (por ejemplo, en proyectos propios o en los que se tiene acceso de escritura), los cambios realizados pueden sincronizarse con el repositorio remoto utilizando los comandos <code>git add</code>, <code>git commit</code> y <code>git push</code>. En caso de no contar con permisos de escritura, los cambios pueden mantenerse localmente o bien proponer modificaciones a través de un “pull request”.</p>
 </section>
 <section id="beneficios-de-la-reutilización-de-repositorios" class="level3" data-number="17.5.3">
 <h3 data-number="17.5.3" class="anchored" data-anchor-id="beneficios-de-la-reutilización-de-repositorios"><span class="header-section-number">17.5.3</span> Beneficios de la reutilización de repositorios</h3>
-<p>Clonar repositorios facilita la reutilización de análisis existentes, el aprendizaje a partir de otros proyectos y la colaboración en equipo, asegurando la trazabilidad y la integridad del trabajo (Bryan, 2018; The Turing Way Community, 2023).</p>
+<p>La clonación de repositorios facilita la reutilización de análisis y metodologías existentes, fomenta el aprendizaje a partir de proyectos desarrollados por otros usuarios y promueve la colaboración en equipo. Además, este proceso asegura la trazabilidad y la integridad del trabajo, ya que todo el historial de cambios queda registrado y disponible para su consulta y auditoría (Bryan, 2018; The Turing Way Community, 2023).</p>
 </section>
 </section>
 <section id="recursos-adicionales-para-el-aprendizaje-continuo" class="level2" data-number="17.6">

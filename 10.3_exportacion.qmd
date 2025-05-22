@@ -1,4 +1,4 @@
-# Introducción al control de versiones y la colaboración reproducible
+# Introducción al control de versiones 
 
 El control de versiones y la colaboración en línea son prácticas cada vez más importantes en el análisis estadístico y la ciencia de datos. Git y GitHub permiten gestionar de manera eficiente los cambios en los archivos de un proyecto, compartir el trabajo con otros y mantener un historial completo de todas las modificaciones realizadas. Aunque estas herramientas pueden parecer complejas al principio, su integración con RStudio y su utilidad en proyectos de cualquier tamaño justifican su aprendizaje y uso desde etapas tempranas (Bryan, 2018).
 
@@ -30,7 +30,23 @@ Para descargar e instalar Git, se puede acceder a la página oficial de Git (<ht
 
 1.  **Creación de una cuenta y repositorio en GitHub:** El primer paso consiste en crear una cuenta personal en [GitHub](https://github.com/). Una vez registrado, se debe crear un nuevo repositorio, asignándole un nombre descriptivo y, opcionalmente, una breve descripción. Es posible elegir entre un repositorio público o privado, según las necesidades del proyecto.
 
-2.  **Inicialización de Git en la carpeta local del proyecto:** En la computadora local, se debe ubicar la carpeta del proyecto de R (que contiene el archivo `.Rproj`, los datos, los scripts y los resultados exportados). En RStudio, se activa el control de versiones desde el menú “Tools \> Project Options \> Git/SVN”, seleccionando Git. Alternativamente, en la terminal, se ejecuta el comando:
+2.  **Configurar el nombre de usuario en Git:** En la terminal, se debe establecer el nombre de usuario global con el siguiente comando:
+
+    ```{r eval=FALSE}
+    git config --global user.name "nombre"
+    ```
+
+    Esto permite que Git asocie los cambios realizados con el usuario correspondiente (Bryan, 2018).
+
+3.  **Configurar el correo electrónico en Git:** También en la terminal, se debe definir el correo electrónico global con el comando:
+
+    ```{r eval=FALSE}
+    git config --global user.email "correo"
+    ```
+
+    Este correo debe coincidir con el registrado en GitHub para asegurar la correcta vinculación de los commits (Bryan, 2018).
+
+4.  **Inicialización de Git en la carpeta local del proyecto:** En la computadora local, se debe ubicar la carpeta del proyecto de R (que contiene el archivo `.Rproj`, los datos, los scripts y los resultados exportados). En RStudio, se activa el control de versiones desde el menú “Tools \> Project Options \> Git/SVN”, seleccionando Git. Alternativamente, en la terminal, se ejecuta el comando:
 
     ```{r eval=FALSE}
     git init
@@ -38,49 +54,83 @@ Para descargar e instalar Git, se puede acceder a la página oficial de Git (<ht
 
     Esto crea una carpeta oculta llamada `.git` que permitirá a Git rastrear los cambios en los archivos del proyecto.
 
-3.  **Conexión del repositorio local con el repositorio remoto en GitHub:** Para vincular la carpeta local con el repositorio creado en GitHub, se debe copiar la URL del repositorio (por ejemplo, `https://github.com/usuario/analisis_estadistico.git`) y ejecutar el siguiente comando en la terminal:
+5.  **Conexión del repositorio local con el repositorio remoto en GitHub:** Para vincular la carpeta local con el repositorio creado en GitHub, se debe copiar la URL del repositorio (por ejemplo, `https://github.com/usuario/repositorio.git`) y ejecutar el siguiente comando en la terminal:
 
     ```{r eval=FALSE}
     git remote add origin https://github.com/usuario/repositorio.git
     ```
 
-4.  **Agregado y confirmación de archivos:** Se agregan los archivos del proyecto al control de versiones con el comando:
+6.  **Agregado y confirmación de archivos:** Se agregan los archivos del proyecto al control de versiones con el comando:
 
     ```{r eval=FALSE}
     git add .
     ```
 
-    El punto (`.`) indica que se agregarán todos los archivos de la carpeta.\
+    El punto (`.`) indica que se agregarán todos los archivos de la carpeta.
 
-    Luego, se realiza el primer registro de cambios (commit) con un mensaje descriptivo:
+7.  **Comentar los cambios realizados al código:** Se realiza el primer registro de cambios (commit) con un mensaje descriptivo:
 
     ```{r eval=FALSE}
     git commit -m "Primer commit: subida inicial del proyecto"
     ```
 
-5.  **Subida de archivos al repositorio remoto:** Finalmente, los archivos se suben al repositorio remoto con el comando:
+8.  **Crear la rama principal “main”:** Para asegurarse de que la rama principal se llame “main”, se ejecuta:
+
+    ```{r eval=FALSE}
+    git branch -M main
+    ```
+
+    Esto es importante para mantener la compatibilidad con la configuración estándar de GitHub (Grolemund & Wickham, 2017).
+
+9.  **Subida de archivos al repositorio remoto:** Finalmente, los archivos se suben al repositorio remoto con el comando:
 
     ```{r eval=FALSE}
     git push -u origin main
     ```
 
-    Cabe señalar que la rama principal puede denominarse “main” o “master”, dependiendo de la configuración del repositorio. Una vez completados estos pasos, el proyecto estará disponible en GitHub, permitiendo su consulta, descarga y colaboración (Bryan, 2018; Grolemund & Wickham, 2017).
+    Una vez completados estos pasos, el proyecto estará disponible en GitHub, permitiendo su consulta, descarga y colaboración (Bryan, 2018; Grolemund & Wickham, 2017). Cabe resaltar que los **pasos** **2** y **3** únicamente se realizan la primera vez que se configura git en una computadora o si se desea cambiar de usuario en un dispositivo.
 
 ## Modificación, seguimiento y colaboración en proyectos de GitHub
 
-Una vez que el proyecto está alojado en GitHub, es posible continuar su desarrollo y mantener un registro detallado de todas las modificaciones. El flujo de trabajo básico consiste en realizar cambios en los archivos del proyecto, registrar estos cambios mediante commits con mensajes claros y específicos, y sincronizarlos con el repositorio remoto utilizando el comando `git push` (Bryan, 2018).
+Una vez que el proyecto está alojado en GitHub, es posible continuar su desarrollo y mantener un registro detallado de todas las modificaciones. El flujo de trabajo básico consiste en realizar cambios en los archivos del proyecto, registrar estos cambios mediante commits con mensajes claros y específicos, y sincronizarlos con el repositorio remoto utilizando el comando `git push` (Bryan, 2018). A continuación se datalla este proceso:
 
-### Registro y documentación de cambios
+### Modificación, seguimiento y colaboración en proyectos de GitHub
 
-La claridad en los mensajes de commit es fundamental para facilitar la comprensión del historial de cambios y la revisión por parte de otros colaboradores. Se recomienda que cada mensaje sea breve, descriptivo y específico respecto a las modificaciones realizadas.
+1.  **Sincronización con el repositorio remoto:** Antes de realizar cualquier cambio en el proyecto, se recomienda actualizar la copia local del repositorio para asegurarse de trabajar con la versión más reciente. Esto se logra ejecutando el siguiente comando en la terminal:
 
-### Sincronización y colaboración
+    ```{r eval=FALSE}
+    git pull
+    ```
 
-Para mantener el repositorio remoto actualizado y respaldado, se utiliza el comando `git push`, que sube los cambios al repositorio en línea. GitHub permite visualizar el historial completo de commits, comparar versiones de archivos y gestionar solicitudes de cambio (pull requests), lo que favorece la colaboración y la revisión del trabajo en equipo (The Turing Way Community, 2023).
+    Este comando descarga y fusiona los cambios realizados por otros colaboradores en el repositorio remoto, evitando conflictos y asegurando la coherencia del trabajo (Bryan, 2018).
 
-### Ventajas de la colaboración con Git y GitHub
+2.  **Realización de cambios en los archivos del proyecto:** Una vez sincronizado el repositorio local, se pueden modificar, agregar o eliminar archivos según las necesidades del proyecto. Estas modificaciones pueden incluir la edición de scripts, la incorporación de nuevos datos o la actualización de documentación.
 
-El uso regular de Git y GitHub asegura que el proyecto esté siempre respaldado, documentado y listo para ser compartido o retomado en cualquier momento, promoviendo así la reproducibilidad y la transparencia en la investigación científica (Gentleman & Temple Lang, 2007; National Academies of Sciences, Engineering, and Medicine, 2019).
+3.  **Preparación de los archivos modificados para el seguimiento:** Tras realizar los cambios, es necesario agregar los archivos modificados al área de preparación (staging area) mediante el comando:
+
+    ```{r eval=FALSE}
+    git add .
+    ```
+
+    El punto (.) indica que se incluirán todos los archivos modificados, nuevos o eliminados en el próximo commit.
+
+4.  **Registro de los cambios realizados:** Para documentar las modificaciones, se debe crear un commit con un mensaje claro y descriptivo que explique la naturaleza de los cambios. Esto se realiza con el comando:
+
+    ```{r eval=FALSE}
+    git commit -m "Mensaje descriptivo de los cambios realizados"
+    ```
+
+    La claridad y especificidad en los mensajes de commit facilitan la revisión y el seguimiento del historial del proyecto (Bryan, 2018).
+
+5.  **Sincronización de los cambios con el repositorio remoto:** Finalmente, para compartir los cambios con otros colaboradores y mantener actualizado el repositorio en línea, se utiliza el comando:
+
+    ```{r eval=FALSE}
+    git push
+    ```
+
+    Este comando sube los commits locales al repositorio remoto en GitHub, permitiendo la colaboración y el respaldo continuo del proyecto.
+
+El uso sistemático de este flujo de trabajo garantiza que el proyecto esté siempre respaldado, documentado y disponible para la colaboración, promoviendo la transparencia y la reproducibilidad en el desarrollo científico y profesional (Gentleman & Temple Lang, 2007; National Academies of Sciences, Engineering, and Medicine, 2019; The Turing Way Community, 2023).
 
 ## Importación y reutilización de repositorios de GitHub
 
@@ -88,23 +138,23 @@ La importación de repositorios de GitHub, conocida como “clonación”, permi
 
 ### Pasos para clonar un repositorio
 
-1.  Obtener la URL del repositorio desde la página del proyecto en GitHub.
+1.  **Obtener la URL del repositorio:** Se debe acceder a la página del proyecto en GitHub y copiar la URL del repositorio, esta se encuentra disponible mediante el botón “Code”.
 
-2.  Ejecutar el siguiente comando en la terminal o consola de RStudio:
+2.  **Ejecutar el comando de clonación:** En la terminal de RStudio, se debe utilizar el siguiente comando, reemplazando la URL por la correspondiente al repositorio de interés:
 
     ```{r eval=FALSE}
     git clone https://github.com/usuario/analisis_estadistico.git
     ```
 
-    Esto crea una carpeta local con todos los archivos y el historial del proyecto.
+    Este comando crea una carpeta local que contiene todos los archivos del proyecto, así como su historial completo de versiones.
 
 ### Trabajo local y sincronización de cambios
 
-Una vez clonado el repositorio, es posible modificar los archivos, ejecutar scripts y exportar nuevos resultados. Si se cuenta con los permisos necesarios, los cambios pueden subirse nuevamente a GitHub mediante los comandos `git add`, `git commit` y `git push`. En caso contrario, los cambios pueden mantenerse localmente.
+Una vez clonado el repositorio, es posible modificar los archivos, ejecutar scripts, agregar nuevos datos o exportar resultados. Si se dispone de los permisos necesarios (por ejemplo, en proyectos propios o en los que se tiene acceso de escritura), los cambios realizados pueden sincronizarse con el repositorio remoto utilizando los comandos `git add`, `git commit` y `git push`. En caso de no contar con permisos de escritura, los cambios pueden mantenerse localmente o bien proponer modificaciones a través de un “pull request”.
 
 ### Beneficios de la reutilización de repositorios
 
-Clonar repositorios facilita la reutilización de análisis existentes, el aprendizaje a partir de otros proyectos y la colaboración en equipo, asegurando la trazabilidad y la integridad del trabajo (Bryan, 2018; The Turing Way Community, 2023).
+La clonación de repositorios facilita la reutilización de análisis y metodologías existentes, fomenta el aprendizaje a partir de proyectos desarrollados por otros usuarios y promueve la colaboración en equipo. Además, este proceso asegura la trazabilidad y la integridad del trabajo, ya que todo el historial de cambios queda registrado y disponible para su consulta y auditoría (Bryan, 2018; The Turing Way Community, 2023).
 
 ## Recursos adicionales para el aprendizaje continuo
 
