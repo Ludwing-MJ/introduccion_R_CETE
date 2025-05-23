@@ -125,31 +125,31 @@ print(descripcion)
 
 La función `describe()` proporciona las siguientes estadísticas para cada variable:
 
-1.  `vars`: Número de variable.
+1.  **vars:** Número de variable.
 
-2.  `n`: Número de observaciones.
+2.  **n:** Número de observaciones.
 
-3.  `mean`: Media.
+3.  **mean:** Media.
 
-4.  `sd`: Desviación estándar.
+4.  **sd:** Desviación estándar.
 
-5.  `median`: Mediana.
+5.  **median:** Mediana.
 
-6.  `trimmed`: Media recortada al 10%.
+6.  **trimmed:** Media recortada al 10%.
 
-7.  `mad`: Desviación absoluta mediana.
+7.  **mad:** Desviación absoluta mediana.
 
-8.  `min`: Valor mínimo.
+8.  **min:** Valor mínimo.
 
-9.  `max`: Valor máximo.
+9.  **max:** Valor máximo.
 
-10. `range`: Rango (máximo - mínimo).
+10. **range:** Rango (máximo - mínimo).
 
-11. `skew`: Asimetría.
+11. **skew:** Asimetría.
 
-12. `kurtosis`: Curtosis.
+12. **kurtosis:** Curtosis.
 
-13. `se`: Error estándar de la media.
+13. **se:** Error estándar de la media.
 
 ### Visualización de Datos
 
@@ -227,15 +227,15 @@ print(resumen_modelo)
 
 El resumen del modelo incluye la siguiente información clave:
 
-1.  **Coefficients:**
+1.  **Coeficientes:**
 
-    a.  `Estimate`: Estimación de los coeficientes del modelo (intercepto y pendiente).
+    ***Estimate:*** Estimación de los coeficientes del modelo (intercepto y pendiente).
 
-    b.  `Std. Error`: Error estándar de los coeficientes.
+    ***Std. Error:*** Error estándar de los coeficientes.
 
-    c.  `t value`: Valor t para la prueba de hipótesis de que el coeficiente es igual a cero.
+    ***t value:*** Valor t para la prueba de hipótesis de que el coeficiente es igual a cero.
 
-    d.  `Pr(>|t|)`: Valor p asociado al valor t.
+    ***Pr(\>\|t\|):*** Valor p asociado al valor t.
 
 2.  **Residual standard error:** Estimación de la desviación estándar de los residuos.
 

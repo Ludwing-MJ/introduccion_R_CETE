@@ -39,17 +39,17 @@ El sistema gráfico base de R constituye una de las herramientas más accesibles
 
 Entre las funciones más utilizadas se encuentran:
 
-1.  `plot()`: función genérica para gráficos de dispersión, líneas y otros tipos de visualizaciones.
+1.  **plot()**: función genérica para gráficos de dispersión, líneas y otros tipos de visualizaciones.
 
-2.  `hist()`: para la creación de histogramas que muestran la distribución de variables cuantitativas.
+2.  **hist()**: para la creación de histogramas que muestran la distribución de variables cuantitativas.
 
-3.  `boxplot()`: para diagramas de caja que resumen la dispersión y los valores atípicos.
+3.  **boxplot()**: para diagramas de caja que resumen la dispersión y los valores atípicos.
 
-4.  `barplot()`: para gráficos de barras de frecuencias o proporciones.
+4.  **barplot()**: para gráficos de barras de frecuencias o proporciones.
 
-5.  `qqnorm()` y `qqline()`: para gráficos Q-Q que evalúan la normalidad de los datos.
+5.  **qqnorm()** y **qqline()**: para gráficos Q-Q que evalúan la normalidad de los datos.
 
-6.  `pairs()`: para matrices de gráficos de dispersión entre varias variables.
+6.  **pairs()**: para matrices de gráficos de dispersión entre varias variables.
 
 Estas funciones son la base para la mayoría de los análisis gráficos en estadística clásica, permitiendo una rápida inspección visual de los datos y la validación de supuestos (Venables & Ripley, 2002).
 
@@ -77,21 +77,21 @@ hist(x,
 
 **Explicación de los argumentos principales:**
 
-1.  `x`: Vector numérico con los datos a graficar.
+1.  **x**: Vector numérico con los datos a graficar.
 
-2.  `breaks`: Define el número de intervalos (bins) o el método para calcularlos. Puede ser un número, un vector de puntos de corte, o un método como "Sturges", "Scott", "FD".
+2.  **breaks**: Define el número de intervalos (bins) o el método para calcularlos. Puede ser un número, un vector de puntos de corte, o un método como "Sturges", "Scott", "FD".
 
-3.  `freq`: Si es TRUE, el eje Y muestra frecuencias absolutas; si es FALSE, muestra densidades.
+3.  **freq**: Si es TRUE, el eje Y muestra frecuencias absolutas; si es FALSE, muestra densidades.
 
-4.  `col`: Color de las barras.
+4.  **col**: Color de las barras.
 
-5.  `border`: Color del borde de las barras.
+5.  **border**: Color del borde de las barras.
 
-6.  `main`: Título principal del gráfico.
+6.  **main**: Título principal del gráfico.
 
-7.  `xlab`, `ylab`: Etiquetas de los ejes X e Y.
+7.  **xlab**, **ylab**: Etiquetas de los ejes X e Y.
 
-8.  `...`: Otros argumentos gráficos adicionales.
+8.  **...**: Otros argumentos gráficos adicionales.
 
 **Ejemplo:**
 
@@ -134,21 +134,21 @@ boxplot(formula,
         ...)
 ```
 
-1.  `formula`: Expresión del tipo `y ~ grupo` para comparar grupos.
+1.  **formula**: Expresión del tipo `y ~ grupo` para comparar grupos.
 
-2.  `data`: Data frame donde buscar las variables.
+2.  **data**: Data frame donde buscar las variables.
 
-3.  `main`, `xlab`, `ylab`: Títulos y etiquetas.
+3.  **main**, **xlab**, **ylab**: Títulos y etiquetas.
 
-4.  `col`: Colores de las cajas.
+4.  **col**: Colores de las cajas.
 
-5.  `border`: Color del borde de las cajas.
+5.  **border**: Color del borde de las cajas.
 
-6.  `notch`: Si es TRUE, añade una muesca para comparar medianas.
+6.  **notch**: Si es TRUE, añade una muesca para comparar medianas.
 
-7.  `outline`: Si es TRUE, muestra valores atípicos.
+7.  **outline**: Si es TRUE, muestra valores atípicos.
 
-8.  `...`: Otros argumentos gráficos.
+8.  **...**: Otros argumentos gráficos.
 
 **Ejemplo:**
 
@@ -194,21 +194,21 @@ plot(x, y,
 
 **Explicación de los argumentos principales:**
 
-1.  `x`, `y`: Vectores numéricos de igual longitud.
+1.  **x**, **y**: Vectores numéricos de igual longitud.
 
-2.  `type`: Tipo de gráfico ("p" para puntos, "l" para líneas, "b" para ambos).
+2.  **type**: Tipo de gráfico ("p" para puntos, "l" para líneas, "b" para ambos).
 
-3.  `main`, `sub`: Título principal y subtítulo.
+3.  **main**, **sub**: Título principal y subtítulo.
 
-4.  `xlab`, `ylab`: Etiquetas de los ejes.
+4.  **xlab**, **ylab**: Etiquetas de los ejes.
 
-5.  `pch`: Tipo de símbolo para los puntos (1: círculo, 16: círculo sólido, 17: triángulo, etc.).
+5.  **pch**: Tipo de símbolo para los puntos (1: círculo, 16: círculo sólido, 17: triángulo, etc.).
 
-6.  `col`: Color de los puntos.
+6.  **col**: Color de los puntos.
 
-7.  `cex`: Tamaño relativo de los puntos.
+7.  **cex**: Tamaño relativo de los puntos.
 
-8.  `...`: Otros argumentos gráficos.
+8.  **...**: Otros argumentos gráficos.
 
 **Ejemplo:**
 
@@ -251,9 +251,9 @@ plot(x, y,
      ...)
 ```
 
-1.  `type = "l"`: Dibuja una línea.
+1.  **type = "l"**: Dibuja una línea.
 
-2.  `lwd`: Grosor de la línea.
+2.  **lwd**: Grosor de la línea.
 
 **Ejemplo:**
 
@@ -289,9 +289,9 @@ El gráfico Q-Q (quantile-quantile) es una herramienta visual poderosa para comp
 
 **Sintaxis básica y explicación:**
 
-1.  `qqnorm()`: Genera el gráfico Q-Q de los datos frente a la normal.
+1.  **qqnorm()**: Genera el gráfico Q-Q de los datos frente a la normal.
 
-2.  `qqline()`: Añade la línea de referencia teórica.
+2.  **qqline()**: Añade la línea de referencia teórica.
 
 **Ejemplo:**
 
@@ -381,19 +381,19 @@ La personalización de gráficos es un aspecto fundamental para lograr visualiza
 
 A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:
 
-1.  **`main, sub, xlab, ylab`:** Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.
+1.  **main, sub, xlab, ylab:** Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.
 
-2.  **`col, border, pch, lty, lwd`:** Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.
+2.  **col, border, pch, lty, lwd:** Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.
 
-3.  **`cex, cex.axis, cex.lab, cex.main`:** Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.
+3.  **cex, cex.axis, cex.lab, cex.main:** Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.
 
-4.  **`legend()`:** Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.
+4.  **legend():** Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.
 
-5.  **`text()`:** Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.
+5.  **text():** Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.
 
-6.  **`abline()`:** Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.
+6.  **abline():** Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.
 
-7.  **`grid()`:** Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.
+7.  **grid():** Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.
 
 ### Ejemplo integral
 

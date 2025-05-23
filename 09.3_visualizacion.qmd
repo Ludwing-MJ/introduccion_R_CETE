@@ -87,11 +87,11 @@ ggplot(datos, aes(x = x, y = y)) +   # Inicialización y mapeo estético
 
 **Explicación:**
 
-1.  `ggplot(datos, aes(x = x, y = y))` inicializa el objeto gráfico y define que la variable `x` se mapea al eje horizontal y `y` al eje vertical.
+1.  **ggplot(datos, aes(x = x, y = y)):** inicializa el objeto gráfico y define que la variable `x` se mapea al eje horizontal y `y` al eje vertical.
 
-2.  `geom_point()` añade la capa de puntos, representando cada observación como un símbolo en el plano cartesiano.
+2.  **geom_point():** añade la capa de puntos, representando cada observación como un símbolo en el plano cartesiano.
 
-3.  El operador `+` permite añadir más capas o personalizaciones de manera sencilla y ordenada.
+3.  **El operador +:** permite añadir más capas o personalizaciones de manera sencilla y ordenada.
 
 ### Ejemplo avanzado: Incorporación de capas y personalización
 
@@ -115,11 +115,11 @@ ggplot(datos, aes(x = x, y = y)) +
 
 **Explicación:**
 
-1.  `geom_smooth(method = "lm", ...)` añade una línea de regresión lineal con estilo personalizado, facilitando la interpretación de la tendencia general de los datos (Cleveland, 1993).
+1.  **geom_smooth(method = "lm", ...):** añade una línea de regresión lineal con estilo personalizado, facilitando la interpretación de la tendencia general de los datos (Cleveland, 1993).
 
-2.  `labs()` permite definir títulos y etiquetas descriptivas, mejorando la claridad del gráfico.
+2.  **labs():** permite definir títulos y etiquetas descriptivas, mejorando la claridad del gráfico.
 
-3.  `theme_minimal()` aplica un tema visual adecuado para presentaciones y publicaciones, siguiendo los principios de economía visual (Tufte, 2001).
+3.  **theme_minimal():** aplica un tema visual adecuado para presentaciones y publicaciones, siguiendo los principios de economía visual (Tufte, 2001).
 
 ### Ventajas del enfoque modular y declarativo
 
@@ -268,11 +268,9 @@ ggplot(datos_cat, aes(x = grupo)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con una variable categórica (`grupo`).
+1.  **ggplot(datos_cat, aes(x = grupo)):** inicializa el gráfico mapeando la variable al eje X.
 
-2.  `ggplot(datos_cat, aes(x = grupo))` inicializa el gráfico mapeando la variable al eje X.
-
-3.  `geom_bar()` añade las barras, calculando automáticamente las frecuencias.
+2.  **geom_bar():** añade las barras, calculando automáticamente las frecuencias.
 
 ### Histogramas con geom_histogram()
 
@@ -291,11 +289,9 @@ ggplot(datos_hist, aes(x = valores)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con una variable numérica (`valores`).
+1.  **ggplot(datos_hist, aes(x = valores)):** mapea la variable al eje X.
 
-2.  `ggplot(datos_hist, aes(x = valores))` mapea la variable al eje X.
-
-3.  `geom_histogram()` crea el histograma, especificando el número de bins deseado.
+2.  **geom_histogram():** crea el histograma, especificando el número de bins deseado.
 
 ### Gráficos de dispersión con geom_point()
 
@@ -315,11 +311,9 @@ ggplot(datos_disp, aes(x = x, y = y)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con dos variables numéricas (`x` e `y`).
+1.  **ggplot(datos_disp, aes(x = x, y = y)):** mapea las variables a los ejes X e Y.
 
-2.  `ggplot(datos_disp, aes(x = x, y = y))` mapea las variables a los ejes X e Y.
-
-3.  `geom_point()` representa cada par de valores como un punto.
+2.  **geom_point():** representa cada par de valores como un punto.
 
 ### Boxplots con geom_boxplot()
 
@@ -339,11 +333,9 @@ ggplot(datos_box, aes(x = grupo, y = valores)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con una variable categórica (`grupo`) y una numérica (`valores`).
+1.  **ggplot(datos_box, aes(x = grupo, y = valores)):** mapea el grupo al eje X y los valores al eje Y.
 
-2.  `ggplot(datos_box, aes(x = grupo, y = valores))` mapea el grupo al eje X y los valores al eje Y.
-
-3.  `geom_boxplot()` genera los diagramas de caja para cada grupo.
+2.  **geom_boxplot():** genera los diagramas de caja para cada grupo.
 
 ## Personalización de gráficos en ggplot2
 
@@ -372,15 +364,13 @@ ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con variables categórica y numérica.
+1.  **aes(fill = grupo):** mapea el color de relleno a la variable de grupo.
 
-2.  `aes(fill = grupo)` mapea el color de relleno a la variable de grupo.
+2.  **geom_boxplot():** permite personalizar el color del borde y el estilo de los valores atípicos.
 
-3.  `geom_boxplot()` permite personalizar el color del borde y el estilo de los valores atípicos.
+3.  **scale_fill_manual():** asigna colores específicos a cada grupo.
 
-4.  `scale_fill_manual()` asigna colores específicos a cada grupo.
-
-5.  `scale_color_manual()` ajusta el color del borde de las cajas.
+4.  **scale_color_manual():** ajusta el color del borde de las cajas.
 
 Para variables continuas, se puede utilizar una escala de gradiente:
 
@@ -400,11 +390,9 @@ ggplot(datos_disp, aes(x = x, y = y, color = z)) +
 
 **Explicación:**
 
-1.  Se crea un data frame con dos variables numéricas y una variable adicional para el color.
+1.  **aes(color = z):** mapea la variable continua al color de los puntos.
 
-2.  `aes(color = z)` mapea la variable continua al color de los puntos.
-
-3.  `scale_color_gradient()` define los colores mínimo y máximo del gradiente.
+2.  **scale_color_gradient():** define los colores mínimo y máximo del gradiente.
 
 ### Etiquetas, títulos y leyendas
 
@@ -427,11 +415,11 @@ ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
 
 **Explicación:**
 
-1.  `labs()` define el título, subtítulo, etiquetas de ejes y el texto de la leyenda.
+1.  **labs():** define el título, subtítulo, etiquetas de ejes y el texto de la leyenda.
 
-2.  `theme(legend.position = "bottom")` coloca la leyenda debajo del gráfico.
+2.  **theme(legend.position = "bottom"):** coloca la leyenda debajo del gráfico.
 
-3.  `legend.title = element_text(face = "bold")` resalta el título de la leyenda.
+3.  **legend.title = element_text(face = "bold"):** resalta el título de la leyenda.
 
 ### Aplicación y personalización de temas
 
@@ -455,15 +443,15 @@ ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
 
 **Explicación:**
 
-1.  Se aplica el tema `theme_minimal()` para un estilo limpio y profesional.
+1.  **theme_minimal():** aplica un tema minimalista para un estilo limpio y profesional.
 
-2.  `plot.title` y `plot.subtitle` ajustan el estilo y color de los títulos.
+2.  **plot.title** y **plot.subtitle:** ajustan el estilo y color de los títulos.
 
-3.  `axis.title` y `axis.text` modifican el estilo y tamaño de los textos de ejes.
+3.  **axis.title** y **axis.text:** modifican el estilo y tamaño de los textos de ejes.
 
-4.  `panel.grid.major` y `panel.grid.minor` controlan la visibilidad y color de las líneas de cuadrícula.
+4.  **panel.grid.major** y **panel.grid.minor:** controlan la visibilidad y color de las líneas de cuadrícula.
 
-5.  `legend.position` define la ubicación de la leyenda.
+5.  **legend.position:** define la ubicación de la leyenda.
 
 ### Personalización avanzada: fuentes, márgenes y elementos gráficos
 
@@ -484,13 +472,13 @@ ggplot(datos_box, aes(x = grupo, y = valores, fill = grupo)) +
 
 **Explicación:**
 
-1.  `plot.margin` ajusta los márgenes del gráfico.
+1.  **plot.margin:** ajusta los márgenes del gráfico.
 
-2.  `axis.text.x` rota las etiquetas del eje X para mejorar la legibilidad.
+2.  **axis.text.x:** rota las etiquetas del eje X para mejorar la legibilidad.
 
-3.  `axis.line` resalta los ejes con líneas más gruesas y visibles.
+3.  **axis.line:** resalta los ejes con líneas más gruesas y visibles.
 
-4.  `legend.background` modifica el fondo de la leyenda.
+4.  **legend.background:** modifica el fondo de la leyenda.
 
 La personalización progresiva y modular de los gráficos en ggplot2 permite adaptar cada visualización a los estándares de comunicación científica y a las necesidades específicas de cada proyecto, garantizando resultados reproducibles y de alta calidad (Wickham, 2016).
 
@@ -522,15 +510,11 @@ ggplot(datos_facet, aes(x = categoria, y = valor)) +
 
 **Explicación**
 
-1.  Se crea un data frame con una variable categórica para las facetas (`grupo`), una variable categórica para el eje X (`categoria`) y una variable numérica (`valor`).
+1.  **ggplot(datos_facet, aes(x = categoria, y = valor)):** inicializa el gráfico y mapea las variables.
 
-2.  `ggplot(datos_facet, aes(x = categoria, y = valor))` inicializa el gráfico.
+2.  **geom_boxplot():** representa los datos como diagramas de caja.
 
-3.  `geom_boxplot()` representa los datos como diagramas de caja.
-
-4.  `facet_wrap(~ grupo)` divide el gráfico en paneles independientes para cada nivel de la variable `grupo`.
-
-El argumento `nrow` o `ncol` en `facet_wrap()` permite controlar el número de filas o columnas de la cuadrícula de paneles.
+3.  **facet_wrap(\~ grupo):** divide el gráfico en paneles independientes para cada nivel de la variable `grupo`.
 
 ### Facetado múltiple con facet_grid()
 
@@ -545,11 +529,9 @@ ggplot(datos_facet, aes(x = valor)) +
 
 **Explicación:**
 
-1.  Se utiliza el mismo data frame con dos variables categóricas (`grupo` y `categoria`).
+1.  **geom_histogram():** representa la distribución de la variable numérica.
 
-2.  `geom_histogram()` representa la distribución de la variable numérica.
-
-3.  `facet_grid(grupo ~ categoria)` crea una matriz de paneles, donde las filas corresponden a los niveles de `grupo` y las columnas a los niveles de `categoria`.
+2.  **facet_grid(grupo \~ categoria):** crea una matriz de paneles, donde las filas corresponden a los niveles de `grupo` y las columnas a los niveles de `categoria`.
 
 El uso de `facet_grid()` es especialmente útil cuando se desea analizar la interacción entre dos factores y observar cómo varía la distribución de la variable numérica en cada combinación de niveles.
 
@@ -569,15 +551,15 @@ ggplot(datos_facet, aes(x = categoria, y = valor, fill = categoria)) +
 
 **Explicación:**
 
-1.  `nrow = 1` organiza los paneles en una sola fila.
+1.  **nrow = 1:** organiza los paneles en una sola fila.
 
-2.  `labeller = label_both` muestra el nombre de la variable y el valor en la etiqueta del panel.
+2.  **labeller = label_both:** muestra el nombre de la variable y el valor en la etiqueta del panel.
 
-3.  `strip.position = "bottom"` coloca las etiquetas de los paneles en la parte inferior.
+3.  **strip.position = "bottom":** coloca las etiquetas de los paneles en la parte inferior.
 
-4.  `scales = "free_y"` permite que cada panel tenga su propia escala en el eje Y.
+4.  **scales = "free_y":** permite que cada panel tenga su propia escala en el eje Y.
 
-5.  `theme()` personaliza el fondo y el texto de las etiquetas de los paneles.
+5.  **theme():** personaliza el fondo y el texto de las etiquetas de los paneles.
 
 La personalización de facetas es clave para mejorar la legibilidad y la interpretación de los gráficos comparativos, especialmente cuando se trabaja con conjuntos de datos complejos o con múltiples niveles de agrupamiento.
 
@@ -671,14 +653,14 @@ A continuación se presenta un cuadro comparativo que integra los aspectos más 
 
 | Característica | ggplot2 | Sistema gráfico base |
 |------------------------|------------------------|------------------------|
-| Sintaxis | Declarativa, modular, basada en la gramática de los gráficos | Imperativa, secuencial |
-| Flexibilidad | Alta, personalización eficiente y detallada | Limitada, requiere mayor esfuerzo |
-| Estética | Moderna y profesional por defecto, fácil de mantener entre gráficos | Tradicional, requiere ajustes manuales |
-| Flujo de trabajo | Modular, reproducible y documentado; facilita colaboración y revisión | Menos modular, menos reproducible |
-| Reutilización | Alta, gracias a la estructura por capas y la posibilidad de guardar objetos gráficos | Baja, requiere repetir comandos y ajustes |
-| Curva de aprendizaje | Inicialmente más pronunciada, pero ventajosa en proyectos complejos | Más sencilla para gráficos básicos |
-| Integración | Excelente con el ecosistema tidyverse y flujos de trabajo modernos | Integración limitada con otros paquetes |
-| Comunidad y recursos | Amplia documentación, comunidad activa y abundantes ejemplos | Documentación tradicional, menos recursos |
+| **Sintaxis** | Declarativa, modular, basada en la gramática de los gráficos | Imperativa, secuencial |
+| **Flexibilidad** | Alta, personalización eficiente y detallada | Limitada, requiere mayor esfuerzo |
+| **Estética** | Moderna y profesional por defecto, fácil de mantener entre gráficos | Tradicional, requiere ajustes manuales |
+| **Flujo de trabajo** | Modular, reproducible y documentado; facilita colaboración y revisión | Menos modular, menos reproducible |
+| **Reutilización** | Alta, gracias a la estructura por capas y la posibilidad de guardar objetos gráficos | Baja, requiere repetir comandos y ajustes |
+| **Curva de aprendizaje** | Inicialmente más pronunciada, pero ventajosa en proyectos complejos | Más sencilla para gráficos básicos |
+| **Integración** | Excelente con el ecosistema tidyverse y flujos de trabajo modernos | Integración limitada con otros paquetes |
+| **Comunidad y recursos** | Amplia documentación, comunidad activa y abundantes ejemplos | Documentación tradicional, menos recursos |
 
 En conclusión, **ggplot2** es la opción preferente para la elaboración de gráficos complejos, personalizados y de alta calidad, especialmente en contextos académicos y científicos donde la reproducibilidad, la estética y la flexibilidad son prioritarias. El sistema gráfico base de R, por su parte, sigue siendo útil para la creación rápida de gráficos exploratorios y para usuarios que requieren soluciones sencillas y directas, o que priorizan la inmediatez sobre la personalización (Murrell, 2018; Wickham, 2016).
 

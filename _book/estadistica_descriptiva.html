@@ -624,8 +624,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <ol type="1">
-<li><p><code>head(iris)</code> proporciona una vista rápida de las primeras filas del conjunto de datos, lo que ayuda a detectar valores atípicos evidentes y familiarizarse con las variables.</p></li>
-<li><p><code>str(iris)</code> muestra la estructura del conjunto de datos, incluyendo el tipo de cada variable (numérico o factor) y los primeros valores de cada variable. Esto facilita la planificación del análisis y la identificación de posibles problemas con los datos.</p></li>
+<li><p><strong>head(iris):</strong> proporciona una vista rápida de las primeras filas del conjunto de datos, lo que ayuda a detectar valores atípicos evidentes y familiarizarse con las variables.</p></li>
+<li><p><strong>str(iris):</strong> muestra la estructura del conjunto de datos, incluyendo el tipo de cada variable (numérico o factor) y los primeros valores de cada variable. Esto facilita la planificación del análisis y la identificación de posibles problemas con los datos.</p></li>
 </ol>
 <p>Además de <code>head()</code> y <code>str()</code>, el paquete <code>DataExplorer</code> ofrece funciones para la exploración automática de datos, como <code>plot_intro()</code>, que genera un informe completo sobre las características del conjunto de datos.</p>
 <div class="cell">
@@ -691,12 +691,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación de la función:</strong></p>
 <ol type="1">
-<li><p><code>x</code> es el vector de datos para el cual se calculará la moda.</p></li>
-<li><p><code>na.omit(x)</code> elimina los valores faltantes del vector.</p></li>
-<li><p><code>table(x)</code> calcula la frecuencia de cada valor en el vector.</p></li>
-<li><p><code>max(tabla)</code> identifica la frecuencia máxima.</p></li>
-<li><p><code>names(tabla[tabla == max_frecuencia])</code> extrae los valores que tienen la frecuencia máxima.</p></li>
-<li><p><code>paste(modas, collapse = ", ")</code> retorna la moda como un string separado por comas en caso de múltiples modas.</p></li>
+<li><p><strong>x:</strong> es el vector de datos para el cual se calculará la moda.</p></li>
+<li><p><strong>na.omit(x):</strong> elimina los valores faltantes del vector.</p></li>
+<li><p><strong>table(x):</strong> calcula la frecuencia de cada valor en el vector.</p></li>
+<li><p><strong>max(tabla)</strong> identifica la frecuencia máxima.</p></li>
+<li><p><strong>names(tabla[tabla == max_frecuencia]):</strong> extrae los valores que tienen la frecuencia máxima.</p></li>
+<li><p><strong>paste(modas, collapse = “,”):</strong> retorna la moda como un string separado por comas en caso de múltiples modas.</p></li>
 </ol>
 <p>Una vez definida la función <code>moda()</code>, se puede calcular la moda de la variable <code>Sepal.Length</code>:</p>
 <div class="cell">
@@ -734,10 +734,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Interpretación:</strong></p>
 <ol type="1">
-<li><p><code>var()</code> mide la dispersión cuadrática media respecto de la media. Un valor alto indica mayor variabilidad.</p></li>
-<li><p><code>sd()</code> es la raíz cuadrada de la varianza y mantiene las unidades originales. Es una medida de dispersión más interpretable que la varianza.</p></li>
-<li><p><code>range()</code> devuelve los valores mínimo y máximo del conjunto de datos. La diferencia entre el valor máximo y el valor mínimo indica la amplitud total de los datos.</p></li>
-<li><p><code>IQR()</code> es el rango intercuartílico, que se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). El IQR es una medida de dispersión robusta frente a valores atípicos, ya que no se ve afectado por los valores extremos.</p></li>
+<li><p><strong>var():</strong> mide la dispersión cuadrática media respecto de la media. Un valor alto indica mayor variabilidad.</p></li>
+<li><p><strong>sd():</strong> es la raíz cuadrada de la varianza y mantiene las unidades originales. Es una medida de dispersión más interpretable que la varianza.</p></li>
+<li><p><strong>range():</strong> devuelve los valores mínimo y máximo del conjunto de datos. La diferencia entre el valor máximo y el valor mínimo indica la amplitud total de los datos.</p></li>
+<li><p><strong>IQR():</strong> es el rango intercuartílico, que se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). El IQR es una medida de dispersión robusta frente a valores atípicos, ya que no se ve afectado por los valores extremos.</p></li>
 </ol>
 <p>En resumen, las medidas de tendencia central y dispersión proporcionan información valiosa sobre las características principales de un conjunto de datos. La media, la mediana y la moda resumen el centro de la distribución, mientras que la varianza, la desviación estándar, el rango y el IQR cuantifican la variabilidad de los datos. La combinación de estas medidas permite obtener una visión integral de los datos y comprender su distribución y dispersión (Moore et al., 2017).</p>
 </section>
@@ -813,12 +813,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>En este código:</strong></p>
 <ol type="1">
-<li><p>La función <code>moda</code> calcula la moda de un vector numérico, manejando adecuadamente valores faltantes y posibles empates.</p></li>
-<li><p><code>pivot_longer()</code> transforma el conjunto de datos de formato ancho a largo, facilitando el cálculo de estadísticos por variable.</p></li>
-<li><p><code>group_by(Species, Variable)</code> agrupa los datos por especie y por cada característica morfométrica.</p></li>
-<li><p><code>summarise()</code> calcula la media (<code>mean</code>), la mediana (<code>median</code>) y la moda (<code>moda</code>) para cada grupo, redondeando los valores numéricos a dos decimales para mejorar la presentación.</p></li>
-<li><p><code>.groups = "drop"</code> elimina la estructura de agrupamiento tras el resumen, dejando la tabla lista para su visualización o exportación.</p></li>
-<li><p><code>arrange(Species, Variable)</code> ordena la tabla para facilitar la comparación entre especies y variables.</p></li>
+<li><p><strong>pivot_longer():</strong> transforma el conjunto de datos de formato ancho a largo, facilitando el cálculo de estadísticos por variable.</p></li>
+<li><p><strong>group_by(Species, Variable):</strong> agrupa los datos por especie y por cada característica morfométrica.</p></li>
+<li><p><strong>summarise():</strong> calcula la media (<code>mean</code>), la mediana (<code>median</code>) y la moda (<code>moda</code>) para cada grupo, redondeando los valores numéricos a dos decimales para mejorar la presentación.</p></li>
+<li><p><strong>.groups = “drop”:</strong> elimina la estructura de agrupamiento tras el resumen, dejando la tabla lista para su visualización o exportación.</p></li>
+<li><p><strong>arrange(Species, Variable):</strong> ordena la tabla para facilitar la comparación entre especies y variables.</p></li>
 </ol>
 <p>La tabla resumen permite comparar de manera clara y directa los valores centrales de cada variable morfométrica entre las especies de iris. Por ejemplo, se observa que <em>Iris virginica</em> presenta, en promedio, sépalos más largos que las otras especies, mientras que <em>Iris setosa</em> tiene los sépalos más anchos. La cercanía entre la media y la mediana en la mayoría de los casos indica que las distribuciones de las variables son aproximadamente simétricas, es decir, no presentan una asimetría significativa. Cuando la moda coincide con la mediana y la media, se refuerza la idea de simetría y ausencia de sesgo. Por el contrario, diferencias notables entre estos estadísticos pueden sugerir la presencia de valores atípicos, discretización de los datos o una ligera asimetría en la distribución (Navarro, 2019).</p>
 <p>En resumen, ambos enfoques permiten calcular medidas de tendencia central por grupos, pero el enfoque moderno con <code>dplyr</code> ofrece mayor flexibilidad y claridad en la presentación de los resultados. La tabla resumen generada con <code>dplyr</code> facilita la comparación entre especies y variables, y promueve la reproducibilidad y claridad en el análisis (Wickham et al., 2023).</p>
@@ -952,26 +951,24 @@ Petal.Width     -1.36 0.06</code></pre>
 <h3 data-number="19.7.4" class="anchored" data-anchor-id="visualización-de-histogramas-por-especie-y-variable"><span class="header-section-number">19.7.4</span> Visualización de histogramas por especie y variable</h3>
 <p>Para visualizar la distribución de cada variable dentro de cada especie, se propone generar histogramas individuales para cada combinación de especie y variable. A continuación, se muestra el código para generar estos histogramas utilizando el paquete <code>ggplot2</code>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir los datos a formato largo</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>iris_long <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Sepal"</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">"Petal"</span>),</span>
-<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Variable"</span>,</span>
-<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Value"</span></span>
-<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar histogramas para cada especie y variable</span></span>
-<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_long, <span class="fu">aes</span>(<span class="at">x =</span> Value)) <span class="sc">+</span></span>
-<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Species <span class="sc">~</span> Variable, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
-<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogramas por Especie y Variable"</span>,</span>
-<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Valor"</span>,</span>
-<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
-<span id="cb33-19"><a href="#cb33-19" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb33-20"><a href="#cb33-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir los datos a formato largo</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>iris_long <span class="ot">&lt;-</span> iris <span class="sc">%&gt;%</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>  tidyr<span class="sc">::</span><span class="fu">pivot_longer</span>(</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"Sepal"</span>) <span class="sc">|</span> <span class="fu">starts_with</span>(<span class="st">"Petal"</span>),</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Variable"</span>,</span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Value"</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Generar histogramas para cada especie y variable</span></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(iris_long, <span class="fu">aes</span>(<span class="at">x =</span> Value)) <span class="sc">+</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">40</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_grid</span>(Species <span class="sc">~</span> Variable, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Histogramas por Especie y Variable"</span>,</span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Valor"</span>,</span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frecuencia"</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb33-18"><a href="#cb33-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>()</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -982,13 +979,12 @@ Petal.Width     -1.36 0.06</code></pre>
 </div>
 <p><strong>En este código:</strong></p>
 <ol type="1">
-<li><p><code>library(ggplot2)</code> carga el paquete <code>ggplot2</code>, que permite crear gráficos de alta calidad.</p></li>
-<li><p><code>iris %&gt;% tidyr::pivot_longer(...)</code> transforma los datos de formato ancho a formato largo, facilitando la generación de gráficos.</p></li>
-<li><p><code>ggplot(iris_long, aes(x = Value))</code> crea un objeto gráfico base, especificando que se utilizará la variable “Value” en el eje x.</p></li>
-<li><p><code>geom_histogram(bins = 40, fill = "steelblue", color = "black")</code> agrega un histograma al gráfico, especificando el número de bins, el color de relleno y el color del borde.</p></li>
-<li><p><code>facet_grid(Species ~ Variable, scales = "free")</code> genera un panel de gráficos, mostrando un histograma para cada combinación de especie y variable. El argumento <code>scales = "free"</code> permite que cada histograma tenga su propia escala en el eje x.</p></li>
-<li><p><code>labs(...)</code> agrega etiquetas al gráfico, incluyendo el título, la etiqueta del eje x y la etiqueta del eje y.</p></li>
-<li><p><code>theme_bw()</code> aplica un tema visual en blanco y negro al gráfico.</p></li>
+<li><p><strong>iris %&gt;% tidyr::pivot_longer(…):</strong> transforma los datos de formato ancho a formato largo, facilitando la generación de gráficos.</p></li>
+<li><p><strong>ggplot(iris_long, aes(x = Value)):</strong> crea un objeto gráfico base, especificando que se utilizará la variable “Value” en el eje x.</p></li>
+<li><p><strong>geom_histogram(bins = 40, fill = “steelblue”, color = “black”):</strong> agrega un histograma al gráfico, especificando el número de bins, el color de relleno y el color del borde.</p></li>
+<li><p><strong>facet_grid(Species ~ Variable, scales = “free”):</strong> genera un panel de gráficos, mostrando un histograma para cada combinación de especie y variable. El argumento <code>scales = "free"</code> permite que cada histograma tenga su propia escala en el eje x.</p></li>
+<li><p><strong>labs(…):</strong> agrega etiquetas al gráfico, incluyendo el título, la etiqueta del eje x y la etiqueta del eje y.</p></li>
+<li><p><strong>theme_bw():</strong> aplica un tema visual en blanco y negro al gráfico.</p></li>
 </ol>
 <p><strong>Interpretación:</strong> Los histogramas permiten visualizar la distribución de cada variable dentro de cada especie. Se puede observar la forma de la distribución, la presencia de valores atípicos y la dispersión de los datos para cada combinación de especie y variable. El argumento <code>scales = "free"</code> permite que cada histograma tenga su propia escala en el eje x, lo que facilita la comparación entre las diferentes combinaciones de especie y variable.</p>
 <p>La combinación de las funciones del paquete <code>DataExplorer</code> y la visualización de histogramas con <code>ggplot2</code> permite obtener una visión completa y detallada de las características del conjunto de datos, facilitando la interpretación de los datos y la identificación de posibles patrones o relaciones (Wickham, 2016).</p>

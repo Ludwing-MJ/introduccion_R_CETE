@@ -387,36 +387,40 @@ El acceso a los elementos de una lista puede realizarse de varias formas, según
 
 1.  **Por nombre**: Utilizando el operador `$` o corchetes dobles `[[ ]]`
 
-```{r}
-# Acceder al elemento 'nombres' usando $
-mi_lista$nombres
+    <div>
 
-# Acceder al elemento 'nombres' usando corchetes dobles
-mi_lista[["nombres"]]
-```
+    ```{r}
+    # Acceder al elemento 'nombres' usando $
+    mi_lista$nombres
 
-Ambas formas devuelven el vector de nombres almacenado en la lista.
+    # Acceder al elemento 'nombres' usando corchetes dobles
+    mi_lista[["nombres"]]
+    ```
+
+    </div>
+
+    Ambas formas devuelven el vector de nombres almacenado en la lista.
 
 2.  **Por índice**: Utilizando corchetes dobles `[[ ]]`:
 
-```{r}
-# Acceder al primer elemento de la lista 
-mi_lista[[1]] #En este caso, el vector de nombres
-```
+    ```{r}
+    # Acceder al primer elemento de la lista 
+    mi_lista[[1]] #En este caso, el vector de nombres
+    ```
 
-Esto es útil cuando se desconoce el nombre del elemento, pero se conoce su posición dentro de la lista.
+    Esto es útil cuando se desconoce el nombre del elemento, pero se conoce su posición dentro de la lista.
 
 3.  **Diferencia entre corchetes simples y dobles:** Si se utilizan corchetes simples `[ ]` para acceder a un elemento de la lista, el resultado será una sublista (es decir, una lista que contiene el elemento seleccionado), no el elemento en sí. Para obtener directamente el contenido, siempre utilice corchetes dobles `[[ ]]` o el operador `$` si el elemento tiene nombre.
 
-```{r}
-# Devuelve una sublista
-mi_lista[1]
+    ```{r}
+    # Devuelve una sublista
+    mi_lista[1]
 
-# Devuelve el elemento directamente
-mi_lista[[1]]
-```
+    # Devuelve el elemento directamente
+    mi_lista[[1]]
+    ```
 
-Esta distinción resulta fundamental para evitar errores en la manipulación de listas y para acceder correctamente a los datos almacenados (Wickham & Grolemund, 2017).
+    Esta distinción resulta fundamental para evitar errores en la manipulación de listas y para acceder correctamente a los datos almacenados (Wickham & Grolemund, 2017).
 
 ### Aplicaciones prácticas
 
@@ -430,9 +434,9 @@ En R, los data frames y las listas constituyen estructuras de datos esenciales, 
 
 | Característica | Data Frame | Lista |
 |------------------------|------------------------|------------------------|
-| Estructura | Tabular: filas y columnas | Colección de objetos heterogéneos |
-| Tipos de datos | Cada columna puede tener un tipo distinto, pero todos los elementos de una columna deben ser del mismo tipo | Cada elemento puede ser de cualquier tipo y longitud |
-| Uso principal | Análisis estadístico y visualización de datos estructurados | Almacenamiento y gestión de resultados complejos o heterogéneos |
-| Acceso a elementos | Por columnas (usando `$` o corchetes) y por índices de filas y columnas | Por nombre o por índice, utilizando corchetes dobles `[[ ]]` o el operador `$` |
+| **Estructura** | Tabular: filas y columnas | Colección de objetos heterogéneos |
+| **Tipos de datos** | Cada columna puede tener un tipo distinto, pero todos los elementos de una columna deben ser del mismo tipo | Cada elemento puede ser de cualquier tipo y longitud |
+| **Uso principal** | Análisis estadístico y visualización de datos estructurados | Almacenamiento y gestión de resultados complejos o heterogéneos |
+| **Acceso a elementos** | Por columnas (usando `$` o corchetes) y por índices de filas y columnas | Por nombre o por índice, utilizando corchetes dobles `[[ ]]` o el operador `$` |
 
 La elección entre data frames y listas depende del tipo de información y del objetivo del análisis. Para datos tabulares, como encuestas o resultados experimentales, se recomienda emplear data frames. Cuando se requiere almacenar y manipular resultados complejos o combinaciones de diferentes tipos de datos, las listas resultan más adecuadas.

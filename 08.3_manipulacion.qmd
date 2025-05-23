@@ -46,19 +46,19 @@ El conjunto de datos simulado representa un experimento agrícola con un diseño
 
 Las variables incluidas en el conjunto de datos son:
 
-1.  parcela: Identificador único de cada unidad experimental
+1.  **parcela**: Identificador único de cada unidad experimental
 
-2.  tratamiento: Factor experimental con cuatro niveles (Control y tres tipos de fertilizantes)
+2.  **tratamiento**: Factor experimental con cuatro niveles (Control y tres tipos de fertilizantes)
 
-3.  bloque: Factor de control local con cinco niveles
+3.  **bloque**: Factor de control local con cinco niveles
 
-4.  altura_cm: Variable respuesta que mide el crecimiento vertical de las plantas
+4.  **altura_cm**: Variable respuesta que mide el crecimiento vertical de las plantas
 
-5.  peso_gr: Variable respuesta que mide la biomasa de las plantas
+5.  **peso_gr**: Variable respuesta que mide la biomasa de las plantas
 
-6.  daño_plaga: Evaluación categórica del daño por plagas
+6.  **daño_plaga**: Evaluación categórica del daño por plagas
 
-7.  fecha_siembra: Registro temporal de la implementación del experimento
+7.  **fecha_siembra**: Registro temporal de la implementación del experimento
 
 La inclusión deliberada de valores faltantes en las variables de respuesta (altura_cm y peso_gr) permite ilustrar técnicas comunes de manejo de datos incompletos, una situación frecuente en experimentos agrícolas (Field, 2013).
 
@@ -75,9 +75,9 @@ filter(.data, ...)
 
 Donde:
 
-1.  `.data`: Especifica el data frame o tibble sobre el cual se aplicará el filtrado.
+1.  **.data**: Especifica el data frame o tibble sobre el cual se aplicará el filtrado.
 
-2.  `...`: Representa una o más expresiones lógicas que deben evaluarse como `TRUE` para que una fila sea seleccionada.
+2.  **...**: Representa una o más expresiones lógicas que deben evaluarse como `TRUE` para que una fila sea seleccionada.
 
 Ejemplos:
 
@@ -111,9 +111,9 @@ select(.data, ...)
 
 Donde:
 
-1.  `.data`: Especifica el data frame o tibble de entrada.
+1.  **.data**: Especifica el data frame o tibble de entrada.
 
-2.  `...`: Representa los nombres de las columnas a seleccionar, o funciones auxiliares que permiten patrones de selección más complejos.
+2.  **...**: Representa los nombres de las columnas a seleccionar, o funciones auxiliares que permiten patrones de selección más complejos.
 
 Ejemplos:
 
@@ -151,9 +151,11 @@ La función `mutate()` permite crear nuevas columnas o modificar las existentes 
 mutate(.data, ...)
 ```
 
-1.  `.data`: Especifica el data frame o tibble de entrada.
+Donde:
 
-2.  `...`: Representa una o más expresiones que definen las nuevas columnas o transformaciones.
+1.  **.data**: Especifica el data frame o tibble de entrada.
+
+2.  **...**: Representa una o más expresiones que definen las nuevas columnas o transformaciones.
 
 Ejemplos:
 
@@ -190,9 +192,9 @@ summarize(.data, ...)
 
 Donde:
 
-1.  `.data`: Especifica el data frame o tibble de entrada.
+1.  **.data**: Especifica el data frame o tibble de entrada.
 
-2.  `...`: Representa las variables de agrupamiento (en `group_by()`) o las expresiones de resumen (en `summarize()`).
+2.  **...**: Representa las variables de agrupamiento (en `group_by()`) o las expresiones de resumen (en `summarize()`).
 
 Ejemplos:
 
@@ -210,11 +212,11 @@ resumen_tratamiento
 
 En este ejemplo, se utiliza el operador pipe (`%>%`) para encadenar las funciones `group_by()` y `summarize()`. Primero, se agrupan los datos por la variable `tratamiento`. Luego, para cada grupo, se calculan las siguientes estadísticas:
 
-1.  `media_altura = mean(altura_cm, na.rm = TRUE)`: Calcula la media de la altura, excluyendo los valores faltantes (`NA`). El argumento `na.rm = TRUE` es crucial para evitar que los valores faltantes afecten el cálculo de la media.
+1.  **media_altura = mean(altura_cm, na.rm = TRUE)**: Calcula la media de la altura, excluyendo los valores faltantes (`NA`). El argumento `na.rm = TRUE` es crucial para evitar que los valores faltantes afecten el cálculo de la media.
 
-2.  `sd_altura = sd(altura_cm, na.rm = TRUE)`: Calcula la desviación estándar de la altura, también excluyendo los valores faltantes.
+2.  **sd_altura = sd(altura_cm, na.rm = TRUE)**: Calcula la desviación estándar de la altura, también excluyendo los valores faltantes.
 
-3.  `n = n()`: Cuenta el número de observaciones en cada grupo. La función `n()` es una función especial de dplyr que cuenta el tamaño de cada grupo.
+3.  **n = n()**: Cuenta el número de observaciones en cada grupo. La función `n()` es una función especial de dplyr que cuenta el tamaño de cada grupo.
 
 El resultado es un nuevo data frame llamado `resumen_tratamiento` que contiene las estadísticas descriptivas para cada tratamiento. Estas funciones son esenciales para obtener resúmenes estadísticos por grupo, como promedios por tratamiento en un experimento clásico (Wickham et al., 2023).
 
@@ -229,9 +231,9 @@ arrange(.data, ...)
 
 Donde:
 
-1.  `.data`: Especifica el data frame o tibble de entrada.
+1.  **.data**: Especifica el data frame o tibble de entrada.
 
-2.  `...`: Representa las variables por las que se desea ordenar. Se puede utilizar la función `desc()` para ordenar en orden descendente.
+2.  **...**: Representa las variables por las que se desea ordenar. Se puede utilizar la función `desc()` para ordenar en orden descendente.
 
 Ejemplos
 
@@ -372,11 +374,11 @@ datos_largo
 
 En este ejemplo:
 
-1.  `cols = c(altura_2023, peso_2023, altura_2024, peso_2024)`: Especifica las columnas que se van a transformar.
+1.  **cols = c(altura_2023, peso_2023, altura_2024, peso_2024)**: Especifica las columnas que se van a transformar.
 
-2.  `names_to = "variable"`: Indica que los nombres de las columnas originales se almacenarán en una nueva columna llamada "variable".
+2.  **names_to = "variable"**: Indica que los nombres de las columnas originales se almacenarán en una nueva columna llamada "variable".
 
-3.  `values_to = "valor"`: Indica que los valores de las columnas originales se almacenarán en una nueva columna llamada "valor".
+3.  **values_to = "valor"**: Indica que los valores de las columnas originales se almacenarán en una nueva columna llamada "valor".
 
 El resultado es un data frame en formato largo, donde cada fila representa una medición de altura o peso para una parcela en un año específico. Este formato es ideal para realizar análisis estadísticos que requieren que cada observación ocupe una fila, como ANOVA de medidas repetidas o modelos mixtos (Kutner et al., 2005).
 
@@ -413,9 +415,9 @@ datos_ancho
 
 En este ejemplo:
 
-1.  `names_from = variable`: Especifica que los valores de la columna `variable` (altura_2023, peso_2023, altura_2024, peso_2024) se utilizarán como nombres de las nuevas columnas.
+1.  **names_from = variable**: Especifica que los valores de la columna `variable` (altura_2023, peso_2023, altura_2024, peso_2024) se utilizarán como nombres de las nuevas columnas.
 
-2.  `values_from = valor`: Especifica que los valores de la columna `valor` se utilizarán para llenar las nuevas columnas.
+2.  **values_from = valor**: Especifica que los valores de la columna `valor` se utilizarán para llenar las nuevas columnas.
 
 El resultado es un data frame en formato ancho, donde cada fila representa una parcela y cada columna representa una medición de altura o peso en un año específico. Este formato facilita la comparación directa de las mediciones entre años para cada parcela.
 

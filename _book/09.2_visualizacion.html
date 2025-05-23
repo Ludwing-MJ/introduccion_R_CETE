@@ -591,12 +591,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El sistema gráfico base de R constituye una de las herramientas más accesibles y versátiles para la visualización de datos en estadística clásica. Estas funciones permiten crear gráficos de manera rápida y flexible, facilitando tanto la exploración inicial de los datos como la comprobación de supuestos estadísticos fundamentales. El enfoque de R base se basa en la construcción secuencial de gráficos, donde cada elemento puede ser añadido o modificado mediante argumentos y funciones auxiliares, lo que resulta especialmente útil en el análisis exploratorio y diagnóstico (Murrell, 2018; Venables &amp; Ripley, 2002).</p>
 <p>Entre las funciones más utilizadas se encuentran:</p>
 <ol type="1">
-<li><p><code>plot()</code>: función genérica para gráficos de dispersión, líneas y otros tipos de visualizaciones.</p></li>
-<li><p><code>hist()</code>: para la creación de histogramas que muestran la distribución de variables cuantitativas.</p></li>
-<li><p><code>boxplot()</code>: para diagramas de caja que resumen la dispersión y los valores atípicos.</p></li>
-<li><p><code>barplot()</code>: para gráficos de barras de frecuencias o proporciones.</p></li>
-<li><p><code>qqnorm()</code> y <code>qqline()</code>: para gráficos Q-Q que evalúan la normalidad de los datos.</p></li>
-<li><p><code>pairs()</code>: para matrices de gráficos de dispersión entre varias variables.</p></li>
+<li><p><strong>plot()</strong>: función genérica para gráficos de dispersión, líneas y otros tipos de visualizaciones.</p></li>
+<li><p><strong>hist()</strong>: para la creación de histogramas que muestran la distribución de variables cuantitativas.</p></li>
+<li><p><strong>boxplot()</strong>: para diagramas de caja que resumen la dispersión y los valores atípicos.</p></li>
+<li><p><strong>barplot()</strong>: para gráficos de barras de frecuencias o proporciones.</p></li>
+<li><p><strong>qqnorm()</strong> y <strong>qqline()</strong>: para gráficos Q-Q que evalúan la normalidad de los datos.</p></li>
+<li><p><strong>pairs()</strong>: para matrices de gráficos de dispersión entre varias variables.</p></li>
 </ol>
 <p>Estas funciones son la base para la mayoría de los análisis gráficos en estadística clásica, permitiendo una rápida inspección visual de los datos y la validación de supuestos (Venables &amp; Ripley, 2002).</p>
 </section>
@@ -620,14 +620,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación de los argumentos principales:</strong></p>
 <ol type="1">
-<li><p><code>x</code>: Vector numérico con los datos a graficar.</p></li>
-<li><p><code>breaks</code>: Define el número de intervalos (bins) o el método para calcularlos. Puede ser un número, un vector de puntos de corte, o un método como “Sturges”, “Scott”, “FD”.</p></li>
-<li><p><code>freq</code>: Si es TRUE, el eje Y muestra frecuencias absolutas; si es FALSE, muestra densidades.</p></li>
-<li><p><code>col</code>: Color de las barras.</p></li>
-<li><p><code>border</code>: Color del borde de las barras.</p></li>
-<li><p><code>main</code>: Título principal del gráfico.</p></li>
-<li><p><code>xlab</code>, <code>ylab</code>: Etiquetas de los ejes X e Y.</p></li>
-<li><p><code>...</code>: Otros argumentos gráficos adicionales.</p></li>
+<li><p><strong>x</strong>: Vector numérico con los datos a graficar.</p></li>
+<li><p><strong>breaks</strong>: Define el número de intervalos (bins) o el método para calcularlos. Puede ser un número, un vector de puntos de corte, o un método como “Sturges”, “Scott”, “FD”.</p></li>
+<li><p><strong>freq</strong>: Si es TRUE, el eje Y muestra frecuencias absolutas; si es FALSE, muestra densidades.</p></li>
+<li><p><strong>col</strong>: Color de las barras.</p></li>
+<li><p><strong>border</strong>: Color del borde de las barras.</p></li>
+<li><p><strong>main</strong>: Título principal del gráfico.</p></li>
+<li><p><strong>xlab</strong>, <strong>ylab</strong>: Etiquetas de los ejes X e Y.</p></li>
+<li><p><strong>…</strong>: Otros argumentos gráficos adicionales.</p></li>
 </ol>
 <p><strong>Ejemplo:</strong></p>
 <div class="cell">
@@ -671,14 +671,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><p><code>formula</code>: Expresión del tipo <code>y ~ grupo</code> para comparar grupos.</p></li>
-<li><p><code>data</code>: Data frame donde buscar las variables.</p></li>
-<li><p><code>main</code>, <code>xlab</code>, <code>ylab</code>: Títulos y etiquetas.</p></li>
-<li><p><code>col</code>: Colores de las cajas.</p></li>
-<li><p><code>border</code>: Color del borde de las cajas.</p></li>
-<li><p><code>notch</code>: Si es TRUE, añade una muesca para comparar medianas.</p></li>
-<li><p><code>outline</code>: Si es TRUE, muestra valores atípicos.</p></li>
-<li><p><code>...</code>: Otros argumentos gráficos.</p></li>
+<li><p><strong>formula</strong>: Expresión del tipo <code>y ~ grupo</code> para comparar grupos.</p></li>
+<li><p><strong>data</strong>: Data frame donde buscar las variables.</p></li>
+<li><p><strong>main</strong>, <strong>xlab</strong>, <strong>ylab</strong>: Títulos y etiquetas.</p></li>
+<li><p><strong>col</strong>: Colores de las cajas.</p></li>
+<li><p><strong>border</strong>: Color del borde de las cajas.</p></li>
+<li><p><strong>notch</strong>: Si es TRUE, añade una muesca para comparar medianas.</p></li>
+<li><p><strong>outline</strong>: Si es TRUE, muestra valores atípicos.</p></li>
+<li><p><strong>…</strong>: Otros argumentos gráficos.</p></li>
 </ol>
 <p><strong>Ejemplo:</strong></p>
 <div class="cell">
@@ -724,14 +724,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación de los argumentos principales:</strong></p>
 <ol type="1">
-<li><p><code>x</code>, <code>y</code>: Vectores numéricos de igual longitud.</p></li>
-<li><p><code>type</code>: Tipo de gráfico (“p” para puntos, “l” para líneas, “b” para ambos).</p></li>
-<li><p><code>main</code>, <code>sub</code>: Título principal y subtítulo.</p></li>
-<li><p><code>xlab</code>, <code>ylab</code>: Etiquetas de los ejes.</p></li>
-<li><p><code>pch</code>: Tipo de símbolo para los puntos (1: círculo, 16: círculo sólido, 17: triángulo, etc.).</p></li>
-<li><p><code>col</code>: Color de los puntos.</p></li>
-<li><p><code>cex</code>: Tamaño relativo de los puntos.</p></li>
-<li><p><code>...</code>: Otros argumentos gráficos.</p></li>
+<li><p><strong>x</strong>, <strong>y</strong>: Vectores numéricos de igual longitud.</p></li>
+<li><p><strong>type</strong>: Tipo de gráfico (“p” para puntos, “l” para líneas, “b” para ambos).</p></li>
+<li><p><strong>main</strong>, <strong>sub</strong>: Título principal y subtítulo.</p></li>
+<li><p><strong>xlab</strong>, <strong>ylab</strong>: Etiquetas de los ejes.</p></li>
+<li><p><strong>pch</strong>: Tipo de símbolo para los puntos (1: círculo, 16: círculo sólido, 17: triángulo, etc.).</p></li>
+<li><p><strong>col</strong>: Color de los puntos.</p></li>
+<li><p><strong>cex</strong>: Tamaño relativo de los puntos.</p></li>
+<li><p><strong>…</strong>: Otros argumentos gráficos.</p></li>
 </ol>
 <p><strong>Ejemplo:</strong></p>
 <div class="cell">
@@ -777,8 +777,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>     ...)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ol type="1">
-<li><p><code>type = "l"</code>: Dibuja una línea.</p></li>
-<li><p><code>lwd</code>: Grosor de la línea.</p></li>
+<li><p><strong>type = “l”</strong>: Dibuja una línea.</p></li>
+<li><p><strong>lwd</strong>: Grosor de la línea.</p></li>
 </ol>
 <p><strong>Ejemplo:</strong></p>
 <div class="cell">
@@ -817,8 +817,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El gráfico Q-Q (quantile-quantile) es una herramienta visual poderosa para comparar la distribución de los datos observados con una distribución teórica, generalmente la normal. Si los puntos del gráfico se alinean sobre la diagonal, se puede inferir que los datos siguen la distribución de referencia. Las desviaciones sistemáticas de esta línea indican alejamientos de la normalidad, lo que puede requerir transformaciones de los datos o el uso de métodos no paramétricos (Cleveland, 1993).</p>
 <p><strong>Sintaxis básica y explicación:</strong></p>
 <ol type="1">
-<li><p><code>qqnorm()</code>: Genera el gráfico Q-Q de los datos frente a la normal.</p></li>
-<li><p><code>qqline()</code>: Añade la línea de referencia teórica.</p></li>
+<li><p><strong>qqnorm()</strong>: Genera el gráfico Q-Q de los datos frente a la normal.</p></li>
+<li><p><strong>qqline()</strong>: Añade la línea de referencia teórica.</p></li>
 </ol>
 <p><strong>Ejemplo:</strong></p>
 <div class="cell">
@@ -913,13 +913,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="13.5.1" class="anchored" data-anchor-id="argumentos-y-funciones-clave-para-la-personalización"><span class="header-section-number">13.5.1</span> Argumentos y funciones clave para la personalización</h3>
 <p>A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:</p>
 <ol type="1">
-<li><p><strong><code>main, sub, xlab, ylab</code>:</strong> Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.</p></li>
-<li><p><strong><code>col, border, pch, lty, lwd</code>:</strong> Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.</p></li>
-<li><p><strong><code>cex, cex.axis, cex.lab, cex.main</code>:</strong> Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.</p></li>
-<li><p><strong><code>legend()</code>:</strong> Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.</p></li>
-<li><p><strong><code>text()</code>:</strong> Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.</p></li>
-<li><p><strong><code>abline()</code>:</strong> Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.</p></li>
-<li><p><strong><code>grid()</code>:</strong> Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.</p></li>
+<li><p><strong>main, sub, xlab, ylab:</strong> Permiten definir el título principal, subtítulo y las etiquetas de los ejes X e Y, respectivamente, facilitando la interpretación del gráfico.</p></li>
+<li><p><strong>col, border, pch, lty, lwd:</strong> Controlan el color de los elementos, el color del borde, el tipo de símbolo para los puntos, el tipo de línea y el grosor de las líneas, respectivamente.</p></li>
+<li><p><strong>cex, cex.axis, cex.lab, cex.main:</strong> Ajustan el tamaño relativo de los símbolos, los textos de los ejes, las etiquetas y el título principal.</p></li>
+<li><p><strong>legend():</strong> Añade leyendas explicativas en posiciones específicas del gráfico, mejorando la comprensión de los elementos representados.</p></li>
+<li><p><strong>text():</strong> Permite agregar texto en coordenadas específicas, útil para destacar valores o anotar observaciones relevantes.</p></li>
+<li><p><strong>abline():</strong> Añade líneas horizontales, verticales o de regresión, facilitando la identificación de tendencias o referencias.</p></li>
+<li><p><strong>grid():</strong> Incorpora una cuadrícula de fondo, lo que ayuda a la lectura precisa de las coordenadas y la comparación visual de los datos.</p></li>
 </ol>
 </section>
 <section id="ejemplo-integral" class="level3" data-number="13.5.2">

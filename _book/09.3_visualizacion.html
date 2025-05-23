@@ -654,9 +654,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p><code>ggplot(datos, aes(x = x, y = y))</code> inicializa el objeto gráfico y define que la variable <code>x</code> se mapea al eje horizontal y <code>y</code> al eje vertical.</p></li>
-<li><p><code>geom_point()</code> añade la capa de puntos, representando cada observación como un símbolo en el plano cartesiano.</p></li>
-<li><p>El operador <code>+</code> permite añadir más capas o personalizaciones de manera sencilla y ordenada.</p></li>
+<li><p><strong>ggplot(datos, aes(x = x, y = y)):</strong> inicializa el objeto gráfico y define que la variable <code>x</code> se mapea al eje horizontal y <code>y</code> al eje vertical.</p></li>
+<li><p><strong>geom_point():</strong> añade la capa de puntos, representando cada observación como un símbolo en el plano cartesiano.</p></li>
+<li><p><strong>El operador +:</strong> permite añadir más capas o personalizaciones de manera sencilla y ordenada.</p></li>
 </ol>
 </section>
 <section id="ejemplo-avanzado-incorporación-de-capas-y-personalización" class="level3" data-number="14.2.4">
@@ -686,9 +686,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p><code>geom_smooth(method = "lm", ...)</code> añade una línea de regresión lineal con estilo personalizado, facilitando la interpretación de la tendencia general de los datos (Cleveland, 1993).</p></li>
-<li><p><code>labs()</code> permite definir títulos y etiquetas descriptivas, mejorando la claridad del gráfico.</p></li>
-<li><p><code>theme_minimal()</code> aplica un tema visual adecuado para presentaciones y publicaciones, siguiendo los principios de economía visual (Tufte, 2001).</p></li>
+<li><p><strong>geom_smooth(method = “lm”, …):</strong> añade una línea de regresión lineal con estilo personalizado, facilitando la interpretación de la tendencia general de los datos (Cleveland, 1993).</p></li>
+<li><p><strong>labs():</strong> permite definir títulos y etiquetas descriptivas, mejorando la claridad del gráfico.</p></li>
+<li><p><strong>theme_minimal():</strong> aplica un tema visual adecuado para presentaciones y publicaciones, siguiendo los principios de economía visual (Tufte, 2001).</p></li>
 </ol>
 </section>
 <section id="ventajas-del-enfoque-modular-y-declarativo" class="level3" data-number="14.2.5">
@@ -847,9 +847,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con una variable categórica (<code>grupo</code>).</p></li>
-<li><p><code>ggplot(datos_cat, aes(x = grupo))</code> inicializa el gráfico mapeando la variable al eje X.</p></li>
-<li><p><code>geom_bar()</code> añade las barras, calculando automáticamente las frecuencias.</p></li>
+<li><p><strong>ggplot(datos_cat, aes(x = grupo)):</strong> inicializa el gráfico mapeando la variable al eje X.</p></li>
+<li><p><strong>geom_bar():</strong> añade las barras, calculando automáticamente las frecuencias.</p></li>
 </ol>
 </section>
 <section id="histogramas-con-geom_histogram" class="level3" data-number="14.4.2">
@@ -874,9 +873,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con una variable numérica (<code>valores</code>).</p></li>
-<li><p><code>ggplot(datos_hist, aes(x = valores))</code> mapea la variable al eje X.</p></li>
-<li><p><code>geom_histogram()</code> crea el histograma, especificando el número de bins deseado.</p></li>
+<li><p><strong>ggplot(datos_hist, aes(x = valores)):</strong> mapea la variable al eje X.</p></li>
+<li><p><strong>geom_histogram():</strong> crea el histograma, especificando el número de bins deseado.</p></li>
 </ol>
 </section>
 <section id="gráficos-de-dispersión-con-geom_point" class="level3" data-number="14.4.3">
@@ -902,9 +900,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con dos variables numéricas (<code>x</code> e <code>y</code>).</p></li>
-<li><p><code>ggplot(datos_disp, aes(x = x, y = y))</code> mapea las variables a los ejes X e Y.</p></li>
-<li><p><code>geom_point()</code> representa cada par de valores como un punto.</p></li>
+<li><p><strong>ggplot(datos_disp, aes(x = x, y = y)):</strong> mapea las variables a los ejes X e Y.</p></li>
+<li><p><strong>geom_point():</strong> representa cada par de valores como un punto.</p></li>
 </ol>
 </section>
 <section id="boxplots-con-geom_boxplot" class="level3" data-number="14.4.4">
@@ -930,9 +927,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con una variable categórica (<code>grupo</code>) y una numérica (<code>valores</code>).</p></li>
-<li><p><code>ggplot(datos_box, aes(x = grupo, y = valores))</code> mapea el grupo al eje X y los valores al eje Y.</p></li>
-<li><p><code>geom_boxplot()</code> genera los diagramas de caja para cada grupo.</p></li>
+<li><p><strong>ggplot(datos_box, aes(x = grupo, y = valores)):</strong> mapea el grupo al eje X y los valores al eje Y.</p></li>
+<li><p><strong>geom_boxplot():</strong> genera los diagramas de caja para cada grupo.</p></li>
 </ol>
 </section>
 </section>
@@ -967,11 +963,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con variables categórica y numérica.</p></li>
-<li><p><code>aes(fill = grupo)</code> mapea el color de relleno a la variable de grupo.</p></li>
-<li><p><code>geom_boxplot()</code> permite personalizar el color del borde y el estilo de los valores atípicos.</p></li>
-<li><p><code>scale_fill_manual()</code> asigna colores específicos a cada grupo.</p></li>
-<li><p><code>scale_color_manual()</code> ajusta el color del borde de las cajas.</p></li>
+<li><p><strong>aes(fill = grupo):</strong> mapea el color de relleno a la variable de grupo.</p></li>
+<li><p><strong>geom_boxplot():</strong> permite personalizar el color del borde y el estilo de los valores atípicos.</p></li>
+<li><p><strong>scale_fill_manual():</strong> asigna colores específicos a cada grupo.</p></li>
+<li><p><strong>scale_color_manual():</strong> ajusta el color del borde de las cajas.</p></li>
 </ol>
 <p>Para variables continuas, se puede utilizar una escala de gradiente:</p>
 <div class="cell">
@@ -996,9 +991,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con dos variables numéricas y una variable adicional para el color.</p></li>
-<li><p><code>aes(color = z)</code> mapea la variable continua al color de los puntos.</p></li>
-<li><p><code>scale_color_gradient()</code> define los colores mínimo y máximo del gradiente.</p></li>
+<li><p><strong>aes(color = z):</strong> mapea la variable continua al color de los puntos.</p></li>
+<li><p><strong>scale_color_gradient():</strong> define los colores mínimo y máximo del gradiente.</p></li>
 </ol>
 </section>
 <section id="etiquetas-títulos-y-leyendas" class="level3" data-number="14.5.2">
@@ -1027,9 +1021,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p><code>labs()</code> define el título, subtítulo, etiquetas de ejes y el texto de la leyenda.</p></li>
-<li><p><code>theme(legend.position = "bottom")</code> coloca la leyenda debajo del gráfico.</p></li>
-<li><p><code>legend.title = element_text(face = "bold")</code> resalta el título de la leyenda.</p></li>
+<li><p><strong>labs():</strong> define el título, subtítulo, etiquetas de ejes y el texto de la leyenda.</p></li>
+<li><p><strong>theme(legend.position = “bottom”):</strong> coloca la leyenda debajo del gráfico.</p></li>
+<li><p><strong>legend.title = element_text(face = “bold”):</strong> resalta el título de la leyenda.</p></li>
 </ol>
 </section>
 <section id="aplicación-y-personalización-de-temas" class="level3" data-number="14.5.3">
@@ -1059,11 +1053,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se aplica el tema <code>theme_minimal()</code> para un estilo limpio y profesional.</p></li>
-<li><p><code>plot.title</code> y <code>plot.subtitle</code> ajustan el estilo y color de los títulos.</p></li>
-<li><p><code>axis.title</code> y <code>axis.text</code> modifican el estilo y tamaño de los textos de ejes.</p></li>
-<li><p><code>panel.grid.major</code> y <code>panel.grid.minor</code> controlan la visibilidad y color de las líneas de cuadrícula.</p></li>
-<li><p><code>legend.position</code> define la ubicación de la leyenda.</p></li>
+<li><p><strong>theme_minimal():</strong> aplica un tema minimalista para un estilo limpio y profesional.</p></li>
+<li><p><strong>plot.title</strong> y <strong>plot.subtitle:</strong> ajustan el estilo y color de los títulos.</p></li>
+<li><p><strong>axis.title</strong> y <strong>axis.text:</strong> modifican el estilo y tamaño de los textos de ejes.</p></li>
+<li><p><strong>panel.grid.major</strong> y <strong>panel.grid.minor:</strong> controlan la visibilidad y color de las líneas de cuadrícula.</p></li>
+<li><p><strong>legend.position:</strong> define la ubicación de la leyenda.</p></li>
 </ol>
 </section>
 <section id="personalización-avanzada-fuentes-márgenes-y-elementos-gráficos" class="level3" data-number="14.5.4">
@@ -1090,10 +1084,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p><code>plot.margin</code> ajusta los márgenes del gráfico.</p></li>
-<li><p><code>axis.text.x</code> rota las etiquetas del eje X para mejorar la legibilidad.</p></li>
-<li><p><code>axis.line</code> resalta los ejes con líneas más gruesas y visibles.</p></li>
-<li><p><code>legend.background</code> modifica el fondo de la leyenda.</p></li>
+<li><p><strong>plot.margin:</strong> ajusta los márgenes del gráfico.</p></li>
+<li><p><strong>axis.text.x:</strong> rota las etiquetas del eje X para mejorar la legibilidad.</p></li>
+<li><p><strong>axis.line:</strong> resalta los ejes con líneas más gruesas y visibles.</p></li>
+<li><p><strong>legend.background:</strong> modifica el fondo de la leyenda.</p></li>
 </ol>
 <p>La personalización progresiva y modular de los gráficos en ggplot2 permite adaptar cada visualización a los estándares de comunicación científica y a las necesidades específicas de cada proyecto, garantizando resultados reproducibles y de alta calidad (Wickham, 2016).</p>
 </section>
@@ -1129,12 +1123,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación</strong></p>
 <ol type="1">
-<li><p>Se crea un data frame con una variable categórica para las facetas (<code>grupo</code>), una variable categórica para el eje X (<code>categoria</code>) y una variable numérica (<code>valor</code>).</p></li>
-<li><p><code>ggplot(datos_facet, aes(x = categoria, y = valor))</code> inicializa el gráfico.</p></li>
-<li><p><code>geom_boxplot()</code> representa los datos como diagramas de caja.</p></li>
-<li><p><code>facet_wrap(~ grupo)</code> divide el gráfico en paneles independientes para cada nivel de la variable <code>grupo</code>.</p></li>
+<li><p><strong>ggplot(datos_facet, aes(x = categoria, y = valor)):</strong> inicializa el gráfico y mapea las variables.</p></li>
+<li><p><strong>geom_boxplot():</strong> representa los datos como diagramas de caja.</p></li>
+<li><p><strong>facet_wrap(~ grupo):</strong> divide el gráfico en paneles independientes para cada nivel de la variable <code>grupo</code>.</p></li>
 </ol>
-<p>El argumento <code>nrow</code> o <code>ncol</code> en <code>facet_wrap()</code> permite controlar el número de filas o columnas de la cuadrícula de paneles.</p>
 </section>
 <section id="facetado-múltiple-con-facet_grid" class="level3" data-number="14.6.2">
 <h3 data-number="14.6.2" class="anchored" data-anchor-id="facetado-múltiple-con-facet_grid"><span class="header-section-number">14.6.2</span> Facetado múltiple con facet_grid()</h3>
@@ -1154,9 +1146,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p>Se utiliza el mismo data frame con dos variables categóricas (<code>grupo</code> y <code>categoria</code>).</p></li>
-<li><p><code>geom_histogram()</code> representa la distribución de la variable numérica.</p></li>
-<li><p><code>facet_grid(grupo ~ categoria)</code> crea una matriz de paneles, donde las filas corresponden a los niveles de <code>grupo</code> y las columnas a los niveles de <code>categoria</code>.</p></li>
+<li><p><strong>geom_histogram():</strong> representa la distribución de la variable numérica.</p></li>
+<li><p><strong>facet_grid(grupo ~ categoria):</strong> crea una matriz de paneles, donde las filas corresponden a los niveles de <code>grupo</code> y las columnas a los niveles de <code>categoria</code>.</p></li>
 </ol>
 <p>El uso de <code>facet_grid()</code> es especialmente útil cuando se desea analizar la interacción entre dos factores y observar cómo varía la distribución de la variable numérica en cada combinación de niveles.</p>
 </section>
@@ -1181,11 +1172,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><strong>Explicación:</strong></p>
 <ol type="1">
-<li><p><code>nrow = 1</code> organiza los paneles en una sola fila.</p></li>
-<li><p><code>labeller = label_both</code> muestra el nombre de la variable y el valor en la etiqueta del panel.</p></li>
-<li><p><code>strip.position = "bottom"</code> coloca las etiquetas de los paneles en la parte inferior.</p></li>
-<li><p><code>scales = "free_y"</code> permite que cada panel tenga su propia escala en el eje Y.</p></li>
-<li><p><code>theme()</code> personaliza el fondo y el texto de las etiquetas de los paneles.</p></li>
+<li><p><strong>nrow = 1:</strong> organiza los paneles en una sola fila.</p></li>
+<li><p><strong>labeller = label_both:</strong> muestra el nombre de la variable y el valor en la etiqueta del panel.</p></li>
+<li><p><strong>strip.position = “bottom”:</strong> coloca las etiquetas de los paneles en la parte inferior.</p></li>
+<li><p><strong>scales = “free_y”:</strong> permite que cada panel tenga su propia escala en el eje Y.</p></li>
+<li><p><strong>theme():</strong> personaliza el fondo y el texto de las etiquetas de los paneles.</p></li>
 </ol>
 <p>La personalización de facetas es clave para mejorar la legibilidad y la interpretación de los gráficos comparativos, especialmente cuando se trabaja con conjuntos de datos complejos o con múltiples niveles de agrupamiento.</p>
 <p>El uso de facetas en ggplot2, mediante <code>facet_wrap()</code> y <code>facet_grid()</code>, es una herramienta poderosa para la exploración visual y la comunicación de resultados en análisis estadístico, permitiendo comparar grupos de manera clara, eficiente y reproducible (Wickham, 2016).</p>
@@ -1312,42 +1303,42 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sintaxis</td>
+<td><strong>Sintaxis</strong></td>
 <td>Declarativa, modular, basada en la gramática de los gráficos</td>
 <td>Imperativa, secuencial</td>
 </tr>
 <tr class="even">
-<td>Flexibilidad</td>
+<td><strong>Flexibilidad</strong></td>
 <td>Alta, personalización eficiente y detallada</td>
 <td>Limitada, requiere mayor esfuerzo</td>
 </tr>
 <tr class="odd">
-<td>Estética</td>
+<td><strong>Estética</strong></td>
 <td>Moderna y profesional por defecto, fácil de mantener entre gráficos</td>
 <td>Tradicional, requiere ajustes manuales</td>
 </tr>
 <tr class="even">
-<td>Flujo de trabajo</td>
+<td><strong>Flujo de trabajo</strong></td>
 <td>Modular, reproducible y documentado; facilita colaboración y revisión</td>
 <td>Menos modular, menos reproducible</td>
 </tr>
 <tr class="odd">
-<td>Reutilización</td>
+<td><strong>Reutilización</strong></td>
 <td>Alta, gracias a la estructura por capas y la posibilidad de guardar objetos gráficos</td>
 <td>Baja, requiere repetir comandos y ajustes</td>
 </tr>
 <tr class="even">
-<td>Curva de aprendizaje</td>
+<td><strong>Curva de aprendizaje</strong></td>
 <td>Inicialmente más pronunciada, pero ventajosa en proyectos complejos</td>
 <td>Más sencilla para gráficos básicos</td>
 </tr>
 <tr class="odd">
-<td>Integración</td>
+<td><strong>Integración</strong></td>
 <td>Excelente con el ecosistema tidyverse y flujos de trabajo modernos</td>
 <td>Integración limitada con otros paquetes</td>
 </tr>
 <tr class="even">
-<td>Comunidad y recursos</td>
+<td><strong>Comunidad y recursos</strong></td>
 <td>Amplia documentación, comunidad activa y abundantes ejemplos</td>
 <td>Documentación tradicional, menos recursos</td>
 </tr>

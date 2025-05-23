@@ -59,9 +59,9 @@ head(iris)
 str(iris)
 ```
 
-1.  `head(iris)` proporciona una vista rápida de las primeras filas del conjunto de datos, lo que ayuda a detectar valores atípicos evidentes y familiarizarse con las variables.
+1.  **head(iris):** proporciona una vista rápida de las primeras filas del conjunto de datos, lo que ayuda a detectar valores atípicos evidentes y familiarizarse con las variables.
 
-2.  `str(iris)` muestra la estructura del conjunto de datos, incluyendo el tipo de cada variable (numérico o factor) y los primeros valores de cada variable. Esto facilita la planificación del análisis y la identificación de posibles problemas con los datos.
+2.  **str(iris):** muestra la estructura del conjunto de datos, incluyendo el tipo de cada variable (numérico o factor) y los primeros valores de cada variable. Esto facilita la planificación del análisis y la identificación de posibles problemas con los datos.
 
 Además de `head()` y `str()`, el paquete `DataExplorer` ofrece funciones para la exploración automática de datos, como `plot_intro()`, que genera un informe completo sobre las características del conjunto de datos.
 
@@ -122,17 +122,17 @@ moda <- function(x) {
 
 **Explicación de la función:**
 
-1.  `x` es el vector de datos para el cual se calculará la moda.
+1.  **x:** es el vector de datos para el cual se calculará la moda.
 
-2.  `na.omit(x)` elimina los valores faltantes del vector.
+2.  **na.omit(x):** elimina los valores faltantes del vector.
 
-3.  `table(x)` calcula la frecuencia de cada valor en el vector.
+3.  **table(x):** calcula la frecuencia de cada valor en el vector.
 
-4.  `max(tabla)` identifica la frecuencia máxima.
+4.  **max(tabla)** identifica la frecuencia máxima.
 
-5.  `names(tabla[tabla == max_frecuencia])` extrae los valores que tienen la frecuencia máxima.
+5.  **names(tabla\[tabla == max_frecuencia\]):** extrae los valores que tienen la frecuencia máxima.
 
-6.  `paste(modas, collapse = ", ")` retorna la moda como un string separado por comas en caso de múltiples modas.
+6.  **paste(modas, collapse = ", "):** retorna la moda como un string separado por comas en caso de múltiples modas.
 
 Una vez definida la función `moda()`, se puede calcular la moda de la variable `Sepal.Length`:
 
@@ -159,13 +159,13 @@ IQR(iris$Sepal.Length)
 
 **Interpretación:**
 
-1.  `var()` mide la dispersión cuadrática media respecto de la media. Un valor alto indica mayor variabilidad.
+1.  **var():** mide la dispersión cuadrática media respecto de la media. Un valor alto indica mayor variabilidad.
 
-2.  `sd()` es la raíz cuadrada de la varianza y mantiene las unidades originales. Es una medida de dispersión más interpretable que la varianza.
+2.  **sd():** es la raíz cuadrada de la varianza y mantiene las unidades originales. Es una medida de dispersión más interpretable que la varianza.
 
-3.  `range()` devuelve los valores mínimo y máximo del conjunto de datos. La diferencia entre el valor máximo y el valor mínimo indica la amplitud total de los datos.
+3.  **range():** devuelve los valores mínimo y máximo del conjunto de datos. La diferencia entre el valor máximo y el valor mínimo indica la amplitud total de los datos.
 
-4.  `IQR()` es el rango intercuartílico, que se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). El IQR es una medida de dispersión robusta frente a valores atípicos, ya que no se ve afectado por los valores extremos.
+4.  **IQR():** es el rango intercuartílico, que se calcula como la diferencia entre el tercer cuartil (Q3) y el primer cuartil (Q1). El IQR es una medida de dispersión robusta frente a valores atípicos, ya que no se ve afectado por los valores extremos.
 
 En resumen, las medidas de tendencia central y dispersión proporcionan información valiosa sobre las características principales de un conjunto de datos. La media, la mediana y la moda resumen el centro de la distribución, mientras que la varianza, la desviación estándar, el rango y el IQR cuantifican la variabilidad de los datos. La combinación de estas medidas permite obtener una visión integral de los datos y comprender su distribución y dispersión (Moore et al., 2017).
 
@@ -215,17 +215,15 @@ tabla_resumen
 
 **En este código:**
 
-1.  La función `moda` calcula la moda de un vector numérico, manejando adecuadamente valores faltantes y posibles empates.
+1.  **pivot_longer():** transforma el conjunto de datos de formato ancho a largo, facilitando el cálculo de estadísticos por variable.
 
-2.  `pivot_longer()` transforma el conjunto de datos de formato ancho a largo, facilitando el cálculo de estadísticos por variable.
+2.  **group_by(Species, Variable):** agrupa los datos por especie y por cada característica morfométrica.
 
-3.  `group_by(Species, Variable)` agrupa los datos por especie y por cada característica morfométrica.
+3.  **summarise():** calcula la media (`mean`), la mediana (`median`) y la moda (`moda`) para cada grupo, redondeando los valores numéricos a dos decimales para mejorar la presentación.
 
-4.  `summarise()` calcula la media (`mean`), la mediana (`median`) y la moda (`moda`) para cada grupo, redondeando los valores numéricos a dos decimales para mejorar la presentación.
+4.  **.groups = "drop":** elimina la estructura de agrupamiento tras el resumen, dejando la tabla lista para su visualización o exportación.
 
-5.  `.groups = "drop"` elimina la estructura de agrupamiento tras el resumen, dejando la tabla lista para su visualización o exportación.
-
-6.  `arrange(Species, Variable)` ordena la tabla para facilitar la comparación entre especies y variables.
+5.  **arrange(Species, Variable):** ordena la tabla para facilitar la comparación entre especies y variables.
 
 La tabla resumen permite comparar de manera clara y directa los valores centrales de cada variable morfométrica entre las especies de iris. Por ejemplo, se observa que *Iris virginica* presenta, en promedio, sépalos más largos que las otras especies, mientras que *Iris setosa* tiene los sépalos más anchos. La cercanía entre la media y la mediana en la mayoría de los casos indica que las distribuciones de las variables son aproximadamente simétricas, es decir, no presentan una asimetría significativa. Cuando la moda coincide con la mediana y la media, se refuerza la idea de simetría y ausencia de sesgo. Por el contrario, diferencias notables entre estos estadísticos pueden sugerir la presencia de valores atípicos, discretización de los datos o una ligera asimetría en la distribución (Navarro, 2019).
 
@@ -338,7 +336,6 @@ plot_correlation(iris[, 1:4])
 Para visualizar la distribución de cada variable dentro de cada especie, se propone generar histogramas individuales para cada combinación de especie y variable. A continuación, se muestra el código para generar estos histogramas utilizando el paquete `ggplot2`:
 
 ```{r}
-library(ggplot2)
 
 # Convertir los datos a formato largo
 iris_long <- iris %>%
@@ -362,19 +359,17 @@ ggplot(iris_long, aes(x = Value)) +
 
 **En este código:**
 
-1.  `library(ggplot2)` carga el paquete `ggplot2`, que permite crear gráficos de alta calidad.
+1.  **iris %\>% tidyr::pivot_longer(...):** transforma los datos de formato ancho a formato largo, facilitando la generación de gráficos.
 
-2.  `iris %>% tidyr::pivot_longer(...)` transforma los datos de formato ancho a formato largo, facilitando la generación de gráficos.
+2.  **ggplot(iris_long, aes(x = Value)):** crea un objeto gráfico base, especificando que se utilizará la variable "Value" en el eje x.
 
-3.  `ggplot(iris_long, aes(x = Value))` crea un objeto gráfico base, especificando que se utilizará la variable "Value" en el eje x.
+3.  **geom_histogram(bins = 40, fill = "steelblue", color = "black"):** agrega un histograma al gráfico, especificando el número de bins, el color de relleno y el color del borde.
 
-4.  `geom_histogram(bins = 40, fill = "steelblue", color = "black")` agrega un histograma al gráfico, especificando el número de bins, el color de relleno y el color del borde.
+4.  **facet_grid(Species \~ Variable, scales = "free"):** genera un panel de gráficos, mostrando un histograma para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x.
 
-5.  `facet_grid(Species ~ Variable, scales = "free")` genera un panel de gráficos, mostrando un histograma para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x.
+5.  **labs(...):** agrega etiquetas al gráfico, incluyendo el título, la etiqueta del eje x y la etiqueta del eje y.
 
-6.  `labs(...)` agrega etiquetas al gráfico, incluyendo el título, la etiqueta del eje x y la etiqueta del eje y.
-
-7.  `theme_bw()` aplica un tema visual en blanco y negro al gráfico.
+6.  **theme_bw():** aplica un tema visual en blanco y negro al gráfico.
 
 **Interpretación:** Los histogramas permiten visualizar la distribución de cada variable dentro de cada especie. Se puede observar la forma de la distribución, la presencia de valores atípicos y la dispersión de los datos para cada combinación de especie y variable. El argumento `scales = "free"` permite que cada histograma tenga su propia escala en el eje x, lo que facilita la comparación entre las diferentes combinaciones de especie y variable.
 

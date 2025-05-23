@@ -975,8 +975,8 @@ Fila2    2    4    6</code></pre>
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="acceso-a-elementos-de-una-lista"><span class="header-section-number">4.4.2</span> Acceso a elementos de una lista</h3>
 <p>El acceso a los elementos de una lista puede realizarse de varias formas, según la necesidad del análisis:</p>
 <ol type="1">
-<li><strong>Por nombre</strong>: Utilizando el operador <code>$</code> o corchetes dobles <code>[[ ]]</code></li>
-</ol>
+<li><p><strong>Por nombre</strong>: Utilizando el operador <code>$</code> o corchetes dobles <code>[[ ]]</code></p>
+<div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al elemento 'nombres' usando $</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>mi_lista<span class="sc">$</span>nombres</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -989,10 +989,9 @@ Fila2    2    4    6</code></pre>
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
-<p>Ambas formas devuelven el vector de nombres almacenado en la lista.</p>
-<ol start="2" type="1">
-<li><strong>Por índice</strong>: Utilizando corchetes dobles <code>[[ ]]</code>:</li>
-</ol>
+</div>
+<p>Ambas formas devuelven el vector de nombres almacenado en la lista.</p></li>
+<li><p><strong>Por índice</strong>: Utilizando corchetes dobles <code>[[ ]]</code>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Acceder al primer elemento de la lista </span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>mi_lista[[<span class="dv">1</span>]] <span class="co">#En este caso, el vector de nombres</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1000,10 +999,8 @@ Fila2    2    4    6</code></pre>
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
-<p>Esto es útil cuando se desconoce el nombre del elemento, pero se conoce su posición dentro de la lista.</p>
-<ol start="3" type="1">
-<li><strong>Diferencia entre corchetes simples y dobles:</strong> Si se utilizan corchetes simples <code>[ ]</code> para acceder a un elemento de la lista, el resultado será una sublista (es decir, una lista que contiene el elemento seleccionado), no el elemento en sí. Para obtener directamente el contenido, siempre utilice corchetes dobles <code>[[ ]]</code> o el operador <code>$</code> si el elemento tiene nombre.</li>
-</ol>
+<p>Esto es útil cuando se desconoce el nombre del elemento, pero se conoce su posición dentro de la lista.</p></li>
+<li><p><strong>Diferencia entre corchetes simples y dobles:</strong> Si se utilizan corchetes simples <code>[ ]</code> para acceder a un elemento de la lista, el resultado será una sublista (es decir, una lista que contiene el elemento seleccionado), no el elemento en sí. Para obtener directamente el contenido, siempre utilice corchetes dobles <code>[[ ]]</code> o el operador <code>$</code> si el elemento tiene nombre.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Devuelve una sublista</span></span>
 <span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>mi_lista[<span class="dv">1</span>]</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1017,7 +1014,8 @@ Fila2    2    4    6</code></pre>
 <pre><code>[1] "Juan" "Ana" </code></pre>
 </div>
 </div>
-<p>Esta distinción resulta fundamental para evitar errores en la manipulación de listas y para acceder correctamente a los datos almacenados (Wickham &amp; Grolemund, 2017).</p>
+<p>Esta distinción resulta fundamental para evitar errores en la manipulación de listas y para acceder correctamente a los datos almacenados (Wickham &amp; Grolemund, 2017).</p></li>
+</ol>
 </section>
 <section id="aplicaciones-prácticas" class="level3" data-number="4.4.3">
 <h3 data-number="4.4.3" class="anchored" data-anchor-id="aplicaciones-prácticas"><span class="header-section-number">4.4.3</span> Aplicaciones prácticas</h3>
@@ -1043,22 +1041,22 @@ Fila2    2    4    6</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Estructura</td>
+<td><strong>Estructura</strong></td>
 <td>Tabular: filas y columnas</td>
 <td>Colección de objetos heterogéneos</td>
 </tr>
 <tr class="even">
-<td>Tipos de datos</td>
+<td><strong>Tipos de datos</strong></td>
 <td>Cada columna puede tener un tipo distinto, pero todos los elementos de una columna deben ser del mismo tipo</td>
 <td>Cada elemento puede ser de cualquier tipo y longitud</td>
 </tr>
 <tr class="odd">
-<td>Uso principal</td>
+<td><strong>Uso principal</strong></td>
 <td>Análisis estadístico y visualización de datos estructurados</td>
 <td>Almacenamiento y gestión de resultados complejos o heterogéneos</td>
 </tr>
 <tr class="even">
-<td>Acceso a elementos</td>
+<td><strong>Acceso a elementos</strong></td>
 <td>Por columnas (usando <code>$</code> o corchetes) y por índices de filas y columnas</td>
 <td>Por nombre o por índice, utilizando corchetes dobles <code>[[ ]]</code> o el operador <code>$</code></td>
 </tr>
