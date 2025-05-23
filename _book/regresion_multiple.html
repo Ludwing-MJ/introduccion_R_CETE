@@ -393,7 +393,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R: Expansión y Modularidad del Entorno</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -510,7 +510,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exploración-inicial-de-los-datos" id="toc-exploración-inicial-de-los-datos" class="nav-link" data-scroll-target="#exploración-inicial-de-los-datos"><span class="header-section-number">21.4</span> Exploración inicial de los datos</a></li>
   <li><a href="#análisis-exploratorio-y-matriz-de-correlaciones" id="toc-análisis-exploratorio-y-matriz-de-correlaciones" class="nav-link" data-scroll-target="#análisis-exploratorio-y-matriz-de-correlaciones"><span class="header-section-number">21.5</span> Análisis exploratorio y matriz de correlaciones</a></li>
   <li><a href="#ajuste-del-modelo-de-regresión-lineal-múltiple" id="toc-ajuste-del-modelo-de-regresión-lineal-múltiple" class="nav-link" data-scroll-target="#ajuste-del-modelo-de-regresión-lineal-múltiple"><span class="header-section-number">21.6</span> Ajuste del modelo de regresión lineal múltiple</a></li>
-  <li><a href="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" id="toc-selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" class="nav-link" data-scroll-target="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise) y criterio BIC</a></li>
+  <li><a href="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise" id="toc-selección-del-modelo-mediante-el-método-paso-a-paso-stepwise" class="nav-link" data-scroll-target="#selección-del-modelo-mediante-el-método-paso-a-paso-stepwise"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise)</a></li>
   <li><a href="#evaluación-de-los-supuestos-del-modelo-final" id="toc-evaluación-de-los-supuestos-del-modelo-final" class="nav-link" data-scroll-target="#evaluación-de-los-supuestos-del-modelo-final"><span class="header-section-number">21.8</span> Evaluación de los supuestos del modelo final</a>
   <ul class="collapse">
   <li><a href="#linealidad" id="toc-linealidad" class="nav-link" data-scroll-target="#linealidad"><span class="header-section-number">21.8.1</span> Linealidad</a></li>
@@ -627,9 +627,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Uso de Attach para no colocar el signo de dolar con todas las variables</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(data)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Elaborar un modelo empleando todas las variables como predictoras</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>modelo_completo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Biomasa <span class="sc">~</span> pH <span class="sc">+</span> Zinc <span class="sc">+</span> potasio <span class="sc">+</span> Salinidad, <span class="at">data =</span> data)</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisar el modelo</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_completo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>modelo_completo <span class="ot">&lt;-</span> <span class="fu">lm</span>(Biomasa <span class="sc">~</span> pH <span class="sc">+</span> Zinc <span class="sc">+</span> </span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                        potasio <span class="sc">+</span> Salinidad, <span class="at">data =</span> data)</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Revisar el modelo</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(modelo_completo)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -656,8 +657,8 @@ F-statistic:   120 on 4 and 40 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
 <p>La función <code>attach(data)</code> permite acceder a las variables de la base de datos directamente por su nombre, sin necesidad de usar el operador <code>$</code>. La salida del modelo (<code>summary(modelo_completo)</code>) proporciona los coeficientes estimados, errores estándar, valores t y p-valores para cada predictor. Un p-valor menor a 0.05 indica que la variable correspondiente tiene un efecto estadísticamente significativo sobre la biomasa (en este ejemplo únicamente la variable potasio no tiene un efecto estadísticamente significativo sobre la biomasa), manteniendo constantes las demás variables. El coeficiente de determinación ajustado (Adjusted R-squared) indica el porcentaje de variabilidad de la biomasa explicado por el modelo siendo este del 91.54% para el modelo incial.</p>
 </section>
-<section id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic" class="level2" data-number="21.7">
-<h2 data-number="21.7" class="anchored" data-anchor-id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise-y-criterio-bic"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise) y criterio BIC</h2>
+<section id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise" class="level2" data-number="21.7">
+<h2 data-number="21.7" class="anchored" data-anchor-id="selección-del-modelo-mediante-el-método-paso-a-paso-stepwise"><span class="header-section-number">21.7</span> Selección del modelo mediante el método paso a paso (stepwise)</h2>
 <p>Para seleccionar el modelo más parsimonioso y evitar el sobreajuste, se emplea el método paso a paso (stepwise), utilizando el criterio de información bayesiano (BIC) como criterio de selección. El BIC penaliza la complejidad del modelo de manera más estricta que el AIC, favoreciendo modelos más simples y robustos, especialmente recomendable cuando se dispone de un número limitado de observaciones, como en este caso (Burnham &amp; Anderson, 2004).</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Aplicar stepwise (BIC como criterio)</span></span>
@@ -720,7 +721,7 @@ F-statistic: 155.6 on 3 and 41 DF,  p-value: &lt; 2.2e-16</code></pre>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dwt</span>(modelo_final)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> lag Autocorrelation D-W Statistic p-value
-   1       0.1225464      1.598719   0.112
+   1       0.1225464      1.598719   0.094
  Alternative hypothesis: rho != 0</code></pre>
 </div>
 </div>

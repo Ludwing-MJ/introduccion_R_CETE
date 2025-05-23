@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R: Expansión y Modularidad del Entorno</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -618,10 +618,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                          <span class="at">col_names =</span> <span class="cn">TRUE</span><span class="sc">/</span><span class="cn">FALSE</span>) </span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>Los argumentos más relevantes de la función <code>read_excel()</code> se detallan a continuación:</p>
-<ul>
+<ol type="1">
 <li><p><strong>sheet</strong>: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, <code>"Hoja1"</code>) o el número de la hoja (por ejemplo, <code>1</code> para la primera hoja) (Wickham, 2016).</p></li>
 <li><p><strong>col_names</strong>: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en <code>TRUE</code>, la primera fila se interpretará como los nombres de las variables; si se establece en <code>FALSE</code>, R asignará nombres genéricos a las columnas (Grolemund &amp; Wickham, 2017).</p></li>
-</ul>
+</ol>
 </section>
 </section>
 <section id="verificación-de-la-importación-de-datos" class="level2" data-number="5.3">
@@ -631,25 +631,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="inspección-preliminar-de-los-datos"><span class="header-section-number">5.3.1</span> Inspección preliminar de los datos</h3>
 <p>La inspección preliminar consiste en una revisión rápida del contenido y la estructura del conjunto de datos recién importado. R proporciona funciones específicas para este propósito:</p>
 <ol type="1">
-<li><p><code>head()</code>: Permite visualizar las primeras filas del data frame, facilitando la comprobación de la correcta lectura de los encabezados, la alineación de las columnas y la presencia de datos esperados.</p></li>
-<li><p><code>tail()</code>: Muestra las últimas filas del conjunto de datos, útil para verificar la integridad de los registros al final del archivo.</p></li>
-<li><p><code>dim()</code>: Informa sobre el número de filas y columnas, lo que ayuda a confirmar que la cantidad de observaciones y variables coincide con lo esperado (Venables &amp; Ripley, 2002).</p></li>
+<li><p><strong>head()</strong>: Permite visualizar las primeras filas del data frame, facilitando la comprobación de la correcta lectura de los encabezados, la alineación de las columnas y la presencia de datos esperados.</p></li>
+<li><p><strong>tail()</strong>: Muestra las últimas filas del conjunto de datos, útil para verificar la integridad de los registros al final del archivo.</p></li>
+<li><p><strong>dim()</strong>: Informa sobre el número de filas y columnas, lo que ayuda a confirmar que la cantidad de observaciones y variables coincide con lo esperado (Venables &amp; Ripley, 2002).</p></li>
 </ol>
 </section>
 <section id="evaluación-de-la-estructura-y-los-tipos-de-variables" class="level3" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="evaluación-de-la-estructura-y-los-tipos-de-variables"><span class="header-section-number">5.3.2</span> Evaluación de la estructura y los tipos de variables</h3>
 <p>La correcta interpretación de los tipos de variables es fundamental para evitar errores en el análisis estadístico. R ofrece herramientas para examinar la estructura interna del objeto de datos:</p>
 <ol type="1">
-<li><p><code>str()</code>: Proporciona información detallada sobre el tipo de cada variable (numérica, carácter, factor, etc.), la cantidad de observaciones y la organización de las columnas. Esta función resulta esencial para detectar conversiones automáticas no deseadas, como la transformación de variables numéricas en factores o viceversa (Grolemund &amp; Wickham, 2017).</p></li>
-<li><p><code>names()</code>: Permite consultar los nombres de las columnas, lo que facilita la identificación de posibles errores en la lectura de los encabezados o la presencia de nombres duplicados.</p></li>
+<li><p><strong>str()</strong>: Proporciona información detallada sobre el tipo de cada variable (numérica, carácter, factor, etc.), la cantidad de observaciones y la organización de las columnas. Esta función resulta esencial para detectar conversiones automáticas no deseadas, como la transformación de variables numéricas en factores o viceversa (Grolemund &amp; Wickham, 2017).</p></li>
+<li><p><strong>names()</strong>: Permite consultar los nombres de las columnas, lo que facilita la identificación de posibles errores en la lectura de los encabezados o la presencia de nombres duplicados.</p></li>
 </ol>
 </section>
 <section id="resumen-estadístico-y-detección-de-inconsistencias" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="resumen-estadístico-y-detección-de-inconsistencias"><span class="header-section-number">5.3.3</span> Resumen estadístico y detección de inconsistencias</h3>
 <p>El análisis exploratorio inicial incluye la obtención de resúmenes estadísticos básicos, que permiten identificar valores atípicos, rangos inusuales o la presencia de datos faltantes:</p>
 <ol type="1">
-<li><p><code>summary()</code>: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).</p></li>
-<li><p><code>table()</code>: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.</p></li>
+<li><p><strong>summary()</strong>: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).</p></li>
+<li><p><strong>table()</strong>: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.</p></li>
 </ol>
 </section>
 <section id="verificación-de-la-codificación-de-caracteres" class="level3" data-number="5.3.4">
@@ -660,8 +660,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="identificación-de-valores-faltantes-y-duplicados"><span class="header-section-number">5.3.5</span> Identificación de valores faltantes y duplicados</h3>
 <p>La presencia de valores faltantes o registros duplicados puede afectar la validez de los análisis. R ofrece funciones para detectar y cuantificar estos casos:</p>
 <ol type="1">
-<li><p><code>is.na()</code>: Permite identificar valores ausentes en el conjunto de datos.</p></li>
-<li><p><code>anyDuplicated()</code>: Informa sobre la existencia de filas duplicadas, lo que resulta relevante para garantizar la unicidad de las observaciones (Venables &amp; Ripley, 2002).</p></li>
+<li><p><strong>is.na()</strong>: Permite identificar valores ausentes en el conjunto de datos.</p></li>
+<li><p><strong>anyDuplicated()</strong>: Informa sobre la existencia de filas duplicadas, lo que resulta relevante para garantizar la unicidad de las observaciones (Venables &amp; Ripley, 2002).</p></li>
 </ol>
 </section>
 <section id="importancia-de-la-verificación-sistemática" class="level3" data-number="5.3.6">

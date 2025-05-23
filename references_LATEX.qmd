@@ -83,5 +83,3 @@ Wilson, G., Bryan, J., Cranston, K., Kitzes, J., Nederbragt, A. J., \& Teal, T. 
 Xie, Y., Allaire, J. J., \& Grolemund, G. (2018). \textit{R Markdown: The definitive guide} (1st ed.). Chapman and Hall/CRC. \url{https://doi.org/10.1201/9781138359444}
 
 \end{hangparas}
-
-\end{hangparas}

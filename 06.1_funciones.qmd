@@ -30,7 +30,7 @@ Las funciones en R pueden clasificarse en dos grandes categorías, según su ori
 
 ### Funciones predefinidas en R
 
-Las funciones predefinidas en R constituyen un conjunto de herramientas esenciales que facilitan la ejecución de operaciones comunes de manera eficiente y directa. Integradas en el núcleo del lenguaje y en diversos paquetes complementarios, estas funciones permiten realizar cálculos estadísticos, manipular datos y obtener resúmenes informativos sin necesidad de definir procedimientos adicionales. Su uso simplifica la resolución de tareas habituales y contribuye a la claridad y concisión del código (R Core Team, 2023).
+Las funciones predefinidas en R representan un conjunto de herramientas esenciales que facilitan la ejecución eficiente y directa de operaciones comunes. Integradas tanto en el núcleo del lenguaje como en diversos paquetes complementarios, estas funciones permiten realizar cálculos estadísticos, manipular datos y obtener resúmenes informativos sin la necesidad de definir procedimientos adicionales. Su uso simplifica la resolución de tareas habituales y contribuye a la claridad y concisión del código (R Core Team, 2023).
 
 A continuación, se presentan algunos ejemplos de funciones predefinidas ampliamente utilizadas en R, junto con fragmentos de código que ilustran su aplicación:
 
@@ -39,18 +39,21 @@ A continuación, se presentan algunos ejemplos de funciones predefinidas ampliam
 datos <- c(1:25)
 
 # Cálculo de la media aritmética
-mean(datos)           # Resultado: 13
+mean(datos)  # Resultado: 13
 
 # Suma de los elementos del vector
-sum(datos)             # Resultado: 325
+sum(datos)  # Resultado: 325
 
 # Cálculo de la desviación estándar
-sd(datos)        # Resultado: 7.359801
+sd(datos)  # Resultado: 7.359801
 
 # Resumen estadístico del conjunto de datos
-summary(datos)   # Resultado:
+summary(datos) # Resultado:
+
 
 ```
+
+En este ejemplo, se define un vector de datos llamado `datos` que contiene los números enteros del 1 al 25. Luego, se utilizan diversas funciones predefinidas para calcular estadísticas descriptivas básicas. La función `mean()` calcula la media aritmética, `sum()` calcula la suma de los elementos, `sd()` calcula la desviación estándar y `summary()` proporciona un resumen estadístico que incluye el mínimo, el primer cuartil, la mediana, la media, el tercer cuartil y el máximo.
 
 Estas funciones están disponibles de forma predeterminada en R y permiten realizar análisis estadísticos básicos de manera inmediata, sin requerir definiciones adicionales por parte del usuario. Su dominio es esencial para el trabajo cotidiano con datos en R (R Core Team, 2023). Además de las funciones mostradas, R ofrece una amplia gama de funciones predefinidas para tareas como la manipulación de cadenas de texto (`grep`, `gsub`), la gestión de fechas y horas (`Sys.Date`, `strptime`), la generación de números aleatorios (`runif`, `rnorm`) y la creación de gráficos (`plot`, `hist`), entre muchas otras.
 

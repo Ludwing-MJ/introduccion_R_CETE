@@ -100,19 +100,6 @@ edades_ordenadas <- sort(edades)      # Orden ascendente
 edades_descendente <- sort(edades, decreasing = TRUE)  # Orden descendente
 ```
 
-#### Aplicaciones Prácticas
-
-Los vectores son esenciales en análisis estadísticos básicos y exploratorios:
-
-```{r}
-# Análisis descriptivo
-summary(edades)  # Resumen estadístico
-table(mayores_de_edad)  # Tabla de frecuencias
-hist(edades)  # Histograma de edades
-```
-
-La utilización adecuada de los vectores en R resulta indispensable para la gestión eficiente de datos y la ejecución de análisis estadísticos rigurosos. El dominio de esta estructura permite no solo realizar procedimientos exploratorios y descriptivos, sino también sienta las bases metodológicas para la implementación de técnicas analíticas avanzadas y el desarrollo de modelos estadísticos complejos en entornos de investigación y aplicación profesional (Grolemund & Wickham, 2017; Tukey, 1977).
-
 ## Matrices
 
 Las matrices en R representan estructuras de datos bidimensionales que organizan información en filas y columnas, manteniendo la homogeneidad en el tipo de datos (numérico, lógico o de texto). Esta característica fundamental garantiza la integridad y eficiencia en las operaciones matemáticas y estadísticas, siendo particularmente relevantes en el análisis multivariado y la computación científica (Ihaka & Gentleman, 1996; Venables & Ripley, 2002).
@@ -413,8 +400,8 @@ Ambas formas devuelven el vector de nombres almacenado en la lista.
 2.  **Por índice**: Utilizando corchetes dobles `[[ ]]`:
 
 ```{r}
-# Acceder al primer elemento de la lista (en este caso, el vector de nombres)
-mi_lista[[1]]
+# Acceder al primer elemento de la lista 
+mi_lista[[1]] #En este caso, el vector de nombres
 ```
 
 Esto es útil cuando se desconoce el nombre del elemento, pero se conoce su posición dentro de la lista.

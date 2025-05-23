@@ -86,11 +86,11 @@ Para organizar los archivos, datos y scripts de un análisis específico, RStudi
 
 2.  Elegir una de las siguientes opciones:
 
-    1.  **New Directory**: para crear un proyecto desde cero en una nueva carpeta.
+    **New Directory**: para crear un proyecto desde cero en una nueva carpeta.
 
-    2.  **Existing Directory**: para convertir una carpeta existente en un proyecto de RStudio.
+    **Existing Directory**: para convertir una carpeta existente en un proyecto de RStudio.
 
-    3.  **Version Control**: para clonar un repositorio de Git y trabajar en un proyecto con control de versiones.
+    **Version Control**: para clonar un repositorio de Git y trabajar en un proyecto con control de versiones.
 
 3.  Configurar el nombre y la ubicación del proyecto según las necesidades del análisis.
 

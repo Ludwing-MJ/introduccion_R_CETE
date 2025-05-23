@@ -5,7 +5,7 @@ En el lenguaje de programación R, los operadores constituyen herramientas esenc
 La clasificación de los operadores en R se realiza en función de la naturaleza de las operaciones que permiten ejecutar. A continuación, se describen las principales categorías de operadores, acompañadas de ejemplos prácticos que ilustran su uso y aplicación en el contexto del análisis de datos.
 
 | **Tipo de Operador** | **Ejemplo** | **Descripción** |
-|-------------------|------------------------|----------------------------|
+|--------------------|------------------------|----------------------------|
 | **Aritméticos** | `+`, `-`, `*`, `/` | Realizan operaciones matemáticas básicas como suma, resta, multiplicación, entre otras |
 | **Lógicos** | `>`, `<`, `==`, `!=` | Comparan valores y devuelven un resultado lógico (`TRUE` o `FALSE`) |
 | **Asignación** | `<-`, `=`, `->` | Asignan valores a objetos |
@@ -66,36 +66,38 @@ La siguiente tabla resume los principales operadores aritméticos disponibles en
 
 ### Ejemplo práctico
 
-En este ejemplo se utilizan operadores aritméticos para realizar cálculos básicos con dos variables numéricas:
+El siguiente ejemplo ilustra el uso de operadores aritméticos en R para efectuar cálculos matemáticos básicos entre dos variables numéricas. Cada operación se acompaña de una breve explicación sobre su funcionamiento y utilidad.
 
 ```{r}
-# Definición de variables
+# Definición de variables numéricas
 a <- 15
 b <- 4
 
-# Suma
-suma <- a + b           # 19
+# Suma de a y b
+suma <- a + b           # Resultado: 19
 
-# Resta
-resta <- a - b          # 11
+# Resta de b a a
+resta <- a - b          # Resultado: 11
 
-# Multiplicación
-multiplicacion <- a * b # 60
+# Multiplicación de a por b
+multiplicacion <- a * b # Resultado: 60
 
-# División
-division <- a / b       # 3.75
+# División de a entre b
+division <- a / b       # Resultado: 3.75
 
-# Potencia
-potencia <- a ^ b       # 50625
+# Potencia: a elevado a la b
+potencia <- a ^ b       # Resultado: 50625
 
-# División entera
-division_entera <- a %/% b  # 3
+# División entera de a entre b
+division_entera <- a %/% b  # Resultado: 3
 
-# Módulo o residuo
-residuo <- a %% b            # 3
+# Módulo o residuo de la división de a entre b
+residuo <- a %% b           # Resultado: 3
 ```
 
-En este ejemplo, se observa cómo los operadores aritméticos permiten realizar operaciones matemáticas básicas y obtener resultados numéricos de manera directa y sencilla en R (R Core Team, 2023).
+En este bloque de código, se definen dos variables numéricas, `a` y `b`, y se aplican distintos operadores aritméticos. El operador `+` realiza la suma, `-` la resta, `*` la multiplicación y `/` la división estándar. El operador `^` calcula la potencia, es decir, eleva `a` a la `b`. Por su parte, `%/%` efectúa la división entera, devolviendo únicamente la parte entera del cociente, mientras que `%%` retorna el residuo de la división.
+
+Este ejemplo evidencia cómo los operadores aritméticos en R permiten efectuar operaciones matemáticas básicas de manera directa y eficiente, facilitando la obtención de resultados numéricos en el análisis de datos (R Core Team, 2023).
 
 ## Operadores lógicos
 
@@ -117,29 +119,39 @@ A continuación, se presenta una tabla que resume los principales operadores ló
 
 ### Ejemplo práctico
 
-A continuación, se presenta un ejemplo práctico donde se emplean operadores lógicos para realizar comparaciones y evaluaciones condicionales en un contexto de análisis de datos:
+Para ilustrar el uso de los operadores lógicos en R, se presenta un ejemplo práctico que emplea fragmentos de código comentados y explicados paso a paso. Estas operaciones son fundamentales para realizar comparaciones y evaluaciones condicionales en el contexto del análisis de datos.
+
+Primero, se muestran comparaciones simples utilizando operadores lógicos:
 
 ```{r}
 # Comparaciones simples
 edad <- 25
-es_mayor <- edad > 18          # TRUE, porque 25 es mayor que 18
-es_menor <- edad < 30          # TRUE, porque 25 es menor que 30
-es_igual <- edad == 25         # TRUE, porque 25 es igual a 25
-es_diferente <- edad != 20     # TRUE, porque 25 es diferente de 20
+es_mayor <- edad > 18      # TRUE, porque 25 es mayor que 18
+es_menor <- edad < 30      # TRUE, porque 25 es menor que 30
+es_igual <- edad == 25     # TRUE, porque 25 es igual a 25
+```
 
+En este bloque de código, se asigna el valor 25 a la variable `edad` y se realizan diversas comparaciones lógicas. El operador `>` evalúa si `edad` es mayor que 18, el operador `<` evalúa si `edad` es menor que 30 y el operador `==` evalúa si `edad` es igual a 25. Cada una de estas comparaciones devuelve un valor lógico (`TRUE` o `FALSE`) que se almacena en las variables correspondientes.
+
+A continuación, se ejemplifican operaciones lógicas compuestas mediante el cálculo del índice de masa corporal (IMC) y la evaluación de si una persona se encuentra en un rango de peso normal o en sobrepeso:
+
+```{r}
 # Operaciones lógicas compuestas
 peso_Kg <- 70
 altura <- 1.75
-imc <- peso_Kg / (altura^2)    # Cálculo del índice de masa corporal
+# Cálculo del índice de masa corporal
+imc <- peso_Kg / (altura^2)  
 
-sobrepeso <- imc >= 25 & imc < 30      
-sobrepeso   # FALSE, el IMC está fuera del rango de sobrepeso
+sobrepeso <- imc >= 25 & imc < 30
+sobrepeso  # FALSE, el IMC está fuera del rango de sobrepeso
 
-peso_normal <- imc >= 18.5 & imc < 25  
+peso_normal <- imc >= 18.5 & imc < 25
 peso_normal # TRUE, el IMC está en el rango de peso normal
 ```
 
-En este ejemplo, se ilustra cómo los operadores lógicos permiten evaluar condiciones tanto simples como compuestas, facilitando la clasificación de datos y la toma de decisiones dentro del análisis estadístico en R (R Core Team, 2023). El cálculo del índice de masa corporal (IMC) y la posterior evaluación de si una persona se encuentra en un rango de peso normal o en sobrepeso son ejemplos claros de la aplicación práctica de estos operadores.
+En este caso, se calculó el IMC dividiendo el peso en kilogramos por el cuadrado de la altura en metros. Luego, se utilizan operadores lógicos compuestos (`&`) para evaluar si el IMC se encuentra dentro de los rangos de sobrepeso (mayor o igual a 25 y menor que 30) y peso normal (mayor o igual a 18.5 y menor que 25). El resultado de estas evaluaciones lógicas se almacena en las variables `sobrepeso` y `peso_normal`, respectivamente.
+
+En resumen, este ejemplo ilustra cómo los operadores lógicos permiten evaluar condiciones tanto simples como compuestas, facilitando la clasificación de datos y la toma de decisiones dentro del análisis estadístico en R (R Core Team, 2023). El cálculo del IMC y la posterior evaluación de si una persona se encuentra en un rango de peso normal o en sobrepeso son ejemplos claros de la aplicación práctica de estos operadores.
 
 ## Operadores de Manipulación de Datos
 
@@ -158,51 +170,67 @@ Estos operadores constituyen herramientas fundamentales para la manipulación de
 
 ### Ejemplo Práctico
 
-A continuación, se presenta un ejemplo práctico utilizando fragmentos de código en R para ilustrar el uso de estos operadores de manipulación de datos:
+Para ilustrar el uso de los operadores de manipulación de datos en R, se expone un ejemplo práctico que emplea fragmentos de código comentados y explicados paso a paso. Estas operaciones constituyen la base para el manejo eficiente de información en el entorno estadístico.
+
+Primero, se muestra cómo crear un vector numérico y acceder a sus elementos individuales:
 
 ```{r}
-# Crear un vector
+# Crear un vector numérico
 vector <- c(10, 20, 30, 40, 50)
 
-# Acceder al primer elemento
-vector[1]       # Resultado: 10
+# Acceder al primer elemento del vector
+vector[1]  # Resultado: 10
+```
 
-# Crear un data frame para el ejemplo
+El operador de corchetes `[ ]` permite seleccionar elementos específicos de un vector. En este caso, `vector[1]` retorna el primer valor almacenado, que es 10.
+
+A continuación, se ejemplifica la creación de un data frame, estructura fundamental para el análisis de datos en R, y la selección de columnas y elementos particulares:
+
+```{r}
+# Crear un data frame con variables nombre, edad y peso
 data <- data.frame(
   nombre = c("Juan", "Ana", "Luis"),
   edad = c(25, 30, 22),
   peso = c(70, 65, 80)
 )
 
-# Acceder a una columna completa
-data$edad      # Resultado: 25, 30, 22
+# Acceder a la columna 'edad'
+data$edad  # Resultado: 25, 30, 22
 
-# Acceder a un elemento específico
-data[2, 3]     # Resultado: 65 (peso de Ana)
-
-# Crear una secuencia de números del 1 al 10
-secuencia <- 1:10   # Resultado: 1, 2, 3, ..., 10               
-secuencia
+# Acceder a un elemento específico: fila 2, columna 3 (peso de Ana)
+data[2, 3]  # Resultado: 65
 ```
 
-Este ejemplo muestra cómo los operadores de manipulación de datos permiten seleccionar elementos individuales, columnas completas o secuencias de valores dentro de las estructuras de datos más utilizadas en R. Estas operaciones son fundamentales para filtrar, transformar y analizar información de manera precisa y eficiente en el entorno estadístico (R Core Team, 2023).
+El uso del signo de dólar `$` permite extraer una columna completa por su nombre, mientras que la notación `[fila, columna]` posibilita acceder a un valor específico dentro del data frame.
+
+Por último, se muestra cómo generar una secuencia de números utilizando el operador de dos puntos `:`, que es útil para crear rangos de valores:
+
+```{r}
+# Crear una secuencia de números del 1 al 10
+secuencia <- 1:10
+secuencia  # Resultado: 1, 2, 3, ..., 10
+```
+
+En resumen, estos ejemplos demuestran que los operadores de manipulación de datos en R permiten seleccionar elementos individuales, columnas completas o secuencias de valores dentro de las estructuras de datos más utilizadas. Estas operaciones son esenciales para filtrar, transformar y analizar información de manera precisa y eficiente (R Core Team, 2023).
 
 ### Aplicaciones Avanzadas
 
-Los operadores de manipulación de datos también pueden combinarse para realizar selecciones más complejas. Por ejemplo:
+Los operadores de manipulación de datos en R pueden combinarse para realizar selecciones más complejas y adaptadas a necesidades específicas de análisis. A continuación, se presentan algunos ejemplos que ilustran aplicaciones avanzadas:
 
 ```{r}
 # Seleccionar múltiples elementos de un vector
-## Selecciona los elementos en las posiciones 1, 3 y 5
-vector[c(1, 3, 5)]   
+# Se seleccionan los elementos en las posiciones 1, 3 y 5
+vector[c(1, 3, 5)]  # Resultado: 10, 30, 50
 
 # Seleccionar un subconjunto de filas y columnas en un data frame
-## Selecciona nombre y peso de personas mayores de 25 años
-data[data$edad > 25, c("nombre", "peso")]   
+# Se seleccionan el nombre y el peso de las personas mayores de 25 años
+data[data$edad > 25, c("nombre", "peso")]
 
 # Utilizar secuencias para seleccionar rangos de elementos
-## Selecciona los elementos desde la posición 2 hasta la 4
-vector[2:4]   
+# Se seleccionan los elementos desde la posición 2 hasta la 4
+vector[2:4]  # Resultado: 20, 30, 40
 ```
 
-Estas aplicaciones avanzadas demuestran la flexibilidad y potencia de los operadores de manipulación de datos en R, permitiendo a los usuarios realizar selecciones precisas y complejas con una sintaxis relativamente sencilla (Wickham, 2016).
+En el primer caso, se utiliza un vector de índices para seleccionar posiciones específicas dentro del vector original. En el segundo ejemplo, se emplea una condición lógica para filtrar filas de un data frame y, simultáneamente, se seleccionan columnas específicas por nombre. Finalmente, el uso de secuencias permite extraer rangos continuos de elementos de un vector.
+
+Estas aplicaciones avanzadas evidencian la flexibilidad y potencia de los operadores de manipulación de datos en R, facilitando la realización de selecciones precisas y complejas mediante una sintaxis clara y concisa (Wickham, 2016).

@@ -215,7 +215,7 @@ Una vez creados los objetos, es importante poder identificar su naturaleza y est
 
 Ejemplo de uso de estas funciones:
 
-```{r}
+```{r eval=FALSE}
 # Exploración de un objeto numérico
 class(x)      # Devuelve "numeric"
 typeof(x)     # Devuelve "double"

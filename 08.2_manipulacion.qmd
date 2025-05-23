@@ -197,25 +197,32 @@ El ordenamiento y agrupamiento de datos constituyen operaciones fundamentales en
 
 ### Ordenamiento de datos
 
-R proporciona herramientas eficientes para ordenar datos mediante la función `order()`, que genera índices de ordenamiento que pueden aplicarse a las filas del data frame. Este ordenamiento puede realizarse por una o múltiples variables, en orden ascendente o descendente:
+R proporciona herramientas eficientes para ordenar datos mediante la función `order()`, que genera índices de ordenamiento que pueden aplicarse a las filas del data frame. Este ordenamiento puede realizarse por una o múltiples variables, en orden ascendente o descendente.
 
 ```{r}
 # Ordenar el data frame por altura de manera ascendente
 # order() genera índices basados en los valores de altura_cm
-# Los índices se utilizan para reordenar todas las filas del data frame
+# Los índices se utilizan para reordenar todas las filas 
 datos_ordenados <- datos_cultivo[order(datos_cultivo$altura_cm), ]
 
 # Verificar el ordenamiento mostrando las primeras filas
 head(datos_ordenados)
+```
 
-# Ordenar por múltiples criterios: por tratamiento y por peso descendente
-# El signo negativo en peso_gr invierte el orden de esta variable
-datos_ordenados_multi <- datos_cultivo[order(datos_cultivo$tratamiento,
-                                             -datos_cultivo$peso_gr), ]
+En este ejemplo, la función `order(datos_cultivo$altura_cm)` genera un vector de índices que indica el orden en el que deben organizarse las filas del data frame `datos_cultivo` para que la columna `altura_cm` quede ordenada de manera ascendente. Estos índices se utilizan para reordenar las filas del data frame, y el resultado se almacena en `datos_ordenados`. La función `head()` muestra las primeras filas del data frame ordenado para verificar el resultado.
+
+```{r}
+# Ordenar por múltiples criterios: 
+# Por tratamiento y por peso descendente
+datos_ordenados_multi <- datos_cultivo[order(
+  datos_cultivo$tratamiento,
+  -datos_cultivo$peso_gr), ]
 
 # Verificar el ordenamiento múltiple
 head(datos_ordenados_multi)
 ```
+
+En este caso, se realiza un ordenamiento por múltiples criterios. Primero, se ordena por la columna `tratamiento` de manera ascendente (orden alfabético). Luego, dentro de cada grupo de tratamiento, se ordena por la columna `peso_gr` de manera descendente. El signo negativo `-` delante de `datos_cultivo$peso_gr` indica que el ordenamiento debe ser descendente para esta variable.
 
 El ordenamiento por múltiples variables es particularmente útil cuando se necesita establecer una jerarquía en la organización de los datos, como por ejemplo, ordenar primero por tratamiento y luego por una variable de respuesta.
 
@@ -335,19 +342,29 @@ La identificación de duplicados puede realizarse considerando todas las variabl
 
 ### Verificación de la integridad de los datos
 
-Después de manejar valores faltantes y duplicados, es importante verificar la integridad general de los datos:
+Después de abordar los valores faltantes y duplicados, es crucial verificar la integridad general de los datos para asegurar la calidad y fiabilidad del análisis posterior. Esta verificación permite identificar posibles sesgos o inconsistencias introducidas durante el proceso de limpieza y transformación de los datos.
 
 ```{r}
 # Realizar un resumen estadístico completo
 summary(datos_sin_duplicados)
+```
 
+La función `summary()` proporciona un resumen estadístico de cada variable en el data frame `datos_sin_duplicados`. Este resumen incluye información como el mínimo, el primer cuartil, la mediana, la media, el tercer cuartil y el máximo para las variables numéricas, así como la frecuencia de cada categoría para las variables categóricas. La presencia de valores `NA` (Not Available) indica la cantidad de valores faltantes en cada variable.
+
+```{r}
 # Verificar la estructura del data frame resultante
 str(datos_sin_duplicados)
+```
 
+La función `str()` muestra la estructura interna del data frame, incluyendo el tipo de cada variable (numérica, carácter, factor, fecha, etc.) y las primeras observaciones. Esta función es útil para confirmar que las variables tienen el tipo de dato esperado y que no hay errores en la importación o transformación de los datos.
+
+```{r}
 # Calcular el porcentaje de datos completos por variable
 porcentaje_completos <- colMeans(!is.na(datos_sin_duplicados)) * 100
 print(porcentaje_completos)
 ```
+
+En este bloque de código, se calcula el porcentaje de datos completos (no faltantes) para cada variable. La función `is.na()` devuelve un valor lógico (`TRUE` o `FALSE`) indicando si cada valor es faltante o no. El operador `!` invierte estos valores lógicos, de modo que `!is.na()` devuelve `TRUE` para los valores no faltantes y `FALSE` para los valores faltantes. La función `colMeans()` calcula la media de estos valores lógicos por columna, lo que equivale al porcentaje de valores no faltantes. Finalmente, se multiplica por 100 para expresar el resultado como un porcentaje.
 
 Esta verificación final permite asegurar que el tratamiento de valores faltantes y duplicados no ha introducido sesgos o inconsistencias en los datos. Es fundamental documentar todas las decisiones tomadas en este proceso, ya que pueden afectar la interpretación de los resultados posteriores.
 

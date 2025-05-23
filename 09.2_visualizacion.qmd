@@ -377,7 +377,7 @@ Descripción e interpretación de los gráficos generados:
 
 La personalización de gráficos es un aspecto fundamental para lograr visualizaciones claras, informativas y estéticamente agradables. En el sistema gráfico base de R, la personalización se realiza mediante la modificación de los argumentos de las funciones gráficas principales y la incorporación de elementos adicionales a través de funciones auxiliares. Esta flexibilidad permite adaptar cada gráfico a las necesidades específicas del análisis y a los estándares de comunicación científica (Murrell, 2018).
 
-### **Argumentos y funciones clave para la personalizaciónA continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:**
+### Argumentos y funciones clave para la personalización
 
 A continuación se describen los argumentos y funciones más relevantes para la personalización de gráficos en R base:
 

@@ -75,14 +75,15 @@ Se ajusta un modelo inicial considerando todas las variables predictoras:
 # Uso de Attach para no colocar el signo de dolar con todas las variables
 attach(data)
 # Elaborar un modelo empleando todas las variables como predictoras
-modelo_completo <- lm(Biomasa ~ pH + Zinc + potasio + Salinidad, data = data)
+modelo_completo <- lm(Biomasa ~ pH + Zinc + 
+                        potasio + Salinidad, data = data)
 # Revisar el modelo
 summary(modelo_completo)
 ```
 
 La función `attach(data)` permite acceder a las variables de la base de datos directamente por su nombre, sin necesidad de usar el operador `$`. La salida del modelo (`summary(modelo_completo)`) proporciona los coeficientes estimados, errores estándar, valores t y p-valores para cada predictor. Un p-valor menor a 0.05 indica que la variable correspondiente tiene un efecto estadísticamente significativo sobre la biomasa (en este ejemplo únicamente la variable potasio no tiene un efecto estadísticamente significativo sobre la biomasa), manteniendo constantes las demás variables. El coeficiente de determinación ajustado (Adjusted R-squared) indica el porcentaje de variabilidad de la biomasa explicado por el modelo siendo este del 91.54% para el modelo incial.
 
-## Selección del modelo mediante el método paso a paso (stepwise) y criterio BIC
+## Selección del modelo mediante el método paso a paso (stepwise)
 
 Para seleccionar el modelo más parsimonioso y evitar el sobreajuste, se emplea el método paso a paso (stepwise), utilizando el criterio de información bayesiano (BIC) como criterio de selección. El BIC penaliza la complejidad del modelo de manera más estricta que el AIC, favoreciendo modelos más simples y robustos, especialmente recomendable cuando se dispone de un número limitado de observaciones, como en este caso (Burnham & Anderson, 2004).
 

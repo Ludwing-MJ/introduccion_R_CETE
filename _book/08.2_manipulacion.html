@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./07_paquetes.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R: Expansión y Modularidad del Entorno</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Paquetes en R</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -807,11 +807,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>El ordenamiento y agrupamiento de datos constituyen operaciones fundamentales en el análisis exploratorio de datos, facilitando la identificación de patrones, la detección de valores atípicos y el cálculo de estadísticas descriptivas por grupos. Estas operaciones son especialmente relevantes en la estadística clásica, donde la estructura y organización de los datos influyen directamente en la calidad de los análisis posteriores (Wickham &amp; Grolemund, 2017; R Core Team, 2023).</p>
 <section id="ordenamiento-de-datos" class="level3" data-number="10.4.1">
 <h3 data-number="10.4.1" class="anchored" data-anchor-id="ordenamiento-de-datos"><span class="header-section-number">10.4.1</span> Ordenamiento de datos</h3>
-<p>R proporciona herramientas eficientes para ordenar datos mediante la función <code>order()</code>, que genera índices de ordenamiento que pueden aplicarse a las filas del data frame. Este ordenamiento puede realizarse por una o múltiples variables, en orden ascendente o descendente:</p>
+<p>R proporciona herramientas eficientes para ordenar datos mediante la función <code>order()</code>, que genera índices de ordenamiento que pueden aplicarse a las filas del data frame. Este ordenamiento puede realizarse por una o múltiples variables, en orden ascendente o descendente.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar el data frame por altura de manera ascendente</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co"># order() genera índices basados en los valores de altura_cm</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Los índices se utilizan para reordenar todas las filas del data frame</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Los índices se utilizan para reordenar todas las filas </span></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>datos_ordenados <span class="ot">&lt;-</span> datos_cultivo[<span class="fu">order</span>(datos_cultivo<span class="sc">$</span>altura_cm), ]</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar el ordenamiento mostrando las primeras filas</span></span>
@@ -832,13 +832,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 20          0.5457014           Bajo 4.705016          3          0
 10          0.3998678           Alto 5.019265          2          0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar por múltiples criterios: por tratamiento y por peso descendente</span></span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># El signo negativo en peso_gr invierte el orden de esta variable</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>datos_ordenados_multi <span class="ot">&lt;-</span> datos_cultivo[<span class="fu">order</span>(datos_cultivo<span class="sc">$</span>tratamiento,</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                             <span class="sc">-</span>datos_cultivo<span class="sc">$</span>peso_gr), ]</span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar el ordenamiento múltiple</span></span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_ordenados_multi)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este ejemplo, la función <code>order(datos_cultivo$altura_cm)</code> genera un vector de índices que indica el orden en el que deben organizarse las filas del data frame <code>datos_cultivo</code> para que la columna <code>altura_cm</code> quede ordenada de manera ascendente. Estos índices se utilizan para reordenar las filas del data frame, y el resultado se almacena en <code>datos_ordenados</code>. La función <code>head()</code> muestra las primeras filas del data frame ordenado para verificar el resultado.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ordenar por múltiples criterios: </span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Por tratamiento y por peso descendente</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>datos_ordenados_multi <span class="ot">&lt;-</span> datos_cultivo[<span class="fu">order</span>(</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  datos_cultivo<span class="sc">$</span>tratamiento,</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  <span class="sc">-</span>datos_cultivo<span class="sc">$</span>peso_gr), ]</span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar el ordenamiento múltiple</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(datos_ordenados_multi)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   parcela    tratamiento bloque altura_cm peso_gr daño_plaga fecha_siembra
 2        2        Control      2      62.7   114.6      Medio    2024-01-08
@@ -856,6 +860,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 10          0.3998678           Alto 5.019265          2          0</code></pre>
 </div>
 </div>
+<p>En este caso, se realiza un ordenamiento por múltiples criterios. Primero, se ordena por la columna <code>tratamiento</code> de manera ascendente (orden alfabético). Luego, dentro de cada grupo de tratamiento, se ordena por la columna <code>peso_gr</code> de manera descendente. El signo negativo <code>-</code> delante de <code>datos_cultivo$peso_gr</code> indica que el ordenamiento debe ser descendente para esta variable.</p>
 <p>El ordenamiento por múltiples variables es particularmente útil cuando se necesita establecer una jerarquía en la organización de los datos, como por ejemplo, ordenar primero por tratamiento y luego por una variable de respuesta.</p>
 </section>
 <section id="cálculo-de-estadísticas-por-grupo" class="level3" data-number="10.4.2">
@@ -989,7 +994,7 @@ logical      20 </code></pre>
 </section>
 <section id="verificación-de-la-integridad-de-los-datos" class="level3" data-number="10.5.3">
 <h3 data-number="10.5.3" class="anchored" data-anchor-id="verificación-de-la-integridad-de-los-datos"><span class="header-section-number">10.5.3</span> Verificación de la integridad de los datos</h3>
-<p>Después de manejar valores faltantes y duplicados, es importante verificar la integridad general de los datos:</p>
+<p>Después de abordar los valores faltantes y duplicados, es crucial verificar la integridad general de los datos para asegurar la calidad y fiabilidad del análisis posterior. Esta verificación permite identificar posibles sesgos o inconsistencias introducidas durante el proceso de limpieza y transformación de los datos.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar un resumen estadístico completo</span></span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(datos_sin_duplicados)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1019,6 +1024,9 @@ logical      20 </code></pre>
  Max.   :5.019              Max.   :1.00  
  NA's   :2                                </code></pre>
 </div>
+</div>
+<p>La función <code>summary()</code> proporciona un resumen estadístico de cada variable en el data frame <code>datos_sin_duplicados</code>. Este resumen incluye información como el mínimo, el primer cuartil, la mediana, la media, el tercer cuartil y el máximo para las variables numéricas, así como la frecuencia de cada categoría para las variables categóricas. La presencia de valores <code>NA</code> (Not Available) indica la cantidad de valores faltantes en cada variable.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar la estructura del data frame resultante</span></span>
 <span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(datos_sin_duplicados)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -1036,6 +1044,9 @@ logical      20 </code></pre>
  $ nivel_daño        : Factor w/ 3 levels "1","2","3": 2 2 1 2 2 1 1 3 2 2 ...
  $ es_control        : num  1 1 1 1 1 0 0 0 0 0 ...</code></pre>
 </div>
+</div>
+<p>La función <code>str()</code> muestra la estructura interna del data frame, incluyendo el tipo de cada variable (numérica, carácter, factor, fecha, etc.) y las primeras observaciones. Esta función es útil para confirmar que las variables tienen el tipo de dato esperado y que no hay errores en la importación o transformación de los datos.</p>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular el porcentaje de datos completos por variable</span></span>
 <span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>porcentaje_completos <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(<span class="sc">!</span><span class="fu">is.na</span>(datos_sin_duplicados)) <span class="sc">*</span> <span class="dv">100</span></span>
 <span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(porcentaje_completos)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -1048,6 +1059,7 @@ logical      20 </code></pre>
                 90                 90                100                100 </code></pre>
 </div>
 </div>
+<p>En este bloque de código, se calcula el porcentaje de datos completos (no faltantes) para cada variable. La función <code>is.na()</code> devuelve un valor lógico (<code>TRUE</code> o <code>FALSE</code>) indicando si cada valor es faltante o no. El operador <code>!</code> invierte estos valores lógicos, de modo que <code>!is.na()</code> devuelve <code>TRUE</code> para los valores no faltantes y <code>FALSE</code> para los valores faltantes. La función <code>colMeans()</code> calcula la media de estos valores lógicos por columna, lo que equivale al porcentaje de valores no faltantes. Finalmente, se multiplica por 100 para expresar el resultado como un porcentaje.</p>
 <p>Esta verificación final permite asegurar que el tratamiento de valores faltantes y duplicados no ha introducido sesgos o inconsistencias en los datos. Es fundamental documentar todas las decisiones tomadas en este proceso, ya que pueden afectar la interpretación de los resultados posteriores.</p>
 <p>La gestión adecuada de valores faltantes y duplicados es un paso crítico en la preparación de datos para análisis estadísticos. Las decisiones tomadas en esta etapa deben basarse en un entendimiento profundo del contexto del estudio y documentarse apropiadamente para garantizar la reproducibilidad del análisis (R Core Team, 2023).</p>
 

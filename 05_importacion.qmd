@@ -90,9 +90,9 @@ datos_excel <- read_excel("ruta/del/archivo/datos.xlsx",
 
 Los argumentos más relevantes de la función `read_excel()` se detallan a continuación:
 
--   **sheet**: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, `"Hoja1"`) o el número de la hoja (por ejemplo, `1` para la primera hoja) (Wickham, 2016).
+1.  **sheet**: Este argumento permite seleccionar la hoja específica que se desea importar desde el archivo Excel. Se puede especificar el nombre de la hoja como una cadena de caracteres (por ejemplo, `"Hoja1"`) o el número de la hoja (por ejemplo, `1` para la primera hoja) (Wickham, 2016).
 
--   **col_names**: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en `TRUE`, la primera fila se interpretará como los nombres de las variables; si se establece en `FALSE`, R asignará nombres genéricos a las columnas (Grolemund & Wickham, 2017).
+2.  **col_names**: Este argumento lógico determina si la primera fila de la hoja de cálculo debe ser utilizada como los nombres de las columnas. Si se establece en `TRUE`, la primera fila se interpretará como los nombres de las variables; si se establece en `FALSE`, R asignará nombres genéricos a las columnas (Grolemund & Wickham, 2017).
 
 ## Verificación de la importación de datos
 
@@ -102,27 +102,27 @@ La verificación de la importación de datos representa una fase crítica en el 
 
 La inspección preliminar consiste en una revisión rápida del contenido y la estructura del conjunto de datos recién importado. R proporciona funciones específicas para este propósito:
 
-1.  `head()`: Permite visualizar las primeras filas del data frame, facilitando la comprobación de la correcta lectura de los encabezados, la alineación de las columnas y la presencia de datos esperados.
+1.  **head()**: Permite visualizar las primeras filas del data frame, facilitando la comprobación de la correcta lectura de los encabezados, la alineación de las columnas y la presencia de datos esperados.
 
-2.  `tail()`: Muestra las últimas filas del conjunto de datos, útil para verificar la integridad de los registros al final del archivo.
+2.  **tail()**: Muestra las últimas filas del conjunto de datos, útil para verificar la integridad de los registros al final del archivo.
 
-3.  `dim()`: Informa sobre el número de filas y columnas, lo que ayuda a confirmar que la cantidad de observaciones y variables coincide con lo esperado (Venables & Ripley, 2002).
+3.  **dim()**: Informa sobre el número de filas y columnas, lo que ayuda a confirmar que la cantidad de observaciones y variables coincide con lo esperado (Venables & Ripley, 2002).
 
 ### Evaluación de la estructura y los tipos de variables
 
 La correcta interpretación de los tipos de variables es fundamental para evitar errores en el análisis estadístico. R ofrece herramientas para examinar la estructura interna del objeto de datos:
 
-1.  `str()`: Proporciona información detallada sobre el tipo de cada variable (numérica, carácter, factor, etc.), la cantidad de observaciones y la organización de las columnas. Esta función resulta esencial para detectar conversiones automáticas no deseadas, como la transformación de variables numéricas en factores o viceversa (Grolemund & Wickham, 2017).
+1.  **str()**: Proporciona información detallada sobre el tipo de cada variable (numérica, carácter, factor, etc.), la cantidad de observaciones y la organización de las columnas. Esta función resulta esencial para detectar conversiones automáticas no deseadas, como la transformación de variables numéricas en factores o viceversa (Grolemund & Wickham, 2017).
 
-2.  `names()`: Permite consultar los nombres de las columnas, lo que facilita la identificación de posibles errores en la lectura de los encabezados o la presencia de nombres duplicados.
+2.  **names()**: Permite consultar los nombres de las columnas, lo que facilita la identificación de posibles errores en la lectura de los encabezados o la presencia de nombres duplicados.
 
 ### Resumen estadístico y detección de inconsistencias
 
 El análisis exploratorio inicial incluye la obtención de resúmenes estadísticos básicos, que permiten identificar valores atípicos, rangos inusuales o la presencia de datos faltantes:
 
-1.  `summary()`: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).
+1.  **summary()**: Genera un resumen estadístico para cada variable, incluyendo medidas de tendencia central, dispersión y frecuencia de valores nulos. Esta función resulta útil para detectar anomalías y orientar las primeras etapas de limpieza de datos (Wickham, 2016).
 
-2.  `table()`: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.
+2.  **table()**: Permite examinar la frecuencia de los valores en variables categóricas, facilitando la identificación de categorías inesperadas o errores de codificación.
 
 ### Verificación de la codificación de caracteres
 
@@ -132,9 +132,9 @@ En contextos donde los datos contienen caracteres especiales, como tildes o la l
 
 La presencia de valores faltantes o registros duplicados puede afectar la validez de los análisis. R ofrece funciones para detectar y cuantificar estos casos:
 
-1.  `is.na()`: Permite identificar valores ausentes en el conjunto de datos.
+1.  **is.na()**: Permite identificar valores ausentes en el conjunto de datos.
 
-2.  `anyDuplicated()`: Informa sobre la existencia de filas duplicadas, lo que resulta relevante para garantizar la unicidad de las observaciones (Venables & Ripley, 2002).
+2.  **anyDuplicated()**: Informa sobre la existencia de filas duplicadas, lo que resulta relevante para garantizar la unicidad de las observaciones (Venables & Ripley, 2002).
 
 ### Importancia de la verificación sistemática
 
