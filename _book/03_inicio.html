@@ -520,7 +520,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#tipos-principales-de-objetos-en-r" id="toc-tipos-principales-de-objetos-en-r" class="nav-link" data-scroll-target="#tipos-principales-de-objetos-en-r"><span class="header-section-number">3.4</span> Tipos principales de objetos en R</a>
   <ul class="collapse">
   <li><a href="#objetos-numéricos" id="toc-objetos-numéricos" class="nav-link" data-scroll-target="#objetos-numéricos"><span class="header-section-number">3.4.1</span> Objetos Numéricos</a></li>
-  <li><a href="#objetos-de-texto" id="toc-objetos-de-texto" class="nav-link" data-scroll-target="#objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</a></li>
+  <li><a href="#objetos-tipo-caracter" id="toc-objetos-tipo-caracter" class="nav-link" data-scroll-target="#objetos-tipo-caracter"><span class="header-section-number">3.4.2</span> Objetos tipo Caracter</a></li>
   <li><a href="#objetos-de-tipo-factor" id="toc-objetos-de-tipo-factor" class="nav-link" data-scroll-target="#objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</a></li>
   <li><a href="#objetos-lógicos" id="toc-objetos-lógicos" class="nav-link" data-scroll-target="#objetos-lógicos"><span class="header-section-number">3.4.4</span> Objetos Lógicos</a></li>
   </ul></li>
@@ -660,8 +660,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Los objetos numéricos permiten realizar operaciones matemáticas y son esenciales en análisis estadísticos, cálculos y modelado de datos.</p>
 </section>
-<section id="objetos-de-texto" class="level3" data-number="3.4.2">
-<h3 data-number="3.4.2" class="anchored" data-anchor-id="objetos-de-texto"><span class="header-section-number">3.4.2</span> Objetos de Texto</h3>
+<section id="objetos-tipo-caracter" class="level3" data-number="3.4.2">
+<h3 data-number="3.4.2" class="anchored" data-anchor-id="objetos-tipo-caracter"><span class="header-section-number">3.4.2</span> Objetos tipo Caracter</h3>
 <p>Los objetos de texto, también conocidos como objetos de tipo carácter, almacenan cadenas de texto. Estos se escriben entre comillas dobles (<code>"</code>) o simples (<code>'</code>). Son útiles para representar información cualitativa, como nombres, descripciones o etiquetas.</p>
 <p>Ejemplo de creación de objetos de texto:</p>
 <div class="cell">
@@ -693,45 +693,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="objetos-de-tipo-factor" class="level3" data-number="3.4.3">
 <h3 data-number="3.4.3" class="anchored" data-anchor-id="objetos-de-tipo-factor"><span class="header-section-number">3.4.3</span> Objetos de Tipo Factor</h3>
-<p>Los objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos. Estos niveles representan categorías discretas, como escalas, estados o clasificaciones. Los factores son especialmente útiles en análisis estadísticos, ya que permiten manejar variables categóricas de manera eficiente.</p>
-<p>Ejemplo de creación de objetos tipo factor:</p>
+<p>Los objetos de tipo factor se utilizan para almacenar variables categóricas con niveles definidos. Estos niveles representan categorías discretas, como escalas, estados o clasificaciones. Los factores son especialmente útiles en análisis estadísticos, ya que permiten manejar variables categóricas de manera eficiente y asegurar que los análisis se realicen de manera correcta, especialmente en modelos estadísticos y gráficos.</p>
+<p>A continuación, se presentan ejemplos de creación y exploración de objetos de tipo factor:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de factores simples</span></span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"masculino"</span>)</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de factores con múltiples niveles</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>, </span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"soltero"</span>, <span class="st">"casado"</span>, <span class="st">"divorciado"</span>))</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>nivel_educativo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"licenciatura"</span>,</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"bachillerato"</span>,</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"licenciatura"</span>,</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"posgrado"</span>),</span>
-<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ordered =</span> <span class="cn">TRUE</span>)  <span class="co"># Factor ordenado</span></span>
-<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de factores</span></span>
-<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(estado_civil)     <span class="co"># Muestra "factor"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>sexo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"masculino"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este ejemplo, se crean dos factores simples: <code>estado_civil</code> y <code>sexo</code>. La función <code>factor()</code> convierte las cadenas de texto “soltero” y “masculino” en objetos de tipo factor.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de factores con múltiples niveles</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>, </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>                      <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"soltero"</span>, <span class="st">"casado"</span>, <span class="st">"divorciado"</span>))</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>nivel_educativo <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"licenciatura"</span>,</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>                         <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"bachillerato"</span>,</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"licenciatura"</span>,</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="st">"posgrado"</span>),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">ordered =</span> <span class="cn">TRUE</span>)  <span class="co"># Factor ordenado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>En este caso, se crean factores con múltiples niveles. El argumento <code>levels</code> especifica los posibles valores que puede tomar el factor. En el caso de <code>estado_civil</code>, se definen tres niveles: “soltero”, “casado” y “divorciado”. En el caso de <code>nivel_educativo</code>, se definen tres niveles: “bachillerato”, “licenciatura” y “posgrado”. Además, se especifica que el factor es ordenado (<code>ordered = TRUE</code>), lo que indica que los niveles tienen un orden jerárquico.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de factores</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(estado_civil)  <span class="co"># Muestra "factor"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "factor"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(estado_civil)    <span class="co"># Muestra los niveles definidos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función <code>class()</code> devuelve el tipo de objeto, que en este caso es “factor”.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(estado_civil) <span class="co"># Muestra los niveles definidos</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "soltero"    "casado"     "divorciado"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nivel_educativo)    <span class="co"># Muestra la estructura completa</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función <code>levels()</code> muestra los niveles definidos para el factor <code>estado_civil</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nivel_educativo) <span class="co"># Muestra la estructura completa</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> Ord.factor w/ 3 levels "bachillerato"&lt;..: 2</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(nivel_educativo)  <span class="co"># Verifica si el factor es ordenado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>La función <code>str()</code> muestra la estructura completa del factor <code>nivel_educativo</code>, incluyendo el tipo de objeto (factor ordenado) y los niveles definidos.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">is.ordered</span>(nivel_educativo) <span class="co"># Verifica si el factor es ordenado</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
+<p>La función <code>is.ordered()</code> verifica si el factor <code>nivel_educativo</code> es ordenado, devolviendo <code>TRUE</code> en este caso.</p>
 <p>Los factores son especialmente útiles en análisis estadísticos porque:</p>
 <ol type="1">
-<li><p>Permiten especificar un orden en las categorías.</p></li>
-<li><p>Facilitan la creación de gráficos categóricos.</p></li>
-<li><p>Son esenciales en modelos estadísticos.</p></li>
+<li><p>Permiten especificar un orden en las categorías, lo que es importante para variables ordinales como el nivel educativo.</p></li>
+<li><p>Facilitan la creación de gráficos categóricos, ya que R reconoce automáticamente los factores y los representa de manera adecuada.</p></li>
+<li><p>Son esenciales en modelos estadísticos, ya que R utiliza los factores para crear variables dummy o indicadoras, que son necesarias para incluir variables categóricas en los modelos.</p></li>
 </ol>
 </section>
 <section id="objetos-lógicos" class="level3" data-number="3.4.4">
@@ -739,16 +753,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Los objetos lógicos almacenan valores <code>TRUE</code> o <code>FALSE</code>, que resultan de comparaciones lógicas. Estos objetos son esenciales para realizar análisis condicionales, aplicar filtros y evaluaciones condicionales.</p>
 <p>Ejemplo de creación de objetos lógicos:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos lógicos mediante comparaciones</span></span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>mayoria_de_edad <span class="ot">&lt;-</span> edad <span class="sc">&gt;=</span> <span class="dv">18</span></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de objetos lógicos</span></span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mayoria_de_edad)   <span class="co"># Muestra "logical"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Creación de objetos lógicos mediante comparaciones</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>mayoria_de_edad <span class="ot">&lt;-</span> edad <span class="sc">&gt;=</span> <span class="dv">18</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de objetos lógicos</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(mayoria_de_edad)   <span class="co"># Muestra "logical"</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "logical"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mayoria_de_edad)      <span class="co"># Muestra la estructura</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(mayoria_de_edad)      <span class="co"># Muestra la estructura</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> logi TRUE</code></pre>
 </div>
@@ -773,23 +787,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ol>
 <p>Ejemplo de uso de estas funciones:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un objeto numérico</span></span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)      <span class="co"># Devuelve "numeric"</span></span>
-<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)     <span class="co"># Devuelve "double"</span></span>
-<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)        <span class="co"># Muestra la estructura del objeto</span></span>
-<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un objeto de texto</span></span>
-<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(nombre) <span class="co"># Devuelve "character"</span></span>
-<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nombre)   <span class="co"># Muestra la estructura del objeto</span></span>
-<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un factor</span></span>
-<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"soltero"</span>,</span>
-<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"casado"</span>,</span>
-<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"divorciado"</span>))</span>
-<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(estado_civil)   <span class="co"># Devuelve "factor"</span></span>
-<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(estado_civil)  <span class="co"># Devuelve "integer"</span></span>
-<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(estado_civil)     <span class="co"># Muestra la estructura del factor</span></span>
-<span id="cb31-17"><a href="#cb31-17" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(estado_civil)  <span class="co"># Devuelve los niveles posibles</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un objeto numérico</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(x)      <span class="co"># Devuelve "numeric"</span></span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)     <span class="co"># Devuelve "double"</span></span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(x)        <span class="co"># Muestra la estructura del objeto</span></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un objeto de texto</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(nombre) <span class="co"># Devuelve "character"</span></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(nombre)   <span class="co"># Muestra la estructura del objeto</span></span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Exploración de un factor</span></span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a>estado_civil <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="st">"soltero"</span>, <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"soltero"</span>,</span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"casado"</span>,</span>
+<span id="cb33-13"><a href="#cb33-13" aria-hidden="true" tabindex="-1"></a>                                             <span class="st">"divorciado"</span>))</span>
+<span id="cb33-14"><a href="#cb33-14" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(estado_civil)   <span class="co"># Devuelve "factor"</span></span>
+<span id="cb33-15"><a href="#cb33-15" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(estado_civil)  <span class="co"># Devuelve "integer"</span></span>
+<span id="cb33-16"><a href="#cb33-16" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(estado_civil)     <span class="co"># Muestra la estructura del factor</span></span>
+<span id="cb33-17"><a href="#cb33-17" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(estado_civil)  <span class="co"># Devuelve los niveles posibles</span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
 
